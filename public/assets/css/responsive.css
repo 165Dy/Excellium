@@ -1,0 +1,363 @@
+/* X-Large devices (large desktops, 1400px and up) */
+
+@media (min-width: 1400px) {
+    .header-area .container-fluid{
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+    .services-wrapper .row > .col-xl-3:not(:last-child){
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .services-wrapper .row, 
+    .services-wrapper .row{
+        --bs-gutter-x: 0 !important;
+    }
+}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/ 
+
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+    h2 {
+        font-size: 48px;
+        line-height: 110%;
+    }
+    .hero-wrapper .hero-content h1 {
+        font-size: 92px;
+        line-height: 110px;
+    }
+    .hero-wrapper-two .hero-content h1{
+        font-size: 80px;
+        line-height: 90px;
+    }
+    .section-content-box h2{
+        font-size: 42px;
+    }
+    .iconic-box.style-one {
+        padding: 40px 25px 35px;
+    }
+    .read-button .read-more {
+        height: 125px;
+    }
+    .footer-nav-widget {
+        padding: 0 70px;
+    }
+    .product-details-wrapper .product-info h4 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .iconic-box.style-three .content h4{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .team-item.style-one .member-info h3 {
+        font-size: 24px;
+    }
+    .contact-banner .banner-content h3 {
+        font-size: 24px;
+        line-height: 35px;
+    }
+    .contact-banner .banner-content h4 {
+        font-size: 20px;
+    }
+    .contact-banner .banner-content .theme-btn {
+        padding: 18px 30px;
+    }
+}
+
+@media (max-width: 1199px) {
+    h2 {
+        font-size: 32px;
+        line-height: 110%;
+    }
+    .page-banner-content h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .header-navigation.sticky {
+        padding: 20px 15px;
+    }
+    .header-navigation.breakpoint-on .primary-menu {
+        padding-bottom: 0;
+    }
+    .team-item.style-one .member-info h3 {
+        font-size: 20px;
+    }
+    .hero-wrapper .shape.shape-one {
+        top: 19%;
+        left: 7%;
+        left: auto;
+        right: 7%;
+    }
+    .hero-image img{
+        min-height: 300px;
+        object-fit: cover;
+    }
+    .hero-wrapper .hero-content h1 {
+        font-size: 76px;
+        line-height: 90px;
+    }
+    .iconic-box.style-one {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 40px;
+    }
+    .services-wrapper{
+        border: none;
+    }
+    .read-button .read-more{
+        height: 100px;
+    }
+    .blog-post-item.style-one .post-content h4.title{
+        font-size: 20px;
+    }
+    .social-link.style-one li a {
+        width: 40px;
+        height: 40px;
+    }
+    .footer-nav-widget {
+        padding: 0 50px;
+    }
+    .cart-table thead th{
+        font-size: 18px;
+    }
+    .product-gallery-area{
+        padding-right: 0;
+    }
+    .case-details-wrapper .case-content .project-info .content h4{
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .pricing-item.style-one {
+        padding: 30px 20px 35px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .coupon-box form .form_group .theme-btn{
+        border-radius: 0;
+        padding: 18px 30px;
+    }
+}
+
+/*Medium devices (Tab)*/ 
+@media (max-width: 991px) {
+    .hero-wrapper .hero-content h1 {
+        font-size: 52px;
+        line-height: 90px;
+    }
+    .showcase-item{
+        align-items: flex-start;
+    }
+    .showcase-item .content{
+        flex-direction: column;
+    }
+    .showcase-item .content .text:not(:last-child){
+        margin-bottom: 20px;
+    }
+    .showcase-item .year .duration {
+        font-size: 52px;
+        line-height: 60px;
+    }
+    .error-shape-section .shape.shape-two{
+        right: 50px;
+    }
+    .map-box {
+        margin-right: 0;
+    }
+    .product-thumb-slider,
+    .testimonial-slider-one{
+        margin-left: -12px;
+        margin-right: -12px;
+    }
+    .product-thumb-slider .slick-slide,
+    .testimonial-slider-one .slick-slide{
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+    .footer-nav-widget {
+        padding: 0;
+    }
+    .cart-table tbody tr td.thumbnail img{
+        width: 80px;
+        height: 80px;
+    }
+    .service-details-wrapper .faq-wrapper h3, .service-details-wrapper .content h3 {
+        font-size: 27px;
+        line-height: 35px;
+    }
+    .showcase-item .icon{
+        margin-right: 50px;
+    }
+    .counter-wrapper .row > .col-lg-4:not(:last-child) {
+        border-right: none;
+    }
+    .case-details-wrapper .case-content h3{
+        font-size: 24px;
+    }
+    .contact-banner .banner-content h3{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .contact-banner {
+        padding: 30px 30px;
+    }
+    .team-details-wrapper .member-info h3{
+        font-size: 32px;
+        line-height: 45px;
+    }
+}
+
+/*Medium WIde devices (Tab)*/ 
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+}
+
+/*Small devices (Mobile)*/ 
+
+@media (max-width: 767px){
+    h2{
+        font-size: 32px;
+        line-height: 45px;
+    }
+    .site-branding {
+        max-width: 150px;
+    }
+    .nav-right-item .navbar-toggler {
+        margin-left: 15px;
+    }
+    .section-content-box h2 span {
+        font: 700 24px var(--heading-font);
+        line-height: 40px;
+    }
+    .hero-wrapper .hero-content h1 {
+        margin-bottom: 55px;
+        font-size: 52px;
+        line-height: 60px;
+    }
+    .hero-wrapper-two .hero-content h1{
+        font-size: 52px;
+        line-height: 60px;
+    }
+    .hero-wrapper .hero-content h1 span,
+    .hero-wrapper .hero-content h1 .theme-btn{
+        display: none;
+    }
+    .newsletter-form  .theme-btn {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 15px;
+    }
+    .contact-banner .banner-content h3 {
+        font-size: 24px;
+        line-height: 35px;
+    }
+    .showcase-item .icon{
+        margin-bottom: 30px;
+    }
+    .showcase-item .content,
+    .showcase-item{
+        flex-direction: column;
+    }
+    .showcase-item .image{
+        right: 10%;
+    }
+    .showcase-item .year{
+        margin-left: 0;
+    }
+    .footer-nav-widget {
+        padding: 0 0px;
+    }
+    .error-content h1 {
+        font-size: 36px;
+        line-height: 45px;
+    }
+    .error-content p {
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .error-shape-section .shape.shape-two{
+        display: none;
+    }
+    .page-banner-content h1{
+        font-size: 36px;
+    }
+    .coupon-box form .form_group{
+        flex-direction: column;
+    }
+    .product-details-wrapper .product-info h4 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .product-filter .show-text{
+        text-align: center;
+    }
+    .entry-footer,
+    .post-navigation-item{
+        flex-direction: column;
+    }
+    .tag-links{
+        margin-bottom: 15px;
+    }
+    .tag-links,
+    .social-share{
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+    .tag-links a,
+    .social-share .social{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .page-banner .shape.shape-one {
+        left: 20px;
+    }
+    .page-banner .shape.shape-two {
+        top: 90px;
+        right: 5%;
+    }
+    .case-details-wrapper .case-content .project-info {
+        padding: 40px 30px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: -30px;
+    }
+    .accordion-card .accordion-header .accordion-title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 575px){
+    .page-banner-content h1 {
+        font-size: 28px;
+        line-height: 40px;
+    }
+    h2{
+        font-size: 28px;
+        line-height: 35px;
+    }
+    .nav-right-item a{
+        display: none;
+    }
+    .iconic-box.style-four .icon{
+        margin-bottom: 20px;
+    }
+    .block-quote {
+        flex-direction: column;
+    }
+    .block-quote .icon{
+        margin-bottom: 20px;
+    }
+    .blog-details-wrapper .blog-post .block-quote .content h3 {
+        font-size: 22px;
+        line-height: 32px;
+    }
+}
+/*Small Wide devices (Mobile)*/ 
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    
+}
