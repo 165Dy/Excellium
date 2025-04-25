@@ -26,16 +26,13 @@
                     </div>
                     <div class="col-xl-6">
                         <div class="hero-image mb-50 wow fadeInRight">
-                            <img src="assets/images/img_2.jpg" alt="Hero Image">
+                            <img src="assets/images/excellium_photo_3.jfif" alt="Hero Image" style="border-radius:10px 10px ">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--====== End Header Section ======-->
-    <!--====== Start Services Section ======-->
-
     <!--====== Start Why-choose Section ======-->
     <section class="why-choose-us pt-130 pb-90">
         <div class="container">
@@ -93,7 +90,7 @@
                 </div>
                 <div class="col-xl-7">
                     <div class="choose-image mb-50 wow fadeInRight">
-                        <img src="assets/images/img_9.jpg" alt="choose image">
+                        <img src="assets/images/excellium_photo_1.jfif" alt="choose image">
                     </div>
                 </div>
             </div>
@@ -119,7 +116,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="section-title text-center mb-50 wow fadeInDown">
-                        <span class="sub-title">Some Of Our Recent Cases</span>
+                    
                         <h2>Nos Services</h2>
                     </div>
                 </div>
@@ -305,88 +302,6 @@
         </div>
     </section><!--====== End Testimonial Section ======-->
     <!--====== Start Case Section ======-->
-    <section class="case-section pt-130 pb-140">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="section-title text-center mb-60 wow fadeInDown">
-                        {{-- <span class="sub-title">Some Of Our Recent Cases</span> --}}
-                        <h2>Nos Services</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="showcase-item wow fadeInDown">
-                        <div class="icon">
-                            <img src="assets/images/case/icon-1.svg" alt="Icon">
-                        </div>
-                        <div class="content">
-                            <div class="text">
-                                <h4>Dribble</h4>
-                                <p>Sydney, Australia</p>
-                            </div>
-                            <div class="text">
-                                <h4>UI/UX Designer</h4>
-                                <p>Cultivating market leadership from the inside out. We’re the brand builders for
-                                    better.</p>
-                            </div>
-                        </div>
-                        <div class="image">
-                            <img src="assets/images/case/hover.png" alt="Image">
-                        </div>
-                        <div class="year">
-                            <h2 class="duration">2010</h2>
-                        </div>
-                    </div>
-                    <div class="showcase-item wow fadeInDown">
-                        <div class="icon">
-                            <img src="assets/images/case/icon-2.svg" alt="Icon">
-                        </div>
-                        <div class="content">
-                            <div class="text">
-                                <h4>Dribble</h4>
-                                <p>Sydney, Australia</p>
-                            </div>
-                            <div class="text">
-                                <h4>Assistance comptable et fiscale</h4>
-                                <p>Tenue de comptabilité, déclarations fiscales et optimisation fiscale</p>
-                            </div>
-                        </div>
-                        <div class="image">
-                            <img src="assets/images/case/hover.png" alt="Image">
-                        </div>
-                        <div class="year">
-                            <h2 class="duration">2010</h2>
-                        </div>
-                    </div>
-                    <div class="showcase-item wow fadeInDown">
-                        <div class="icon">
-                            <img src="assets/images/case/icon-3.svg" alt="Icon">
-                        </div>
-                        <div class="content">
-                            <div class="text">
-                                <h4>Dribble</h4>
-                                <p>Sydney, Australia</p>
-                            </div>
-                            <div class="text">
-                                <h4>UI/UX Designer</h4>
-                                <p>Cultivating market leadership from the inside out. We’re the brand builders for
-                                    better.</p>
-                            </div>
-                        </div>
-                        <div class="image">
-                            <img src="assets/images/case/hover.png" alt="Image">
-                        </div>
-                        <div class="year">
-                            <h2 class="duration">2010</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!--====== End Case Section ======-->
-    <!--====== Start Blog Section ======-->
     <section class="blog-section secondary-dark-bg pt-140 pb-100">
         <div class="container">
             <div class="row justify-content-center">
