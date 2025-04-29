@@ -7,7 +7,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-6">
                         <div class="hero-content mb-50 wow fadeInLeft">
-                            <h1>Excellium Conseils</h1>
+                            <h2>Excellium Conseils</h2>
                             <p>
                                 Bienvenue chez Excellium Conseils, votre partenaire stratégique
                                 en gestion financière et comptable. Nous accompagnons les entrepreneurs,
@@ -26,23 +26,17 @@
                     </div>
                     <div class="col-xl-6">
                         <div class="hero-image mb-50 wow fadeInRight">
-                            <img src="assets/images/img_2.jpg" alt="Hero Image">
+                            <img src="assets/images/excellium_photo_3.jfif" alt="Hero Image" style="border-radius:10px 10px ">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!--====== End Header Section ======-->
-    <!--====== Start Services Section ======-->
-
-    <!--====== Start Why-choose Section ======-->
-    <section class="why-choose-us pt-130 pb-90">
-        <div class="container">
+        <div class="container" >
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-title text-center mb-60 wow fadeInDown">
-                        {{-- <span class="sub-title">Why Choose Us</span> --}}
+                       
                         <h2>Pourquoi choisir Excellium Conseils ?</h2>
                     </div>
                 </div>
@@ -93,33 +87,37 @@
                 </div>
                 <div class="col-xl-7">
                     <div class="choose-image mb-50 wow fadeInRight">
-                        <img src="assets/images/img_9.jpg" alt="choose image">
+                        <img src="assets/images/excellium_photo_1.jfif" alt="choose image">
                     </div>
                 </div>
             </div>
         </div>
-    </section><!--====== End Why-choose Section ======-->
+    </section>
+    <!--====== Start Why-choose Section ======-->
+    {{-- <section class="why-choose-us pt-130 pb-90">
+       
+    </section><!--====== End Why-choose Section ======--> --}}
     <!--====== Start Slider text Section ======-->
-    <section class="headline-text primary-bg pt-55 pb-55">
+    <section class="headline-text primary-bg pt-55 pb-55" >
         <div class="animate-text">
-            <span class="text">Contact Us</span>
-            <span class="text">Let’s Talk</span>
+            
+            <span class="text" style="color: white">Contact Us</span>
+            <span class="text" style="color: white">Let’s Talk</span>
             <span class="text"></span>
-            <span class="text">Let’s Talk</span>
-            <span class="text">Contact Us</span>
-            <span class="text">Let’s Talk</span>
-            <span class="text">Contact Us</span>
-            <span class="text">Let’s Talk</span>
-            <span class="text">Contact Us</span>
+            <span class="text" style="color: white">Let’s Talk</span>
+            <span class="text"style="color: white">Contact Us</span>
+            <span class="text"style="color: white">Let’s Talk</span>
+            <span class="text"style="color: white">Contact Us</span>
+            <span class="text"style="color: white">Let’s Talk</span>
+            <span class="text"style="color: white">Contact Us</span>
         </div>
     </section><!--====== End Slider text Section ======-->
     <!--====== Start Case Section ======-->
-    <section class="case-section pt-130 pb-110">
+    <section class="case-section pt-130 pb-110" style="margin-bottom:-100px">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" style="margin-top:-100px;">
                 <div class="col-lg-8">
                     <div class="section-title text-center mb-50 wow fadeInDown">
-                        <span class="sub-title">Some Of Our Recent Cases</span>
                         <h2>Nos Services</h2>
                     </div>
                 </div>
@@ -211,7 +209,7 @@
         </div>
     </section><!--====== End Case Section ======-->
     <!--====== Start Testimonial Section ======-->
-    <section class="testimonial-section secondary-dark-bg pt-130 pb-100">
+    <section class="testimonial-section secondary-dark-bg pt-130 pb-100" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
@@ -305,88 +303,6 @@
         </div>
     </section><!--====== End Testimonial Section ======-->
     <!--====== Start Case Section ======-->
-    <section class="case-section pt-130 pb-140">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="section-title text-center mb-60 wow fadeInDown">
-                        {{-- <span class="sub-title">Some Of Our Recent Cases</span> --}}
-                        <h2>Nos Services</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="showcase-item wow fadeInDown">
-                        <div class="icon">
-                            <img src="assets/images/case/icon-1.svg" alt="Icon">
-                        </div>
-                        <div class="content">
-                            <div class="text">
-                                <h4>Dribble</h4>
-                                <p>Sydney, Australia</p>
-                            </div>
-                            <div class="text">
-                                <h4>UI/UX Designer</h4>
-                                <p>Cultivating market leadership from the inside out. We’re the brand builders for
-                                    better.</p>
-                            </div>
-                        </div>
-                        <div class="image">
-                            <img src="assets/images/case/hover.png" alt="Image">
-                        </div>
-                        <div class="year">
-                            <h2 class="duration">2010</h2>
-                        </div>
-                    </div>
-                    <div class="showcase-item wow fadeInDown">
-                        <div class="icon">
-                            <img src="assets/images/case/icon-2.svg" alt="Icon">
-                        </div>
-                        <div class="content">
-                            <div class="text">
-                                <h4>Dribble</h4>
-                                <p>Sydney, Australia</p>
-                            </div>
-                            <div class="text">
-                                <h4>Assistance comptable et fiscale</h4>
-                                <p>Tenue de comptabilité, déclarations fiscales et optimisation fiscale</p>
-                            </div>
-                        </div>
-                        <div class="image">
-                            <img src="assets/images/case/hover.png" alt="Image">
-                        </div>
-                        <div class="year">
-                            <h2 class="duration">2010</h2>
-                        </div>
-                    </div>
-                    <div class="showcase-item wow fadeInDown">
-                        <div class="icon">
-                            <img src="assets/images/case/icon-3.svg" alt="Icon">
-                        </div>
-                        <div class="content">
-                            <div class="text">
-                                <h4>Dribble</h4>
-                                <p>Sydney, Australia</p>
-                            </div>
-                            <div class="text">
-                                <h4>UI/UX Designer</h4>
-                                <p>Cultivating market leadership from the inside out. We’re the brand builders for
-                                    better.</p>
-                            </div>
-                        </div>
-                        <div class="image">
-                            <img src="assets/images/case/hover.png" alt="Image">
-                        </div>
-                        <div class="year">
-                            <h2 class="duration">2010</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!--====== End Case Section ======-->
-    <!--====== Start Blog Section ======-->
     <section class="blog-section secondary-dark-bg pt-140 pb-100">
         <div class="container">
             <div class="row justify-content-center">
@@ -439,14 +355,14 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-banner primary-bg wow fadeInRight">
+                    <div class="contact-banner wow fadeInRight" style="background-color:#FFD22F ">
                         <div class="banner-content">
                             <h3>Have Any Project In Your Mind?</h3>
                             <div class="icon">
                                 <img src="assets/images/blog/icon.png" alt="">
                                 <h4>Call For Consultation</h4>
                             </div>
-                            <a href="#" class="theme-btn style-one">Let’s Contact with Us</a>
+                            <a href="#" class="theme-btn style-one" style="color:white ">Let’s Contact with Us</a>
                         </div>
                     </div>
                 </div>
