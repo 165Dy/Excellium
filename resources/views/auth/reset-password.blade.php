@@ -1,20 +1,6 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
-
-        <x-validation-errors class="mb-4" />
-
-        
-    </x-authentication-card>
-</x-guest-layout>
-
-
-
 @extends('layouts.auth')
 @section('reset-password')
-    <div class="container">
+    {{-- <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-8 col-lg-10 col-md-12">
                 <div class="card p-4">
@@ -71,7 +57,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-   
+    </div>  --}}
 @endsection

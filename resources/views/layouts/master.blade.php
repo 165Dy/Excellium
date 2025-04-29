@@ -98,11 +98,11 @@
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Ressources</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('Ressources.Articles') }}">Articles</a></li>
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Conseils &
-                                                    Actualités</a></li>
-                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Entrepreunariat</a>
-                                            </li>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Actualités</a></li>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Commerce Generale</a></li>
+                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Import-Export</a>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Gestion de Biens</a></li>
+                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Services Divers</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Partenaires</a>
@@ -120,20 +120,12 @@
 
                                         </ul>
                                     </li>
-                                    <!-- <li class="menu-item has-children"><a href="#">Contact</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-grid.html">Blog Grid</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li> -->
+
                                 </ul>
-
-
 
                             </nav>
                         </div>
                         <div class="nav-right-item">
-
                             <a href="{{ route('contacts') }}"><i class="far fa-envelope"></i></a>
                             <div class="navbar-toggler">
                                 <span></span>
@@ -195,9 +187,12 @@
                                 c’est un partenaire de confiance pour votre réussite financière 💼📊
                                 . </p>
                             <ul class="social-link style-one">
-                                <li><a href="https://www.facebook.com/share/199uiSgsQ7/"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://ci.linkedin.com/company/excelliumconseils-ci"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="https://wa.me/message/XYBTJGPX4AC4E1"><i class="fab fa-whatsapp"></i></a></li>
+                                <li><a href="https://www.facebook.com/share/199uiSgsQ7/"><i
+                                            class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://ci.linkedin.com/company/excelliumconseils-ci"><i
+                                            class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://wa.me/message/XYBTJGPX4AC4E1"><i class="fab fa-whatsapp"></i></a>
+                                </li>
                                 {{-- <li><a href="#"><i class="fab fa-instagram"></i></a></li> --}}
                             </ul>
                         </div>
@@ -246,7 +241,9 @@
                                             <i class="far fa-envelope"></i>
                                         </div>
                                         <div class="content">
-                                            <p><a href="https://www.bing.com/search?pglt=425&q=direction%40excelliumconseils.com&cvid=a3a92a11f351439d9718a52639834aff&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQRRg60gEHNDM3ajBqMagCALACAA&FORM=ANNTA1&ucpdpc=UCPD&PC=U531">direction@excelliumconseils.com</a></p>
+                                            <p><a
+                                                    href="https://www.bing.com/search?pglt=425&q=direction%40excelliumconseils.com&cvid=a3a92a11f351439d9718a52639834aff&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQRRg60gEHNDM3ajBqMagCALACAA&FORM=ANNTA1&ucpdpc=UCPD&PC=U531">direction@excelliumconseils.com</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </li>
