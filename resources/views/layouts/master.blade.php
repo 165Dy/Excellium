@@ -79,7 +79,7 @@
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Nos Services</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('Audit&Conseil') }}">Audit & conseil</a></li>
+                                            <li><a href="">Audit & conseil</a></li>
                                             <li><a href="{{ route('Compta_Fiscale') }}">Comptable & Fiscale</a></li>
                                             <li><a href="{{ route('Ressources_humaines') }}">R. Humaines</a></li>
                                             <li><a href="{{ route('Gestion_Paie') }}">Gestion de la Paie</a></li>
@@ -90,7 +90,7 @@
                                         <ul class="sub-menu">
                                             <li><a href="{{ route('Formations.Compta') }}">Comptabilité</a></li>
                                             <li><a href="{{ route('Formations.Fiscalite') }}">Fiscalité</a></li>
-                                            <li><a href="{{ route('Formations.Audit') }}">Audit</a></li>
+                                            <li><a href="">Audit</a></li>
                                             <li><a href="{{ route('Formations.Gestion_entreprise') }}">Gestion
                                                     d'Entreprise</a></li>
                                             <li><a href="{{ route('Formations.show') }}">Show</a></li>

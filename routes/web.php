@@ -2,10 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AuditController;
-use App\Http\Controllers\ComptaController;
-use App\Http\Controllers\EntrepriseController;
-use App\Http\Controllers\FiscalController;
+use App\Http\Controllers\formationsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +18,10 @@ use App\Http\Controllers\FiscalController;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', function () {return view('welcome');})->name('welcome');
 
 
-Route::get('/Dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/Dashboard', function () {return view('dashboard');})->name('dashboard');
 
 ///////////////////////////////AUTHENTIFICATION////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,14 +48,15 @@ Route::prefix('clients')->group(function () {
     Route::get('/Espace_clients/outils_en_ligne',function () { return view('clients.Espace_clients.outils'); } )->name('Espace_clients.outils');
 
     // FORMATIONS
-    Route::get('/Formations/Audit',function () { return view('clients.Formations.Audit'); } )->name('Formations.Audit');
+    
+    Route::get('/Formations/audit',function () { return view('clients.Formations.Audit'); } )->name('Formations.audit');
     Route::get('/Formations/Compta',function () { return view('clients.Formations.Compta'); } )->name('Formations.Compta');
     Route::get('/Formations/Fiscalite',function () { return view('clients.Formations.Fiscalite'); } )->name('Formations.Fiscalite');
     Route::get('/Formations/Gestion_entreprise',function () { return view('clients.Formations.Gestion_entreprise'); } )->name('Formations.Gestion_entreprise');
     Route::get('/Formations/show',function () { return view('clients.Formations.showFormation'); } )->name('Formations.show');
 
     // NOS SERVICES
-    Route::get('/Nos_Services/Audit&Conseil',function () { return view('clients.Nos_Services.Audit_Conseil'); } )->name('Audit&Conseil');
+    Route::get('/Nos_Services/audit&Conseil',function () { return view('clients.Nos_Services.Audit_Conseil'); } )->name('audit&Conseil');
     Route::get('/Nos_Services/Compta_Fiscale',function () { return view('clients.Nos_Services.compta_Fiscale'); } )->name('Compta_Fiscale');
     Route::get('/Nos_Services/Financement',function () { return view('clients.Nos_Services.Financement'); } )->name('Financement');
     Route::get('/Nos_Services/Gestion_paie',function () { return view('clients.Nos_Services.Gestion_Paie'); } )->name('Gestion_Paie');
@@ -84,6 +79,14 @@ Route::prefix('clients')->group(function () {
 });
 
 
+
+
+
+
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -96,44 +99,24 @@ Route::prefix('clients')->group(function () {
 
     // FORMATIONS
 
-    // Routes Audit
-    Route::get('/admin/formations/audit', [AuditController::class, 'index'])->name('audit.index');
-    Route::get('/admin/formations/audit/create', [AuditController::class, 'create'])->name('audit.create');
-    Route::post('/admin/formations/audit', [AuditController::class, 'store'])->name('audit.store');
-    Route::get('/admin/formations/audit/{id}', [AuditController::class, 'show'])->name('audit.show');
-    Route::get('/admin/formations/audit/{id}/edit', [AuditController::class, 'edit'])->name('audit.edit');
-    Route::post('/admin/formations/audit/{id}', [AuditController::class, 'update'])->name('audit.update');
-    Route::post('/admin/formations/audit/{id}/delete', [AuditController::class, 'destroy'])->name('audit.destroy');
+    // Routes formations
+    Route::get('/admin/formations/index', [formationsController::class, 'index'])->name('formations.index');
+    Route::get('/admin/formations/formations/create', [formationsController::class, 'create'])->name('formations.create');
+    Route::post('/admin/formations/formations', [formationsController::class, 'store'])->name('formations.store');
+    Route::get('/admin/formations/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
+    Route::get('/admin/formations/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');
+    Route::post('/admin/formations/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
+    Route::post('/admin/formations/formations/{id}/delete', [formationsController::class, 'destroy'])->name('formations.destroy');
 
-    // Routes Compta
-    Route::get('/admin/formations/compta', [ComptaController::class, 'index'])->name('compta.index');
-    Route::get('/admin/formations/compta/create', [ComptaController::class, 'create'])->name('compta.create');
-    Route::post('/admin/formations/compta', [ComptaController::class, 'store'])->name('compta.store');
-    Route::get('/admin/formations/compta/{id}', [ComptaController::class, 'show'])->name('compta.show');
-    Route::get('/admin/formations/compta/{id}/edit', [ComptaController::class, 'edit'])->name('compta.edit');
-    Route::post('/admin/formations/compta/{id}', [ComptaController::class, 'update'])->name('compta.update');
-    Route::post('/admin/formations/compta/{id}/delete', [ComptaController::class, 'destroy'])->name('compta.destroy');
+    Route::get('/admin/articles/',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
+    Route::get('/admin/partenaires/',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
+    Route::get('/admin/temoignages/',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');
 
-    // Routes Entreprise
-    Route::get('/admin/formations/entreprise', [EntrepriseController::class, 'index'])->name('entreprise.index');
-    Route::get('/admin/formations/entreprise/create', [EntrepriseController::class, 'create'])->name('entreprise.create');
-    Route::post('/admin/formations/entreprise', [EntrepriseController::class, 'store'])->name('entreprise.store');
-    Route::get('/admin/formations/entreprise/{id}', [EntrepriseController::class, 'show'])->name('entreprise.show');
-    Route::get('/admin/formations/entreprise/{id}/edit', [EntrepriseController::class, 'edit'])->name('entreprise.edit');
-    Route::post('/admin/formations/entreprise/{id}', [EntrepriseController::class, 'update'])->name('entreprise.update');
-    Route::post('/admin/formations/entreprise/{id}/delete', [EntrepriseController::class, 'destroy'])->name('entreprise.destroy');
 
-    // Routes Fiscal
-    Route::get('/admin/formations/fiscal', [FiscalController::class, 'index'])->name('fiscal.index');
-    Route::get('/admin/formations/fiscal/create', [FiscalController::class, 'create'])->name('fiscal.create');
-    Route::post('/admin/formations/fiscal', [FiscalController::class, 'store'])->name('fiscal.store');
-    Route::get('/admin/formations/fiscal/{id}', [FiscalController::class, 'show'])->name('fiscal.show');
-    Route::get('/admin/formations/fiscal/{id}/edit', [FiscalController::class, 'edit'])->name('fiscal.edit');
-    Route::post('/admin/formations/fiscal/{id}', [FiscalController::class, 'update'])->name('fiscal.update');
-    Route::post('/admin/formations/fiscal/{id}/delete', [FiscalController::class, 'destroy'])->name('fiscal.destroy');
-    
+
+    Route::get('/admin/opportunites/',function () { return view('Admin.Opportunites.index'); } )->name('opportunites.index');
     //CONTACTS
-     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
+    Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
      // CALENDRIER
      Route::get('/calendrier/index',function () { return view('Admin.Calendrier.index'); } )->name('calendrier.index');

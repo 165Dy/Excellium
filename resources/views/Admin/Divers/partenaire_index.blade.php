@@ -1,0 +1,489 @@
+@extends('layouts.admin')
+@section('index_partenaires')
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="nav-align-top">
+            <ul class="nav nav-pills flex-column flex-md-row mb-6 gap-2 gap-lg-0">
+                <li class="nav-item">
+                    <a data-bs-target="#create" data-bs-toggle="modal" class="nav-link active" href="javascript:void(0);"><i class="icon-base ri ri-add-circle-line icon-sm me-2"></i>Ajouter</a>
+                </li>
+               
+            </ul>
+        </div>
+        <!-- Scrollable -->
+        <div class="card">
+            <div class="col-md-12">
+
+                <h2 class="card-header text-center text-md-start pb-md-0">LISTES DE TOUT LES PARTENAIRES</h2>
+                <div class="card-datatable text-nowrap">
+                    <table class="dt-scrollableTable table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Description</th>
+                                <th>Categorie</th>
+                                <th>modules</th>
+                                <th>Date</th>
+                                <th>Documents</th>
+                                <th>Telechargements</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lorem</td>
+                                <td>###</td>
+                                <td>###</td>
+                                <td>###</td>
+                                <td>21/05/2025</td>
+                                <td>
+                                    lorem.pdf<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <path fill="#000"
+                                            d="m14.829 7.757l-5.657 5.657a1 1 0 1 0 1.414 1.414l5.657-5.656A3 3 0 0 0 12 4.929l-5.657 5.657a5 5 0 0 0 7.071 7.07L19.071 12l1.414 1.414l-5.656 5.657a7 7 0 0 1-9.9-9.9l5.657-5.656a5 5 0 0 1 7.071 7.07L12 16.244A3 3 0 0 1 7.758 12l5.656-5.657z" />
+                                    </svg>
+                                </td>
+                                <td>
+                                    (258227) <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <path fill="#1c1c1b"
+                                            d="m16 2l5 5v14.008a.993.993 0 0 1-.993.992H3.993A1 1 0 0 1 3 21.008V2.992C3 2.444 3.445 2 3.993 2zm-3 10V8h-2v4H8l4 4l4-4z" />
+                                    </svg>
+                                </td>
+                                <td>
+                                    <div class="action" style="justify-content: space-between">
+                                        <svg data-bs-target="#edit" data-bs-toggle="modal" style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24">
+                                            <path fill="#4c9edb"
+                                                d="M9.243 18.997H21v2H3v-4.243l9.9-9.9l4.242 4.243zm5.07-13.557l2.122-2.121a1 1 0 0 1 1.414 0l2.829 2.828a1 1 0 0 1 0 1.415l-2.122 2.121z" />
+                                        </svg>&nbsp;&nbsp;
+                                        <svg data-bs-target="#view" data-bs-toggle="modal" style="cursor: pointer"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <path fill="#d7d041"
+                                                d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6" />
+                                        </svg>&nbsp;&nbsp;
+                                        <svg id="confirm-color" style="cursor: pointer" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" viewBox="0 0 24 24">
+                                            <path fill="#fd1800"
+                                                d="M7 6V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6zm6.414 8l1.768-1.768l-1.414-1.414L12 12.586l-1.768-1.768l-1.414 1.414L10.586 14l-1.768 1.768l1.414 1.414L12 15.414l1.768 1.768l1.414-1.414zM9 4v2h6V4z" />
+                                        </svg>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+     <!--Create User Modal -->
+     <div class="modal fade" id="create" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="text-center mb-6">
+                        <h4 class="mb-2">Ajouter un Partenaire</h4>
+                    </div>
+                    <form id="editUserForm" class="row g-5" onsubmit="return false">
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserFirstName" name="modalEditUserFirstName"
+                                    class="form-control" value="Oliver" placeholder="Oliver" />
+                                <label for="modalEditUserFirstName">Titre</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserLastName" name="modalEditUserLastName"
+                                    class="form-control" value="Queen" placeholder="Queen" />
+                                <label for="modalEditUserLastName">Categories</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserName" name="modalEditUserName"
+                                    class="form-control" value="oliver.queen" placeholder="oliver.queen" />
+                                <label for="modalEditUserName">Username</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserEmail" name="modalEditUserEmail"
+                                    class="form-control" value="oliverqueen@gmail.com"
+                                    placeholder="oliverqueen@gmail.com" />
+                                <label for="modalEditUserEmail">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <select id="modalEditUserStatus" name="modalEditUserStatus" class="form-select"
+                                    aria-label="Default select example">
+                                    <option value="1" selected>Active</option>
+                                    <option value="2">Inactive</option>
+                                    <option value="3">Suspended</option>
+                                </select>
+                                <label for="modalEditUserStatus">Status</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditTaxID" name="modalEditTaxID"
+                                    class="form-control modal-edit-tax-id" placeholder="123 456 7890" />
+                                <label for="modalEditTaxID">Tax ID</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text">US (+1)</span>
+                                <div class="form-floating form-floating-outline">
+                                    <input type="text" id="modalEditUserPhone" name="modalEditUserPhone"
+                                        class="form-control phone-number-mask" value="+1 609 933 4422"
+                                        placeholder="+1 609 933 4422" />
+                                    <label for="modalEditUserPhone">Phone Number</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input id="modalEditUserLanguage" name="modalEditUserLanguage"
+                                    class="form-control h-auto" placeholder="select technologies" value="English" />
+                                <label for="modalEditUserLanguage">Custom List Suggestions</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <select id="modalEditUserCountry" name="modalEditUserCountry" class="select2 form-select"
+                                    data-allow-clear="true">
+                                    <option value="">Select</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Belarus">Belarus</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="China">China</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="India" selected>India</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="Israel">Israel</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Korea">Korea, Republic of</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="Philippines">Philippines</option>
+                                    <option value="Russia">Russian Federation</option>
+                                    <option value="South Africa">South Africa</option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="Turkey">Turkey</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="United States">United States</option>
+                                </select>
+                                <label for="modalEditUserCountry">Country</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="editBillingAddress" />
+                                <label for="editBillingAddress" class="text-heading">Use as a billing
+                                    address?</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary me-3">Submit</button>
+                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <!--/ Content -->
+        </div>
+
+    </div>
+
+    <!--Edit User Modal -->
+    <div class="modal fade" id="edit" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="text-center mb-6">
+                        <h4 class="mb-2">Modifier Information</h4>
+                    </div>
+                    <form id="editUserForm" class="row g-5" onsubmit="return false">
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserFirstName" name="modalEditUserFirstName"
+                                    class="form-control" value="Oliver" placeholder="Oliver" />
+                                <label for="modalEditUserFirstName">Titre</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserLastName" name="modalEditUserLastName"
+                                    class="form-control" value="Queen" placeholder="Queen" />
+                                <label for="modalEditUserLastName">Categories</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserName" name="modalEditUserName"
+                                    class="form-control" value="oliver.queen" placeholder="oliver.queen" />
+                                <label for="modalEditUserName">Username</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserEmail" name="modalEditUserEmail"
+                                    class="form-control" value="oliverqueen@gmail.com"
+                                    placeholder="oliverqueen@gmail.com" />
+                                <label for="modalEditUserEmail">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <select id="modalEditUserStatus" name="modalEditUserStatus" class="form-select"
+                                    aria-label="Default select example">
+                                    <option value="1" selected>Active</option>
+                                    <option value="2">Inactive</option>
+                                    <option value="3">Suspended</option>
+                                </select>
+                                <label for="modalEditUserStatus">Status</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditTaxID" name="modalEditTaxID"
+                                    class="form-control modal-edit-tax-id" placeholder="123 456 7890" />
+                                <label for="modalEditTaxID">Tax ID</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text">US (+1)</span>
+                                <div class="form-floating form-floating-outline">
+                                    <input type="text" id="modalEditUserPhone" name="modalEditUserPhone"
+                                        class="form-control phone-number-mask" value="+1 609 933 4422"
+                                        placeholder="+1 609 933 4422" />
+                                    <label for="modalEditUserPhone">Phone Number</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input id="modalEditUserLanguage" name="modalEditUserLanguage"
+                                    class="form-control h-auto" placeholder="select technologies" value="English" />
+                                <label for="modalEditUserLanguage">Custom List Suggestions</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <select id="modalEditUserCountry" name="modalEditUserCountry" class="select2 form-select"
+                                    data-allow-clear="true">
+                                    <option value="">Select</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Belarus">Belarus</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="China">China</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="India" selected>India</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="Israel">Israel</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Korea">Korea, Republic of</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="Philippines">Philippines</option>
+                                    <option value="Russia">Russian Federation</option>
+                                    <option value="South Africa">South Africa</option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="Turkey">Turkey</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="United States">United States</option>
+                                </select>
+                                <label for="modalEditUserCountry">Country</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="editBillingAddress" />
+                                <label for="editBillingAddress" class="text-heading">Use as a billing
+                                    address?</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary me-3">Submit</button>
+                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <!--/ Content -->
+        </div>
+
+    </div>
+
+    <!--View User Modal -->
+    <div class="modal fade" id="view" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="text-center mb-6">
+                        <h4 class="mb-2">Voir Information</h4>
+                    </div>
+                    <form id="editUserForm" class="row g-5" onsubmit="return false">
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserFirstName" name="modalEditUserFirstName"
+                                    class="form-control" value="Oliver" placeholder="Oliver" />
+                                <label for="modalEditUserFirstName">Titre</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserLastName" name="modalEditUserLastName"
+                                    class="form-control" value="Queen" placeholder="Queen" />
+                                <label for="modalEditUserLastName">Categories</label>
+                            </div>
+                        </div>
+                        <div class="form-floating form-floating-outline mb-6">
+                            <textarea
+                              class="form-control h-px-75"
+                              id="basic-default-bio"
+                              name="basic-default-bio"
+                              placeholder="............"
+                              rows=""
+                              required></textarea>
+                            <label for="basic-default-bio">Description</label>
+                          </div>
+    
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditUserEmail" name="modalEditUserEmail"
+                                    class="form-control" value="oliverqueen@gmail.com"
+                                    placeholder="oliverqueen@gmail.com" />
+                                <label for="modalEditUserEmail">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <select id="modalEditUserStatus" name="modalEditUserStatus" class="form-select"
+                                    aria-label="Default select example">
+                                    <option value="1" selected>Active</option>
+                                    <option value="2">Inactive</option>
+                                    <option value="3">Suspended</option>
+                                </select>
+                                <label for="modalEditUserStatus">Status</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="modalEditTaxID" name="modalEditTaxID"
+                                    class="form-control modal-edit-tax-id" placeholder="123 456 7890" />
+                                <label for="modalEditTaxID">Tax ID</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text">US (+1)</span>
+                                <div class="form-floating form-floating-outline">
+                                    <input type="text" id="modalEditUserPhone" name="modalEditUserPhone"
+                                        class="form-control phone-number-mask" value="+1 609 933 4422"
+                                        placeholder="+1 609 933 4422" />
+                                    <label for="modalEditUserPhone">Phone Number</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <input id="modalEditUserLanguage" name="modalEditUserLanguage"
+                                    class="form-control h-auto" placeholder="select technologies" value="English" />
+                                <label for="modalEditUserLanguage">Custom List Suggestions</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating form-floating-outline">
+                                <select id="modalEditUserCountry" name="modalEditUserCountry" class="select2 form-select"
+                                    data-allow-clear="true">
+                                    <option value="">Select</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Belarus">Belarus</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="China">China</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="India" selected>India</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="Israel">Israel</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Korea">Korea, Republic of</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="Philippines">Philippines</option>
+                                    <option value="Russia">Russian Federation</option>
+                                    <option value="South Africa">South Africa</option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="Turkey">Turkey</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="United States">United States</option>
+                                </select>
+                                <label for="modalEditUserCountry">Country</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="editBillingAddress" />
+                                <label for="editBillingAddress" class="text-heading">Use as a billing
+                                    address?</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary me-3">Submit</button>
+                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <!--/ Content -->
+        </div>
+
+
+
+    </div>
+
+
+
+
+@endsection

@@ -45,16 +45,12 @@
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/apex-charts/apex-charts.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/swiper/swiper.css') }}" />
-    <link rel="stylesheet"
-        href="{{ asset('assets_2/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-select-bs5/select.bootstrap5.css') }}" />
-    <link rel="stylesheet"
-        href="{{ asset('assets_2/vendor/libs/datatables-fixedcolumns-bs5/fixedcolumns.bootstrap5.css') }}" />
-    <link rel="stylesheet"
-        href="{{ asset('assets_2/vendor/libs/datatables-fixedheader-bs5/fixedheader.bootstrap5.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-fixedcolumns-bs5/fixedcolumns.bootstrap5.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-fixedheader-bs5/fixedheader.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/animate-css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css') }}" />
-
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/css/pages/app-calendar.css') }}" />
@@ -664,55 +660,106 @@
                                                 <i class="menu-icon icon-base ri ri-calendar-line"></i>
                                                 <div data-i18n="Calendrier">Calendrier</div>
                                             </a>
-                                        </li>    
+                                        </li>
                                     </ul>
                                 </li>
 
-                                 <!-- Formation -->
-                                 <li class="menu-item ">
+                                <!-- Formation -->
+                                <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-drag-drop-line"></i>
                                         <div data-i18n="Formation">Formation</div>
                                     </a>
                                     <ul class="menu-sub">
-                                        
-                                        <li class="menu-item" style="background-color:rgb(206, 204, 204)">
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#editUser"
-                                            data-bs-toggle="modal">
-                                            <i class="icon-base ri ri-edit-box-line text-warning icon-22px me-2"></i>
-                                                <div >CREER UNE FORMATION</div>
+
+                                        <li class="menu-item" >
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_formations"
+                                                data-bs-toggle="modal">
+                                                <i class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                                <div>CREER UNE FORMATION</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('compta.index') }}" class="menu-link ">
+                                            <a href="{{ route('formations.index') }}" class="menu-link ">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
-                                                <div>Categorie Comptabilite</div>
+                                                <div>Voir la liste</div>
+                                            </a>
+                                         
+                                    </ul>
+                                </li>
+                                {{-- Opportunités --}}
+                                <li class="menu-item ">
+                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-computer-line"></i>
+                                        <div data-i18n="Opportunités">Opportunités</div>
+                                    </a>
+                                    <ul class="menu-sub">
+
+                                        <li class="menu-item">
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_opportunites"
+                                                data-bs-toggle="modal">
+                                                <i
+                                                    class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                                <div>CREER OPPORTUNITES</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('fiscal.index') }}" class="menu-link">
+                                            <a href="{{ route('opportunites.index') }}" class="menu-link ">
+                                                <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
+                                                <div>Voir la liste</div>
+                                            </a>
+                                        </li>
+                                        {{-- <li class="menu-item">
+                                            <a href="" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-book-open-line"></i>
-                                                <div>Categorie Fisacalité</div>
+                                                <div>Categorie Fiscalité</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('audit.index') }}" class="menu-link">
+                                            <a href="" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-computer-line"></i>
                                                 <div>Categorie Audit</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('entreprise.index') }}" class="menu-link">
+                                            <a href="" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-article-line"></i>
                                                 <div>Categorie Entreprise</div>
                                             </a>
 
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
                                 </li>
+                                {{-- Divers --}}
+                                <li class="menu-item ">
+                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-price-tag-line"></i>
+                                        <div data-i18n="Divers">Divers</div>
+                                    </a>
+                                    <ul class="menu-sub">
 
-                               
+                                        <li class="menu-item">
+                                            <a href="{{ route('partenaires.index') }}" class="menu-link">
+                                                <i class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
+                                                <div>Partenaires</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('temoignages.index') }}" class="menu-link ">
+                                                <i class="menu-icon icon-base ri ri-kakao-talk-line"></i>
+                                                <div>Temoignages</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('articles.index') }}" class="menu-link">
+                                                <i class="menu-icon icon-base ri ri-book-open-line"></i>
+                                                <div>Articles</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
 
 
                             </ul>
@@ -725,295 +772,375 @@
                     @yield('show_users')
                     @yield('index_users')
                     @yield('calendrier_index')
+                    @yield('index_email')
 
                     {{-- //Create// --}}
-                    @yield('create_audit')
-                    @yield('create_compta')
-                    @yield('create_fiscal')
-                    @yield('create_entreprise')
-
-                    {{-- //index// --}}
-
-                    @yield('index_audit')
-                    @yield('index_compta')
-                    @yield('index_fiscal')
-                    @yield('index_entreprise')
-
-
+                    @yield('index_formations')
+                    @yield('index_opportunites')
+                    @yield('index_partenaires')
+                    @yield('index_articles')
+                    @yield('index_temoignages')
                     <!-- Modal -->
-              <!-- Edit User Modal -->
-              <div class="modal fade" id="editUser" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-                  <div class="modal-content">
-                    <div class="modal-body p-0">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      <div class="text-center mb-6">
-                        <h4 class="mb-2">Edit User Information</h4>
-                        <p class="mb-6">Updating user details will receive a privacy audit.</p>
-                      </div>
-                      <form id="editUserForm" class="row g-5" onsubmit="return false">
-                        <div class="col-12 col-md-6">
-                          <div class="form-floating form-floating-outline">
-                            <input
-                              type="text"
-                              id="modalEditUserFirstName"
-                              name="modalEditUserFirstName"
-                              class="form-control"
-                              value="Oliver"
-                              placeholder="Oliver" />
-                            <label for="modalEditUserFirstName">First Name</label>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="form-floating form-floating-outline">
-                            <input
-                              type="text"
-                              id="modalEditUserLastName"
-                              name="modalEditUserLastName"
-                              class="form-control"
-                              value="Queen"
-                              placeholder="Queen" />
-                            <label for="modalEditUserLastName">Last Name</label>
-                          </div>
-                        </div>
-                        <div class="col-12">
-                          <div class="form-floating form-floating-outline">
-                            <input
-                              type="text"
-                              id="modalEditUserName"
-                              name="modalEditUserName"
-                              class="form-control"
-                              value="oliver.queen"
-                              placeholder="oliver.queen" />
-                            <label for="modalEditUserName">Username</label>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="form-floating form-floating-outline">
-                            <input
-                              type="text"
-                              id="modalEditUserEmail"
-                              name="modalEditUserEmail"
-                              class="form-control"
-                              value="oliverqueen@gmail.com"
-                              placeholder="oliverqueen@gmail.com" />
-                            <label for="modalEditUserEmail">Email</label>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="form-floating form-floating-outline">
-                            <select
-                              id="modalEditUserStatus"
-                              name="modalEditUserStatus"
-                              class="form-select"
-                              aria-label="Default select example">
-                              <option value="1" selected>Active</option>
-                              <option value="2">Inactive</option>
-                              <option value="3">Suspended</option>
-                            </select>
-                            <label for="modalEditUserStatus">Status</label>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="form-floating form-floating-outline">
-                            <input
-                              type="text"
-                              id="modalEditTaxID"
-                              name="modalEditTaxID"
-                              class="form-control modal-edit-tax-id"
-                              placeholder="123 456 7890" />
-                            <label for="modalEditTaxID">Tax ID</label>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="input-group input-group-merge">
-                            <span class="input-group-text">US (+1)</span>
-                            <div class="form-floating form-floating-outline">
-                              <input
-                                type="text"
-                                id="modalEditUserPhone"
-                                name="modalEditUserPhone"
-                                class="form-control phone-number-mask"
-                                value="+1 609 933 4422"
-                                placeholder="+1 609 933 4422" />
-                              <label for="modalEditUserPhone">Phone Number</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="form-floating form-floating-outline">
-                            <input
-                              id="modalEditUserLanguage"
-                              name="modalEditUserLanguage"
-                              class="form-control h-auto"
-                              placeholder="select technologies"
-                              value="English" />
-                            <label for="modalEditUserLanguage">Custom List Suggestions</label>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="form-floating form-floating-outline">
-                            <select
-                              id="modalEditUserCountry"
-                              name="modalEditUserCountry"
-                              class="select2 form-select"
-                              data-allow-clear="true">
-                              <option value="">Select</option>
-                              <option value="Australia">Australia</option>
-                              <option value="Bangladesh">Bangladesh</option>
-                              <option value="Belarus">Belarus</option>
-                              <option value="Brazil">Brazil</option>
-                              <option value="Canada">Canada</option>
-                              <option value="China">China</option>
-                              <option value="France">France</option>
-                              <option value="Germany">Germany</option>
-                              <option value="India" selected>India</option>
-                              <option value="Indonesia">Indonesia</option>
-                              <option value="Israel">Israel</option>
-                              <option value="Italy">Italy</option>
-                              <option value="Japan">Japan</option>
-                              <option value="Korea">Korea, Republic of</option>
-                              <option value="Mexico">Mexico</option>
-                              <option value="Philippines">Philippines</option>
-                              <option value="Russia">Russian Federation</option>
-                              <option value="South Africa">South Africa</option>
-                              <option value="Thailand">Thailand</option>
-                              <option value="Turkey">Turkey</option>
-                              <option value="Ukraine">Ukraine</option>
-                              <option value="United Arab Emirates">United Arab Emirates</option>
-                              <option value="United Kingdom">United Kingdom</option>
-                              <option value="United States">United States</option>
-                            </select>
-                            <label for="modalEditUserCountry">Country</label>
-                          </div>
-                        </div>
-                        <div class="col-12">
-                          <div class="form-check form-switch">
-                            <input type="checkbox" class="form-check-input" id="editBillingAddress" />
-                            <label for="editBillingAddress" class="text-heading">Use as a billing address?</label>
-                          </div>
-                        </div>
-                        <div class="col-12 text-center">
-                          <button type="submit" class="btn btn-primary me-3">Submit</button>
-                          <button
-                            type="reset"
-                            class="btn btn-outline-secondary"
-                            data-bs-dismiss="modal"
-                            aria-label="Close">
-                            Cancel
-                          </button>
-                        </div>
-                      </form>
+                    <!-- Edit User Modal -->
 
-
-
-                    <!--/ Content -->
-
-                    <!-- Footer -->
-                    {{-- <footer class="content-footer footer bg-footer-theme">
-                        <div class="container-xxl">
-                            <div
-                                class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
-                                <div class="mb-2 mb-md-0">
-                                    &#169;
-                                    <script>
-                                        document.write(new Date().getFullYear());
-                                    </script>
-                                    , made with ❤️ by
-                                    <a href="#" target="_blank" class="footer-link fw-medium">Excellium</a>
+                    <div class="modal fade" id="create_formations" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">Ajouter une Formation</h4>
+                                    </div>
+                                    <form id="editUserForm" class="row g-5" onsubmit="return false">
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditUserFirstName"
+                                                    name="modalEditUserFirstName" class="form-control" value="Oliver"
+                                                    placeholder="Oliver" />
+                                                <label for="modalEditUserFirstName">First Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditUserLastName"
+                                                    name="modalEditUserLastName" class="form-control" value="Queen"
+                                                    placeholder="Queen" />
+                                                <label for="modalEditUserLastName">Last Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditUserName" name="modalEditUserName"
+                                                    class="form-control" value="oliver.queen"
+                                                    placeholder="oliver.queen" />
+                                                <label for="modalEditUserName">Username</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditUserEmail"
+                                                    name="modalEditUserEmail" class="form-control"
+                                                    value="oliverqueen@gmail.com"
+                                                    placeholder="oliverqueen@gmail.com" />
+                                                <label for="modalEditUserEmail">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="modalEditUserStatus" name="modalEditUserStatus"
+                                                    class="form-select" aria-label="Default select example">
+                                                    <option value="1" selected>Active</option>
+                                                    <option value="2">Inactive</option>
+                                                    <option value="3">Suspended</option>
+                                                </select>
+                                                <label for="modalEditUserStatus">Status</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditTaxID" name="modalEditTaxID"
+                                                    class="form-control modal-edit-tax-id"
+                                                    placeholder="123 456 7890" />
+                                                <label for="modalEditTaxID">Tax ID</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="input-group input-group-merge">
+                                                <span class="input-group-text">US (+1)</span>
+                                                <div class="form-floating form-floating-outline">
+                                                    <input type="text" id="modalEditUserPhone"
+                                                        name="modalEditUserPhone"
+                                                        class="form-control phone-number-mask" value="+1 609 933 4422"
+                                                        placeholder="+1 609 933 4422" />
+                                                    <label for="modalEditUserPhone">Phone Number</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input id="modalEditUserLanguage" name="modalEditUserLanguage"
+                                                    class="form-control h-auto" placeholder="select technologies"
+                                                    value="English" />
+                                                <label for="modalEditUserLanguage">Custom List Suggestions</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="modalEditUserCountry" name="modalEditUserCountry"
+                                                    class="select2 form-select" data-allow-clear="true">
+                                                    <option value="">Select</option>
+                                                    <option value="Australia">Australia</option>
+                                                    <option value="Bangladesh">Bangladesh</option>
+                                                    <option value="Belarus">Belarus</option>
+                                                    <option value="Brazil">Brazil</option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="China">China</option>
+                                                    <option value="France">France</option>
+                                                    <option value="Germany">Germany</option>
+                                                    <option value="India" selected>India</option>
+                                                    <option value="Indonesia">Indonesia</option>
+                                                    <option value="Israel">Israel</option>
+                                                    <option value="Italy">Italy</option>
+                                                    <option value="Japan">Japan</option>
+                                                    <option value="Korea">Korea, Republic of</option>
+                                                    <option value="Mexico">Mexico</option>
+                                                    <option value="Philippines">Philippines</option>
+                                                    <option value="Russia">Russian Federation</option>
+                                                    <option value="South Africa">South Africa</option>
+                                                    <option value="Thailand">Thailand</option>
+                                                    <option value="Turkey">Turkey</option>
+                                                    <option value="Ukraine">Ukraine</option>
+                                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                                    <option value="United Kingdom">United Kingdom</option>
+                                                    <option value="United States">United States</option>
+                                                </select>
+                                                <label for="modalEditUserCountry">Country</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check form-switch">
+                                                <input type="checkbox" class="form-check-input"
+                                                    id="editBillingAddress" />
+                                                <label for="editBillingAddress" class="text-heading">Use as a billing
+                                                    address?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary me-3">Submit</button>
+                                            <button type="reset" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal" aria-label="Close">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="d-none d-lg-inline-block">
-                                    <a href="#" class="footer-link me-4" target="_blank">License</a>
 
-                                    <a href="#" target="_blank" class="footer-link me-4">More Themes</a>
-                                    <a href="#" target="_blank" class="footer-link me-4">Documentation</a>
 
-                                    <a href="h#" target="_blank"
-                                        class="footer-link d-none d-sm-inline-block">Support</a>
-                                </div>
                             </div>
+                            <!--/ Content -->
                         </div>
-                    </footer> --}}
-                    <!-- / Footer -->
+                        <div class="content-backdrop fade"></div>
+                    </div>
 
-                    <div class="content-backdrop fade"></div>
+
+                    <div class="modal fade" id="create_opportunites" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">Ajouter une Opportunité</h4>
+                                    </div>
+                                    <form id="editUserForm" class="row g-5" onsubmit="return false">
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditUserFirstName"
+                                                    name="modalEditUserFirstName" class="form-control" value="Oliver"
+                                                    placeholder="Oliver" />
+                                                <label for="modalEditUserFirstName">First Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditUserLastName"
+                                                    name="modalEditUserLastName" class="form-control" value="Queen"
+                                                    placeholder="Queen" />
+                                                <label for="modalEditUserLastName">Last Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditUserName" name="modalEditUserName"
+                                                    class="form-control" value="oliver.queen"
+                                                    placeholder="oliver.queen" />
+                                                <label for="modalEditUserName">Username</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditUserEmail"
+                                                    name="modalEditUserEmail" class="form-control"
+                                                    value="oliverqueen@gmail.com"
+                                                    placeholder="oliverqueen@gmail.com" />
+                                                <label for="modalEditUserEmail">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="modalEditUserStatus" name="modalEditUserStatus"
+                                                    class="form-select" aria-label="Default select example">
+                                                    <option value="1" selected>Active</option>
+                                                    <option value="2">Inactive</option>
+                                                    <option value="3">Suspended</option>
+                                                </select>
+                                                <label for="modalEditUserStatus">Status</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditTaxID" name="modalEditTaxID"
+                                                    class="form-control modal-edit-tax-id"
+                                                    placeholder="123 456 7890" />
+                                                <label for="modalEditTaxID">Tax ID</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="input-group input-group-merge">
+                                                <span class="input-group-text">US (+1)</span>
+                                                <div class="form-floating form-floating-outline">
+                                                    <input type="text" id="modalEditUserPhone"
+                                                        name="modalEditUserPhone"
+                                                        class="form-control phone-number-mask" value="+1 609 933 4422"
+                                                        placeholder="+1 609 933 4422" />
+                                                    <label for="modalEditUserPhone">Phone Number</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input id="modalEditUserLanguage" name="modalEditUserLanguage"
+                                                    class="form-control h-auto" placeholder="select technologies"
+                                                    value="English" />
+                                                <label for="modalEditUserLanguage">Custom List Suggestions</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="modalEditUserCountry" name="modalEditUserCountry"
+                                                    class="select2 form-select" data-allow-clear="true">
+                                                    <option value="">Select</option>
+                                                    <option value="Australia">Australia</option>
+                                                    <option value="Bangladesh">Bangladesh</option>
+                                                    <option value="Belarus">Belarus</option>
+                                                    <option value="Brazil">Brazil</option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="China">China</option>
+                                                    <option value="France">France</option>
+                                                    <option value="Germany">Germany</option>
+                                                    <option value="India" selected>India</option>
+                                                    <option value="Indonesia">Indonesia</option>
+                                                    <option value="Israel">Israel</option>
+                                                    <option value="Italy">Italy</option>
+                                                    <option value="Japan">Japan</option>
+                                                    <option value="Korea">Korea, Republic of</option>
+                                                    <option value="Mexico">Mexico</option>
+                                                    <option value="Philippines">Philippines</option>
+                                                    <option value="Russia">Russian Federation</option>
+                                                    <option value="South Africa">South Africa</option>
+                                                    <option value="Thailand">Thailand</option>
+                                                    <option value="Turkey">Turkey</option>
+                                                    <option value="Ukraine">Ukraine</option>
+                                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                                    <option value="United Kingdom">United Kingdom</option>
+                                                    <option value="United States">United States</option>
+                                                </select>
+                                                <label for="modalEditUserCountry">Country</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check form-switch">
+                                                <input type="checkbox" class="form-check-input"
+                                                    id="editBillingAddress" />
+                                                <label for="editBillingAddress" class="text-heading">Use as a billing
+                                                    address?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary me-3">Submit</button>
+                                            <button type="reset" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal" aria-label="Close">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+                            <!--/ Content -->
+                        </div>
+                        <div class="content-backdrop fade"></div>
+                    </div>
+
+                    <!--/ Content wrapper -->
                 </div>
-                <!--/ Content wrapper -->
+
+                <!--/ Layout container -->
             </div>
-
-            <!--/ Layout container -->
         </div>
-    </div>
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
 
-    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-    <div class="drag-target"></div>
+        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+        <div class="drag-target"></div>
 
-    <!--/ Layout wrapper -->
+        <!--/ Layout wrapper -->
 
-    <!-- Core JS -->
+        <!-- Core JS -->
 
-    <!-- build:js assets/vendor/js/theme.js')}}  -->
+        <!-- build:js assets/vendor/js/theme.js')}}  -->
 
-    <script src="{{ asset('assets_2/vendor/libs/jquery/jquery.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/jquery/jquery.js') }}"></script>
 
-    <script src="{{ asset('assets_2/vendor/libs/popper/popper.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/node-waves/node-waves.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/popper/popper.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/js/bootstrap.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/node-waves/node-waves.js') }}"></script>
 
-    <script src="{{ asset('assets_2/vendor/libs/@algolia/autocomplete-js.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/@algolia/autocomplete-js.js') }}"></script>
 
-    <script src="{{ asset('assets_2/vendor/libs/pickr/pickr.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/pickr/pickr.js') }}"></script>
 
-    <script src="{{ asset('assets_2/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-    <script src="{{ asset('assets_2/vendor/libs/hammer/hammer.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/hammer/hammer.js') }}"></script>
 
-    <script src="{{ asset('assets_2/vendor/libs/i18n/i18n.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/i18n/i18n.js') }}"></script>
 
-    <script src="{{ asset('assets_2/vendor/js/menu.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/js/menu.js') }}"></script>
 
-    <!-- endbuild -->
+        <!-- endbuild -->
 
-    <!-- Vendors JS -->
-    <script src="{{ asset('assets_2/vendor/libs/moment/moment.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/cleave-zen/cleave-zen.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/select2/select2.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/tagify/tagify.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/@form-validation/popular.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/@form-validation/bootstrap5.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/@form-validation/auto-focus.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/fullcalendar/fullcalendar.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/flatpickr/flatpickr.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/apex-charts/apexcharts.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/swiper/swiper.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/quill/katex.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/quill/quill.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/notiflix/notiflix.js') }}"></script>
-    <script src="{{ asset('assets_2/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
-
+        <!-- Vendors JS -->
+        <script src="{{ asset('assets_2/vendor/libs/moment/moment.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/cleave-zen/cleave-zen.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/select2/select2.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/tagify/tagify.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/@form-validation/popular.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/@form-validation/bootstrap5.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/@form-validation/auto-focus.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/fullcalendar/fullcalendar.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/flatpickr/flatpickr.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/swiper/swiper.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/quill/katex.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/quill/quill.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/notiflix/notiflix.js') }}"></script>
+        <script src="{{ asset('assets_2/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
 
 
-    <!-- Main JS -->
 
-    <script src="{{ asset('assets_2/js/main.js') }}"></script>
+        <!-- Main JS -->
 
-    <!-- Page JS -->
-    <script src="{{ asset('assets_2/js/modal-edit-user.js') }}"></script>
-    <script src="{{ asset('assets_2/js/app-user-view.js') }}"></script>
-    <script src="{{ asset('assets_2/js/app-calendar-events.js') }}"></script>
-    <script src="{{ asset('assets_2/js/app-calendar.js') }}"></script>
-    <script src="{{ asset('assets_2/js/app-ecommerce-dashboard.js') }}"></script>
-    <script src="{{ asset('assets_2/js/app-email.js') }}"></script>
-    <script src="{{ asset('assets_2/js/extended-ui-sweetalert2.js') }}"></script>
-    <script src="{{ asset('assets_2/js/modal-edit-user.js') }}"></script>
-    <script src="{{ asset('assets_2/js/app-user-view.js') }}"></script>
-    <script src="{{ asset('assets_2/js/app-user-view-account.js') }}"></script>
+        <script src="{{ asset('assets_2/js/main.js') }}"></script>
+
+        <!-- Page JS -->
+        <script src="{{ asset('assets_2/js/modal-edit-user.js') }}"></script>
+        <script src="{{ asset('assets_2/js/app-user-view.js') }}"></script>
+        <script src="{{ asset('assets_2/js/app-calendar-events.js') }}"></script>
+        <script src="{{ asset('assets_2/js/app-calendar.js') }}"></script>
+        <script src="{{ asset('assets_2/js/app-ecommerce-dashboard.js') }}"></script>
+        <script src="{{ asset('assets_2/js/app-email.js') }}"></script>
+        <script src="{{ asset('assets_2/js/extended-ui-sweetalert2.js') }}"></script>
+        <script src="{{ asset('assets_2/js/modal-edit-user.js') }}"></script>
+        <script src="{{ asset('assets_2/js/app-user-view.js') }}"></script>
+        <script src="{{ asset('assets_2/js/app-user-view-account.js') }}"></script>
+        <script src="{{ asset('assets_2/js/app-user-list.js') }}"></script>
 
 </body>
 
