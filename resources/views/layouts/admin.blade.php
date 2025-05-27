@@ -677,7 +677,7 @@
                                                 data-bs-toggle="modal">
                                                 <i class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>CREER UNE FORMATION</div>
-                                            </a>
+                                            </a>   
                                         </li>
                                         <li class="menu-item">
                                             <a href="{{ route('formations.index') }}" class="menu-link ">
@@ -759,6 +759,29 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <!-- Categories -->
+                                <li class="menu-item ">
+                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-drag-drop-line"></i>
+                                        <div data-i18n="Categories">Categories</div>
+                                    </a>
+                                    <ul class="menu-sub">
+
+                                        <li class="menu-item" >
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_categories"
+                                                data-bs-toggle="modal">
+                                                <i class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                                <div>AJOUTER </div>
+                                            </a>   
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('categories.index') }}" class="menu-link ">
+                                                <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
+                                                <div>Voir la liste</div>
+                                            </a>
+                                         
+                                    </ul>
+                                </li>
 
 
 
@@ -773,6 +796,7 @@
                     @yield('index_users')
                     @yield('calendrier_index')
                     @yield('index_email')
+                    @yield('index_categorie')
 
                     {{-- //Create// --}}
                     @yield('index_formations')
@@ -923,7 +947,7 @@
                         <div class="content-backdrop fade"></div>
                     </div>
 
-
+                    <!-- Edit User Modal -->
                     <div class="modal fade" id="create_opportunites" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                             <div class="modal-content">
@@ -1053,6 +1077,41 @@
                                                 data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+                            <!--/ Content -->
+                        </div>
+                        <div class="content-backdrop fade"></div>
+                    </div>
+
+                    <!-- Categories User Modal -->
+                    <div class="modal fade" id="create_categories" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">NOUVELLE CATEGORIES</h4>
+                                    </div>
+                                    <form id="editUserForm" class="row g-5" onsubmit="return false">
+                                       
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="modalEditUserName" name="modalEditUserName"
+                                                    class="form-control" value=""
+                                                    placeholder="comptabilité " />
+                                                <label for="modalEditUserName">Nom Categorie</label>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary me-3">Valider</button>
+                                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close"> Fermer </button>
                                         </div>
                                     </form>
                                 </div>
