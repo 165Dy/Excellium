@@ -15,6 +15,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Syne:wght@400;500;700&amp;display=swap"
         rel="stylesheet">
+
+
     <!--====== FontAwesome css ======-->
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontello/css/fontello.css') }}">
     <!--====== FontAwesome css ======-->
@@ -33,6 +35,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <!-- Bootstrap CSS (version 5.x) obligatoire -->
 </head>
 
 <body>
@@ -64,11 +67,7 @@
                                         src="{{ asset('assets/images/logo_new.jpg') }}" alt="Site Logo"
                                         style=" width: 80px;"></a>
                             </div>
-                            {{-- <style>
-                                .brand-logo {
-                                    width: 80px;
-                                }
-                            </style> --}}
+
                             <!--=== Main Menu ===-->
                             <nav class="main-menu">
                                 <ul>
@@ -79,7 +78,7 @@
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Nos Services</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('Audit&Conseil') }}">Audit & conseil</a></li>
+                                            <li><a href="">Audit & conseil</a></li>
                                             <li><a href="{{ route('Compta_Fiscale') }}">Comptable & Fiscale</a></li>
                                             <li><a href="{{ route('Ressources_humaines') }}">R. Humaines</a></li>
                                             <li><a href="{{ route('Gestion_Paie') }}">Gestion de la Paie</a></li>
@@ -90,7 +89,7 @@
                                         <ul class="sub-menu">
                                             <li><a href="{{ route('Formations.Compta') }}">Comptabilité</a></li>
                                             <li><a href="{{ route('Formations.Fiscalite') }}">Fiscalité</a></li>
-                                            <li><a href="{{ route('Formations.Audit') }}">Audit</a></li>
+                                            <li><a href="">Audit</a></li>
                                             <li><a href="{{ route('Formations.Gestion_entreprise') }}">Gestion
                                                     d'Entreprise</a></li>
                                             <li><a href="{{ route('Formations.show') }}">Show</a></li>
@@ -98,10 +97,14 @@
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Ressources</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('Ressources.Articles') }}">Articles</a></li>
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Conseils &
-                                                    Actualités</a></li>
-                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Entrepreunariat</a>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Actualités</a>
+                                            </li>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Commerce
+                                                    Generale</a></li>
+                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Import-Export</a>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Gestion de
+                                                    Biens</a></li>
+                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Services Divers</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -120,20 +123,12 @@
 
                                         </ul>
                                     </li>
-                                    <!-- <li class="menu-item has-children"><a href="#">Contact</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-grid.html">Blog Grid</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li> -->
+
                                 </ul>
-
-
 
                             </nav>
                         </div>
                         <div class="nav-right-item">
-
                             <a href="{{ route('contacts') }}"><i class="far fa-envelope"></i></a>
                             <div class="navbar-toggler">
                                 <span></span>
@@ -195,9 +190,12 @@
                                 c’est un partenaire de confiance pour votre réussite financière 💼📊
                                 . </p>
                             <ul class="social-link style-one">
-                                <li><a href="https://www.facebook.com/share/199uiSgsQ7/"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://ci.linkedin.com/company/excelliumconseils-ci"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="https://wa.me/message/XYBTJGPX4AC4E1"><i class="fab fa-whatsapp"></i></a></li>
+                                <li><a href="https://www.facebook.com/share/199uiSgsQ7/"><i
+                                            class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://ci.linkedin.com/company/excelliumconseils-ci"><i
+                                            class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://wa.me/message/XYBTJGPX4AC4E1"><i class="fab fa-whatsapp"></i></a>
+                                </li>
                                 {{-- <li><a href="#"><i class="fab fa-instagram"></i></a></li> --}}
                             </ul>
                         </div>
@@ -246,7 +244,9 @@
                                             <i class="far fa-envelope"></i>
                                         </div>
                                         <div class="content">
-                                            <p><a href="https://www.bing.com/search?pglt=425&q=direction%40excelliumconseils.com&cvid=a3a92a11f351439d9718a52639834aff&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQRRg60gEHNDM3ajBqMagCALACAA&FORM=ANNTA1&ucpdpc=UCPD&PC=U531">direction@excelliumconseils.com</a></p>
+                                            <p><a
+                                                    href="https://www.bing.com/search?pglt=425&q=direction%40excelliumconseils.com&cvid=a3a92a11f351439d9718a52639834aff&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQRRg60gEHNDM3ajBqMagCALACAA&FORM=ANNTA1&ucpdpc=UCPD&PC=U531">direction@excelliumconseils.com</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </li>
@@ -303,6 +303,7 @@
     <script src="{{ asset('assets/vendor/wow.min.js') }}"></script>
     <!--====== Main js ======-->
     <script src="{{ asset('assets/js/theme.js') }}"></script>
+
 </body>
 
 </html>
