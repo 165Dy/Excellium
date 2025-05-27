@@ -403,7 +403,12 @@
                         <div class="mb-3">
                             <label for="telephone" class="form-label" style="color: black">Téléphone</label>
                             <input type="text" class="form-control" id="telephone" name="telephone"
-                                placeholder="Votre téléphone">
+                                placeholder="exp: 0749095585" maxlength="10" pattern="\d{10}" required>
+                            <div id="tel-error" style="color:red; display:none;">
+                                <p style="font-size: 13px">
+                                    Le numéro doit contenir exactement 10 chiffres.
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -424,7 +429,7 @@
                         <path fill="#498830"
                             d="M4 12a8 8 0 1 1 16 0a8 8 0 0 1-16 0m8-10C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m5.457 7.457l-1.414-1.414L11 13.086l-2.793-2.793l-1.414 1.414L11 15.914z" />
                     </svg><br>
-                    <h5  style="color: black">Compte créé avec succès !</h5>
+                    <h5 style="color: black">Compte créé avec succès !</h5>
                     <br>
                     <button type="button" id="successRedirect" class="btn btn-success mt-3"
                         data-bs-dismiss="modal">Choisir un service</button>
@@ -433,7 +438,8 @@
         </div>
     </div>
 
-    <!-- Modal d'alerte email requis -->
+    <!-- Modal d'alerte email requis -->Le numéro doit contenir exactement 10
+                                chiffres.
     <div class="modal fade" id="alertEmailModal" tabindex="-1" aria-labelledby="alertEmailModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -507,5 +513,31 @@
                     .catch(() => alert("Erreur serveur, veuillez réessayer."));
             });
         });
+
+        // ...existing code...
+        // Validation en temps réel du téléphone
+        const telInput = document.getElementById('telephone');
+        const telError = document.getElementById('tel-error');
+
+        telInput.addEventListener('input', function() {
+            // Retire tout sauf les chiffres
+            this.value = this.value.replace(/\D/g, '');
+            if (this.value.length !== 10) {
+                telError.style.display = 'block';
+            } else {
+                telError.style.display = 'none';
+            }
+        });
+
+        // Empêche la soumission si le numéro n'est pas valide
+        document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+            if (telInput.value.length !== 10) {
+                telError.style.display = 'block';
+                telInput.focus();
+                e.preventDefault();
+                return false;
+            }
+        });
+        // ...existing code...
     </script>
 @endsection
