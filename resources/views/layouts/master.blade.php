@@ -15,6 +15,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Syne:wght@400;500;700&amp;display=swap"
         rel="stylesheet">
+
+
     <!--====== FontAwesome css ======-->
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontello/css/fontello.css') }}">
     <!--====== FontAwesome css ======-->
@@ -34,7 +36,6 @@
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
     <!-- Bootstrap CSS (version 5.x) obligatoire -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -66,11 +67,7 @@
                                         src="{{ asset('assets/images/logo_new.jpg') }}" alt="Site Logo"
                                         style=" width: 80px;"></a>
                             </div>
-                            {{-- <style>
-                                .brand-logo {
-                                    width: 80px;
-                                }
-                            </style> --}}
+
                             <!--=== Main Menu ===-->
                             <nav class="main-menu">
                                 <ul>
@@ -100,11 +97,15 @@
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Ressources</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Actualités</a></li>
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Commerce Generale</a></li>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Actualités</a>
+                                            </li>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Commerce
+                                                    Generale</a></li>
                                             <li><a href="{{ route('Ressources.Entrepreunariat') }}">Import-Export</a>
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Gestion de Biens</a></li>
-                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Services Divers</a></li>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Gestion de
+                                                    Biens</a></li>
+                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Services Divers</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Partenaires</a>
@@ -302,6 +303,8 @@
     <script src="{{ asset('assets/vendor/wow.min.js') }}"></script>
     <!--====== Main js ======-->
     <script src="{{ asset('assets/js/theme.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

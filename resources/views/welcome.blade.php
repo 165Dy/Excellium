@@ -1,9 +1,5 @@
 @extends('layouts.master')
 @section('welcome')
-    {{-- <style>
-        .modal .form-control { border: 1px solid #ccc; padding: 8px; }
-        .modal .form-label { color: #111; font-weight: bold; }
-    </style> --}}
     <!--====== Start Header Section ======-->
     <section class="hero-section">
         <div class="hero-wrapper-two bg_cover" style="background-image: url(assets/images/hero/hero-bg-1.png);">
@@ -26,66 +22,22 @@
                                     <button class="theme-btn style-one">Inscrivez-vous</button>
                                 </div>
                             </form>
-
-                            <!-- Modal d'inscription étape 2 -->
-                            <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <form id="inscriptionForm">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="inscriptionModalLabel">Complétez votre inscription</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="hidden" name="email" id="modal_email">
-                                                <div class="mb-3">
-                                                    <label for="nom" class="form-label">Nom</label>
-                                                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="prenom" class="form-label">Prénom</label>
-                                                    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="telephone" class="form-label">Téléphone</label>
-                                                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Votre téléphone">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Valider mon inscription</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Modal de confirmation succès -->
-                            <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content text-center">
-                                    <div class="modal-body">
-                                    <h4>Compte créé avec succès !</h4>
-                                    <button type="button" id="successRedirect" class="btn btn-success mt-3" data-bs-dismiss="modal">Choisir un service</button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-  
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="hero-image mb-50 wow fadeInRight">
-                            <img src="assets/images/excellium_photo_3.jfif" alt="Hero Image" style="border-radius:10px 10px ">
+                            <img src="assets/images/excellium_photo_3.jfif" alt="Hero Image"
+                                style="border-radius:10px 10px ">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container" >
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-title text-center mb-60 wow fadeInDown">
-                       
+
                         <h2>Pourquoi choisir Excellium Conseils ?</h2>
                     </div>
                 </div>
@@ -147,9 +99,9 @@
        
     </section><!--====== End Why-choose Section ======--> --}}
     <!--====== Start Slider text Section ======-->
-    <section class="headline-text primary-bg pt-55 pb-55" >
+    <section class="headline-text primary-bg pt-55 pb-55">
         <div class="animate-text">
-            
+
             <span class="text" style="color: white">Contact Us</span>
             <span class="text" style="color: white">Let’s Talk</span>
             <span class="text"></span>
@@ -180,8 +132,10 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#">Tenue de comptabilité, déclarations fiscales et optimisation fiscale.</a></span>
-                                            <h4 class="title"><a href="case-details.html">Assistance comptable et fiscale </a>
+                                            <span><a href="#">Tenue de comptabilité, déclarations fiscales et
+                                                    optimisation fiscale.</a></span>
+                                            <h4 class="title"><a href="case-details.html">Assistance comptable et fiscale
+                                                </a>
                                             </h4>
                                         </div>
                                     </div>
@@ -196,7 +150,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#">Analyse financière, gestion des risques et amélioration des performances.</a></span>
+                                            <span><a href="#">Analyse financière, gestion des risques et amélioration
+                                                    des performances.</a></span>
                                             <h4 class="title"><a href="case-details.html">Audit et conseil</a>
                                             </h4>
                                         </div>
@@ -212,7 +167,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#">Mise en relation avec des talents qualifiés pour renforcer vos équipes.</a></span>
+                                            <span><a href="#">Mise en relation avec des talents qualifiés pour
+                                                    renforcer vos équipes.</a></span>
                                             <h4 class="title"><a href="case-details.html">Recrutement et placement</a>
                                             </h4>
                                         </div>
@@ -228,7 +184,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#"> Externalisation de la gestion salariale pour garantir conformité et efficacité.</a></span>
+                                            <span><a href="#"> Externalisation de la gestion salariale pour garantir
+                                                    conformité et efficacité.</a></span>
                                             <h4 class="title"><a href="case-details.html">Gestion de la paie</a>
                                             </h4>
                                         </div>
@@ -244,7 +201,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#">Accompagnement dans l’obtention de crédits et subventions.</a></span>
+                                            <span><a href="#">Accompagnement dans l’obtention de crédits et
+                                                    subventions.</a></span>
                                             <h4 class="title"><a href="case-details.html">Recherche de financement </a>
                                             </h4>
                                         </div>
@@ -258,7 +216,7 @@
         </div>
     </section><!--====== End Case Section ======-->
     <!--====== Start Testimonial Section ======-->
-    <section class="testimonial-section secondary-dark-bg pt-130 pb-100" >
+    <section class="testimonial-section secondary-dark-bg pt-130 pb-100">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
@@ -419,50 +377,135 @@
         </div>
     </section><!--====== End Blog Section ======-->
 
+    <!-- Modal d'inscription étape 2 -->
+    <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="inscriptionForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="inscriptionModalLabel" style="color: black">Complétez votre
+                            inscription</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="email" id="modal_email">
+                        <div class="mb-3">
+                            <label for="nom" class="form-label" style="color: black">Nom</label>
+                            <input type="text" class="form-control" id="nom" name="nom"
+                                placeholder="Votre nom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="prenom" class="form-label" style="color: black">Prénom</label>
+                            <input type="text" class="form-control" id="prenom" name="prenom"
+                                placeholder="Votre prénom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telephone" class="form-label" style="color: black">Téléphone</label>
+                            <input type="text" class="form-control" id="telephone" name="telephone"
+                                placeholder="Votre téléphone">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Valider mon
+                            inscription</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation succès -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24">
+                        <path fill="#498830"
+                            d="M4 12a8 8 0 1 1 16 0a8 8 0 0 1-16 0m8-10C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m5.457 7.457l-1.414-1.414L11 13.086l-2.793-2.793l-1.414 1.414L11 15.914z" />
+                    </svg><br>
+                    <h5  style="color: black">Compte créé avec succès !</h5>
+                    <br>
+                    <button type="button" id="successRedirect" class="btn btn-success mt-3"
+                        data-bs-dismiss="modal">Choisir un service</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal d'alerte email requis -->
+    <div class="modal fade" id="alertEmailModal" tabindex="-1" aria-labelledby="alertEmailModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24">
+                        <path fill="#df291c"
+                            d="M4 20v-6a8 8 0 1 1 16 0v6h1v2H3v-2zm2 0h12v-6a6 6 0 0 0-12 0zm5-18h2v3h-2zm8.778 2.808l1.414 1.414l-2.12 2.121l-1.415-1.414zM2.808 6.222l1.414-1.414l2.121 2.12L4.93 8.344zM7 14a5 5 0 0 1 5-5v2a3 3 0 0 0-3 3z" />
+                    </svg><br>
+                    <h5 style="color:black">Veuillez entrer une adresse email valide avant de
+                        continuer</h5>
+                    {{-- <h5 id="alertEmailModalLabel">Veuillez entrer une adresse email valide avant de
+                        continuer.</h5> --}}
+
+                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">FERMER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Script pour la création du compte et la confirmation du succès -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Intercepte le submit de la newsletter
-            document.querySelector('.newsletter-form').addEventListener('submit', function (e) {
+            document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
                 e.preventDefault();
-                const email = this.email.value;
+                const email = this.email.value.trim();
+                // Vérification simple de l'email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email || !emailRegex.test(email)) {
+                    var alertModal = new bootstrap.Modal(document.getElementById('alertEmailModal'));
+                    alertModal.show();
+                    return;
+                }
                 // On place l'email dans la modale et l'affiche
                 document.getElementById('modal_email').value = email;
                 var modal = new bootstrap.Modal(document.getElementById('inscriptionModal'));
                 modal.show();
             });
-        
+
             // Soumission du formulaire de la modale
-            document.getElementById('inscriptionForm').addEventListener('submit', function(e){
+            document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const formData = new FormData(this);
                 fetch('{{ route('inscription.ajax') }}', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Accept': 'application/json'
-                    },
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if(data.success){
-                        // Ferme modale inscription, ouvre succès
-                        bootstrap.Modal.getInstance(document.getElementById('inscriptionModal')).hide();
-                        var modalSuccess = new bootstrap.Modal(document.getElementById('successModal'));
-                        modalSuccess.show();
-        
-                        // Redirige après clic
-                        document.getElementById('successRedirect').onclick = function () {
-                            window.location.href = "{{ route('service.choix') }}";
-                        };
-                    } else {
-                        alert(data.message || "Erreur inconnue");
-                    }
-                })
-                .catch(() => alert("Erreur serveur, veuillez réessayer."));
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json'
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Ferme modale inscription, ouvre succès
+                            bootstrap.Modal.getInstance(document.getElementById('inscriptionModal'))
+                                .hide();
+                            var modalSuccess = new bootstrap.Modal(document.getElementById(
+                                'successModal'));
+                            modalSuccess.show();
+
+                            // Redirige après clic
+                            document.getElementById('successRedirect').onclick = function() {
+                                window.location.href = "{{ route('service.choix') }}";
+                            };
+                        } else {
+                            alert(data.message || "Erreur inconnue");
+                        }
+                    })
+                    .catch(() => alert("Erreur serveur, veuillez réessayer."));
             });
         });
     </script>
-        
 @endsection
