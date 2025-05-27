@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\formationsController;
+use App\Http\Controllers\InscriptionController;
 
 
 /*
@@ -22,6 +23,9 @@ Route::get('/', function () {return view('welcome');})->name('welcome');
 
 
 Route::get('/Dashboard', function () {return view('dashboard');})->name('dashboard');
+Route::post('/inscription', [InscriptionController::class, 'inscriptionAjax'])->name('inscription.ajax');
+
+Route::get('/choix-service', [InscriptionController::class, 'choixService'])->name('service.choix');
 
 ///////////////////////////////AUTHENTIFICATION////////////////////////////////////////////////////////////////////////////////////
 

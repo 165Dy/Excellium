@@ -1,5 +1,9 @@
 @extends('layouts.master')
 @section('welcome')
+    {{-- <style>
+        .modal .form-control { border: 1px solid #ccc; padding: 8px; }
+        .modal .form-label { color: #111; font-weight: bold; }
+    </style> --}}
     <!--====== Start Header Section ======-->
     <section class="hero-section">
         <div class="hero-wrapper-two bg_cover" style="background-image: url(assets/images/hero/hero-bg-1.png);">
@@ -19,9 +23,54 @@
                                 <div class="form-group">
                                     <label><i class="far fa-envelope" aria-hidden="true"></i></label>
                                     <input type="email" placeholder="Enter mail address" name="email">
-                                    <button class="theme-btn style-one">Subscribe Now</button>
+                                    <button class="theme-btn style-one">Inscrivez-vous</button>
                                 </div>
                             </form>
+
+                            <!-- Modal d'inscription étape 2 -->
+                            <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form id="inscriptionForm">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="inscriptionModalLabel">Complétez votre inscription</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="hidden" name="email" id="modal_email">
+                                                <div class="mb-3">
+                                                    <label for="nom" class="form-label">Nom</label>
+                                                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="prenom" class="form-label">Prénom</label>
+                                                    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="telephone" class="form-label">Téléphone</label>
+                                                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Votre téléphone">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Valider mon inscription</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Modal de confirmation succès -->
+                            <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content text-center">
+                                    <div class="modal-body">
+                                    <h4>Compte créé avec succès !</h4>
+                                    <button type="button" id="successRedirect" class="btn btn-success mt-3" data-bs-dismiss="modal">Choisir un service</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+  
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -369,4 +418,51 @@
             </div>
         </div>
     </section><!--====== End Blog Section ======-->
+
+    <!-- Script pour la création du compte et la confirmation du succès -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Intercepte le submit de la newsletter
+            document.querySelector('.newsletter-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = this.email.value;
+                // On place l'email dans la modale et l'affiche
+                document.getElementById('modal_email').value = email;
+                var modal = new bootstrap.Modal(document.getElementById('inscriptionModal'));
+                modal.show();
+            });
+        
+            // Soumission du formulaire de la modale
+            document.getElementById('inscriptionForm').addEventListener('submit', function(e){
+                e.preventDefault();
+                const formData = new FormData(this);
+                fetch('{{ route('inscription.ajax') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success){
+                        // Ferme modale inscription, ouvre succès
+                        bootstrap.Modal.getInstance(document.getElementById('inscriptionModal')).hide();
+                        var modalSuccess = new bootstrap.Modal(document.getElementById('successModal'));
+                        modalSuccess.show();
+        
+                        // Redirige après clic
+                        document.getElementById('successRedirect').onclick = function () {
+                            window.location.href = "{{ route('service.choix') }}";
+                        };
+                    } else {
+                        alert(data.message || "Erreur inconnue");
+                    }
+                })
+                .catch(() => alert("Erreur serveur, veuillez réessayer."));
+            });
+        });
+    </script>
+        
 @endsection
