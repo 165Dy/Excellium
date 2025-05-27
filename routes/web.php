@@ -102,6 +102,8 @@ Route::prefix('clients')->group(function () {
     Route::get('/users/show',function () { return view('Admin.users.show'); } )->name('users.show');
 
     // FORMATIONS
+    Route::get('/admin/categories/index',function () { return view('Admin.categorie.index'); } )->name('categories.index');
+
 
     // Routes formations
     Route::get('/admin/formations/index', [formationsController::class, 'index'])->name('formations.index');
