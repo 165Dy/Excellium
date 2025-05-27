@@ -819,11 +819,11 @@
                                     <form action="{{ route('formations.store') }}" method="POST">
                                         @csrf
                                         <input type="text" name="titre" placeholder="Titre" required>
-                                        <select name="categorie_id" required>
+                                        {{-- <select name="categorie_id" required>
                                             @foreach($categories as $categorie)
                                                 <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
                                             @endforeach
-                                        </select>
+                                        </select> --}}
                                         <textarea name="programme" placeholder="Programme"></textarea>
                                         <input type="number" step="0.01" name="cout" placeholder="Coût">
                                         <textarea name="prerequis" placeholder="Prérequis"></textarea>
@@ -991,22 +991,20 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6">
-                                        <h4 class="mb-2">NOUVELLE CATEGORIES</h4>
+                                        <h4 class="mb-2">NOUVELLE CATEGORIE</h4>
                                     </div>
-                                    <form id="editUserForm" class="row g-5" onsubmit="return false">
-                                       
+                                    <form id="createCategorieForm" class="row g-5" method="POST" action="{{ route('categories.store') }}">
+                                        @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="modalEditUserName" name="modalEditUserName"
-                                                    class="form-control" value=""
-                                                    placeholder="comptabilité " />
-                                                <label for="modalEditUserName">Nom Categorie</label>
+                                                <input type="text" id="nomCategorie" name="nom" class="form-control" placeholder="comptabilité" required />
+                                                <label for="nomCategorie">Nom Catégorie</label>
                                             </div>
                                         </div>
-                                      
+                                        
                                         <div class="col-12 text-center">
                                             <button type="submit" class="btn btn-primary me-3">Valider</button>
-                                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close"> Fermer </button>
+                                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Fermer</button>
                                         </div>
                                     </form>
                                 </div>

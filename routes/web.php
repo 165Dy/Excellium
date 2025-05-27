@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\formationsController;
 use App\Http\Controllers\InscriptionController;
-
+use App\Http\Controllers\CategorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ Route::prefix('clients')->group(function () {
 
     // FORMATIONS
     Route::get('/admin/categories/index',function () { return view('Admin.categorie.index'); } )->name('categories.index');
-
+    Route::post('/categories', [CategorieController::class, 'store'])->name('categories.store');
 
     // Routes formations
     Route::get('/admin/formations/index', [formationsController::class, 'index'])->name('formations.index');
