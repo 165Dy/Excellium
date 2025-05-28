@@ -130,4 +130,7 @@ Route::prefix('clients')->group(function () {
      // CALENDRIER
      Route::get('/email/index',function () { return view('Admin.Email.index'); } )->name('email.index');
 
+    // ENVOI SERVICES
+    Route::post('/envoi-services', [InscriptionController::class, 'envoiServices'])->name('envoi.services');
+
    
