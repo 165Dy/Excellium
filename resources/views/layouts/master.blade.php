@@ -278,7 +278,35 @@
         </div>
     </footer><!--====== End Footer Section ======-->
     <!--====== Back To Top  ======-->
-    <a href="#" class="back-to-top-message"><i class="far fa-angle-up"></i></a>
+    <a href="{{ route('contacts') }}" class="back-to-top-message"><i class="far fa-envelope"></i></a>
+
+    <style>
+        .back-to-top-message {
+            border-radius: 50%;
+            bottom: 400px;
+            color: var(--primary-dark-color);
+            /* cursor: pointer; */
+            font-size: 20px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            position: fixed;
+            right: 30px;
+            background-color: #FFD22F;
+            text-align: center;
+            text-decoration: none;
+           
+            z-index: 337;
+        }
+
+        .back-to-top-message:hover{
+            background-color: #f5e3a3;
+            animation-duration: 2s;
+             -webkit-transition: 0.3s;
+            transition: 0.3s;
+        }
+    </style>
+
     <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
     <!--====== Jquery js ======-->
     <script src="{{ asset('assets/vendor/jquery-3.6.0.min.js') }}"></script>

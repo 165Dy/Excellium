@@ -438,8 +438,7 @@
         </div>
     </div>
 
-    <!-- Modal d'alerte email requis -->Le numéro doit contenir exactement 10
-                                chiffres.
+    <!-- Modal d'alerte email requis -->
     <div class="modal fade" id="alertEmailModal" tabindex="-1" aria-labelledby="alertEmailModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
