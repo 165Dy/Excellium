@@ -128,14 +128,14 @@
 
                             </nav>
                         </div>
-                        <div class="nav-right-item">
+                        {{-- <div class="nav-right-item">
                             <a href="{{ route('contacts') }}"><i class="far fa-envelope"></i></a>
                             <div class="navbar-toggler">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -278,6 +278,7 @@
         </div>
     </footer><!--====== End Footer Section ======-->
     <!--====== Back To Top  ======-->
+    <a href="#" class="back-to-top-message"><i class="far fa-angle-up"></i></a>
     <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
     <!--====== Jquery js ======-->
     <script src="{{ asset('assets/vendor/jquery-3.6.0.min.js') }}"></script>
