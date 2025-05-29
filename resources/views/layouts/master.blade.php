@@ -128,14 +128,14 @@
 
                             </nav>
                         </div>
-                        <div class="nav-right-item">
+                        {{-- <div class="nav-right-item">
                             <a href="{{ route('contacts') }}"><i class="far fa-envelope"></i></a>
                             <div class="navbar-toggler">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -177,18 +177,18 @@
             <!--=== Footer Widget Area ===-->
             <div class="footer-widget-area pb-60">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-6 col-12 mb-4">
                         <!--=== Footer Widget ===-->
                         <div class="footer-widget about-company-widget mb-40 wow fadeInUp">
-                            <div class="footer-logo">
+                            <div class="footer-logo mb-3">
                                 <a href="index.html"><img
-                                        src="{{ asset('assets/images/logo_new.jpg') }}"alt="Footer Logo"
-                                        style="width:120px;"></a>
+                                        src="{{ asset('assets/images/logo_new.jpg') }}" alt="Footer Logo"
+                                        style="width:120px; max-width:100%; height:auto;"></a>
                             </div>
                             <p>
                                 Excellium Conseils, c’est bien plus qu’un cabinet de conseil :
                                 c’est un partenaire de confiance pour votre réussite financière 💼📊
-                                . </p>
+                            </p>
                             <ul class="social-link style-one">
                                 <li><a href="https://www.facebook.com/share/199uiSgsQ7/"><i
                                             class="fab fa-facebook-f"></i></a></li>
@@ -196,15 +196,14 @@
                                             class="fab fa-linkedin-in"></i></a></li>
                                 <li><a href="https://wa.me/message/XYBTJGPX4AC4E1"><i class="fab fa-whatsapp"></i></a>
                                 </li>
-                                {{-- <li><a href="#"><i class="fab fa-instagram"></i></a></li> --}}
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6 col-12 mb-4">
                         <!--=== Footer Widget ===-->
                         <div class="footer-widget footer-nav-widget mb-25 wow fadeInDown">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6 col-12 mb-3">
                                     <h4 class="footer-title">Explore</h4>
                                     <ul class="footer-nav">
                                         <li><a href="#">A propos de nous</a></li>
@@ -212,18 +211,17 @@
                                         <li><a href="#"></a></li>
                                     </ul>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 col-12 mb-3">
                                     <h4 class="footer-title">Lien</h4>
                                     <ul class="footer-nav">
                                         <li><a href="#">Pricing Plan</a></li>
                                         <li><a href="#">Notre Objectifs</a></li>
-                                        {{-- <li><a href="#">Privacy Policy</a></li> --}}
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-12 col-12 mb-4">
                         <!--=== Footer Widget ===-->
                         <div class="footer-widget contact-info-widget mb-15 wow fadeInUp">
                             <h4 class="footer-title">Contactez-nous</h4>
@@ -244,8 +242,8 @@
                                             <i class="far fa-envelope"></i>
                                         </div>
                                         <div class="content">
-                                            <p><a
-                                                    href="https://www.bing.com/search?pglt=425&q=direction%40excelliumconseils.com&cvid=a3a92a11f351439d9718a52639834aff&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQRRg60gEHNDM3ajBqMagCALACAA&FORM=ANNTA1&ucpdpc=UCPD&PC=U531">direction@excelliumconseils.com</a>
+                                            <p>
+                                                <a href="mailto:direction@excelliumconseils.com">direction@excelliumconseils.com</a>
                                             </p>
                                         </div>
                                     </div>
@@ -256,7 +254,7 @@
                                             <i class="icon-phone"></i>
                                         </div>
                                         <div class="content">
-                                            <p><a href="tel:(+225)0120034509">(+225) 0707672957</a></p>
+                                            <p><a href="tel:(+225)0707672957">(+225) 0707672957</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -268,7 +266,7 @@
             <!--=== Copyright Area ===-->
             <div class="copyright-area">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <div class="copyright-text text-center">
                             <p>Copyright &copy;2025, <span>Excellium Conseils</span> All Rights Reserved</p>
                         </div>
@@ -276,8 +274,11 @@
                 </div>
             </div>
         </div>
-    </footer><!--====== End Footer Section ======-->
+    </footer>
+    
+    <!--====== End Footer Section ======-->
     <!--====== Back To Top  ======-->
+    <a href="{{ route('contacts') }}" class="back-to-top-message"><i class="far fa-envelope"></i></a>
     <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
     <!--====== Jquery js ======-->
     <script src="{{ asset('assets/vendor/jquery-3.6.0.min.js') }}"></script>
@@ -303,6 +304,33 @@
     <script src="{{ asset('assets/vendor/wow.min.js') }}"></script>
     <!--====== Main js ======-->
     <script src="{{ asset('assets/js/theme.js') }}"></script>
+
+    <style>
+        .back-to-top-message {
+            border-radius: 50%;
+            bottom: 400px;
+            color: var(--primary-dark-color);
+            /* cursor: pointer; */
+            font-size: 20px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            position: fixed;
+            right: 30px;
+            background-color: #FFD22F;
+            text-align: center;
+            text-decoration: none;
+
+            z-index: 337;
+        }
+
+        .back-to-top-message:hover {
+            background-color: #f5e3a3;
+            animation-duration: 2s;
+            -webkit-transition: 0.3s;
+            transition: 0.3s;
+        }
+    </style>
 
 </body>
 

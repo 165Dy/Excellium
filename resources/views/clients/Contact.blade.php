@@ -1,11 +1,14 @@
 @extends('layouts.master')
 @section('contact')
     <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
-        <div class="shape shape-one scene"><span data-depth="1"><img src="{{asset('assets/images/shape/p-1.png')}}" alt="shape"></span>
+        <div class="shape shape-one scene"><span data-depth="1"><img src="{{ asset('assets/images/shape/p-1.png') }}"
+                    alt="shape"></span>
         </div>
-        <div class="shape shape-two scene"><span data-depth="2"><img src="{{asset('assets/images/shape/p-2.png')}}" alt="shape"></span>
+        <div class="shape shape-two scene"><span data-depth="2"><img src="{{ asset('assets/images/shape/p-2.png') }}"
+                    alt="shape"></span>
         </div>
-        <div class="shape shape-three"><span><img src="{{asset('assets/images/shape/p-3.png')}}" alt="shape"></span></div>
+        <div class="shape shape-three"><span><img src="{{ asset('assets/images/shape/p-3.png') }}" alt="shape"></span>
+        </div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
@@ -32,7 +35,8 @@
                 <div class="col-lg-7">
                     <div class="map-box mb-50 wow fadeInLeft">
                         {{-- <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe> --}}
-                        <img src="{{asset('assets/images/img_6.jpg')}}" alt="" style="border-radius: 10px 10px;height:510px">
+                        <img src="{{ asset('assets/images/img_6.jpg') }}" alt=""
+                            style="border-radius: 10px 10px;height:510px">
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -41,7 +45,7 @@
                             <li>
                                 <div class="iconic-box style-four mb-50 wow fadeInDown">
                                     <div class="icon">
-                                        <img src="{{asset('assets/images/icon/map.svg')}}" alt="icon">
+                                        <img src="{{ asset('assets/images/icon/map.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
                                         <h4>Locations</h4>
@@ -52,7 +56,7 @@
                             <li>
                                 <div class="iconic-box style-four mb-50 wow fadeInDown">
                                     <div class="icon">
-                                        <img src="{{asset('assets/images/icon/call.svg')}}" alt="icon">
+                                        <img src="{{ asset('assets/images/icon/call.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
                                         <h4>Call Us</h4>
@@ -64,7 +68,7 @@
                             <li>
                                 <div class="iconic-box style-four mb-50 wow fadeInDown">
                                     <div class="icon">
-                                        <img src="{{asset('assets/images/icon/envelope.svg')}}" alt="icon">
+                                        <img src="{{ asset('assets/images/icon/envelope.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
                                         <h4>Email Address</h4>
@@ -76,7 +80,7 @@
                             <li>
                                 <div class="iconic-box style-four mb-50 wow fadeInDown">
                                     <div class="icon">
-                                        <img src="{{asset('assets/images/icon/send.svg')}}" alt="icon">
+                                        <img src="{{ asset('assets/images/icon/send.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
                                         <h4>Website</h4>
@@ -97,8 +101,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="section-title text-center mb-30 wow fadeInUp">
-                        <span class="sub-title">Get In Touch</span>
-                        <h2>Asked Any Questions</h2>
+                        <span class="sub-title">Contactez-nous</span>
+                        <h2>Posez vos questions</h2>
                     </div>
                 </div>
             </div>
@@ -108,29 +112,29 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label><i class="far fa-user"></i></label>
-                                <input type="text" placeholder="Enter your name" name="name" required>
+                                <input type="text" placeholder="Votre nom" name="name" required style="color:rgb(253, 253, 253)">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label><i class="far fa-user"></i></label>
-                                <input type="email" placeholder="Enter mail address" name="email" required>
+                                <input type="email" placeholder="Votre adresse email" name="email" required style="color:rgb(253, 253, 253)">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label><i class="far fa-user"></i></label>
-                                <input type="text" placeholder="Phone Number" name="phone" required>
+                                <input type="text" placeholder="Numéro de téléphone" name="phone" required style="color:rgb(253, 253, 253)">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <textarea name="message" placeholder="Type your message here..." cols="30" rows="10"></textarea>
+                                <textarea name="message" placeholder="Tapez votre message ici..." cols="30" rows="10" style="color:rgb(253, 253, 253)"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group text-center">
-                                <button class="theme-btn style-one">Send Your Message</button>
+                                <button class="theme-btn style-one">Envoyer votre message</button>
                             </div>
                         </div>
                     </div>

@@ -7,7 +7,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-6">
                         <div class="hero-content mb-50 wow fadeInLeft">
-                            <h2>Excellium Conseils</h2>
+                            <h1>Excellium Conseils</h1>
                             <p>
                                 Bienvenue chez Excellium Conseils, votre partenaire stratégique
                                 en gestion financière et comptable. Nous accompagnons les entrepreneurs,
@@ -101,16 +101,15 @@
     <!--====== Start Slider text Section ======-->
     <section class="headline-text primary-bg pt-55 pb-55">
         <div class="animate-text">
-
-            <span class="text" style="color: white">Contact Us</span>
-            <span class="text" style="color: white">Let’s Talk</span>
+            <span class="text" style="color: white">Contactez-nous</span>
+            <span class="text" style="color: white">07 07 67 29 57</span>
             <span class="text"></span>
-            <span class="text" style="color: white">Let’s Talk</span>
-            <span class="text"style="color: white">Contact Us</span>
-            <span class="text"style="color: white">Let’s Talk</span>
-            <span class="text"style="color: white">Contact Us</span>
-            <span class="text"style="color: white">Let’s Talk</span>
-            <span class="text"style="color: white">Contact Us</span>
+            <span class="text" style="color: white">07 07 67 29 57</span>
+            <span class="text" style="color: white">Contactez-nous</span>
+            <span class="text" style="color: white">07 07 67 29 57</span>
+            <span class="text" style="color: white">Contactez-nous</span>
+            <span class="text" style="color: white">07 07 67 29 57</span>
+            <span class="text" style="color: white">Contactez-nous</span>
         </div>
     </section><!--====== End Slider text Section ======-->
     <!--====== Start Case Section ======-->
@@ -377,33 +376,37 @@
         </div>
     </section><!--====== End Blog Section ======-->
 
+
     <!-- Modal d'inscription étape 2 -->
     <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 18px;">
                 <form id="inscriptionForm">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="inscriptionModalLabel" style="color: black">Complétez votre
-                            inscription</h5>
+                    <div class="modal-header border-0" style="background: #FFD22F; border-radius: 18px 18px 0 0;">
+                        <h5 class="modal-title" id="inscriptionModalLabel" style="color: #222; font-weight: bold;">
+                            Bienvenue !</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body py-4">
+                        <p style="color:#444; font-size:15px; text-align:center; margin-bottom:25px;">
+                            Veuillez entrer vos informations personnelles pour la suite de votre inscription.
+                        </p>
                         <input type="hidden" name="email" id="modal_email">
                         <div class="mb-3">
-                            <label for="nom" class="form-label" style="color: black">Nom</label>
+                            <label for="nom" class="form-label" style="color: #222;">Nom</label>
                             <input type="text" class="form-control" id="nom" name="nom"
                                 placeholder="Votre nom" required>
                         </div>
                         <div class="mb-3">
-                            <label for="prenom" class="form-label" style="color: black">Prénom</label>
+                            <label for="prenom" class="form-label" style="color: #222;">Prénom</label>
                             <input type="text" class="form-control" id="prenom" name="prenom"
                                 placeholder="Votre prénom" required>
                         </div>
                         <div class="mb-3">
-                            <label for="telephone" class="form-label" style="color: black">Téléphone</label>
+                            <label for="telephone" class="form-label" style="color: #222;">Téléphone</label>
                             <input type="text" class="form-control" id="telephone" name="telephone"
-                                placeholder="exp: 0749095585" maxlength="10" pattern="\d{10}" required>
+                                placeholder="ex: 0749095585" maxlength="10" pattern="\d{10}" required>
                             <div id="tel-error" style="color:red; display:none;">
                                 <p style="font-size: 13px">
                                     Le numéro doit contenir exactement 10 chiffres.
@@ -411,9 +414,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Valider mon
-                            inscription</button>
+                    <div class="modal-footer justify-content-end"
+                        style="border-top: 1px solid #eee; background: #fafafa; border-radius: 0 0 18px 18px;">
+                        <button type="submit" class="btn btn-primary">Valider mon inscription</button>
                     </div>
                 </form>
             </div>
@@ -438,8 +441,7 @@
         </div>
     </div>
 
-    <!-- Modal d'alerte email requis -->Le numéro doit contenir exactement 10
-                                chiffres.
+    <!-- Modal d'alerte email requis -->
     <div class="modal fade" id="alertEmailModal" tabindex="-1" aria-labelledby="alertEmailModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -459,6 +461,141 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal d'alerte email déjà existant -->
+    <div class="modal fade" id="emailExistsModal" tabindex="-1" aria-labelledby="emailExistsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <svg width="120" height="100" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="30" width="100" height="60" rx="8" ry="8" fill="gold"
+                            stroke="orange" stroke-width="4" class="pulse" />
+                        <polyline points="10,30 60,70 110,30" fill="none" stroke="orange" stroke-width="4" />
+                    </svg>
+                    <br>
+                    <h5 style="color:rgb(245, 21, 21)">Erreur...Cet email est déjà enregistré.</h5>
+                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">FERMER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Choix des services améliorée -->
+    <div class="modal fade" id="choixServiceModal" tabindex="-1" aria-labelledby="choixServiceModalLabel"
+        aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 18px;">
+                <form id="choixServiceForm">
+                    <div class="modal-header border-0" style="background: #FFD22F; border-radius: 18px 18px 0 0;">
+                        <img src="{{ asset('assets/images/logo_new.jpg') }}" alt="Logo"
+                            style="height: 60px; margin-right: 16px;">
+                        <div>
+                            <h5 class="modal-title" id="choixServiceModalLabel" style="color: #222; font-weight: bold;">
+                                Bienvenue dans notre menu services</h5>
+                            <p style="margin:0; color:#444; font-size:15px;">Veuillez sélectionner les services qui vous
+                                intéressent.</p>
+                        </div>
+                        <!-- Suppression du bouton de fermeture -->
+                    </div>
+                    <div class="modal-body py-4">
+                        <div id="service-alert" class="alert alert-danger" style="display:none; font-size:15px;">
+                            Veuillez sélectionner au moins un service pour continuer.
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="selectAllServices">
+                            <label class="form-check-label fw-bold" for="selectAllServices">Tout sélectionner</label>
+                        </div>
+                        <div id="services-list" class="row">
+                            <div class="col-md-6">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 1" id="service1">
+                                    <label class="form-check-label" for="service1">Formation et Développement des
+                                        compétences</label>
+                                </div>
+                                <hr>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 2" id="service2">
+                                    <label class="form-check-label" for="service2">Assistance Comptable et Fiscale</label>
+                                </div>
+                                <hr>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 3" id="service3">
+                                    <label class="form-check-label" for="service3">Création, modification et Gestion
+                                        d'Entreprise</label>
+                                </div>
+                                <hr>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 4" id="service4">
+                                    <label class="form-check-label" for="service4">Audit et Conseil Financier</label>
+                                </div>
+                                <hr>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 5" id="service5">
+                                    <label class="form-check-label" for="service5">Gestion de la Paie et des Ressources
+                                        Humaines</label>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 6" id="service6">
+                                    <label class="form-check-label" for="service6">Recrutement et Placement de Personnel
+                                        Qualifié</label>
+                                </div>
+                                <hr>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 7" id="service7">
+                                    <label class="form-check-label" for="service7">Conseil en Recherche de Financement et
+                                        en Investissement</label>
+                                </div>
+                                <hr>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 8" id="service8">
+                                    <label class="form-check-label" for="service8">Commerce Générale</label>
+                                </div>
+                                <hr>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 9" id="service9">
+                                    <label class="form-check-label" for="service9">Import-Export</label>
+                                </div>
+                                <hr>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 10" id="service10">
+                                    <label class="form-check-label" for="service10">Achat, Location et Vente de Biens
+                                        Mobiliers et Immobiliers</label>
+                                </div>
+                                <hr>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
+                                        value="Service 11" id="service11">
+                                    <label class="form-check-label" for="service11">Prestations de Services Divers</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-end">
+                        <button type="submit" class="btn btn-primary">Envoyer mes choix</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <!-- Script pour la création du compte et la confirmation du succès -->
     <script>
@@ -480,7 +617,7 @@
                 modal.show();
             });
 
-            // Soumission du formulaire de la modale
+            // Soumission du formulaire de la modale d'inscription
             document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const formData = new FormData(this);
@@ -502,42 +639,187 @@
                                 'successModal'));
                             modalSuccess.show();
 
-                            // Redirige après clic
+                            // Ouvre la modal choix service après clic sur "Choisir un service"
                             document.getElementById('successRedirect').onclick = function() {
-                                window.location.href = "{{ route('service.choix') }}";
+                                bootstrap.Modal.getInstance(document.getElementById('successModal'))
+                                    .hide();
+                                var choixModal = new bootstrap.Modal(document.getElementById(
+                                    'choixServiceModal'));
+                                choixModal.show();
                             };
+                        } else if (data.email_exists) {
+                            // Ferme la modale inscription et affiche la modale email déjà existant
+                            bootstrap.Modal.getInstance(document.getElementById('inscriptionModal'))
+                                .hide();
+                            var existsModal = new bootstrap.Modal(document.getElementById(
+                                'emailExistsModal'));
+                            existsModal.show();
                         } else {
                             alert(data.message || "Erreur inconnue");
                         }
                     })
                     .catch(() => alert("Erreur serveur, veuillez réessayer."));
             });
-        });
 
-        // ...existing code...
-        // Validation en temps réel du téléphone
-        const telInput = document.getElementById('telephone');
-        const telError = document.getElementById('tel-error');
+            // Validation en temps réel du téléphone
+            const telInput = document.getElementById('telephone');
+            const telError = document.getElementById('tel-error');
 
-        telInput.addEventListener('input', function() {
-            // Retire tout sauf les chiffres
-            this.value = this.value.replace(/\D/g, '');
-            if (this.value.length !== 10) {
-                telError.style.display = 'block';
-            } else {
-                telError.style.display = 'none';
-            }
-        });
+            telInput.addEventListener('input', function() {
+                // Retire tout sauf les chiffres
+                this.value = this.value.replace(/\D/g, '');
+                if (this.value.length !== 10) {
+                    telError.style.display = 'block';
+                } else {
+                    telError.style.display = 'none';
+                }
+            });
 
-        // Empêche la soumission si le numéro n'est pas valide
-        document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
-            if (telInput.value.length !== 10) {
-                telError.style.display = 'block';
-                telInput.focus();
+            // Empêche la soumission si le numéro n'est pas valide
+            document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+                if (telInput.value.length !== 10) {
+                    telError.style.display = 'block';
+                    telInput.focus();
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // Gestion du bouton "Tout cocher"
+            document.getElementById('selectAllServices').addEventListener('change', function() {
+                const checked = this.checked;
+                document.querySelectorAll('.service-checkbox').forEach(cb => cb.checked = checked);
+            });
+
+            // Soumission du choix des services
+            document.getElementById('choixServiceForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                return false;
-            }
+                const checkedServices = Array.from(document.querySelectorAll('.service-checkbox:checked'))
+                    .map(cb => cb.value);
+                const alertDiv = document.getElementById('service-alert');
+                if (checkedServices.length === 0) {
+                    alertDiv.style.display = 'block';
+                    return;
+                } else {
+                    alertDiv.style.display = 'none';
+                    // Ici tu pourras gérer l'envoi plus tard
+                    // bootstrap.Modal.getInstance(document.getElementById('choixServiceModal')).hide();
+                }
+            });
+
+            // Sécurité supplémentaire : empêche la fermeture de la modal par touche ESC
+            document.getElementById('choixServiceModal').addEventListener('keydown', function(e) {
+                if (e.key === "Escape") {
+                    e.preventDefault();
+                }
+            });
         });
-        // ...existing code...
     </script>
+
+    <style>
+        .form-check-label,
+        .modal-title {
+            color: black;
+        }
+
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #choixServiceModal .modal-content {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+            border: 2px solid #FFD22F;
+        }
+
+        #choixServiceModal .modal-header {
+            border-bottom: 1px solid #eee;
+        }
+
+        #choixServiceModal .modal-footer {
+            border-top: 1px solid #eee;
+            background: #fafafa;
+            border-radius: 0 0 18px 18px;
+        }
+
+        #choixServiceModal .form-check-label {
+            font-size: 16px;
+            color: #222;
+        }
+
+        #choixServiceModal hr {
+            margin: 0.5rem 0;
+            border-top: 1px dashed #FFD22F;
+        }
+
+        @media (max-width: 767px) {
+            #choixServiceModal .modal-dialog {
+                max-width: 98vw;
+            }
+
+            #choixServiceModal .modal-content {
+                padding: 0 5px;
+            }
+
+            #choixServiceModal .modal-header img {
+                height: 40px;
+            }
+        }
+
+        #inscriptionModal .modal-content {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+            border: 2px solid #FFD22F;
+        }
+
+        #inscriptionModal .modal-header {
+            border-bottom: 1px solid #eee;
+            background: #FFD22F;
+            border-radius: 18px 18px 0 0;
+        }
+
+        #inscriptionModal .modal-title {
+            font-size: 1.5rem;
+            color: #222;
+            font-weight: bold;
+        }
+
+        #inscriptionModal .form-label {
+            color: #222;
+            font-weight: 500;
+        }
+
+        #inscriptionModal .form-control {
+            border-radius: 8px;
+            border: 1px solid #FFD22F;
+        }
+
+        #inscriptionModal .modal-footer {
+            border-top: 1px solid #eee;
+            background: #fafafa;
+            border-radius: 0 0 18px 18px;
+        }
+
+        @media (max-width: 767px) {
+            #inscriptionModal .modal-dialog {
+                max-width: 98vw;
+            }
+
+            #inscriptionModal .modal-content {
+                padding: 0 5px;
+            }
+        }
+    </style>
 @endsection
