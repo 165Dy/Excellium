@@ -18,7 +18,7 @@ class formationsController extends Controller
         return view('layouts.admin', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function  store(Request $request)
     {
         $validated = $request->validate([
             'titre' => 'required|string|max:255',

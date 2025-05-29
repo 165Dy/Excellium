@@ -814,7 +814,7 @@
                                                 <label for="titre">Titre</label>
                                             </div>
                                         </div>
-                                        {{-- 
+                                        
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <select name="categorie_id" id="categorie_id" class="form-select" required>
@@ -825,7 +825,7 @@
                                                 <label for="categorie_id">Catégorie</label>
                                             </div>
                                         </div>
-                                        --}}
+                                       
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>

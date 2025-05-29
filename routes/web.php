@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\formationsController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\CategorieController;
-
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,7 +86,7 @@ Route::prefix('clients')->group(function () {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::prefix('admin')->group(function () {  
     
-    Route::get('/Dashboard', function () {return view('dashboard');})->name('dashboard');
+    Route::get('/Dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     
     Route::get('/users/index',function () { return view('Admin.users.index'); } )->name('users.index');
