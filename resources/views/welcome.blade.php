@@ -76,7 +76,7 @@
                                         <li><i class="far fa-check"></i>Des conseils adaptés à chaque étape de votre
                                             développement</li>
                                     </ul>
-                                    {{-- <a href="#" class="theme-btn style-one">En savoir plus sur nous</a> --}}
+                                    
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="vision">
