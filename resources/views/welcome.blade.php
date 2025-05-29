@@ -101,16 +101,15 @@
     <!--====== Start Slider text Section ======-->
     <section class="headline-text primary-bg pt-55 pb-55">
         <div class="animate-text">
-
-            <span class="text" style="color: white">Contact Us</span>
-            <span class="text" style="color: white">Let’s Talk</span>
+            <span class="text" style="color: white">Contactez-nous</span>
+            <span class="text" style="color: white">07 07 67 29 57</span>
             <span class="text"></span>
-            <span class="text" style="color: white">Let’s Talk</span>
-            <span class="text"style="color: white">Contact Us</span>
-            <span class="text"style="color: white">Let’s Talk</span>
-            <span class="text"style="color: white">Contact Us</span>
-            <span class="text"style="color: white">Let’s Talk</span>
-            <span class="text"style="color: white">Contact Us</span>
+            <span class="text" style="color: white">07 07 67 29 57</span>
+            <span class="text" style="color: white">Contactez-nous</span>
+            <span class="text" style="color: white">07 07 67 29 57</span>
+            <span class="text" style="color: white">Contactez-nous</span>
+            <span class="text" style="color: white">07 07 67 29 57</span>
+            <span class="text" style="color: white">Contactez-nous</span>
         </div>
     </section><!--====== End Slider text Section ======-->
     <!--====== Start Case Section ======-->
