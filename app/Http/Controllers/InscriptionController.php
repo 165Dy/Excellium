@@ -49,16 +49,4 @@ class InscriptionController extends Controller
         return response()->json(['success' => true]);
     }
 
-
-    // public function envoiServices(Request $request)
-    //     {
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'services' => 'required|array|min:1'
-    //     ]);
-    //     // Envoi de l'email avec les services choisis
-    //     Mail::to($request->email)->send(new \App\Mail\ServicesChoisis($request->services));
-    //     return response()->json(['success' => true]);
-    //     }
-
 }

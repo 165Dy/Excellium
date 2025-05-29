@@ -475,7 +475,7 @@
                         <polyline points="10,30 60,70 110,30" fill="none" stroke="orange" stroke-width="4" />
                     </svg>
                     <br>
-                    <h5 style="color:black">Cet email est déjà enregistré.</h5>
+                    <h5 style="color:rgb(245, 21, 21)">Erreur...Cet email est déjà enregistré.</h5>
                     <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">FERMER</button>
                 </div>
             </div>

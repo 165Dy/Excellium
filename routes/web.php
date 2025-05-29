@@ -22,7 +22,7 @@ use App\Http\Controllers\CategorieController;
 Route::get('/', function () {return view('welcome');})->name('welcome');
 
 
-Route::get('/Dashboard', function () {return view('dashboard');})->name('dashboard');
+
 Route::post('/inscription', [InscriptionController::class, 'inscriptionAjax'])->name('inscription.ajax');
 
 Route::get('/choix-service', [InscriptionController::class, 'choixService'])->name('service.choix');
@@ -83,54 +83,44 @@ Route::prefix('clients')->group(function () {
 });
 
 
-
-
-
-
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+Route::prefix('admin')->group(function () {  
     
+    Route::get('/Dashboard', function () {return view('dashboard');})->name('dashboard');
+
     
     Route::get('/users/index',function () { return view('Admin.users.index'); } )->name('users.index');
     Route::get('/users/show',function () { return view('Admin.users.show'); } )->name('users.show');
 
     // FORMATIONS
-    Route::get('/admin/categories/index',function () { return view('Admin.categorie.index'); } )->name('categories.index');
+    Route::get('/categories/index',function () { return view('Admin.categorie.index'); } )->name('categories.index');
     Route::post('/categories', [CategorieController::class, 'store'])->name('categories.store');
 
     // Routes formations
-    Route::get('/admin/formations/index', [formationsController::class, 'index'])->name('formations.index');
-    Route::get('/admin/formations/formations/create', [formationsController::class, 'create'])->name('formations.create');
-    Route::post('/admin/formations/formations', [formationsController::class, 'store'])->name('formations.store');
-    Route::get('/admin/formations/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
-    Route::get('/admin/formations/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');
-    Route::post('/admin/formations/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
-    Route::post('/admin/formations/formations/{id}/delete', [formationsController::class, 'destroy'])->name('formations.destroy');
+    Route::get('/formations/index', [formationsController::class, 'index'])->name('formations.index');
+    Route::get('/formations/formations/create', [formationsController::class, 'create'])->name('formations.create');
+    Route::post('/formations/formations', [formationsController::class, 'store'])->name('formations.store');
+    Route::get('/formations/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
+    Route::get('/formations/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');
+    Route::post('/formations/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
+    Route::post('/formations/formations/{id}/delete', [formationsController::class, 'destroy'])->name('formations.destroy');
 
-    Route::get('/admin/articles/',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
-    Route::get('/admin/partenaires/',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
-    Route::get('/admin/temoignages/',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');
-
-
-
-    Route::get('/admin/opportunites/',function () { return view('Admin.Opportunites.index'); } )->name('opportunites.index');
+    Route::get('/articles',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
+    Route::get('/partenaires',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
+    Route::get('/temoignages',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');
+    ////////
+    Route::get('/opportunites',function () { return view('Admin.Opportunites.index'); } )->name('opportunites.index');
     //CONTACTS
     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
-     // CALENDRIER
-     Route::get('/calendrier/index',function () { return view('Admin.Calendrier.index'); } )->name('calendrier.index');
+    // CALENDRIER
+    Route::get('/calendrier/index',function () { return view('Admin.Calendrier.index'); } )->name('calendrier.index');
 
-     // CALENDRIER
-     Route::get('/email/index',function () { return view('Admin.Email.index'); } )->name('email.index');
+    // CALENDRIER
+    Route::get('/email/index',function () { return view('Admin.Email.index'); } )->name('email.index');
 
     // ENVOI SERVICES
     Route::post('/envoi-services', [InscriptionController::class, 'envoiServices'])->name('envoi.services');
 
    
+});

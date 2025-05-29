@@ -45,10 +45,13 @@
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/apex-charts/apex-charts.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/swiper/swiper.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
+    <link rel="stylesheet"
+        href="{{ asset('assets_2/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-select-bs5/select.bootstrap5.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-fixedcolumns-bs5/fixedcolumns.bootstrap5.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-fixedheader-bs5/fixedheader.bootstrap5.css') }}" />
+    <link rel="stylesheet"
+        href="{{ asset('assets_2/vendor/libs/datatables-fixedcolumns-bs5/fixedcolumns.bootstrap5.css') }}" />
+    <link rel="stylesheet"
+        href="{{ asset('assets_2/vendor/libs/datatables-fixedheader-bs5/fixedheader.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/animate-css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css') }}" />
 
@@ -672,19 +675,20 @@
                                     </a>
                                     <ul class="menu-sub">
 
-                                        <li class="menu-item" >
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_formations"
-                                                data-bs-toggle="modal">
-                                                <i class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                        <li class="menu-item">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_formations" data-bs-toggle="modal">
+                                                <i
+                                                    class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>CREER UNE FORMATION</div>
-                                            </a>   
+                                            </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="{{ route('formations.index') }}" class="menu-link ">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
                                                 <div>Voir la liste</div>
                                             </a>
-                                         
+
                                     </ul>
                                 </li>
                                 {{-- Opportunités --}}
@@ -696,8 +700,8 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_opportunites"
-                                                data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_opportunites" data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>CREER OPPORTUNITES</div>
@@ -709,26 +713,6 @@
                                                 <div>Voir la liste</div>
                                             </a>
                                         </li>
-                                        {{-- <li class="menu-item">
-                                            <a href="" class="menu-link">
-                                                <i class="menu-icon icon-base ri ri-book-open-line"></i>
-                                                <div>Categorie Fiscalité</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="" class="menu-link">
-                                                <i class="menu-icon icon-base ri ri-computer-line"></i>
-                                                <div>Categorie Audit</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="" class="menu-link">
-                                                <i class="menu-icon icon-base ri ri-article-line"></i>
-                                                <div>Categorie Entreprise</div>
-                                            </a>
-
-                                        </li> --}}
-
                                     </ul>
                                 </li>
                                 {{-- Divers --}}
@@ -741,7 +725,8 @@
 
                                         <li class="menu-item">
                                             <a href="{{ route('partenaires.index') }}" class="menu-link">
-                                                <i class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
+                                                <i
+                                                    class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
                                                 <div>Partenaires</div>
                                             </a>
                                         </li>
@@ -762,24 +747,26 @@
                                 <!-- Categories -->
                                 <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
-                                        <i class="menu-icon icon-base ri ri-drag-drop-line"></i>
+                                        <i class="menu-icon icon-base ri ri-folder-5-line"></i>
                                         <div data-i18n="Categories">Categories</div>
                                     </a>
                                     <ul class="menu-sub">
 
-                                        <li class="menu-item" >
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_categories"
-                                                data-bs-toggle="modal">
-                                                <i class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                        <li class="menu-item">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_categories" data-bs-toggle="modal">
+                                                <i
+                                                    class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>AJOUTER </div>
-                                            </a>   
+                                            </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('categories.index') }}" class="menu-link ">
+                                            <a href="#" class="menu-link"data-bs-target="#liste_categories"
+                                                data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
                                                 <div>Voir la liste</div>
                                             </a>
-                                         
+
                                     </ul>
                                 </li>
 
@@ -805,8 +792,9 @@
                     @yield('index_articles')
                     @yield('index_temoignages')
                     <!-- Modal -->
-                    <!-- Edit User Modal -->
 
+
+                    <!-- Edit User Modal -->
                     <div class="modal fade" id="create_formations" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                             <div class="modal-content">
@@ -816,22 +804,82 @@
                                     <div class="text-center mb-6">
                                         <h4 class="mb-2">Ajouter une Formation</h4>
                                     </div>
-                                    <form action="{{ route('formations.store') }}" method="POST">
+                                    <!-- Formulaire de création de formation stylisé -->
+                                    <form action="{{ route('formations.store') }}" method="POST" class="row g-4">
                                         @csrf
-                                        <input type="text" name="titre" placeholder="Titre" required>
-                                        {{-- <select name="categorie_id" required>
-                                            @foreach($categories as $categorie)
-                                                <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
-                                            @endforeach
-                                        </select> --}}
-                                        <textarea name="programme" placeholder="Programme"></textarea>
-                                        <input type="number" step="0.01" name="cout" placeholder="Coût">
-                                        <textarea name="prerequis" placeholder="Prérequis"></textarea>
-                                        <textarea name="bonus" placeholder="Bonus"></textarea>
-                                        <input type="text" name="lieu" placeholder="Lieu">
-                                        <input type="date" name="date_debut">
-                                        <input type="date" name="date_fin">
-                                        <button type="submit">Créer</button>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="titre" name="titre"
+                                                    class="form-control" placeholder="Titre" required>
+                                                <label for="titre">Titre</label>
+                                            </div>
+                                        </div>
+                                        {{-- 
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <select name="categorie_id" id="categorie_id" class="form-select" required>
+                                                    @foreach ($categories as $categorie)
+                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="categorie_id">Catégorie</label>
+                                            </div>
+                                        </div>
+                                        --}}
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>
+                                                <label for="programme">Programme</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="number" step="0.01" id="cout" name="cout"
+                                                    class="form-control" placeholder="Coût">
+                                                <label for="cout">Coût</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="lieu" name="lieu"
+                                                    class="form-control" placeholder="Lieu">
+                                                <label for="lieu">Lieu</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="date" id="date_debut" name="date_debut"
+                                                    class="form-control" placeholder="Date de début">
+                                                <label for="date_debut">Date de début</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="date" id="date_fin" name="date_fin"
+                                                    class="form-control" placeholder="Date de fin">
+                                                <label for="date_fin">Date de fin</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <textarea name="prerequis" id="prerequis" class="form-control" placeholder="Prérequis" style="height: 80px"></textarea>
+                                                <label for="prerequis">Prérequis</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating form-floating-outline">
+                                                <textarea name="bonus" id="bonus" class="form-control" placeholder="Bonus" style="height: 80px"></textarea>
+                                                <label for="bonus">Bonus</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="reset" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal" aria-label="Close">
+                                                Annuler
+                                            </button>
+                                            <button type="submit" class="btn btn-primary me-3">Créer</button>
+
+                                        </div>
                                     </form>
                                 </div>
 
@@ -842,7 +890,7 @@
                         <div class="content-backdrop fade"></div>
                     </div>
 
-                    <!-- Edit User Modal -->
+                    <!-- Opportunités Class Modal -->
                     <div class="modal fade" id="create_opportunites" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                             <div class="modal-content">
@@ -993,18 +1041,22 @@
                                     <div class="text-center mb-6">
                                         <h4 class="mb-2">NOUVELLE CATEGORIE</h4>
                                     </div>
-                                    <form id="createCategorieForm" class="row g-5" method="POST" action="{{ route('categories.store') }}">
+                                    <form id="createCategorieForm" class="row g-5" method="POST"
+                                        action="{{ route('categories.store') }}">
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomCategorie" name="nom" class="form-control" placeholder="comptabilité" required />
+                                                <input type="text" id="nomCategorie" name="nom"
+                                                    class="form-control" placeholder="comptabilité" required />
                                                 <label for="nomCategorie">Nom Catégorie</label>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-12 text-center">
+                                            <button type="reset" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal" aria-label="Close">Fermer</button>
                                             <button type="submit" class="btn btn-primary me-3">Valider</button>
-                                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Fermer</button>
+
                                         </div>
                                     </form>
                                 </div>
@@ -1016,10 +1068,61 @@
                         <div class="content-backdrop fade"></div>
                     </div>
 
+
+                    <!-- Categories Liste Modal -->
+                    <div class="modal fade" id="liste_categories" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">LISTE DES CATEGORIES</h4>
+                                    </div>
+                                    <div class="card-datatable text-nowrap">
+                                        <table class="dt-scrollableTable table table-bordered table-responsive">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nom Categorie</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Lorem ipsum</td>
+                                                    {{-- ////////////////////ACTION ///////////////////////// --}}
+                                                    <td>
+                                                        <div class="action" style="justify-content: space-between">
+                                                            <svg style="cursor: pointer"
+                                                                xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24"
+                                                                data-bs-target="#edit" data-bs-toggle="modal">
+                                                                <path fill="#4c9edb"
+                                                                    d="M9.243 18.997H21v2H3v-4.243l9.9-9.9l4.242 4.243zm5.07-13.557l2.122-2.121a1 1 0 0 1 1.414 0l2.829 2.828a1 1 0 0 1 0 1.415l-2.122 2.121z" />
+                                                            </svg>&nbsp;&nbsp;
+
+                                                            <svg id="confirm-color" style="cursor: pointer"
+                                                                xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24">
+                                                                <path fill="#fd1800"
+                                                                    d="M7 6V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6zm6.414 8l1.768-1.768l-1.414-1.414L12 12.586l-1.768-1.768l-1.414 1.414L10.586 14l-1.768 1.768l1.414 1.414L12 15.414l1.768 1.768l1.414-1.414zM9 4v2h6V4z" />
+                                                            </svg>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/ Content -->
+                        </div>
+                        <div class="content-backdrop fade"></div>
+                    </div>
                     <!--/ Content wrapper -->
                 </div>
-
-                <!--/ Layout container -->
             </div>
         </div>
 
