@@ -45,42 +45,51 @@
             <div class="row align-items-center">
                 <div class="col-xl-5">
                     <div class="section-content-box mb-50 wow fadeInLeft">
-                        <p class="mb-30">Chez Excellium Conseils, nous mettons tout en œuvre pour vous offrir un
-                            accompagnement de qualité, adapté à vos besoins spécifiques. Voici 6 raisons de nous faire
-                            confiance :</p>
+                        <p class="mb-30">
+                            Chez Excellium Conseils, nous mettons tout en œuvre pour vous offrir un accompagnement de
+                            qualité, adapté à vos besoins spécifiques. Voici 6 raisons de nous faire confiance :
+                        </p>
                         <div class="section-nav-tab mb-30">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#mission">Our
-                                        Mission</button>
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#mission">
+                                        Notre mission
+                                    </button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#vision">Our
-                                        Vision</button>
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#vision">
+                                        Notre vision
+                                    </button>
                                 </li>
                             </ul>
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="mission">
                                 <div class="content-box">
-                                    <p class="mb-20">lorem voluptatem accusantium doloremque laudantium totamua rem
-                                        aperiam eaque ipsa quae abuz</p>
+                                    <p class="mb-20">
+                                        Notre mission est d’accompagner chaque client dans la réussite de ses projets grâce
+                                        à des solutions innovantes et personnalisées. Nous croyons que chaque entreprise
+                                        mérite un accompagnement sur mesure pour atteindre ses objectifs.
+                                    </p>
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Your success is our priority</li>
-                                        <li><i class="far fa-check"></i>Leading the way bright future</li>
+                                        <li><i class="far fa-check"></i>Votre réussite est notre priorité</li>
+                                        <li><i class="far fa-check"></i>Des conseils adaptés à chaque étape de votre
+                                            développement</li>
                                     </ul>
-                                    <a href="#" class="theme-btn style-one">Know More About Us</a>
+                                    
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="vision">
                                 <div class="content-box">
-                                    <p class="mb-20">aperiam voluptatem accusantium doloremque lorem totamua rem
-                                        aperiam eaque ipsa quae abuz</p>
+                                    <p class="mb-20">
+                                        Notre vision est de devenir le partenaire incontournable des entreprises en matière
+                                        de gestion, de conseil et d’innovation. Nous aspirons à bâtir un avenir prospère
+                                        avec nos clients, fondé sur la confiance et l’excellence.
+                                    </p>
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Your success is our priority</li>
-                                        <li><i class="far fa-check"></i>Leading the way bright future</li>
+                                        <li><i class="far fa-check"></i>Anticiper les défis de demain</li>
+                                        <li><i class="far fa-check"></i>Vous accompagner vers un avenir meilleur</li>
                                     </ul>
-                                    <a href="#" class="theme-btn style-one">Know More About Us</a>
                                 </div>
                             </div>
                         </div>
