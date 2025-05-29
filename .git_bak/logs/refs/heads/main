@@ -1,0 +1,16 @@
+0000000000000000000000000000000000000000 4390554c525cb6c6e13534d8a58c83e5e9b504ff Angeyannick01 <yannickbeugre16@gmail.com> 1745596699 +0200	clone: from https://github.com/165Dy/Excellium.git
+4390554c525cb6c6e13534d8a58c83e5e9b504ff 2f90e0aac26dde882fbf8c6fef8576c252607125 Angeyannick01 <yannickbeugre16@gmail.com> 1745605404 +0200	commit: first commit
+2f90e0aac26dde882fbf8c6fef8576c252607125 467132de48d69ca60c1eed2912cac4eca7643ca6 Angeyannick01 <yannickbeugre16@gmail.com> 1745950448 +0200	commit: ajout de la page admin
+467132de48d69ca60c1eed2912cac4eca7643ca6 3f77fc50be59144ab8d0fe2327a78332cd831a75 Angeyannick01 <yannickbeugre16@gmail.com> 1745950771 +0200	pull: Fast-forward
+3f77fc50be59144ab8d0fe2327a78332cd831a75 723974665bcc369601316f9717f8f2d9bea2c118 Angeyannick01 <yannickbeugre16@gmail.com> 1747328868 +0200	commit: second commits
+723974665bcc369601316f9717f8f2d9bea2c118 e21eccb78a0a7b5c92a21ae8d3a6954cc40d3c09 Angeyannick01 <yannickbeugre16@gmail.com> 1748365736 +0200	pull: Fast-forward
+e21eccb78a0a7b5c92a21ae8d3a6954cc40d3c09 94eba1a9e6df4bfbb2cd554a45f28743b50624aa Angeyannick01 <yannickbeugre16@gmail.com> 1748369851 +0200	commit: gestion des modal pour les inscriptions
+94eba1a9e6df4bfbb2cd554a45f28743b50624aa 0c1bd4109e2f9e30fd7dd0db9810f8846d5528b3 Angeyannick01 <yannickbeugre16@gmail.com> 1748370498 +0200	commit: gestion des modal pour les inscriptions n°2
+0c1bd4109e2f9e30fd7dd0db9810f8846d5528b3 e2b37e8f2073f6dc208fa92bba9e5daa0f3fc068 Angeyannick01 <yannickbeugre16@gmail.com> 1748373593 +0200	commit: gestion des modal pour la creation des categories
+e2b37e8f2073f6dc208fa92bba9e5daa0f3fc068 001b0972cb65cfab9932802e2e571a25f2fc3792 Angeyannick01 <yannickbeugre16@gmail.com> 1748373761 +0200	pull: Fast-forward
+001b0972cb65cfab9932802e2e571a25f2fc3792 0f9e5bd8593024bd4910734090c094ce55c7b44f Angeyannick01 <yannickbeugre16@gmail.com> 1748425535 +0200	commit: changement exiger
+0f9e5bd8593024bd4910734090c094ce55c7b44f 342fac158c7dc6873883772cfdfbce92b55c7cca Angeyannick01 <yannickbeugre16@gmail.com> 1748427838 +0200	commit: Sauvegarde locale avant pull
+342fac158c7dc6873883772cfdfbce92b55c7cca a53d47ded347d531a9aece2d8a6c4444921c77f5 Angeyannick01 <yannickbeugre16@gmail.com> 1748427854 +0200	pull --no-rebase origin main: Merge made by the 'ort' strategy.
+a53d47ded347d531a9aece2d8a6c4444921c77f5 1c80a43ebd652d825e27f79abfbcd01f63eb09e9 Angeyannick01 <yannickbeugre16@gmail.com> 1748434126 +0200	commit: gestion des inscriptions avec les modals
+1c80a43ebd652d825e27f79abfbcd01f63eb09e9 058389405d28a017333e3f8538baee2aebe724c7 Angeyannick01 <yannickbeugre16@gmail.com> 1748528456 +0200	commit: affichage des modals de creation
+058389405d28a017333e3f8538baee2aebe724c7 a13caca32e7285f765c680facef584ed9777f80e Angeyannick01 <yannickbeugre16@gmail.com> 1748530717 +0200	commit: infoline
