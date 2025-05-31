@@ -85,8 +85,8 @@ Route::prefix('clients')->group(function () {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::prefix('admin')->group(function () {  
-    
-    Route::get('/Dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/Dashboard',function () { return view('Admin.categorie.index'); } )->name('dashboard');
+    Route::get('/modal', [DashboardController::class, 'index'])->name('dashboard');
 
     
     Route::get('/users/index',function () { return view('Admin.users.index'); } )->name('users.index');

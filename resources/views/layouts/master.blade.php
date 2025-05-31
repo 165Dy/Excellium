@@ -128,14 +128,14 @@
 
                             </nav>
                         </div>
-                        {{-- <div class="nav-right-item">
-                            <a href="{{ route('contacts') }}"><i class="far fa-envelope"></i></a>
+                        <div class="nav-right-item">
+                            {{-- <a href="{{ route('contacts') }}"><i class="far fa-envelope"></i></a> --}}
                             <div class="navbar-toggler">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
