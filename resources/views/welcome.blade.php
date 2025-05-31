@@ -18,7 +18,7 @@
                             <form class="newsletter-form mb-60">
                                 <div class="form-group">
                                     <label><i class="far fa-envelope" aria-hidden="true"></i></label>
-                                    <input type="email" placeholder="Enter mail address" name="email">
+                                    <input type="email" placeholder="Entrer une adresse mail" name="email">
                                     <button class="theme-btn style-one">Inscrivez-vous</button>
                                 </div>
                             </form>
@@ -383,8 +383,9 @@
                 </div>
             </div>
         </div>
-    </section><!--====== End Blog Section ======-->
+    </section>
 
+    <!--====== End Blog Section ======-->
 
     <!-- Modal d'inscription étape 2 -->
     <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel"

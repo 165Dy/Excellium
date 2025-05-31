@@ -86,7 +86,7 @@ Route::prefix('clients')->group(function () {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::prefix('admin')->group(function () {  
     
-    Route::get('/Dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/Dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
 
     
     Route::get('/users/index',function () { return view('Admin.users.index'); } )->name('users.index');
@@ -98,12 +98,12 @@ Route::prefix('admin')->group(function () {
 
     // Routes formations
     Route::get('/formations/index', [formationsController::class, 'index'])->name('formations.index');
-    Route::get('/formations/formations/create', [formationsController::class, 'create'])->name('formations.create');
-    Route::post('/formations/formations', [formationsController::class, 'store'])->name('formations.store');
-    Route::get('/formations/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
-    Route::get('/formations/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');
-    Route::post('/formations/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
-    Route::post('/formations/formations/{id}/delete', [formationsController::class, 'destroy'])->name('formations.destroy');
+    Route::get('/formations/create', [formationsController::class, 'create'])->name('formations.create');
+    Route::post('/formations/store', [formationsController::class, 'store'])->name('formations.store');
+    Route::get('/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
+    Route::get('/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');
+    Route::post('/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
+    Route::delete('/formations/{id}', [formationsController::class, 'destroy'])->name('formations.destroy');
 
     Route::get('/articles',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
     Route::get('/partenaires',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
