@@ -63,6 +63,7 @@
     <!-- Helpers -->
     <script src="{{ asset('assets_2/vendor/js/helpers.js') }}"></script>
     <script src="{{ asset('assets_2/js/config.js') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -684,11 +685,11 @@
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('formations.index') }}" class="menu-link ">
+                                            <a href="#" class="menu-link" data-bs-target="#liste_formations" data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
                                                 <div>Voir la liste</div>
                                             </a>
-
+                                        </li>
                                     </ul>
                                 </li>
                                 {{-- Opportunités --}}
@@ -794,7 +795,7 @@
                     <!-- Modal -->
 
 
-                    <!-- Edit User Modal -->
+                    <!-- Create Formation Modal -->
                     <div class="modal fade" id="create_formations" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                             <div class="modal-content">
@@ -805,7 +806,7 @@
                                         <h4 class="mb-2">Ajouter une Formation</h4>
                                     </div>
                                     <!-- Formulaire de création de formation stylisé -->
-                                    <form action="{{ route('formations.store') }}" method="POST" class="row g-4">
+                                    <form id="formationForm" action="{{ route('formations.store') }}" method="POST" class="row g-4" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
@@ -872,13 +873,38 @@
                                                 <label for="bonus">Bonus</label>
                                             </div>
                                         </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="file" id="file" name="file" class="form-control" accept="image/*,video/*" onchange="previewFile(this)">
+                                                <label for="file">Fichier (Image ou Vidéo) - Max 150 MB</label>
+                                            </div>
+                                            <div id="file-error" class="mt-2" style="display: none;">
+                                                <div class="alert alert-danger d-flex align-items-center">
+                                                    <i class="ri-error-warning-line me-2"></i>
+                                                    <span>La taille du fichier ne doit pas dépasser 150 MB</span>
+                                                </div>
+                                            </div>
+                                            <div id="file-preview" class="mt-3 d-flex justify-content-center" style="display: none;">
+                                                <div class="preview-container">
+                                                    <img id="image-preview" class="preview-media" style="display: none; max-width: 200px; border-radius: 8px;">
+                                                    <video id="video-preview" class="preview-media" style="display: none; max-width: 200px; border-radius: 8px;" controls>
+                                                        <source id="video-source" src="" type="">
+                                                    </video>
+                                                    <button type="button" class="btn btn-sm btn-danger ms-2" onclick="removeFile()">
+                                                        <i class="ri-close-line"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-12 text-center">
-                                            <button type="reset" class="btn btn-outline-secondary"
+                                            <button type="button" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
                                                 Annuler
                                             </button>
-                                            <button type="submit" class="btn btn-primary me-3">Créer</button>
-
+                                            <button type="submit" class="btn btn-primary me-3" id="submitBtn">
+                                                <span class="spinner-border spinner-border-sm me-2" style="display: none;" id="spinner"></span>
+                                                Créer
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -1121,6 +1147,164 @@
                         </div>
                         <div class="content-backdrop fade"></div>
                     </div>
+
+                    <!-- Liste Formations Modal -->
+                    <div class="modal fade" id="liste_formations" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6 p-4">
+                                        <h4 class="mb-2 text-primary">
+                                            <i class="ri-graduation-cap-line me-2"></i>
+                                            LISTE DES FORMATIONS
+                                        </h4>
+                                        <p class="text-muted">Gérez toutes vos formations disponibles</p>
+                                    </div>
+                                    
+                                    <div class="card-datatable px-4 pb-4">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-bordered">
+                                                <thead class="table-primary">
+                                                    <tr>
+                                                        <th class="text-center">#</th>
+                                                        <th>Titre</th>
+                                                        <th>Catégorie</th>
+                                                        <th class="text-center">Coût</th>
+                                                        <th>Lieu</th>
+                                                        <th class="text-center">Dates</th>
+                                                        <th class="text-center">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @forelse($formations as $formation)
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <span class="badge bg-label-primary">{{ $formation->id }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar-wrapper me-3">
+                                                                    <div class="avatar avatar-sm">
+                                                                        @if($formation->file_path)
+                                                                            @if($formation->file_type === 'image')
+                                                                                <img src="{{ asset('storage/' . $formation->file_path) }}" alt="Image" class="avatar-img rounded-circle">
+                                                                            @elseif($formation->file_type === 'video')
+                                                                                <div class="video-thumbnail position-relative">
+                                                                                    <video width="40" height="40" class="rounded-circle" style="object-fit: cover;">
+                                                                                        <source src="{{ asset('storage/' . $formation->file_path) }}" type="video/mp4">
+                                                                                    </video>
+                                                                                    <div class="play-overlay position-absolute top-50 start-50 translate-middle">
+                                                                                        <i class="ri-play-fill text-white"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                        @else
+                                                                            <span class="avatar-initial rounded-circle bg-label-info">
+                                                                                <i class="ri-book-open-line"></i>
+                                                                            </span>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 class="mb-0">{{ $formation->titre }}</h6>
+                                                                    @if($formation->programme)
+                                                                    <small class="text-muted">{{ Str::limit($formation->programme, 50) }}</small>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge bg-label-success">{{ $formation->categorie->nom ?? 'N/A' }}</span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            @if($formation->cout)
+                                                                <span class="fw-semibold text-primary">{{ number_format($formation->cout, 0, ',', ' ') }} FCFA</span>
+                                                            @else
+                                                                <span class="text-muted">Gratuit</span>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if($formation->lieu)
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="ri-map-pin-line text-danger me-1"></i>
+                                                                    {{ $formation->lieu }}
+                                                                </div>
+                                                            @else
+                                                                <span class="text-muted">Non défini</span>
+                                                            @endif
+                                                        </td>
+                                                        <td class="text-center">
+                                                            @if($formation->date_debut && $formation->date_fin)
+                                                                <div class="d-flex flex-column">
+                                                                    <small class="text-success">
+                                                                        <i class="ri-calendar-line me-1"></i>
+                                                                        {{ \Carbon\Carbon::parse($formation->date_debut)->format('d/m/Y') }}
+                                                                    </small>
+                                                                    <small class="text-danger">
+                                                                        <i class="ri-calendar-check-line me-1"></i>
+                                                                        {{ \Carbon\Carbon::parse($formation->date_fin)->format('d/m/Y') }}
+                                                                    </small>
+                                                                </div>
+                                                            @else
+                                                                <span class="text-muted">À définir</span>
+                                                            @endif
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="d-flex justify-content-center gap-2">
+                                                                <button class="btn btn-sm btn-icon btn-outline-info" title="Voir détails" data-bs-toggle="tooltip">
+                                                                    <i class="ri-eye-line"></i>
+                                                                </button>
+                                                                <button class="btn btn-sm btn-icon btn-outline-warning" title="Modifier" data-bs-toggle="tooltip">
+                                                                    <i class="ri-edit-line"></i>
+                                                                </button>
+                                                                <button class="btn btn-sm btn-icon btn-outline-danger" title="Supprimer" data-bs-toggle="tooltip">
+                                                                    <i class="ri-delete-bin-line"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @empty
+                                                    <tr>
+                                                        <td colspan="7" class="text-center py-5">
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <div class="avatar avatar-xl mb-3">
+                                                                    <span class="avatar-initial rounded-circle bg-label-secondary">
+                                                                        <i class="ri-book-open-line ri-2x"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <h6 class="mb-1">Aucune formation trouvée</h6>
+                                                                <p class="text-muted mb-3">Commencez par créer votre première formation</p>
+                                                                <button class="btn btn-primary" data-bs-target="#create_formations" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                                                    <i class="ri-add-line me-1"></i>
+                                                                    Créer une formation
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @endforelse
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                        @if($formations->isNotEmpty())
+                                        <div class="d-flex justify-content-between align-items-center mt-4 px-3">
+                                            <div class="text-muted">
+                                                <small>{{ $formations->count() }} formation(s) au total</small>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-primary" data-bs-target="#create_formations" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                                    <i class="ri-add-line me-1"></i>
+                                                    Nouvelle formation
+                                                </button>
+                                            </div>
+                                        </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!--/ Content wrapper -->
                 </div>
             </div>
@@ -1196,6 +1380,761 @@
         <script src="{{ asset('assets_2/js/app-user-view.js') }}"></script>
         <script src="{{ asset('assets_2/js/app-user-view-account.js') }}"></script>
         <script src="{{ asset('assets_2/js/app-user-list.js') }}"></script>
+
+        <style>
+            .modal-xl {
+                max-width: 90%;
+            }
+
+            .table-hover tbody tr:hover {
+                background-color: rgba(67, 89, 113, 0.05);
+            }
+
+            .avatar-wrapper {
+                flex-shrink: 0;
+            }
+
+            .badge {
+                font-size: 0.75em;
+            }
+
+            .btn-icon {
+                width: 32px;
+                height: 32px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            @media (max-width: 768px) {
+                .modal-xl {
+                    max-width: 95%;
+                }
+                
+                .table-responsive {
+                    font-size: 0.875rem;
+                }
+            }
+
+            .preview-container {
+                display: flex;
+                align-items: center;
+                padding: 15px;
+                background: #f8f9fa;
+                border-radius: 12px;
+                border: 1px solid #dee2e6;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                max-width: 300px;
+            }
+
+            .preview-media {
+                border-radius: 8px !important;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            #file-preview {
+                justify-content: center;
+            }
+
+            .video-thumbnail {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                overflow: hidden;
+                background: #000;
+            }
+
+            .play-overlay {
+                width: 16px;
+                height: 16px;
+                background: rgba(0,0,0,0.6);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .play-overlay i {
+                font-size: 10px;
+                margin-left: 1px;
+            }
+
+            .avatar-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .alert {
+                border-radius: 8px;
+                font-size: 0.875rem;
+            }
+        </style>
+
+        <script>
+            // Variables globales
+            let currentFormationId = null;
+
+            // Fonctions de prévisualisation pour création (gardées identiques)
+            function previewFile(input) {
+                const file = input.files[0];
+                const preview = document.getElementById('file-preview');
+                const imagePreview = document.getElementById('image-preview');
+                const videoPreview = document.getElementById('video-preview');
+                const videoSource = document.getElementById('video-source');
+                const errorDiv = document.getElementById('file-error');
+                
+                errorDiv.style.display = 'none';
+                preview.style.display = 'none';
+                
+                if (file) {
+                    const maxSize = 150 * 1024 * 1024;
+                    
+                    if (file.size > maxSize) {
+                        errorDiv.style.display = 'block';
+                        input.value = '';
+                        return;
+                    }
+                    
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        preview.style.display = 'block';
+                        
+                        if (file.type.startsWith('image/')) {
+                            imagePreview.src = e.target.result;
+                            imagePreview.style.display = 'block';
+                            videoPreview.style.display = 'none';
+                        } else if (file.type.startsWith('video/')) {
+                            videoSource.src = e.target.result;
+                            videoSource.type = file.type;
+                            videoPreview.load();
+                            videoPreview.style.display = 'block';
+                            imagePreview.style.display = 'none';
+                        }
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            function removeFile() {
+                document.getElementById('file').value = '';
+                document.getElementById('file-preview').style.display = 'none';
+                document.getElementById('file-error').style.display = 'none';
+                document.getElementById('image-preview').style.display = 'none';
+                document.getElementById('video-preview').style.display = 'none';
+            }
+
+            // Fonctions de prévisualisation pour modification
+            function previewEditFile(input) {
+                const file = input.files[0];
+                const preview = document.getElementById('edit-file-preview');
+                const imagePreview = document.getElementById('edit-image-preview');
+                const videoPreview = document.getElementById('edit-video-preview');
+                const videoSource = document.getElementById('edit-video-source');
+                const errorDiv = document.getElementById('edit-file-error');
+                const currentFile = document.getElementById('edit-current-file');
+                
+                errorDiv.style.display = 'none';
+                preview.style.display = 'none';
+                
+                if (file) {
+                    const maxSize = 150 * 1024 * 1024;
+                    
+                    if (file.size > maxSize) {
+                        errorDiv.style.display = 'block';
+                        input.value = '';
+                        return;
+                    }
+                    
+                    // Masquer le fichier actuel
+                    currentFile.style.display = 'none';
+                    
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        preview.style.display = 'block';
+                        
+                        if (file.type.startsWith('image/')) {
+                            imagePreview.src = e.target.result;
+                            imagePreview.style.display = 'block';
+                            videoPreview.style.display = 'none';
+                        } else if (file.type.startsWith('video/')) {
+                            videoSource.src = e.target.result;
+                            videoSource.type = file.type;
+                            videoPreview.load();
+                            videoPreview.style.display = 'block';
+                            imagePreview.style.display = 'none';
+                        }
+                    };
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    // Réafficher le fichier actuel si pas de nouveau fichier
+                    currentFile.style.display = 'block';
+                }
+            }
+
+            function removeEditFile() {
+                document.getElementById('edit_file').value = '';
+                document.getElementById('edit-file-preview').style.display = 'none';
+                document.getElementById('edit-file-error').style.display = 'none';
+                document.getElementById('edit-image-preview').style.display = 'none';
+                document.getElementById('edit-video-preview').style.display = 'none';
+                document.getElementById('edit-current-file').style.display = 'block';
+            }
+
+            // Gestion création (identique mais corrigée)
+            document.getElementById('formationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const form = this;
+                const formData = new FormData(form);
+                const submitBtn = document.getElementById('submitBtn');
+                const spinner = document.getElementById('spinner');
+                
+                spinner.style.display = 'inline-block';
+                submitBtn.disabled = true;
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showAlert('success', data.message || 'Formation créée avec succès !');
+                        
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('create_formations'));
+                        modal.hide();
+                        
+                        form.reset();
+                        removeFile();
+                        
+                        // Corriger l'ajout à la liste
+                        addFormationToList(data.data);
+                        
+                    } else {
+                        showAlert('error', data.message || 'Une erreur est survenue.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    showAlert('error', `Erreur: ${error.message}`);
+                })
+                .finally(() => {
+                    spinner.style.display = 'none';
+                    submitBtn.disabled = false;
+                });
+            });
+
+            // Gestion modification
+            document.getElementById('editFormationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const form = this;
+                const formData = new FormData(form);
+                const submitBtn = document.getElementById('editSubmitBtn');
+                const spinner = document.getElementById('editSpinner');
+                const formationId = document.getElementById('edit_formation_id').value;
+                
+                spinner.style.display = 'inline-block';
+                submitBtn.disabled = true;
+                
+                fetch(`/formations/${formationId}`, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showAlert('success', data.message || 'Formation modifiée avec succès !');
+                        
+                        // Mettre à jour la ligne dans le tableau
+                        updateFormationInList(data.data);
+                        
+                        // Retourner à la liste
+                        backToList();
+                        
+                    } else {
+                        showAlert('error', data.message || 'Une erreur est survenue.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    showAlert('error', `Erreur: ${error.message}`);
+                })
+                .finally(() => {
+                    spinner.style.display = 'none';
+                    submitBtn.disabled = false;
+                });
+            });
+
+            // Fonction pour ajouter formation à la liste (CORRIGÉE)
+            function addFormationToList(formation) {
+                const tableBody = document.querySelector('#formations_table tbody');
+                if (!tableBody) return;
+                
+                const newRow = document.createElement('tr');
+                newRow.id = `formation-row-${formation.id}`;
+                newRow.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-sm me-4">
+                                ${getFilePreview(formation)}
+                            </div>
+                            <div>
+                                <h6 class="mb-0">${formation.titre}</h6>
+                                <small class="text-muted">${formation.programme ? formation.programme.substring(0, 50) + '...' : ''}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-label-success">${formation.categorie?.nom || 'N/A'}</span></td>
+                    <td>${formation.cout ? formatPrice(formation.cout) + ' FCFA' : 'Gratuit'}</td>
+                    <td>${formation.lieu || 'Non défini'}</td>
+                    <td>
+                        ${formation.date_debut ? `<span class="text-success">${formatDate(formation.date_debut)}</span><br><span class="text-danger">${formatDate(formation.date_fin)}</span>` : 'Non défini'}
+                    </td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill" title="Modifier" onclick="editFormation(${formation.id})">
+                                <i class="ri-edit-box-line ri-20px"></i>
+                            </button>
+                            <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill" title="Supprimer" onclick="deleteFormation(${formation.id})">
+                                <i class="ri-delete-bin-7-line ri-20px"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                
+                tableBody.insertBefore(newRow, tableBody.firstChild);
+                
+                // Mettre à jour le compteur
+                updateCounter(1);
+                
+                // Animation
+                newRow.style.opacity = '0';
+                newRow.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    newRow.style.transition = 'all 0.3s ease';
+                    newRow.style.opacity = '1';
+                    newRow.style.transform = 'translateY(0)';
+                }, 100);
+            }
+
+            // Fonction pour mettre à jour formation dans la liste
+            function updateFormationInList(formation) {
+                const row = document.getElementById(`formation-row-${formation.id}`);
+                if (!row) return;
+                
+                row.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-sm me-4">
+                                ${getFilePreview(formation)}
+                            </div>
+                            <div>
+                                <h6 class="mb-0">${formation.titre}</h6>
+                                <small class="text-muted">${formation.programme ? formation.programme.substring(0, 50) + '...' : ''}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-label-success">${formation.categorie?.nom || 'N/A'}</span></td>
+                    <td>${formation.cout ? formatPrice(formation.cout) + ' FCFA' : 'Gratuit'}</td>
+                    <td>${formation.lieu || 'Non défini'}</td>
+                    <td>
+                        ${formation.date_debut ? `<span class="text-success">${formatDate(formation.date_debut)}</span><br><span class="text-danger">${formatDate(formation.date_fin)}</span>` : 'Non défini'}
+                    </td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill" title="Modifier" onclick="editFormation(${formation.id})">
+                                <i class="ri-edit-box-line ri-20px"></i>
+                            </button>
+                            <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill" title="Supprimer" onclick="deleteFormation(${formation.id})">
+                                <i class="ri-delete-bin-7-line ri-20px"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                
+                // Animation de mise à jour
+                row.style.backgroundColor = '#e8f5e8';
+                setTimeout(() => {
+                    row.style.transition = 'background-color 0.5s ease';
+                    row.style.backgroundColor = '';
+                }, 100);
+            }
+
+            // Fonction pour modifier formation
+            function editFormation(id) {
+                currentFormationId = id;
+                
+                // Fermer la modale de liste
+                const listModal = bootstrap.Modal.getInstance(document.getElementById('list_formations'));
+                if (listModal) listModal.hide();
+                
+                // Charger les données de la formation
+                fetch(`/formations/${id}/edit`, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const formation = data.formation;
+                        
+                        // Remplir le formulaire
+                        document.getElementById('edit_formation_id').value = formation.id;
+                        document.getElementById('edit_titre').value = formation.titre || '';
+                        document.getElementById('edit_categorie_id').value = formation.categorie_id || '';
+                        document.getElementById('edit_programme').value = formation.programme || '';
+                        document.getElementById('edit_cout').value = formation.cout || '';
+                        document.getElementById('edit_lieu').value = formation.lieu || '';
+                        document.getElementById('edit_date_debut').value = formation.date_debut || '';
+                        document.getElementById('edit_date_fin').value = formation.date_fin || '';
+                        document.getElementById('edit_prerequis').value = formation.prerequis || '';
+                        document.getElementById('edit_bonus').value = formation.bonus || '';
+                        
+                        // Afficher le fichier actuel
+                        const currentFileDiv = document.getElementById('edit-current-file');
+                        const currentPreview = document.getElementById('edit-current-preview');
+                        
+                        if (formation.file_path) {
+                            currentFileDiv.style.display = 'block';
+                            currentPreview.innerHTML = getFilePreview(formation, true);
+                        } else {
+                            currentFileDiv.style.display = 'none';
+                        }
+                        
+                        // Réinitialiser les prévisualisations
+                        document.getElementById('edit-file-preview').style.display = 'none';
+                        document.getElementById('edit-file-error').style.display = 'none';
+                        document.getElementById('edit_file').value = '';
+                        
+                        // Ouvrir la modale de modification
+                        const editModal = new bootstrap.Modal(document.getElementById('edit_formation'));
+                        editModal.show();
+                        
+                    } else {
+                        showAlert('error', 'Impossible de charger les données de la formation.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    showAlert('error', 'Erreur lors du chargement des données.');
+                });
+            }
+
+            // Fonction pour supprimer formation
+            function deleteFormation(id) {
+                currentFormationId = id;
+                
+                const deleteModal = new bootstrap.Modal(document.getElementById('delete_confirmation'));
+                deleteModal.show();
+            }
+
+            // Gestion confirmation suppression
+            document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+                if (!currentFormationId) return;
+                
+                const btn = this;
+                const spinner = document.getElementById('deleteSpinner');
+                
+                spinner.style.display = 'inline-block';
+                btn.disabled = true;
+                
+                fetch(`/formations/${currentFormationId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Supprimer la ligne du tableau
+                        const row = document.getElementById(`formation-row-${currentFormationId}`);
+                        if (row) {
+                            row.style.transition = 'all 0.3s ease';
+                            row.style.opacity = '0';
+                            row.style.transform = 'translateX(-100%)';
+                            setTimeout(() => row.remove(), 300);
+                        }
+                        
+                        // Mettre à jour le compteur
+                        updateCounter(-1);
+                        
+                        showAlert('success', data.message || 'Formation supprimée avec succès !');
+                        
+                        // Fermer modale suppression et retourner à la liste
+                        const deleteModal = bootstrap.Modal.getInstance(document.getElementById('delete_confirmation'));
+                        deleteModal.hide();
+                        
+                        // Retourner à la liste après un délai
+                        setTimeout(() => {
+                            const listModal = new bootstrap.Modal(document.getElementById('list_formations'));
+                            listModal.show();
+                        }, 500);
+                        
+                    } else {
+                        showAlert('error', data.message || 'Erreur lors de la suppression.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    showAlert('error', 'Erreur lors de la suppression.');
+                })
+                .finally(() => {
+                    spinner.style.display = 'none';
+                    btn.disabled = false;
+                });
+            });
+
+            // Fonction pour retourner à la liste
+            function backToList() {
+                const editModal = bootstrap.Modal.getInstance(document.getElementById('edit_formation'));
+                if (editModal) editModal.hide();
+                
+                setTimeout(() => {
+                    const listModal = new bootstrap.Modal(document.getElementById('list_formations'));
+                    listModal.show();
+                }, 300);
+            }
+
+            // Fonctions utilitaires
+            function getFilePreview(formation, large = false) {
+                if (!formation.file_path) {
+                    return `<div class="avatar-initial ${large ? 'w-100 h-auto' : 'rounded bg-label-secondary'}">
+                                <i class="ri-file-line"></i>
+                            </div>`;
+                }
+                
+                const imagePath = `/storage/${formation.file_path}`;
+                const sizeClass = large ? 'w-100 h-auto' : 'avatar-img rounded';
+                
+                if (formation.file_type === 'image') {
+                    return `<img src="${imagePath}" alt="Image" class="${sizeClass}">`;
+                } else {
+                    return `
+                        <div class="video-thumbnail position-relative ${large ? 'w-100' : ''}">
+                            <video class="${sizeClass}" style="object-fit: cover;">
+                                <source src="${imagePath}" type="video/mp4">
+                            </video>
+                            <div class="play-overlay position-absolute top-50 start-50 translate-middle">
+                                <i class="ri-play-fill text-white"></i>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            function formatPrice(price) {
+                return new Intl.NumberFormat('fr-FR').format(price);
+            }
+
+            function formatDate(dateString) {
+                return new Date(dateString).toLocaleDateString('fr-FR');
+            }
+
+            function updateCounter(change) {
+                const counter = document.querySelector('.formation-counter');
+                if (counter) {
+                    const currentCount = parseInt(counter.textContent.match(/\d+/)[0]);
+                    const newCount = currentCount + change;
+                    counter.textContent = `${newCount} formation(s) au total`;
+                }
+            }
+
+            // Fonction d'alerte (identique)
+            function showAlert(type, message) {
+                const existingAlerts = document.querySelectorAll('.custom-alert');
+                existingAlerts.forEach(alert => alert.remove());
+                
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed custom-alert`;
+                alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+                
+                alertDiv.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <i class="ri-${type === 'success' ? 'check-circle' : 'error-warning'}-line me-2 fs-5"></i>
+                        <div>${message}</div>
+                        <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+                    </div>
+                `;
+                
+                document.body.appendChild(alertDiv);
+                
+                setTimeout(() => {
+                    if (alertDiv.parentNode) {
+                        alertDiv.remove();
+                    }
+                }, 5000);
+            }
+        </script>
+
+        <!-- Modale de modification -->
+        <div class="modal fade" id="edit_formation" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="text-center mb-6">
+                            <h4 class="mb-2">Modifier la Formation</h4>
+                        </div>
+                        <form id="editFormationForm" method="POST" class="row g-4" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" id="edit_formation_id" name="formation_id">
+                            
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="text" id="edit_titre" name="titre" class="form-control" placeholder="Titre" required>
+                                    <label for="edit_titre">Titre</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <select name="categorie_id" id="edit_categorie_id" class="form-select" required>
+                                        @foreach ($categories as $categorie)
+                                            <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                        @endforeach
+                                    </select>
+                                    <label for="edit_categorie_id">Catégorie</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating form-floating-outline">
+                                    <textarea id="edit_programme" name="programme" class="form-control h-px-100" placeholder="Programme"></textarea>
+                                    <label for="edit_programme">Programme</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="number" id="edit_cout" name="cout" class="form-control" placeholder="Coût">
+                                    <label for="edit_cout">Coût</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="text" id="edit_lieu" name="lieu" class="form-control" placeholder="Lieu">
+                                    <label for="edit_lieu">Lieu</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="date" id="edit_date_debut" name="date_debut" class="form-control">
+                                    <label for="edit_date_debut">Date de début</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="date" id="edit_date_fin" name="date_fin" class="form-control">
+                                    <label for="edit_date_fin">Date de fin</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <textarea id="edit_prerequis" name="prerequis" class="form-control h-px-100" placeholder="Prérequis"></textarea>
+                                    <label for="edit_prerequis">Prérequis</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <textarea id="edit_bonus" name="bonus" class="form-control h-px-100" placeholder="Bonus"></textarea>
+                                    <label for="edit_bonus">Bonus</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="file" id="edit_file" name="file" class="form-control" accept="image/*,video/*" onchange="previewEditFile(this)">
+                                    <label for="edit_file">Nouveau Fichier (Image ou Vidéo) - Max 150 MB</label>
+                                </div>
+                                <div id="edit-file-error" class="mt-2" style="display: none;">
+                                    <div class="alert alert-danger d-flex align-items-center">
+                                        <i class="ri-error-warning-line me-2"></i>
+                                        <span>La taille du fichier ne doit pas dépasser 150 MB</span>
+                                    </div>
+                                </div>
+                                <div id="edit-current-file" class="mt-3" style="display: none;">
+                                    <p class="text-muted mb-2">Fichier actuel :</p>
+                                    <div id="edit-current-preview"></div>
+                                </div>
+                                <div id="edit-file-preview" class="mt-3 d-flex justify-content-center" style="display: none;">
+                                    <div class="preview-container">
+                                        <img id="edit-image-preview" class="preview-media" style="display: none; max-width: 200px; border-radius: 8px;">
+                                        <video id="edit-video-preview" class="preview-media" style="display: none; max-width: 200px; border-radius: 8px;" controls>
+                                            <source id="edit-video-source" src="" type="">
+                                        </video>
+                                        <button type="button" class="btn btn-sm btn-danger ms-2" onclick="removeEditFile()">
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn btn-outline-secondary" onclick="backToList()">
+                                    Retour à la liste
+                                </button>
+                                <button type="submit" class="btn btn-primary me-3" id="editSubmitBtn">
+                                    <span class="spinner-border spinner-border-sm me-2" style="display: none;" id="editSpinner"></span>
+                                    Modifier
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modale de confirmation de suppression -->
+        <div class="modal fade" id="delete_confirmation" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-simple">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="text-center mb-6">
+                            <div class="mb-4">
+                                <i class="ri-error-warning-line ri-96px text-danger"></i>
+                            </div>
+                            <h4 class="mb-2">Confirmer la suppression</h4>
+                            <p class="text-muted">Êtes-vous sûr de vouloir supprimer cette formation ?<br>
+                            <strong class="text-danger">Cette action est irréversible.</strong></p>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-outline-secondary me-3" data-bs-dismiss="modal">
+                                Annuler
+                            </button>
+                            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                                <span class="spinner-border spinner-border-sm me-2" style="display: none;" id="deleteSpinner"></span>
+                                Oui, supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 </body>
 

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('programme')->nullable();
             $table->decimal('cout', 10, 2)->nullable();
             $table->text('prerequis')->nullable();
+            $table->string('file_path')->nullable();
+            $table->enum('file_type', ['image', 'video'])->nullable();
             $table->text('bonus')->nullable();
             $table->string('lieu')->nullable();
             $table->date('date_debut')->nullable();
