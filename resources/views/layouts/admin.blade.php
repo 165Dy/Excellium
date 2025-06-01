@@ -1209,7 +1209,7 @@
                                                                 <div>
                                                                     <h6 class="mb-0">{{ $formation->titre }}</h6>
                                                                     @if($formation->programme)
-                                                                    <small class="text-muted">{{ Str::limit($formation->programme, 50) }}</small>
+                                                                    <small class="text-muted">{{ \Illuminate\Support\Str::limit($formation->programme, 50) }}</small>
                                                                     @endif
                                                                 </div>
                                                             </div>
