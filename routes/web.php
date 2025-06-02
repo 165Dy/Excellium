@@ -33,7 +33,6 @@ Route::get('/login', function () {return view('auth.login');})->name('login');
 
 Route::get('/register', function () {return view('auth.register');})->name('register');
 
-
 Route::get('/forgot-password', function () {return view('auth.forgot-password');})->name('forgot-password');
 
 Route::get('/reset-password', function () {return view('auth.reset-password');})->name('reset-password');
@@ -53,11 +52,8 @@ Route::prefix('clients')->group(function () {
 
     // FORMATIONS
     
-    Route::get('/Formations/audit',function () { return view('clients.Formations.Audit'); } )->name('Formations.audit');
-    Route::get('/Formations/Compta',function () { return view('clients.Formations.Compta'); } )->name('Formations.Compta');
-    Route::get('/Formations/Fiscalite',function () { return view('clients.Formations.Fiscalite'); } )->name('Formations.Fiscalite');
-    Route::get('/Formations/Gestion_entreprise',function () { return view('clients.Formations.Gestion_entreprise'); } )->name('Formations.Gestion_entreprise');
-    Route::get('/Formations/show',function () { return view('clients.Formations.showFormation'); } )->name('Formations.show');
+    Route::get('/Formations',[formationsController::class, 'index_public'])->name('Formations.index');
+    Route::get('/Formations/show/{id}',[formationsController::class, 'show_public'] )->name('Formations.show_public');
 
     // NOS SERVICES
     Route::get('/Nos_Services/audit&Conseil',function () { return view('clients.Nos_Services.Audit_Conseil'); } )->name('audit&Conseil');
