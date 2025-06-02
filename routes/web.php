@@ -102,7 +102,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/formations/store', [formationsController::class, 'store'])->name('formations.store');
     Route::get('/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
     Route::get('/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');
-    Route::post('/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
+    Route::match(['PUT', 'POST'], '/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
     Route::delete('/formations/{id}', [formationsController::class, 'destroy'])->name('formations.destroy');
 
     Route::get('/articles',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');

@@ -64,6 +64,60 @@
     <script src="{{ asset('assets_2/vendor/js/helpers.js') }}"></script>
     <script src="{{ asset('assets_2/js/config.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+    <style>
+        /* Animations pour SweetAlert */
+        .animated {
+            animation-duration: 0.5s;
+            animation-fill-mode: both;
+        }
+        
+        .fadeIn {
+            animation-name: fadeIn;
+        }
+        
+        .bounceIn {
+            animation-name: bounceIn;
+        }
+        
+        .shakeX {
+            animation-name: shakeX;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes shakeX {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        
+        /* Style personnalisé pour SweetAlert */
+        .swal2-popup {
+            border-radius: 15px !important;
+        }
+        
+        .swal2-html-container .card {
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -1176,129 +1230,97 @@
                                                         <th class="text-center">Actions</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    @forelse($formations as $formation)
-                                                    <tr>
-                                                        <td class="text-center">
-                                                            <span class="badge bg-label-primary">{{ $formation->id }}</span>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-wrapper me-3">
-                                                                    <div class="avatar avatar-sm">
-                                                                        @if($formation->file_path)
-                                                                            @if($formation->file_type === 'image')
-                                                                                <img src="{{ asset('storage/' . $formation->file_path) }}" alt="Image" class="avatar-img rounded-circle">
-                                                                            @elseif($formation->file_type === 'video')
-                                                                                <div class="video-thumbnail position-relative">
-                                                                                    <video width="40" height="40" class="rounded-circle" style="object-fit: cover;">
-                                                                                        <source src="{{ asset('storage/' . $formation->file_path) }}" type="video/mp4">
-                                                                                    </video>
-                                                                                    <div class="play-overlay position-absolute top-50 start-50 translate-middle">
-                                                                                        <i class="ri-play-fill text-white"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            @endif
-                                                                        @else
-                                                                            <span class="avatar-initial rounded-circle bg-label-info">
-                                                                                <i class="ri-book-open-line"></i>
-                                                                            </span>
-                                                                        @endif
+                                                <tbody class="table-border-bottom-0">
+                                                    @forelse ($formations as $formation)
+                                                        <tr data-formation-id="{{ $formation->id }}">
+                                                            <td class="text-center">
+                                                                <span class="badge bg-label-primary rounded-pill fs-6">{{ $loop->iteration }}</span>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="avatar avatar-sm me-3">
+                                                                        <div class="avatar-initial rounded bg-label-secondary">
+                                                                            <i class="ri-file-line"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h6 class="mb-0">{{ $formation->titre }}</h6>
+                                                                        <small class="text-muted">{{ $formation->programme ? str($formation->programme)->limit(50) : '' }}</small>
                                                                     </div>
                                                                 </div>
-                                                                <div>
-                                                                    <h6 class="mb-0">{{ $formation->titre }}</h6>
-                                                                    @if($formation->programme)
-                                                                    <small class="text-muted">{{ \Illuminate\Support\Str::limit($formation->programme, 50) }}</small>
-                                                                    @endif
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="badge bg-label-success">{{ $formation->categorie ? $formation->categorie->nom : 'N/A' }}</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="fw-medium text-primary">{{ $formation->cout ? number_format($formation->cout, 0, ',', ' ') . ' FCFA' : 'Gratuit' }}</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="text-muted">{{ $formation->lieu ?? 'Non spécifié' }}</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="text-success">
+                                                                    <small>{{ $formation->date_debut ? $formation->date_debut->format('d/m/Y') : 'N/A' }}</small>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-label-success">{{ $formation->categorie->nom ?? 'N/A' }}</span>
-                                                        </td>
-                                                        <td class="text-center">
-                                                            @if($formation->cout)
-                                                                <span class="fw-semibold text-primary">{{ number_format($formation->cout, 0, ',', ' ') }} FCFA</span>
-                                                            @else
-                                                                <span class="text-muted">Gratuit</span>
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            @if($formation->lieu)
-                                                                <div class="d-flex align-items-center">
-                                                                    <i class="ri-map-pin-line text-danger me-1"></i>
-                                                                    {{ $formation->lieu }}
+                                                                <div class="text-danger">
+                                                                    <small>{{ $formation->date_fin ? $formation->date_fin->format('d/m/Y') : 'N/A' }}</small>
                                                                 </div>
-                                                            @else
-                                                                <span class="text-muted">Non défini</span>
-                                                            @endif
-                                                        </td>
-                                                        <td class="text-center">
-                                                            @if($formation->date_debut && $formation->date_fin)
-                                                                <div class="d-flex flex-column">
-                                                                    <small class="text-success">
-                                                                        <i class="ri-calendar-line me-1"></i>
-                                                                        {{ \Carbon\Carbon::parse($formation->date_debut)->format('d/m/Y') }}
-                                                                    </small>
-                                                                    <small class="text-danger">
-                                                                        <i class="ri-calendar-check-line me-1"></i>
-                                                                        {{ \Carbon\Carbon::parse($formation->date_fin)->format('d/m/Y') }}
-                                                                    </small>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="d-flex justify-content-center gap-2">
+                                                                    <button class="btn btn-sm btn-icon btn-outline-warning" 
+                                                                            title="Modifier" 
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-formation-id="{{ $formation->id }}"
+                                                                            onclick="editFormation({{ $formation->id }})">
+                                                                        <i class="ri-edit-line"></i>
+                                                                    </button>
+                                                                    <button class="btn btn-sm btn-icon btn-outline-danger" 
+                                                                            title="Supprimer" 
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-formation-id="{{ $formation->id }}"
+                                                                            data-formation-title="{{ $formation->titre }}"
+                                                                            onclick="confirmDelete({{ $formation->id }}, '{{ addslashes($formation->titre) }}')">
+                                                                        <i class="ri-delete-bin-line"></i>
+                                                                    </button>
                                                                 </div>
-                                                            @else
-                                                                <span class="text-muted">À définir</span>
-                                                            @endif
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <div class="d-flex justify-content-center gap-2">
-                                                                <button class="btn btn-sm btn-icon btn-outline-info" title="Voir détails" data-bs-toggle="tooltip">
-                                                                    <i class="ri-eye-line"></i>
-                                                                </button>
-                                                                <button class="btn btn-sm btn-icon btn-outline-warning" title="Modifier" data-bs-toggle="tooltip">
-                                                                    <i class="ri-edit-line"></i>
-                                                                </button>
-                                                                <button class="btn btn-sm btn-icon btn-outline-danger" title="Supprimer" data-bs-toggle="tooltip">
-                                                                    <i class="ri-delete-bin-line"></i>
-                                                                </button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                            </td>
+                                                        </tr>
                                                     @empty
-                                                    <tr>
-                                                        <td colspan="7" class="text-center py-5">
-                                                            <div class="d-flex flex-column align-items-center">
-                                                                <div class="avatar avatar-xl mb-3">
-                                                                    <span class="avatar-initial rounded-circle bg-label-secondary">
-                                                                        <i class="ri-book-open-line ri-2x"></i>
-                                                                    </span>
+                                                        <tr>
+                                                            <td colspan="7" class="text-center py-5">
+                                                                <div class="d-flex flex-column align-items-center">
+                                                                    <div class="avatar avatar-xl mb-3">
+                                                                        <span class="avatar-initial rounded-circle bg-label-secondary">
+                                                                            <i class="ri-book-open-line ri-2x"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h6 class="mb-1">Aucune formation trouvée</h6>
+                                                                    <p class="text-muted mb-3">Commencez par créer votre première formation</p>
+                                                                    <button class="btn btn-primary" data-bs-target="#create_formations" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                                                        <i class="ri-add-line me-1"></i>
+                                                                        Créer une formation
+                                                                    </button>
                                                                 </div>
-                                                                <h6 class="mb-1">Aucune formation trouvée</h6>
-                                                                <p class="text-muted mb-3">Commencez par créer votre première formation</p>
-                                                                <button class="btn btn-primary" data-bs-target="#create_formations" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                                                    <i class="ri-add-line me-1"></i>
-                                                                    Créer une formation
-                                                                </button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                            </td>
+                                                        </tr>
                                                     @endforelse
                                                 </tbody>
                                             </table>
                                         </div>
                                         
                                         @if($formations->isNotEmpty())
-                                        <div class="d-flex justify-content-between align-items-center mt-4 px-3">
-                                            <div class="text-muted">
-                                                <small>{{ $formations->count() }} formation(s) au total</small>
+                                            <div class="d-flex justify-content-between align-items-center mt-4 px-3">
+                                                <div class="text-muted">
+                                                    <small>{{ $formations->count() }} formation(s) au total</small>
+                                                </div>
+                                                <div>
+                                                    <button class="btn btn-primary" data-bs-target="#create_formations" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                                        <i class="ri-add-line me-1"></i>
+                                                        Nouvelle formation
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <button class="btn btn-primary" data-bs-target="#create_formations" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                                    <i class="ri-add-line me-1"></i>
-                                                    Nouvelle formation
-                                                </button>
-                                            </div>
-                                        </div>
                                         @endif
                                     </div>
                                 </div>
@@ -1475,7 +1497,7 @@
             // Variables globales
             let currentFormationId = null;
 
-            // Fonctions de prévisualisation pour création (gardées identiques)
+            // Fonctions de prévisualisation (gardées identiques)
             function previewFile(input) {
                 const file = input.files[0];
                 const preview = document.getElementById('file-preview');
@@ -1580,137 +1602,571 @@
                 document.getElementById('edit_file').value = '';
                 document.getElementById('edit-file-preview').style.display = 'none';
                 document.getElementById('edit-file-error').style.display = 'none';
-                document.getElementById('edit-image-preview').style.display = 'none';
-                document.getElementById('edit-video-preview').style.display = 'none';
                 document.getElementById('edit-current-file').style.display = 'block';
             }
 
-            // Gestion création (identique mais corrigée)
-            document.getElementById('formationForm').addEventListener('submit', function(e) {
-                e.preventDefault();
+            // Fonction pour éditer une formation - MISE À JOUR
+            function editFormation(formationId) {
+                console.log('editFormation appelée avec ID:', formationId);
                 
-                const form = this;
-                const formData = new FormData(form);
-                const submitBtn = document.getElementById('submitBtn');
-                const spinner = document.getElementById('spinner');
+                // Masquer la modale de liste
+                const listModal = bootstrap.Modal.getInstance(document.getElementById('list_formations'));
+                if (listModal) {
+                    listModal.hide();
+                }
                 
-                spinner.style.display = 'inline-block';
-                submitBtn.disabled = true;
+                // Charger les données de la formation
+                fetch(`/admin/formations/${formationId}/edit`)
+                    .then(response => {
+                        console.log('Response status pour edit:', response.status);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Données de formation reçues:', data);
+                        
+                        if (data.success) {
+                            const formation = data.formation;
+                            
+                            console.log('Formation extraite:', formation);
+                            console.log('Formation ID:', formation.id);
+                            
+                            // Initialiser les contraintes de dates AVANT de remplir
+                            initializeDateConstraints();
+                            
+                            // Remplir le formulaire d'édition
+                            document.getElementById('edit_formation_id').value = formation.id;
+                            document.getElementById('edit_titre').value = formation.titre || '';
+                            document.getElementById('edit_categorie_id').value = formation.categorie_id || '';
+                            document.getElementById('edit_programme').value = formation.programme || '';
+                            document.getElementById('edit_cout').value = formation.cout || '';
+                            document.getElementById('edit_prerequis').value = formation.prerequis || '';
+                            document.getElementById('edit_bonus').value = formation.bonus || '';
+                            document.getElementById('edit_lieu').value = formation.lieu || '';
+                            
+                            // Formater les dates pour les inputs
+                            if (formation.date_debut) {
+                                const dateDebut = new Date(formation.date_debut);
+                                document.getElementById('edit_date_debut').value = dateDebut.toISOString().split('T')[0];
+                            }
+                            
+                            if (formation.date_fin) {
+                                const dateFin = new Date(formation.date_fin);
+                                document.getElementById('edit_date_fin').value = dateFin.toISOString().split('T')[0];
+                            }
+                            
+                            // Mettre à jour les contraintes après avoir rempli les dates
+                            updateDateConstraints();
+                            
+                            // Afficher la prévisualisation du fichier existant
+                            const editPreview = document.getElementById('edit-file-preview');
+                            const editImagePreview = document.getElementById('edit-image-preview');
+                            const editVideoPreview = document.getElementById('edit-video-preview');
+                            const editVideoSource = document.getElementById('edit-video-source');
+                            
+                            if (formation.file_path) {
+                                editPreview.style.display = 'block';
+                                const filePath = `/storage/${formation.file_path}`;
+                                
+                                if (formation.file_type === 'image') {
+                                    editImagePreview.src = filePath;
+                                    editImagePreview.style.display = 'block';
+                                    editVideoPreview.style.display = 'none';
+                                } else if (formation.file_type === 'video') {
+                                    editVideoSource.src = filePath;
+                                    editVideoSource.type = 'video/mp4';
+                                    editVideoPreview.load();
+                                    editVideoPreview.style.display = 'block';
+                                    editImagePreview.style.display = 'none';
+                                }
+                            } else {
+                                editPreview.style.display = 'none';
+                            }
+                            
+                            // Afficher la modale d'édition
+                            console.log('Ouverture de la modale d\'édition...');
+                            const editModal = new bootstrap.Modal(document.getElementById('edit_formation'));
+                            editModal.show();
+                            
+                            console.log('Modale d\'édition ouverte ✅');
+                            
+                        } else {
+                            console.error('Erreur lors du chargement:', data.message);
+                            
+                            if (typeof Swal !== 'undefined') {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    text: data.message || 'Impossible de charger les données de la formation'
+                                });
+                            } else {
+                                alert('Erreur: ' + (data.message || 'Impossible de charger les données'));
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors du chargement de la formation:', error);
+                        
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur de connexion',
+                                text: 'Impossible de charger les données de la formation'
+                            });
+                        } else {
+                            alert('Erreur de connexion');
+                        }
+                    });
+            }
+
+            // Fonction pour confirmer la suppression
+            function confirmDelete(formationId, formationTitle) {
+                console.log('Suppression formation ID:', formationId, 'Titre:', formationTitle);
                 
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                // Stocker l'ID pour utilisation ultérieure
+                currentFormationId = formationId;
+                
+                // Afficher le nom de la formation
+                document.getElementById('formation-to-delete').textContent = `"${formationTitle}"`;
+                
+                // Masquer la modale de liste
+                const listModal = bootstrap.Modal.getInstance(document.getElementById('list_formations'));
+                if (listModal) {
+                    listModal.hide();
+                }
+                
+                // Afficher la modale de confirmation
+                const deleteModal = new bootstrap.Modal(document.getElementById('delete_confirmation'));
+                deleteModal.show();
+            }
+
+            // Fonction pour retourner à la liste
+            function backToList() {
+                // Fermer toutes les modales ouvertes
+                const modals = ['edit_formation', 'delete_confirmation'];
+                modals.forEach(modalId => {
+                    const modalElement = document.getElementById(modalId);
+                    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                    if (modalInstance) {
+                        modalInstance.hide();
                     }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        showAlert('success', data.message || 'Formation créée avec succès !');
-                        
-                        const modal = bootstrap.Modal.getInstance(document.getElementById('create_formations'));
-                        modal.hide();
-                        
-                        form.reset();
-                        removeFile();
-                        
-                        // Corriger l'ajout à la liste
-                        addFormationToList(data.data);
-                        
-                    } else {
-                        showAlert('error', data.message || 'Une erreur est survenue.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    showAlert('error', `Erreur: ${error.message}`);
-                })
-                .finally(() => {
-                    spinner.style.display = 'none';
-                    submitBtn.disabled = false;
                 });
+                
+                // Réafficher la modale de liste après un délai
+                setTimeout(() => {
+                    const listModal = new bootstrap.Modal(document.getElementById('list_formations'));
+                    listModal.show();
+                }, 500);
+            }
+
+            // Fonction pour afficher le fichier actuel avec plus d'informations
+            function showCurrentFile(formation) {
+                const currentFileDiv = document.getElementById('edit-current-file');
+                const currentPreview = document.getElementById('edit-current-preview');
+                
+                currentFileDiv.style.display = 'none';
+                currentPreview.innerHTML = '';
+                
+                if (formation.file_path) {
+                    const imagePath = `/storage/${formation.file_path}`;
+                    const fileName = formation.file_path.split('/').pop(); // Extraire le nom du fichier
+                    
+                    let previewHTML = '';
+                    
+                    if (formation.file_type === 'image') {
+                        previewHTML = `
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="${imagePath}" alt="Image actuelle" style="max-width: 150px; max-height: 150px; border-radius: 8px; object-fit: cover;">
+                                <div>
+                                    <h6 class="mb-1">Fichier actuel :</h6>
+                                    <p class="text-muted mb-1"><strong>${fileName}</strong></p>
+                                    <p class="text-muted mb-0"><small>Type: Image</small></p>
+                                    <small class="text-info">Sélectionnez un nouveau fichier pour le remplacer</small>
+                                </div>
+                            </div>
+                        `;
+                    } else if (formation.file_type === 'video') {
+                        previewHTML = `
+                            <div class="d-flex align-items-center gap-3">
+                                <video style="max-width: 150px; max-height: 150px; border-radius: 8px; object-fit: cover;" controls>
+                                    <source src="${imagePath}" type="video/mp4">
+                                    Votre navigateur ne supporte pas la vidéo.
+                                </video>
+                                <div>
+                                    <h6 class="mb-1">Fichier actuel :</h6>
+                                    <p class="text-muted mb-1"><strong>${fileName}</strong></p>
+                                    <p class="text-muted mb-0"><small>Type: Vidéo</small></p>
+                                    <small class="text-info">Sélectionnez un nouveau fichier pour le remplacer</small>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    currentPreview.innerHTML = previewHTML;
+                    currentFileDiv.style.display = 'block';
+                    
+                    console.log('Fichier affiché:', fileName, 'Type:', formation.file_type);
+                } else {
+                    console.log('Aucun fichier pour cette formation');
+                }
+            }
+
+            // Événement pour la soumission du formulaire d'édition - CORRIGÉ
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('SweetAlert disponible:', typeof Swal !== 'undefined');
+                
+                const editForm = document.getElementById('editFormationForm');
+                if (editForm) {
+                    editForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        console.log('Formulaire soumis');
+                        
+                        const formationId = document.getElementById('edit_formation_id').value;
+                        const formData = new FormData(this);
+                        
+                        // AJOUTER LA MÉTHODE PUT via method spoofing Laravel
+                        formData.append('_method', 'PUT');
+                        
+                        console.log('Formation ID:', formationId);
+                        console.log('Envoi requête POST avec _method=PUT vers:', `/admin/formations/${formationId}`);
+                        
+                        // Debug : Afficher toutes les données envoyées
+                        console.log('Données FormData:');
+                        for (let [key, value] of formData.entries()) {
+                            console.log(`${key}:`, value);
+                        }
+                        
+                        // Vérifier si SweetAlert fonctionne
+                        if (typeof Swal === 'undefined') {
+                            alert('SweetAlert non disponible');
+                            return;
+                        }
+                        
+                        // Afficher le loader SweetAlert
+                        Swal.fire({
+                            title: 'Modification en cours...',
+                            html: `
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="spinner-border text-primary mb-3" role="status">
+                                        <span class="visually-hidden">Chargement...</span>
+                                    </div>
+                                    <p class="mb-0">Veuillez patienter pendant la modification</p>
+                                </div>
+                            `,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            showConfirmButton: false
+                        });
+                        
+                        // Utiliser POST avec _method=PUT (Method Spoofing Laravel)
+                        fetch(`/admin/formations/${formationId}`, {
+                            method: 'POST',  // Utiliser POST
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                'Accept': 'application/json'
+                                // Ne pas ajouter Content-Type, laissez le navigateur le faire pour FormData
+                            },
+                            body: formData  // FormData avec _method=PUT
+                        })
+                        .then(response => {
+                            console.log('Response status:', response.status);
+                            console.log('Response headers:', response.headers.get('content-type'));
+                            
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            
+                            // Vérifier si la réponse est du JSON
+                            const contentType = response.headers.get('content-type');
+                            if (!contentType || !contentType.includes('application/json')) {
+                                throw new Error('La réponse n\'est pas du JSON');
+                            }
+                            
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Response data:', data);
+                            
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Modification réussie !',
+                                    text: data.message,
+                                    confirmButtonText: 'Retourner à la liste',
+                                    confirmButtonColor: '#28a745'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // Fermer la modale d'édition
+                                        const editModal = bootstrap.Modal.getInstance(document.getElementById('edit_formation'));
+                                        if (editModal) {
+                                            editModal.hide();
+                                        }
+                                        
+                                        // Retourner à la liste
+                                        setTimeout(() => {
+                                            backToList();
+                                        }, 500);
+                                    }
+                                });
+                            } else {
+                                let errorMessage = data.message || 'Erreur lors de la modification';
+                                
+                                if (data.errors) {
+                                    errorMessage += '\n\nDétails:\n';
+                                    for (const field in data.errors) {
+                                        errorMessage += `• ${data.errors[field].join(', ')}\n`;
+                                    }
+                                }
+                                
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Échec de la modification',
+                                    text: errorMessage,
+                                    confirmButtonText: 'OK'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erreur complète:', error);
+                            
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur de connexion',
+                                html: `
+                                    <p>Problème de connexion ou de format de réponse</p>
+                                    <small class="text-muted">Détails: ${error.message}</small>
+                                `,
+                                confirmButtonText: 'OK'
+                            });
+                        });
+                    });
+                }
             });
 
-            // Gestion modification
-            document.getElementById('editFormationForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const form = this;
-                const formData = new FormData(form);
-                const submitBtn = document.getElementById('editSubmitBtn');
-                const spinner = document.getElementById('editSpinner');
-                const formationId = document.getElementById('edit_formation_id').value;
-                
-                spinner.style.display = 'inline-block';
-                submitBtn.disabled = true;
-                
-                fetch(`/formations/${formationId}`, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        showAlert('success', data.message || 'Formation modifiée avec succès !');
+            // Événement pour la confirmation de suppression - CORRIGER
+            document.addEventListener('DOMContentLoaded', function() {
+                // Vérifier que l'élément existe
+                const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+                if (confirmDeleteBtn) {
+                    console.log('Bouton de suppression trouvé ✅');
+                    
+                    confirmDeleteBtn.addEventListener('click', function() {
+                        console.log('Bouton suppression cliqué, Formation ID:', currentFormationId);
                         
-                        // Mettre à jour la ligne dans le tableau
-                        updateFormationInList(data.data);
+                        if (!currentFormationId) {
+                            if (typeof Swal !== 'undefined') {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    text: 'Aucune formation sélectionnée'
+                                });
+                            } else {
+                                alert('Aucune formation sélectionnée');
+                            }
+                            return;
+                        }
                         
-                        // Retourner à la liste
-                        backToList();
+                        const spinner = document.getElementById('deleteSpinner');
                         
-                    } else {
-                        showAlert('error', data.message || 'Une erreur est survenue.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    showAlert('error', `Erreur: ${error.message}`);
-                })
-                .finally(() => {
-                    spinner.style.display = 'none';
-                    submitBtn.disabled = false;
-                });
+                        // Afficher le spinner
+                        this.disabled = true;
+                        spinner.style.display = 'inline-block';
+                        
+                        console.log('Envoi requête DELETE vers:', `/admin/formations/${currentFormationId}`);
+                        
+                        fetch(`/admin/formations/${currentFormationId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => {
+                            console.log('Response status:', response.status);
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Response data:', data);
+                            
+                            if (data.success) {
+                                if (typeof Swal !== 'undefined') {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Suppression réussie !',
+                                        text: data.message,
+                                        confirmButtonText: 'OK'
+                                    });
+                                } else {
+                                    alert(data.message);
+                                }
+                                
+                                // Supprimer la ligne du tableau
+                                removeFormationFromTable(currentFormationId);
+                                
+                                // Fermer la modale de confirmation
+                                const deleteModal = bootstrap.Modal.getInstance(document.getElementById('delete_confirmation'));
+                                if (deleteModal) {
+                                    deleteModal.hide();
+                                }
+                                
+                                // Retourner à la liste
+                                setTimeout(() => {
+                                    backToList();
+                                }, 1000);
+                                
+                            } else {
+                                if (typeof Swal !== 'undefined') {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        text: data.message || 'Erreur lors de la suppression'
+                                    });
+                                } else {
+                                    alert(data.message || 'Erreur lors de la suppression');
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erreur suppression:', error);
+                            
+                            if (typeof Swal !== 'undefined') {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur de connexion',
+                                    text: 'Erreur de connexion lors de la suppression'
+                                });
+                            } else {
+                                alert('Erreur de connexion lors de la suppression');
+                            }
+                        })
+                        .finally(() => {
+                            // Masquer le spinner
+                            this.disabled = false;
+                            spinner.style.display = 'none';
+                            currentFormationId = null;
+                        });
+                    });
+                } else {
+                    console.error('Bouton confirmDeleteBtn non trouvé ❌');
+                }
             });
 
-            // Fonction pour ajouter formation à la liste (CORRIGÉE)
-            function addFormationToList(formation) {
-                const tableBody = document.querySelector('#formations_table tbody');
+            // Fonction pour mettre à jour une formation dans le tableau
+            function updateFormationInTable(formation) {
+                const row = document.querySelector(`tr[data-formation-id="${formation.id}"]`);
+                if (row) {
+                    // Mettre à jour le contenu de la ligne
+                    row.innerHTML = `
+                        <td class="text-center">
+                            <span class="badge bg-label-primary rounded-pill fs-6">${row.querySelector('.badge').textContent}</span>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="avatar avatar-sm me-3">
+                                    <div class="avatar-initial rounded bg-label-secondary">
+                                        <i class="ri-file-line"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">${formation.titre}</h6>
+                                    <small class="text-muted">${formation.programme ? formation.programme.substring(0, 50) + (formation.programme.length > 50 ? '...' : '') : ''}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span class="badge bg-label-success">${formation.categorie ? formation.categorie.nom : 'N/A'}</span>
+                        </td>
+                        <td class="text-center">
+                            <span class="fw-medium text-primary">${formation.cout ? formatPrice(formation.cout) + ' FCFA' : 'Gratuit'}</span>
+                        </td>
+                        <td class="text-center">
+                            <span class="text-muted">${formation.lieu || 'Non spécifié'}</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="text-success">
+                                <small>${formation.date_debut ? formatDate(formation.date_debut) : 'N/A'}</small>
+                            </div>
+                            <div class="text-danger">
+                                <small>${formation.date_fin ? formatDate(formation.date_fin) : 'N/A'}</small>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center gap-2">
+                                <button class="btn btn-sm btn-icon btn-outline-warning" 
+                                        title="Modifier" 
+                                        data-bs-toggle="tooltip"
+                                        onclick="editFormation(${formation.id})">
+                                    <i class="ri-edit-line"></i>
+                                </button>
+                                <button class="btn btn-sm btn-icon btn-outline-danger" 
+                                        title="Supprimer" 
+                                        data-bs-toggle="tooltip"
+                                        data-formation-title="${formation.titre}"
+                                        onclick="confirmDelete(${formation.id}, '${formation.titre.replace(/'/g, "\\'")}')">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    
+                    // Animation de mise à jour
+                    row.style.backgroundColor = '#e8f5e8';
+                    row.style.transition = 'background-color 0.5s ease';
+                    
+                    setTimeout(() => {
+                        row.style.backgroundColor = '';
+                    }, 2000);
+                    
+                    console.log('Formation mise à jour dans le tableau:', formation.titre);
+                }
+            }
+
+            // ... existing code ...
+
+            // Fonctions utilitaires pour manipuler le tableau
+            function addFormationToTable(formation) {
+                const tableBody = document.querySelector('#list_formations tbody');
                 if (!tableBody) return;
                 
                 const newRow = document.createElement('tr');
-                newRow.id = `formation-row-${formation.id}`;
+                newRow.setAttribute('data-formation-id', formation.id);
+                
                 newRow.innerHTML = `
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-sm me-4">
+                    <td class="text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="avatar avatar-md me-3">
                                 ${getFilePreview(formation)}
                             </div>
                             <div>
                                 <h6 class="mb-0">${formation.titre}</h6>
-                                <small class="text-muted">${formation.programme ? formation.programme.substring(0, 50) + '...' : ''}</small>
+                                ${formation.programme ? `<small class="text-muted">${str(formation.programme).limit(50)}</small>` : ''}
                             </div>
                         </div>
                     </td>
-                    <td><span class="badge bg-label-success">${formation.categorie?.nom || 'N/A'}</span></td>
-                    <td>${formation.cout ? formatPrice(formation.cout) + ' FCFA' : 'Gratuit'}</td>
-                    <td>${formation.lieu || 'Non défini'}</td>
-                    <td>
-                        ${formation.date_debut ? `<span class="text-success">${formatDate(formation.date_debut)}</span><br><span class="text-danger">${formatDate(formation.date_fin)}</span>` : 'Non défini'}
+                    <td class="text-center">
+                        <span class="badge bg-label-success">${formation.categorie ? formation.categorie.nom : 'N/A'}</span>
                     </td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill" title="Modifier" onclick="editFormation(${formation.id})">
-                                <i class="ri-edit-box-line ri-20px"></i>
+                    <td class="text-center">
+                        <span class="fw-medium text-primary">${formation.cout ? formatPrice(formation.cout) + ' FCFA' : 'Gratuit'}</span>
+                    </td>
+                    <td class="text-center">
+                        <span class="text-muted">${formation.lieu || 'Non spécifié'}</span>
+                    </td>
+                    <td class="text-center">
+                        <div class="text-success">
+                            <small>${formation.date_debut ? formatDate(formation.date_debut) : 'N/A'}</small>
+                        </div>
+                        <div class="text-danger">
+                            <small>${formation.date_fin ? formatDate(formation.date_fin) : 'N/A'}</small>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-2">
+                            <button class="btn btn-sm btn-icon btn-outline-warning" title="Modifier" onclick="editFormation(${formation.id})">
+                                <i class="ri-edit-line"></i>
                             </button>
-                            <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill" title="Supprimer" onclick="deleteFormation(${formation.id})">
-                                <i class="ri-delete-bin-7-line ri-20px"></i>
+                            <button class="btn btn-sm btn-icon btn-outline-danger" title="Supprimer" onclick="confirmDelete(${formation.id}, '${formation.titre}')">
+                                <i class="ri-delete-bin-line"></i>
                             </button>
                         </div>
                     </td>
@@ -1718,10 +2174,7 @@
                 
                 tableBody.insertBefore(newRow, tableBody.firstChild);
                 
-                // Mettre à jour le compteur
-                updateCounter(1);
-                
-                // Animation
+                // Animation d'apparition
                 newRow.style.opacity = '0';
                 newRow.style.transform = 'translateY(-10px)';
                 setTimeout(() => {
@@ -1731,189 +2184,42 @@
                 }, 100);
             }
 
-            // Fonction pour mettre à jour formation dans la liste
-            function updateFormationInList(formation) {
-                const row = document.getElementById(`formation-row-${formation.id}`);
-                if (!row) return;
-                
-                row.innerHTML = `
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-sm me-4">
-                                ${getFilePreview(formation)}
-                            </div>
-                            <div>
-                                <h6 class="mb-0">${formation.titre}</h6>
-                                <small class="text-muted">${formation.programme ? formation.programme.substring(0, 50) + '...' : ''}</small>
-                            </div>
-                        </div>
-                    </td>
-                    <td><span class="badge bg-label-success">${formation.categorie?.nom || 'N/A'}</span></td>
-                    <td>${formation.cout ? formatPrice(formation.cout) + ' FCFA' : 'Gratuit'}</td>
-                    <td>${formation.lieu || 'Non défini'}</td>
-                    <td>
-                        ${formation.date_debut ? `<span class="text-success">${formatDate(formation.date_debut)}</span><br><span class="text-danger">${formatDate(formation.date_fin)}</span>` : 'Non défini'}
-                    </td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill" title="Modifier" onclick="editFormation(${formation.id})">
-                                <i class="ri-edit-box-line ri-20px"></i>
-                            </button>
-                            <button class="btn btn-sm btn-icon btn-text-secondary rounded-pill" title="Supprimer" onclick="deleteFormation(${formation.id})">
-                                <i class="ri-delete-bin-7-line ri-20px"></i>
-                            </button>
-                        </div>
-                    </td>
-                `;
-                
-                // Animation de mise à jour
-                row.style.backgroundColor = '#e8f5e8';
-                setTimeout(() => {
-                    row.style.transition = 'background-color 0.5s ease';
-                    row.style.backgroundColor = '';
-                }, 100);
-            }
-
-            // Fonction pour modifier formation
-            function editFormation(id) {
-                currentFormationId = id;
-                
-                // Fermer la modale de liste
-                const listModal = bootstrap.Modal.getInstance(document.getElementById('list_formations'));
-                if (listModal) listModal.hide();
-                
-                // Charger les données de la formation
-                fetch(`/formations/${id}/edit`, {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        const formation = data.formation;
+            // Fonction pour supprimer une formation du tableau
+            function removeFormationFromTable(formationId) {
+                const row = document.querySelector(`tr[data-formation-id="${formationId}"]`);
+                if (row) {
+                    // Animation de suppression
+                    row.style.backgroundColor = '#ffe6e6';
+                    row.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        row.style.opacity = '0';
+                        row.style.transform = 'translateX(-100%)';
                         
-                        // Remplir le formulaire
-                        document.getElementById('edit_formation_id').value = formation.id;
-                        document.getElementById('edit_titre').value = formation.titre || '';
-                        document.getElementById('edit_categorie_id').value = formation.categorie_id || '';
-                        document.getElementById('edit_programme').value = formation.programme || '';
-                        document.getElementById('edit_cout').value = formation.cout || '';
-                        document.getElementById('edit_lieu').value = formation.lieu || '';
-                        document.getElementById('edit_date_debut').value = formation.date_debut || '';
-                        document.getElementById('edit_date_fin').value = formation.date_fin || '';
-                        document.getElementById('edit_prerequis').value = formation.prerequis || '';
-                        document.getElementById('edit_bonus').value = formation.bonus || '';
-                        
-                        // Afficher le fichier actuel
-                        const currentFileDiv = document.getElementById('edit-current-file');
-                        const currentPreview = document.getElementById('edit-current-preview');
-                        
-                        if (formation.file_path) {
-                            currentFileDiv.style.display = 'block';
-                            currentPreview.innerHTML = getFilePreview(formation, true);
-                        } else {
-                            currentFileDiv.style.display = 'none';
-                        }
-                        
-                        // Réinitialiser les prévisualisations
-                        document.getElementById('edit-file-preview').style.display = 'none';
-                        document.getElementById('edit-file-error').style.display = 'none';
-                        document.getElementById('edit_file').value = '';
-                        
-                        // Ouvrir la modale de modification
-                        const editModal = new bootstrap.Modal(document.getElementById('edit_formation'));
-                        editModal.show();
-                        
-                    } else {
-                        showAlert('error', 'Impossible de charger les données de la formation.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    showAlert('error', 'Erreur lors du chargement des données.');
-                });
-            }
-
-            // Fonction pour supprimer formation
-            function deleteFormation(id) {
-                currentFormationId = id;
-                
-                const deleteModal = new bootstrap.Modal(document.getElementById('delete_confirmation'));
-                deleteModal.show();
-            }
-
-            // Gestion confirmation suppression
-            document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
-                if (!currentFormationId) return;
-                
-                const btn = this;
-                const spinner = document.getElementById('deleteSpinner');
-                
-                spinner.style.display = 'inline-block';
-                btn.disabled = true;
-                
-                fetch(`/formations/${currentFormationId}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Supprimer la ligne du tableau
-                        const row = document.getElementById(`formation-row-${currentFormationId}`);
-                        if (row) {
-                            row.style.transition = 'all 0.3s ease';
-                            row.style.opacity = '0';
-                            row.style.transform = 'translateX(-100%)';
-                            setTimeout(() => row.remove(), 300);
-                        }
-                        
-                        // Mettre à jour le compteur
-                        updateCounter(-1);
-                        
-                        showAlert('success', data.message || 'Formation supprimée avec succès !');
-                        
-                        // Fermer modale suppression et retourner à la liste
-                        const deleteModal = bootstrap.Modal.getInstance(document.getElementById('delete_confirmation'));
-                        deleteModal.hide();
-                        
-                        // Retourner à la liste après un délai
                         setTimeout(() => {
-                            const listModal = new bootstrap.Modal(document.getElementById('list_formations'));
-                            listModal.show();
+                            row.remove();
+                            
+                            // Réorganiser les numéros de ligne
+                            reorderTableNumbers();
                         }, 500);
-                        
-                    } else {
-                        showAlert('error', data.message || 'Erreur lors de la suppression.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    showAlert('error', 'Erreur lors de la suppression.');
-                })
-                .finally(() => {
-                    spinner.style.display = 'none';
-                    btn.disabled = false;
-                });
-            });
-
-            // Fonction pour retourner à la liste
-            function backToList() {
-                const editModal = bootstrap.Modal.getInstance(document.getElementById('edit_formation'));
-                if (editModal) editModal.hide();
-                
-                setTimeout(() => {
-                    const listModal = new bootstrap.Modal(document.getElementById('list_formations'));
-                    listModal.show();
-                }, 300);
+                    }, 500);
+                }
             }
 
-            // Fonctions utilitaires
+            // Fonction pour réorganiser les numéros de ligne
+            function reorderTableNumbers() {
+                const rows = document.querySelectorAll('tbody tr[data-formation-id]');
+                rows.forEach((row, index) => {
+                    const numberBadge = row.querySelector('.badge');
+                    if (numberBadge) {
+                        numberBadge.textContent = index + 1;
+                    }
+                });
+            }
+
+            // ... existing code ...
+
+            // Fonctions utilitaires (gardées identiques)
             function getFilePreview(formation, large = false) {
                 if (!formation.file_path) {
                     return `<div class="avatar-initial ${large ? 'w-100 h-auto' : 'rounded bg-label-secondary'}">
@@ -1957,7 +2263,7 @@
                 }
             }
 
-            // Fonction d'alerte (identique)
+            // Fonction d'alerte (gardée identique)
             function showAlert(type, message) {
                 const existingAlerts = document.querySelectorAll('.custom-alert');
                 existingAlerts.forEach(alert => alert.remove());
@@ -1982,123 +2288,734 @@
                     }
                 }, 5000);
             }
+
+            // Fonction pour supprimer le fichier d'édition
+            function removeEditFile() {
+                document.getElementById('edit_file').value = '';
+                document.getElementById('edit-file-preview').style.display = 'none';
+                document.getElementById('edit-image-preview').style.display = 'none';
+                document.getElementById('edit-video-preview').style.display = 'none';
+            }
+
+            // Test des modales au chargement
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('=== TEST DES MODALES ===');
+                
+                // Vérifier que les modales existent
+                const listModal = document.getElementById('list_formations');
+                const editModal = document.getElementById('edit_formation');
+                const deleteModal = document.getElementById('delete_confirmation');
+                
+                console.log('Modale liste:', listModal ? '✅ Trouvée' : '❌ Manquante');
+                console.log('Modale édition:', editModal ? '✅ Trouvée' : '❌ Manquante');
+                console.log('Modale suppression:', deleteModal ? '✅ Trouvée' : '❌ Manquante');
+                
+                // Vérifier Bootstrap
+                if (typeof bootstrap !== 'undefined') {
+                    console.log('Bootstrap: ✅ Chargé');
+                } else {
+                    console.error('Bootstrap: ❌ Non chargé');
+                }
+                
+                // Vérifier SweetAlert
+                if (typeof Swal !== 'undefined') {
+                    console.log('SweetAlert: ✅ Chargé');
+                } else {
+                    console.error('SweetAlert: ❌ Non chargé');
+                }
+                
+                console.log('=== FIN TEST ===');
+            });
+
+            // Test des éléments du formulaire d'édition
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('=== VÉRIFICATION FORMULAIRE ÉDITION ===');
+                
+                const elementsToCheck = [
+                    'edit_formation_id',
+                    'edit_titre', 
+                    'edit_categorie_id',
+                    'edit_programme',
+                    'edit_cout',
+                    'edit_prerequis',
+                    'edit_bonus',
+                    'edit_lieu',
+                    'edit_date_debut',
+                    'edit_date_fin',
+                    'edit_file'
+                ];
+                
+                elementsToCheck.forEach(id => {
+                    const element = document.getElementById(id);
+                    console.log(`${id}:`, element ? '✅ Trouvé' : '❌ Manquant');
+                });
+                
+                console.log('=== FIN VÉRIFICATION ===');
+            });
+
+            // Gestion des contraintes de dates
+            function initializeDateConstraints() {
+                const today = new Date().toISOString().split('T')[0];
+                
+                // La date de début ne peut pas être antérieure à aujourd'hui
+                const dateDebutInput = document.getElementById('edit_date_debut');
+                const dateFinInput = document.getElementById('edit_date_fin');
+                
+                if (dateDebutInput) {
+                    dateDebutInput.setAttribute('min', today);
+                    console.log('Date minimum pour début:', today);
+                }
+                
+                if (dateFinInput) {
+                    dateFinInput.setAttribute('min', today);
+                    console.log('Date minimum pour fin:', today);
+                }
+            }
+
+            // Mettre à jour les contraintes quand la date de début change
+            function updateDateConstraints() {
+                const dateDebutInput = document.getElementById('edit_date_debut');
+                const dateFinInput = document.getElementById('edit_date_fin');
+                
+                if (dateDebutInput && dateFinInput) {
+                    const dateDebut = dateDebutInput.value;
+                    
+                    if (dateDebut) {
+                        // La date de fin ne peut pas être antérieure à la date de début
+                        dateFinInput.setAttribute('min', dateDebut);
+                        console.log('Date minimum pour fin mise à jour:', dateDebut);
+                        
+                        // Vérifier si la date de fin actuelle est valide
+                        const dateFin = dateFinInput.value;
+                        if (dateFin && dateFin < dateDebut) {
+                            dateFinInput.value = '';
+                            
+                            if (typeof Swal !== 'undefined') {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Date invalide',
+                                    text: 'La date de fin doit être postérieure ou égale à la date de début',
+                                    timer: 3000
+                                });
+                            } else {
+                                alert('La date de fin doit être postérieure ou égale à la date de début');
+                            }
+                        }
+                    } else {
+                        // Remettre la contrainte par défaut (aujourd'hui)
+                        const today = new Date().toISOString().split('T')[0];
+                        dateFinInput.setAttribute('min', today);
+                    }
+                }
+            }
+
+            // Valider la date de fin
+            function validateDateFin() {
+                const dateDebutInput = document.getElementById('edit_date_debut');
+                const dateFinInput = document.getElementById('edit_date_fin');
+                
+                if (dateDebutInput && dateFinInput) {
+                    const dateDebut = dateDebutInput.value;
+                    const dateFin = dateFinInput.value;
+                    
+                    if (dateDebut && dateFin && dateFin < dateDebut) {
+                        dateFinInput.value = '';
+                        
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Date invalide',
+                                text: 'La date de fin doit être postérieure ou égale à la date de début',
+                                timer: 3000
+                            });
+                        } else {
+                            alert('La date de fin doit être postérieure ou égale à la date de début');
+                        }
+                    }
+                }
+            }
+
+            // Validation avant soumission
+            function validateDatesBeforeSubmit() {
+                const dateDebutInput = document.getElementById('edit_date_debut');
+                const dateFinInput = document.getElementById('edit_date_fin');
+                const today = new Date().toISOString().split('T')[0];
+                
+                if (dateDebutInput && dateDebutInput.value) {
+                    if (dateDebutInput.value < today) {
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Date invalide',
+                                text: 'La date de début ne peut pas être antérieure à aujourd\'hui'
+                            });
+                        } else {
+                            alert('La date de début ne peut pas être antérieure à aujourd\'hui');
+                        }
+                        return false;
+                    }
+                }
+                
+                if (dateDebutInput && dateFinInput && dateDebutInput.value && dateFinInput.value) {
+                    if (dateFinInput.value < dateDebutInput.value) {
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Date invalide',
+                                text: 'La date de fin doit être postérieure ou égale à la date de début'
+                            });
+                        } else {
+                            alert('La date de fin doit être postérieure ou égale à la date de début');
+                        }
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+
+            // Gestionnaire pour le formulaire de CRÉATION
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                // ... existing code pour edit ...
+                
+                // NOUVEAU : Gestionnaire pour la création
+                const createForm = document.getElementById('createFormationForm');
+                if (createForm) {
+                    createForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        console.log('Formulaire de création soumis');
+                        
+                        // Valider les dates avant de continuer (pour création aussi)
+                        if (!validateCreateDatesBeforeSubmit()) {
+                            console.log('Validation des dates de création échouée');
+                            return;
+                        }
+                        
+                        const formData = new FormData(this);
+                        
+                        console.log('Envoi requête POST pour création vers: /admin/formations/store');
+                        
+                        // Debug : Afficher toutes les données envoyées
+                        console.log('Données FormData pour création:');
+                        for (let [key, value] of formData.entries()) {
+                            console.log(`${key}:`, value);
+                        }
+                        
+                        // Vérifier si SweetAlert fonctionne
+                        if (typeof Swal === 'undefined') {
+                            alert('SweetAlert non disponible');
+                            return;
+                        }
+                        
+                        // Afficher le loader SweetAlert
+                        Swal.fire({
+                            title: 'Création en cours...',
+                            html: `
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="spinner-border text-primary mb-3" role="status">
+                                        <span class="visually-hidden">Chargement...</span>
+                                    </div>
+                                    <p class="mb-0">Veuillez patienter pendant la création</p>
+                                </div>
+                            `,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            showConfirmButton: false
+                        });
+                        
+                        // Envoyer la requête
+                        fetch('/admin/formations/store', {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                'Accept': 'application/json'
+                            },
+                            body: formData
+                        })
+                        .then(response => {
+                            console.log('Response status création:', response.status);
+                            console.log('Response headers création:', response.headers.get('content-type'));
+                            
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            
+                            const contentType = response.headers.get('content-type');
+                            if (!contentType || !contentType.includes('application/json')) {
+                                throw new Error('La réponse n\'est pas du JSON');
+                            }
+                            
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Response data création:', data);
+                            
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Formation créée !',
+                                    text: data.message || 'La formation a été créée avec succès',
+                                    confirmButtonText: 'Fermer',
+                                    confirmButtonColor: '#28a745'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // Recharger la page actuelle au lieu de rediriger
+                                        window.location.reload();
+                                    }
+                                });
+                            } else {
+                                let errorMessage = data.message || 'Erreur lors de la création';
+                                
+                                if (data.errors) {
+                                    errorMessage = 'Erreur de validation:\n\n';
+                                    for (const field in data.errors) {
+                                        const fieldName = getFieldDisplayName(field);
+                                        errorMessage += `• ${fieldName}: ${data.errors[field].join(', ')}\n`;
+                                    }
+                                }
+                                
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Échec de la création',
+                                    text: errorMessage,
+                                    confirmButtonText: 'Corriger',
+                                    width: '500px'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erreur complète création:', error);
+                            
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur de connexion',
+                                html: `
+                                    <p>Problème de connexion ou de format de réponse</p>
+                                    <small class="text-muted">Détails: ${error.message}</small>
+                                `,
+                                confirmButtonText: 'Réessayer'
+                            });
+                        });
+                    });
+                }
+            });
+
+            // Initialiser les contraintes de dates pour la création
+            function initializeCreateDateConstraints() {
+                const today = new Date().toISOString().split('T')[0];
+                
+                // La date de début ne peut pas être antérieure à aujourd'hui
+                const dateDebutInput = document.getElementById('date_debut');
+                const dateFinInput = document.getElementById('date_fin');
+                
+                if (dateDebutInput) {
+                    dateDebutInput.setAttribute('min', today);
+                    dateDebutInput.addEventListener('change', updateCreateDateConstraints);
+                    console.log('Date minimum pour début (création):', today);
+                }
+                
+                if (dateFinInput) {
+                    dateFinInput.setAttribute('min', today);
+                    dateFinInput.addEventListener('change', validateCreateDateFin);
+                    console.log('Date minimum pour fin (création):', today);
+                }
+            }
+
+            // Mettre à jour les contraintes pour la création
+            function updateCreateDateConstraints() {
+                const dateDebutInput = document.getElementById('date_debut');
+                const dateFinInput = document.getElementById('date_fin');
+                
+                if (dateDebutInput && dateFinInput) {
+                    const dateDebut = dateDebutInput.value;
+                    
+                    if (dateDebut) {
+                        // La date de fin ne peut pas être antérieure à la date de début
+                        dateFinInput.setAttribute('min', dateDebut);
+                        console.log('Date minimum pour fin (création) mise à jour:', dateDebut);
+                        
+                        // Vérifier si la date de fin actuelle est valide
+                        const dateFin = dateFinInput.value;
+                        if (dateFin && dateFin < dateDebut) {
+                            dateFinInput.value = '';
+                            
+                            if (typeof Swal !== 'undefined') {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Date invalide',
+                                    text: 'La date de fin doit être postérieure ou égale à la date de début',
+                                    timer: 3000
+                                });
+                            }
+                        }
+                    } else {
+                        // Remettre la contrainte par défaut (aujourd'hui)
+                        const today = new Date().toISOString().split('T')[0];
+                        dateFinInput.setAttribute('min', today);
+                    }
+                }
+            }
+
+            // Valider la date de fin pour la création
+            function validateCreateDateFin() {
+                const dateDebutInput = document.getElementById('date_debut');
+                const dateFinInput = document.getElementById('date_fin');
+                
+                if (dateDebutInput && dateFinInput) {
+                    const dateDebut = dateDebutInput.value;
+                    const dateFin = dateFinInput.value;
+                    
+                    if (dateDebut && dateFin && dateFin < dateDebut) {
+                        dateFinInput.value = '';
+                        
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Date invalide',
+                                text: 'La date de fin doit être postérieure ou égale à la date de début',
+                                timer: 3000
+                            });
+                        }
+                    }
+                }
+            }
+
+            // Validation avant soumission pour la création
+            function validateCreateDatesBeforeSubmit() {
+                const dateDebutInput = document.getElementById('date_debut');
+                const dateFinInput = document.getElementById('date_fin');
+                const today = new Date().toISOString().split('T')[0];
+                
+                if (dateDebutInput && dateDebutInput.value) {
+                    if (dateDebutInput.value < today) {
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Date invalide',
+                                text: 'La date de début ne peut pas être antérieure à aujourd\'hui'
+                            });
+                        }
+                        return false;
+                    }
+                }
+                
+                if (dateDebutInput && dateFinInput && dateDebutInput.value && dateFinInput.value) {
+                    if (dateFinInput.value < dateDebutInput.value) {
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Date invalide',
+                                text: 'La date de fin doit être postérieure ou égale à la date de début'
+                            });
+                        }
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+
+            // Fonction pour obtenir les noms lisibles des champs
+            function getFieldDisplayName(fieldName) {
+                const fieldNames = {
+                    'titre': 'Titre',
+                    'categorie_id': 'Catégorie',
+                    'programme': 'Programme',
+                    'cout': 'Coût',
+                    'prerequis': 'Prérequis',
+                    'bonus': 'Bonus',
+                    'lieu': 'Lieu',
+                    'date_debut': 'Date de début',
+                    'date_fin': 'Date de fin',
+                    'file': 'Fichier'
+                };
+                
+                return fieldNames[fieldName] || fieldName;
+            }
+
+            // Initialiser les contraintes au chargement de la page
+            document.addEventListener('DOMContentLoaded', function() {
+                // ... existing code ...
+                
+                // NOUVEAU : Initialiser les contraintes pour la création
+                initializeCreateDateConstraints();
+            });
+
+            // NOUVELLE SECTION : Gestionnaire pour le formulaire de CRÉATION
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('=== INITIALISATION GESTIONNAIRES ===');
+                
+                // ... existing code pour editFormationForm reste intact ...
+                
+                // NOUVEAU : Identifier et gérer le formulaire de création
+                const createForm = document.querySelector('form[action*="/store"]') || 
+                                  document.getElementById('createFormationForm') ||
+                                  document.querySelector('form[method="POST"]:not(#editFormationForm)');
+                
+                console.log('Formulaire de création trouvé:', createForm ? '✅' : '❌');
+                
+                if (createForm) {
+                    console.log('ID du formulaire de création:', createForm.id);
+                    console.log('Action du formulaire:', createForm.action);
+                    
+                    createForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        console.log('🆕 Formulaire de CRÉATION soumis');
+                        
+                        const formData = new FormData(this);
+                        
+                        console.log('📤 Envoi vers:', this.action || '/admin/formations/store');
+                        
+                        // Vérifier SweetAlert
+                        if (typeof Swal === 'undefined') {
+                            console.error('❌ SweetAlert non disponible');
+                            alert('Erreur: SweetAlert non disponible');
+                            return;
+                        }
+                        
+                        // 🔄 Modal de chargement
+                        Swal.fire({
+                            title: 'Création en cours...',
+                            html: `
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="spinner-border text-success mb-3" role="status">
+                                        <span class="visually-hidden">Création...</span>
+                                    </div>
+                                    <p class="mb-0">Création de la nouvelle formation</p>
+                                </div>
+                            `,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            showConfirmButton: false
+                        });
+                        
+                        // 📡 Requête AJAX
+                        fetch(this.action || '/admin/formations/store', {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                'Accept': 'application/json'
+                            },
+                            body: formData
+                        })
+                        .then(response => {
+                            console.log('📥 Response status création:', response.status);
+                            
+                            if (!response.ok) {
+                                throw new Error(`HTTP ${response.status}`);
+                            }
+                            
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('📋 Response data création:', data);
+                            
+                            if (data.success) {
+                                // ✅ Succès
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Formation créée !',
+                                    text: data.message || 'La formation a été créée avec succès',
+                                    confirmButtonText: 'Fermer',
+                                    confirmButtonColor: '#28a745'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // Recharger la page actuelle au lieu de rediriger
+                                        window.location.reload();
+                                    }
+                                });
+                            } else {
+                                // ❌ Erreur de validation
+                                let errorMessage = data.message || 'Erreur lors de la création';
+                                
+                                if (data.errors) {
+                                    errorMessage = 'Veuillez corriger les erreurs suivantes :\n\n';
+                                    for (const field in data.errors) {
+                                        const fieldName = translateFieldName(field);
+                                        errorMessage += `• ${fieldName}: ${data.errors[field].join(', ')}\n`;
+                                    }
+                                }
+                                
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreurs de validation',
+                                    text: errorMessage,
+                                    confirmButtonText: 'Corriger',
+                                    confirmButtonColor: '#dc3545',
+                                    width: '500px'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('💥 Erreur création:', error);
+                            
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur de connexion',
+                                html: `
+                                    <p>Impossible de créer la formation</p>
+                                    <small class="text-muted">Erreur: ${error.message}</small>
+                                `,
+                                confirmButtonText: 'Réessayer',
+                                confirmButtonColor: '#dc3545'
+                            });
+                        });
+                    });
+                    
+                    console.log('✅ Gestionnaire de création attaché');
+                } else {
+                    console.warn('⚠️ Formulaire de création non trouvé');
+                }
+                
+                console.log('=== FIN INITIALISATION ===');
+            });
+
+            // Fonction pour traduire les noms de champs
+            function translateFieldName(fieldName) {
+                const translations = {
+                    'titre': 'Titre',
+                    'categorie_id': 'Catégorie',
+                    'programme': 'Programme',
+                    'cout': 'Coût',
+                    'prerequis': 'Prérequis',
+                    'bonus': 'Bonus',
+                    'lieu': 'Lieu',
+                    'date_debut': 'Date de début',
+                    'date_fin': 'Date de fin',
+                    'file': 'Fichier (Image/Vidéo)'
+                };
+                
+                return translations[fieldName] || fieldName;
+            }
+
+            // ... existing code ...
         </script>
 
         <!-- Modale de modification -->
         <div class="modal fade" id="edit_formation" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content">
-                    <div class="modal-body p-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="text-center mb-6">
-                            <h4 class="mb-2">Modifier la Formation</h4>
-                        </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <i class="ri-edit-line me-2 text-warning"></i>
+                            Modifier la Formation
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
                         <form id="editFormationForm" method="POST" class="row g-4" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input type="hidden" id="edit_formation_id" name="formation_id">
                             
-                            <div class="col-12 col-md-6">
+                            <!-- Titre -->
+                            <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="text" id="edit_titre" name="titre" class="form-control" placeholder="Titre" required>
+                                    <input type="text" id="edit_titre" name="titre" class="form-control" placeholder="Titre de la formation" required>
                                     <label for="edit_titre">Titre</label>
                                 </div>
                             </div>
                             
-                            <div class="col-12 col-md-6">
+                            <!-- Catégorie -->
+                            <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <select name="categorie_id" id="edit_categorie_id" class="form-select" required>
-                                        @foreach ($categories as $categorie)
+                                    <select id="edit_categorie_id" name="categorie_id" class="form-select" required>
+                                        <option value="">Choisir une catégorie</option>
+                                        @foreach($categories as $categorie)
                                             <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
                                         @endforeach
                                     </select>
                                     <label for="edit_categorie_id">Catégorie</label>
                                 </div>
                             </div>
-
+                            
+                            <!-- Programme -->
                             <div class="col-12">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_programme" name="programme" class="form-control h-px-100" placeholder="Programme"></textarea>
+                                    <textarea id="edit_programme" name="programme" class="form-control" placeholder="Programme de la formation" rows="3"></textarea>
                                     <label for="edit_programme">Programme</label>
                                 </div>
                             </div>
-
-                            <div class="col-12 col-md-6">
+                            
+                            <!-- Coût -->
+                            <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="number" id="edit_cout" name="cout" class="form-control" placeholder="Coût">
-                                    <label for="edit_cout">Coût</label>
+                                    <input type="number" id="edit_cout" name="cout" class="form-control" placeholder="0" min="0" step="0.01">
+                                    <label for="edit_cout">Coût (FCFA)</label>
                                 </div>
                             </div>
-
-                            <div class="col-12 col-md-6">
+                            
+                            <!-- Lieu -->
+                            <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="text" id="edit_lieu" name="lieu" class="form-control" placeholder="Lieu">
+                                    <input type="text" id="edit_lieu" name="lieu" class="form-control" placeholder="Lieu de la formation">
                                     <label for="edit_lieu">Lieu</label>
                                 </div>
                             </div>
-
-                            <div class="col-12 col-md-6">
+                            
+                            <!-- Date début -->
+                            <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="date" id="edit_date_debut" name="date_debut" class="form-control">
+                                    <input type="date" id="edit_date_debut" name="date_debut" class="form-control" 
+                                           min="" onchange="updateDateConstraints()">
                                     <label for="edit_date_debut">Date de début</label>
                                 </div>
                             </div>
-
-                            <div class="col-12 col-md-6">
+                            
+                            <!-- Date fin -->
+                            <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="date" id="edit_date_fin" name="date_fin" class="form-control">
+                                    <input type="date" id="edit_date_fin" name="date_fin" class="form-control" 
+                                           min="" onchange="validateDateFin()">
                                     <label for="edit_date_fin">Date de fin</label>
                                 </div>
                             </div>
-
-                            <div class="col-12 col-md-6">
+                            
+                            <!-- Prérequis -->
+                            <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_prerequis" name="prerequis" class="form-control h-px-100" placeholder="Prérequis"></textarea>
+                                    <textarea id="edit_prerequis" name="prerequis" class="form-control" placeholder="Prérequis" rows="2"></textarea>
                                     <label for="edit_prerequis">Prérequis</label>
                                 </div>
                             </div>
-
-                            <div class="col-12 col-md-6">
+                            
+                            <!-- Bonus -->
+                            <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_bonus" name="bonus" class="form-control h-px-100" placeholder="Bonus"></textarea>
+                                    <textarea id="edit_bonus" name="bonus" class="form-control" placeholder="Bonus" rows="2"></textarea>
                                     <label for="edit_bonus">Bonus</label>
                                 </div>
                             </div>
-
+                            
+                            <!-- Fichier -->
                             <div class="col-12">
-                                <div class="form-floating form-floating-outline">
-                                    <input type="file" id="edit_file" name="file" class="form-control" accept="image/*,video/*" onchange="previewEditFile(this)">
-                                    <label for="edit_file">Nouveau Fichier (Image ou Vidéo) - Max 150 MB</label>
-                                </div>
-                                <div id="edit-file-error" class="mt-2" style="display: none;">
-                                    <div class="alert alert-danger d-flex align-items-center">
-                                        <i class="ri-error-warning-line me-2"></i>
-                                        <span>La taille du fichier ne doit pas dépasser 150 MB</span>
-                                    </div>
-                                </div>
-                                <div id="edit-current-file" class="mt-3" style="display: none;">
-                                    <p class="text-muted mb-2">Fichier actuel :</p>
-                                    <div id="edit-current-preview"></div>
-                                </div>
-                                <div id="edit-file-preview" class="mt-3 d-flex justify-content-center" style="display: none;">
-                                    <div class="preview-container">
-                                        <img id="edit-image-preview" class="preview-media" style="display: none; max-width: 200px; border-radius: 8px;">
-                                        <video id="edit-video-preview" class="preview-media" style="display: none; max-width: 200px; border-radius: 8px;" controls>
-                                            <source id="edit-video-source" src="" type="">
-                                        </video>
-                                        <button type="button" class="btn btn-sm btn-danger ms-2" onclick="removeEditFile()">
-                                            <i class="ri-close-line"></i>
-                                        </button>
-                                    </div>
+                                <label class="form-label">Fichier (Image ou Vidéo) - Optionnel</label>
+                                <input type="file" id="edit_file" name="file" class="form-control" 
+                                       accept="image/*,video/*" onchange="previewEditFile(this)">
+                                <div class="form-text">Formats acceptés: JPG, PNG, GIF, MP4, AVI, MOV, WMV. Taille max: 150MB</div>
+                            </div>
+                            
+                            <!-- Prévisualisation -->
+                            <div class="col-12">
+                                <div id="edit-file-preview" style="display: none;">
+                                    <img id="edit-image-preview" class="img-fluid rounded" style="max-height: 200px; display: none;">
+                                    <video id="edit-video-preview" controls class="w-100 rounded" style="max-height: 200px; display: none;">
+                                        <source id="edit-video-source" src="" type="">
+                                    </video>
+                                    <button type="button" class="btn btn-sm btn-outline-danger mt-2" onclick="removeEditFile()">
+                                        Supprimer le fichier
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="col-12 text-center">
-                                <button type="button" class="btn btn-outline-secondary" onclick="backToList()">
-                                    Retour à la liste
+                            <!-- Boutons -->
+                            <div class="col-12 text-end">
+                                <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">
+                                    Annuler
                                 </button>
-                                <button type="submit" class="btn btn-primary me-3" id="editSubmitBtn">
-                                    <span class="spinner-border spinner-border-sm me-2" style="display: none;" id="editSpinner"></span>
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="ri-save-line me-1"></i>
                                     Modifier
                                 </button>
                             </div>
@@ -2119,8 +3036,9 @@
                                 <i class="ri-error-warning-line ri-96px text-danger"></i>
                             </div>
                             <h4 class="mb-2">Confirmer la suppression</h4>
-                            <p class="text-muted">Êtes-vous sûr de vouloir supprimer cette formation ?<br>
-                            <strong class="text-danger">Cette action est irréversible.</strong></p>
+                            <p class="text-muted mb-2">Êtes-vous sûr de vouloir supprimer cette formation ?</p>
+                            <p class="fw-bold text-dark mb-2" id="formation-to-delete"></p>
+                            <p class="text-danger mb-0"><strong>Cette action est irréversible.</strong></p>
                         </div>
                         <div class="text-center">
                             <button type="button" class="btn btn-outline-secondary me-3" data-bs-dismiss="modal">
@@ -2128,13 +3046,151 @@
                             </button>
                             <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
                                 <span class="spinner-border spinner-border-sm me-2" style="display: none;" id="deleteSpinner"></span>
-                                Oui, supprimer
+                                Oui, supprimer définitivement
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Événement pour la soumission du formulaire d'édition - MISE À JOUR -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('SweetAlert disponible:', typeof Swal !== 'undefined');
+                
+                const editForm = document.getElementById('editFormationForm');
+                if (editForm) {
+                    editForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        console.log('Formulaire soumis');
+                        
+                        // Valider les dates avant de continuer
+                        if (!validateDatesBeforeSubmit()) {
+                            console.log('Validation des dates échouée');
+                            return;
+                        }
+                        
+                        const formationId = document.getElementById('edit_formation_id').value;
+                        const formData = new FormData(this);
+                        
+                        // AJOUTER LA MÉTHODE PUT via method spoofing Laravel
+                        formData.append('_method', 'PUT');
+                        
+                        console.log('Formation ID:', formationId);
+                        console.log('Envoi requête POST avec _method=PUT vers:', `/admin/formations/${formationId}`);
+                        
+                        // Debug : Afficher toutes les données envoyées
+                        console.log('Données FormData:');
+                        for (let [key, value] of formData.entries()) {
+                            console.log(`${key}:`, value);
+                        }
+                        
+                        // Vérifier si SweetAlert fonctionne
+                        if (typeof Swal === 'undefined') {
+                            alert('SweetAlert non disponible');
+                            return;
+                        }
+                        
+                        // Afficher le loader SweetAlert
+                        Swal.fire({
+                            title: 'Modification en cours...',
+                            html: `
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="spinner-border text-primary mb-3" role="status">
+                                        <span class="visually-hidden">Chargement...</span>
+                                    </div>
+                                    <p class="mb-0">Veuillez patienter pendant la modification</p>
+                                </div>
+                            `,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            showConfirmButton: false
+                        });
+                        
+                        // Utiliser POST avec _method=PUT (Method Spoofing Laravel)
+                        fetch(`/admin/formations/${formationId}`, {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                'Accept': 'application/json'
+                            },
+                            body: formData
+                        })
+                        .then(response => {
+                            console.log('Response status:', response.status);
+                            console.log('Response headers:', response.headers.get('content-type'));
+                            
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            
+                            const contentType = response.headers.get('content-type');
+                            if (!contentType || !contentType.includes('application/json')) {
+                                throw new Error('La réponse n\'est pas du JSON');
+                            }
+                            
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Response data:', data);
+                            
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Modification réussie !',
+                                    text: data.message,
+                                    confirmButtonText: 'Retourner à la liste',
+                                    confirmButtonColor: '#28a745'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // Fermer la modale d'édition
+                                        const editModal = bootstrap.Modal.getInstance(document.getElementById('edit_formation'));
+                                        if (editModal) {
+                                            editModal.hide();
+                                        }
+                                        
+                                        // Retourner à la liste
+                                        setTimeout(() => {
+                                            backToList();
+                                        }, 500);
+                                    }
+                                });
+                            } else {
+                                let errorMessage = data.message || 'Erreur lors de la modification';
+                                
+                                if (data.errors) {
+                                    errorMessage += '\n\nDétails:\n';
+                                    for (const field in data.errors) {
+                                        errorMessage += `• ${data.errors[field].join(', ')}\n`;
+                                    }
+                                }
+                                
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Échec de la modification',
+                                    text: errorMessage,
+                                    confirmButtonText: 'OK'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erreur complète:', error);
+                            
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur de connexion',
+                                html: `
+                                    <p>Problème de connexion ou de format de réponse</p>
+                                    <small class="text-muted">Détails: ${error.message}</small>
+                                `,
+                                confirmButtonText: 'OK'
+                            });
+                        });
+                    });
+                }
+            });
+        </script>
 
 </body>
 
