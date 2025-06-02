@@ -7,11 +7,33 @@ use App\Models\Formation;
 use App\Models\Categorie;
 class formationsController extends Controller
 {
-    public function index()
-    {
-        return view('Admin.Formations.index');
-    }
+   
 
+    
+
+        public function index_public(Request $request)
+            {
+                $categories = Categorie::all();
+
+                // Si une catégorie est sélectionnée, filtre les formations
+                if ($request->has('categorie_id')) {
+                    $formations = Formation::with('categorie')
+                        ->where('categorie_id', $request->categorie_id)
+                        ->latest()->get();
+                } else {
+                    $formations = Formation::with('categorie')->latest()->get();
+            }
+
+            return view('clients.Formations.index', compact('formations', 'categories'));
+        }
+
+    public function show_public($id)
+
+    {
+        $categories = Categorie::all();
+        $formations = Formation::with('categorie')->findOrFail($id);
+        return view('clients.Formations.show', compact('formations','categories'));
+    }
     public function create()
     {
         $categories = Categorie::all();
