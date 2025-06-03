@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Categorie;
+use App\Models\InscriptionFormation;
 
 class Formation extends Model
 {
@@ -51,5 +52,17 @@ class Formation extends Model
     public function documents(): HasMany
     {
         return $this->hasMany(Document::class);
+    }
+    
+    // Méthode utile pour compter les inscriptions
+    public function nombreInscriptions()
+    {
+        return $this->inscriptions()->count();
+    }
+    
+    // Méthode pour vérifier si un email est déjà inscrit
+    public function isEmailInscrit($email)
+    {
+        return $this->inscriptions()->where('email', $email)->exists();
     }
 }

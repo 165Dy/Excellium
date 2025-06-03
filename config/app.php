@@ -123,4 +123,17 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Mailjet Facade
+    |--------------------------------------------------------------------------
+    |
+    | This is the facade for the Mailjet service.
+    |
+    */
+
+    'aliases' => [
+        'Mailjet' => Mailjet\LaravelMailjet\Facades\Mailjet::class,
+    ],
+
 ];
