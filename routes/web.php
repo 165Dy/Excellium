@@ -99,7 +99,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');
     Route::match(['PUT', 'POST'], '/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
     Route::delete('/formations/{id}', [formationsController::class, 'destroy'])->name('formations.destroy');
+    Route::get('formations/{formation}/details', [formationsController::class, 'getDetails'])->name('formations.details');
+    Route::get('formations/{formation}/export-inscriptions', [formationsController::class, 'exportInscriptions'])->name('formations.export-inscriptions');
+    Route::patch('inscriptions/{inscription}/statut', [formationsController::class, 'changerStatutInscription'])->name('inscriptions.statut');
 
+    
     Route::get('/articles',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
     Route::get('/partenaires',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
     Route::get('/temoignages',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');

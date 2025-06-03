@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;    
 use Illuminate\Support\Facades\DB;
 use App\Models\InscriptionFormation;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 
 class formationsController extends Controller
 {
@@ -405,6 +407,130 @@ class formationsController extends Controller
             }
 
             return back()->with('error', 'Erreur lors de l\'inscription: ' . $e->getMessage())->withInput();
+        }
+    }
+
+    /**
+     * Récupérer les détails d'une formation avec ses inscriptions
+     */
+    public function getDetails($id)
+    {
+        try {
+            $formation = Formation::with(['categorie', 'inscriptions' => function($query) {
+                $query->orderBy('created_at', 'desc');
+            }])->findOrFail($id);
+            
+            return response()->json([
+                'success' => true,
+                'formation' => $formation,
+                'inscriptions' => $formation->inscriptions
+            ]);
+            
+        } catch (\Exception $e) {
+            Log::error('Erreur récupération détails formation:', [
+                'formation_id' => $id,
+                'error' => $e->getMessage()
+            ]);
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors du chargement des détails'
+            ], 500);
+        }
+    }
+
+    /**
+     * Changer le statut d'une inscription
+     */
+    public function changerStatutInscription(Request $request, $inscriptionId)
+    {
+        try {
+            $validated = $request->validate([
+                'statut' => 'required|in:en_attente,confirme,refuse'
+            ]);
+            
+            $inscription = InscriptionFormation::findOrFail($inscriptionId);
+            $inscription->update(['statut' => $validated['statut']]);
+            
+            Log::info('Statut inscription modifié:', [
+                'inscription_id' => $inscriptionId,
+                'ancien_statut' => $inscription->getOriginal('statut'),
+                'nouveau_statut' => $validated['statut'],
+                'formation_id' => $inscription->formation_id
+            ]);
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Statut mis à jour avec succès',
+                'formation_id' => $inscription->formation_id
+            ]);
+            
+        } catch (\Exception $e) {
+            Log::error('Erreur changement statut inscription:', [
+                'inscription_id' => $inscriptionId,
+                'error' => $e->getMessage()
+            ]);
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la mise à jour'
+            ], 500);
+        }
+    }
+
+    /**
+     * Exporter les inscriptions d'une formation en Excel
+     */
+    public function exportInscriptions($formationId)
+    {
+        try {
+            $formation = Formation::with('inscriptions')->findOrFail($formationId);
+            
+            // En-têtes pour l'export CSV
+            $headers = [
+                'Content-Type' => 'text/csv',
+                'Content-Disposition' => 'attachment; filename="inscriptions_' . Str::slug($formation->titre) . '_' . date('Y-m-d') . '.csv"',
+            ];
+            
+            $callback = function() use ($formation) {
+                $file = fopen('php://output', 'w');
+                
+                // En-têtes du CSV
+                fputcsv($file, [
+                    'Formation',
+                    'Nom complet',
+                    'Email',
+                    'Téléphone',
+                    'Message',
+                    'Statut',
+                    'Date inscription'
+                ]);
+                
+                // Données
+                foreach ($formation->inscriptions as $inscription) {
+                    fputcsv($file, [
+                        $formation->titre,
+                        $inscription->nom,
+                        $inscription->email,
+                        $inscription->telephone ?: 'Non renseigné',
+                        $inscription->message ?: 'Aucun message',
+                        ucfirst(str_replace('_', ' ', $inscription->statut)),
+                        $inscription->created_at->format('d/m/Y H:i')
+                    ]);
+                }
+                
+                fclose($file);
+            };
+            
+            return Response::stream($callback, 200, $headers);
+            
+        } catch (\Exception $e) {
+            Log::error('Erreur export inscriptions:', [
+                'formation_id' => $formationId,
+                'error' => $e->getMessage()
+            ]);
+            
+            return back()->with('error', 'Erreur lors de l\'export');
         }
     }
 }
