@@ -40,7 +40,7 @@
                                 <div class="post-thumbnail">
                                     <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="Post Image">
                                     <ul class="post-categories">
-                                         @foreach ($categories as $categorie)
+                                        @foreach ($categories as $categorie)
                                             @if ($formation->categorie_id == $categorie->id)
                                                 <li><a href="#">{{ $categorie->nom }}</a></li>
                                             @endif

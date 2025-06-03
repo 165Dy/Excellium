@@ -28,12 +28,30 @@ class formationsController extends Controller
         }
 
     public function show_public($id)
+        {
+            // Formation sélectionnée
+            $formation = Formation::findOrFail($id);
 
-    {
-        $categories = Categorie::all();
-        $formations = Formation::with('categorie')->findOrFail($id);
-        return view('clients.Formations.show', compact('formations','categories'));
-    }
+            // Toutes les autres formations, sauf celle sélectionnée
+            $autresFormations = Formation::where('id', '!=', $id)->get();
+
+            // Toutes les catégories
+            $categories = Categorie::all();
+
+            // Formations de la même catégorie que celle de la formation sélectionnée
+            $formationsMemeCategorie = Formation::where('categorie_id', $formation->categorie_id)
+                                                ->where('id', '!=', $id)
+                                                ->get();
+
+            return view('clients.Formations.show', compact(
+                'formation',
+                'autresFormations',
+                'categories',
+                'formationsMemeCategorie'
+            ));
+        }
+
+
     public function create()
     {
         $categories = Categorie::all();

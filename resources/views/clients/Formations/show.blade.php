@@ -11,7 +11,7 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h1 class="page-title">Theme: {{ $formations->titre }}</h1>
+                            <h1 class="page-title">Theme: {{ $formation->titre }}</h1>
                             <ul class="breadcrumb-link text-white">
                                 <li><a href="index.html">Pages</a></li>
                                 <li class="active">Blog Details</li>
@@ -35,11 +35,6 @@
                                         complexities of online presence and engagement. A digital agency serves as a
                                         strategic partner, providing a comprehensive suite of services aimed at optimizing a
                                         company's digital</p>
-                                    <p>From web design and development to social media management, search engine
-                                        optimization, and content creation, digital agencies offer a tailored approach to
-                                        enhancing brand visibility and customer engagement. These agencies bring together
-                                        creative minds, tech-savvy professionals, and data analysts to create compelling and
-                                        cohesive online experiences.</p>
                                     <div class="block-image">
                                         <img src="{{ asset('assets/images/blog/blog-single-1.jpg') }}" alt="">
                                     </div>
@@ -48,15 +43,7 @@
                                         enhancing brand visibility and customer engagement. These agencies bring together
                                         creative minds, tech-savvy professionals, and data analysts to create compelling and
                                         cohesive online experiences.</p>
-                                    <blockquote class="block-quote">
-                                        <div class="icon">
-                                            <img src="{{ asset('assets/images/blog/quote.png') }}" alt="">
-                                        </div>
-                                        <div class="content">
-                                            <h3>Buying Bigger Home Doesn’t Necessary Mean Spending More Money</h3>
-                                            <p>Stiphen Smith</p>
-                                        </div>
-                                    </blockquote>
+
                                     <p>From web design and development to social media management, search engine
                                         optimization, and content creation, digital agencies offer a tailored approach to
                                         enhancing brand visibility and customer engagement. These agencies bring together
@@ -66,40 +53,45 @@
                             </div>
                             <div class="entry-footer wow fadeInUp">
                                 <div class="tag-links">
-                                    <a href="#">Business</a>
-                                    <a href="#">Consulting</a>
-                                    <a href="#">Corporate</a>
+                                    <h6>Peut-vous intéresser ? dans la categorie <span ><br>
+                                            <h5>
+                                                @foreach ($categories as $categorie)
+                                                    @if ($formation->categorie_id == $categorie->id)
+                                                        <li><a href="#">{{ $categorie->nom }}</a></li>
+                                                    @endif
+                                                @endforeach
+                                            </h5>
+
+                                        </span></h6>
+
                                 </div>
                                 <div class="social-share">
                                     <a href="#" class="social facebook"><i class="fab fa-facebook-f"></i></a>
                                     <a href="#" class="social linkedin"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#" class="social plane"><i class="far fa-paper-plane"></i></a>
-                                    <a href="#" class="social instagram"><i class="fab fa-instagram"></i></a>
+                
                                 </div>
                             </div>
                         </div>
                         <!--===  Post Navigation  ===-->
                         <div class="post-navigation-item pb-30 mb-55 wow fadeInUp">
-                            <div class="prev-post post-nav-item d-flex mb-30">
-                                <div class="thumb">
-                                    <img src="{{ asset('assets/images/blog/prev.jpg') }}" alt="Post Thumb">
+                            @foreach ($formationsMemeCategorie as $formationsMemeCategories)
+                                <div class="prev-post post-nav-item d-flex mb-30">
+                                    <div class="thumb">
+                                        <img src="{{ asset('assets/images/blog/prev.jpg') }}" alt="Post Thumb">
+                                    </div>
+                                    <div class="content">
+                                        <a href="{{ route('Formations.show_public', $formationsMemeCategories->id) }}"
+                                            class="read-more"
+                                            style=" max-width: 100px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                            {{ $formationsMemeCategories->programme }}</a>
+                                        </a>
+                                        <h6><a href="{{ route('Formations.show_public', $formationsMemeCategories->id) }}">
+                                                {{ $formationsMemeCategories->titre }}</a></h6>
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <a href="#" class="read-more">Prev Post</a>
-                                    <h6><a href="blog-details.html">Tips For Conducting
-                                            Usability Studies</a></h6>
-                                </div>
-                            </div>
-                            <div class="next-post post-nav-item d-flex mb-30">
-                                <div class="thumb">
-                                    <img src="{{ asset('assets/images/blog/next.jpg') }}" alt="Post Thumb">
-                                </div>
-                                <div class="content">
-                                    <a href="#" class="read-more">Next Post</a>
-                                    <h6><a href="blog-details.html">Building Accessible
-                                            Menu Systems</a></h6>
-                                </div>
-                            </div>
+                            @endforeach
+
+
                         </div>
                         <!--===  Comments Area  ===-->
 
@@ -119,28 +111,17 @@
                         <div class="sidebar-widget sidebar-post-widget mb-35 wow fadeInDown">
                             <h4 class="widget-title">Autres Formations<span class="line"></span></h4>
                             <ul class="recent-post-list">
-                                <li class="post-thumbnail-content">
-                                    <img src="{{ asset('assets/images/blog/post-thumb-1.jpg ') }}" alt="post thumb">
-                                    <div class="post-title-date">
-                                        <h6><a href="blog-details.html">Popular Search Finance
-                                                Manager Customer</a></h6>
-                                        <span class="posted-on"><a href="#">15 May 2023</a></span>
-                                    </div>
-                                </li>
-                                <li class="post-thumbnail-content">
-                                    <img src="{{ asset('assets/images/blog/post-thumb-2.jpg') }}" alt="post thumb">
-                                    <div class="post-title-date">
-                                        <h6><a href="blog-details.html">Leonardo Da Vinci Can Teach Us About Web</a></h6>
-                                        <span class="posted-on"><a href="#">15 May 2023</a></span>
-                                    </div>
-                                </li>
-                                <li class="post-thumbnail-content">
-                                    <img src="{{ asset('assets/images/blog/post-thumb-3.jpg') }}" alt="post thumb">
-                                    <div class="post-title-date">
-                                        <h6><a href="blog-details.html">A Pragmatist’s Guide To Lean User Research</a></h6>
-                                        <span class="posted-on"><a href="#">15 May 2023</a></span>
-                                    </div>
-                                </li>
+                                @foreach ($autresFormations as $autreFormation)
+                                    <li class="post-thumbnail-content">
+                                        <img src="{{ asset('assets/images/blog/post-thumb-1.jpg ') }}" alt="post thumb">
+                                        <div class="post-title-date">
+                                            <h6><a href="{{ route('Formations.show_public', $autreFormation->id) }}">
+                                                    {{ $autreFormation->titre }}</a></h6>
+                                            <span class="posted-on"><a
+                                                    href="#">{{ $autreFormation->created_at }}</a></span>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <!--===  Category Widget  ===-->
@@ -149,7 +130,7 @@
                             <ul class="category-nav">
                                 @foreach ($categories as $categorie)
                                     <li><a href=""><i class="far fa-angle-right"></i>
-                                       {{ $categorie->nom }} <span></span>
+                                            {{ $categorie->nom }} <span></span>
                                         </a>
                                     </li>
                                 @endforeach
