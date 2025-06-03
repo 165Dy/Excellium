@@ -54,6 +54,7 @@ Route::prefix('clients')->group(function () {
     
     Route::get('/Formations',[formationsController::class, 'index_public'])->name('Formations.index');
     Route::get('/Formations/show/{id}',[formationsController::class, 'show_public'] )->name('Formations.show_public');
+    Route::post('/Formations/participer', [formationsController::class, 'participer'])->name('formations.participer');
 
     // NOS SERVICES
     Route::get('/Nos_Services/audit&Conseil',function () { return view('clients.Nos_Services.Audit_Conseil'); } )->name('audit&Conseil');
@@ -93,8 +94,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/categories', [CategorieController::class, 'store'])->name('categories.store');
 
     // Routes formations
-    Route::get('/formations/index', [formationsController::class, 'index'])->name('formations.index');
-    Route::get('/formations/create', [formationsController::class, 'create'])->name('formations.create');
     Route::post('/formations/store', [formationsController::class, 'store'])->name('formations.store');
     Route::get('/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
     Route::get('/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');

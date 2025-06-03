@@ -7,21 +7,34 @@ use App\Models\Formation;
 use App\Models\Categorie;
 use Illuminate\Support\Facades\Storage;  
 use Illuminate\Support\Facades\Log;    
+use Illuminate\Support\Facades\DB;
+use App\Models\InscriptionFormation;
 
 class formationsController extends Controller
 {
     public function index_public(Request $request)
     {
         $categories = Categorie::all();
+        $query = Formation::with('categorie');
 
-        // Si une catégorie est sélectionnée, filtre les formations
-        if ($request->has('categorie_id')) {
-            $formations = Formation::with('categorie')
-                ->where('categorie_id', $request->categorie_id)
-                ->latest()->get();
-        } else {
-            $formations = Formation::with('categorie')->latest()->get();
+        // Filtre par catégorie
+        if ($request->has('categorie_id') && $request->categorie_id) {
+            $query->where('categorie_id', $request->categorie_id);
         }
+
+        // Recherche par titre ou programme
+        if ($request->has('search') && $request->search) {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('titre', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('programme', 'LIKE', "%{$searchTerm}%");
+            });
+        }
+
+        // Trier et paginer (au lieu de get())
+        $formations = $query->orderBy('date_debut', 'asc')
+                           ->orderBy('created_at', 'desc')
+                           ->paginate(9); // 9 formations par page (3x3)
 
         return view('clients.Formations.index', compact('formations', 'categories'));
     }
@@ -280,6 +293,118 @@ class formationsController extends Controller
                 'success' => false,
                 'message' => 'Erreur lors de la suppression.'
             ], 500);
+        }
+    }
+
+    public function participer(Request $request)
+    {
+        try {
+            Log::info("=== DÉBUT INSCRIPTION FORMATION ===");
+            Log::info("Données reçues:", $request->all());
+            
+            $validated = $request->validate([
+                'formation_id' => 'required|exists:formations,id',
+                'nom' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'telephone' => 'nullable|string|max:20',
+                'message' => 'nullable|string|max:1000',
+            ], [
+                'formation_id.required' => 'Formation non trouvée',
+                'formation_id.exists' => 'Cette formation n\'existe pas',
+                'nom.required' => 'Le nom est obligatoire',
+                'email.required' => 'L\'email est obligatoire',
+                'email.email' => 'L\'email doit être valide',
+            ]);
+
+            // Vérifier si l'utilisateur ne s'est pas déjà inscrit (avec le modèle)
+            $existingInscription = InscriptionFormation::where('formation_id', $validated['formation_id'])
+                ->where('email', $validated['email'])
+                ->first();
+
+            if ($existingInscription) {
+                Log::warning("Tentative de double inscription", [
+                    'email' => $validated['email'],
+                    'formation_id' => $validated['formation_id']
+                ]);
+                
+                if ($request->expectsJson()) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Vous êtes déjà inscrit à cette formation avec cet email.'
+                    ], 422);
+                }
+                return back()->with('error', 'Vous êtes déjà inscrit à cette formation.');
+            }
+
+            // Créer l'inscription avec le modèle Eloquent
+            $inscription = InscriptionFormation::create([
+                'formation_id' => $validated['formation_id'],
+                'nom' => $validated['nom'],
+                'email' => $validated['email'],
+                'telephone' => $validated['telephone'],
+                'message' => $validated['message'],
+                'statut' => 'en_attente',
+            ]);
+
+            Log::info("Inscription créée avec succès", [
+                'inscription_id' => $inscription->id,
+                'formation_id' => $inscription->formation_id,
+                'email' => $inscription->email
+            ]);
+
+            // Charger les relations pour avoir plus d'infos
+            $inscription->load('formation');
+            
+            Log::info("=== FIN INSCRIPTION FORMATION ===", [
+                'inscription' => $inscription->toArray()
+            ]);
+
+            // Réponse JSON pour AJAX
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Votre demande d\'inscription a été envoyée avec succès ! Nous vous recontacterons rapidement.',
+                    'inscription' => [
+                        'id' => $inscription->id,
+                        'formation_titre' => $inscription->formation->titre,
+                        'nom' => $inscription->nom,
+                        'email' => $inscription->email,
+                        'statut' => $inscription->statut
+                    ]
+                ]);
+            }
+
+            return back()->with('success', 'Votre demande d\'inscription a été envoyée avec succès !');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            Log::warning('Erreur validation inscription:', $e->errors());
+            
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erreur de validation',
+                    'errors' => $e->errors()
+                ], 422);
+            }
+
+            return back()->withErrors($e->errors())->withInput();
+            
+        } catch (\Exception $e) {
+            Log::error('Erreur inscription formation:', [
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erreur serveur: ' . $e->getMessage()
+                ], 500);
+            }
+
+            return back()->with('error', 'Erreur lors de l\'inscription: ' . $e->getMessage())->withInput();
         }
     }
 }

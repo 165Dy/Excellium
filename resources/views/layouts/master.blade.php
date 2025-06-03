@@ -16,7 +16,10 @@
         href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Syne:wght@400;500;700&amp;display=swap"
         rel="stylesheet">
 
-
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
     <!--====== FontAwesome css ======-->
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontello/css/fontello.css') }}">
     <!--====== FontAwesome css ======-->

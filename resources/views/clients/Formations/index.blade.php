@@ -13,11 +13,12 @@
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
                             <h2 class="page-title">Nos Formations</h2>
-                            <p>Lorem voluptatem accusantium dolorem quis its tium totamrem aperiam eaque ipsaquae inventore
+                            <p>
+                                Nous vous proposons des formations adaptées à vos besoins et à votre niveau.
                             </p>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="index.html">Pages</a></li>
-                                <li class="active">Outils</li>
+                                <li><a href="{{ route('welcome') }}">Accueil</a></li>
+                                <li class="active">Nos Formations</li>
                             </ul>
                         </div>
                     </div>
@@ -33,212 +34,172 @@
         <div class="container">
             <div class="row">
                 @if ($formations->isEmpty())
+                    <div class="col-12">
+                        <div class="text-center text-white py-5">
+                            <h3>Aucune formation disponible</h3>
+                            <p>Revenez bientôt pour découvrir nos nouvelles formations !</p>
+                        </div>
+                    </div>
                 @else
                     @foreach ($formations as $formation)
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="blog-post-item style-two mb-30 wow fadeInDown">
                                 <div class="post-thumbnail">
-                                    <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="Post Image">
+                                    @if($formation->file_path && $formation->file_type === 'image')
+                                        <img src="{{ asset('storage/' . $formation->file_path) }}" alt="{{ $formation->titre }}"
+                                             style="width: 100%; height: 250px; object-fit: cover;">
+                                    @elseif($formation->file_path && $formation->file_type === 'video')
+                                        <video class="formation-video" 
+                                               style="width: 100%; height: 250px; object-fit: cover;" 
+                                               muted
+                                               loop
+                                               preload="metadata"
+                                               poster="{{ asset('assets/images/blog/blog-1.jpg') }}">
+                                            <source src="{{ asset('storage/' . $formation->file_path) }}" type="video/mp4">
+                                            Votre navigateur ne supporte pas la vidéo.
+                                        </video>
+                                    @else
+                                        <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="Image par défaut"
+                                             style="width: 100%; height: 250px; object-fit: cover;">
+                                    @endif
+                                    
                                     <ul class="post-categories">
-                                         @foreach ($categories as $categorie)
-                                            @if ($formation->categorie_id == $categorie->id)
-                                                <li><a href="#">{{ $categorie->nom }}</a></li>
-                                            @endif
-
-                                        @endforeach
+                                        <li><a href="{{ route('Formations.index', ['categorie_id' => $formation->categorie_id]) }}">
+                                            {{ $formation->categorie->nom }}
+                                        </a></li>
                                     </ul>
                                 </div>
                                 <div class="post-content">
                                     <div class="post-meta">
-                                        <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                        <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>
-                                           {{ $formation->date_debut}} </a>
+                                        <a href="#" class="post-admin">
+                                            <i class="far fa-user-alt"></i>Par Excellium Conseil
+                                        </a>
+                                        <a href="#" class="post-date">
+                                            <i class="far fa-calendar-alt"></i>
+                                            {{ \Carbon\Carbon::parse($formation->date_debut)->format('d M Y') }}
+                                        </a>
                                     </div>
                                     <h4 class="title">
                                         <a href="{{ route('Formations.show_public', $formation->id) }}">
-                                            {{ $formation->titre }} <br>
-                                            
+                                            {{ $formation->titre }}
                                         </a>
                                     </h4>
-                                    <p style=" max-width: 200px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ $formation->programme }} </p>
+                                    <p style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                        {{ str($formation->programme)->limit(35) ?? 'Programme de formation complet disponible.' }}
+                                    </p>
+                                    
+                                    @if($formation->cout)
+                                        <div class="formation-price mt-2">
+                                            <span class="text-warning fw-bold">
+                                                <i class="fas fa-tag"></i> {{ number_format($formation->cout, 0, ',', ' ') }} FCFA
+                                            </span>
+                                        </div>
+                                    @endif
+                                    
+                                    @if($formation->lieu)
+                                        <div class="formation-lieu mt-1">
+                                            <span class="text-light">
+                                                <i class="fas fa-map-marker-alt"></i> {{ $formation->lieu }}
+                                            </span>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 @endif
-
-                {{-- <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                        <div class="post-thumbnail">
-                            <img src="{{ asset('assets/images/blog/blog-6.jpg ') }}" alt="Post Image">
-                            <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
-                            </div>
-                            <h4 class="title"><a href="blog-details.html">Reflect Your Brilliance with
-                                    Business Captivating</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                        <div class="post-thumbnail">
-                            <img src="assets/images/blog/blog-7.jpg" alt="Post Image">
-                            <ul class="post-categories">
-                                <li><a href="#">Business</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
-                            </div>
-                            <h4 class="title"><a href="blog-details.html">Let’s the Wave of Cleint’s Splash You</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                        <div class="post-thumbnail">
-                            <img src="assets/images/blog/blog-8.jpg" alt="Post Image">
-                            <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
-                            </div>
-                            <h4 class="title"><a href="blog-details.html">Sharing you and your company with the world</a>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                        <div class="post-thumbnail">
-                            <img src="assets/images/blog/blog-9.jpg" alt="Post Image">
-                            <ul class="post-categories">
-                                <li><a href="#">Business</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
-                            </div>
-                            <h4 class="title"><a href="blog-details.html">The Breeding Ground for Breakthrough Ideas</a>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                        <div class="post-thumbnail">
-                            <img src="assets/images/blog/blog-10.jpg" alt="Post Image">
-                            <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
-                            </div>
-                            <h4 class="title"><a href="blog-details.html">Unleash Growth with Ingenious Hacks</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                        <div class="post-thumbnail">
-                            <img src="assets/images/blog/blog-11.jpg" alt="Post Image">
-                            <ul class="post-categories">
-                                <li><a href="#">Business</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
-                            </div>
-                            <h4 class="title"><a href="blog-details.html">Propel Forward with Data-Driven Marketing</a>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                        <div class="post-thumbnail">
-                            <img src="assets/images/blog/blog-12.jpg" alt="Post Image">
-                            <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
-                            </div>
-                            <h4 class="title"><a href="blog-details.html">Maximize ROI with Our Expert Insights</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                        <div class="post-thumbnail">
-                            <img src="assets/images/blog/blog-13.jpg" alt="Post Image">
-                            <ul class="post-categories">
-                                <li><a href="#">Business</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
-                            </div>
-                            <h4 class="title"><a href="blog-details.html">Build Futures of The Leave Excuses Behind</a>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                        <div class="post-thumbnail">
-                            <img src="assets/images/blog/blog-14.jpg" alt="Post Image">
-                            <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
-                            </ul>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
-                            </div>
-                            <h4 class="title"><a href="blog-details.html">Grow Smarter with The Strategic Marketing</a>
-                            </h4>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
 
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="zency-pagination text-center mt-30 wow fadeInDown">
-                        <li><a href="#">01</a></li>
-                        <li><a href="#">02</a></li>
-                        <li><a href="#">03</a></li>
-                        <li><a href="#" class="active"><i class="far fa-arrow-right"></i></a></li>
-                    </ul>
+            {{-- Pagination dynamique --}}
+            @if($formations->hasPages())
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="zency-pagination text-center mt-30 wow fadeInDown">
+                            {{ $formations->appends(request()->query())->links() }}
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
-    </section><!--====== End Blog Section ======-->
+    </section>
+<!--====== End Blog Section ======-->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🎬 Initialisation autoplay vidéos formations');
+    
+    // Intersection Observer pour détecter quand les vidéos sont visibles
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            
+            if (entry.isIntersecting) {
+                // La vidéo est visible, on la lance
+                if (video.paused) {
+                    video.play().then(() => {
+                        console.log('✅ Vidéo lancée:', video.src);
+                    }).catch(error => {
+                        console.log('❌ Erreur autoplay:', error);
+                        // Fallback: afficher les contrôles si autoplay échoue
+                        video.controls = true;
+                    });
+                }
+            } else {
+                // La vidéo n'est plus visible, on la pause
+                if (!video.paused) {
+                    video.pause();
+                    console.log('⏸️ Vidéo pausée:', video.src);
+                }
+            }
+        });
+    }, {
+        // Configuration de l'observer
+        threshold: 0.5, // 50% de la vidéo doit être visible
+        rootMargin: '0px'
+    });
+    
+    // Observer toutes les vidéos de formations
+    const formationVideos = document.querySelectorAll('.formation-video');
+    console.log(`📹 ${formationVideos.length} vidéo(s) détectée(s)`);
+    
+    formationVideos.forEach((video, index) => {
+        console.log(`Vidéo ${index + 1}:`, video.src);
+        
+        // Ajouter l'observer
+        videoObserver.observe(video);
+        
+        // Événements pour debug
+        video.addEventListener('play', () => {
+            console.log(`▶️ Vidéo ${index + 1} en lecture`);
+        });
+        
+        video.addEventListener('pause', () => {
+            console.log(`⏸️ Vidéo ${index + 1} en pause`);
+        });
+        
+        video.addEventListener('error', (e) => {
+            console.error(`❌ Erreur vidéo ${index + 1}:`, e);
+            // En cas d'erreur, afficher une image par défaut
+            const container = video.parentElement;
+            video.style.display = 'none';
+            
+            const fallbackImg = document.createElement('img');
+            fallbackImg.src = '{{ asset("assets/images/blog/blog-1.jpg") }}';
+            fallbackImg.alt = 'Vidéo non disponible';
+            fallbackImg.style.cssText = 'width: 100%; height: 250px; object-fit: cover;';
+            
+            container.insertBefore(fallbackImg, video);
+        });
+    });
+    
+    // Nettoyage lors du changement de page
+    window.addEventListener('beforeunload', () => {
+        formationVideos.forEach(video => {
+            video.pause();
+        });
+        videoObserver.disconnect();
+    });
+});
+</script>
+
 @endsection
