@@ -7,7 +7,7 @@
         <meta name="description" content="Insurance, Health, Agency">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Title ======-->
-        <title>Zency - Business Agency & Startup HTML Template</title>
+        <title>Excellium | Error 401</title>
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" type="image/png">
         <!--====== Google Fonts ======-->
