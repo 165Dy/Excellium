@@ -45,6 +45,7 @@ class formationsController extends Controller
     {
         $categories = Categorie::all();
         $formations = Formation::with('categorie')->findOrFail($id);
+        
         return view('clients.Formations.show', compact('formations','categories'));
     }
 

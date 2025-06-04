@@ -6,6 +6,7 @@ use App\Http\Controllers\formationsController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OpportuniteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,9 +47,9 @@ Route::get('/confirm-password', function () {return view('auth.confirm-password'
 Route::prefix('clients')->group(function () {
 
     
-    // ESPACE_CLIENTS
-    Route::get('/Espace_clients/documents',function () { return view('clients.Espace_clients.documents'); } )->name('Espace_clients.documents');
-    Route::get('/Espace_clients/outils_en_ligne',function () { return view('clients.Espace_clients.outils'); } )->name('Espace_clients.outils');
+    // opportunites
+    Route::get('opportunites/public', [OpportuniteController::class, 'index_public'])->name('opportunites.clients.index');
+    Route::get('/opportunites/clients/show',function () { return view('clients.opportunites.show'); } )->name('opportunites.clients.show');
 
     // FORMATIONS
     
@@ -64,9 +65,8 @@ Route::prefix('clients')->group(function () {
     Route::get('/Nos_Services/Ressources_Humaines',function () { return view('clients.Nos_Services.Ressource_humaine'); } )->name('Ressources_humaines');
 
      // NOS PARTENAIRES
-     Route::get('/Partenaires/Nos_collaborateurs',function () { return view('clients.Partenaires.Collaborateurs'); } )->name('Partenaires.Collaborateurs');
-     Route::get('/Partenaires/Nos_Entreprises',function () { return view('clients.Partenaires.Entreprises'); } )->name('Partenaires.Entreprises');
-     Route::get('/Partenaires/show',function () { return view('clients.Partenaires.showPartenaire'); } )->name('Partenaires.show');
+     Route::get('/Partenaires',function () { return view('clients.Partenaires.index'); } )->name('Partenaires.Collaborateurs');
+     Route::get('/Partenaires/show',function () { return view('clients.Partenaires.show'); } )->name('Partenaires.show');
 
      // RESSOURCES
      Route::get('/Ressources/Articles',function () { return view('clients.Ressources.Articles'); } )->name('Ressources.Articles');
@@ -103,12 +103,24 @@ Route::prefix('admin')->group(function () {
     Route::get('formations/{formation}/export-inscriptions', [formationsController::class, 'exportInscriptions'])->name('formations.export-inscriptions');
     Route::patch('inscriptions/{inscription}/statut', [formationsController::class, 'changerStatutInscription'])->name('inscriptions.statut');
 
+    // Routes Opportunités
+    Route::get('opportunites', [OpportuniteController::class, 'index'])->name('opportunites.index');
+    Route::get('opportunites/create', [OpportuniteController::class, 'create'])->name('admin.opportunites.create');
+    Route::post('opportunites', [OpportuniteController::class, 'store'])->name('admin.opportunites.store');
+    Route::get('opportunites/{opportunite}', [OpportuniteController::class, 'show'])->name('admin.opportunites.show');
+    Route::get('opportunites/{opportunite}/edit', [OpportuniteController::class, 'edit'])->name('admin.opportunites.edit');
+    Route::put('opportunites/{opportunite}', [OpportuniteController::class, 'update'])->name('admin.opportunites.update');
+    Route::delete('opportunites/{opportunite}', [OpportuniteController::class, 'destroy'])->name('admin.opportunites.destroy');
     
+    Route::get('opportunites/{opportunite}/details', [OpportuniteController::class, 'getDetails'])->name('admin.opportunites.details');
+    Route::patch('candidatures/{candidature}/statut', [OpportuniteController::class, 'changerStatutCandidature'])->name('admin.candidatures.statut');
+    Route::get('opportunites/{opportunite}/export-candidatures', [OpportuniteController::class, 'exportCandidatures'])->name('opportunites.export-candidatures');
+
+
     Route::get('/articles',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
     Route::get('/partenaires',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
     Route::get('/temoignages',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');
     ////////
-    Route::get('/opportunites',function () { return view('Admin.Opportunites.index'); } )->name('opportunites.index');
     //CONTACTS
     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
@@ -123,3 +135,7 @@ Route::prefix('admin')->group(function () {
 
    
 });
+
+    
+    
+

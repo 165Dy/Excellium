@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('candidatures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('emploi_id')->constrained('emplois');
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('cv')->nullable();
+            $table->foreignId('emploi_id')->constrained()->onDelete('cascade');
+            $table->string('nom');
+            $table->string('email');
+            $table->string('telephone');
+            $table->string('cv_path')->nullable();
             $table->text('lettre_motivation')->nullable();
-            $table->enum('statut', ['en attente','accepte','refuse'])->default('en attente');
+            $table->text('message')->nullable(); // Message de candidature
+            $table->enum('statut', ['en_attente', 'accepte', 'refuse'])->default('en_attente');
             $table->timestamps();
+            
+            // Éviter les doublons
+            $table->unique(['email', 'emploi_id']);
         });
     }
 

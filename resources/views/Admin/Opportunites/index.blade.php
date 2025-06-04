@@ -1,362 +1,246 @@
 @extends('layouts.admin')
 @section('index_opportunites')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="nav-align-top">
-            <ul class="nav nav-pills flex-column flex-md-row mb-6 gap-2 gap-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="javascript:void(0);"><i
-                            class="icon-base ri ri-filter-2-line icon-sm me-2"></i>Tout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="icon-base ri ri-draft-line icon-sm me-2"></i>Emplois</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i
-                            class="icon-base ri ri-folder-reduce-line icon-sm me-2"></i>Candidatures</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages-account-settings-connections.html">
-                        <i class="icon-base ri ri-suitcase-fill icon-sm me-2"></i>Jobs</a>
-                </li>
-            </ul>
-        </div>
-        <!-- Scrollable -->
-        <div class="card">
-            <div class="col-md-12">
 
-                <h2 class="card-header text-center text-md-start pb-md-0">LISTES DE TOUTES LES OPPORTUNITES</h2>
-                <div class="card-datatable text-nowrap">
-                    <table class="dt-scrollableTable table table-bordered table-responsive">
-                        <thead>
-                            <tr>
-                                <th>Titre</th>
-                                <th>Description</th>
-                                <th>Categorie</th>
-                                <th>modules</th>
-                                <th>Date</th>
-                                <th>Documents</th>
-                                <th>Telechargements</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Lorem</td>
-                                <td>###</td>
-                                <td>###</td>
-                                <td>###</td>
-                                <td>21/05/2025</td>
-                                <td>
-                                    lorem.pdf<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24">
-                                        <path fill="#000"
-                                            d="m14.829 7.757l-5.657 5.657a1 1 0 1 0 1.414 1.414l5.657-5.656A3 3 0 0 0 12 4.929l-5.657 5.657a5 5 0 0 0 7.071 7.07L19.071 12l1.414 1.414l-5.656 5.657a7 7 0 0 1-9.9-9.9l5.657-5.656a5 5 0 0 1 7.071 7.07L12 16.244A3 3 0 0 1 7.758 12l5.656-5.657z" />
-                                    </svg>
-                                </td>
-                                <td>
-                                    (258227) <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24">
-                                        <path fill="#1c1c1b"
-                                            d="m16 2l5 5v14.008a.993.993 0 0 1-.993.992H3.993A1 1 0 0 1 3 21.008V2.992C3 2.444 3.445 2 3.993 2zm-3 10V8h-2v4H8l4 4l4-4z" />
-                                    </svg>
-                                </td>
-                                <td>
-                                    <div class="action" style="justify-content: space-between">
-                                        <svg data-bs-target="#edit" data-bs-toggle="modal" style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="24"
-                                            height="24" viewBox="0 0 24 24">
-                                            <path fill="#4c9edb"
-                                                d="M9.243 18.997H21v2H3v-4.243l9.9-9.9l4.242 4.243zm5.07-13.557l2.122-2.121a1 1 0 0 1 1.414 0l2.829 2.828a1 1 0 0 1 0 1.415l-2.122 2.121z" />
-                                        </svg>&nbsp;&nbsp;
-                                        <svg data-bs-target="#view" data-bs-toggle="modal" style="cursor: pointer"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24">
-                                            <path fill="#d7d041"
-                                                d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6" />
-                                        </svg>&nbsp;&nbsp;
-                                        <svg id="confirm-color" style="cursor: pointer" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" viewBox="0 0 24 24">
-                                            <path fill="#fd1800"
-                                                d="M7 6V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6zm6.414 8l1.768-1.768l-1.414-1.414L12 12.586l-1.768-1.768l-1.414 1.414L10.586 14l-1.768 1.768l1.414 1.414L12 15.414l1.768 1.768l1.414-1.414zM9 4v2h6V4z" />
-                                        </svg>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        {{-- Header avec actions --}}
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="text-primary fw-bold mb-1">
+                    <i class="fas fa-briefcase me-2"></i>OPPORTUNITÉS D'EMPLOI
+                </h2>
+                <p class="text-muted mb-0">Gérez toutes vos offres d'emploi et candidatures</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-primary" onclick="refreshOpportunites()">
+                    <i class="fas fa-sync-alt me-1"></i>Actualiser
+                </button>
+                <button type="button" class="btn btn-primary btn-lg shadow-sm" data-bs-toggle="modal"
+                    data-bs-target="#create_opportunites">
+                    <i class="fas fa-plus-circle me-2"></i>Nouvelle Opportunité
+                </button>
             </div>
         </div>
-    </div>
+
+        {{-- Debug : Vérifier si les données arrivent --}}
+        @if ($opportunites->isEmpty())
+            <div class="alert alert-danger mb-4">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Erreur :</strong> Variable $opportunites non définie
+            </div>
+        @else
+            <div class="alert alert-success mb-4">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Données chargées :</strong> {{ $opportunites->count() }} opportunité(s) trouvée(s)
+            </div>
+        @endif
 
 
-
-    <!--Edit User Modal -->
-    <div class="modal fade" id="edit" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="text-center mb-6">
-                        <h4 class="mb-2">Edit User Information</h4>
-                    </div>
-                    <form id="editUserForm" class="row g-5" onsubmit="return false">
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="modalEditUserFirstName" name="modalEditUserFirstName"
-                                    class="form-control" value="Oliver" placeholder="Oliver" />
-                                <label for="modalEditUserFirstName">Titre</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="modalEditUserLastName" name="modalEditUserLastName"
-                                    class="form-control" value="Queen" placeholder="Queen" />
-                                <label for="modalEditUserLastName">Categories</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="modalEditUserName" name="modalEditUserName"
-                                    class="form-control" value="oliver.queen" placeholder="oliver.queen" />
-                                <label for="modalEditUserName">Username</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="modalEditUserEmail" name="modalEditUserEmail"
-                                    class="form-control" value="oliverqueen@gmail.com"
-                                    placeholder="oliverqueen@gmail.com" />
-                                <label for="modalEditUserEmail">Email</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <select id="modalEditUserStatus" name="modalEditUserStatus" class="form-select"
-                                    aria-label="Default select example">
-                                    <option value="1" selected>Active</option>
-                                    <option value="2">Inactive</option>
-                                    <option value="3">Suspended</option>
-                                </select>
-                                <label for="modalEditUserStatus">Status</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="modalEditTaxID" name="modalEditTaxID"
-                                    class="form-control modal-edit-tax-id" placeholder="123 456 7890" />
-                                <label for="modalEditTaxID">Tax ID</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="input-group input-group-merge">
-                                <span class="input-group-text">US (+1)</span>
-                                <div class="form-floating form-floating-outline">
-                                    <input type="text" id="modalEditUserPhone" name="modalEditUserPhone"
-                                        class="form-control phone-number-mask" value="+1 609 933 4422"
-                                        placeholder="+1 609 933 4422" />
-                                    <label for="modalEditUserPhone">Phone Number</label>
+        {{-- Statistiques rapides --}}
+        @if (isset($opportunites) && $opportunites->count() > 0)
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card bg-gradient-primary text-white shadow-sm">
+                        <div class="card-body text-center py-4">
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <div class="rounded-circle bg-white bg-opacity-25 p-3">
+                                    <i class="fas fa-briefcase fa-2x"></i>
                                 </div>
                             </div>
+                            <h3 class="fw-bold mb-1">{{ $opportunites->count() }}</h3>
+                            <p class="mb-0 opacity-75">Total Opportunités</p>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input id="modalEditUserLanguage" name="modalEditUserLanguage"
-                                    class="form-control h-auto" placeholder="select technologies" value="English" />
-                                <label for="modalEditUserLanguage">Custom List Suggestions</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <select id="modalEditUserCountry" name="modalEditUserCountry" class="select2 form-select"
-                                    data-allow-clear="true">
-                                    <option value="">Select</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Bangladesh">Bangladesh</option>
-                                    <option value="Belarus">Belarus</option>
-                                    <option value="Brazil">Brazil</option>
-                                    <option value="Canada">Canada</option>
-                                    <option value="China">China</option>
-                                    <option value="France">France</option>
-                                    <option value="Germany">Germany</option>
-                                    <option value="India" selected>India</option>
-                                    <option value="Indonesia">Indonesia</option>
-                                    <option value="Israel">Israel</option>
-                                    <option value="Italy">Italy</option>
-                                    <option value="Japan">Japan</option>
-                                    <option value="Korea">Korea, Republic of</option>
-                                    <option value="Mexico">Mexico</option>
-                                    <option value="Philippines">Philippines</option>
-                                    <option value="Russia">Russian Federation</option>
-                                    <option value="South Africa">South Africa</option>
-                                    <option value="Thailand">Thailand</option>
-                                    <option value="Turkey">Turkey</option>
-                                    <option value="Ukraine">Ukraine</option>
-                                    <option value="United Arab Emirates">United Arab Emirates</option>
-                                    <option value="United Kingdom">United Kingdom</option>
-                                    <option value="United States">United States</option>
-                                </select>
-                                <label for="modalEditUserCountry">Country</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check form-switch">
-                                <input type="checkbox" class="form-check-input" id="editBillingAddress" />
-                                <label for="editBillingAddress" class="text-heading">Use as a billing
-                                    address?</label>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-primary me-3">Submit</button>
-                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
-                                aria-label="Close">
-                                Cancel
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-
-
+                <div class="col-md-3">
+                    <div class="card bg-gradient-success text-white shadow-sm">
+                        <div class="card-body text-center py-4">
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <div class="rounded-circle bg-white bg-opacity-25 p-3">
+                                    <i class="fas fa-check-circle fa-2x"></i>
+                                </div>
+                            </div>
+                            <h3 class="fw-bold mb-1">{{ $opportunites->where('statut', 'active')->count() }}</h3>
+                            <p class="mb-0 opacity-75">Actives</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-gradient-warning text-white shadow-sm">
+                        <div class="card-body text-center py-4">
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <div class="rounded-circle bg-white bg-opacity-25 p-3">
+                                    <i class="fas fa-users fa-2x"></i>
+                                </div>
+                            </div>
+                            <h3 class="fw-bold mb-1">
+                                {{ $opportunites->sum(function ($o) {return $o->totalCandidatures();}) }}</h3>
+                            <p class="mb-0 opacity-75">Candidatures</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-gradient-info text-white shadow-sm">
+                        <div class="card-body text-center py-4">
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <div class="rounded-circle bg-white bg-opacity-25 p-3">
+                                    <i class="fas fa-clock fa-2x"></i>
+                                </div>
+                            </div>
+                            <h3 class="fw-bold mb-1">{{ $opportunites->where('date_expiration', '>=', now())->count() }}
+                            </h3>
+                            <p class="mb-0 opacity-75">À pourvoir</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--/ Content -->
-        </div>
+        @endif
 
+        {{-- Table des opportunités --}}
+        <div class="card shadow-sm">
+            <div class="card-header bg-white border-bottom">
+                <h5 class="mb-0">
+                    <i class="fas fa-list me-2"></i>Liste des opportunités
+                </h5>
+            </div>
+
+            <div class="card-body p-0">
+                @if (isset($opportunites) && $opportunites->count() > 0)
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th><i class="fas fa-briefcase me-1"></i>Poste</th>
+                                    <th><i class="fas fa-building me-1"></i>Entreprise</th>
+                                    <th><i class="fas fa-file-contract me-1"></i>Type</th>
+                                    <th><i class="fas fa-map-marker-alt me-1"></i>Lieu</th>
+                                    <th><i class="fas fa-users me-1"></i>Candidatures</th>
+                                    <th><i class="fas fa-calendar me-1"></i>Expiration</th>
+                                    <th><i class="fas fa-toggle-on me-1"></i>Statut</th>
+                                    <th><i class="fas fa-cogs me-1"></i>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($opportunites as $opportunite)
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="rounded-circle bg-primary bg-opacity-10 p-2 me-3">
+                                                    <i class="fas fa-briefcase text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0 fw-bold">{{ $opportunite->titre }}</h6>
+                                                    <small class="text-muted">
+                                                        💰 {{ $opportunite->salaire_formate ?? 'Non spécifié' }}
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="fw-semibold">{{ $opportunite->entreprise }}</span>
+                                        </td>
+                                        <td>{!! $opportunite->type_contrat_badge !!}</td>
+                                        <td>
+                                            <i class="fas fa-map-marker-alt text-danger me-1"></i>
+                                            {{ $opportunite->localisation }}
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-primary rounded-pill">
+                                                {{ $opportunite->totalCandidatures() }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <small class="text-muted">
+                                                {{ $opportunite->date_expiration }}
+                                                @if ($opportunite->isExpired())
+                                                    <br><span class="text-danger">Expirée</span>
+                                                @else
+                                                    <br><span class="text-success">{{ $opportunite->joursRestants() }}
+                                                        jour(s)</span>
+                                                @endif
+                                            </small>
+                                        </td>
+                                        <td>{!! $opportunite->statut_badge !!}</td>
+                                        <td>
+                                            <div class="d-flex gap-1">
+                                                <button class="btn btn-info btn-sm"
+                                                    onclick="voirDetailsOpportunite({{ $opportunite->id }})"
+                                                    title="Voir détails">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-warning btn-sm"
+                                                    onclick="editerOpportunite({{ $opportunite->id }})" title="Modifier">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-danger btn-sm"
+                                                    onclick="supprimerOpportunite({{ $opportunite->id }}, '{{ addslashes($opportunite->titre) }}')"
+                                                    title="Supprimer">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <div class="text-center py-5">
+                        <i class="fas fa-briefcase fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">Aucune opportunité</h5>
+                        <p class="text-muted">Commencez par créer votre première offre d'emploi</p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#create_opportunites">
+                            <i class="fas fa-plus me-2"></i>Créer une opportunité
+                        </button>
+                    </div>
+                @endif
+            </div>
+        </div>
     </div>
 
-    <!--View User Modal -->
-    <div class="modal fade" id="view" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="text-center mb-6">
-                        <h4 class="mb-2">Voir Information</h4>
-                    </div>
-                    <form id="editUserForm" class="row g-5" onsubmit="return false">
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="modalEditUserFirstName" name="modalEditUserFirstName"
-                                    class="form-control" value="Oliver" placeholder="Oliver" />
-                                <label for="modalEditUserFirstName">Titre</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="modalEditUserLastName" name="modalEditUserLastName"
-                                    class="form-control" value="Queen" placeholder="Queen" />
-                                <label for="modalEditUserLastName">Categories</label>
-                            </div>
-                        </div>
-                        <div class="form-floating form-floating-outline mb-6">
-                            <textarea
-                              class="form-control h-px-75"
-                              id="basic-default-bio"
-                              name="basic-default-bio"
-                              placeholder="............"
-                              rows=""
-                              required></textarea>
-                            <label for="basic-default-bio">Description</label>
-                          </div>
+    <script>
+        function refreshOpportunites() {
+            window.location.reload();
+        }
+
+        function voirDetailsOpportunite(id) {
+            console.log('Voir détails:', id);
+        }
+
+        function editerOpportunite(id) {
+            console.log('Éditer:', id);
+        }
+
+        function supprimerOpportunite(id, titre) {
+            console.log('Supprimer:', id, titre);
+        }
+    </script>
+
+    <style>
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #696ac3, #4f46e5) !important;
+        }
+
+        .bg-gradient-success {
+            background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+        }
+
+        .bg-gradient-warning {
+            background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+        }
+
+        .bg-gradient-info {
+            background: linear-gradient(135deg, #06b6d4, #0891b2) !important;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(var(--bs-primary-rgb), 0.05);
+        }
+    </style>
     
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="modalEditUserEmail" name="modalEditUserEmail"
-                                    class="form-control" value="oliverqueen@gmail.com"
-                                    placeholder="oliverqueen@gmail.com" />
-                                <label for="modalEditUserEmail">Email</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <select id="modalEditUserStatus" name="modalEditUserStatus" class="form-select"
-                                    aria-label="Default select example">
-                                    <option value="1" selected>Active</option>
-                                    <option value="2">Inactive</option>
-                                    <option value="3">Suspended</option>
-                                </select>
-                                <label for="modalEditUserStatus">Status</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="modalEditTaxID" name="modalEditTaxID"
-                                    class="form-control modal-edit-tax-id" placeholder="123 456 7890" />
-                                <label for="modalEditTaxID">Tax ID</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="input-group input-group-merge">
-                                <span class="input-group-text">US (+1)</span>
-                                <div class="form-floating form-floating-outline">
-                                    <input type="text" id="modalEditUserPhone" name="modalEditUserPhone"
-                                        class="form-control phone-number-mask" value="+1 609 933 4422"
-                                        placeholder="+1 609 933 4422" />
-                                    <label for="modalEditUserPhone">Phone Number</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <input id="modalEditUserLanguage" name="modalEditUserLanguage"
-                                    class="form-control h-auto" placeholder="select technologies" value="English" />
-                                <label for="modalEditUserLanguage">Custom List Suggestions</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating form-floating-outline">
-                                <select id="modalEditUserCountry" name="modalEditUserCountry" class="select2 form-select"
-                                    data-allow-clear="true">
-                                    <option value="">Select</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Bangladesh">Bangladesh</option>
-                                    <option value="Belarus">Belarus</option>
-                                    <option value="Brazil">Brazil</option>
-                                    <option value="Canada">Canada</option>
-                                    <option value="China">China</option>
-                                    <option value="France">France</option>
-                                    <option value="Germany">Germany</option>
-                                    <option value="India" selected>India</option>
-                                    <option value="Indonesia">Indonesia</option>
-                                    <option value="Israel">Israel</option>
-                                    <option value="Italy">Italy</option>
-                                    <option value="Japan">Japan</option>
-                                    <option value="Korea">Korea, Republic of</option>
-                                    <option value="Mexico">Mexico</option>
-                                    <option value="Philippines">Philippines</option>
-                                    <option value="Russia">Russian Federation</option>
-                                    <option value="South Africa">South Africa</option>
-                                    <option value="Thailand">Thailand</option>
-                                    <option value="Turkey">Turkey</option>
-                                    <option value="Ukraine">Ukraine</option>
-                                    <option value="United Arab Emirates">United Arab Emirates</option>
-                                    <option value="United Kingdom">United Kingdom</option>
-                                    <option value="United States">United States</option>
-                                </select>
-                                <label for="modalEditUserCountry">Country</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check form-switch">
-                                <input type="checkbox" class="form-check-input" id="editBillingAddress" />
-                                <label for="editBillingAddress" class="text-heading">Use as a billing
-                                    address?</label>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-primary me-3">Submit</button>
-                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
-                                aria-label="Close">
-                                Cancel
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-
-            </div>
-            <!--/ Content -->
-        </div>
-
-
-
-    </div>
 @endsection

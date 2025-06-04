@@ -31,7 +31,7 @@
     </section>
 
     <section class="blog-grid-section secondary-dark-bg pt-140 pb-140">
-        <div class="container">
+        <div class="container" style="margin-top: -100px">
             <div class="row">
                 @if ($formations->isEmpty())
                     <div class="col-12">
@@ -55,7 +55,7 @@
                                                loop
                                                preload="metadata"
                                                poster="{{ asset('assets/images/blog/blog-1.jpg') }}">
-                                            <source src="{{ asset('storage/' . $formation->file_path) }}" type="video/mp4">
+                                            <source src="{{ asset('storage/' . $formation->file_path) }}" type="video/mp4" style="width: 100%; height: 250px; object-fit: cover;"  >
                                             Votre navigateur ne supporte pas la vidéo.
                                         </video>
                                     @else

@@ -43,13 +43,27 @@
                     <div class="section-content-box">
                         <ul>
                             <li>
-                                <div class="iconic-box style-four mb-50 wow fadeInDown">
+                                <div class="iconic-box style-four mb-50 wow fadeInDown" >
+                                    <a href=""></a>
                                     <div class="icon">
                                         <img src="{{ asset('assets/images/icon/map.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
-                                        <h4>Locations</h4>
-                                        <p>16/A, Romada House City Tower New York, United States</p>
+                                        {{-- <h4>Localisation</h4> --}}
+                                        <a href="https://www.google.com/maps/place/5%C2%B019'18.6%22N+4%C2%B004'40.9%22W/@5.3218463,-4.0805939,17z/data=!3m1!4b1!4m4!3m3!8m2!3d5.321841!4d-4.078019?entry=ttu&g_ep=EgoyMDI1MDYwMS4wIKXMDSoASAFQAw%3D%3D">
+                                            <h4>Localisation</h4>
+                                        <p>Yopougon Palais non loin de la Gare Jet Express,</p>
+                                        </a>
+                                        <style>
+                                            .content a {
+                                                color: #fff;
+                                                text-decoration: none;
+                                            }
+                                            .content a:hover {
+                                                color: #f0a500; /* Couleur de survol */
+                                            }
+                                        </style>
+                                        
                                     </div>
                                 </div>
                             </li>
@@ -60,8 +74,7 @@
                                     </div>
                                     <div class="content">
                                         <h4>Call Us</h4>
-                                        <p><a href="tel:+8802838394782">+88028 3839 4782</a></p>
-                                        <p><a href="tel:+8802838394782">+88012 2390 3829</a></p>
+                                        <p><a href="tel:0707672957">+255 07 07 672 957</a></p>
                                     </div>
                                 </div>
                             </li>
@@ -71,9 +84,8 @@
                                         <img src="{{ asset('assets/images/icon/envelope.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
-                                        <h4>Email Address</h4>
-                                        <p><a href="mailto:yourmailaddress@gmail.com">yourmailaddress@gmail.com</a></p>
-                                        <p><a href="mailto:yourmailaddress@gmail.com">yourmailaddress@gmail.com</a></p>
+                                        <h4>Addresse Email</h4>
+                                        <p><a href="mailto:yourmailaddress@gmail.com">direction@excelliumconseils.com</a></p>
                                     </div>
                                 </div>
                             </li>
@@ -84,8 +96,7 @@
                                     </div>
                                     <div class="content">
                                         <h4>Website</h4>
-                                        <p><a href="www.facebook.com/example">www.facebook.com/example</a></p>
-                                        <p><a href="www.website.com/example">www.website.com/example</a></p>
+                                        <p><a href="https://web.facebook.com/Excellium.conseils?rdid=XJWbWQrGv2Okb1cm&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F199uiSgsQ7%2F%3F_rdc%3D1%26_rdr#">www.facebook.com/Excellium</a></p>
                                     </div>
                                 </div>
                             </li>

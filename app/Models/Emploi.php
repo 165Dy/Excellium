@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+
 
 class Emploi extends Model
 {
     use HasFactory;
+
+    protected $table = 'emplois';
 
     protected $fillable = [
         'titre',
@@ -107,4 +111,6 @@ class Emploi extends Model
     {
         return $this->candidatures()->where('statut', 'accepte')->count();
     }
+
+
 }
