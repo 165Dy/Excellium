@@ -56,6 +56,7 @@
                         </div>
                     </div>
                 @else
+                
                      @foreach ($opportunites as $opportunite)
                             <div class="col-lg-4 col-md-6 col-sm-12">
                                 <!--=== Product Item ===-->
@@ -69,15 +70,17 @@
                                         </div>
                                     </div>
                                     <div class="product-info">
-                                        <h4><a href="{{ route('opportunites.clients.show', $opportunite->id) }}">
-                                            {{ $opportunite->title }}</a></h4>
+                                        <h4 >
+                                          <a href="{{ route('opportunites.clients.show', $opportunite->id) }}">
+                                            {{ $opportunite->titre }}
+                                          </a>
+                                        </h4>
                                         <span class="price">{{ $opportunite->price }}</span>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                 @endif
-
 
             </div>
         </div>

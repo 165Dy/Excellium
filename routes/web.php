@@ -48,7 +48,7 @@ Route::prefix('clients')->group(function () {
 
     
     // opportunites
-    Route::get('opportunites/public', [OpportuniteController::class, 'index_public'])->name('opportunites.clients.index');
+    Route::get('opportunites', [OpportuniteController::class, 'index_public'])->name('opportunites.clients.index');
     Route::get('/opportunites/clients/show',function () { return view('clients.opportunites.show'); } )->name('opportunites.clients.show');
 
     // FORMATIONS
