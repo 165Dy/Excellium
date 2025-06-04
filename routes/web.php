@@ -48,7 +48,7 @@ Route::prefix('clients')->group(function () {
 
     
     // opportunites
-    Route::get('/opportunites/clients/',function () { return view('clients.opportunites.index'); } )->name('opportunites.clients.index');
+    Route::get('opportunites/public', [OpportuniteController::class, 'index_public'])->name('opportunites.clients.index');
     Route::get('/opportunites/clients/show',function () { return view('clients.opportunites.show'); } )->name('opportunites.clients.show');
 
     // FORMATIONS
@@ -121,7 +121,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/partenaires',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
     Route::get('/temoignages',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');
     ////////
-    Route::get('/opportunites',function () { return view('Admin.Opportunites.index'); } )->name('opportunites.index');
     //CONTACTS
     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 

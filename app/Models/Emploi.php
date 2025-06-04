@@ -112,13 +112,5 @@ class Emploi extends Model
         return $this->candidatures()->where('statut', 'accepte')->count();
     }
 
-    // Ajouter au début de la classe pour debug
-    protected static function boot()
-    {
-        parent::boot();
-        
-        static::retrieved(function ($model) {
-            \Log::info('Emploi récupéré: ' . $model->titre);
-        });
-    }
+
 }

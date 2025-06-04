@@ -49,6 +49,40 @@ class OpportuniteController extends Controller
         }
     }
 
+
+     public function index_public()
+    {
+        try {
+            // Debug : vérifier la connexion à la base
+            Log::info('=== DEBUG OPPORTUNITES ===');
+            
+            // Compter les emplois directement
+            $count = DB::table('emplois')->count();
+            Log::info('Nombre d\'emplois dans la table: ' . $count);
+            
+            // Récupérer avec Eloquent
+            $opportunites = Emploi::all();
+            Log::info('Nombre d\'opportunités via Eloquent: ' . $opportunites->count());
+            
+            // Ajouter les variables de sécurité pour le layout
+            $categories = \App\Models\Categorie::all() ?? collect();
+            $formations = \App\Models\Formation::all() ?? collect();
+            
+            return view('clients.Opportunites.index', compact('opportunites', 'categories', 'formations'));
+            
+        } catch (\Exception $e) {
+            Log::error('Erreur dans OpportuniteController@index: ' . $e->getMessage());
+            
+            // Retourner une vue d'erreur ou rediriger
+            return view('clients.Opportunites.index', [
+                'opportunites' => collect(),
+                'categories' => collect(),
+                'formations' => collect(),
+                'error' => $e->getMessage()
+            ]);
+        }
+    }
+
     /**
      * Afficher le formulaire de création
      */

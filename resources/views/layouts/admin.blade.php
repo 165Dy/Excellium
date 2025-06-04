@@ -749,9 +749,10 @@
                                 {{-- Opportunités --}}
                                 <li class="menu-item {{ request()->routeIs('admin.opportunites.*') ? 'active open' : '' }}">
                                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                        <i class="menu-icon tf-icons fas fa-briefcase"></i>
+                                       <i class="menu-icon icon-base ri ri-computer-line"></i>
                                         <div data-i18n="Opportunités">Opportunités</div>
-                                        <div class="badge badge-center rounded-pill bg-primary ms-auto">
+                                        <div class="badge badge-center rounded-pill bg-primary ms-auto" style="width:10px, height:10px">
+                                            {{-- Count active opportunities --}}
                                             {{ App\Models\Emploi::where('statut', 'active')->count() }}
                                         </div>
                                     </a>
