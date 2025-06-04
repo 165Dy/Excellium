@@ -46,9 +46,9 @@ Route::get('/confirm-password', function () {return view('auth.confirm-password'
 Route::prefix('clients')->group(function () {
 
     
-    // ESPACE_CLIENTS
-    Route::get('/Espace_clients/documents',function () { return view('clients.Espace_clients.documents'); } )->name('Espace_clients.documents');
-    Route::get('/Espace_clients/outils_en_ligne',function () { return view('clients.Espace_clients.outils'); } )->name('Espace_clients.outils');
+    // opportunites
+    Route::get('/opportunites/clients/',function () { return view('clients.opportunites.index'); } )->name('opportunites.clients.index');
+    Route::get('/opportunites/clients/show',function () { return view('clients.opportunites.show'); } )->name('opportunites.clients.show');
 
     // FORMATIONS
     
@@ -64,9 +64,8 @@ Route::prefix('clients')->group(function () {
     Route::get('/Nos_Services/Ressources_Humaines',function () { return view('clients.Nos_Services.Ressource_humaine'); } )->name('Ressources_humaines');
 
      // NOS PARTENAIRES
-     Route::get('/Partenaires/Nos_collaborateurs',function () { return view('clients.Partenaires.Collaborateurs'); } )->name('Partenaires.Collaborateurs');
-     Route::get('/Partenaires/Nos_Entreprises',function () { return view('clients.Partenaires.Entreprises'); } )->name('Partenaires.Entreprises');
-     Route::get('/Partenaires/show',function () { return view('clients.Partenaires.showPartenaire'); } )->name('Partenaires.show');
+     Route::get('/Partenaires',function () { return view('clients.Partenaires.index'); } )->name('Partenaires.Collaborateurs');
+     Route::get('/Partenaires/show',function () { return view('clients.Partenaires.show'); } )->name('Partenaires.show');
 
      // RESSOURCES
      Route::get('/Ressources/Articles',function () { return view('clients.Ressources.Articles'); } )->name('Ressources.Articles');

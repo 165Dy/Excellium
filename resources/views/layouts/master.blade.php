@@ -19,7 +19,7 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    
+
     <!--====== FontAwesome css ======-->
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontello/css/fontello.css') }}">
     <!--====== FontAwesome css ======-->
@@ -101,22 +101,15 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item has-children"><a href="#">Partenaires</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ route('Partenaires.Collaborateurs') }}">Collaborateurs</a>
-                                            </li>
-                                            <li><a href="{{ route('Partenaires.Entreprises') }}">Entreprises</a></li>
-                                            <li><a href="{{ route('Partenaires.show') }}">Show</a></li>
-                                        </ul>
+                                    <li class="menu-item has-children"><a href="{{ route('Partenaires.Collaborateurs') }}">Partenaires</a>
+                                        
                                     </li>
-                                    <li class="menu-item has-children"><a href="#">Opportunités</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ route('Espace_clients.documents') }}">Documents</a></li>
-                                            <li><a href="{{ route('Espace_clients.outils') }}">Outils en ligne</a></li>
-
-                                        </ul>
+                                    <li class="menu-item has-children"><a
+                                           href="{{ route('opportunites.clients.index') }}">Opportunités</a>
                                     </li>
-                                    <li class="menu-item has-children"><a href="{{ route('Formations.index') }}">Formations</a></li>
+                                    <li class="menu-item has-children"><a
+                                            href="{{ route('Formations.index') }}">Formations</a></li>
+                                    </li>
 
 
                                 </ul>
@@ -143,19 +136,18 @@
     @yield('Conseils_actualites')
     @yield('Ressources_entrepreunariats')
     {{-- /RESSOURCES/ --}}
-    @yield('Entreprises')
-    @yield('Collaborateurs')
+    @yield('indexOpportunite')
+    @yield('showOpportunite')
     {{-- /PARTENAIRES/ --}}
-    @yield('outils')
-    @yield('documents')
+    @yield('indexPartenaire')
     @yield('showPartenaire')
-    {{-- /ESPACE_CLIENTS/ --}}
+    {{-- /opportunites/ --}}
     @yield('Audit')
     @yield('Compta')
     @yield('Fiscalite')
     @yield('Gestion_entreprise')
     {{-- /FORMATIONS/ --}}
-    
+
     @yield('formations.index')
     @yield('formations.show')
     {{-- /NOS SERVICES/ --}}
@@ -172,9 +164,8 @@
                         <!--=== Footer Widget ===-->
                         <div class="footer-widget about-company-widget mb-40 wow fadeInUp">
                             <div class="footer-logo mb-3">
-                                <a href="index.html"><img
-                                        src="{{ asset('assets/images/logo_new.jpg') }}" alt="Footer Logo"
-                                        style="width:120px; max-width:100%; height:auto;"></a>
+                                <a href="index.html"><img src="{{ asset('assets/images/logo_new.jpg') }}"
+                                        alt="Footer Logo" style="width:120px; max-width:100%; height:auto;"></a>
                             </div>
                             <p>
                                 Excellium Conseils, c’est bien plus qu’un cabinet de conseil :
@@ -234,7 +225,8 @@
                                         </div>
                                         <div class="content">
                                             <p>
-                                                <a href="mailto:direction@excelliumconseils.com">direction@excelliumconseils.com</a>
+                                                <a
+                                                    href="mailto:direction@excelliumconseils.com">direction@excelliumconseils.com</a>
                                             </p>
                                         </div>
                                     </div>
@@ -266,7 +258,7 @@
             </div>
         </div>
     </footer>
-    
+
     <!--====== End Footer Section ======-->
     <!--====== Back To Top  ======-->
     <a href="{{ route('contacts') }}" class="back-to-top-message"><i class="far fa-envelope"></i></a>
