@@ -33,7 +33,6 @@ Route::get('/login', function () {return view('auth.login');})->name('login');
 
 Route::get('/register', function () {return view('auth.register');})->name('register');
 
-
 Route::get('/forgot-password', function () {return view('auth.forgot-password');})->name('forgot-password');
 
 Route::get('/reset-password', function () {return view('auth.reset-password');})->name('reset-password');
@@ -53,11 +52,9 @@ Route::prefix('clients')->group(function () {
 
     // FORMATIONS
     
-    Route::get('/Formations/audit',function () { return view('clients.Formations.Audit'); } )->name('Formations.audit');
-    Route::get('/Formations/Compta',function () { return view('clients.Formations.Compta'); } )->name('Formations.Compta');
-    Route::get('/Formations/Fiscalite',function () { return view('clients.Formations.Fiscalite'); } )->name('Formations.Fiscalite');
-    Route::get('/Formations/Gestion_entreprise',function () { return view('clients.Formations.Gestion_entreprise'); } )->name('Formations.Gestion_entreprise');
-    Route::get('/Formations/show',function () { return view('clients.Formations.showFormation'); } )->name('Formations.show');
+    Route::get('/Formations',[formationsController::class, 'index_public'])->name('Formations.index');
+    Route::get('/Formations/show/{id}',[formationsController::class, 'show_public'] )->name('Formations.show_public');
+    Route::post('/Formations/participer', [formationsController::class, 'participer'])->name('formations.participer');
 
     // NOS SERVICES
     Route::get('/Nos_Services/audit&Conseil',function () { return view('clients.Nos_Services.Audit_Conseil'); } )->name('audit&Conseil');
@@ -97,14 +94,16 @@ Route::prefix('admin')->group(function () {
     Route::post('/categories', [CategorieController::class, 'store'])->name('categories.store');
 
     // Routes formations
-    Route::get('/formations/index', [formationsController::class, 'index'])->name('formations.index');
-    Route::get('/formations/create', [formationsController::class, 'create'])->name('formations.create');
     Route::post('/formations/store', [formationsController::class, 'store'])->name('formations.store');
     Route::get('/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
     Route::get('/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');
-    Route::post('/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
+    Route::match(['PUT', 'POST'], '/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
     Route::delete('/formations/{id}', [formationsController::class, 'destroy'])->name('formations.destroy');
+    Route::get('formations/{formation}/details', [formationsController::class, 'getDetails'])->name('formations.details');
+    Route::get('formations/{formation}/export-inscriptions', [formationsController::class, 'exportInscriptions'])->name('formations.export-inscriptions');
+    Route::patch('inscriptions/{inscription}/statut', [formationsController::class, 'changerStatutInscription'])->name('inscriptions.statut');
 
+    
     Route::get('/articles',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
     Route::get('/partenaires',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
     Route::get('/temoignages',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');

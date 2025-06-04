@@ -88,11 +88,12 @@
                                             <path fill="#d7d041"
                                                 d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6" />
                                         </svg>&nbsp;&nbsp;
-                                        <svg id="confirm-color" style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="24"
-                                            height="24" viewBox="0 0 24 24">
-                                            <path fill="#fd1800"
-                                                d="M7 6V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6zm6.414 8l1.768-1.768l-1.414-1.414L12 12.586l-1.768-1.768l-1.414 1.414L10.586 14l-1.768 1.768l1.414 1.414L12 15.414l1.768 1.768l1.414-1.414zM9 4v2h6V4z" />
-                                        </svg>
+                                        <button type="button" 
+                                                class="btn btn-danger btn-sm" 
+                                                onclick="confirmerSuppression({{ $formation->id }}, '{{ addslashes($formation->titre) }}')"
+                                                title="Supprimer">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -372,3 +373,91 @@
         </div>
 
     @endsection
+
+    <script>
+    function confirmerSuppression(formationId, titreFormation) {
+        Swal.fire({
+            title: '🗑️ Supprimer la formation ?',
+            html: `
+                <div class="text-center">
+                    <i class="fas fa-exclamation-triangle text-warning fa-3x mb-3"></i>
+                    <p>Êtes-vous sûr de vouloir supprimer la formation :</p>
+                    <p class="fw-bold text-primary">"${titreFormation}"</p>
+                    <div class="alert alert-warning mt-3">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Attention :</strong> Cette action est irréversible !<br>
+                        Toutes les inscriptions associées seront également supprimées.
+                    </div>
+                </div>
+            `,
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: '<i class="fas fa-trash me-1"></i>Oui, supprimer définitivement',
+            cancelButtonText: '<i class="fas fa-arrow-left me-1"></i>Annuler',
+            reverseButtons: true,
+            focusCancel: true, // Focus sur annuler par sécurité
+            background: '#ffffff',
+            customClass: {
+                popup: 'border-0 shadow',
+                title: 'text-dark',
+                content: 'text-dark'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Créer et soumettre le formulaire de suppression
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = `/admin/formations/${formationId}`;
+                form.style.display = 'none';
+                
+                // Token CSRF
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = '_token';
+                csrfInput.value = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                form.appendChild(csrfInput);
+                
+                // Method DELETE
+                const methodInput = document.createElement('input');
+                methodInput.type = 'hidden';
+                methodInput.name = '_method';
+                methodInput.value = 'DELETE';
+                form.appendChild(methodInput);
+                
+                // Ajouter au DOM et soumettre
+                document.body.appendChild(form);
+                
+                // Afficher loading
+                Swal.fire({
+                    title: 'Suppression en cours...',
+                    html: `
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="spinner-border text-danger mb-3" role="status">
+                                <span class="visually-hidden">Suppression...</span>
+                            </div>
+                            <p class="mb-0">Suppression de la formation...</p>
+                        </div>
+                    `,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    showConfirmButton: false,
+                    background: '#ffffff'
+                });
+                
+                form.submit();
+            } else {
+                // Confirmation d'annulation
+                Swal.fire({
+                    icon: 'info',
+                    title: '✅ Suppression annulée',
+                    text: 'La formation n\'a pas été supprimée.',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    background: '#ffffff'
+                });
+            }
+        });
+    }
+    </script>

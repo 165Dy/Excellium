@@ -16,7 +16,10 @@
         href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Syne:wght@400;500;700&amp;display=swap"
         rel="stylesheet">
 
-
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
     <!--====== FontAwesome css ======-->
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontello/css/fontello.css') }}">
     <!--====== FontAwesome css ======-->
@@ -85,16 +88,6 @@
                                             <li><a href="{{ route('Financement') }}">Financement</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item has-children"><a href="#">Formations</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ route('Formations.Compta') }}">Comptabilité</a></li>
-                                            <li><a href="{{ route('Formations.Fiscalite') }}">Fiscalité</a></li>
-                                            <li><a href="">Audit</a></li>
-                                            <li><a href="{{ route('Formations.Gestion_entreprise') }}">Gestion
-                                                    d'Entreprise</a></li>
-                                            <li><a href="{{ route('Formations.show') }}">Show</a></li>
-                                        </ul>
-                                    </li>
                                     <li class="menu-item has-children"><a href="#">Ressources</a>
                                         <ul class="sub-menu">
                                             <li><a href="{{ route('Ressources.conseils_actualites') }}">Actualités</a>
@@ -123,13 +116,14 @@
 
                                         </ul>
                                     </li>
+                                    <li class="menu-item has-children"><a href="{{ route('Formations.index') }}">Formations</a></li>
+
 
                                 </ul>
 
                             </nav>
                         </div>
                         <div class="nav-right-item">
-                            {{-- <a href="{{ route('contacts') }}"><i class="far fa-envelope"></i></a> --}}
                             <div class="navbar-toggler">
                                 <span></span>
                                 <span></span>
@@ -161,12 +155,9 @@
     @yield('Fiscalite')
     @yield('Gestion_entreprise')
     {{-- /FORMATIONS/ --}}
-    @yield('Audit_conseil')
-    @yield('compta_fiscale')
-    @yield('financement')
-    @yield('R_humaines')
-    @yield('Gestion_paie')
-    @yield('showFormation')
+    
+    @yield('formations.index')
+    @yield('formations.show')
     {{-- /NOS SERVICES/ --}}
     @yield('contact')
 
