@@ -6,6 +6,7 @@ use App\Http\Controllers\formationsController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OpportuniteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -102,7 +103,20 @@ Route::prefix('admin')->group(function () {
     Route::get('formations/{formation}/export-inscriptions', [formationsController::class, 'exportInscriptions'])->name('formations.export-inscriptions');
     Route::patch('inscriptions/{inscription}/statut', [formationsController::class, 'changerStatutInscription'])->name('inscriptions.statut');
 
+    // Routes Opportunités
+    Route::get('opportunites', [OpportuniteController::class, 'index'])->name('opportunites.index');
+    Route::get('opportunites/create', [OpportuniteController::class, 'create'])->name('admin.opportunites.create');
+    Route::post('opportunites', [OpportuniteController::class, 'store'])->name('admin.opportunites.store');
+    Route::get('opportunites/{opportunite}', [OpportuniteController::class, 'show'])->name('admin.opportunites.show');
+    Route::get('opportunites/{opportunite}/edit', [OpportuniteController::class, 'edit'])->name('admin.opportunites.edit');
+    Route::put('opportunites/{opportunite}', [OpportuniteController::class, 'update'])->name('admin.opportunites.update');
+    Route::delete('opportunites/{opportunite}', [OpportuniteController::class, 'destroy'])->name('admin.opportunites.destroy');
     
+    Route::get('opportunites/{opportunite}/details', [OpportuniteController::class, 'getDetails'])->name('admin.opportunites.details');
+    Route::patch('candidatures/{candidature}/statut', [OpportuniteController::class, 'changerStatutCandidature'])->name('admin.candidatures.statut');
+    Route::get('opportunites/{opportunite}/export-candidatures', [OpportuniteController::class, 'exportCandidatures'])->name('opportunites.export-candidatures');
+
+
     Route::get('/articles',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
     Route::get('/partenaires',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
     Route::get('/temoignages',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');
@@ -122,3 +136,7 @@ Route::prefix('admin')->group(function () {
 
    
 });
+
+    
+    
+

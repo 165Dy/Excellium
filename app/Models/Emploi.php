@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+
 
 class Emploi extends Model
 {
     use HasFactory;
+
+    protected $table = 'emplois';
 
     protected $fillable = [
         'titre',
@@ -106,5 +110,15 @@ class Emploi extends Model
     public function candidaturesAcceptees()
     {
         return $this->candidatures()->where('statut', 'accepte')->count();
+    }
+
+    // Ajouter au début de la classe pour debug
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::retrieved(function ($model) {
+            \Log::info('Emploi récupéré: ' . $model->titre);
+        });
     }
 }
