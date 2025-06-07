@@ -65,7 +65,7 @@
                                             <img src="{{ asset('assets/images/products/thumb-1.jpg') }}" alt="Product">
                                             <p style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{$memeOpportunite->description}}</p>
                                             <p> <i class="far fa-calendar-alt"></i> {{ $memeOpportunite->date_expiration }}</p>
-                                            <li>{{ $memeOpportunite->entreprise }}</li>
+                                            <a href="{{ route('opportunites.clients.show', $opportunite->id) }}">{{ $memeOpportunite->entreprise }}</a>
                                         </div>
                                     @endforeach
                                 </div>
