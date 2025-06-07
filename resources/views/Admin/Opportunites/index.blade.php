@@ -165,16 +165,16 @@
                                                 <button class="btn btn-info btn-sm"
                                                     onclick="voirDetailsOpportunite({{ $opportunite->id }})"
                                                     title="Voir détails">
-                                                    <i class="fas fa-eye"></i>
+                                                    <i class="ri ri-eye-line"></i>
                                                 </button>
                                                 <button class="btn btn-warning btn-sm"
                                                     onclick="editerOpportunite({{ $opportunite->id }})" title="Modifier">
-                                                    <i class="fas fa-edit"></i>
+                                                    <i class="ri ri-edit-line"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-sm"
                                                     onclick="supprimerOpportunite({{ $opportunite->id }}, '{{ addslashes($opportunite->titre) }}')"
                                                     title="Supprimer">
-                                                    <i class="fas fa-trash"></i>
+                                                    <i class="ri ri-delete-bin-line"></i>
                                                 </button>
                                             </div>
                                         </td>

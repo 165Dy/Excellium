@@ -46,7 +46,7 @@
                             <div class="blog-post-item style-two mb-30 wow fadeInDown">
                                 <div class="post-thumbnail">
                                     @if($formation->file_path && $formation->file_type === 'image')
-                                        <img src="{{ asset('storage/' . $formation->file_path) }}" alt="{{ $formation->titre }}"
+                                        <img src="{{ asset('storage/' .$formation->file_path) }}" alt="{{ $formation->titre }}"
                                              style="width: 100%; height: 250px; object-fit: cover;">
                                     @elseif($formation->file_path && $formation->file_type === 'video')
                                         <video class="formation-video" 
@@ -72,13 +72,14 @@
                                 <div class="post-content">
                                     <div class="post-meta">
                                         <a href="#" class="post-admin">
-                                            <i class="far fa-user-alt"></i>Par Excellium Conseil
+                                            <i class="far fa-user-alt"></i>Par Excellium
                                         </a>
                                         <a href="#" class="post-date">
                                             <i class="far fa-calendar-alt"></i>
                                             {{ \Carbon\Carbon::parse($formation->date_debut)->format('d M Y') }}
                                         </a>
                                     </div>
+                                    
                                     <h4 class="title">
                                         <a href="{{ route('Formations.show_public', $formation->id) }}">
                                             {{ $formation->titre }}

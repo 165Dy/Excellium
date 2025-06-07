@@ -31,16 +31,16 @@
                         <div class="row align-items-center">
                             <div class="col-md-7">
                                 <div class="show-text wow fadeInLeft">
-                                    <span>Showing 1–9 of 10 results</span>
+                                    <span>Nombre d'offres : {{$opportunites->count() }}</span>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="filter-dropdown float-md-end wow fadeInRight">
                                     <select class="wide">
-                                        <option data-display="Default Shorting">Default Shorting</option>
-                                        <option value="01">Best Products</option>
-                                        <option value="02">Highest Price</option>
-                                        <option value="03">Lowest Price</option>
+                                        <option data-display="TOUT">TOUT</option>
+                                        <option value="01">STAGE</option>
+                                        <option value="02">CDI</option>
+                                        <option value="03">CDD</option>
                                     </select>
                                 </div>
                             </div>
@@ -64,18 +64,29 @@
                                     <div class="product-image">
                                         <img src="{{ asset('assets/images/products/product-1.jpg') }}" alt="Product image">
                                         <div class="hover-content">
-                                            <a href="#" class="icon-btn"><i class="far fa-cart-plus"></i></a>
-                                            <a href="#" class="icon-btn"><i class="far fa-heart"></i></a>
-                                            <a href="#" class="icon-btn"><i class="far fa-search"></i></a>
+                                            <a href="{{ route('opportunites.clients.show', $opportunite->id) }}" class="icon-btn"><i class="icon-briefcase"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-info">
                                         <h4 >
                                           <a href="{{ route('opportunites.clients.show', $opportunite->id) }}">
-                                            {{ $opportunite->titre }}
+                                            {{ $opportunite->titre }} | {{$opportunite->type_contrat}}
                                           </a>
                                         </h4>
-                                        <span class="price">{{ $opportunite->price }}</span>
+                                        <div class="post-meta">
+                                        <a href="#" class="post-admin">
+                                            <i class="far fa-envelope"></i>
+                                           {{  $opportunite->contact_email }}
+                                        </a> |
+                                        <a href="#" class="post-date">
+                                            <i class="far fa-calendar-alt"></i>
+                                            {{ \Carbon\Carbon::parse($opportunite->created_at)->format('d M Y') }}
+                                        </a>
+                                        <hr>
+                                    </div>
+                                        <span class="price" style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                            {{ $opportunite->description }}
+                                        </span>
                                     </div>
                                 </div>
                             </div>

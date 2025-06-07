@@ -1,7 +1,10 @@
 @extends('layouts.master')
 @section('welcome')
     <!--====== Start Header Section ======-->
+
+    
     <section class="hero-section">
+        
         <div class="hero-wrapper-two bg_cover" style="background-image: url(assets/images/hero/hero-bg-1.png);">
             <div class="container">
                 <div class="row align-items-center">
@@ -37,7 +40,6 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-title text-center mb-60 wow fadeInDown">
-
                         <h2>Pourquoi choisir Excellium Conseils ?</h2>
                     </div>
                 </div>
@@ -76,7 +78,7 @@
                                         <li><i class="far fa-check"></i>Des conseils adaptés à chaque étape de votre
                                             développement</li>
                                     </ul>
-                                    
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="vision">
