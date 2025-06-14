@@ -67,53 +67,81 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    
+
     <style>
         /* Animations pour SweetAlert */
         .animated {
             animation-duration: 0.5s;
             animation-fill-mode: both;
         }
-        
+
         .fadeIn {
             animation-name: fadeIn;
         }
-        
+
         .bounceIn {
             animation-name: bounceIn;
         }
-        
+
         .shakeX {
             animation-name: shakeX;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-        
+
         @keyframes bounceIn {
-            0%, 20%, 40%, 60%, 80% {
+
+            0%,
+            20%,
+            40%,
+            60%,
+            80% {
                 transform: scale(0.3);
                 opacity: 0;
             }
+
             to {
                 transform: scale(1);
                 opacity: 1;
             }
         }
-        
+
         @keyframes shakeX {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-            20%, 40%, 60%, 80% { transform: translateX(10px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-10px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(10px);
+            }
         }
-        
+
         /* Style personnalisé pour SweetAlert */
         .swal2-popup {
             border-radius: 15px !important;
         }
-        
+
         .swal2-html-container .card {
             margin: 10px 0;
         }
@@ -160,8 +188,9 @@
                                             d="M7.82901 2.22569C8.87231 0.444187 11.1726 -0.172113 12.9668 0.849138C14.7611 1.87039 15.3698 4.14247 14.3265 5.92397L7.38656 17.7743C6.34325 19.5558 4.04298 20.1721 2.24875 19.1509C0.454514 18.1296 -0.154233 15.8575 0.88907 14.076L7.82901 2.22569Z"
                                             fill="currentColor" />
                                         <defs>
-                                            <linearGradient id="paint0_linear_2989_100980" x1="5.36642" y1="0.849138"
-                                                x2="10.532" y2="24.104" gradientUnits="userSpaceOnUse">
+                                            <linearGradient id="paint0_linear_2989_100980" x1="5.36642"
+                                                y1="0.849138" x2="10.532" y2="24.104"
+                                                gradientUnits="userSpaceOnUse">
                                                 <stop offset="0" stop-opacity="1" />
                                                 <stop offset="1" stop-opacity="0" />
                                             </linearGradient>
@@ -746,7 +775,8 @@
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="#" class="menu-link" data-bs-target="#liste_formations" data-bs-toggle="modal">
+                                            <a href="#" class="menu-link" data-bs-target="#liste_formations"
+                                                data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
                                                 <div>Voir la liste</div>
                                             </a>
@@ -754,31 +784,35 @@
                                     </ul>
                                 </li>
                                 {{-- Opportunités --}}
-                                <li class="menu-item {{ request()->routeIs('admin.opportunites.*') ? 'active open' : '' }}">
+                                <li
+                                    class="menu-item {{ request()->routeIs('admin.opportunites.*') ? 'active open' : '' }}">
                                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                       <i class="menu-icon icon-base ri ri-computer-line"></i>
+                                        <i class="menu-icon icon-base ri ri-computer-line"></i>
                                         <div data-i18n="Opportunités">Opportunités</div>
-                                        <div class="badge badge-center rounded-pill bg-primary ms-auto" style="width:10px, height:10px">
+                                        <div class="badge badge-center rounded-pill bg-primary ms-auto"
+                                            style="width:10px, height:10px">
                                             {{-- Count active opportunities --}}
                                             {{ App\Models\Emploi::where('statut', 'active')->count() }}
                                         </div>
                                     </a>
                                     <ul class="menu-sub">
-                                        <li class="menu-item {{ request()->routeIs('opportunites.index') ? 'active' : '' }}">
+                                        <li
+                                            class="menu-item {{ request()->routeIs('opportunites.index') ? 'active' : '' }}">
                                             <a href="{{ route('opportunites.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-list"></i>
                                                 <div data-i18n="Liste des opportunités">Liste des opportunités</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="javascript:void(0);" class="menu-link" 
-                                               data-bs-toggle="modal" data-bs-target="#create_opportunites">
+                                            <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
+                                                data-bs-target="#create_opportunites">
                                                 <i class="menu-icon tf-icons fas fa-plus-circle"></i>
                                                 <div data-i18n="Nouvelle opportunité">Nouvelle opportunité</div>
                                             </a>
                                         </li>
-                                        <li class="menu-item {{ request()->routeIs('admin.candidatures.*') ? 'active' : '' }}">
-                                            <a href="#" class="menu-link">
+                                        <li
+                                            class="menu-item {{ request()->routeIs('admin.candidatures.*') ? 'active' : '' }}">
+                                            <a href="{{ route('opportunites.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-users"></i>
                                                 <div data-i18n="Candidatures">Candidatures</div>
                                                 <div class="badge badge-center rounded-pill bg-warning ms-auto">
@@ -880,7 +914,8 @@
                                         <h4 class="mb-2">Ajouter une Formation</h4>
                                     </div>
                                     <!-- Formulaire de création de formation stylisé -->
-                                    <form id="formationForm" action="{{ route('formations.store') }}" method="POST" class="row g-4" enctype="multipart/form-data">
+                                    <form id="formationForm" action="{{ route('formations.store') }}" method="POST"
+                                        class="row g-4" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
@@ -889,13 +924,15 @@
                                                 <label for="titre">Titre</label>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <select name="categorie_id" id="categorie_id" class="form-select" required>
-                                                    @if(isset($categories) && $categories->count() > 0)
+                                                <select name="categorie_id" id="categorie_id" class="form-select"
+                                                    required>
+                                                    @if (isset($categories) && $categories->count() > 0)
                                                         @foreach ($categories as $categorie)
-                                                            <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                                            <option value="{{ $categorie->id }}">
+                                                                {{ $categorie->nom }}</option>
                                                         @endforeach
                                                     @else
                                                         <option value="">Aucune catégorie disponible</option>
@@ -904,7 +941,7 @@
                                                 <label for="categorie_id">Catégorie</label>
                                             </div>
                                         </div>
-                                       
+
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>
@@ -953,7 +990,9 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="file" id="file" name="file" class="form-control" accept="image/*,video/*" onchange="previewFile(this)">
+                                                <input type="file" id="file" name="file"
+                                                    class="form-control" accept="image/*,video/*"
+                                                    onchange="previewFile(this)">
                                                 <label for="file">Fichier (Image ou Vidéo) - Max 150 MB</label>
                                             </div>
                                             <div id="file-error" class="mt-2" style="display: none;">
@@ -962,13 +1001,18 @@
                                                     <span>La taille du fichier ne doit pas dépasser 150 MB</span>
                                                 </div>
                                             </div>
-                                            <div id="file-preview" class="mt-3 d-flex justify-content-center" style="display: none;">
+                                            <div id="file-preview" class="mt-3 d-flex justify-content-center"
+                                                style="display: none;">
                                                 <div class="preview-container">
-                                                    <img id="image-preview" class="preview-media" style="display: none; max-width: 200px; border-radius: 8px;">
-                                                    <video id="video-preview" class="preview-media" style="display: none; max-width: 200px; border-radius: 8px;" controls>
+                                                    <img id="image-preview" class="preview-media"
+                                                        style="display: none; max-width: 200px; border-radius: 8px;">
+                                                    <video id="video-preview" class="preview-media"
+                                                        style="display: none; max-width: 200px; border-radius: 8px;"
+                                                        controls>
                                                         <source id="video-source" src="" type="">
                                                     </video>
-                                                    <button type="button" class="btn btn-sm btn-danger ms-2" onclick="removeFile()">
+                                                    <button type="button" class="btn btn-sm btn-danger ms-2"
+                                                        onclick="removeFile()">
                                                         <i class="ri-close-line"></i>
                                                     </button>
                                                 </div>
@@ -980,7 +1024,8 @@
                                                 Annuler
                                             </button>
                                             <button type="submit" class="btn btn-primary me-3" id="submitBtn">
-                                                <span class="spinner-border spinner-border-sm me-2" style="display: none;" id="spinner"></span>
+                                                <span class="spinner-border spinner-border-sm me-2"
+                                                    style="display: none;" id="spinner"></span>
                                                 Créer
                                             </button>
                                         </div>
@@ -999,7 +1044,8 @@
                         <div class="modal-dialog modal-xl modal-simple">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                     <div class="text-center mb-6 p-4">
                                         <h4 class="mb-2 text-primary">
                                             <i class="ri-graduation-cap-line me-2"></i>
@@ -1007,7 +1053,7 @@
                                         </h4>
                                         <p class="text-muted">Gérez toutes vos formations disponibles</p>
                                     </div>
-                                    
+
                                     <div class="card-datatable px-4 pb-4">
                                         <div class="table-responsive">
                                             <table class="table table-hover table-bordered">
@@ -1023,33 +1069,40 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="table-border-bottom-0">
-                                                    @if(isset($formations) && $formations->count() > 0)
+                                                    @if (isset($formations) && $formations->count() > 0)
                                                         @foreach ($formations as $formation)
                                                             <tr data-formation-id="{{ $formation->id }}">
                                                                 <td class="text-center">
-                                                                    <span class="badge bg-label-primary rounded-pill fs-6">{{ $loop->iteration }}</span>
+                                                                    <span
+                                                                        class="badge bg-label-primary rounded-pill fs-6">{{ $loop->iteration }}</span>
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
                                                                         <div class="avatar avatar-sm me-3">
-                                                                            <div class="avatar-initial rounded bg-label-secondary">
+                                                                            <div
+                                                                                class="avatar-initial rounded bg-label-secondary">
                                                                                 <i class="ri-file-line"></i>
                                                                             </div>
                                                                         </div>
                                                                         <div>
-                                                                            <h6 class="mb-0">{{ $formation->titre }}</h6>
-                                                                            <small class="text-muted">{{ $formation->programme ? str($formation->programme)->limit(50) : '' }}</small>
+                                                                            <h6 class="mb-0">{{ $formation->titre }}
+                                                                            </h6>
+                                                                            <small
+                                                                                class="text-muted">{{ $formation->programme ? str($formation->programme)->limit(50) : '' }}</small>
                                                                         </div>
                                                                     </div>
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    <span class="badge bg-label-success">{{ $formation->categorie ? $formation->categorie->nom : 'N/A' }}</span>
+                                                                    <span
+                                                                        class="badge bg-label-success">{{ $formation->categorie ? $formation->categorie->nom : 'N/A' }}</span>
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    <span class="fw-medium text-primary">{{ $formation->cout ? number_format($formation->cout, 0, ',', ' ') . ' FCFA' : 'Gratuit' }}</span>
+                                                                    <span
+                                                                        class="fw-medium text-primary">{{ $formation->cout ? number_format($formation->cout, 0, ',', ' ') . ' FCFA' : 'Gratuit' }}</span>
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    <span class="text-muted">{{ $formation->lieu ?? 'Non spécifié' }}</span>
+                                                                    <span
+                                                                        class="text-muted">{{ $formation->lieu ?? 'Non spécifié' }}</span>
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <div class="text-success">
@@ -1061,27 +1114,28 @@
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <div class="d-flex justify-content-center gap-2">
-                                                                        <button class="btn btn-sm btn-icon btn-outline-primary" 
-                                                                                title="Voir les détails" 
-                                                                                data-bs-toggle="tooltip"
-                                                                                data-formation-id="{{ $formation->id }}"
-                                                                                onclick="voirDetailsFormation({{ $formation->id }})">
-                                                                            <i class="ri-eye-line"></i>
+                                                                        <button
+                                                                            class="btn btn-sm btn-icon btn-outline-primary"
+                                                                            title="Voir les détails"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-formation-id="{{ $formation->id }}"
+                                                                            onclick="voirDetailsFormation({{ $formation->id }})">
+                                                                            <i class="ri ri-eye-line"></i>
                                                                         </button>
-                                                                        <button class="btn btn-sm btn-icon btn-outline-warning" 
-                                                                                title="Modifier" 
-                                                                                data-bs-toggle="tooltip"
-                                                                                data-formation-id="{{ $formation->id }}"
-                                                                                onclick="editFormation({{ $formation->id }})">
-                                                                            <i class="ri-edit-line"></i>
+                                                                        <button
+                                                                            class="btn btn-sm btn-icon btn-outline-warning"
+                                                                            title="Modifier" data-bs-toggle="tooltip"
+                                                                            data-formation-id="{{ $formation->id }}"
+                                                                            onclick="editFormation({{ $formation->id }})">
+                                                                            <i class="ri ri-edit-line"></i>
                                                                         </button>
-                                                                        <button class="btn btn-sm btn-icon btn-outline-danger" 
-                                                                                title="Supprimer" 
-                                                                                data-bs-toggle="tooltip"
-                                                                                data-formation-id="{{ $formation->id }}"
-                                                                                data-formation-title="{{ $formation->titre }}"
-                                                                                onclick="confirmDelete({{ $formation->id }}, '{{ addslashes($formation->titre) }}')">
-                                                                            <i class="ri-delete-bin-line"></i>
+                                                                        <button
+                                                                            class="btn btn-sm btn-icon btn-outline-danger"
+                                                                            title="Supprimer" data-bs-toggle="tooltip"
+                                                                            data-formation-id="{{ $formation->id }}"
+                                                                            data-formation-title="{{ $formation->titre }}"
+                                                                            onclick="confirmDelete({{ $formation->id }}, '{{ addslashes($formation->titre) }}')">
+                                                                            <i class="ri ri-delete-bin-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -1090,21 +1144,25 @@
                                                     @else
                                                         <tr>
                                                             <td colspan="100%" class="text-center text-muted py-4">
-                                                                <i class="fas fa-graduation-cap me-2"></i>Aucune formation disponible
+                                                                <i class="fas fa-graduation-cap me-2"></i>Aucune
+                                                                formation disponible
                                                             </td>
                                                         </tr>
                                                     @endif
                                                 </tbody>
                                             </table>
                                         </div>
-                                        
-                                        @if(isset($formations) && $formations->isNotEmpty())
+
+                                        @if (isset($formations) && $formations->isNotEmpty())
                                             <div class="d-flex justify-content-between align-items-center mt-4 px-3">
                                                 <div class="text-muted">
-                                                    <small>{{ $formations->count() }} formation(s) disponible(s)</small>
+                                                    <small>{{ $formations->count() }} formation(s)
+                                                        disponible(s)</small>
                                                 </div>
                                                 <div>
-                                                    <button class="btn btn-primary" data-bs-target="#create_formations" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                                    <button class="btn btn-primary"
+                                                        data-bs-target="#create_formations" data-bs-toggle="modal"
+                                                        data-bs-dismiss="modal">
                                                         <i class="ri-add-line me-1"></i>
                                                         Nouvelle formation
                                                     </button>
@@ -1126,11 +1184,12 @@
                         <div class="modal-dialog modal-xl modal-simple modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                     <div class="text-center mb-6">
                                         <div class="mb-4">
-                                            <div class="rounded-circle d-inline-flex align-items-center justify-content-center bg-primary bg-gradient" 
-                                                 style="width: 80px; height: 80px;">
+                                            <div class="rounded-circle d-inline-flex align-items-center justify-content-center bg-primary bg-gradient"
+                                                style="width: 80px; height: 80px;">
                                                 <i class="fas fa-briefcase text-white" style="font-size: 2rem;"></i>
                                             </div>
                                         </div>
@@ -1138,14 +1197,16 @@
                                         <p class="text-muted">Créez une nouvelle offre d'emploi attractive</p>
                                     </div>
 
-                                    <form id="createOpportuniteForm" action="{{ route('admin.opportunites.store') }}" method="POST" class="row g-4">
+                                    <form id="createOpportuniteForm" action="{{ route('admin.opportunites.store') }}"
+                                        method="POST" class="row g-4">
                                         @csrf
-                                        
+
                                         {{-- Titre et Entreprise --}}
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="titre" name="titre" class="form-control" 
-                                                       placeholder="Développeur Web Full Stack" required />
+                                                <input type="text" id="titre" name="titre"
+                                                    class="form-control" placeholder="Développeur Web Full Stack"
+                                                    required />
                                                 <label for="titre">
                                                     <i class="fas fa-briefcase me-1"></i>Titre du poste *
                                                 </label>
@@ -1153,8 +1214,8 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="entreprise" name="entreprise" class="form-control" 
-                                                       placeholder="Excellium Conseils" required />
+                                                <input type="text" id="entreprise" name="entreprise"
+                                                    class="form-control" placeholder="Excellium Conseils" required />
                                                 <label for="entreprise">
                                                     <i class="fas fa-building me-1"></i>Entreprise *
                                                 </label>
@@ -1164,7 +1225,8 @@
                                         {{-- Type de contrat et Localisation --}}
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="type_contrat" name="type_contrat" class="form-select" required>
+                                                <select id="type_contrat" name="type_contrat" class="form-select"
+                                                    required>
                                                     <option value="">Sélectionner...</option>
                                                     <option value="CDI">CDI - Contrat à Durée Indéterminée</option>
                                                     <option value="CDD">CDD - Contrat à Durée Déterminée</option>
@@ -1179,8 +1241,8 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="localisation" name="localisation" class="form-control" 
-                                                       placeholder="Paris, France" required />
+                                                <input type="text" id="localisation" name="localisation"
+                                                    class="form-control" placeholder="Paris, France" required />
                                                 <label for="localisation">
                                                     <i class="fas fa-map-marker-alt me-1"></i>Localisation *
                                                 </label>
@@ -1190,8 +1252,9 @@
                                         {{-- Salaires --}}
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="number" id="salaire_min" name="salaire_min" class="form-control" 
-                                                       placeholder="500000" min="0" step="1000" />
+                                                <input type="number" id="salaire_min" name="salaire_min"
+                                                    class="form-control" placeholder="500000" min="0"
+                                                    step="1000" />
                                                 <label for="salaire_min">
                                                     <i class="fas fa-money-bill-wave me-1"></i>Salaire minimum (FCFA)
                                                 </label>
@@ -1199,8 +1262,9 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="number" id="salaire_max" name="salaire_max" class="form-control" 
-                                                       placeholder="800000" min="0" step="1000" />
+                                                <input type="number" id="salaire_max" name="salaire_max"
+                                                    class="form-control" placeholder="800000" min="0"
+                                                    step="1000" />
                                                 <label for="salaire_max">
                                                     <i class="fas fa-money-bill-wave me-1"></i>Salaire maximum (FCFA)
                                                 </label>
@@ -1210,7 +1274,8 @@
                                         {{-- Expérience et Niveau d'étude --}}
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="experience_requise" name="experience_requise" class="form-select">
+                                                <select id="experience_requise" name="experience_requise"
+                                                    class="form-select">
                                                     <option value="">Sélectionner...</option>
                                                     <option value="Débutant">Débutant accepté</option>
                                                     <option value="1-2 ans">1-2 ans d'expérience</option>
@@ -1242,8 +1307,9 @@
                                         {{-- Nombre de postes et Date d'expiration --}}
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="number" id="nombre_postes" name="nombre_postes" class="form-control" 
-                                                       value="1" min="1" max="50" required />
+                                                <input type="number" id="nombre_postes" name="nombre_postes"
+                                                    class="form-control" value="1" min="1"
+                                                    max="50" required />
                                                 <label for="nombre_postes">
                                                     <i class="fas fa-users me-1"></i>Nombre de postes *
                                                 </label>
@@ -1251,8 +1317,9 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="date" id="date_expiration" name="date_expiration" class="form-control" 
-                                                       min="{{ date('Y-m-d', strtotime('+1 day')) }}" required />
+                                                <input type="date" id="date_expiration" name="date_expiration"
+                                                    class="form-control"
+                                                    min="{{ date('Y-m-d', strtotime('+1 day')) }}" required />
                                                 <label for="date_expiration">
                                                     <i class="fas fa-calendar-alt me-1"></i>Date limite candidature *
                                                 </label>
@@ -1262,8 +1329,8 @@
                                         {{-- Contacts --}}
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="email" id="contact_email" name="contact_email" class="form-control" 
-                                                       placeholder="recrutement@excellium.com" />
+                                                <input type="email" id="contact_email" name="contact_email"
+                                                    class="form-control" placeholder="recrutement@excellium.com" />
                                                 <label for="contact_email">
                                                     <i class="fas fa-envelope me-1"></i>Email de contact
                                                 </label>
@@ -1271,8 +1338,8 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="tel" id="contact_telephone" name="contact_telephone" class="form-control" 
-                                                       placeholder="+225 XX XX XX XX" />
+                                                <input type="tel" id="contact_telephone" name="contact_telephone"
+                                                    class="form-control" placeholder="+225 XX XX XX XX" />
                                                 <label for="contact_telephone">
                                                     <i class="fas fa-phone me-1"></i>Téléphone de contact
                                                 </label>
@@ -1282,8 +1349,8 @@
                                         {{-- Description --}}
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="description" name="description" class="form-control" 
-                                                          style="height: 120px;" placeholder="Décrivez le poste, les missions, l'environnement de travail..." required></textarea>
+                                                <textarea id="description" name="description" class="form-control" style="height: 120px;"
+                                                    placeholder="Décrivez le poste, les missions, l'environnement de travail..." required></textarea>
                                                 <label for="description">
                                                     <i class="fas fa-file-alt me-1"></i>Description du poste *
                                                 </label>
@@ -1293,8 +1360,8 @@
                                         {{-- Compétences requises --}}
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="competences_requises" name="competences_requises" class="form-control" 
-                                                          style="height: 100px;" placeholder="PHP, Laravel, JavaScript, Vue.js, MySQL..."></textarea>
+                                                <textarea id="competences_requises" name="competences_requises" class="form-control" style="height: 100px;"
+                                                    placeholder="PHP, Laravel, JavaScript, Vue.js, MySQL..."></textarea>
                                                 <label for="competences_requises">
                                                     <i class="fas fa-cogs me-1"></i>Compétences requises
                                                 </label>
@@ -1304,8 +1371,8 @@
                                         {{-- Avantages --}}
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="avantages" name="avantages" class="form-control" 
-                                                          style="height: 80px;" placeholder="Télétravail, mutuelle, tickets restaurant, formation..."></textarea>
+                                                <textarea id="avantages" name="avantages" class="form-control" style="height: 80px;"
+                                                    placeholder="Télétravail, mutuelle, tickets restaurant, formation..."></textarea>
                                                 <label for="avantages">
                                                     <i class="fas fa-gift me-1"></i>Avantages
                                                 </label>
@@ -1316,7 +1383,8 @@
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <select id="statut" name="statut" class="form-select">
-                                                    <option value="active" selected>✅ Active - Visible pour les candidats</option>
+                                                    <option value="active" selected>✅ Active - Visible pour les
+                                                        candidats</option>
                                                     <option value="fermee">🔒 Fermée - Plus de candidatures</option>
                                                 </select>
                                                 <label for="statut">
@@ -1330,8 +1398,8 @@
                                             <button type="submit" class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
                                                 <i class="fas fa-paper-plane me-2"></i>Publier l'opportunité
                                             </button>
-                                            <button type="button" class="btn btn-outline-secondary btn-lg px-4" 
-                                                    data-bs-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="btn btn-outline-secondary btn-lg px-4"
+                                                data-bs-dismiss="modal" aria-label="Close">
                                                 <i class="fas fa-times me-2"></i>Annuler
                                             </button>
                                         </div>
@@ -1402,6 +1470,17 @@
                                                 <!-- Les catégories seront injectées ici par JS -->
                                             </tbody>
                                         </table>
+                                        <center>
+                                            <li class="menu-item" >
+
+                                                <a href="javascript:;" data-bs-target="#create_categories"
+                                                    class="" data-bs-toggle="modal" >
+                                                    <i class="menu-icon tf-icons fas fa-plus-circle"></i>
+                                                    <div class="btn btn-primary me-3" >Ajouter une Categorie</div>
+                                                </a>
+                                            </li>
+                                        </center>
+
                                     </div>
                                 </div>
                             </div>
@@ -1410,7 +1489,7 @@
                         <div class="content-backdrop fade"></div>
                     </div>
 
-                    
+
                     <!--/ Fin des Modales -->
                 </div>
             </div>
@@ -1516,7 +1595,7 @@
                 .modal-xl {
                     max-width: 95%;
                 }
-                
+
                 .table-responsive {
                     font-size: 0.875rem;
                 }
@@ -1529,13 +1608,13 @@
                 background: #f8f9fa;
                 border-radius: 12px;
                 border: 1px solid #dee2e6;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                 max-width: 300px;
             }
 
             .preview-media {
                 border-radius: 8px !important;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
             #file-preview {
@@ -1553,7 +1632,7 @@
             .play-overlay {
                 width: 16px;
                 height: 16px;
-                background: rgba(0,0,0,0.6);
+                background: rgba(0, 0, 0, 0.6);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -1577,7 +1656,7 @@
             }
         </style>
 
-        
+
 
         <!-- Modale de modification -->
         <div class="modal fade" id="edit_formation" tabindex="-1" aria-hidden="true">
@@ -1591,27 +1670,31 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="editFormationForm" method="POST" class="row g-4" enctype="multipart/form-data">
+                        <form id="editFormationForm" method="POST" class="row g-4"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input type="hidden" id="edit_formation_id" name="formation_id">
-                            
+
                             <!-- Titre -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="text" id="edit_titre" name="titre" class="form-control" placeholder="Titre de la formation" required>
+                                    <input type="text" id="edit_titre" name="titre" class="form-control"
+                                        placeholder="Titre de la formation" required>
                                     <label for="edit_titre">Titre</label>
                                 </div>
                             </div>
-                            
+
                             <!-- Catégorie -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <select id="edit_categorie_id" name="categorie_id" class="form-select" required>
+                                    <select id="edit_categorie_id" name="categorie_id" class="form-select"
+                                        required>
                                         <option value="">Choisir une catégorie</option>
-                                        @if(isset($categories) && $categories->count() > 0)
-                                            @foreach($categories as $categorie)
-                                                <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                        @if (isset($categories) && $categories->count() > 0)
+                                            @foreach ($categories as $categorie)
+                                                <option value="{{ $categorie->id }}">{{ $categorie->nom }}
+                                                </option>
                                             @endforeach
                                         @else
                                             <option value="">Aucune catégorie disponible</option>
@@ -1620,49 +1703,52 @@
                                     <label for="edit_categorie_id">Catégorie</label>
                                 </div>
                             </div>
-                            
+
                             <!-- Programme -->
                             <div class="col-12">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_programme" name="programme" class="form-control" placeholder="Programme de la formation" rows="3"></textarea>
+                                    <textarea id="edit_programme" name="programme" class="form-control" placeholder="Programme de la formation"
+                                        rows="3"></textarea>
                                     <label for="edit_programme">Programme</label>
                                 </div>
                             </div>
-                            
+
                             <!-- Coût -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="number" id="edit_cout" name="cout" class="form-control" placeholder="0" min="0" step="0.01">
+                                    <input type="number" id="edit_cout" name="cout" class="form-control"
+                                        placeholder="0" min="0" step="0.01">
                                     <label for="edit_cout">Coût (FCFA)</label>
                                 </div>
                             </div>
-                            
+
                             <!-- Lieu -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="text" id="edit_lieu" name="lieu" class="form-control" placeholder="Lieu de la formation">
+                                    <input type="text" id="edit_lieu" name="lieu" class="form-control"
+                                        placeholder="Lieu de la formation">
                                     <label for="edit_lieu">Lieu</label>
                                 </div>
                             </div>
-                            
+
                             <!-- Date début -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="date" id="edit_date_debut" name="date_debut" class="form-control" 
-                                           min="" onchange="updateDateConstraints()">
+                                    <input type="date" id="edit_date_debut" name="date_debut"
+                                        class="form-control" min="" onchange="updateDateConstraints()">
                                     <label for="edit_date_debut">Date de début</label>
                                 </div>
                             </div>
-                            
+
                             <!-- Date fin -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="date" id="edit_date_fin" name="date_fin" class="form-control" 
-                                           min="" onchange="validateDateFin()">
+                                    <input type="date" id="edit_date_fin" name="date_fin"
+                                        class="form-control" min="" onchange="validateDateFin()">
                                     <label for="edit_date_fin">Date de fin</label>
                                 </div>
                             </div>
-                            
+
                             <!-- Prérequis -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
@@ -1670,7 +1756,7 @@
                                     <label for="edit_prerequis">Prérequis</label>
                                 </div>
                             </div>
-                            
+
                             <!-- Bonus -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
@@ -1678,23 +1764,27 @@
                                     <label for="edit_bonus">Bonus</label>
                                 </div>
                             </div>
-                            
+
                             <!-- Fichier -->
                             <div class="col-12">
                                 <label class="form-label">Fichier (Image ou Vidéo) - Optionnel</label>
-                                <input type="file" id="edit_file" name="file" class="form-control" 
-                                       accept="image/*,video/*" onchange="previewEditFile(this)">
-                                <div class="form-text">Formats acceptés: JPG, PNG, GIF, MP4, AVI, MOV, WMV. Taille max: 150MB</div>
+                                <input type="file" id="edit_file" name="file" class="form-control"
+                                    accept="image/*,video/*" onchange="previewEditFile(this)">
+                                <div class="form-text">Formats acceptés: JPG, PNG, GIF, MP4, AVI, MOV, WMV. Taille
+                                    max: 150MB</div>
                             </div>
-                            
+
                             <!-- Prévisualisation -->
                             <div class="col-12">
                                 <div id="edit-file-preview" style="display: none;">
-                                    <img id="edit-image-preview" class="img-fluid rounded" style="max-height: 200px; display: none;">
-                                    <video id="edit-video-preview" controls class="w-100 rounded" style="max-height: 200px; display: none;">
+                                    <img id="edit-image-preview" class="img-fluid rounded"
+                                        style="max-height: 200px; display: none;">
+                                    <video id="edit-video-preview" controls class="w-100 rounded"
+                                        style="max-height: 200px; display: none;">
                                         <source id="edit-video-source" src="" type="">
                                     </video>
-                                    <button type="button" class="btn btn-sm btn-outline-danger mt-2" onclick="removeEditFile()">
+                                    <button type="button" class="btn btn-sm btn-outline-danger mt-2"
+                                        onclick="removeEditFile()">
                                         Supprimer le fichier
                                     </button>
                                 </div>
@@ -1702,7 +1792,8 @@
 
                             <!-- Boutons -->
                             <div class="col-12 text-end">
-                                <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">
+                                <button type="button" class="btn btn-outline-secondary me-2"
+                                    data-bs-dismiss="modal">
                                     Annuler
                                 </button>
                                 <button type="submit" class="btn btn-warning">
@@ -1721,7 +1812,8 @@
             <div class="modal-dialog modal-simple">
                 <div class="modal-content">
                     <div class="modal-body p-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                         <div class="text-center mb-6">
                             <div class="mb-4">
                                 <i class="ri-error-warning-line ri-96px text-danger"></i>
@@ -1736,7 +1828,8 @@
                                 Annuler
                             </button>
                             <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
-                                <span class="spinner-border spinner-border-sm me-2" style="display: none;" id="deleteSpinner"></span>
+                                <span class="spinner-border spinner-border-sm me-2" style="display: none;"
+                                    id="deleteSpinner"></span>
                                 Oui, supprimer définitivement
                             </button>
                         </div>
@@ -1746,16 +1839,18 @@
         </div>
 
         <!-- Modale des détails de formation -->
-        <div class="modal fade" id="detailsFormationModal" tabindex="-1" aria-labelledby="detailsFormationModalLabel" aria-hidden="true">
+        <div class="modal fade" id="detailsFormationModal" tabindex="-1"
+            aria-labelledby="detailsFormationModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
                         <h5 class="modal-title" id="detailsFormationModalLabel">
                             <i class="fas fa-graduation-cap me-2"></i>Détails de la formation
                         </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
-                    
+
                     <div class="modal-body" id="detailsFormationContent">
                         {{-- Le contenu sera chargé dynamiquement --}}
                         <div class="text-center p-5">
@@ -1765,12 +1860,13 @@
                             <p class="mt-3">Chargement des détails...</p>
                         </div>
                     </div>
-                    
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             <i class="fas fa-times me-1"></i>Fermer
                         </button>
-                        <button type="button" class="btn btn-primary" id="exporterInscriptions" style="display: none;">
+                        <button type="button" class="btn btn-primary" id="exporterInscriptions"
+                            style="display: none;">
                             <i class="fas fa-download me-1"></i>Exporter les inscriptions
                         </button>
                     </div>
@@ -1791,24 +1887,24 @@
                 const videoPreview = document.getElementById('video-preview');
                 const videoSource = document.getElementById('video-source');
                 const errorDiv = document.getElementById('file-error');
-                
+
                 errorDiv.style.display = 'none';
                 preview.style.display = 'none';
-                
+
                 if (file) {
                     const maxSize = 150 * 1024 * 1024;
-                    
+
                     if (file.size > maxSize) {
                         errorDiv.style.display = 'block';
                         input.value = '';
                         return;
                     }
-                    
+
                     const reader = new FileReader();
-                    
+
                     reader.onload = function(e) {
                         preview.style.display = 'block';
-                        
+
                         if (file.type.startsWith('image/')) {
                             imagePreview.src = e.target.result;
                             imagePreview.style.display = 'block';
@@ -1821,7 +1917,7 @@
                             imagePreview.style.display = 'none';
                         }
                     };
-                    
+
                     reader.readAsDataURL(file);
                 }
             }
@@ -1843,27 +1939,27 @@
                 const videoSource = document.getElementById('edit-video-source');
                 const errorDiv = document.getElementById('edit-file-error');
                 const currentFile = document.getElementById('edit-current-file');
-                
+
                 errorDiv.style.display = 'none';
                 preview.style.display = 'none';
-                
+
                 if (file) {
                     const maxSize = 150 * 1024 * 1024;
-                    
+
                     if (file.size > maxSize) {
                         errorDiv.style.display = 'block';
                         input.value = '';
                         return;
                     }
-                    
+
                     // Masquer le fichier actuel
                     currentFile.style.display = 'none';
-                    
+
                     const reader = new FileReader();
-                    
+
                     reader.onload = function(e) {
                         preview.style.display = 'block';
-                        
+
                         if (file.type.startsWith('image/')) {
                             imagePreview.src = e.target.result;
                             imagePreview.style.display = 'block';
@@ -1876,7 +1972,7 @@
                             imagePreview.style.display = 'none';
                         }
                     };
-                    
+
                     reader.readAsDataURL(file);
                 } else {
                     // Réafficher le fichier actuel si pas de nouveau fichier
@@ -1894,13 +1990,13 @@
             // Fonction pour éditer une formation - MISE À JOUR
             function editFormation(formationId) {
                 console.log('editFormation appelée avec ID:', formationId);
-                
+
                 // Masquer la modale de liste
                 const listModal = bootstrap.Modal.getInstance(document.getElementById('list_formations'));
                 if (listModal) {
                     listModal.hide();
                 }
-                
+
                 // Charger les données de la formation
                 fetch(`/admin/formations/${formationId}/edit`)
                     .then(response => {
@@ -1909,16 +2005,16 @@
                     })
                     .then(data => {
                         console.log('Données de formation reçues:', data);
-                        
+
                         if (data.success) {
                             const formation = data.formation;
-                            
+
                             console.log('Formation extraite:', formation);
                             console.log('Formation ID:', formation.id);
-                            
+
                             // Initialiser les contraintes de dates AVANT de remplir
                             initializeDateConstraints();
-                            
+
                             // Remplir le formulaire d'édition
                             document.getElementById('edit_formation_id').value = formation.id;
                             document.getElementById('edit_titre').value = formation.titre || '';
@@ -1928,31 +2024,31 @@
                             document.getElementById('edit_prerequis').value = formation.prerequis || '';
                             document.getElementById('edit_bonus').value = formation.bonus || '';
                             document.getElementById('edit_lieu').value = formation.lieu || '';
-                            
+
                             // Formater les dates pour les inputs
                             if (formation.date_debut) {
                                 const dateDebut = new Date(formation.date_debut);
                                 document.getElementById('edit_date_debut').value = dateDebut.toISOString().split('T')[0];
                             }
-                            
+
                             if (formation.date_fin) {
                                 const dateFin = new Date(formation.date_fin);
                                 document.getElementById('edit_date_fin').value = dateFin.toISOString().split('T')[0];
                             }
-                            
+
                             // Mettre à jour les contraintes après avoir rempli les dates
                             updateDateConstraints();
-                            
+
                             // Afficher la prévisualisation du fichier existant
                             const editPreview = document.getElementById('edit-file-preview');
                             const editImagePreview = document.getElementById('edit-image-preview');
                             const editVideoPreview = document.getElementById('edit-video-preview');
                             const editVideoSource = document.getElementById('edit-video-source');
-                            
+
                             if (formation.file_path) {
                                 editPreview.style.display = 'block';
                                 const filePath = `/storage/${formation.file_path}`;
-                                
+
                                 if (formation.file_type === 'image') {
                                     editImagePreview.src = filePath;
                                     editImagePreview.style.display = 'block';
@@ -1967,17 +2063,17 @@
                             } else {
                                 editPreview.style.display = 'none';
                             }
-                            
+
                             // Afficher la modale d'édition
                             console.log('Ouverture de la modale d\'édition...');
                             const editModal = new bootstrap.Modal(document.getElementById('edit_formation'));
                             editModal.show();
-                            
+
                             console.log('Modale d\'édition ouverte ✅');
-                            
+
                         } else {
                             console.error('Erreur lors du chargement:', data.message);
-                            
+
                             if (typeof Swal !== 'undefined') {
                                 Swal.fire({
                                     icon: 'error',
@@ -1991,7 +2087,7 @@
                     })
                     .catch(error => {
                         console.error('Erreur lors du chargement de la formation:', error);
-                        
+
                         if (typeof Swal !== 'undefined') {
                             Swal.fire({
                                 icon: 'error',
@@ -2007,19 +2103,19 @@
             // Fonction pour confirmer la suppression
             function confirmDelete(formationId, formationTitle) {
                 console.log('Suppression formation ID:', formationId, 'Titre:', formationTitle);
-                
+
                 // Stocker l'ID pour utilisation ultérieure
                 currentFormationId = formationId;
-                
+
                 // Afficher le nom de la formation
                 document.getElementById('formation-to-delete').textContent = `"${formationTitle}"`;
-                
+
                 // Masquer la modale de liste
                 const listModal = bootstrap.Modal.getInstance(document.getElementById('list_formations'));
                 if (listModal) {
                     listModal.hide();
                 }
-                
+
                 // Afficher la modale de confirmation
                 const deleteModal = new bootstrap.Modal(document.getElementById('delete_confirmation'));
                 deleteModal.show();
@@ -2036,7 +2132,7 @@
                         modalInstance.hide();
                     }
                 });
-                
+
                 // Réafficher la modale de liste après un délai
                 setTimeout(() => {
                     const listModal = new bootstrap.Modal(document.getElementById('list_formations'));
@@ -2048,16 +2144,16 @@
             function showCurrentFile(formation) {
                 const currentFileDiv = document.getElementById('edit-current-file');
                 const currentPreview = document.getElementById('edit-current-preview');
-                
+
                 currentFileDiv.style.display = 'none';
                 currentPreview.innerHTML = '';
-                
+
                 if (formation.file_path) {
                     const imagePath = `/storage/${formation.file_path}`;
                     const fileName = formation.file_path.split('/').pop(); // Extraire le nom du fichier
-                    
+
                     let previewHTML = '';
-                    
+
                     if (formation.file_type === 'image') {
                         previewHTML = `
                             <div class="d-flex align-items-center gap-3">
@@ -2086,10 +2182,10 @@
                             </div>
                         `;
                     }
-                    
+
                     currentPreview.innerHTML = previewHTML;
                     currentFileDiv.style.display = 'block';
-                    
+
                     console.log('Fichier affiché:', fileName, 'Type:', formation.file_type);
                 } else {
                     console.log('Aucun fichier pour cette formation');
@@ -2099,34 +2195,35 @@
             // Événement pour la soumission du formulaire d'édition - CORRIGÉ
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('SweetAlert disponible:', typeof Swal !== 'undefined');
-                
+
                 const editForm = document.getElementById('editFormationForm');
                 if (editForm) {
                     editForm.addEventListener('submit', function(e) {
                         e.preventDefault();
                         console.log('Formulaire soumis');
-                        
+
                         const formationId = document.getElementById('edit_formation_id').value;
                         const formData = new FormData(this);
-                        
+
                         // AJOUTER LA MÉTHODE PUT via method spoofing Laravel
                         formData.append('_method', 'PUT');
-                        
+
                         console.log('Formation ID:', formationId);
-                        console.log('Envoi requête POST avec _method=PUT vers:', `/admin/formations/${formationId}`);
-                        
+                        console.log('Envoi requête POST avec _method=PUT vers:',
+                            `/admin/formations/${formationId}`);
+
                         // Debug : Afficher toutes les données envoyées
                         console.log('Données FormData:');
                         for (let [key, value] of formData.entries()) {
                             console.log(`${key}:`, value);
                         }
-                        
+
                         // Vérifier si SweetAlert fonctionne
                         if (typeof Swal === 'undefined') {
                             alert('SweetAlert non disponible');
                             return;
                         }
-                        
+
                         // Afficher le loader SweetAlert
                         Swal.fire({
                             title: 'Modification en cours...',
@@ -2142,88 +2239,90 @@
                             allowEscapeKey: false,
                             showConfirmButton: false
                         });
-                        
+
                         // Utiliser POST avec _method=PUT (Method Spoofing Laravel)
                         fetch(`/admin/formations/${formationId}`, {
-                            method: 'POST',  // Utiliser POST
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                'Accept': 'application/json'
-                                // Ne pas ajouter Content-Type, laissez le navigateur le faire pour FormData
-                            },
-                            body: formData  // FormData avec _method=PUT
-                        })
-                        .then(response => {
-                            console.log('Response status:', response.status);
-                            console.log('Response headers:', response.headers.get('content-type'));
-                            
-                            if (!response.ok) {
-                                throw new Error(`HTTP error! status: ${response.status}`);
-                            }
-                            
-                            // Vérifier si la réponse est du JSON
-                            const contentType = response.headers.get('content-type');
-                            if (!contentType || !contentType.includes('application/json')) {
-                                throw new Error('La réponse n\'est pas du JSON');
-                            }
-                            
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('Response data:', data);
-                            
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Modification réussie !',
-                                    text: data.message,
-                                    confirmButtonText: 'Retourner à la liste',
-                                    confirmButtonColor: '#28a745'
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        // Fermer la modale d'édition
-                                        const editModal = bootstrap.Modal.getInstance(document.getElementById('edit_formation'));
-                                        if (editModal) {
-                                            editModal.hide();
-                                        }
-                                        
-                                        // Retourner à la liste
-                                        setTimeout(() => {
-                                            backToList();
-                                        }, 500);
-                                    }
-                                });
-                            } else {
-                                let errorMessage = data.message || 'Erreur lors de la modification';
-                                
-                                if (data.errors) {
-                                    errorMessage += '\n\nDétails:\n';
-                                    for (const field in data.errors) {
-                                        errorMessage += `• ${data.errors[field].join(', ')}\n`;
-                                    }
+                                method: 'POST', // Utiliser POST
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content'),
+                                    'Accept': 'application/json'
+                                    // Ne pas ajouter Content-Type, laissez le navigateur le faire pour FormData
+                                },
+                                body: formData // FormData avec _method=PUT
+                            })
+                            .then(response => {
+                                console.log('Response status:', response.status);
+                                console.log('Response headers:', response.headers.get('content-type'));
+
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
                                 }
-                                
+
+                                // Vérifier si la réponse est du JSON
+                                const contentType = response.headers.get('content-type');
+                                if (!contentType || !contentType.includes('application/json')) {
+                                    throw new Error('La réponse n\'est pas du JSON');
+                                }
+
+                                return response.json();
+                            })
+                            .then(data => {
+                                console.log('Response data:', data);
+
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Modification réussie !',
+                                        text: data.message,
+                                        confirmButtonText: 'Retourner à la liste',
+                                        confirmButtonColor: '#28a745'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // Fermer la modale d'édition
+                                            const editModal = bootstrap.Modal.getInstance(document
+                                                .getElementById('edit_formation'));
+                                            if (editModal) {
+                                                editModal.hide();
+                                            }
+
+                                            // Retourner à la liste
+                                            setTimeout(() => {
+                                                backToList();
+                                            }, 500);
+                                        }
+                                    });
+                                } else {
+                                    let errorMessage = data.message || 'Erreur lors de la modification';
+
+                                    if (data.errors) {
+                                        errorMessage += '\n\nDétails:\n';
+                                        for (const field in data.errors) {
+                                            errorMessage += `• ${data.errors[field].join(', ')}\n`;
+                                        }
+                                    }
+
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Échec de la modification',
+                                        text: errorMessage,
+                                        confirmButtonText: 'OK'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erreur complète:', error);
+
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Échec de la modification',
-                                    text: errorMessage,
-                                    confirmButtonText: 'OK'
-                                });
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Erreur complète:', error);
-                            
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur de connexion',
-                                html: `
+                                    title: 'Erreur de connexion',
+                                    html: `
                                     <p>Problème de connexion ou de format de réponse</p>
                                     <small class="text-muted">Détails: ${error.message}</small>
                                 `,
-                                confirmButtonText: 'OK'
+                                    confirmButtonText: 'OK'
+                                });
                             });
-                        });
                     });
                 }
             });
@@ -2234,10 +2333,10 @@
                 const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
                 if (confirmDeleteBtn) {
                     console.log('Bouton de suppression trouvé ✅');
-                    
+
                     confirmDeleteBtn.addEventListener('click', function() {
                         console.log('Bouton suppression cliqué, Formation ID:', currentFormationId);
-                        
+
                         if (!currentFormationId) {
                             if (typeof Swal !== 'undefined') {
                                 Swal.fire({
@@ -2250,87 +2349,89 @@
                             }
                             return;
                         }
-                        
+
                         const spinner = document.getElementById('deleteSpinner');
-                        
+
                         // Afficher le spinner
                         this.disabled = true;
                         spinner.style.display = 'inline-block';
-                        
+
                         console.log('Envoi requête DELETE vers:', `/admin/formations/${currentFormationId}`);
-                        
+
                         fetch(`/admin/formations/${currentFormationId}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json'
-                            }
-                        })
-                        .then(response => {
-                            console.log('Response status:', response.status);
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('Response data:', data);
-                            
-                            if (data.success) {
-                                if (typeof Swal !== 'undefined') {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Suppression réussie !',
-                                        text: data.message,
-                                        confirmButtonText: 'OK'
-                                    });
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content'),
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/json'
+                                }
+                            })
+                            .then(response => {
+                                console.log('Response status:', response.status);
+                                return response.json();
+                            })
+                            .then(data => {
+                                console.log('Response data:', data);
+
+                                if (data.success) {
+                                    if (typeof Swal !== 'undefined') {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Suppression réussie !',
+                                            text: data.message,
+                                            confirmButtonText: 'OK'
+                                        });
+                                    } else {
+                                        alert(data.message);
+                                    }
+
+                                    // Supprimer la ligne du tableau
+                                    removeFormationFromTable(currentFormationId);
+
+                                    // Fermer la modale de confirmation
+                                    const deleteModal = bootstrap.Modal.getInstance(document.getElementById(
+                                        'delete_confirmation'));
+                                    if (deleteModal) {
+                                        deleteModal.hide();
+                                    }
+
+                                    // Retourner à la liste
+                                    setTimeout(() => {
+                                        backToList();
+                                    }, 1000);
+
                                 } else {
-                                    alert(data.message);
+                                    if (typeof Swal !== 'undefined') {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Erreur',
+                                            text: data.message || 'Erreur lors de la suppression'
+                                        });
+                                    } else {
+                                        alert(data.message || 'Erreur lors de la suppression');
+                                    }
                                 }
-                                
-                                // Supprimer la ligne du tableau
-                                removeFormationFromTable(currentFormationId);
-                                
-                                // Fermer la modale de confirmation
-                                const deleteModal = bootstrap.Modal.getInstance(document.getElementById('delete_confirmation'));
-                                if (deleteModal) {
-                                    deleteModal.hide();
-                                }
-                                
-                                // Retourner à la liste
-                                setTimeout(() => {
-                                    backToList();
-                                }, 1000);
-                                
-                            } else {
+                            })
+                            .catch(error => {
+                                console.error('Erreur suppression:', error);
+
                                 if (typeof Swal !== 'undefined') {
                                     Swal.fire({
                                         icon: 'error',
-                                        title: 'Erreur',
-                                        text: data.message || 'Erreur lors de la suppression'
+                                        title: 'Erreur de connexion',
+                                        text: 'Erreur de connexion lors de la suppression'
                                     });
                                 } else {
-                                    alert(data.message || 'Erreur lors de la suppression');
+                                    alert('Erreur de connexion lors de la suppression');
                                 }
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Erreur suppression:', error);
-                            
-                            if (typeof Swal !== 'undefined') {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur de connexion',
-                                    text: 'Erreur de connexion lors de la suppression'
-                                });
-                            } else {
-                                alert('Erreur de connexion lors de la suppression');
-                            }
-                        })
-                        .finally(() => {
-                            // Masquer le spinner
-                            this.disabled = false;
-                            spinner.style.display = 'none';
-                            currentFormationId = null;
-                        });
+                            })
+                            .finally(() => {
+                                // Masquer le spinner
+                                this.disabled = false;
+                                spinner.style.display = 'none';
+                                currentFormationId = null;
+                            });
                     });
                 } else {
                     console.error('Bouton confirmDeleteBtn non trouvé ❌');
@@ -2394,15 +2495,15 @@
                             </div>
                         </td>
                     `;
-                    
+
                     // Animation de mise à jour
                     row.style.backgroundColor = '#e8f5e8';
                     row.style.transition = 'background-color 0.5s ease';
-                    
+
                     setTimeout(() => {
                         row.style.backgroundColor = '';
                     }, 2000);
-                    
+
                     console.log('Formation mise à jour dans le tableau:', formation.titre);
                 }
             }
@@ -2413,10 +2514,10 @@
             function addFormationToTable(formation) {
                 const tableBody = document.querySelector('#list_formations tbody');
                 if (!tableBody) return;
-                
+
                 const newRow = document.createElement('tr');
                 newRow.setAttribute('data-formation-id', formation.id);
-                
+
                 newRow.innerHTML = `
                     <td class="text-center">
                         <div class="d-flex align-items-center justify-content-center">
@@ -2457,9 +2558,9 @@
                         </div>
                     </td>
                 `;
-                
+
                 tableBody.insertBefore(newRow, tableBody.firstChild);
-                
+
                 // Animation d'apparition
                 newRow.style.opacity = '0';
                 newRow.style.transform = 'translateY(-10px)';
@@ -2477,14 +2578,14 @@
                     // Animation de suppression
                     row.style.backgroundColor = '#ffe6e6';
                     row.style.transition = 'all 0.5s ease';
-                    
+
                     setTimeout(() => {
                         row.style.opacity = '0';
                         row.style.transform = 'translateX(-100%)';
-                        
+
                         setTimeout(() => {
                             row.remove();
-                            
+
                             // Réorganiser les numéros de ligne
                             reorderTableNumbers();
                         }, 500);
@@ -2512,10 +2613,10 @@
                                 <i class="ri-file-line"></i>
                             </div>`;
                 }
-                
+
                 const imagePath = `/storage/${formation.file_path}`;
                 const sizeClass = large ? 'w-100 h-auto' : 'avatar-img rounded';
-                
+
                 if (formation.file_type === 'image') {
                     return `<img src="${imagePath}" alt="Image" class="${sizeClass}">`;
                 } else {
@@ -2553,11 +2654,13 @@
             function showAlert(type, message) {
                 const existingAlerts = document.querySelectorAll('.custom-alert');
                 existingAlerts.forEach(alert => alert.remove());
-                
+
                 const alertDiv = document.createElement('div');
-                alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed custom-alert`;
-                alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
-                
+                alertDiv.className =
+                    `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed custom-alert`;
+                alertDiv.style.cssText =
+                    'top: 20px; right: 20px; z-index: 9999; min-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+
                 alertDiv.innerHTML = `
                     <div class="d-flex align-items-center">
                         <i class="ri-${type === 'success' ? 'check-circle' : 'error-warning'}-line me-2 fs-5"></i>
@@ -2565,9 +2668,9 @@
                         <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
                     </div>
                 `;
-                
+
                 document.body.appendChild(alertDiv);
-                
+
                 setTimeout(() => {
                     if (alertDiv.parentNode) {
                         alertDiv.remove();
@@ -2586,40 +2689,40 @@
             // Test des modales au chargement
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('=== TEST DES MODALES ===');
-                
+
                 // Vérifier que les modales existent
                 const listModal = document.getElementById('list_formations');
                 const editModal = document.getElementById('edit_formation');
                 const deleteModal = document.getElementById('delete_confirmation');
-                
+
                 console.log('Modale liste:', listModal ? '✅ Trouvée' : '❌ Manquante');
                 console.log('Modale édition:', editModal ? '✅ Trouvée' : '❌ Manquante');
                 console.log('Modale suppression:', deleteModal ? '✅ Trouvée' : '❌ Manquante');
-                
+
                 // Vérifier Bootstrap
                 if (typeof bootstrap !== 'undefined') {
                     console.log('Bootstrap: ✅ Chargé');
                 } else {
                     console.error('Bootstrap: ❌ Non chargé');
                 }
-                
+
                 // Vérifier SweetAlert
                 if (typeof Swal !== 'undefined') {
                     console.log('SweetAlert: ✅ Chargé');
                 } else {
                     console.error('SweetAlert: ❌ Non chargé');
                 }
-                
+
                 console.log('=== FIN TEST ===');
             });
 
             // Test des éléments du formulaire d'édition
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('=== VÉRIFICATION FORMULAIRE ÉDITION ===');
-                
+
                 const elementsToCheck = [
                     'edit_formation_id',
-                    'edit_titre', 
+                    'edit_titre',
                     'edit_categorie_id',
                     'edit_programme',
                     'edit_cout',
@@ -2630,28 +2733,28 @@
                     'edit_date_fin',
                     'edit_file'
                 ];
-                
+
                 elementsToCheck.forEach(id => {
                     const element = document.getElementById(id);
                     console.log(`${id}:`, element ? '✅ Trouvé' : '❌ Manquant');
                 });
-                
+
                 console.log('=== FIN VÉRIFICATION ===');
             });
 
             // Gestion des contraintes de dates
             function initializeDateConstraints() {
                 const today = new Date().toISOString().split('T')[0];
-                
+
                 // La date de début ne peut pas être antérieure à aujourd'hui
                 const dateDebutInput = document.getElementById('edit_date_debut');
                 const dateFinInput = document.getElementById('edit_date_fin');
-                
+
                 if (dateDebutInput) {
                     dateDebutInput.setAttribute('min', today);
                     console.log('Date minimum pour début:', today);
                 }
-                
+
                 if (dateFinInput) {
                     dateFinInput.setAttribute('min', today);
                     console.log('Date minimum pour fin:', today);
@@ -2662,20 +2765,20 @@
             function updateDateConstraints() {
                 const dateDebutInput = document.getElementById('edit_date_debut');
                 const dateFinInput = document.getElementById('edit_date_fin');
-                
+
                 if (dateDebutInput && dateFinInput) {
                     const dateDebut = dateDebutInput.value;
-                    
+
                     if (dateDebut) {
                         // La date de fin ne peut pas être antérieure à la date de début
                         dateFinInput.setAttribute('min', dateDebut);
                         console.log('Date minimum pour fin mise à jour:', dateDebut);
-                        
+
                         // Vérifier si la date de fin actuelle est valide
                         const dateFin = dateFinInput.value;
                         if (dateFin && dateFin < dateDebut) {
                             dateFinInput.value = '';
-                            
+
                             if (typeof Swal !== 'undefined') {
                                 Swal.fire({
                                     icon: 'warning',
@@ -2699,14 +2802,14 @@
             function validateDateFin() {
                 const dateDebutInput = document.getElementById('edit_date_debut');
                 const dateFinInput = document.getElementById('edit_date_fin');
-                
+
                 if (dateDebutInput && dateFinInput) {
                     const dateDebut = dateDebutInput.value;
                     const dateFin = dateFinInput.value;
-                    
+
                     if (dateDebut && dateFin && dateFin < dateDebut) {
                         dateFinInput.value = '';
-                        
+
                         if (typeof Swal !== 'undefined') {
                             Swal.fire({
                                 icon: 'warning',
@@ -2726,7 +2829,7 @@
                 const dateDebutInput = document.getElementById('edit_date_debut');
                 const dateFinInput = document.getElementById('edit_date_fin');
                 const today = new Date().toISOString().split('T')[0];
-                
+
                 if (dateDebutInput && dateDebutInput.value) {
                     if (dateDebutInput.value < today) {
                         if (typeof Swal !== 'undefined') {
@@ -2741,7 +2844,7 @@
                         return false;
                     }
                 }
-                
+
                 if (dateDebutInput && dateFinInput && dateDebutInput.value && dateFinInput.value) {
                     if (dateFinInput.value < dateDebutInput.value) {
                         if (typeof Swal !== 'undefined') {
@@ -2756,44 +2859,44 @@
                         return false;
                     }
                 }
-                
+
                 return true;
             }
 
             // Gestionnaire pour le formulaire de CRÉATION
             document.addEventListener('DOMContentLoaded', function() {
-                
+
                 // ... existing code pour edit ...
-                
+
                 // NOUVEAU : Gestionnaire pour la création
                 const createForm = document.getElementById('createFormationForm');
                 if (createForm) {
                     createForm.addEventListener('submit', function(e) {
                         e.preventDefault();
                         console.log('Formulaire de création soumis');
-                        
+
                         // Valider les dates avant de continuer (pour création aussi)
                         if (!validateCreateDatesBeforeSubmit()) {
                             console.log('Validation des dates de création échouée');
                             return;
                         }
-                        
+
                         const formData = new FormData(this);
-                        
+
                         console.log('Envoi requête POST pour création vers: /admin/formations/store');
-                        
+
                         // Debug : Afficher toutes les données envoyées
                         console.log('Données FormData pour création:');
                         for (let [key, value] of formData.entries()) {
                             console.log(`${key}:`, value);
                         }
-                        
+
                         // Vérifier si SweetAlert fonctionne
                         if (typeof Swal === 'undefined') {
                             alert('SweetAlert non disponible');
                             return;
                         }
-                        
+
                         // Afficher le loader SweetAlert
                         Swal.fire({
                             title: 'Création en cours...',
@@ -2809,80 +2912,84 @@
                             allowEscapeKey: false,
                             showConfirmButton: false
                         });
-                        
+
                         // Envoyer la requête
                         fetch('/admin/formations/store', {
-                            method: 'POST',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                'Accept': 'application/json'
-                            },
-                            body: formData
-                        })
-                        .then(response => {
-                            console.log('Response status création:', response.status);
-                            console.log('Response headers création:', response.headers.get('content-type'));
-                            
-                            if (!response.ok) {
-                                throw new Error(`HTTP error! status: ${response.status}`);
-                            }
-                            
-                            const contentType = response.headers.get('content-type');
-                            if (!contentType || !contentType.includes('application/json')) {
-                                throw new Error('La réponse n\'est pas du JSON');
-                            }
-                            
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('Response data création:', data);
-                            
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Formation créée !',
-                                    text: data.message || 'La formation a été créée avec succès',
-                                    confirmButtonText: 'Fermer',
-                                    confirmButtonColor: '#28a745'
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        // Recharger la page actuelle au lieu de rediriger
-                                        window.location.reload();
-                                    }
-                                });
-                            } else {
-                                let errorMessage = data.message || 'Erreur lors de la création';
-                                
-                                if (data.errors) {
-                                    errorMessage = 'Erreur de validation:\n\n';
-                                    for (const field in data.errors) {
-                                        const fieldName = getFieldDisplayName(field);
-                                        errorMessage += `• ${fieldName}: ${data.errors[field].join(', ')}\n`;
-                                    }
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content'),
+                                    'Accept': 'application/json'
+                                },
+                                body: formData
+                            })
+                            .then(response => {
+                                console.log('Response status création:', response.status);
+                                console.log('Response headers création:', response.headers.get(
+                                    'content-type'));
+
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
                                 }
-                                
+
+                                const contentType = response.headers.get('content-type');
+                                if (!contentType || !contentType.includes('application/json')) {
+                                    throw new Error('La réponse n\'est pas du JSON');
+                                }
+
+                                return response.json();
+                            })
+                            .then(data => {
+                                console.log('Response data création:', data);
+
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Formation créée !',
+                                        text: data.message ||
+                                            'La formation a été créée avec succès',
+                                        confirmButtonText: 'Fermer',
+                                        confirmButtonColor: '#28a745'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // Recharger la page actuelle au lieu de rediriger
+                                            window.location.reload();
+                                        }
+                                    });
+                                } else {
+                                    let errorMessage = data.message || 'Erreur lors de la création';
+
+                                    if (data.errors) {
+                                        errorMessage = 'Erreur de validation:\n\n';
+                                        for (const field in data.errors) {
+                                            const fieldName = getFieldDisplayName(field);
+                                            errorMessage +=
+                                                `• ${fieldName}: ${data.errors[field].join(', ')}\n`;
+                                        }
+                                    }
+
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Échec de la création',
+                                        text: errorMessage,
+                                        confirmButtonText: 'Corriger',
+                                        width: '500px'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erreur complète création:', error);
+
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Échec de la création',
-                                    text: errorMessage,
-                                    confirmButtonText: 'Corriger',
-                                    width: '500px'
-                                });
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Erreur complète création:', error);
-                            
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur de connexion',
-                                html: `
+                                    title: 'Erreur de connexion',
+                                    html: `
                                     <p>Problème de connexion ou de format de réponse</p>
                                     <small class="text-muted">Détails: ${error.message}</small>
                                 `,
-                                confirmButtonText: 'Réessayer'
+                                    confirmButtonText: 'Réessayer'
+                                });
                             });
-                        });
                     });
                 }
             });
@@ -2890,17 +2997,17 @@
             // Initialiser les contraintes de dates pour la création
             function initializeCreateDateConstraints() {
                 const today = new Date().toISOString().split('T')[0];
-                
+
                 // La date de début ne peut pas être antérieure à aujourd'hui
                 const dateDebutInput = document.getElementById('date_debut');
                 const dateFinInput = document.getElementById('date_fin');
-                
+
                 if (dateDebutInput) {
                     dateDebutInput.setAttribute('min', today);
                     dateDebutInput.addEventListener('change', updateCreateDateConstraints);
                     console.log('Date minimum pour début (création):', today);
                 }
-                
+
                 if (dateFinInput) {
                     dateFinInput.setAttribute('min', today);
                     dateFinInput.addEventListener('change', validateCreateDateFin);
@@ -2912,20 +3019,20 @@
             function updateCreateDateConstraints() {
                 const dateDebutInput = document.getElementById('date_debut');
                 const dateFinInput = document.getElementById('date_fin');
-                
+
                 if (dateDebutInput && dateFinInput) {
                     const dateDebut = dateDebutInput.value;
-                    
+
                     if (dateDebut) {
                         // La date de fin ne peut pas être antérieure à la date de début
                         dateFinInput.setAttribute('min', dateDebut);
                         console.log('Date minimum pour fin (création) mise à jour:', dateDebut);
-                        
+
                         // Vérifier si la date de fin actuelle est valide
                         const dateFin = dateFinInput.value;
                         if (dateFin && dateFin < dateDebut) {
                             dateFinInput.value = '';
-                            
+
                             if (typeof Swal !== 'undefined') {
                                 Swal.fire({
                                     icon: 'warning',
@@ -2947,14 +3054,14 @@
             function validateCreateDateFin() {
                 const dateDebutInput = document.getElementById('date_debut');
                 const dateFinInput = document.getElementById('date_fin');
-                
+
                 if (dateDebutInput && dateFinInput) {
                     const dateDebut = dateDebutInput.value;
                     const dateFin = dateFinInput.value;
-                    
+
                     if (dateDebut && dateFin && dateFin < dateDebut) {
                         dateFinInput.value = '';
-                        
+
                         if (typeof Swal !== 'undefined') {
                             Swal.fire({
                                 icon: 'warning',
@@ -2972,7 +3079,7 @@
                 const dateDebutInput = document.getElementById('date_debut');
                 const dateFinInput = document.getElementById('date_fin');
                 const today = new Date().toISOString().split('T')[0];
-                
+
                 if (dateDebutInput && dateDebutInput.value) {
                     if (dateDebutInput.value < today) {
                         if (typeof Swal !== 'undefined') {
@@ -2985,7 +3092,7 @@
                         return false;
                     }
                 }
-                
+
                 if (dateDebutInput && dateFinInput && dateDebutInput.value && dateFinInput.value) {
                     if (dateFinInput.value < dateDebutInput.value) {
                         if (typeof Swal !== 'undefined') {
@@ -2998,7 +3105,7 @@
                         return false;
                     }
                 }
-                
+
                 return true;
             }
 
@@ -3016,14 +3123,14 @@
                     'date_fin': 'Date de fin',
                     'file': 'Fichier'
                 };
-                
+
                 return fieldNames[fieldName] || fieldName;
             }
 
             // Initialiser les contraintes au chargement de la page
             document.addEventListener('DOMContentLoaded', function() {
                 // ... existing code ...
-                
+
                 // NOUVEAU : Initialiser les contraintes pour la création
                 initializeCreateDateConstraints();
             });
@@ -3031,35 +3138,35 @@
             // NOUVELLE SECTION : Gestionnaire pour le formulaire de CRÉATION
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('=== INITIALISATION GESTIONNAIRES ===');
-                
+
                 // ... existing code pour editFormationForm reste intact ...
-                
+
                 // NOUVEAU : Identifier et gérer le formulaire de création
-                const createForm = document.querySelector('form[action*="/store"]') || 
-                                  document.getElementById('createFormationForm') ||
-                                  document.querySelector('form[method="POST"]:not(#editFormationForm)');
-                
+                const createForm = document.querySelector('form[action*="/store"]') ||
+                    document.getElementById('createFormationForm') ||
+                    document.querySelector('form[method="POST"]:not(#editFormationForm)');
+
                 console.log('Formulaire de création trouvé:', createForm ? '✅' : '❌');
-                
+
                 if (createForm) {
                     console.log('ID du formulaire de création:', createForm.id);
                     console.log('Action du formulaire:', createForm.action);
-                    
+
                     createForm.addEventListener('submit', function(e) {
                         e.preventDefault();
                         console.log('🆕 Formulaire de CRÉATION soumis');
-                        
+
                         const formData = new FormData(this);
-                        
+
                         console.log('📤 Envoi vers:', this.action || '/admin/formations/store');
-                        
+
                         // Vérifier SweetAlert
                         if (typeof Swal === 'undefined') {
                             console.error('❌ SweetAlert non disponible');
                             alert('Erreur: SweetAlert non disponible');
                             return;
                         }
-                        
+
                         // 🔄 Modal de chargement
                         Swal.fire({
                             title: 'Création en cours...',
@@ -3075,85 +3182,88 @@
                             allowEscapeKey: false,
                             showConfirmButton: false
                         });
-                        
+
                         // 📡 Requête AJAX
                         fetch(this.action || '/admin/formations/store', {
-                            method: 'POST',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                'Accept': 'application/json'
-                            },
-                            body: formData
-                        })
-                        .then(response => {
-                            console.log('📥 Response status création:', response.status);
-                            
-                            if (!response.ok) {
-                                throw new Error(`HTTP ${response.status}`);
-                            }
-                            
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('📋 Response data création:', data);
-                            
-                            if (data.success) {
-                                // ✅ Succès
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Formation créée !',
-                                    text: data.message || 'La formation a été créée avec succès',
-                                    confirmButtonText: 'Fermer',
-                                    confirmButtonColor: '#28a745'
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        // Recharger la page actuelle au lieu de rediriger
-                                        window.location.reload();
-                                    }
-                                });
-                            } else {
-                                // ❌ Erreur de validation
-                                let errorMessage = data.message || 'Erreur lors de la création';
-                                
-                                if (data.errors) {
-                                    errorMessage = 'Veuillez corriger les erreurs suivantes :\n\n';
-                                    for (const field in data.errors) {
-                                        const fieldName = translateFieldName(field);
-                                        errorMessage += `• ${fieldName}: ${data.errors[field].join(', ')}\n`;
-                                    }
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content'),
+                                    'Accept': 'application/json'
+                                },
+                                body: formData
+                            })
+                            .then(response => {
+                                console.log('📥 Response status création:', response.status);
+
+                                if (!response.ok) {
+                                    throw new Error(`HTTP ${response.status}`);
                                 }
-                                
+
+                                return response.json();
+                            })
+                            .then(data => {
+                                console.log('📋 Response data création:', data);
+
+                                if (data.success) {
+                                    // ✅ Succès
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Formation créée !',
+                                        text: data.message ||
+                                            'La formation a été créée avec succès',
+                                        confirmButtonText: 'Fermer',
+                                        confirmButtonColor: '#28a745'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // Recharger la page actuelle au lieu de rediriger
+                                            window.location.reload();
+                                        }
+                                    });
+                                } else {
+                                    // ❌ Erreur de validation
+                                    let errorMessage = data.message || 'Erreur lors de la création';
+
+                                    if (data.errors) {
+                                        errorMessage = 'Veuillez corriger les erreurs suivantes :\n\n';
+                                        for (const field in data.errors) {
+                                            const fieldName = translateFieldName(field);
+                                            errorMessage +=
+                                                `• ${fieldName}: ${data.errors[field].join(', ')}\n`;
+                                        }
+                                    }
+
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreurs de validation',
+                                        text: errorMessage,
+                                        confirmButtonText: 'Corriger',
+                                        confirmButtonColor: '#dc3545',
+                                        width: '500px'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('💥 Erreur création:', error);
+
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Erreurs de validation',
-                                    text: errorMessage,
-                                    confirmButtonText: 'Corriger',
-                                    confirmButtonColor: '#dc3545',
-                                    width: '500px'
-                                });
-                            }
-                        })
-                        .catch(error => {
-                            console.error('💥 Erreur création:', error);
-                            
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur de connexion',
-                                html: `
+                                    title: 'Erreur de connexion',
+                                    html: `
                                     <p>Impossible de créer la formation</p>
                                     <small class="text-muted">Erreur: ${error.message}</small>
                                 `,
-                                confirmButtonText: 'Réessayer',
-                                confirmButtonColor: '#dc3545'
+                                    confirmButtonText: 'Réessayer',
+                                    confirmButtonColor: '#dc3545'
+                                });
                             });
-                        });
                     });
-                    
+
                     console.log('✅ Gestionnaire de création attaché');
                 } else {
                     console.warn('⚠️ Formulaire de création non trouvé');
                 }
-                
+
                 console.log('=== FIN INITIALISATION ===');
             });
 
@@ -3171,14 +3281,14 @@
                     'date_fin': 'Date de fin',
                     'file': 'Fichier (Image/Vidéo)'
                 };
-                
+
                 return translations[fieldName] || fieldName;
             }
 
             // Fonction pour changer le statut d'une inscription
             function changerStatutInscription(inscriptionId, nouveauStatut) {
                 const isConfirm = nouveauStatut === 'confirme';
-                
+
                 Swal.fire({
                     title: isConfirm ? '✅ Confirmer l\'inscription ?' : '❌ Refuser l\'inscription ?',
                     html: `
@@ -3191,7 +3301,8 @@
                     showCancelButton: true,
                     confirmButtonColor: isConfirm ? '#28a745' : '#dc3545',
                     cancelButtonColor: '#6c757d',
-                    confirmButtonText: isConfirm ? '<i class="fas fa-check me-1"></i>Oui, confirmer' : '<i class="fas fa-times me-1"></i>Oui, refuser',
+                    confirmButtonText: isConfirm ? '<i class="fas fa-check me-1"></i>Oui, confirmer' :
+                        '<i class="fas fa-times me-1"></i>Oui, refuser',
                     cancelButtonText: '<i class="fas fa-arrow-left me-1"></i>Annuler',
                     reverseButtons: true,
                     focusConfirm: false,
@@ -3219,65 +3330,69 @@
                             showConfirmButton: false,
                             background: '#ffffff'
                         });
-                        
+
                         fetch(`/admin/inscriptions/${inscriptionId}/statut`, {
-                            method: 'PATCH',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                'Accept': 'application/json'
-                            },
-                            body: JSON.stringify({ statut: nouveauStatut })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                // Recharger les détails de la formation
-                                const formationId = data.formation_id;
-                                voirDetailsFormation(formationId);
-                                
-                                // Notification de succès
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: isConfirm ? '🎉 Inscription confirmée !' : '✅ Inscription refusée',
-                                    html: `
+                                method: 'PATCH',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                        'content'),
+                                    'Accept': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    statut: nouveauStatut
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    // Recharger les détails de la formation
+                                    const formationId = data.formation_id;
+                                    voirDetailsFormation(formationId);
+
+                                    // Notification de succès
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: isConfirm ? '🎉 Inscription confirmée !' :
+                                            '✅ Inscription refusée',
+                                        html: `
                                         <div class="text-center">
                                             <p>Le statut a été mis à jour avec succès.</p>
                                             ${isConfirm ? '<p class="text-muted">Le candidat peut maintenant être contacté.</p>' : '<p class="text-muted">Vous pouvez changer d\'avis à tout moment.</p>'}
                                         </div>
                                     `,
-                                    timer: 3000,
-                                    timerProgressBar: true,
-                                    showConfirmButton: false,
-                                    background: '#ffffff'
-                                });
-                            } else {
+                                        timer: 3000,
+                                        timerProgressBar: true,
+                                        showConfirmButton: false,
+                                        background: '#ffffff'
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: '❌ Erreur',
+                                        text: 'Erreur lors de la mise à jour du statut.',
+                                        confirmButtonText: 'Compris',
+                                        confirmButtonColor: '#dc3545',
+                                        background: '#ffffff'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erreur:', error);
                                 Swal.fire({
                                     icon: 'error',
-                                    title: '❌ Erreur',
-                                    text: 'Erreur lors de la mise à jour du statut.',
-                                    confirmButtonText: 'Compris',
-                                    confirmButtonColor: '#dc3545',
-                                    background: '#ffffff'
-                                });
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Erreur:', error);
-                            Swal.fire({
-                                icon: 'error',
-                                title: '🚫 Erreur de connexion',
-                                html: `
+                                    title: '🚫 Erreur de connexion',
+                                    html: `
                                     <div class="text-center">
                                         <p>Impossible de mettre à jour le statut.</p>
                                         <p class="text-muted">Vérifiez votre connexion et réessayez.</p>
                                     </div>
                                 `,
-                                confirmButtonText: '🔄 Réessayer',
-                                confirmButtonColor: '#dc3545',
-                                background: '#ffffff'
+                                    confirmButtonText: '🔄 Réessayer',
+                                    confirmButtonColor: '#dc3545',
+                                    background: '#ffffff'
+                                });
                             });
-                        });
                     }
                 });
             }
@@ -3289,40 +3404,41 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('SweetAlert disponible:', typeof Swal !== 'undefined');
-                
+
                 const editForm = document.getElementById('editFormationForm');
                 if (editForm) {
                     editForm.addEventListener('submit', function(e) {
                         e.preventDefault();
                         console.log('Formulaire soumis');
-                        
+
                         // Valider les dates avant de continuer
                         if (!validateDatesBeforeSubmit()) {
                             console.log('Validation des dates échouée');
                             return;
                         }
-                        
+
                         const formationId = document.getElementById('edit_formation_id').value;
                         const formData = new FormData(this);
-                        
+
                         // AJOUTER LA MÉTHODE PUT via method spoofing Laravel
                         formData.append('_method', 'PUT');
-                        
+
                         console.log('Formation ID:', formationId);
-                        console.log('Envoi requête POST avec _method=PUT vers:', `/admin/formations/${formationId}`);
-                        
+                        console.log('Envoi requête POST avec _method=PUT vers:',
+                            `/admin/formations/${formationId}`);
+
                         // Debug : Afficher toutes les données envoyées
                         console.log('Données FormData:');
                         for (let [key, value] of formData.entries()) {
                             console.log(`${key}:`, value);
                         }
-                        
+
                         // Vérifier si SweetAlert fonctionne
                         if (typeof Swal === 'undefined') {
                             alert('SweetAlert non disponible');
                             return;
                         }
-                        
+
                         // Afficher le loader SweetAlert
                         Swal.fire({
                             title: 'Modification en cours...',
@@ -3338,86 +3454,88 @@
                             allowEscapeKey: false,
                             showConfirmButton: false
                         });
-                        
+
                         // Utiliser POST avec _method=PUT (Method Spoofing Laravel)
                         fetch(`/admin/formations/${formationId}`, {
-                            method: 'POST',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                'Accept': 'application/json'
-                            },
-                            body: formData
-                        })
-                        .then(response => {
-                            console.log('Response status:', response.status);
-                            console.log('Response headers:', response.headers.get('content-type'));
-                            
-                            if (!response.ok) {
-                                throw new Error(`HTTP error! status: ${response.status}`);
-                            }
-                            
-                            const contentType = response.headers.get('content-type');
-                            if (!contentType || !contentType.includes('application/json')) {
-                                throw new Error('La réponse n\'est pas du JSON');
-                            }
-                            
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('Response data:', data);
-                            
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Modification réussie !',
-                                    text: data.message,
-                                    confirmButtonText: 'Retourner à la liste',
-                                    confirmButtonColor: '#28a745'
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        // Fermer la modale d'édition
-                                        const editModal = bootstrap.Modal.getInstance(document.getElementById('edit_formation'));
-                                        if (editModal) {
-                                            editModal.hide();
-                                        }
-                                        
-                                        // Retourner à la liste
-                                        setTimeout(() => {
-                                            backToList();
-                                        }, 500);
-                                    }
-                                });
-                            } else {
-                                let errorMessage = data.message || 'Erreur lors de la modification';
-                                
-                                if (data.errors) {
-                                    errorMessage += '\n\nDétails:\n';
-                                    for (const field in data.errors) {
-                                        errorMessage += `• ${data.errors[field].join(', ')}\n`;
-                                    }
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content'),
+                                    'Accept': 'application/json'
+                                },
+                                body: formData
+                            })
+                            .then(response => {
+                                console.log('Response status:', response.status);
+                                console.log('Response headers:', response.headers.get('content-type'));
+
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
                                 }
-                                
+
+                                const contentType = response.headers.get('content-type');
+                                if (!contentType || !contentType.includes('application/json')) {
+                                    throw new Error('La réponse n\'est pas du JSON');
+                                }
+
+                                return response.json();
+                            })
+                            .then(data => {
+                                console.log('Response data:', data);
+
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Modification réussie !',
+                                        text: data.message,
+                                        confirmButtonText: 'Retourner à la liste',
+                                        confirmButtonColor: '#28a745'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // Fermer la modale d'édition
+                                            const editModal = bootstrap.Modal.getInstance(document
+                                                .getElementById('edit_formation'));
+                                            if (editModal) {
+                                                editModal.hide();
+                                            }
+
+                                            // Retourner à la liste
+                                            setTimeout(() => {
+                                                backToList();
+                                            }, 500);
+                                        }
+                                    });
+                                } else {
+                                    let errorMessage = data.message || 'Erreur lors de la modification';
+
+                                    if (data.errors) {
+                                        errorMessage += '\n\nDétails:\n';
+                                        for (const field in data.errors) {
+                                            errorMessage += `• ${data.errors[field].join(', ')}\n`;
+                                        }
+                                    }
+
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Échec de la modification',
+                                        text: errorMessage,
+                                        confirmButtonText: 'OK'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erreur complète:', error);
+
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Échec de la modification',
-                                    text: errorMessage,
-                                    confirmButtonText: 'OK'
-                                });
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Erreur complète:', error);
-                            
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur de connexion',
-                                html: `
+                                    title: 'Erreur de connexion',
+                                    html: `
                                     <p>Problème de connexion ou de format de réponse</p>
                                     <small class="text-muted">Détails: ${error.message}</small>
                                 `,
-                                confirmButtonText: 'OK'
+                                    confirmButtonText: 'OK'
+                                });
                             });
-                        });
                     });
                 }
             });
@@ -3428,11 +3546,11 @@
             // Fonction pour afficher les détails d'une formation
             function voirDetailsFormation(formationId) {
                 console.log('📋 Ouverture détails formation ID:', formationId);
-                
+
                 // Ouvrir la modale
                 const modal = new bootstrap.Modal(document.getElementById('detailsFormationModal'));
                 modal.show();
-                
+
                 // Réinitialiser le contenu
                 const contentDiv = document.getElementById('detailsFormationContent');
                 contentDiv.innerHTML = `
@@ -3443,47 +3561,47 @@
                         <p class="mt-3">Chargement des détails...</p>
                     </div>
                 `;
-                
+
                 // Requête AJAX pour récupérer les détails
                 fetch(`/admin/formations/${formationId}/details`, {
-                    method: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    }
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Erreur HTTP: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('✅ Détails reçus:', data);
-                    afficherDetailsFormation(data);
-                })
-                .catch(error => {
-                    console.error('❌ Erreur chargement détails:', error);
-                    contentDiv.innerHTML = `
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        }
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Erreur HTTP: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('✅ Détails reçus:', data);
+                        afficherDetailsFormation(data);
+                    })
+                    .catch(error => {
+                        console.error('❌ Erreur chargement détails:', error);
+                        contentDiv.innerHTML = `
                         <div class="alert alert-danger text-center">
                             <i class="fas fa-exclamation-triangle me-2"></i>
                             Erreur lors du chargement des détails: ${error.message}
                         </div>
                     `;
-                });
+                    });
             }
-        
+
             // Fonction pour afficher les détails dans la modale
             function afficherDetailsFormation(data) {
                 const formation = data.formation;
                 const inscriptions = data.inscriptions;
-                
+
                 // Mettre à jour le titre de la modale
                 document.getElementById('detailsFormationModalLabel').innerHTML = `
                     <i class="fas fa-graduation-cap me-2"></i>${formation.titre}
                 `;
-                
+
                 // Générer le contenu de la modale
                 const contentDiv = document.getElementById('detailsFormationContent');
                 contentDiv.innerHTML = `
@@ -3567,15 +3685,15 @@
                                     </div>
                                     
                                     ${formation.file_path ? `
-                                    <div class="text-center mt-3">
-                                        <strong>🎬 Média de présentation:</strong><br>
-                                        ${formation.file_type === 'image' ? 
-                                            `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
-                                            `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                                            <div class="text-center mt-3">
+                                                                <strong>🎬 Média de présentation:</strong><br>
+                                                                ${formation.file_type === 'image' ? 
+                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
+                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
                                             </video>`
-                                        }
-                                    </div>` : ''}
+                                                                }
+                                                            </div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -3588,28 +3706,28 @@
                         <div class="card-header bg-light d-flex justify-content-between align-items-center">
                             <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
                             ${inscriptions.length > 0 ? `
-                            <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
-                                <i class="fas fa-download me-1"></i>Exporter Excel
-                            </button>` : ''}
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
+                                                        <i class="fas fa-download me-1"></i>Exporter Excel
+                                                    </button>` : ''}
                         </div>
                         <div class="card-body p-0">
                             ${inscriptions.length > 0 ? `
-                            <div class="table-responsive">
-                                <table class="table table-hover mb-0">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>#</th>
-                                            <th><i class="fas fa-user me-1"></i>Nom complet</th>
-                                            <th><i class="fas fa-envelope me-1"></i>Email</th>
-                                            <th><i class="fas fa-phone me-1"></i>Téléphone</th>
-                                            <th><i class="fas fa-comment me-1"></i>Message</th>
-                                            <th><i class="fas fa-clock me-1"></i>Date inscription</th>
-                                            <th><i class="fas fa-flag me-1"></i>Statut</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ${inscriptions.map((inscription, index) => `
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover mb-0">
+                                                            <thead class="table-light">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th><i class="fas fa-user me-1"></i>Nom complet</th>
+                                                                    <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                                                    <th><i class="fas fa-phone me-1"></i>Téléphone</th>
+                                                                    <th><i class="fas fa-comment me-1"></i>Message</th>
+                                                                    <th><i class="fas fa-clock me-1"></i>Date inscription</th>
+                                                                    <th><i class="fas fa-flag me-1"></i>Statut</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                ${inscriptions.map((inscription, index) => `
                                         <tr>
                                             <td><strong>${index + 1}</strong></td>
                                             <td>
@@ -3648,30 +3766,30 @@
                                             <td>
                                                 <div class="btn-group btn-group-sm">
                                                     ${inscription.statut === 'en_attente' ? `
-                                                    <button class="btn btn-success btn-sm" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-danger btn-sm" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>` : ''}
+                                                                            <button class="btn btn-success btn-sm" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
+                                                                                <i class="fas fa-check"></i>
+                                                                            </button>
+                                                                            <button class="btn btn-danger btn-sm" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
+                                                                                <i class="fas fa-times"></i>
+                                                                            </button>` : ''}
                                                     <button class="btn btn-outline-primary btn-sm" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
                                                         <i class="fas fa-envelope"></i>
                                                     </button>
                                                 </div>
                                             </td>
                                         </tr>`).join('')}
-                                    </tbody>
-                                </table>
-                            </div>` : `
-                            <div class="text-center p-5">
-                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                <h5 class="text-muted">Aucune inscription pour le moment</h5>
-                                <p class="text-muted">Les candidatures apparaîtront ici dès qu'il y en aura.</p>
-                            </div>`}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>` : `
+                                                    <div class="text-center p-5">
+                                                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                                        <h5 class="text-muted">Aucune inscription pour le moment</h5>
+                                                        <p class="text-muted">Les candidatures apparaîtront ici dès qu'il y en aura.</p>
+                                                    </div>`}
                         </div>
                     </div>
                 `;
-                
+
                 // Afficher le bouton d'export si il y a des inscriptions
                 const exportBtn = document.getElementById('exporterInscriptions');
                 if (inscriptions.length > 0) {
@@ -3681,15 +3799,17 @@
                     exportBtn.style.display = 'none';
                 }
             }
-        
+
             // Fonction pour contacter un candidat
             function contacterCandidat(email, nom) {
                 const subject = `Formation Excellium Conseil - Votre candidature`;
-                const body = `Bonjour ${nom},\n\nNous avons bien reçu votre demande d'inscription à notre formation.\n\nCordialement,\nL'équipe Excellium Conseil`;
-                
-                window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                const body =
+                    `Bonjour ${nom},\n\nNous avons bien reçu votre demande d'inscription à notre formation.\n\nCordialement,\nL'équipe Excellium Conseil`;
+
+                window.location.href =
+                    `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             }
-        
+
             // Fonction pour exporter les inscriptions
             function exporterInscriptions(formationId) {
                 const link = document.createElement('a');
@@ -3699,7 +3819,7 @@
                 link.click();
                 document.body.removeChild(link);
             }
-        
+
             // Fonction utilitaire pour afficher des notifications
             function showNotification(message, type) {
                 // Tu peux utiliser ton système de notification existant
@@ -3714,96 +3834,95 @@
                     alert(message);
                 }
             }
-            
         </script>
 
         <!-- Script pour la création d'opportunités -->
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('createOpportuniteForm');
-            const modal = document.getElementById('create_opportunites');
-            
-            // Validation en temps réel
-            form.addEventListener('input', function(e) {
-                validateField(e.target);
-            });
-            
-            // Soumission du formulaire
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                if (validateForm()) {
-                    // Animation de chargement
-                    const submitBtn = form.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.innerHTML;
-                    
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = `
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('createOpportuniteForm');
+                const modal = document.getElementById('create_opportunites');
+
+                // Validation en temps réel
+                form.addEventListener('input', function(e) {
+                    validateField(e.target);
+                });
+
+                // Soumission du formulaire
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    if (validateForm()) {
+                        // Animation de chargement
+                        const submitBtn = form.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.innerHTML;
+
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = `
                         <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                         Publication en cours...
                     `;
-                    
-                    // Soumission réelle
-                    setTimeout(() => {
-                        form.submit();
-                    }, 500);
-                }
-            });
-            
-            // Validation des champs individuels
-            function validateField(field) {
-                const value = field.value.trim();
-                const isValid = field.checkValidity();
-                
-                // Supprime les classes précédentes
-                field.classList.remove('is-valid', 'is-invalid');
-                
-                if (value !== '') {
-                    if (isValid) {
-                        field.classList.add('is-valid');
-                        
-                        // Validations spécifiques
-                        if (field.name === 'salaire_max' && field.value !== '') {
-                            const salaireMin = document.getElementById('salaire_min').value;
-                            if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
-                                field.classList.remove('is-valid');
-                                field.classList.add('is-invalid');
-                                return;
-                            }
-                        }
-                    } else {
-                        field.classList.add('is-invalid');
-                    }
-                }
-            }
-            
-            // Validation complète du formulaire
-            function validateForm() {
-                const requiredFields = form.querySelectorAll('[required]');
-                let isValid = true;
-                
-                requiredFields.forEach(field => {
-                    validateField(field);
-                    if (!field.checkValidity() || field.value.trim() === '') {
-                        isValid = false;
+
+                        // Soumission réelle
+                        setTimeout(() => {
+                            form.submit();
+                        }, 500);
                     }
                 });
-                
-                // Validation personnalisée des salaires
-                const salaireMin = document.getElementById('salaire_min');
-                const salaireMax = document.getElementById('salaire_max');
-                
-                if (salaireMin.value && salaireMax.value && 
-                    parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
-                    salaireMax.classList.add('is-invalid');
-                    isValid = false;
+
+                // Validation des champs individuels
+                function validateField(field) {
+                    const value = field.value.trim();
+                    const isValid = field.checkValidity();
+
+                    // Supprime les classes précédentes
+                    field.classList.remove('is-valid', 'is-invalid');
+
+                    if (value !== '') {
+                        if (isValid) {
+                            field.classList.add('is-valid');
+
+                            // Validations spécifiques
+                            if (field.name === 'salaire_max' && field.value !== '') {
+                                const salaireMin = document.getElementById('salaire_min').value;
+                                if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
+                                    field.classList.remove('is-valid');
+                                    field.classList.add('is-invalid');
+                                    return;
+                                }
+                            }
+                        } else {
+                            field.classList.add('is-invalid');
+                        }
+                    }
                 }
-                
-                if (!isValid) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: '⚠️ Formulaire incomplet',
-                        html: `
+
+                // Validation complète du formulaire
+                function validateForm() {
+                    const requiredFields = form.querySelectorAll('[required]');
+                    let isValid = true;
+
+                    requiredFields.forEach(field => {
+                        validateField(field);
+                        if (!field.checkValidity() || field.value.trim() === '') {
+                            isValid = false;
+                        }
+                    });
+
+                    // Validation personnalisée des salaires
+                    const salaireMin = document.getElementById('salaire_min');
+                    const salaireMax = document.getElementById('salaire_max');
+
+                    if (salaireMin.value && salaireMax.value &&
+                        parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
+                        salaireMax.classList.add('is-invalid');
+                        isValid = false;
+                    }
+
+                    if (!isValid) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: '⚠️ Formulaire incomplet',
+                            html: `
                             <div class="text-center">
                                 <p>Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*).</p>
                                 <div class="alert alert-light border mt-3">

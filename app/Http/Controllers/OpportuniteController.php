@@ -145,6 +145,14 @@ class OpportuniteController extends Controller
         return view('admin.opportunites.show', compact('opportunite'));
     }
 
+    public function show_public($id)
+    {
+        $opportunite = Emploi::with(['candidatures' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+
+        return view('clients.Opportunites.show', compact('opportunite'));
+    }
     /**
      * Afficher le formulaire d'édition
      */

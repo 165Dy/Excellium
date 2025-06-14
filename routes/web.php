@@ -49,7 +49,7 @@ Route::prefix('clients')->group(function () {
     
     // opportunites
     Route::get('opportunites', [OpportuniteController::class, 'index_public'])->name('opportunites.clients.index');
-    Route::get('/opportunites/clients/show',function () { return view('clients.opportunites.show'); } )->name('opportunites.clients.show');
+    Route::get('/opportunites/clients/show/{opportnuite}', [OpportuniteController::class, 'show_public'])->name('opportunites.clients.show');
 
     // FORMATIONS
     
@@ -86,7 +86,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/Dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
 
     
-    Route::get('/users/index',function () { return view('Admin.users.index'); } )->name('users.index');
+    Route::get('/users/index',[DashboardController::class, 'index_user'] )->name('users.index');
     Route::get('/users/show',function () { return view('Admin.users.show'); } )->name('users.show');
 
     // FORMATIONS
@@ -119,18 +119,18 @@ Route::prefix('admin')->group(function () {
     Route::get('opportunites/{opportunite}/export-candidatures', [OpportuniteController::class, 'exportCandidatures'])->name('opportunites.export-candidatures');
 
 
-    Route::get('/articles',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
-    Route::get('/partenaires',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
-    Route::get('/temoignages',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');
+    Route::get('/articles',[DashboardController::class, 'index_articles'] )->name('articles.index');
+    Route::get('/partenaires',[DashboardController::class, 'index_partenaires']  )->name('partenaires.index');
+    Route::get('/temoignages', [DashboardController::class, 'index_temoignages']  )->name('temoignages.index');
     ////////
     //CONTACTS
     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
     // CALENDRIER
-    Route::get('/calendrier/index',function () { return view('Admin.Calendrier.index'); } )->name('calendrier.index');
+    Route::get('/calendrier/index',[DashboardController::class, 'index_calendrier']  )->name('calendrier.index');
 
     // CALENDRIER
-    Route::get('/email/index',function () { return view('Admin.Email.index'); } )->name('email.index');
+    Route::get('/email/index',[DashboardController::class, 'index_email']  )->name('email.index');
 
     // ENVOI SERVICES
     Route::post('/envoi-services', [InscriptionController::class, 'envoiServices'])->name('envoi.services');

@@ -66,4 +66,51 @@ class DashboardController extends Controller
         });
         return view('dashboard', compact('categories', 'formations'));
     }
+
+    public function index_user()
+    {
+        $formations = Formation::with('categorie')->get();
+        $categories = Categorie::all();
+     
+        return view('Admin.Divers.Articles_index', compact('categories', 'formations'));
+    }
+
+    public function index_articles()
+    {
+        $formations = Formation::with('categorie')->get();
+        $categories = Categorie::all();
+     
+        return view('Admin.Divers.Articles_index', compact('categories', 'formations'));
+    }
+
+    public function index_calendrier()
+    {
+        $formations = Formation::with('categorie')->get();
+        $categories = Categorie::all();
+     
+        return view('Admin.Calendrier.index', compact('categories', 'formations'));
+    }
+
+    public function index_Temoignages()
+    {
+        $formations = Formation::with('categorie')->get();
+        $categories = Categorie::all();
+     
+        return view('Admin.Divers.Temoignage_index', compact('categories', 'formations'));
+    }
+    public function index_partenaires()
+    {
+        $formations = Formation::with('categorie')->get();
+        $categories = Categorie::all();
+     
+        return view('Admin.Divers.partenaire_index', compact('categories', 'formations'));
+    }
+
+     public function index_email()
+    {
+        $formations = Formation::with('categorie')->get();
+        $categories = Categorie::all();
+     
+        return view('Admin.Email.index', compact('categories', 'formations'));
+    }
 }
