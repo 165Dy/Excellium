@@ -92,7 +92,9 @@ Route::prefix('admin')->group(function () {
     // FORMATIONS
     Route::get('/categories/index',function () { return view('Admin.categorie.index'); } )->name('categories.index');
     Route::post('/categories', [CategorieController::class, 'store'])->name('categories.store');
-
+    Route::get('/categories/list', [CategorieController::class, 'list'])->name('categories.list');
+    Route::put('/categories/{id}', [CategorieController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{id}', [CategorieController::class, 'destroy'])->name('categories.destroy');
     // Routes formations
     Route::post('/formations/store', [formationsController::class, 'store'])->name('formations.store');
     Route::get('/formations/{id}', [formationsController::class, 'show'])->name('formations.show');

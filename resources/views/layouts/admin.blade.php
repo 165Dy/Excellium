@@ -117,6 +117,13 @@
         .swal2-html-container .card {
             margin: 10px 0;
         }
+
+        .swal2-input {
+            background: #fff !important;
+            color: #333 !important;
+            pointer-events: auto !important;
+            opacity: 1 !important;
+        }
     </style>
 </head>
 
@@ -1391,30 +1398,8 @@
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Lorem ipsum</td>
-                                                    {{-- ////////////////////ACTION ///////////////////////// --}}
-                                                    <td>
-                                                        <div class="action" style="justify-content: space-between">
-                                                            <svg style="cursor: pointer"
-                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24"
-                                                                data-bs-target="#edit" data-bs-toggle="modal">
-                                                                <path fill="#4c9edb"
-                                                                    d="M9.243 18.997H21v2H3v-4.243l9.9-9.9l4.242 4.243zm5.07-13.557l2.122-2.121a1 1 0 0 1 1.414 0l2.829 2.828a1 1 0 0 1 0 1.415l-2.122 2.121z" />
-                                                            </svg>&nbsp;&nbsp;
-
-                                                            <svg id="confirm-color" style="cursor: pointer"
-                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24">
-                                                                <path fill="#fd1800"
-                                                                    d="M7 6V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6zm6.414 8l1.768-1.768l-1.414-1.414L12 12.586l-1.768-1.768l-1.414 1.414L10.586 14l-1.768 1.768l1.414 1.414L12 15.414l1.768 1.768l1.414-1.414zM9 4v2h6V4z" />
-                                                            </svg>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                            <tbody id="categoriesTableBody">
+                                                <!-- Les catégories seront injectées ici par JS -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -3876,6 +3861,200 @@
                 e.target.value = value;
             });
         });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('createCategorieForm');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Animation de chargement
+                    Swal.fire({
+                        title: 'Création en cours...',
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                        preConfirm: () => {
+                            const nom = Swal.getInputValue('nom');
+                            if (!nom) {
+                                Swal.showValidationMessage('Le nom est requis');
+                            }
+                            return nom;
+                        },
+                        didOpen: () => {
+                            setTimeout(() => {
+                                const input = Swal.getInput();
+                                if (input) input.focus();
+                            }, 100);
+                        }
+                    });
+
+                    const formData = new FormData(form);
+
+                    fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        Swal.close();
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Succès',
+                                text: data.message,
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                // Optionnel : reset le formulaire ou rafraîchir la liste
+                                form.reset();
+                                // Tu peux aussi recharger dynamiquement la liste ici si besoin
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur',
+                                text: data.message || 'Une erreur est survenue.'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.close();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erreur',
+                            text: 'Une erreur inattendue est survenue.'
+                        });
+                    });
+                });
+            }
+        });
+        </script>
+
+        <script>
+            function fetchCategories() {
+                fetch('/admin/categories/list')
+                    .then(res => res.json())
+                    .then(categories => {
+                        const tbody = document.getElementById('categoriesTableBody');
+                        tbody.innerHTML = '';
+                        categories.forEach(cat => {
+                            tbody.innerHTML += `
+                                <tr>
+                                    <td>${cat.id}</td>
+                                    <td>${cat.nom}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary" onclick="showEditModal(${cat.id}, '${cat.nom.replace(/'/g, "\\'")}')">✏️</button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteCategorie(${cat.id})">🗑️</button>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                    });
+            }
+
+            // Afficher la modale d'édition
+            function showEditModal(id, nom) {
+                // Fermer la modale Bootstrap si elle est ouverte
+                const modal = bootstrap.Modal.getInstance(document.getElementById('liste_categories'));
+                if (modal) modal.hide();
+
+                // Puis ouvrir SweetAlert2
+                Swal.fire({
+                    title: 'Modifier la catégorie',
+                    input: 'text',
+                    inputValue: nom,
+                    showCancelButton: true,
+                    confirmButtonText: 'Enregistrer',
+                    cancelButtonText: 'Annuler',
+                    preConfirm: (newNom) => {
+                        if (!newNom) {
+                            Swal.showValidationMessage('Le nom est requis');
+                        }
+                        return newNom;
+                    },
+                    didOpen: () => {
+                        setTimeout(() => {
+                            const input = Swal.getInput();
+                            if (input) input.focus();
+                        }, 100);
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        updateCategorie(id, result.value);
+                    }
+                });
+            }
+
+            // Modifier une catégorie
+            function updateCategorie(id, nom) {
+                Swal.fire({title: 'Mise à jour...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
+                fetch(`/admin/categories/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify({nom})
+                })
+                .then(res => res.json())
+                .then(data => {
+                    Swal.close();
+                    if (data.success) {
+                        Swal.fire('Succès', data.message, 'success');
+                        fetchCategories();
+                    } else {
+                        Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                    }
+                });
+            }
+
+            // Supprimer une catégorie
+            function deleteCategorie(id) {
+                Swal.fire({
+                    title: 'Supprimer cette catégorie ?',
+                    text: 'Cette action est irréversible !',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({title: 'Suppression...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
+                        fetch(`/admin/categories/${id}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
+                                Swal.fire('Succès', data.message, 'success');
+                                fetchCategories();
+                            } else {
+                                Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Rafraîchir la liste à l'ouverture de la modale
+            document.addEventListener('DOMContentLoaded', function () {
+                // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
+                fetchCategories();
+            });
         </script>
 
 </body>
