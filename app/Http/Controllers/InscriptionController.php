@@ -69,7 +69,7 @@ class InscriptionController extends Controller
         // Prépare les variables pour le template Mailgun
         $variables = [
             'name' => $user->prenom . ' ' . $user->nom,
-            'services' => implode(', ', $request->services),
+            'services' => $request->services,
             'message' => "Notre équipe reviendra vers vous pour plus d'informations."
         ];
 
