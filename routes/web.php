@@ -138,6 +138,8 @@ Route::prefix('admin')->group(function () {
    
 });
 
+Route::post('/inscription/services', [InscriptionController::class, 'saveServices'])->name('inscription.services');
+
     
     
 
