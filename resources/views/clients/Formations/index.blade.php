@@ -46,7 +46,7 @@
                             <div class="blog-post-item style-two mb-30 wow fadeInDown">
                                 <div class="post-thumbnail">
                                     @if($formation->file_path && $formation->file_type === 'image')
-                                        <img src="{{ asset('storage/' . $formation->file_path) }}" alt="{{ $formation->titre }}"
+                                        <img src="{{ asset($formation->file_path) }}" alt="{{ $formation->titre }}"
                                              style="width: 100%; height: 250px; object-fit: cover;">
                                     @elseif($formation->file_path && $formation->file_type === 'video')
                                         <video class="formation-video" 
@@ -62,6 +62,8 @@
                                         <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="Image par défaut"
                                              style="width: 100%; height: 250px; object-fit: cover;">
                                     @endif
+
+                                    <a href="{{asset('storage/' .$formation->file_path)}}"> lien vers image</a>
                                     
                                     <ul class="post-categories">
                                         <li><a href="{{ route('Formations.index', ['categorie_id' => $formation->categorie_id]) }}">
