@@ -71,8 +71,9 @@ Route::prefix('clients')->group(function () {
      // RESSOURCES
      Route::get('/Ressources/Articles',function () { return view('clients.Ressources.Articles'); } )->name('Ressources.Articles');
      Route::get('/Ressources/Conseils&Actualites',function () { return view('clients.Ressources.Conseils_Actualites'); } )->name('Ressources.conseils_actualites');
-     Route::get('/Ressources/Entrepreunariats',function () { return view('clients.Ressources.Entrepreunariat'); } )->name('Ressources.Entrepreunariat');
-    
+     Route::get('/Ressources/Service_divers',function () { return view('clients.Ressources.service_divers'); } )->name('Ressources.service_divers');
+     Route::get('/Ressources/Commerce',function () { return view('clients.Ressources.commerce'); } )->name('Ressources.commerce');
+      Route::get('/Ressources/Achats&Location',function () { return view('clients.Ressources.Achat_location'); } )->name('Ressources.achat_location');
      //CONTACTS
      Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 

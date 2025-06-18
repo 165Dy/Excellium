@@ -120,25 +120,21 @@
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Nos Services</a>
                                         <ul class="sub-menu">
-                                            <li><a href="">Audit & conseil</a></li>
+                                            <li><a href="{{ route('audit&Conseil') }}">Audit & conseil</a></li>
                                             <li><a href="{{ route('Compta_Fiscale') }}">Comptable & Fiscale</a></li>
-                                            <li><a href="{{ route('Ressources_humaines') }}">R. Humaines</a></li>
-                                            <li><a href="{{ route('Gestion_Paie') }}">Gestion de la Paie</a></li>
                                             <li><a href="{{ route('Financement') }}">Financement</a></li>
+                                            <li><a href="{{ route('Gestion_Paie') }}">Gestion de la Paie</a></li>
+                                            <li><a href="{{ route('Ressources_humaines') }}">R. Humaines</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Ressources</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Actualités</a>
-                                            </li>
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Commerce
-                                                    Generale</a></li>
-                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Import-Export</a>
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Gestion de
-                                                    Biens</a></li>
-                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Services
-                                                    Divers</a>
-                                            </li>
+                                            <li><a href="{{ route('Ressources.achat_location') }}">Achats & Location</a></li>
+                                            <li><a href="{{ route('Ressources.Articles') }}">Articles</a></li>
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Conseils & Actualités</a></li>
+                                            <li><a href="{{ route('Ressources.commerce') }}">Commerce Generale</a></li>
+                                            <li><a href="{{ route('Ressources.service_divers') }}">Service Divers</a></li>
+                                            
                                         </ul>
                                     </li>
                                     <li class="menu-item has-children"><a
@@ -214,20 +210,28 @@
 
     @yield('welcome')
     {{-- // --}}
-    @yield('Articles')
-    @yield('Conseils_actualites')
-    @yield('Ressources_entrepreunariats')
+   
     {{-- /RESSOURCES/ --}}
-    @yield('indexOpportunite')
-    @yield('showOpportunite')
+    @yield('Achats')
+    @yield('Articles')
+    @yield('Commerce')
+    @yield('Conseils_actualites')
+    @yield('Divers')
     {{-- /PARTENAIRES/ --}}
     @yield('indexPartenaire')
     @yield('showPartenaire')
-    {{-- /opportunites/ --}}
-    @yield('Audit')
-    @yield('Compta')
-    @yield('Fiscalite')
-    @yield('Gestion_entreprise')
+
+    {{-- /OPPORTUNITES/ --}}
+    @yield('showOpportunite')
+    @yield('indexOpportunite')
+
+    {{-- /////////// --}}
+    @yield('Audit_conseil')
+    @yield('compta_fiscale')
+    @yield('financement')
+    @yield('R_humaines')
+    {{-- /RESSOURCES HUMAINES/ --}}
+    @yield('Gestion_paie')
     {{-- /FORMATIONS/ --}}
 
     @yield('formations.index')

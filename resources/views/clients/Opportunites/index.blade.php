@@ -31,16 +31,16 @@
                         <div class="row align-items-center">
                             <div class="col-md-7">
                                 <div class="show-text wow fadeInLeft">
-                                    <span>Nombre d'offres : {{$opportunites->count() }}</span>
+                                    <span>Nombre d'offres : {{ $opportunites->count() }}</span>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="filter-dropdown float-md-end wow fadeInRight">
-                                    <select class="wide">
-                                        <option data-display="TOUT">TOUT</option>
-                                        <option value="01">STAGE</option>
-                                        <option value="02">CDI</option>
-                                        <option value="03">CDD</option>
+                                    <select class="wide" id="typeContratSelect">
+                                        <option value="TOUT">TOUT</option>
+                                        <option value="STAGE">STAGE</option>
+                                        <option value="CDI">CDI</option>
+                                        <option value="CDD">CDD</option>
                                     </select>
                                 </div>
                             </div>
@@ -48,6 +48,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 @if ($opportunites->isEmpty())
                     <div class="col-12">
@@ -56,27 +57,29 @@
                         </div>
                     </div>
                 @else
-                
-                     @foreach ($opportunites as $opportunite)
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <!--=== Product Item ===-->
-                                <div class="product-item mb-45 wow fadeInDown">
-                                    <div class="product-image">
-                                        <img src="{{ asset('assets/images/products/product-1.jpg') }}" alt="Product image">
-                                        <div class="hover-content">
-                                            <a href="{{ route('opportunites.clients.show', $opportunite->id) }}" class="icon-btn"><i class="icon-briefcase"></i></a>
-                                        </div>
+                    @foreach ($opportunites as $opportunite)
+                        <div class="col-lg-4 col-md-6 col-sm-12 opportunite-item"
+                            data-type-contrat="{{ strtoupper($opportunite->type_contrat) }}">
+                            <div class="product-item mb-45 wow fadeInDown">
+                                <div class="product-image">
+                                    <img src="{{ asset('assets/images/products/product-1.jpg') }}" alt="Product image">
+                                    <div class="hover-content">
+                                        <a href="{{ route('opportunites.clients.show', $opportunite->id) }}"
+                                            class="icon-btn">
+                                            <i class="icon-briefcase"></i>
+                                        </a>
                                     </div>
-                                    <div class="product-info">
-                                        <h4 >
-                                          <a href="{{ route('opportunites.clients.show', $opportunite->id) }}">
-                                            {{ $opportunite->titre }} | {{$opportunite->type_contrat}}
-                                          </a>
-                                        </h4>
-                                        <div class="post-meta">
+                                </div>
+                                <div class="product-info">
+                                    <h4>
+                                        <a href="{{ route('opportunites.clients.show', $opportunite->id) }}">
+                                            {{ $opportunite->titre }} | {{ $opportunite->type_contrat }}
+                                        </a>
+                                    </h4>
+                                    <div class="post-meta">
                                         <a href="#" class="post-admin">
                                             <i class="far fa-envelope"></i>
-                                           {{  $opportunite->contact_email }}
+                                            {{ $opportunite->contact_email }}
                                         </a> |
                                         <a href="#" class="post-date">
                                             <i class="far fa-calendar-alt"></i>
@@ -84,17 +87,37 @@
                                         </a>
                                         <hr>
                                     </div>
-                                        <span class="price" style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                            {{ $opportunite->description }}
-                                        </span>
-                                    </div>
+                                    <span class="price"
+                                        style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                        {{ $opportunite->description }}
+                                    </span>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
+                    @endforeach
                 @endif
-
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const select = document.getElementById('typeContratSelect');
+                select.addEventListener('change', function() {
+                    const selected = this.value.toUpperCase();
+                    document.querySelectorAll('.opportunite-item').forEach(function(item) {
+                        const type = item.dataset.typeContrat.toUpperCase();
+                        if (selected === "TOUT" || selected === type) {
+                            item.style.display = "";
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+                });
+            });
+        </script>
     </section>
+
+
+
 
 @endsection

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('Articles')
+@section('Commerce')
     <!--====== Start Page Section ======-->
     <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
         <div class="shape shape-one scene"><span data-depth="1"><img src="{{asset('assets/images/shape/p-1.png')}}" alt="shape"></span>
@@ -13,7 +13,7 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h2 class="page-title">Articles</h2>
+                            <h2 class="page-title">Commerce Generale</h2>
                             <p>Lorem voluptatem accusantium dolorem quis its tium totamrem aperiam eaque ipsaquae inventore
                             </p>
                             <ul class="breadcrumb-link text-white">
