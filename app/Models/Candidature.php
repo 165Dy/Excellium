@@ -13,7 +13,7 @@ class Candidature extends Model
     protected $table = 'candidatures';
 
     protected $fillable = [
-        'opportunite_id',
+        'emploi_id',
         'nom',
         'email',
         'telephone',
@@ -26,7 +26,7 @@ class Candidature extends Model
     // Relations
     public function opportunite()
     {
-        return $this->belongsTo(Emploi::class);
+        return $this->belongsTo(Emploi::class, 'emploi_id');
     }
 
     // Scopes

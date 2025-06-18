@@ -47,12 +47,12 @@ Route::get('/confirm-password', function () {return view('auth.confirm-password'
 Route::prefix('clients')->group(function () {
 
     
-    // opportunites
+    // OPPORTUNITES
     Route::get('opportunites', [OpportuniteController::class, 'index_public'])->name('opportunites.clients.index');
     Route::get('/opportunites/clients/show/{opportnuite}', [OpportuniteController::class, 'show_public'])->name('opportunites.clients.show');
-
-    // FORMATIONS
+    Route::post('/candidature/postuler', [OpportuniteController::class, 'postuler'])->name('candidature.postuler');
     
+    // FORMATIONS
     Route::get('/Formations',[formationsController::class, 'index_public'])->name('Formations.index');
     Route::get('/Formations/show/{id}',[formationsController::class, 'show_public'] )->name('Formations.show_public');
     Route::post('/Formations/participer', [formationsController::class, 'participer'])->name('formations.participer');

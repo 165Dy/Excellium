@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Mailgun\Mailgun;
 
 class OpportuniteController extends Controller
 {
@@ -362,6 +363,83 @@ class OpportuniteController extends Controller
             ]);
             
             return back()->with('error', 'Erreur lors de l\'export');
+        }
+    }
+
+    public function postuler(Request $request)
+    {
+        $request->validate([
+            'opportunite_id' => 'required|exists:emplois,id',
+            'nom' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'telephone' => 'nullable|string|max:20',
+            'message' => 'nullable|string|max:1000',
+            'file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'lettre_motivation' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+        ]);
+
+        try {
+            // Sauvegarde du CV
+            $cvPath = null;
+            if ($request->hasFile('file')) {
+                $cvPath = $request->file('file')->store('cvs', 'public');
+            }
+
+            // Sauvegarde de la lettre de motivation
+            $lettrePath = null;
+            if ($request->hasFile('lettre_motivation')) {
+                $lettrePath = $request->file('lettre_motivation')->store('lettres_motivation', 'public');
+            }
+
+            // Création de la candidature
+            $candidature = Candidature::create([
+                'emploi_id' => $request->opportunite_id,
+                'nom' => $request->nom,
+                'email' => $request->email,
+                'telephone' => $request->telephone,
+                'cv_path' => $cvPath,
+                'lettre_motivation' => $lettrePath,
+                'message' => $request->message,
+                'statut' => 'en_attente',
+            ]);
+
+            // Préparation des variables pour l'email
+            $emploi = Emploi::find($request->opportunite_id);
+            $variables = [
+                'nom' => $candidature->nom,
+                'poste' => $emploi->titre,
+                'type_contrat' => $emploi->type_contrat,
+                'localisation' => $emploi->localisation,
+                'entreprise' => $emploi->entreprise,
+                'cv_joint' => $cvPath ? 'Oui' : 'Non',
+                'lettre_jointe' => $lettrePath ? 'Oui' : 'Non',
+            ];
+
+            // Envoi de l'email via Mailgun
+            $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
+            $mg->messages()->send(env('MAILGUN_DOMAIN'), [
+                'from' => 'contact@excelliumconseils.com',
+                'to' => $candidature->email,
+                'subject' => 'Confirmation de réception de votre candidature',
+                'template' => 'excellium_candidature_confirmation',
+                'h:X-Mailgun-Variables' => json_encode($variables),
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Votre candidature a été envoyée avec succès !'
+            ]);
+
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la candidature:', [
+                'error' => $e->getMessage(),
+                'user' => $request->email
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Une erreur est survenue lors de l\'envoi de votre candidature.'
+            ], 500);
         }
     }
 } 
