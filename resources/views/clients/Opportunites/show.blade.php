@@ -199,10 +199,12 @@
             </div>
         </div>
 
-    </section><!--====== End Product Details Section ======-->
-    <!--====== Start Footer Section ======-->
+    </section>
+    <!--====== End Section ======-->
 
-     {{-- Modale d'inscription --}}
+    <!--====== Start Modal Section ======-->
+
+    <!-- Modal de candidature -->
     <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -215,9 +217,9 @@
                         aria-label="Fermer"></button>
                 </div>
 
-                <form id="inscriptionForm" method="POST" action="">
+                <form id="inscriptionForm" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="formation_id" value="{{ $opportunite->id }}">
+                    <input type="hidden" name="opportunite_id" value="{{ $opportunite->id }}">
 
                     <div class="modal-body">
                         <div class="row">
@@ -296,6 +298,17 @@
 
                             <div class="col-md-12">
                                 <div class="mb-3">
+                                    <label for="telephone" class="form-label text-warning fw-bold">
+                                        <i class="fas fa-file me-1"></i>Lettre de motivation
+                                    </label>
+                                    <input type="file" class="form-control" id="lettre_motivation" name="lettre_motivation"
+                                        
+                                        style="background-color: #34495e; border: 1px solid #ffc107; color: white;">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="mb-3">
                                     <label for="message" class="form-label text-warning fw-bold">
                                         <i class="fas fa-comment me-1"></i>Message ou questions (optionnel)
                                     </label>
@@ -330,5 +343,81 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal de succès -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <h5 style="color: black">Votre candidature a bien été envoyée !</h5>
+                    <p>Un email de confirmation vous a été envoyé.</p>
+                    <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal d'erreur -->
+    <div class="modal fade" id="errorModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <h5 style="color: red" id="errorMsg">Une erreur est survenue, veuillez réessayer.</h5>
+                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">FERMER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== End Modal Section ======-->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                let form = this;
+                let formData = new FormData(form);
+
+                fetch('{{ route('candidature.postuler') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        // Fermer la modale d'inscription
+                        bootstrap.Modal.getInstance(document.getElementById('inscriptionModal')).hide();
+                        // Afficher la modale de succès
+                        var modalSuccess = new bootstrap.Modal(document.getElementById('successModal'));
+                        modalSuccess.show();
+                        form.reset();
+                    } else {
+                        // Si Laravel retourne des erreurs de validation
+                        if (data.errors) {
+                            let msg = '';
+                            for (const field in data.errors) {
+                                msg += data.errors[field].join('<br>');
+                            }
+                            document.getElementById('errorMsg').innerHTML = msg;
+                        } else {
+                            document.getElementById('errorMsg').textContent = data.message || "Une erreur est survenue, veuillez réessayer.";
+                        }
+                        var modalError = new bootstrap.Modal(document.getElementById('errorModal'));
+                        modalError.show();
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('errorMsg').textContent = "Erreur serveur, veuillez réessayer.";
+                    var modalError = new bootstrap.Modal(document.getElementById('errorModal'));
+                    modalError.show();
+                });
+            });
+        });
+        
+    </script>
 
 @endsection

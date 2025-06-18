@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('telephone');
             $table->string('cv_path')->nullable();
-            $table->text('lettre_motivation')->nullable();
+            $table->string('lettre_motivation')->nullable();
             $table->text('message')->nullable(); // Message de candidature
             $table->enum('statut', ['en_attente', 'accepte', 'refuse'])->default('en_attente');
             $table->timestamps();

@@ -1,5 +1,33 @@
 @extends('layouts.admin')
 @section('index_opportunites')
+
+    <style>
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #696ac3, #4f46e5) !important;
+        }
+
+        .bg-gradient-success {
+            background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+        }
+
+        .bg-gradient-warning {
+            background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+        }
+
+        .bg-gradient-info {
+            background: linear-gradient(135deg, #06b6d4, #0891b2) !important;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(var(--bs-primary-rgb), 0.05);
+        }
+    </style>
+
     <div class="container-xxl flex-grow-1 container-p-y">
 
         {{-- Header avec actions --}}
@@ -25,7 +53,7 @@
         @if ($opportunites->isEmpty())
             <div class="alert alert-danger mb-4">
                 <i class="fas fa-exclamation-triangle me-2"></i>
-                <strong>Erreur :</strong> Variable $opportunites non définie
+                <strong>Alerte :</strong> Opportunités non définies
             </div>
         @else
             <div class="alert alert-success mb-4">
@@ -215,32 +243,5 @@
             console.log('Supprimer:', id, titre);
         }
     </script>
-
-    <style>
-        .bg-gradient-primary {
-            background: linear-gradient(135deg, #696ac3, #4f46e5) !important;
-        }
-
-        .bg-gradient-success {
-            background: linear-gradient(135deg, #22c55e, #16a34a) !important;
-        }
-
-        .bg-gradient-warning {
-            background: linear-gradient(135deg, #f59e0b, #d97706) !important;
-        }
-
-        .bg-gradient-info {
-            background: linear-gradient(135deg, #06b6d4, #0891b2) !important;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            transition: all 0.3s ease;
-        }
-
-        .table-hover tbody tr:hover {
-            background-color: rgba(var(--bs-primary-rgb), 0.05);
-        }
-    </style>
     
 @endsection
