@@ -812,7 +812,7 @@
                                         </li>
                                         <li
                                             class="menu-item {{ request()->routeIs('admin.candidatures.*') ? 'active' : '' }}">
-                                            <a href="{{ route('opportunites.index') }}" class="menu-link">
+                                            <a href="{{ route('opportunites.candidatures.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-users"></i>
                                                 <div data-i18n="Candidatures">Candidatures</div>
                                                 <div class="badge badge-center rounded-pill bg-warning ms-auto">
@@ -895,6 +895,7 @@
                     {{-- //Create// --}}
                     @yield('index_formations')
                     @yield('index_opportunites')
+                    @yield('candidatures_index')
                     @yield('index_partenaires')
                     @yield('index_articles')
                     @yield('index_temoignages')

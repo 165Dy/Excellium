@@ -151,7 +151,7 @@
                         <div class="sidebar-widget sidebar-search-widget mb-35 wow fadeInDown">
                             <form action="{{ route('Formations.index') }}" method="GET">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Rechercher une formation..." name="search"
+                                    <input type="text" placeholder="Rechercher..." name="search"
                                         style="color:#fff">
                                     <button class="search-btn" type="submit"><i class="far fa-search"></i></button>
                                 </div>

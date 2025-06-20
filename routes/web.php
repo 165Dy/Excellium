@@ -71,8 +71,9 @@ Route::prefix('clients')->group(function () {
      // RESSOURCES
      Route::get('/Ressources/Articles',function () { return view('clients.Ressources.Articles'); } )->name('Ressources.Articles');
      Route::get('/Ressources/Conseils&Actualites',function () { return view('clients.Ressources.Conseils_Actualites'); } )->name('Ressources.conseils_actualites');
-     Route::get('/Ressources/Entrepreunariats',function () { return view('clients.Ressources.Entrepreunariat'); } )->name('Ressources.Entrepreunariat');
-    
+     Route::get('/Ressources/Service_divers',function () { return view('clients.Ressources.service_divers'); } )->name('Ressources.service_divers');
+     Route::get('/Ressources/Commerce',function () { return view('clients.Ressources.commerce'); } )->name('Ressources.commerce');
+      Route::get('/Ressources/Achats&Location',function () { return view('clients.Ressources.Achat_location'); } )->name('Ressources.achat_location');
      //CONTACTS
      Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
@@ -113,6 +114,8 @@ Route::prefix('admin')->group(function () {
     Route::get('opportunites/{opportunite}/edit', [OpportuniteController::class, 'edit'])->name('admin.opportunites.edit');
     Route::put('opportunites/{opportunite}', [OpportuniteController::class, 'update'])->name('admin.opportunites.update');
     Route::delete('opportunites/{opportunite}', [OpportuniteController::class, 'destroy'])->name('admin.opportunites.destroy');
+    Route::get('opportunites/candidatures', [OpportuniteController::class, 'candidats'])->name('opportunites.candidatures.index');
+
     
     Route::get('opportunites/{opportunite}/details', [OpportuniteController::class, 'getDetails'])->name('admin.opportunites.details');
     Route::patch('candidatures/{candidature}/statut', [OpportuniteController::class, 'changerStatutCandidature'])->name('admin.candidatures.statut');
