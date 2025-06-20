@@ -71,6 +71,45 @@
                                         style=" width: 80px;"></a>
                             </div>
 
+                            <!-- Flash Bourse Banner -->
+                            <div class="flash-bourse-banner"
+                                style="position: absolute; top: 0; left: -5px; width: 100%; z-index: 9999;">
+                                <div class="blocOrange orange PosRelative Container100 Responsive100">
+                                    <div class="PosAbsolute blocBourse1 afficher afficherAutre Container80 TexAlCenter Responsive100"
+                                        style="display: flex; justify-content: center; align-items: center;">
+                                        <div class="blocbourse noire Container10"
+                                            style="background-color: #FFAC1E;padding:3px 22px 0px 22px;">
+                                            <div class="EmptyBox10"></div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="#FFD22F" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M4 20v-5h3v5H4zm5-8h3v8h-3v-8zm5-4h3v12h-3V8zm5-4h3v16h-3V4z" />
+                                            </svg>
+                                            <i>FLASH INFO</i>
+                                        </div>
+
+                                        <div class="blocbourse2 Container80 TexAlCenter"
+                                            style="height:30px;width:63%;border-bottom: 0.2px solid #918e8e;background-color: #FFAC1E;">
+                                            <div class="White Container50 TexAlLeft">
+                                                <div class="Container100">
+                                                    <div class="EmptyBox10"></div>
+                                                    <marquee scrolldelay="130" truespeed="true"
+                                                        style="border-right: 3px solid #f0eded;border-left: 3px solid #f0eded; padding-right: 10px;">
+                                                        <span
+                                                            style="font-size: 12px; font-weight: normal; color: #f0eded;">
+                                                            FTSC 17000 FCFA 4,14% - SVOC 4000 FCFA 0% - NEIC 1200 FCFA
+                                                            0% - NTLC 49500 FCFA 0,01% -
+                                                            ONTBF 8200 FCFA 12,72% - PALC 11000 FCFA 0% - SAFC 17500
+                                                            FCFA 0%
+                                                        </span>
+                                                    </marquee>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                             <!--=== Main Menu ===-->
                             <nav class="main-menu">
                                 <ul>
@@ -97,15 +136,17 @@
                                             <li><a href="{{ route('Ressources.Entrepreunariat') }}">Import-Export</a>
                                             <li><a href="{{ route('Ressources.conseils_actualites') }}">Gestion de
                                                     Biens</a></li>
-                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Services Divers</a>
+                                            <li><a href="{{ route('Ressources.Entrepreunariat') }}">Services
+                                                    Divers</a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item has-children"><a href="{{ route('Partenaires.Collaborateurs') }}">Partenaires</a>
-                                        
+                                    <li class="menu-item has-children"><a
+                                            href="{{ route('Partenaires.Collaborateurs') }}">Partenaires</a>
+
                                     </li>
                                     <li class="menu-item has-children"><a
-                                           href="{{ route('opportunites.clients.index') }}">Opportunités</a>
+                                            href="{{ route('opportunites.clients.index') }}">Opportunités</a>
                                     </li>
                                     <li class="menu-item has-children"><a
                                             href="{{ route('Formations.index') }}">Formations</a></li>
@@ -113,8 +154,46 @@
 
 
                                 </ul>
-
                             </nav>
+
+                            {{-- <!-- Flash Bourse Banner -->
+                            <div class="flash-bourse-banner"
+                                style="position: absolute; top:100%; left:0px; width: 100%; z-index: 9999;">
+                                <div class="blocOrange orange PosRelative Container100 Responsive100">
+                                    <div class="PosAbsolute blocBourse1 afficher afficherAutre Container80 TexAlCenter Responsive100"
+                                        style="display: flex; justify-content: center; align-items: center;">
+                                        <div class="blocbourse noire Container10"
+                                            style="background-color:#0C2B30;padding:1px 22px 2px 22px;">
+                                            <div class="EmptyBox10"></div>
+                                            <i>FLASH INFO</i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
+                                                fill="black" viewBox="0 0 24 24">
+                                                <path d="M3 10v4h3l5 5V5L6 10H3zm13.5 2a2.5 2.5 0 1 0 0-5h-1v5h1z" />
+                                            </svg>
+                                        </div>
+
+                                        <div class="blocbourse2 Container80 TexAlCenter"
+                                            style="height:30px;width:88%;border-bottom: 0.2px solid #918e8e; background-color:#0C2B30;">
+                                            <div class="White Container50 TexAlLeft">
+                                                <div class="Container100">
+                                                    <div class="EmptyBox10"></div>
+                                                    <marquee scrolldelay="130" truespeed="true"
+                                                        style="border-right: 3px solid #f0eded;border-left: 3px solid #f0eded; padding-right: 10px;">
+                                                        <span
+                                                            style="font-size: 12px; font-weight: normal; color: #f0eded;">
+                                                            FTSC 17000 FCFA 4,14% - SVOC 4000 FCFA 0% - NEIC 1200 FCFA
+                                                            0% - NTLC 49500 FCFA 0,01% -
+                                                            ONTBF 8200 FCFA 12,72% - PALC 11000 FCFA 0% - SAFC 17500
+                                                            FCFA 0%
+                                                        </span>
+                                                    </marquee>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> --}}
                         </div>
                         <div class="nav-right-item">
                             <div class="navbar-toggler">
@@ -127,7 +206,10 @@
                 </div>
             </div>
         </div>
-    </header><!--====== End Header Area ======-->
+    </header>
+    <!--====== End Header Area ======-->
+
+
 
 
     @yield('welcome')
@@ -261,7 +343,7 @@
 
     <!--====== End Footer Section ======-->
     <!--====== Back To Top  ======-->
-    <a href="{{ route('contacts') }}" class="back-to-top-message"><i class="far fa-envelope"></i></a>
+    <a href="{{ route('contacts') }}" style="background-color: #FFAC1E" class="back-to-top-message"><i class="far fa-envelope"></i></a>
     <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
     <!--====== Jquery js ======-->
     <script src="{{ asset('assets/vendor/jquery-3.6.0.min.js') }}"></script>

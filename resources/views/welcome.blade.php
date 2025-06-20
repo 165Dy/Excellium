@@ -1,7 +1,10 @@
 @extends('layouts.master')
 @section('welcome')
     <!--====== Start Header Section ======-->
+
+    
     <section class="hero-section">
+        
         <div class="hero-wrapper-two bg_cover" style="background-image: url(assets/images/hero/hero-bg-1.png);">
             <div class="container">
                 <div class="row align-items-center">
@@ -11,7 +14,7 @@
                             <p>
                                 Bienvenue chez Excellium Conseils, votre partenaire stratégique
                                 en gestion financière et comptable. Nous accompagnons les entrepreneurs,
-                                les entreprises et les professionnels dans l’optimisation de leurs finances
+                                les entreprises et les professionnels dans l'optimisation de leurs finances
                                 grâce à des solutions sur mesure. Notre mission : vous aider à prendre les
                                 meilleures décisions pour assurer la croissance et la pérennité de votre activité.
                             </p>
@@ -37,7 +40,6 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-title text-center mb-60 wow fadeInDown">
-
                         <h2>Pourquoi choisir Excellium Conseils ?</h2>
                     </div>
                 </div>
@@ -67,7 +69,7 @@
                             <div class="tab-pane fade show active" id="mission">
                                 <div class="content-box">
                                     <p class="mb-20">
-                                        Notre mission est d’accompagner chaque client dans la réussite de ses projets grâce
+                                        Notre mission est d'accompagner chaque client dans la réussite de ses projets grâce
                                         à des solutions innovantes et personnalisées. Nous croyons que chaque entreprise
                                         mérite un accompagnement sur mesure pour atteindre ses objectifs.
                                     </p>
@@ -76,15 +78,15 @@
                                         <li><i class="far fa-check"></i>Des conseils adaptés à chaque étape de votre
                                             développement</li>
                                     </ul>
-                                    
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="vision">
                                 <div class="content-box">
                                     <p class="mb-20">
                                         Notre vision est de devenir le partenaire incontournable des entreprises en matière
-                                        de gestion, de conseil et d’innovation. Nous aspirons à bâtir un avenir prospère
-                                        avec nos clients, fondé sur la confiance et l’excellence.
+                                        de gestion, de conseil et d'innovation. Nous aspirons à bâtir un avenir prospère
+                                        avec nos clients, fondé sur la confiance et l'excellence.
                                     </p>
                                     <ul class="check-list style-one mb-30">
                                         <li><i class="far fa-check"></i>Anticiper les défis de demain</li>
@@ -209,7 +211,7 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#">Accompagnement dans l’obtention de crédits et
+                                            <span><a href="#">Accompagnement dans l'obtention de crédits et
                                                     subventions.</a></span>
                                             <h4 class="title"><a href="case-details.html">Recherche de financement </a>
                                             </h4>
@@ -234,7 +236,7 @@
                             <h2>Nos clients parlent de nous ! </h2>
                         </div>
                         <p>
-                            Découvrez les retours d’expérience de ceux
+                            Découvrez les retours d'expérience de ceux
                             qui nous font confiance et comment Excellium Conseils
                             les a aidés à optimiser leur gestion financière et à atteindre leurs objectifs.
                         </p>
@@ -252,8 +254,8 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <p>“There’re many variation of this a passages Ipsum available but the majority have
-                                    suffered alteration a some form by injected humour randomised from this words.”</p>
+                                <p>"There're many variation of this a passages Ipsum available but the majority have
+                                    suffered alteration a some form by injected humour randomised from this words."</p>
                                 <div class="author-thumb-title style-one">
                                     <div class="author-thumb">
                                         <img src="assets/images/testimoinal/author-1.jpg" alt="Author Image">
@@ -275,8 +277,8 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <p>“There’re many variation of this a passages Ipsum available but the majority have
-                                    suffered alteration a some form by injected humour randomised from this words.”</p>
+                                <p>"There're many variation of this a passages Ipsum available but the majority have
+                                    suffered alteration a some form by injected humour randomised from this words."</p>
                                 <div class="author-thumb-title style-one">
                                     <div class="author-thumb">
                                         <img src="assets/images/testimoinal/author-2.jpg" alt="Author Image">
@@ -298,8 +300,8 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <p>“There’re many variation of this a passages Ipsum available but the majority have
-                                    suffered alteration a some form by injected humour randomised from this words.”</p>
+                                <p>"There're many variation of this a passages Ipsum available but the majority have
+                                    suffered alteration a some form by injected humour randomised from this words."</p>
                                 <div class="author-thumb-title style-one">
                                     <div class="author-thumb">
                                         <img src="assets/images/testimoinal/author-2.jpg" alt="Author Image">
@@ -377,7 +379,7 @@
                                 <img src="assets/images/blog/icon.png" alt="">
                                 <h4>Call For Consultation</h4>
                             </div>
-                            <a href="#" class="theme-btn style-one" style="color:white ">Let’s Contact with Us</a>
+                            <a href="#" class="theme-btn style-one" style="color:white ">Let's Contact with Us</a>
                         </div>
                     </div>
                 </div>
@@ -603,9 +605,38 @@
         </div>
     </div>
 
+    <!-- Modal de succès services -->
+    <div class="modal fade" id="serviceSuccessModal" tabindex="-1" aria-labelledby="serviceSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24">
+                        <path fill="#498830"
+                            d="M4 12a8 8 0 1 1 16 0a8 8 0 0 1-16 0m8-10C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m5.457 7.457l-1.414-1.414L11 13.086l-2.793-2.793l-1.414 1.414L11 15.914z" />
+                    </svg><br>
+                    <h5 style="color: black">Vos choix ont bien été enregistrés !<br>Un email de bienvenue vous a été envoyé.</h5>
+                    <br>
+                    <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-
+    <!-- Modal d'erreur services -->
+    <div class="modal fade" id="serviceErrorModal" tabindex="-1" aria-labelledby="serviceErrorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24">
+                        <path fill="#df291c"
+                            d="M4 20v-6a8 8 0 1 1 16 0v6h1v2H3v-2zm2 0h12v-6a6 6 0 0 0-12 0zm5-18h2v3h-2zm8.778 2.808l1.414 1.414l-2.12 2.121l-1.415-1.414zM2.808 6.222l1.414-1.414l2.121 2.12L4.93 8.344zM7 14a5 5 0 0 1 5-5v2a3 3 0 0 0-3 3z" />
+                    </svg><br>
+                    <h5 style="color:black" id="serviceErrorMsg">Une erreur est survenue, veuillez réessayer.</h5>
+                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">FERMER</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Script pour la création du compte et la confirmation du succès -->
     <script>
@@ -704,17 +735,44 @@
             // Soumission du choix des services
             document.getElementById('choixServiceForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                const checkedServices = Array.from(document.querySelectorAll('.service-checkbox:checked'))
-                    .map(cb => cb.value);
-                const alertDiv = document.getElementById('service-alert');
+                const checkedServices = Array.from(document.querySelectorAll('.service-checkbox:checked')).map(cb => cb.nextElementSibling.textContent.trim());
+                const email = document.getElementById('modal_email').value;
+
                 if (checkedServices.length === 0) {
-                    alertDiv.style.display = 'block';
+                    document.getElementById('service-alert').style.display = 'block';
                     return;
-                } else {
-                    alertDiv.style.display = 'none';
-                    // Ici tu pourras gérer l'envoi plus tard
-                    // bootstrap.Modal.getInstance(document.getElementById('choixServiceModal')).hide();
                 }
+
+                fetch('/inscription/services', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, services: checkedServices })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        // Ferme la modale de choix de service
+                        bootstrap.Modal.getInstance(document.getElementById('choixServiceModal')).hide();
+                        // Affiche la modale de succès
+                        var modalSuccess = new bootstrap.Modal(document.getElementById('serviceSuccessModal'));
+                        modalSuccess.show();
+                    } else {
+                        // Affiche la modale d'erreur avec le message retourné
+                        document.getElementById('serviceErrorMsg').textContent = data.message || "Une erreur est survenue, veuillez réessayer.";
+                        var modalError = new bootstrap.Modal(document.getElementById('serviceErrorModal'));
+                        modalError.show();
+                    }
+                })
+                .catch(() => {
+                    // Affiche la modale d'erreur en cas d'erreur réseau/serveur
+                    document.getElementById('serviceErrorMsg').textContent = "Erreur serveur, veuillez réessayer.";
+                    var modalError = new bootstrap.Modal(document.getElementById('serviceErrorModal'));
+                    modalError.show();
+                });
             });
 
             // Sécurité supplémentaire : empêche la fermeture de la modal par touche ESC

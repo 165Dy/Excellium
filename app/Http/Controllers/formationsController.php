@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\InscriptionFormation;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
+use \Mailgun\Mailgun;
 
 class formationsController extends Controller
 {
@@ -360,6 +361,25 @@ class formationsController extends Controller
             
             Log::info("=== FIN INSCRIPTION FORMATION ===", [
                 'inscription' => $inscription->toArray()
+            ]);
+
+            // Préparer les variables pour le template Mailgun
+            $variables = [
+                'name' => $inscription->nom,
+                'formation' => $inscription->formation->titre,
+                'date' => $inscription->formation->date_debut ? \Carbon\Carbon::parse($inscription->formation->date_debut)->format('d/m/Y') : 'À définir',
+                'lieu' => $inscription->formation->lieu ?? 'À définir',
+                'cout' => $inscription->formation->cout ?? 'À définir',
+            ];
+
+            // Envoi du mail via Mailgun
+            $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
+            $mg->messages()->send(env('MAILGUN_DOMAIN'), [
+                'from' => 'contact@excelliumconseils.com',
+                'to' => $inscription->email,
+                'subject' => 'Confirmation de votre inscription à la formation',
+                'template' => 'excellium_formation_welcome',
+                'h:X-Mailgun-Variables' => json_encode($variables),
             ]);
 
             // Réponse JSON pour AJAX

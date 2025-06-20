@@ -47,12 +47,12 @@ Route::get('/confirm-password', function () {return view('auth.confirm-password'
 Route::prefix('clients')->group(function () {
 
     
-    // opportunites
+    // OPPORTUNITES
     Route::get('opportunites', [OpportuniteController::class, 'index_public'])->name('opportunites.clients.index');
-    Route::get('/opportunites/clients/show',function () { return view('clients.opportunites.show'); } )->name('opportunites.clients.show');
-
-    // FORMATIONS
+    Route::get('/opportunites/clients/show/{opportnuite}', [OpportuniteController::class, 'show_public'])->name('opportunites.clients.show');
+    Route::post('/candidature/postuler', [OpportuniteController::class, 'postuler'])->name('candidature.postuler');
     
+    // FORMATIONS
     Route::get('/Formations',[formationsController::class, 'index_public'])->name('Formations.index');
     Route::get('/Formations/show/{id}',[formationsController::class, 'show_public'] )->name('Formations.show_public');
     Route::post('/Formations/participer', [formationsController::class, 'participer'])->name('formations.participer');
@@ -86,13 +86,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/Dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
 
     
-    Route::get('/users/index',function () { return view('Admin.users.index'); } )->name('users.index');
+    Route::get('/users/index',[DashboardController::class, 'index_user'] )->name('users.index');
     Route::get('/users/show',function () { return view('Admin.users.show'); } )->name('users.show');
 
     // FORMATIONS
     Route::get('/categories/index',function () { return view('Admin.categorie.index'); } )->name('categories.index');
     Route::post('/categories', [CategorieController::class, 'store'])->name('categories.store');
-
+    Route::get('/categories/list', [CategorieController::class, 'list'])->name('categories.list');
+    Route::put('/categories/{id}', [CategorieController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{id}', [CategorieController::class, 'destroy'])->name('categories.destroy');
     // Routes formations
     Route::post('/formations/store', [formationsController::class, 'store'])->name('formations.store');
     Route::get('/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
@@ -117,24 +119,26 @@ Route::prefix('admin')->group(function () {
     Route::get('opportunites/{opportunite}/export-candidatures', [OpportuniteController::class, 'exportCandidatures'])->name('opportunites.export-candidatures');
 
 
-    Route::get('/articles',function () { return view('Admin.Divers.Articles_index'); } )->name('articles.index');
-    Route::get('/partenaires',function () { return view('Admin.Divers.partenaire_index'); } )->name('partenaires.index');
-    Route::get('/temoignages',function () { return view('Admin.Divers.Temoignage_index'); } )->name('temoignages.index');
+    Route::get('/articles',[DashboardController::class, 'index_articles'] )->name('articles.index');
+    Route::get('/partenaires',[DashboardController::class, 'index_partenaires']  )->name('partenaires.index');
+    Route::get('/temoignages', [DashboardController::class, 'index_temoignages']  )->name('temoignages.index');
     ////////
     //CONTACTS
     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
     // CALENDRIER
-    Route::get('/calendrier/index',function () { return view('Admin.Calendrier.index'); } )->name('calendrier.index');
+    Route::get('/calendrier/index',[DashboardController::class, 'index_calendrier']  )->name('calendrier.index');
 
     // CALENDRIER
-    Route::get('/email/index',function () { return view('Admin.Email.index'); } )->name('email.index');
+    Route::get('/email/index',[DashboardController::class, 'index_email']  )->name('email.index');
 
     // ENVOI SERVICES
     Route::post('/envoi-services', [InscriptionController::class, 'envoiServices'])->name('envoi.services');
 
    
 });
+
+Route::post('/inscription/services', [InscriptionController::class, 'saveServices'])->name('inscription.services');
 
     
     

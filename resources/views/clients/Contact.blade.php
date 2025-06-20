@@ -73,7 +73,7 @@
                                         <img src="{{ asset('assets/images/icon/call.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
-                                        <h4>Call Us</h4>
+                                        <h4>Notre Contact</h4>
                                         <p><a href="tel:0707672957">+255 07 07 672 957</a></p>
                                     </div>
                                 </div>

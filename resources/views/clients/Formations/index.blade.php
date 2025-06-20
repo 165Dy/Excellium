@@ -63,7 +63,7 @@
                                              style="width: 100%; height: 250px; object-fit: cover;">
                                     @endif
 
-                                    <a href="{{asset('storage/' .$formation->file_path)}}"> lien vers image</a>
+                                    {{-- <a href="{{asset('storage/' .$formation->file_path)}}"> lien vers image</a> --}}
                                     
                                     <ul class="post-categories">
                                         <li><a href="{{ route('Formations.index', ['categorie_id' => $formation->categorie_id]) }}">
@@ -74,13 +74,14 @@
                                 <div class="post-content">
                                     <div class="post-meta">
                                         <a href="#" class="post-admin">
-                                            <i class="far fa-user-alt"></i>Par Excellium Conseil
+                                            <i class="far fa-user-alt"></i>Par Excellium
                                         </a>
                                         <a href="#" class="post-date">
                                             <i class="far fa-calendar-alt"></i>
                                             {{ \Carbon\Carbon::parse($formation->date_debut)->format('d M Y') }}
                                         </a>
                                     </div>
+                                    
                                     <h4 class="title">
                                         <a href="{{ route('Formations.show_public', $formation->id) }}">
                                             {{ $formation->titre }}
@@ -128,7 +129,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🎬 Initialisation autoplay vidéos formations');
+    console.log('ð¬ Initialisation autoplay vidéos formations');
     
     // Intersection Observer pour détecter quand les vidéos sont visibles
     const videoObserver = new IntersectionObserver((entries) => {
@@ -139,9 +140,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // La vidéo est visible, on la lance
                 if (video.paused) {
                     video.play().then(() => {
-                        console.log('✅ Vidéo lancée:', video.src);
+                        console.log('â Vidéo lancée:', video.src);
                     }).catch(error => {
-                        console.log('❌ Erreur autoplay:', error);
+                        console.log('â Erreur autoplay:', error);
                         // Fallback: afficher les contrôles si autoplay échoue
                         video.controls = true;
                     });
@@ -150,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // La vidéo n'est plus visible, on la pause
                 if (!video.paused) {
                     video.pause();
-                    console.log('⏸️ Vidéo pausée:', video.src);
+                    console.log('â¸ï¸ Vidéo pausée:', video.src);
                 }
             }
         });
@@ -162,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Observer toutes les vidéos de formations
     const formationVideos = document.querySelectorAll('.formation-video');
-    console.log(`📹 ${formationVideos.length} vidéo(s) détectée(s)`);
+    console.log(`ð¹ ${formationVideos.length} vidéo(s) détectée(s)`);
     
     formationVideos.forEach((video, index) => {
         console.log(`Vidéo ${index + 1}:`, video.src);
@@ -172,15 +173,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Événements pour debug
         video.addEventListener('play', () => {
-            console.log(`▶️ Vidéo ${index + 1} en lecture`);
+            console.log(`â¶ï¸ Vidéo ${index + 1} en lecture`);
         });
         
         video.addEventListener('pause', () => {
-            console.log(`⏸️ Vidéo ${index + 1} en pause`);
+            console.log(`â¸ï¸ Vidéo ${index + 1} en pause`);
         });
         
         video.addEventListener('error', (e) => {
-            console.error(`❌ Erreur vidéo ${index + 1}:`, e);
+            console.error(`â Erreur vidéo ${index + 1}:`, e);
             // En cas d'erreur, afficher une image par défaut
             const container = video.parentElement;
             video.style.display = 'none';

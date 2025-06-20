@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Http;
+
+use Mailgun\Mailgun;
 
 class InscriptionController extends Controller
 {
@@ -46,6 +49,42 @@ class InscriptionController extends Controller
             'password'  => null
         ]);
     
+        return response()->json(['success' => true]);
+    }
+
+    public function saveServices(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'services' => 'required|array|min:1'
+        ]);
+
+        $user = User::where('email', $request->email)->firstOrFail();
+
+        // Enregistre les services
+        foreach ($request->services as $service) {
+            $user->services()->create(['service' => $service]);
+        }
+
+        // Prépare les variables pour le template Mailgun
+        $variables = [
+            'name' => $user->prenom . ' ' . $user->nom,
+            'services' => $request->services,
+            'message' => "Notre équipe reviendra vers vous pour plus d'informations."
+        ];
+
+        $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
+
+        // Envoi du mail via l'API Mailgun
+        
+        $result = $mg->messages()->send(env('MAILGUN_DOMAIN'), [
+            'from' => 'contact@excelliumconseils.com',
+            'to' => $user->email,
+            'subject' => 'Bienvenue sur Excellium Conseils',
+            'template' => 'excellium_emailwelcome',
+            'h:X-Mailgun-Variables' => json_encode($variables),
+        ]);
+
         return response()->json(['success' => true]);
     }
 
