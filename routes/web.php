@@ -114,6 +114,8 @@ Route::prefix('admin')->group(function () {
     Route::get('opportunites/{opportunite}/edit', [OpportuniteController::class, 'edit'])->name('admin.opportunites.edit');
     Route::put('opportunites/{opportunite}', [OpportuniteController::class, 'update'])->name('admin.opportunites.update');
     Route::delete('opportunites/{opportunite}', [OpportuniteController::class, 'destroy'])->name('admin.opportunites.destroy');
+    Route::get('opportunites/candidatures', [OpportuniteController::class, 'candidats'])->name('opportunites.candidatures.index');
+
     
     Route::get('opportunites/{opportunite}/details', [OpportuniteController::class, 'getDetails'])->name('admin.opportunites.details');
     Route::patch('candidatures/{candidature}/statut', [OpportuniteController::class, 'changerStatutCandidature'])->name('admin.candidatures.statut');

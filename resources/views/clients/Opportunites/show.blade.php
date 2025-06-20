@@ -108,7 +108,13 @@
 
                                     </ul><br>
 
-                                    @if ($opportunite->statut == 'active')
+                                                                       {{-- filepath: c:\Users\home\Desktop\Projet_Excellium\Excellium\resources\views\clients\Opportunites\show.blade.php --}}
+                                    @php
+                                        use Carbon\Carbon;
+                                        $estExpiree = $opportunite->date_expiration && Carbon::parse($opportunite->date_expiration)->isPast();
+                                    @endphp
+                                    
+                                    @if (!$estExpiree)
                                         <button class="theme-btn style-one" data-bs-target="#inscriptionModal"
                                             data-bs-toggle="modal">
                                             <div class="icon">
@@ -124,17 +130,30 @@
                                         </button>
                                     @endif
 
+                                                                       {{-- filepath: c:\Users\home\Desktop\Projet_Excellium\Excellium\resources\views\clients\Opportunites\show.blade.php --}}
                                     <div class="modal fade" id="offre_fermer" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-ml modal-simple">
+                                        <div class="modal-dialog modal-dialog-centered modal-simple">
                                             <div class="modal-content">
                                                 <div class="modal-body p-0">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                    <div class="text-center mb-6 p-4">
-                                                        <h5 class="mb-2 text" style="color: red">
+                                                    {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button> --}}
+                                                    <div class="text-center mb-4 p-4">
+                                                        <!-- SVG Warning Icon -->
+                                                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                                                            <circle cx="12" cy="12" r="12" fill="#ffe5e5"/>
+                                                            <path d="M12 7v5" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"/>
+                                                            <circle cx="12" cy="16" r="1" fill="#e74c3c"/>
+                                                        </svg>
+                                                        <h5 class="mb-3 mt-3" style="color: #e74c3c;">
                                                             <i class="ri ri-warning"></i>
-                                                            Offres Indisponible
+                                                            Offre indisponible
                                                         </h5>
+                                                        <p class="mb-4" style="color: #333;">
+                                                            Cette offre n'est plus disponible, vous ne pouvez plus candidater.<br>
+                                                            Revenez à la page des opportunités pour découvrir d'autres offres similaires.
+                                                        </p>
+                                                        <a href="{{ route('opportunites.clients.index') }}" class="btn btn-danger px-4">
+                                                            OK
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('index_opportunites')
-
+<br><br>
     <style>
         .bg-gradient-primary {
             background: linear-gradient(135deg, #696ac3, #4f46e5) !important;
