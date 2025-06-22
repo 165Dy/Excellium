@@ -34,13 +34,13 @@
 
     <!--====== Start Case Details Section ======-->
     <section class="case-details-section secondary-dark-bg pt-140 pb-140">
-        <div class="container">
+        <div class="container" style="margin-top: -80px;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="case-details-wrapper wow fadeInDown">
                         <div class="case-img">
-                            <img src="{{ asset('assets/images/img_large12.jpg') }}" alt="case image">
-                        </div>
+                            <img src="{{ asset('assets/images/12.jpg') }}" alt="case image" style="width: 100%; height:520px;">
+                        </div><br>
                         <div class="case-content">
                             
                             <h3>Maximisez votre rentabilité avec une gestion fiscale optimisée</h3>
@@ -99,33 +99,11 @@
                                     </div>
                                 </div>
                             </div>
+    
                             <div class="row align-items-center">
                                 <div class="col-xl-6">
                                     <div class="block-image mb-50 wow fadeInLeft">
-                                        <img src="{{ asset('assets/images/excellium_photo_1.jfif') }}" alt="case image">
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="content-box mb-50 wow fadeInRight">
-                                        <h3>Une approche stratégique pour la gestion fiscale</h3>
-                                        <p>Notre équipe d'experts vous guide à travers les différentes étapes pour vous
-                                            assurer une gestion fiscale efficace et optimale. Nous identifions les
-                                            opportunités fiscales qui vous permettent de réduire vos coûts tout en
-                                            respectant la législation en vigueur. Grâce à notre accompagnement, vous gagnez
-                                            en efficacité et en rentabilité.</p>
-                                        <ul class="check-list style-one mb-30">
-                                            <li><i class="far fa-check"></i>Conseils pratiques pour optimiser vos finances
-                                            </li>
-                                            <li><i class="far fa-check"></i>Suivi et gestion continue de vos obligations
-                                                fiscales</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-xl-6">
-                                    <div class="block-image mb-50 wow fadeInLeft">
-                                        <img src="{{ asset('assets/images/img_6.jpg') }}" alt="case image">
+                                        <img src="{{ asset('assets/images/2.jpg') }}" alt="case image">
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
@@ -147,17 +125,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="post-navigation wow fadeInDown">
-                        <div class="navigation-item prev-post">
-                            <a href="#"><i class="far fa-arrow-left"></i>Précédent</a>
-                        </div>
-                        <div class="navigation-item next-post">
-                            <a href="#"><i class="far fa-arrow-right"></i>Suivant</a>
-                        </div>
-                    </div>
-
                     
-
                     
                 </div>
             </div>

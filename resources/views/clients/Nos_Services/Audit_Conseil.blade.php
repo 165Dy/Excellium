@@ -32,42 +32,15 @@
 
     <!--====== Start Case Details Section ======-->
     <section class="case-details-section secondary-dark-bg pt-140 pb-140">
-        <div class="container">
+        <div class="container" style="margin-top: -80px;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="case-details-wrapper wow fadeInDown">
                         <div class="case-img">
                             <img src="{{ asset('assets/images/audit.jfif') }}" alt="case image">
-                        </div>
+                        </div><br>
                         <div class="case-content">
-                            <div class="project-info mb-55">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <div class="content">
-                                            <span class="sub-title">Titre du Projet</span>
-                                            <h4>Conseil en Gestion</h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <div class="content">
-                                            <span class="sub-title">Client</span>
-                                            <h4>Jean Dupont</h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <div class="content">
-                                            <span class="sub-title">Catégorie</span>
-                                            <h4>Consulting</h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <div class="content">
-                                            <span class="sub-title">Prix</span>
-                                            <h4>€350.00 EUR</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <h3>Optimisez vos performances grâce à nos audits spécialisés</h3>
                             <p>Nous analysons en profondeur vos processus internes et vos pratiques commerciales pour identifier des opportunités d’amélioration. Nos recommandations sont basées sur des analyses objectives et des benchmarks industriels pour vous offrir des solutions pratiques et efficaces, adaptées à votre contexte spécifique.</p>
                             <div class="row">
@@ -124,7 +97,7 @@
                             <div class="row align-items-center">
                                 <div class="col-xl-6">
                                     <div class="block-image mb-50 wow fadeInLeft">
-                                        <img src="{{ asset('assets/images/img_6.jpg') }}" alt="case image" style="border-radius: 10px 10px">
+                                        <img src="{{ asset('assets/images/1.jpg') }}" alt="case image">
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
@@ -138,14 +111,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="post-navigation wow fadeInDown">
-                        <div class="navigation-item prev-post">
-                            <a href="#"><i class="far fa-arrow-left"></i>Précédent</a>
-                        </div>
-                        <div class="navigation-item next-post">
-                            <a href="#"><i class="far fa-arrow-right"></i>Suivant</a>
                         </div>
                     </div>
                 </div>

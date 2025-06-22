@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <!--====== Required meta tags ======-->
@@ -58,30 +58,33 @@
                     <div class="primary-menu">
                         <!--=== Site Branding ===-->
                         <div class="site-branding">
-                            <a href="index.html" class="brand-logo">
-                                <img src="{{ asset('assets/images/logo_new.jpg') }}" alt="Site Logo"
-                                    style="width:100px;"></a>
+                            <a href="{{ route('welcome') }}" class="brand-logo">
+                                <img src="{{ asset('assets/images/logo.png') }}" alt="Site Logo"
+                                    style="width:70px;"></a>
                         </div>
                         <!--=== Zency Nav Menu ===-->
                         <div class="zency-nav-menu">
                             <!--=== Mobile Logo ===-->
                             <div class="mobile-logo mb-30 d-block d-xl-none text-center">
-                                <a href="index.html" class="brand-logo"><img
-                                        src="{{ asset('assets/images/logo_new.jpg') }}" alt="Site Logo"
-                                        style=" width: 80px;"></a>
+                                <a href="{{ route('welcome') }}" class="brand-logo">
+                                    <img src="{{ asset('assets/images/logo.png') }}" alt="Site Logo"
+                                        style=" width:50px;"></a>
                             </div>
 
                             <!-- Flash Bourse Banner -->
                             <div class="flash-bourse-banner"
-                                style="position: absolute; top: 0; left: -5px; width: 100%; z-index: 9999;">
+                                style="position: absolute; top: 0; left: 35px; width: 100%; z-index: 9999;">
                                 <div class="blocOrange orange PosRelative Container100 Responsive100">
                                     <div class="PosAbsolute blocBourse1 afficher afficherAutre Container80 TexAlCenter Responsive100"
                                         style="display: flex; justify-content: center; align-items: center;">
                                         <div class="blocbourse noire Container10"
                                             style="background-color: #FFAC1E;padding:3px 22px 0px 22px;">
                                             <div class="EmptyBox10"></div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                fill="#FFD22F" viewBox="0 0 24 24">
+
+                                           
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                fill="#FFD22F" viewBox="0 0 24 24" class="d-none d-md-inline">
+                                                <!-- Affiché uniquement sur écran md et plus -->
                                                 <path
                                                     d="M4 20v-5h3v5H4zm5-8h3v8h-3v-8zm5-4h3v12h-3V8zm5-4h3v16h-3V4z" />
                                             </svg>
@@ -129,12 +132,16 @@
                                     </li>
                                     <li class="menu-item has-children"><a href="#">Ressources</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('Ressources.achat_location') }}">Achats & Location</a></li>
+                                            <li><a href="{{ route('Ressources.achat_location') }}">Achats &
+                                                    Location</a></li>
                                             <li><a href="{{ route('Ressources.Articles') }}">Articles</a></li>
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Conseils & Actualités</a></li>
-                                            <li><a href="{{ route('Ressources.commerce') }}">Commerce Generale</a></li>
-                                            <li><a href="{{ route('Ressources.service_divers') }}">Service Divers</a></li>
-                                            
+                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Conseils &
+                                                    Actualités</a></li>
+                                            <li><a href="{{ route('Ressources.commerce') }}">Commerce Generale</a>
+                                            </li>
+                                            <li><a href="{{ route('Ressources.service_divers') }}">Service Divers</a>
+                                            </li>
+
                                         </ul>
                                     </li>
                                     <li class="menu-item has-children"><a
@@ -204,13 +211,19 @@
         </div>
     </header>
     <!--====== End Header Area ======-->
-
+    <style>
+        img {
+            border-radius: 10px;
+            /* border: 1px solid #ccc; */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 
 
 
     @yield('welcome')
     {{-- // --}}
-   
+
     {{-- /RESSOURCES/ --}}
     @yield('Achats')
     @yield('Articles')
@@ -251,7 +264,7 @@
                         <div class="footer-widget about-company-widget mb-40 wow fadeInUp">
                             <div class="footer-logo mb-3">
                                 <a href="index.html"><img src="{{ asset('assets/images/logo_new.jpg') }}"
-                                        alt="Footer Logo" style="width:120px; max-width:100%; height:auto;"></a>
+                                        alt="Footer Logo" style="width:100px; max-width:100%; height:auto;"></a>
                             </div>
                             <p>
                                 Excellium Conseils, c’est bien plus qu’un cabinet de conseil :
@@ -347,7 +360,8 @@
 
     <!--====== End Footer Section ======-->
     <!--====== Back To Top  ======-->
-    <a href="{{ route('contacts') }}" style="background-color: #FFAC1E" class="back-to-top-message"><i class="far fa-envelope"></i></a>
+    <a href="{{ route('contacts') }}" style="background-color: #FFAC1E" class="back-to-top-message"><i
+            class="far fa-envelope"></i></a>
     <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
     <!--====== Jquery js ======-->
     <script src="{{ asset('assets/vendor/jquery-3.6.0.min.js') }}"></script>

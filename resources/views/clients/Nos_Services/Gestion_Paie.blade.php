@@ -185,8 +185,13 @@
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
                             <h2 class="page-title">Gestion de la Paie</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis tortor eu lectus
-                                pharetra, nec malesuada ligula bibendum.</p>
+                            <p>
+                                Simplifiez la gestion de vos salaires grâce à notre service professionnel et sécurisé.
+                                Confiez-nous la gestion de la paie de votre entreprise et bénéficiez d’un traitement rapide,
+                                conforme à la législation,
+                                tout en réduisant les risques d’erreurs. Gagnez du temps et assurez la satisfaction de vos
+                                employés avec une solution fiable et adaptée à vos besoins.
+                            </p>
                             <ul class="breadcrumb-link text-white">
                                 <li><a href="index.html">Pages</a></li>
                                 <li class="active">Gestion de la Paie</li>
@@ -200,48 +205,25 @@
 
     <!--====== Start Case Details Section ======-->
     <section class="case-details-section secondary-dark-bg pt-140 pb-140">
-        <div class="container">
+        <div class="container" style="margin-top: -80px;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="case-details-wrapper wow fadeInDown">
                         <div class="case-img">
-                            <img src="{{ asset('assets/images/img_large5.jpg') }}" alt="case image">
-                        </div>
+                            <img src="{{ asset('assets/images/4.jpg') }}" alt="case image"
+                                style="width: 100%; height:520px;">
+                        </div><br>
                         <div class="case-content">
-                            <div class="project-info mb-55">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <div class="content">
-                                            <span class="sub-title">Titre du projet</span>
-                                            <h4>Gestion des Salaires</h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <div class="content">
-                                            <span class="sub-title">Client</span>
-                                            <h4>Marie Leclerc</h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <div class="content">
-                                            <span class="sub-title">Catégorie</span>
-                                            <h4>Consultation en Paie</h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <div class="content">
-                                            <span class="sub-title">Prix</span>
-                                            <h4>$1500 USD</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <h3>Optimisez la Gestion de la Paie avec Notre Expertise</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, felis a
-                                iaculis cursus, eros elit dapibus mi, nec tincidunt ligula justo id erat. Nos experts en
-                                gestion de la paie vous permettent de gagner du temps et de réduire les erreurs tout en
-                                respectant les exigences légales. Confiez-nous la gestion complète de vos salaires pour une
-                                meilleure performance et tranquillité d'esprit.</p>
+                            <p>
+                                Confiez la gestion de la paie de votre entreprise à des experts et concentrez-vous sur le
+                                développement de votre activité.
+                                Notre équipe vous accompagne pour garantir un traitement rapide, sécurisé et conforme à la
+                                législation en vigueur.
+                                Réduisez les risques d’erreurs, gagnez du temps et assurez la satisfaction de vos
+                                collaborateurs grâce à une gestion de la paie fiable, transparente et adaptée à vos besoins.
+                            </p>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <ul class="check-list style-one mb-30">
@@ -278,7 +260,7 @@
                                                 <i class="icon-group"></i>
                                             </div>
                                             <div class="content">
-                                                <h2><span class="count">200</span>K+</h2>
+                                                <h2><span class="count">150</span>+</h2>
                                                 <p>Employés payés chaque mois</p>
                                             </div>
                                         </div>
@@ -299,7 +281,7 @@
                             <div class="row align-items-center">
                                 <div class="col-xl-6">
                                     <div class="block-image mb-50 wow fadeInLeft">
-                                        <img src="{{ asset('assets/images/img_6.jpg') }}" alt="case image">
+                                        <img src="{{ asset('assets/images/11.jpg') }}" alt="case image">
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
@@ -322,14 +304,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="post-navigation wow fadeInDown">
-                        <div class="navigation-item prev-post">
-                            <a href="#"><i class="far fa-arrow-left"></i>Précédent</a>
-                        </div>
-                        <div class="navigation-item next-post">
-                            <a href="#"><i class="far fa-arrow-right"></i>Suivant</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
