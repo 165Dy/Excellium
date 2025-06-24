@@ -2,9 +2,9 @@
 @section('welcome')
     <!--====== Start Header Section ======-->
 
-    
+
     <section class="hero-section">
-        
+
         <div class="hero-wrapper-two bg_cover" style="background-image: url(assets/images/hero/hero-bg-1.png);">
             <div class="container">
                 <div class="row align-items-center">
@@ -49,7 +49,7 @@
                     <div class="section-content-box mb-50 wow fadeInLeft">
                         <p class="mb-30">
                             Chez Excellium Conseils, nous mettons tout en œuvre pour vous offrir un accompagnement de
-                            qualité, adapté à vos besoins spécifiques. Voici 6 raisons de nous faire confiance :
+                            qualité, adapté à vos besoins spécifiques. Voici 4 raisons de nous faire confiance :
                         </p>
                         <div class="section-nav-tab mb-30">
                             <ul class="nav nav-tabs">
@@ -106,9 +106,7 @@
         </div>
     </section>
     <!--====== Start Why-choose Section ======-->
-    {{-- <section class="why-choose-us pt-130 pb-90">
-       
-    </section><!--====== End Why-choose Section ======--> --}}
+    {{-- <section class="why-choose-us pt-130 pb-90"> --}}
     <!--====== Start Slider text Section ======-->
     <section class="headline-text primary-bg pt-55 pb-55">
         <div class="animate-text">
@@ -123,6 +121,7 @@
             <span class="text" style="color: white">Contactez-nous</span>
         </div>
     </section><!--====== End Slider text Section ======-->
+    <br>
     <!--====== Start Case Section ======-->
     <section class="case-section pt-130 pb-110" style="margin-bottom:-100px">
         <div class="container">
@@ -142,9 +141,9 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#">Tenue de comptabilité, déclarations fiscales et
+                                            <span><a href="{{ route('Compta_Fiscale') }}">Tenue de comptabilité, déclarations fiscales et
                                                     optimisation fiscale.</a></span>
-                                            <h4 class="title"><a href="case-details.html">Assistance comptable et fiscale
+                                            <h4 class="title"><a href="{{ route('Compta_Fiscale') }}">Assistance comptable et fiscale
                                                 </a>
                                             </h4>
                                         </div>
@@ -160,9 +159,9 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#">Analyse financière, gestion des risques et amélioration
+                                            <span><a href="{{ route('audit&Conseil') }}">Analyse financière, gestion des risques et amélioration
                                                     des performances.</a></span>
-                                            <h4 class="title"><a href="case-details.html">Audit et conseil</a>
+                                            <h4 class="title"><a href="{{ route('audit&Conseil') }}">Audit et conseil</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -177,9 +176,9 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#">Mise en relation avec des talents qualifiés pour
+                                            <span><a href="{{ route('Ressources_humaines') }}">Mise en relation avec des talents qualifiés pour
                                                     renforcer vos équipes.</a></span>
-                                            <h4 class="title"><a href="case-details.html">Recrutement et placement</a>
+                                            <h4 class="title"><a href="{{ route('Ressources_humaines') }}">Recrutement et placement</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -194,9 +193,9 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#"> Externalisation de la gestion salariale pour garantir
+                                            <span><a href="{{ route('Gestion_Paie') }}"> Externalisation de la gestion salariale pour garantir
                                                     conformité et efficacité.</a></span>
-                                            <h4 class="title"><a href="case-details.html">Gestion de la paie</a>
+                                            <h4 class="title"><a href="{{ route('Gestion_Paie') }}">Gestion de la paie</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -211,9 +210,9 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="#">Accompagnement dans l'obtention de crédits et
+                                            <span><a href="{{ route('Financement') }}">Accompagnement dans l'obtention de crédits et
                                                     subventions.</a></span>
-                                            <h4 class="title"><a href="case-details.html">Recherche de financement </a>
+                                            <h4 class="title"><a href="{{ route('Financement') }}">Recherche de financement </a>
                                             </h4>
                                         </div>
                                     </div>
@@ -226,6 +225,150 @@
         </div>
     </section><!--====== End Case Section ======-->
     <!--====== Start Testimonial Section ======-->
+
+    <section class="case-section pt-130 pb-110" style="margin-bottom:-100px">
+        <div class="container">
+            <div class="row justify-content-center" style="margin-top:-100px;">
+                <div class="col-lg-8">
+                    <div class="section-title text-center mb-50 wow fadeInDown">
+                        <h2>Nos Formations</h2>
+                    </div>
+                    <p class="mb-20">
+                        Nous proposons des formations en ligne et en présentiel, adaptées à vos besoins et à votre rythme.
+                        Notre objectif est de vous accompagner dans le développement de vos compétences grâce à des
+                        programmes innovants, interactifs et conçus pour répondre aux exigences du marché actuel.
+                    </p>
+                </div>
+                <div class="zency-isotope wow fadeInDown" style="text-align:center;">
+                    <video width="100%" height="500" controls autoplay loop muted
+                        poster="assets/images/formation_poster.jpg" class="case-img"
+                        style="max-width:900px; border-radius:10px; display:block; margin:0 auto;">
+                        <source src="{{ asset('assets/images/10.mp4') }}" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+
+                    <a href="{{ route('Formations.index') }}" class="btn btn-lg btn-primary mt-4"
+                        style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; padding: 18px 40px; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s;">
+                        <i class="fas fa-graduation-cap" style="margin-right:10px"></i>
+                        Aller au menu formation
+                    </a>
+
+                </div>
+            </div>
+    </section><!--====== End Case Section ======-->
+
+    <!--====== Start Case Section ======-->
+    <section class="blog-section pt-140">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-35 wow fadeInDown text-center">
+                        <h2>Nos Opportunités</h2><br>
+                        <p class="mb-20" style="font-size: 1.1rem">
+                            Découvrez nos offres d’emploi et de stage sélectionnées pour vous !
+                            Excellium Conseils vous connecte aux meilleures opportunités du marché, dans des secteurs
+                            variés.
+                            Pour postuler, déposez votre CV directement sur notre plateforme dédiée en cliquant sur le
+                            bouton ci-dessous.
+                            Donnez un nouvel élan à votre carrière avec Excellium Conseils !
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Exemple d'opportunité 1 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="blog-post-item style-one mb-30 wow fadeInDown">
+                        <div class="post-thumbnail">
+                            <img src="assets/images/15.jpg" alt="Développement">
+                            <div class="hover-content">
+                                <div class="post-content">
+                                    <ul class="post-categories">
+                                        <li><a href="#">Marketing</a></li>
+                                    </ul>
+                                    <div class="post-meta">
+                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">28 Mai
+                                            2023</a>
+                                    </div>
+                                    <h4 class="title"><a href="#">Chargé(e) de Communication Digitale</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <br>
+                    <div class="blog-post-item style-one mb-30 wow fadeInDown">
+                        <div class="post-thumbnail">
+                            <img src="assets/images/17.jpg" alt="Développement">
+                            <div class="hover-content">
+                                <div class="post-content">
+                                    <ul class="post-categories">
+                                        <li><a href="#">Audit</a></li>
+                                    </ul>
+                                    <div class="post-meta">
+                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">15 Mai
+                                            2025</a>
+                                    </div>
+                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Consultant(e)
+                                            Audit Financier</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Exemple d'opportunité 2 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="blog-post-item style-one mb-30 wow fadeInDown">
+                        <div class="post-thumbnail">
+                            <img src="assets/images/3.jpg" alt="Informatique">
+                            <div class="hover-content">
+                                <div class="post-content">
+                                    <ul class="post-categories">
+                                        <li><a href="#">Informatique</a></li>
+                                    </ul>
+                                    <div class="post-meta">
+                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">28 Mai
+                                            2023</a>
+                                    </div>
+                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Technicien
+                                            Support IT</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Exemple d'opportunité 3 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="blog-post-item style-one mb-35 wow fadeInDown">
+                        <div class="post-thumbnail">
+                            <img src="assets/images/2.jpg" alt="Marketing">
+                            <div class="hover-content">
+                                <div class="post-content">
+                                    <ul class="post-categories">
+                                        <li><a href="#">Informatique</a></li>
+                                    </ul>
+                                    <div class="post-meta">
+                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">28 Mai
+                                            2023</a>
+                                    </div>
+                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Développeur Web
+                                            Fullstack</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="read-button mb-30 text-center">
+                        <a href="{{ route('opportunites.clients.index') }}" class="read-more"
+                            style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
+                            <i class="fas fa-eye" style="margin-right:10px"></i>
+                            Voir toutes les opportunités
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Blog Section ======-->
+
+
     <section class="testimonial-section secondary-dark-bg pt-130 pb-100">
         <div class="container">
             <div class="row">
@@ -319,73 +462,6 @@
             </div>
         </div>
     </section><!--====== End Testimonial Section ======-->
-    <!--====== Start Case Section ======-->
-    <section class="blog-section secondary-dark-bg pt-140 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8 col-lg-12">
-                    <div class="section-title mb-60 wow fadeInDown">
-                        <span class="sub-title">Blog & News</span>
-                        <h2>Latest From Blogs</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                                <div class="post-thumbnail">
-                                    <img src="assets/images/blog/blog-4.jpg" alt="Post Image">
-                                    <ul class="post-categories">
-                                        <li><a href="#">Marketing</a></li>
-                                    </ul>
-                                </div>
-                                <div class="post-content">
-                                    <div class="post-meta">
-                                        <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By
-                                            Admin</a>
-                                        <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep
-                                            2023</a>
-                                    </div>
-                                    <h4 class="title"><a href="blog-details.html">Creative Solutions Deliver Profits
-                                            to You</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                                <div class="post-thumbnail">
-                                    <img src="assets/images/blog/blog-5.jpg" alt="Post Image">
-                                    <ul class="post-categories">
-                                        <li><a href="#">Marketing</a></li>
-                                    </ul>
-                                </div>
-                                <div class="post-content">
-                                    <div class="post-meta">
-                                        <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By
-                                            Admin</a>
-                                        <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep
-                                            2023</a>
-                                    </div>
-                                    <h4 class="title"><a href="blog-details.html">Let the Wave of Clients Splash
-                                            You</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-banner wow fadeInRight" style="background-color:#FFD22F ">
-                        <div class="banner-content">
-                            <h3>Have Any Project In Your Mind?</h3>
-                            <div class="icon">
-                                <img src="assets/images/blog/icon.png" alt="">
-                                <h4>Call For Consultation</h4>
-                            </div>
-                            <a href="#" class="theme-btn style-one" style="color:white ">Let's Contact with Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!--====== End Blog Section ======-->
 
@@ -453,22 +529,27 @@
         </div>
     </div>
 
+
     <!-- Modal d'alerte email requis -->
     <div class="modal fade" id="alertEmailModal" tabindex="-1" aria-labelledby="alertEmailModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center">
-                <div class="modal-body">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24">
-                        <path fill="#df291c"
-                            d="M4 20v-6a8 8 0 1 1 16 0v6h1v2H3v-2zm2 0h12v-6a6 6 0 0 0-12 0zm5-18h2v3h-2zm8.778 2.808l1.414 1.414l-2.12 2.121l-1.415-1.414zM2.808 6.222l1.414-1.414l2.121 2.12L4.93 8.344zM7 14a5 5 0 0 1 5-5v2a3 3 0 0 0-3 3z" />
-                    </svg><br>
-                    <h5 style="color:black">Veuillez entrer une adresse email valide avant de
-                        continuer</h5>
-                    {{-- <h5 id="alertEmailModalLabel">Veuillez entrer une adresse email valide avant de
-                        continuer.</h5> --}}
-
-                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">FERMER</button>
+            <div class="modal-content text-center"
+                style="border-radius: 18px; box-shadow: 0 8px 32px rgba(223,41,28,0.18); border: 2px solid #FFD22F;">
+                <div class="modal-body py-5">
+                    <!-- SVG animé : cercle qui pulse -->
+                    <svg width="100" height="100" viewBox="0 0 100 100" style="margin-bottom: 10px;">
+                        <circle cx="50" cy="50" r="40" fill="#ffd22f">
+                            <animate attributeName="r" values="40;45;40" dur="1s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" values="1;0.7;1" dur="1s" repeatCount="indefinite" />
+                        </circle>
+                        <text x="50" y="58" text-anchor="middle" font-size="40" fill="#df291c" font-weight="bold"
+                            font-family="Arial">!</text>
+                    </svg>
+                    <h5 style="color:#222; font-weight:600;">Veuillez entrer une adresse email valide avant de continuer
+                    </h5>
+                    <button type="button" class="btn btn-warning mt-4 px-5 py-2"
+                        style="font-weight:bold; border-radius:8px;" data-bs-dismiss="modal">FERMER</button>
                 </div>
             </div>
         </div>
@@ -478,16 +559,23 @@
     <div class="modal fade" id="emailExistsModal" tabindex="-1" aria-labelledby="emailExistsModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center">
-                <div class="modal-body">
-                    <svg width="120" height="100" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="10" y="30" width="100" height="60" rx="8" ry="8" fill="gold"
-                            stroke="orange" stroke-width="4" class="pulse" />
-                        <polyline points="10,30 60,70 110,30" fill="none" stroke="orange" stroke-width="4" />
+            <div class="modal-content text-center"
+                style="border-radius: 18px; box-shadow: 0 8px 32px rgba(245,21,21,0.18); border: 2px solid #FFD22F;">
+                <div class="modal-body py-5">
+                    <!-- SVG animé : enveloppe qui "saute" -->
+                    <svg width="100" height="80" viewBox="0 0 100 80" style="margin-bottom: 10px;">
+                        <rect x="10" y="30" width="80" height="40" rx="8" ry="8" fill="gold"
+                            stroke="orange" stroke-width="4">
+                            <animate attributeName="y" values="30;25;30" dur="0.8s" repeatCount="indefinite" />
+                        </rect>
+                        <polyline points="10,30 50,60 90,30" fill="none" stroke="orange" stroke-width="4">
+                            <animate attributeName="points" values="10,30 50,60 90,30;10,25 50,55 90,25;10,30 50,60 90,30"
+                                dur="0.8s" repeatCount="indefinite" />
+                        </polyline>
                     </svg>
-                    <br>
-                    <h5 style="color:rgb(245, 21, 21)">Erreur...Cet email est déjà enregistré.</h5>
-                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">FERMER</button>
+                    <h5 style="color:rgb(245, 21, 21); font-weight:600;">Erreur... Cet email est déjà enregistré.</h5>
+                    <button type="button" class="btn btn-warning mt-4 px-5 py-2"
+                        style="font-weight:bold; border-radius:8px;" data-bs-dismiss="modal">FERMER</button>
                 </div>
             </div>
         </div>
@@ -606,7 +694,8 @@
     </div>
 
     <!-- Modal de succès services -->
-    <div class="modal fade" id="serviceSuccessModal" tabindex="-1" aria-labelledby="serviceSuccessModalLabel" aria-hidden="true">
+    <div class="modal fade" id="serviceSuccessModal" tabindex="-1" aria-labelledby="serviceSuccessModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center">
                 <div class="modal-body">
@@ -614,7 +703,8 @@
                         <path fill="#498830"
                             d="M4 12a8 8 0 1 1 16 0a8 8 0 0 1-16 0m8-10C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m5.457 7.457l-1.414-1.414L11 13.086l-2.793-2.793l-1.414 1.414L11 15.914z" />
                     </svg><br>
-                    <h5 style="color: black">Vos choix ont bien été enregistrés !<br>Un email de bienvenue vous a été envoyé.</h5>
+                    <h5 style="color: black">Vos choix ont bien été enregistrés !<br>Un email de bienvenue vous a été
+                        envoyé.</h5>
                     <br>
                     <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Fermer</button>
                 </div>
@@ -623,7 +713,8 @@
     </div>
 
     <!-- Modal d'erreur services -->
-    <div class="modal fade" id="serviceErrorModal" tabindex="-1" aria-labelledby="serviceErrorModalLabel" aria-hidden="true">
+    <div class="modal fade" id="serviceErrorModal" tabindex="-1" aria-labelledby="serviceErrorModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center">
                 <div class="modal-body">
@@ -735,7 +826,8 @@
             // Soumission du choix des services
             document.getElementById('choixServiceForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                const checkedServices = Array.from(document.querySelectorAll('.service-checkbox:checked')).map(cb => cb.nextElementSibling.textContent.trim());
+                const checkedServices = Array.from(document.querySelectorAll('.service-checkbox:checked'))
+                    .map(cb => cb.nextElementSibling.textContent.trim());
                 const email = document.getElementById('modal_email').value;
 
                 if (checkedServices.length === 0) {
@@ -744,35 +836,44 @@
                 }
 
                 fetch('/inscription/services', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, services: checkedServices })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        // Ferme la modale de choix de service
-                        bootstrap.Modal.getInstance(document.getElementById('choixServiceModal')).hide();
-                        // Affiche la modale de succès
-                        var modalSuccess = new bootstrap.Modal(document.getElementById('serviceSuccessModal'));
-                        modalSuccess.show();
-                    } else {
-                        // Affiche la modale d'erreur avec le message retourné
-                        document.getElementById('serviceErrorMsg').textContent = data.message || "Une erreur est survenue, veuillez réessayer.";
-                        var modalError = new bootstrap.Modal(document.getElementById('serviceErrorModal'));
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email,
+                            services: checkedServices
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Ferme la modale de choix de service
+                            bootstrap.Modal.getInstance(document.getElementById('choixServiceModal'))
+                                .hide();
+                            // Affiche la modale de succès
+                            var modalSuccess = new bootstrap.Modal(document.getElementById(
+                                'serviceSuccessModal'));
+                            modalSuccess.show();
+                        } else {
+                            // Affiche la modale d'erreur avec le message retourné
+                            document.getElementById('serviceErrorMsg').textContent = data.message ||
+                                "Une erreur est survenue, veuillez réessayer.";
+                            var modalError = new bootstrap.Modal(document.getElementById(
+                                'serviceErrorModal'));
+                            modalError.show();
+                        }
+                    })
+                    .catch(() => {
+                        // Affiche la modale d'erreur en cas d'erreur réseau/serveur
+                        document.getElementById('serviceErrorMsg').textContent =
+                            "Erreur serveur, veuillez réessayer.";
+                        var modalError = new bootstrap.Modal(document.getElementById(
+                            'serviceErrorModal'));
                         modalError.show();
-                    }
-                })
-                .catch(() => {
-                    // Affiche la modale d'erreur en cas d'erreur réseau/serveur
-                    document.getElementById('serviceErrorMsg').textContent = "Erreur serveur, veuillez réessayer.";
-                    var modalError = new bootstrap.Modal(document.getElementById('serviceErrorModal'));
-                    modalError.show();
-                });
+                    });
             });
 
             // Sécurité supplémentaire : empêche la fermeture de la modal par touche ESC
