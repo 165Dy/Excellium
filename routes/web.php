@@ -108,18 +108,20 @@ Route::prefix('admin')->group(function () {
 
     // Routes Opportunités
     Route::get('opportunites', [OpportuniteController::class, 'index'])->name('opportunites.index');
+    Route::get('opportunites/candidatures', [OpportuniteController::class, 'candidats'])->name('opportunites.candidatures.index');
     Route::get('opportunites/create', [OpportuniteController::class, 'create'])->name('admin.opportunites.create');
     Route::post('opportunites', [OpportuniteController::class, 'store'])->name('admin.opportunites.store');
     Route::get('opportunites/{opportunite}', [OpportuniteController::class, 'show'])->name('admin.opportunites.show');
     Route::get('opportunites/{opportunite}/edit', [OpportuniteController::class, 'edit'])->name('admin.opportunites.edit');
     Route::put('opportunites/{opportunite}', [OpportuniteController::class, 'update'])->name('admin.opportunites.update');
     Route::delete('opportunites/{opportunite}', [OpportuniteController::class, 'destroy'])->name('admin.opportunites.destroy');
-    Route::get('opportunites/candidatures', [OpportuniteController::class, 'candidats'])->name('opportunites.candidatures.index');
+    
 
     
     Route::get('opportunites/{opportunite}/details', [OpportuniteController::class, 'getDetails'])->name('admin.opportunites.details');
     Route::patch('candidatures/{candidature}/statut', [OpportuniteController::class, 'changerStatutCandidature'])->name('admin.candidatures.statut');
     Route::get('opportunites/{opportunite}/export-candidatures', [OpportuniteController::class, 'exportCandidatures'])->name('opportunites.export-candidatures');
+    Route::get('candidatures/{candidature}', [OpportuniteController::class, 'showCandidature'])->name('candidatures.show');
 
 
     Route::get('/articles',[DashboardController::class, 'index_articles'] )->name('articles.index');
