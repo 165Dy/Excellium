@@ -444,15 +444,26 @@ class OpportuniteController extends Controller
     }
 
        
-    //  * Retourner la liste de tous les candidats (candidatures)
-    
+    /**
+     * Afficher la liste des candidats
+     */
     public function candidats()
     {
         // Récupère toutes les candidatures avec l'emploi associé
         $candidats = Candidature::with('opportunite')->orderBy('created_at', 'desc')->get();
     
-        return view('admin.Opportunites.List_candidat', compact('candidats'));
+        return view('admin.opportunites.list_candidats', compact('candidats'));
     }
 
+    /**
+     * Afficher une candidature spécifique
+     */
+    public function showCandidature(Candidature $candidature)
+    {
+        $candidature->load('opportunite');
+        
+        // La vue 'show_candidat' devra être créée
+        return view('admin.opportunites.show_candidat', compact('candidature'));
+    }
 
 } 

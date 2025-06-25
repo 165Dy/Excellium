@@ -1,6 +1,5 @@
-{{-- filepath: c:\Users\home\Desktop\Projet_Excellium\Excellium\resources\views\clients\Opportunites\List_candidat.blade.php --}}
 @extends('layouts.admin')
-@section('candidatures_index')
+@section('content')
 
 <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
     <div class="container">
