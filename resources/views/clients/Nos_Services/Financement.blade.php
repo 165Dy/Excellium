@@ -17,12 +17,15 @@
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
                             <h2 class="page-title">Financement</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod neque et arcu
-                                blandit, at aliquam libero facilisis.</p>
+                            <p>
+                                Découvrez nos solutions de financement adaptées à vos besoins professionnels. Que vous
+                                souhaitiez lancer un nouveau projet, développer votre activité ou optimiser votre
+                                trésorerie, notre équipe vous accompagne à chaque étape pour trouver la solution la plus
+                                avantageuse. Profitez de notre expertise pour concrétiser vos ambitions en toute sérénité.
+                            </p>
                             <ul class="breadcrumb-link text-white">
                                 <li><a href="index.html">Pages</a></li>
                                 <li class="active">Financements</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -37,9 +40,9 @@
                 <div class="col-lg-12">
                     <div class="case-details-wrapper wow fadeInDown">
                         <div class="case-img">
-                            <img src="{{ asset('assets/images/7.jpg') }}" alt="case image" style="width: 100%; height:520px;">
+                            <img src="{{ asset('assets/images/7.jpg') }}" alt="case image">
                         </div><br>
-                        <div class="case-content">  
+                        <div class="case-content">
                             <h3>Maximisez Votre Capital avec Notre Expertise en Financement</h3>
                             <p> Nous vous offrons des solutions de financement innovantes pour propulser
                                 votre projet au sommet. Notre équipe d'experts met en œuvre des stratégies de financement
@@ -105,8 +108,8 @@
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-xl-6">
-                                    <div class="block-image mb-50 wow fadeInLeft" >
-                                        <img src="{{ asset('assets/images/18.jpg') }}" alt="case image" >
+                                    <div class="block-image mb-50 wow fadeInLeft">
+                                        <img src="{{ asset('assets/images/18.jpg') }}" alt="case image">
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
@@ -131,9 +134,28 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
-        </div>
+
+            <div class="read-button mb-30 text-center">
+                <a href="{{ route('Formations.index') }}" class="read-more"
+                    style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
+                    <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32 12 L28 20 H36 L32 12 Z" fill="#000" />
+                        <path d="M24 20 C16 32, 16 44, 32 52 C48 44, 48 32, 40 20 Z" fill="white" stroke="#000"
+                            stroke-width="2" />
+                        <text x="28" y="40" font-size="14" fill="black">$</text>
+                        <polyline points="40,40 48,32 56,36" fill="none" stroke="green" stroke-width="2">
+                            <animate attributeName="points" values="40,40 48,32 56,36; 40,42 48,34 56,38; 40,40 48,32 56,36"
+                                dur="1.5s" repeatCount="indefinite" />
+                        </polyline>
+                    </svg>
+
+                    Voir toutes les Formations a ce sujet
+                </a>
+
+            </div>
     </section><!--====== End Case Details Section ======-->
 @endsection

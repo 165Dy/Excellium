@@ -141,9 +141,11 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Compta_Fiscale') }}">Tenue de comptabilité, déclarations fiscales et
+                                            <span><a href="{{ route('Compta_Fiscale') }}">Tenue de comptabilité,
+                                                    déclarations fiscales et
                                                     optimisation fiscale.</a></span>
-                                            <h4 class="title"><a href="{{ route('Compta_Fiscale') }}">Assistance comptable et fiscale
+                                            <h4 class="title"><a href="{{ route('Compta_Fiscale') }}">Assistance comptable
+                                                    et fiscale
                                                 </a>
                                             </h4>
                                         </div>
@@ -159,7 +161,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('audit&Conseil') }}">Analyse financière, gestion des risques et amélioration
+                                            <span><a href="{{ route('audit&Conseil') }}">Analyse financière, gestion des
+                                                    risques et amélioration
                                                     des performances.</a></span>
                                             <h4 class="title"><a href="{{ route('audit&Conseil') }}">Audit et conseil</a>
                                             </h4>
@@ -176,9 +179,11 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Ressources_humaines') }}">Mise en relation avec des talents qualifiés pour
+                                            <span><a href="{{ route('Ressources_humaines') }}">Mise en relation avec des
+                                                    talents qualifiés pour
                                                     renforcer vos équipes.</a></span>
-                                            <h4 class="title"><a href="{{ route('Ressources_humaines') }}">Recrutement et placement</a>
+                                            <h4 class="title"><a href="{{ route('Ressources_humaines') }}">Recrutement et
+                                                    placement</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -193,9 +198,11 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Gestion_Paie') }}"> Externalisation de la gestion salariale pour garantir
+                                            <span><a href="{{ route('Gestion_Paie') }}"> Externalisation de la gestion
+                                                    salariale pour garantir
                                                     conformité et efficacité.</a></span>
-                                            <h4 class="title"><a href="{{ route('Gestion_Paie') }}">Gestion de la paie</a>
+                                            <h4 class="title"><a href="{{ route('Gestion_Paie') }}">Gestion de la
+                                                    paie</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -210,9 +217,11 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Financement') }}">Accompagnement dans l'obtention de crédits et
+                                            <span><a href="{{ route('Financement') }}">Accompagnement dans l'obtention de
+                                                    crédits et
                                                     subventions.</a></span>
-                                            <h4 class="title"><a href="{{ route('Financement') }}">Recherche de financement </a>
+                                            <h4 class="title"><a href="{{ route('Financement') }}">Recherche de
+                                                    financement </a>
                                             </h4>
                                         </div>
                                     </div>
@@ -285,13 +294,13 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="{{ route('opportunites.clients.index') }}">Marketing</a></li>
                                     </ul>
                                     <div class="post-meta">
-                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">28 Mai
-                                            2023</a>
+
                                     </div>
-                                    <h4 class="title"><a href="#">Chargé(e) de Communication Digitale</a></h4>
+                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Chargé(e) de
+                                            Communication Digitale</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -302,11 +311,10 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="#">Audit</a></li>
+                                        <li><a href="{{ route('opportunites.clients.index') }}">Audit</a></li>
                                     </ul>
                                     <div class="post-meta">
-                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">15 Mai
-                                            2025</a>
+
                                     </div>
                                     <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Consultant(e)
                                             Audit Financier</a></h4>
@@ -323,14 +331,13 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="#">Informatique</a></li>
+                                        <li><a href="{{ route('opportunites.clients.index') }}">Comptabilité</a></li>
                                     </ul>
                                     <div class="post-meta">
-                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">28 Mai
-                                            2023</a>
+
                                     </div>
-                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Technicien
-                                            Support IT</a></h4>
+                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Comptable
+                                            Generale</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -344,13 +351,12 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="#">Informatique</a></li>
+                                        <li><a href="{{ route('opportunites.clients.index') }}">Informatique</a></li>
                                     </ul>
                                     <div class="post-meta">
-                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">28 Mai
-                                            2023</a>
                                     </div>
-                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Développeur Web
+                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Développeur
+                                            Web
                                             Fullstack</a></h4>
                                 </div>
                             </div>
@@ -397,16 +403,19 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <p>"There're many variation of this a passages Ipsum available but the majority have
-                                    suffered alteration a some form by injected humour randomised from this words."</p>
+                                <p>
+                                    "Grâce à l’accompagnement d’Excellium Conseils, notre service comptable a pu optimiser
+                                    ses processus et gagner en efficacité. Leur expertise et leur disponibilité ont fait la
+                                    différence dans la gestion de notre entreprise."
+                                </p>
                                 <div class="author-thumb-title style-one">
                                     <div class="author-thumb">
-                                        <img src="assets/images/testimoinal/author-1.jpg" alt="Author Image">
+                                        <img src="{{ asset('assets/images/T_3.jpg') }}" alt="Author Image">
                                         <div class="quote"><i class="fas fa-quote-right"></i></div>
                                     </div>
                                     <div class="author-info">
-                                        <h4>David Patel</h4>
-                                        <span class="position">Web Developer</span>
+                                        <h4>Fatou Koné</h4>
+                                        <span class="position">Comptable</span>
                                     </div>
                                 </div>
                             </div>
@@ -420,16 +429,19 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <p>"There're many variation of this a passages Ipsum available but the majority have
-                                    suffered alteration a some form by injected humour randomised from this words."</p>
+                                <p>
+                                    "L’équipe RH a bénéficié de conseils personnalisés pour la gestion de la paie et des
+                                    ressources humaines. Nous recommandons Excellium Conseils pour leur professionnalisme et
+                                    leur approche humaine."
+                                </p>
                                 <div class="author-thumb-title style-one">
                                     <div class="author-thumb">
-                                        <img src="assets/images/testimoinal/author-2.jpg" alt="Author Image">
+                                        <img src="{{ asset('assets/images/T_4.jpg') }}" alt="Author Image">
                                         <div class="quote"><i class="fas fa-quote-right"></i></div>
                                     </div>
                                     <div class="author-info">
-                                        <h4>David Patel</h4>
-                                        <span class="position">Web Developer</span>
+                                        <h4>Jean Kouadio</h4>
+                                        <span class="position">Responsable RH</span>
                                     </div>
                                 </div>
                             </div>
@@ -443,16 +455,19 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <p>"There're many variation of this a passages Ipsum available but the majority have
-                                    suffered alteration a some form by injected humour randomised from this words."</p>
+                                <p>
+                                    "Nous avons sollicité Excellium Conseils pour un audit financier. Leur analyse détaillée
+                                    et leurs recommandations concrètes nous ont permis d’améliorer notre rentabilité et de
+                                    sécuriser nos opérations."
+                                </p>
                                 <div class="author-thumb-title style-one">
                                     <div class="author-thumb">
-                                        <img src="assets/images/testimoinal/author-2.jpg" alt="Author Image">
+                                        <img src="{{ asset('assets/images/T_1.png') }}" alt="Author Image">
                                         <div class="quote"><i class="fas fa-quote-right"></i></div>
                                     </div>
                                     <div class="author-info">
-                                        <h4>David Patel</h4>
-                                        <span class="position">Web Developer</span>
+                                        <h4>Marie Diallo</h4>
+                                        <span class="position">Directrice Financière</span>
                                     </div>
                                 </div>
                             </div>
@@ -989,6 +1004,29 @@
             #inscriptionModal .modal-content {
                 padding: 0 5px;
             }
+        }
+
+        /* Limite la hauteur et ajoute un effet de texte tronqué avec "..." pour les témoignages */
+        .testimonial-content p {
+            max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            /* Limite à 4 lignes, ajuste selon besoin */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-height: 90px;
+            /* Garde une hauteur uniforme même si le texte est court */
+        }
+        .author-info h4 {
+           
+            max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            /* Limite à 4 lignes, ajuste selon besoin */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     </style>
 @endsection

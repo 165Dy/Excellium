@@ -18,7 +18,7 @@
                         <div class="page-banner-content text-center text-white">
                             <h2 class="page-title">Ressources Humaines</h2>
                             <p>
-                                Optimisez la gestion de vos ressources humaines grâce à notre expertise. 
+                                Optimisez la gestion de vos ressources humaines grâce à notre expertise.
                             </p>
                             <ul class="breadcrumb-link text-white">
                                 <li><a href="index.html">Pages</a></li>
@@ -38,14 +38,15 @@
                 <div class="col-lg-12">
                     <div class="case-details-wrapper wow fadeInDown">
                         <div class="case-img">
-                            <img src="{{ asset('assets/images/8.jpg') }}" alt="case image" style="height:520px; width:100%;">
+                            <img src="{{ asset('assets/images/8.jpg') }}" alt="case image">
                         </div> <br>
                         <div class="case-content">
                             <h3>la Gestion des Ressources Humaines avec nos Solutions</h3>
                             <p>Nous vous
                                 accompagnons dans le recrutement, la formation et le développement de vos équipes pour
                                 garantir la performance et le bien-être au sein de votre entreprise. Faites confiance à nos
-                                solutions RH sur mesure pour répondre à tous vos besoins. Nos experts en gestion des ressources humaines vous
+                                solutions RH sur mesure pour répondre à tous vos besoins. Nos experts en gestion des
+                                ressources humaines vous
                                 aident à mieux structurer et organiser votre équipe, tout en favorisant un environnement de
                                 travail sain et performant. Avec des stratégies de recrutement adaptées et des solutions de
                                 gestion des talents, nous vous accompagnons pour atteindre vos objectifs RH.</p>
@@ -128,9 +129,31 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
-        </div>
+
+            <div class="read-button mb-30 text-center">
+                <a href="{{ route('Formations.index') }}" class="read-more"
+                    style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
+
+                    <svg width="120" height="100" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="16" r="6" fill="black" />
+                        <rect x="26" y="24" width="12" height="18" fill="black" />
+                        <circle cx="16" cy="20" r="4" fill="#555">
+                            <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite" />
+                        </circle>
+                        <rect x="12" y="26" width="8" height="12" fill="#555" />
+                        <circle cx="48" cy="20" r="4" fill="#555">
+                            <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite"
+                                begin="0.5s" />
+                        </circle>
+                        <rect x="44" y="26" width="8" height="12" fill="#555" />
+                    </svg>
+
+                    Voir toutes les Formations a ce sujet
+                </a>
+
+            </div>
     </section><!--====== End Case Details Section ======-->
 @endsection

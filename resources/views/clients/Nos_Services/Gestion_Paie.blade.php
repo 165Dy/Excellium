@@ -210,8 +210,7 @@
                 <div class="col-lg-12">
                     <div class="case-details-wrapper wow fadeInDown">
                         <div class="case-img">
-                            <img src="{{ asset('assets/images/4.jpg') }}" alt="case image"
-                                style="width: 100%; height:520px;">
+                            <img src="{{ asset('assets/images/4.jpg') }}" alt="case image">
                         </div><br>
                         <div class="case-content">
 
@@ -307,6 +306,40 @@
 
                 </div>
             </div>
-        </div>
+
+            <div class="read-button mb-30 text-center">
+                <a href="{{ route('Formations.index') }}" class="read-more"
+                    style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
+                    <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect x="12" y="12" width="36" height="48" rx="2" ry="2" stroke="#000"
+                            stroke-width="2" fill="white" />
+                        <line x1="16" y1="20" x2="40" y2="20" stroke="#000" stroke-width="2" />
+                        <line x1="16" y1="28" x2="36" y2="28" stroke="#000"
+                            stroke-width="2" />
+                        <circle cx="50" cy="50" r="6" stroke="#000" stroke-width="2" fill="white" />
+                        <text x="47" y="54" font-size="10" fill="black">$</text>
+                        <style>
+                            circle {
+                                animation: rotate 2s linear infinite;
+                                transform-origin: center;
+                            }
+
+                            @keyframes rotate {
+                                0% {
+                                    transform: rotate(0deg);
+                                }
+
+                                100% {
+                                    transform: rotate(360deg);
+                                }
+                            }
+                        </style>
+                    </svg>
+
+                    Voir toutes les Formations a ce sujet
+                </a>
+            </div>
+
     </section><!--====== End Case Details Section ======-->
 @endsection

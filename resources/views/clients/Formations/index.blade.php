@@ -33,6 +33,32 @@
     <section class="blog-grid-section secondary-dark-bg pt-140 pb-140">
         <div class="container" style="margin-top: -100px">
             <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-filter">
+                        <div class="row align-items-center">
+                            <div class="col-md-7">
+                                <div class="show-text wow fadeInLeft">
+                                    <span>Nombre d'offres : {{ $formations->count() }}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="filter-dropdown float-md-end wow fadeInRight">
+                                    <select class="wide" id="typeContratSelect">
+                                        <option value="TOUT">TOUT</option>
+                                        <option value="STAGE">COMPTABILITE</option>
+                                        <option value="CDI">AUDIT</option>
+                                        <option value="CDD">R.HUMAINES</option>
+                                        <option value="CDD">R.FINANCEMENT</option>
+                                        <option value="CDD">GESTION.PAIE</option>
+                                        <option value="CDD">AUTRES</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 @if ($formations->isEmpty())
                     <div class="col-12">
                         <div class="text-center text-white py-5">
@@ -45,28 +71,28 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="blog-post-item style-two mb-30 wow fadeInDown">
                                 <div class="post-thumbnail">
-                                    @if($formation->file_path && $formation->file_type === 'image')
-                                        <img src="{{ asset('storage/' .$formation->file_path) }}" alt="{{ $formation->titre }}"
-                                             style="width: 100%; height: 250px; object-fit: cover;">
+                                    @if ($formation->file_path && $formation->file_type === 'image')
+                                        <img src="{{ asset('storage/' . $formation->file_path) }}"
+                                            alt="{{ $formation->titre }}"
+                                            style="width: 100%; height: 250px; object-fit: cover;">
                                     @elseif($formation->file_path && $formation->file_type === 'video')
-                                        <video class="formation-video" 
-                                               style="width: 100%; height: 250px; object-fit: cover;" 
-                                               muted
-                                               loop
-                                               preload="metadata"
-                                               poster="{{ asset('assets/images/blog/blog-1.jpg') }}">
-                                            <source src="{{ asset('storage/' . $formation->file_path) }}" type="video/mp4" style="width: 100%; height: 250px; object-fit: cover;"  >
+                                        <video class="formation-video"
+                                            style="width: 100%; height: 250px; object-fit: cover;" muted loop
+                                            preload="metadata" poster="{{ asset('assets/images/blog/blog-1.jpg') }}">
+                                            <source src="{{ asset('storage/' . $formation->file_path) }}" type="video/mp4"
+                                                style="width: 100%; height: 250px; object-fit: cover;">
                                             Votre navigateur ne supporte pas la vidéo.
                                         </video>
                                     @else
                                         <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="Image par défaut"
-                                             style="width: 100%; height: 250px; object-fit: cover;">
+                                            style="width: 100%; height: 250px; object-fit: cover;">
                                     @endif
-                                    
+
                                     <ul class="post-categories">
-                                        <li><a href="{{ route('Formations.index', ['categorie_id' => $formation->categorie_id]) }}">
-                                            {{ $formation->categorie->nom }}
-                                        </a></li>
+                                        <li><a
+                                                href="{{ route('Formations.index', ['categorie_id' => $formation->categorie_id]) }}">
+                                                {{ $formation->categorie->nom }}
+                                            </a></li>
                                     </ul>
                                 </div>
                                 <div class="post-content">
@@ -79,31 +105,38 @@
                                             {{ \Carbon\Carbon::parse($formation->date_debut)->format('d M Y') }}
                                         </a>
                                     </div>
-                                    
+
                                     <h4 class="title">
                                         <a href="{{ route('Formations.show_public', $formation->id) }}">
-                                            {{ $formation->titre }}
+                                            {{ ucfirst(strtolower($formation->titre)) }}
                                         </a>
                                     </h4>
-                                    <p style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                        {{ str($formation->programme)->limit(35) ?? 'Programme de formation complet disponible.' }}
+                                    <hr>
+                                    <p
+                                        style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                        {{ str($formation->programme)->limit(100) ?? 'Programme de formation complet disponible.' }}
                                     </p>
-                                    
-                                    @if($formation->cout)
-                                        <div class="formation-price mt-2">
-                                            <span class="text-warning fw-bold">
-                                                <i class="fas fa-tag"></i> {{ number_format($formation->cout, 0, ',', ' ') }} FCFA
-                                            </span>
-                                        </div>
-                                    @endif
-                                    
-                                    @if($formation->lieu)
-                                        <div class="formation-lieu mt-1">
-                                            <span class="text-light">
-                                                <i class="fas fa-map-marker-alt"></i> {{ $formation->lieu }}
-                                            </span>
-                                        </div>
-                                    @endif
+                                    <div class="post-meta d-flex align-items-center gap-3" style="gap: 18px;">
+                                        @if ($formation->cout)
+                                            <div class="formation-price mt-2"
+                                                style="border-right: 1.5px solid #FFD22F; padding-right: 16px; margin-right: 8px;">
+                                                <span class="text-warning fw-bold">
+                                                    <i class="fas fa-tag"></i>
+                                                    {{ number_format($formation->cout, 0, ',', ' ') }} FCFA
+                                                </span>
+                                            </div>
+                                        @endif
+
+                                        @if ($formation->lieu)
+                                            <div class="formation-lieu mt-1">
+                                                <span class="text-light">
+                                                    <i class="fas fa-map-marker-alt"></i> {{ $formation->lieu }}
+                                                </span>
+                                            </div>
+                                        @endif
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -112,7 +145,7 @@
             </div>
 
             {{-- Pagination dynamique --}}
-            @if($formations->hasPages())
+            @if ($formations->hasPages())
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="zency-pagination text-center mt-30 wow fadeInDown">
@@ -123,84 +156,84 @@
             @endif
         </div>
     </section>
-<!--====== End Blog Section ======-->
+    <!--====== End Blog Section ======-->
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🎬 Initialisation autoplay vidéos formations');
-    
-    // Intersection Observer pour détecter quand les vidéos sont visibles
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            
-            if (entry.isIntersecting) {
-                // La vidéo est visible, on la lance
-                if (video.paused) {
-                    video.play().then(() => {
-                        console.log('✅ Vidéo lancée:', video.src);
-                    }).catch(error => {
-                        console.log('❌ Erreur autoplay:', error);
-                        // Fallback: afficher les contrôles si autoplay échoue
-                        video.controls = true;
-                    });
-                }
-            } else {
-                // La vidéo n'est plus visible, on la pause
-                if (!video.paused) {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎬 Initialisation autoplay vidéos formations');
+
+            // Intersection Observer pour détecter quand les vidéos sont visibles
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target;
+
+                    if (entry.isIntersecting) {
+                        // La vidéo est visible, on la lance
+                        if (video.paused) {
+                            video.play().then(() => {
+                                console.log('✅ Vidéo lancée:', video.src);
+                            }).catch(error => {
+                                console.log('❌ Erreur autoplay:', error);
+                                // Fallback: afficher les contrôles si autoplay échoue
+                                video.controls = true;
+                            });
+                        }
+                    } else {
+                        // La vidéo n'est plus visible, on la pause
+                        if (!video.paused) {
+                            video.pause();
+                            console.log('⏸️ Vidéo pausée:', video.src);
+                        }
+                    }
+                });
+            }, {
+                // Configuration de l'observer
+                threshold: 0.5, // 50% de la vidéo doit être visible
+                rootMargin: '0px'
+            });
+
+            // Observer toutes les vidéos de formations
+            const formationVideos = document.querySelectorAll('.formation-video');
+            console.log(`📹 ${formationVideos.length} vidéo(s) détectée(s)`);
+
+            formationVideos.forEach((video, index) => {
+                console.log(`Vidéo ${index + 1}:`, video.src);
+
+                // Ajouter l'observer
+                videoObserver.observe(video);
+
+                // Événements pour debug
+                video.addEventListener('play', () => {
+                    console.log(`▶️ Vidéo ${index + 1} en lecture`);
+                });
+
+                video.addEventListener('pause', () => {
+                    console.log(`⏸️ Vidéo ${index + 1} en pause`);
+                });
+
+                video.addEventListener('error', (e) => {
+                    console.error(`❌ Erreur vidéo ${index + 1}:`, e);
+                    // En cas d'erreur, afficher une image par défaut
+                    const container = video.parentElement;
+                    video.style.display = 'none';
+
+                    const fallbackImg = document.createElement('img');
+                    fallbackImg.src = '{{ asset('assets/images/blog/blog-1.jpg') }}';
+                    fallbackImg.alt = 'Vidéo non disponible';
+                    fallbackImg.style.cssText = 'width: 100%; height: 250px; object-fit: cover;';
+
+                    container.insertBefore(fallbackImg, video);
+                });
+            });
+
+            // Nettoyage lors du changement de page
+            window.addEventListener('beforeunload', () => {
+                formationVideos.forEach(video => {
                     video.pause();
-                    console.log('⏸️ Vidéo pausée:', video.src);
-                }
-            }
+                });
+                videoObserver.disconnect();
+            });
         });
-    }, {
-        // Configuration de l'observer
-        threshold: 0.5, // 50% de la vidéo doit être visible
-        rootMargin: '0px'
-    });
-    
-    // Observer toutes les vidéos de formations
-    const formationVideos = document.querySelectorAll('.formation-video');
-    console.log(`📹 ${formationVideos.length} vidéo(s) détectée(s)`);
-    
-    formationVideos.forEach((video, index) => {
-        console.log(`Vidéo ${index + 1}:`, video.src);
-        
-        // Ajouter l'observer
-        videoObserver.observe(video);
-        
-        // Événements pour debug
-        video.addEventListener('play', () => {
-            console.log(`▶️ Vidéo ${index + 1} en lecture`);
-        });
-        
-        video.addEventListener('pause', () => {
-            console.log(`⏸️ Vidéo ${index + 1} en pause`);
-        });
-        
-        video.addEventListener('error', (e) => {
-            console.error(`❌ Erreur vidéo ${index + 1}:`, e);
-            // En cas d'erreur, afficher une image par défaut
-            const container = video.parentElement;
-            video.style.display = 'none';
-            
-            const fallbackImg = document.createElement('img');
-            fallbackImg.src = '{{ asset("assets/images/blog/blog-1.jpg") }}';
-            fallbackImg.alt = 'Vidéo non disponible';
-            fallbackImg.style.cssText = 'width: 100%; height: 250px; object-fit: cover;';
-            
-            container.insertBefore(fallbackImg, video);
-        });
-    });
-    
-    // Nettoyage lors du changement de page
-    window.addEventListener('beforeunload', () => {
-        formationVideos.forEach(video => {
-            video.pause();
-        });
-        videoObserver.disconnect();
-    });
-});
-</script>
+    </script>
 
 @endsection
