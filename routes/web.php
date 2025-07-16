@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\formationsController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OpportuniteController;
 /*
@@ -26,7 +27,7 @@ Route::get('/', function () {return view('welcome');})->name('welcome');
 
 Route::post('/inscription', [InscriptionController::class, 'inscriptionAjax'])->name('inscription.ajax');
 
-Route::get('/choix-service', [InscriptionController::class, 'choixService'])->name('service.choix');
+Route::post('/choix-produit', [InscriptionController::class, 'saveProduits'])->name('choix-produit');
 
 ///////////////////////////////AUTHENTIFICATION////////////////////////////////////////////////////////////////////////////////////
 
@@ -116,7 +117,6 @@ Route::prefix('admin')->group(function () {
     Route::put('opportunites/{opportunite}', [OpportuniteController::class, 'update'])->name('admin.opportunites.update');
     Route::delete('opportunites/{opportunite}', [OpportuniteController::class, 'destroy'])->name('admin.opportunites.destroy');
     
-
     
     Route::get('opportunites/{opportunite}/details', [OpportuniteController::class, 'getDetails'])->name('admin.opportunites.details');
     Route::patch('candidatures/{candidature}/statut', [OpportuniteController::class, 'changerStatutCandidature'])->name('admin.candidatures.statut');
@@ -127,7 +127,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/articles',[DashboardController::class, 'index_articles'] )->name('articles.index');
     Route::get('/partenaires',[DashboardController::class, 'index_partenaires']  )->name('partenaires.index');
     Route::get('/temoignages', [DashboardController::class, 'index_temoignages']  )->name('temoignages.index');
-    ////////
+    
+    //PRODUITS
+    Route::post('/produits', [ProduitController::class, 'store'])->name('produits.store');
+    Route::get('/produits/list', [ProduitController::class, 'list']);
+    Route::put('/produits/{id}', [ProduitController::class, 'update']);
+    Route::get('/produits/{id}', [ProduitController::class, 'show']);
+    Route::delete('/produits/{id}', [ProduitController::class, 'destroy']);
+
     //CONTACTS
     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 

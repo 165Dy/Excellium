@@ -139,23 +139,23 @@
             </div>
 
             <div class="read-button mb-30 text-center">
-                <a href="{{ route('Formations.index') }}" class="read-more"
-                    style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
-                    <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M32 12 L28 20 H36 L32 12 Z" fill="#000" />
-                        <path d="M24 20 C16 32, 16 44, 32 52 C48 44, 48 32, 40 20 Z" fill="white" stroke="#000"
-                            stroke-width="2" />
-                        <text x="28" y="40" font-size="14" fill="black">$</text>
-                        <polyline points="40,40 48,32 56,36" fill="none" stroke="green" stroke-width="2">
-                            <animate attributeName="points" values="40,40 48,32 56,36; 40,42 48,34 56,38; 40,40 48,32 56,36"
-                                dur="1.5s" repeatCount="indefinite" />
-                        </polyline>
-                    </svg>
+                
+                <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M32 12 L28 20 H36 L32 12 Z" fill="#000" />
+                    <path d="M24 20 C16 32, 16 44, 32 52 C48 44, 48 32, 40 20 Z" fill="white" stroke="#000"
+                        stroke-width="2" />
+                    <text x="28" y="40" font-size="14" fill="black">$</text>
+                    <polyline points="40,40 48,32 56,36" fill="none" stroke="green" stroke-width="2">
+                        <animate attributeName="points" values="40,40 48,32 56,36; 40,42 48,34 56,38; 40,40 48,32 56,36"
+                            dur="1.5s" repeatCount="indefinite" />
+                    </polyline>
+                </svg>
 
-                    Voir toutes les Formations a ce sujet
-                </a>
+                Vous recherchez des solutions de financement adaptées ? Inscrivez-vous pour explorer avec nous les meilleures opportunités.
+                
 
             </div>
-    </section><!--====== End Case Details Section ======-->
+    </section>
+    <!--====== End Case Details Section ======-->
 @endsection

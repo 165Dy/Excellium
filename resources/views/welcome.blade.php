@@ -275,7 +275,7 @@
                     <div class="section-title mb-35 wow fadeInDown text-center">
                         <h2>Nos Opportunités</h2><br>
                         <p class="mb-20" style="font-size: 1.1rem">
-                            Découvrez nos offres d’emploi et de stage sélectionnées pour vous !
+                            Découvrez nos offres d'emploi et de stage sélectionnées pour vous !
                             Excellium Conseils vous connecte aux meilleures opportunités du marché, dans des secteurs
                             variés.
                             Pour postuler, déposez votre CV directement sur notre plateforme dédiée en cliquant sur le
@@ -404,7 +404,7 @@
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
                                 <p>
-                                    "Grâce à l’accompagnement d’Excellium Conseils, notre service comptable a pu optimiser
+                                    "Grâce à l'accompagnement d'Excellium Conseils, notre service comptable a pu optimiser
                                     ses processus et gagner en efficacité. Leur expertise et leur disponibilité ont fait la
                                     différence dans la gestion de notre entreprise."
                                 </p>
@@ -430,7 +430,7 @@
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
                                 <p>
-                                    "L’équipe RH a bénéficié de conseils personnalisés pour la gestion de la paie et des
+                                    "L'équipe RH a bénéficié de conseils personnalisés pour la gestion de la paie et des
                                     ressources humaines. Nous recommandons Excellium Conseils pour leur professionnalisme et
                                     leur approche humaine."
                                 </p>
@@ -457,7 +457,7 @@
                                 </ul>
                                 <p>
                                     "Nous avons sollicité Excellium Conseils pour un audit financier. Leur analyse détaillée
-                                    et leurs recommandations concrètes nous ont permis d’améliorer notre rentabilité et de
+                                    et leurs recommandations concrètes nous ont permis d'améliorer notre rentabilité et de
                                     sécuriser nos opérations."
                                 </p>
                                 <div class="author-thumb-title style-one">
@@ -597,107 +597,58 @@
     </div>
 
 
-    <!-- Modal Choix des services améliorée -->
-    <div class="modal fade" id="choixServiceModal" tabindex="-1" aria-labelledby="choixServiceModalLabel"
+    <!-- Modal Choix des produits améliorée -->
+    <div class="modal fade" id="choixProduitModal" tabindex="-1" aria-labelledby="choixProduitModalLabel"
         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content" style="border-radius: 18px;">
-                <form id="choixServiceForm">
+                <form id="choixProduitForm">
                     <div class="modal-header border-0" style="background: #FFD22F; border-radius: 18px 18px 0 0;">
                         <img src="{{ asset('assets/images/logo_new.jpg') }}" alt="Logo"
                             style="height: 60px; margin-right: 16px;">
                         <div>
-                            <h5 class="modal-title" id="choixServiceModalLabel" style="color: #222; font-weight: bold;">
-                                Bienvenue dans notre menu services</h5>
-                            <p style="margin:0; color:#444; font-size:15px;">Veuillez sélectionner les services qui vous
+                            <h5 class="modal-title" id="choixProduitModalLabel" style="color: #222; font-weight: bold;">
+                                Bienvenue dans notre menu produits</h5>
+                            <p style="margin:0; color:#444; font-size:15px;">Veuillez sélectionner les produits qui vous
                                 intéressent.</p>
                         </div>
-                        <!-- Suppression du bouton de fermeture -->
                     </div>
                     <div class="modal-body py-4">
-                        <div id="service-alert" class="alert alert-danger" style="display:none; font-size:15px;">
-                            Veuillez sélectionner au moins un service pour continuer.
+                        <div id="produit-alert" class="alert alert-danger" style="display:none; font-size:15px;">
+                            Veuillez sélectionner au moins un produit pour continuer.
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="selectAllServices">
-                            <label class="form-check-label fw-bold" for="selectAllServices">Tout sélectionner</label>
+                            <input class="form-check-input" type="checkbox" id="selectAllProduits">
+                            <label class="form-check-label fw-bold" for="selectAllProduits">Tout sélectionner</label>
                         </div>
-                        <div id="services-list" class="row">
+                        <div id="produits-list" class="row">
+                            <!-- Exemple de checkboxes produits, à adapter dynamiquement si besoin -->
                             <div class="col-md-6">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 1" id="service1">
-                                    <label class="form-check-label" for="service1">Formation et Développement des
-                                        compétences</label>
+                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="1" id="produit1">
+                                    <label class="form-check-label" for="produit1">Produit 1</label>
                                 </div>
                                 <hr>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 2" id="service2">
-                                    <label class="form-check-label" for="service2">Assistance Comptable et Fiscale</label>
+                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="2" id="produit2">
+                                    <label class="form-check-label" for="produit2">Produit 2</label>
                                 </div>
                                 <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 3" id="service3">
-                                    <label class="form-check-label" for="service3">Création, modification et Gestion
-                                        d'Entreprise</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 4" id="service4">
-                                    <label class="form-check-label" for="service4">Audit et Conseil Financier</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 5" id="service5">
-                                    <label class="form-check-label" for="service5">Gestion de la Paie et des Ressources
-                                        Humaines</label>
-                                </div>
-                                <hr>
+                                <!-- Ajoute d'autres produits ici -->
                             </div>
                             <div class="col-md-6">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 6" id="service6">
-                                    <label class="form-check-label" for="service6">Recrutement et Placement de Personnel
-                                        Qualifié</label>
+                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="3" id="produit3">
+                                    <label class="form-check-label" for="produit3">Produit 3</label>
                                 </div>
                                 <hr>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 7" id="service7">
-                                    <label class="form-check-label" for="service7">Conseil en Recherche de Financement et
-                                        en Investissement</label>
+                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="4" id="produit4">
+                                    <label class="form-check-label" for="produit4">Produit 4</label>
                                 </div>
                                 <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 8" id="service8">
-                                    <label class="form-check-label" for="service8">Commerce Générale</label>
+                                <!-- Ajoute d'autres produits ici -->
                                 </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 9" id="service9">
-                                    <label class="form-check-label" for="service9">Import-Export</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 10" id="service10">
-                                    <label class="form-check-label" for="service10">Achat, Location et Vente de Biens
-                                        Mobiliers et Immobiliers</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 11" id="service11">
-                                    <label class="form-check-label" for="service11">Prestations de Services Divers</label>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-end">
@@ -791,7 +742,7 @@
                                 bootstrap.Modal.getInstance(document.getElementById('successModal'))
                                     .hide();
                                 var choixModal = new bootstrap.Modal(document.getElementById(
-                                    'choixServiceModal'));
+                                    'choixProduitModal'));
                                 choixModal.show();
                             };
                         } else if (data.email_exists) {
@@ -832,25 +783,25 @@
                 }
             });
 
-            // Gestion du bouton "Tout cocher"
-            document.getElementById('selectAllServices').addEventListener('change', function() {
+            // Gestion du bouton "Tout sélectionner" pour les produits
+            document.getElementById('selectAllProduits').addEventListener('change', function() {
                 const checked = this.checked;
-                document.querySelectorAll('.service-checkbox').forEach(cb => cb.checked = checked);
+                document.querySelectorAll('.produit-checkbox').forEach(cb => cb.checked = checked);
             });
 
-            // Soumission du choix des services
-            document.getElementById('choixServiceForm').addEventListener('submit', function(e) {
+            // Soumission du choix des produits
+            document.getElementById('choixProduitForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                const checkedServices = Array.from(document.querySelectorAll('.service-checkbox:checked'))
-                    .map(cb => cb.nextElementSibling.textContent.trim());
+                const checkedProduits = Array.from(document.querySelectorAll('.produit-checkbox:checked'))
+                    .map(cb => parseInt(cb.value));
                 const email = document.getElementById('modal_email').value;
 
-                if (checkedServices.length === 0) {
-                    document.getElementById('service-alert').style.display = 'block';
+                if (checkedProduits.length === 0) {
+                    document.getElementById('produit-alert').style.display = 'block';
                     return;
                 }
 
-                fetch('/inscription/services', {
+                fetch('/inscription/produits', {
                         method: 'POST',
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}',
@@ -859,25 +810,22 @@
                         },
                         body: JSON.stringify({
                             email,
-                            services: checkedServices
+                        produits: checkedProduits
                         })
                     })
                     .then(res => res.json())
                     .then(data => {
                         if (data.success) {
-                            // Ferme la modale de choix de service
-                            bootstrap.Modal.getInstance(document.getElementById('choixServiceModal'))
-                                .hide();
+                        // Ferme la modale de choix de produit
+                        bootstrap.Modal.getInstance(document.getElementById('choixProduitModal')).hide();
                             // Affiche la modale de succès
-                            var modalSuccess = new bootstrap.Modal(document.getElementById(
-                                'serviceSuccessModal'));
+                        var modalSuccess = new bootstrap.Modal(document.getElementById('serviceSuccessModal'));
                             modalSuccess.show();
                         } else {
                             // Affiche la modale d'erreur avec le message retourné
                             document.getElementById('serviceErrorMsg').textContent = data.message ||
                                 "Une erreur est survenue, veuillez réessayer.";
-                            var modalError = new bootstrap.Modal(document.getElementById(
-                                'serviceErrorModal'));
+                        var modalError = new bootstrap.Modal(document.getElementById('serviceErrorModal'));
                             modalError.show();
                         }
                     })
@@ -885,14 +833,13 @@
                         // Affiche la modale d'erreur en cas d'erreur réseau/serveur
                         document.getElementById('serviceErrorMsg').textContent =
                             "Erreur serveur, veuillez réessayer.";
-                        var modalError = new bootstrap.Modal(document.getElementById(
-                            'serviceErrorModal'));
+                    var modalError = new bootstrap.Modal(document.getElementById('serviceErrorModal'));
                         modalError.show();
                     });
             });
 
             // Sécurité supplémentaire : empêche la fermeture de la modal par touche ESC
-            document.getElementById('choixServiceModal').addEventListener('keydown', function(e) {
+            document.getElementById('choixProduitModal').addEventListener('keydown', function(e) {
                 if (e.key === "Escape") {
                     e.preventDefault();
                 }
@@ -924,41 +871,41 @@
             }
         }
 
-        #choixServiceModal .modal-content {
+        #choixProduitModal .modal-content {
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
             border: 2px solid #FFD22F;
         }
 
-        #choixServiceModal .modal-header {
+        #choixProduitModal .modal-header {
             border-bottom: 1px solid #eee;
         }
 
-        #choixServiceModal .modal-footer {
+        #choixProduitModal .modal-footer {
             border-top: 1px solid #eee;
             background: #fafafa;
             border-radius: 0 0 18px 18px;
         }
 
-        #choixServiceModal .form-check-label {
+        #choixProduitModal .form-check-label {
             font-size: 16px;
             color: #222;
         }
 
-        #choixServiceModal hr {
+        #choixProduitModal hr {
             margin: 0.5rem 0;
             border-top: 1px dashed #FFD22F;
         }
 
         @media (max-width: 767px) {
-            #choixServiceModal .modal-dialog {
+            #choixProduitModal .modal-dialog {
                 max-width: 98vw;
             }
 
-            #choixServiceModal .modal-content {
+            #choixProduitModal .modal-content {
                 padding: 0 5px;
             }
 
-            #choixServiceModal .modal-header img {
+            #choixProduitModal .modal-header img {
                 height: 40px;
             }
         }

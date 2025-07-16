@@ -130,38 +130,37 @@
                 </div>
             </div>
             <div class="read-button mb-30 text-center">
-                <a href="{{ route('Formations.index') }}" class="read-more"
-                    style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
-                    <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <rect x="12" y="8" width="40" height="48" rx="4" ry="4" stroke="#000"
-                            stroke-width="2" />
-                        <rect x="20" y="20" width="8" height="8" fill="#000" />
-                        <rect x="32" y="20" width="8" height="8" fill="#000" />
-                        <rect x="20" y="32" width="8" height="8" fill="#000" />
-                        <circle cx="48" cy="48" r="6" stroke="#000" stroke-width="2" />
-                        <text x="45" y="52" font-size="10" fill="black">€</text>
-                        <style>
-                            text {
-                                animation: bounce 1s infinite;
+                
+                <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect x="12" y="8" width="40" height="48" rx="4" ry="4" stroke="#000"
+                        stroke-width="2" />
+                    <rect x="20" y="20" width="8" height="8" fill="#000" />
+                    <rect x="32" y="20" width="8" height="8" fill="#000" />
+                    <rect x="20" y="32" width="8" height="8" fill="#000" />
+                    <circle cx="48" cy="48" r="6" stroke="#000" stroke-width="2" />
+                    <text x="45" y="52" font-size="10" fill="black">€</text>
+                    <style>
+                        text {
+                            animation: bounce 1s infinite;
+                        }
+
+                        @keyframes bounce {
+
+                            0%,
+                            100% {
+                                transform: translateY(0);
                             }
 
-                            @keyframes bounce {
-
-                                0%,
-                                100% {
-                                    transform: translateY(0);
-                                }
-
-                                50% {
-                                    transform: translateY(-3px);
-                                }
+                            50% {
+                                transform: translateY(-3px);
                             }
-                        </style>
-                    </svg>
+                        }
+                    </style>
+                </svg>
 
-                    Voir toutes les Formations a ce sujet
-                </a>
+                Simplifiez la gestion de vos obligations comptables : contactez-nous via ce formulaire pour une collaboration sur mesure.
             </div>
-    </section><!--====== End Case Details Section ======-->
+    </section>
+    <!--====== End Case Details Section ======-->
 @endsection

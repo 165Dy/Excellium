@@ -134,26 +134,26 @@
             </div>
 
             <div class="read-button mb-30 text-center">
-                <a href="{{ route('Formations.index') }}" class="read-more"
-                    style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
+                
 
-                    <svg width="120" height="100" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="32" cy="16" r="6" fill="black" />
-                        <rect x="26" y="24" width="12" height="18" fill="black" />
-                        <circle cx="16" cy="20" r="4" fill="#555">
-                            <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite" />
-                        </circle>
-                        <rect x="12" y="26" width="8" height="12" fill="#555" />
-                        <circle cx="48" cy="20" r="4" fill="#555">
-                            <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite"
-                                begin="0.5s" />
-                        </circle>
-                        <rect x="44" y="26" width="8" height="12" fill="#555" />
-                    </svg>
+                <svg width="120" height="100" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="16" r="6" fill="black" />
+                    <rect x="26" y="24" width="12" height="18" fill="black" />
+                    <circle cx="16" cy="20" r="4" fill="#555">
+                        <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite" />
+                    </circle>
+                    <rect x="12" y="26" width="8" height="12" fill="#555" />
+                    <circle cx="48" cy="20" r="4" fill="#555">
+                        <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite"
+                            begin="0.5s" />
+                    </circle>
+                    <rect x="44" y="26" width="8" height="12" fill="#555" />
+                </svg>
 
-                    Voir toutes les Formations a ce sujet
-                </a>
+                Vous souhaitez renforcer votre capital humain ? Remplissez ce formulaire pour échanger sur nos services RH.
+                
 
             </div>
-    </section><!--====== End Case Details Section ======-->
+    </section>
+    <!--====== End Case Details Section ======-->
 @endsection

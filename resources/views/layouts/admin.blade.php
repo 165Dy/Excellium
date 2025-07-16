@@ -67,6 +67,7 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
     <style>
         /* Animations pour SweetAlert */
@@ -151,6 +152,30 @@
             color: #333 !important;
             pointer-events: auto !important;
             opacity: 1 !important;
+        }
+
+        .swal2-card {
+            border-radius: 24px !important;
+            box-shadow: 0 6px 32px rgba(80,105,151,0.13);
+            padding-bottom: 0 !important;
+        }
+        .swal2-confirm--primary {
+            background: linear-gradient(90deg,#6C63FF,#3b94fa)!important;
+            border-radius: 18px!important;
+            font-size:1em!important;
+            font-weight:600!important;
+            box-shadow:0 2px 8px #a4bce7a0;
+        }
+        .swal2-popup .swal2-input {
+            border-radius: 10px !important;
+            border: 1px solid #e0e6ed !important;
+            background: #fff !important;
+            font-size: 1em !important;
+            margin-top: 0.2em !important;
+        }
+        .swal2-popup label {
+            margin-bottom: 0.2em;
+            display: block;
         }
     </style>
 </head>
@@ -822,7 +847,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                {{-- Divers --}}
+                                <!-- Divers -->
                                 <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-price-tag-line"></i>
@@ -849,7 +874,7 @@
                                                 <div>Articles</div>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> 
                                 </li>
                                 <!-- Categories -->
                                 <li class="menu-item ">
@@ -873,7 +898,31 @@
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
                                                 <div>Voir la liste</div>
                                             </a>
+                                        </li>
+                                    </ul>
+                                </li>
 
+                                <!-- Produits -->
+                                <li class="menu-item ">
+                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-folder-5-line"></i>
+                                        <div data-i18n="Produits">Produits</div>
+                                    </a>
+                                    <ul class="menu-sub">
+
+                                        <li class="menu-item">
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_produits" data-bs-toggle="modal">
+                                                <i
+                                                    class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                                <div>AJOUTER </div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                        <a href="#" class="menu-link" data-bs-target="#liste_produits" data-bs-toggle="modal">
+                                                <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
+                                                <div>Voir la liste</div>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -1410,7 +1459,7 @@
                         </div>
                     </div>
 
-                    <!-- Categories User Modal -->
+                    <!-- Categories Modal -->
                     <div class="modal fade" id="create_categories" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                             <div class="modal-content">
@@ -1446,7 +1495,6 @@
                         </div>
                         <div class="content-backdrop fade"></div>
                     </div>
-
 
                     <!-- Categories Liste Modal -->
                     <div class="modal fade" id="liste_categories" tabindex="-1" aria-hidden="true">
@@ -1490,6 +1538,99 @@
                         <div class="content-backdrop fade"></div>
                     </div>
 
+                    <!-- Modal Création Produit -->
+                    <div class="modal fade" id="create_produits" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">NOUVEAU PRODUIT</h4>
+                                    </div>
+                                    <form id="createProduitForm" class="row g-5" method="POST" action="{{ route('produits.store') }}">
+                                        @csrf
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="nomProduit" name="nom" class="form-control" placeholder="Nom du produit" required />
+                                                <label for="nomProduit">Nom Produit</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <textarea id="descriptionProduit" name="description" class="form-control" placeholder="Description du produit" rows="4"></textarea>
+                                                <label for="descriptionProduit">Description</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="slugProduit" name="slug" class="form-control" placeholder="Slug (ex: produit-1)" required />
+                                                <label for="slugProduit">Slug</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="categorieProduit" name="categorie_id" class="form-control" required>
+                                                    <option value="">Sélectionnez une catégorie</option>
+                                                    @foreach($categories as $categorie)
+                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="categorieProduit">Catégorie</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="statutProduit" name="statut" class="form-control" required>
+                                                    <option value="actif">Actif</option>
+                                                    <option value="inactif">Inactif</option>
+                                                </select>
+                                                <label for="statutProduit">Statut</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Fermer</button>
+                                            <button type="submit" class="btn btn-primary me-3">Valider</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Liste Produits -->
+                    <div class="modal fade" id="liste_produits" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">LISTE DES PRODUITS</h4>
+                                    </div>
+                                    
+                                    <div class="card">
+                                        <div class="card-datatable table-responsive pt-0">
+                                            <table id="tableProduits" class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nom</th>
+                                                        <th>Description</th>
+                                                        <th>Catégorie</th>
+                                                        <th>Statut</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!--/ Fin des Modales -->
                 </div>
@@ -1874,6 +2015,9 @@
                 </div>
             </div>
         </div>
+
+
+        <!--////////////////////////////////////////////////////////////////////////////////////////////////-->
 
         <!-- Script pour la modale de Modification et de Suppression des formations -->
         <script>
@@ -3836,7 +3980,7 @@
                 }
             }
         </script>
-
+ 
         <!-- Script pour la création d'opportunités -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -3934,9 +4078,9 @@
                                 </div>
                             </div>
                         `,
-                        confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
-                        confirmButtonColor: '#ffc107'
-                    });
+                            confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
+                            confirmButtonColor: '#ffc107'
+                        });
                 }
                 
                 return isValid;
@@ -3985,79 +4129,81 @@
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('createCategorieForm');
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('createCategorieForm');
+                if (form) {
+                    form.addEventListener('submit', function (e) {
+                        e.preventDefault();
 
-                    // Animation de chargement
-                    Swal.fire({
-                        title: 'Création en cours...',
-                        allowOutsideClick: false,
-                        didOpen: () => {
-                            Swal.showLoading();
-                        },
-                        preConfirm: () => {
-                            const nom = Swal.getInputValue('nom');
-                            if (!nom) {
-                                Swal.showValidationMessage('Le nom est requis');
+                        // Animation de chargement
+                        Swal.fire({
+                            title: 'Création en cours...',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            },
+                            preConfirm: () => {
+                                const nom = Swal.getInputValue('nom');
+                                if (!nom) {
+                                    Swal.showValidationMessage('Le nom est requis');
+                                }
+                                return nom;
+                            },
+                            didOpen: () => {
+                                setTimeout(() => {
+                                    const input = Swal.getInput();
+                                    if (input) input.focus();
+                                }, 100);
                             }
-                            return nom;
-                        },
-                        didOpen: () => {
-                            setTimeout(() => {
-                                const input = Swal.getInput();
-                                if (input) input.focus();
-                            }, 100);
-                        }
-                    });
+                        });
 
-                    const formData = new FormData(form);
+                        const formData = new FormData(form);
 
-                    fetch(form.action, {
-                        method: 'POST',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                        },
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        Swal.close();
-                        if (data.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Succès',
-                                text: data.message,
-                                confirmButtonText: 'OK'
-                            }).then(() => {
-                                // Optionnel : reset le formulaire ou rafraîchir la liste
-                                form.reset();
-                                // Tu peux aussi recharger dynamiquement la liste ici si besoin
-                            });
-                        } else {
+                        fetch(form.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Succès',
+                                    text: data.message,
+                                    confirmButtonText: 'OK'
+                                }).then(() => {
+                                    // Optionnel : reset le formulaire ou rafraîchir la liste
+                                    form.reset();
+                                    // Tu peux aussi recharger dynamiquement la liste ici si besoin
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    text: data.message || 'Une erreur est survenue.'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            Swal.close();
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Erreur',
-                                text: data.message || 'Une erreur est survenue.'
+                                text: 'Une erreur inattendue est survenue.'
                             });
-                        }
-                    })
-                    .catch(error => {
-                        Swal.close();
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Erreur',
-                            text: 'Une erreur inattendue est survenue.'
                         });
                     });
-                });
-            }
-        });
+                }
+            });
+            
         </script>
 
+        <!-- Scripts pour la gestion des catégories -->
         <script>
             function fetchCategories() {
                 fetch('/admin/categories/list')
@@ -4177,6 +4323,349 @@
             });
         </script>
 
+       
+        
+        <!-- Scripts pour la gestion des produits -->
+        <script>
+            // Scripts pour la gestion des produits
+            document.addEventListener('DOMContentLoaded', function () {
+                // Gestion de la création de produit
+                const createProduitForm = document.getElementById('createProduitForm');
+                if (createProduitForm) {
+                    createProduitForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        // Afficher une animation de chargement
+                        const loading =Swal.fire({
+                            title: 'Création en cours...',
+                            html: `
+                                <div class="text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Chargement...</span>
+                                </div>
+                                <p class="mt-2">Création du produit...</p>
+                                </div>
+                            `,
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        const loading = Swal.fire({...});
+                        const formData = new FormData(createProduitForm);
+
+                        fetch(createProduitForm.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
+                                const success = Swal.mixin({
+                                    customClass: {
+                                        confirmButton: 'btn btn-success',
+                                        cancelButton: 'btn btn-danger'
+                                    },
+                                    buttonsStyling: false
+                                });
+
+                                success.fire({
+                                    icon: 'success',
+                                    title: 'Succès',
+                                    html: `
+                                        <div class="text-center">
+                                            <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
+                                            <h5 class="mt-3">Produit créé !</h5>
+                                            <p class="mb-0">${data.message}</p>
+                                        </div>
+                                    `,
+                                    confirmButtonText: 'OK',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#2196f3'
+                                }).then(() => {
+                                    createProduitForm.reset();
+                                    fetchProduits();
+                                });
+                            } else {
+                                const error = Swal.mixin({
+                                    customClass: {
+                                        confirmButton: 'btn btn-danger'
+                                    },
+                                    buttonsStyling: false
+                                });
+
+                                error.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    html: `
+                                        <div class="text-center">
+                                            <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
+                                            <h5 class="mt-3">Erreur</h5>
+                                            <p class="mb-0">${data.message || 'Une erreur est survenue.'}</p>
+                                        </div>
+                                    `,
+                                    confirmButtonText: 'OK',
+                                    confirmButtonColor: '#dc3545'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            loading.close();
+                            const error = Swal.mixin({
+                                customClass: {
+                                    confirmButton: 'btn btn-danger'
+                                },
+                                buttonsStyling: false
+                            });
+
+                            error.fire({
+                                icon: 'error',
+                                title: 'Erreur',
+                                html: `
+                                    <div class="text-center">
+                                        <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
+                                        <h5 class="mt-3">Erreur inattendue</h5>
+                                        <p class="mb-0">Une erreur inattendue est survenue.</p>
+                                    </div>
+                                `,
+                                confirmButtonText: 'OK',
+                                confirmButtonColor: '#dc3545'
+                            });
+                        });
+                    });
+                }
+            });
+            
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Initialisation de la DataTable pour la table des produits
+                // Assure-toi que ta table HTML a bien l'id "tableProduits"
+                var table = $('#tableProduits').DataTable({
+                    ajax: '/admin/produits/list',
+                    columns: [
+                        { data: 'nom', title: 'Nom' },
+                        { data: 'description', title: 'Description' },
+                        { data: 'categorie', title: 'Catégorie' },
+                        { 
+                            data: 'statut_label', 
+                            title: 'Statut', 
+                            render: function(data, type, row) {
+                                var couleur = row.statut_color === 'success' ? 'green' : 'red';
+                                return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
+                            }
+                        },
+                        { 
+                            data: 'actions', 
+                            title: 'Actions', 
+                            orderable: false, 
+                            searchable: false 
+                        }
+                    ],
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
+                    }
+                });
+            
+                // Gestion des clics sur les boutons d'action (modification/suppression)
+                // On utilise la délégation d'événement pour gérer les éléments générés dynamiquement
+                document.querySelector('#tableProduits').addEventListener('click', function (e) {
+                    // Bouton Modifier
+                    if (e.target.closest('.btn-edit-produit')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-edit-produit').dataset.id;
+                        // Appelle ta fonction d'ouverture de modale d'édition ici
+                        openEditProduitModal(id);
+                    }
+            
+                    // Bouton Supprimer
+                    if (e.target.closest('.btn-delete-produit')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-delete-produit').dataset.id;
+            
+                        // Confirmation avec SweetAlert2
+                        Swal.fire({
+                            title: 'Supprimer ce produit ?',
+                            text: 'Cette action est irréversible !',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, supprimer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch(`/admin/produits/${id}`, {
+                                    method: 'DELETE',
+                                    headers: {
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                    }
+                                })
+                            .then(res => res.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        Swal.fire('Supprimé !', data.message, 'success');
+                                        table.ajax.reload(); // Rafraîchit la DataTable
+                                    } else {
+                                        Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                    }
+                                })
+                                .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                            }
+                        });
+                    }
+                });
+            
+                // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
+                window.openEditProduitModal = function(id) {
+                    // Récupère les infos du produit via AJAX
+                    fetch(`/admin/produits/${id}`)
+                        .then(res => res.json())
+                        .then(produit => {
+                            Swal.fire({
+                                title: `
+                                    <div style="display:flex;align-items:center;gap:10px;">
+                                        <i class="bi bi-pencil-square" style="font-size:1.8em;color:#6C63FF;"></i>
+                                        <span style="font-size:1.3em;font-weight:600;">Modifier le produit</span>
+                                    </div>`,
+                                html: `
+                                <div style="background: #eff2f7; border-radius: 18px; box-shadow: 0 4px 14px rgba(41,63,87,0.06); padding: 25px 18px;">
+                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
+                                    <div>
+                                      <label for="swal-nom" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                        <i class="bi bi-cube"></i> Nom du produit <span style="color:#e74c3c;">*</span>
+                                      </label>
+                                      <input id="swal-nom" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Nom" value="${escapeHtml(produit.nom)}">
+                                    </div>
+                                    <div>
+                                      <label for="swal-description" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                        <i class="bi bi-text-left"></i> Description
+                                      </label>
+                                      <input id="swal-description" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Description" value="${_.escape(produit.description || '')}">
+                                    </div>
+                                  </div>
+                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
+                                    <div>
+                                      <label for="swal-slug" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                        <i class="bi bi-link"></i> Slug <span style="color:#e74c3c;">*</span>
+                                      </label>
+                                      <input id="swal-slug" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Slug" value="${_.escape(produit.slug)}">
+                                    </div>
+                                    <div>
+                                      <label for="swal-categorie" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                        <i class="bi bi-collection"></i> Catégorie <span style="color:#e74c3c;">*</span>
+                                      </label>
+                                      <select id="swal-categorie" class="swal2-input" style="width:100%;margin-bottom:0.5em;">
+                                        <option value="">Sélectionnez une catégorie</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div style="margin-top:12px;">
+                                    <label for="swal-statut" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                      <i class="bi bi-toggle2-on"></i> Statut
+                                    </label>
+                                    <select id="swal-statut" class="swal2-input" style="width:50%;">
+                                        <option value="actif" ${produit.statut === 'actif' ? 'selected' : ''}>✅ Actif</option>
+                                        <option value="inactif" ${produit.statut === 'inactif' ? 'selected' : ''}>⛔ Inactif</option>
+                                    </select>
+                                  </div>
+                                  <div style="margin-top:10px;font-size:0.95em;color:#888;">
+                                    <span><span style="color:#e74c3c;">*</span> Champs obligatoires</span>
+                                  </div>
+                                </div>
+                                `,
+                                focusConfirm: false,
+                                showCancelButton: true,
+                                confirmButtonText: '<i class="bi bi-save"></i> Enregistrer',
+                                cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
+                                customClass: {
+                                    popup: 'swal2-card',
+                                    confirmButton: 'swal2-confirm--primary'
+                                },
+                                width: 600,
+                                background: "#f9fafe",
+                                scrollbarPadding: false,
+                                preConfirm: () => {
+                                    const nom = document.getElementById('swal-nom').value.trim();
+                                    const description = document.getElementById('swal-description').value.trim();
+                                    const slug = document.getElementById('swal-slug').value.trim();
+                                    const categorie_id = document.getElementById('swal-categorie').value;
+                                    const statut = document.getElementById('swal-statut').value;
+                                    if (!nom || !slug || !categorie_id) {
+                                        Swal.showValidationMessage('Tous les champs obligatoires doivent être remplis');
+                                        return false;
+                                    }
+                                    return { nom, description, slug, categorie_id, statut };
+                                },
+                                didOpen: () => {
+                                    // Charger dynamiquement les catégories
+                                    fetch('/admin/categories/list')
+                                        .then(res => res.json())
+                                        .then(categories => {
+                                            const select = document.getElementById('swal-categorie');
+                                            categories.forEach(cat => {
+                                                const opt = document.createElement('option');
+                                                opt.value = cat.id;
+                                                opt.textContent = cat.nom;
+                                                if (cat.id == produit.categorie_id) opt.selected = true;
+                                                select.appendChild(opt);
+                                            });
+                                        });
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed && result.value) {
+                                    Swal.fire({title: 'Mise à jour...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
+                                    fetch(`/admin/produits/${id}`, {
+                                        method: 'PUT',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                            'X-Requested-With': 'XMLHttpRequest'
+                                        },
+                                        body: JSON.stringify(result.value)
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        Swal.close();
+                                        if (data.success) {
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Succès',
+                                                text: data.message,
+                                                timer: 1800,
+                                                showConfirmButton: false
+                                            });
+                                            $('#tableProduits').DataTable().ajax.reload();
+                                        } else {
+                                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                                        }
+                                    })
+                                    .catch(() => {
+                                        Swal.close();
+                                        Swal.fire('Erreur', 'Erreur réseau', 'error');
+                                    });
+                                }
+                            });
+                        });
+                };
+            });
+        </script>
+
+        <script>
+            function escapeHtml(text) {
+                return text
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+        </script>
 </body>
 
 </html>
