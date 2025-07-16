@@ -2,7 +2,6 @@
 @section('welcome')
     <!--====== Start Header Section ======-->
 
-
     <section class="hero-section">
 
         <div class="hero-wrapper-two bg_cover" style="background-image: url(assets/images/hero/hero-bg-1.png);">
@@ -479,7 +478,6 @@
     </section><!--====== End Testimonial Section ======-->
 
     <!--====== End Blog Section ======-->
-
     <!-- Modal d'inscription étape 2 -->
     <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel"
         aria-hidden="true">
@@ -1029,4 +1027,5 @@
             text-overflow: ellipsis;
         }
     </style>
+
 @endsection

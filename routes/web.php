@@ -7,6 +7,8 @@ use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OpportuniteController;
+use App\Http\Controllers\LocalController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,13 +21,12 @@ use App\Http\Controllers\OpportuniteController;
 */
 
 
-
+Route::get('/locale/{lang}',[LocalController::class,'setLocale']);
 Route::get('/', function () {return view('welcome');})->name('welcome');
 
 
 
 Route::post('/inscription', [InscriptionController::class, 'inscriptionAjax'])->name('inscription.ajax');
-
 Route::get('/choix-service', [InscriptionController::class, 'choixService'])->name('service.choix');
 
 ///////////////////////////////AUTHENTIFICATION////////////////////////////////////////////////////////////////////////////////////

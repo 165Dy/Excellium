@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <!--====== Required meta tags ======-->
@@ -81,7 +81,7 @@
                                             style="background-color: #FFAC1E;padding:3px 22px 0px 22px;">
                                             <div class="EmptyBox10"></div>
 
-                                           
+
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                 fill="#FFD22F" viewBox="0 0 24 24" class="d-none d-md-inline">
                                                 <!-- Affiché uniquement sur écran md et plus -->
@@ -155,6 +155,25 @@
                                             href="{{ route('Formations.index') }}">Formations</a></li>
                                     </li>
 
+                                    <li>
+                                        @php
+                                            $locale = app()->getLocale();
+                                        @endphp
+
+                                          
+                                        @if ($locale === 'fr')
+                                            <a href="{{ url('locale/en') }}">
+                                                <img src="{{ asset('assets/images/icon/united-kingdom.svg') }}"
+                                                    width="20"> English
+                                            </a>
+                                        @elseif($locale === 'en')
+                                            <a href="{{ url('locale/fr') }}">
+                                                <img src="{{ asset('assets/images/icon/france.svg') }}"
+                                                    width="20">
+                                                Français
+                                            </a>
+                                        @endif
+                                    </li>
 
                                 </ul>
                             </nav>
