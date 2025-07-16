@@ -4524,9 +4524,9 @@
                 // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
                 window.openEditProduitModal = function(id) {
                     // Récupère les infos du produit via AJAX
-                    fetch(`/admin/produits/${id}`)
-                        .then(res => res.json())
-                        .then(produit => {
+                        fetch(`/admin/produits/${id}`)
+                            .then(res => res.json())
+                            .then(produit => {
                             Swal.fire({
                                 title: `
                                     <div style="display:flex;align-items:center;gap:10px;">
