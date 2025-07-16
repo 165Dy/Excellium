@@ -116,43 +116,44 @@
                             <!--=== Main Menu ===-->
                             <nav class="main-menu">
                                 <ul>
-                                    <li class="menu-item has-children"><a href="{{ route('welcome') }}">
-                                            <h5>Excellium Conseil</h5>
+                                    <li class="menu-item has-children">
+                                        <a href="{{ route('welcome') }}">
+                                            <h5>@lang('extracted.excellium_conseil')</h5>
                                         </a>
-
                                     </li>
-                                    <li class="menu-item has-children"><a href="#">Nos Services</a>
+                                    <li class="menu-item has-children"><a href="#">@lang('extracted.nos_services')</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('audit&Conseil') }}">Audit & conseil</a></li>
-                                            <li><a href="{{ route('Compta_Fiscale') }}">Comptable & Fiscale</a></li>
-                                            <li><a href="{{ route('Financement') }}">Financement</a></li>
-                                            <li><a href="{{ route('Gestion_Paie') }}">Gestion de la Paie</a></li>
-                                            <li><a href="{{ route('Ressources_humaines') }}">R. Humaines</a></li>
+                                            <li><a href="{{ route('audit&Conseil') }}">@lang('extracted.audit_conseil')</a></li>
+                                            <li><a href="{{ route('Compta_Fiscale') }}">@lang('extracted.comptable_fiscale')</a></li>
+                                            <li><a href="{{ route('Financement') }}">@lang('extracted.financement')</a></li>
+                                            <li><a href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a></li>
+                                            <li><a href="{{ route('Ressources_humaines') }}">@lang('extracted.r_humaines')</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item has-children"><a href="#">Ressources</a>
+                                    <li class="menu-item has-children"><a href="#">@lang('extracted.ressources')</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('Ressources.achat_location') }}">Achats &
-                                                    Location</a></li>
-                                            <li><a href="{{ route('Ressources.Articles') }}">Articles</a></li>
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Conseils &
-                                                    Actualités</a></li>
-                                            <li><a href="{{ route('Ressources.commerce') }}">Commerce Generale</a>
+                                            <li><a
+                                                    href="{{ route('Ressources.achat_location') }}">@lang('extracted.achats_location')</a>
                                             </li>
-                                            <li><a href="{{ route('Ressources.service_divers') }}">Service Divers</a>
+                                            <li><a href="{{ route('Ressources.Articles') }}">@lang('extracted.articles')</a></li>
+                                            <li><a
+                                                    href="{{ route('Ressources.conseils_actualites') }}">@lang('extracted.conseils_actualites')</a>
                                             </li>
-
+                                            <li><a href="{{ route('Ressources.commerce') }}">@lang('extracted.commerce_generale')</a>
+                                            </li>
+                                            <li><a
+                                                    href="{{ route('Ressources.service_divers') }}">@lang('extracted.service_divers')</a>
+                                            </li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item has-children"><a
-                                            href="{{ route('Partenaires.Collaborateurs') }}">Partenaires</a>
-
+                                    <li class="menu-item has-children">
+                                        <a href="{{ route('Partenaires.Collaborateurs') }}">@lang('extracted.partenaires')</a>
                                     </li>
-                                    <li class="menu-item has-children"><a
-                                            href="{{ route('opportunites.clients.index') }}">Opportunités</a>
+                                    <li class="menu-item has-children">
+                                        <a href="{{ route('opportunites.clients.index') }}">@lang('extracted.opportunites')</a>
                                     </li>
-                                    <li class="menu-item has-children"><a
-                                            href="{{ route('Formations.index') }}">Formations</a></li>
+                                    <li class="menu-item has-children">
+                                        <a href="{{ route('Formations.index') }}">@lang('extracted.formations')</a>
                                     </li>
 
                                     <li>
@@ -160,7 +161,6 @@
                                             $locale = app()->getLocale();
                                         @endphp
 
-                                          
                                         @if ($locale === 'fr')
                                             <a href="{{ url('locale/en') }}">
                                                 <img src="{{ asset('assets/images/icon/united-kingdom.svg') }}"
@@ -169,13 +169,12 @@
                                         @elseif($locale === 'en')
                                             <a href="{{ url('locale/fr') }}">
                                                 <img src="{{ asset('assets/images/icon/france.svg') }}"
-                                                    width="20">
-                                                Français
+                                                    width="20"> Français
                                             </a>
                                         @endif
                                     </li>
-
                                 </ul>
+
                             </nav>
 
                             {{-- <!-- Flash Bourse Banner -->

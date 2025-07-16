@@ -10,9 +10,9 @@ class LocalController extends Controller
 {
     public function setLocale($lang)
     {
-        if (in_array($lang, ['en', 'fr'])) {
-            App::setLocale($lang);
-            Session::put('locale', $lang);
+        if (in_array($lang, ['en','fr'])) {
+            Session::put('locale',$lang);
+             App::setLocale($lang);
         }
 
         return redirect()->back();
