@@ -22,12 +22,11 @@ use App\Http\Controllers\LocaleController;
 */
 
 
+Route::get('/locale/{lang}',[LocalController::class,'setLocale']);
+Route::get('/', [ProduitController::class, 'index'])->name('welcome');
 
-Route::middleware(['web'])->group(function () {
 
-Route::get('/locale/{lang}', [LocaleController::class, 'setLocale'])->name('locale.switch');
 
-Route::get('/', function () {return view('welcome');})->name('welcome');
 Route::post('/inscription', [InscriptionController::class, 'inscriptionAjax'])->name('inscription.ajax');
 
 Route::post('/choix-produit', [InscriptionController::class, 'saveProduits'])->name('choix-produit');

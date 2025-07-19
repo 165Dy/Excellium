@@ -12,6 +12,7 @@ class UserService extends Model
     protected $fillable = [
         'user_id',
         'service_id',
+        'description',
         'prix_indicatif',
         'duree_estimee',
         'caracteristiques',

@@ -602,6 +602,9 @@
                             <input class="form-check-input" type="checkbox" id="selectAllProduits">
                             <label class="form-check-label fw-bold" for="selectAllProduits">@lang('extracted.tout_selectionner')</label>
                         </div>
+                        @php
+                            $chunks = array_chunk($produits->all(), ceil($produits->count() / 2));
+                        @endphp
                         <div id="produits-list" class="row">
                             <!-- Exemple de checkboxes produits, à adapter dynamiquement si besoin -->
                             <div class="col-md-6">
@@ -640,8 +643,8 @@
         </div>
     </div>
 
-    <!-- Modal de succès services -->
-    <div class="modal fade" id="serviceSuccessModal" tabindex="-1" aria-labelledby="serviceSuccessModalLabel"
+    <!-- Modal de succès produits -->
+    <div class="modal fade" id="produituccessModal" tabindex="-1" aria-labelledby="produituccessModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center">
@@ -658,7 +661,7 @@
         </div>
     </div>
 
-    <!-- Modal d'erreur services -->
+    <!-- Modal d'erreur produits -->
     <div class="modal fade" id="serviceErrorModal" tabindex="-1" aria-labelledby="serviceErrorModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -781,7 +784,7 @@
                     return;
                 }
 
-                fetch('/inscription/produits', {
+                fetch('/choix-produit', {
                         method: 'POST',
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}',
@@ -799,7 +802,7 @@
                         // Ferme la modale de choix de produit
                         bootstrap.Modal.getInstance(document.getElementById('choixProduitModal')).hide();
                             // Affiche la modale de succès
-                        var modalSuccess = new bootstrap.Modal(document.getElementById('serviceSuccessModal'));
+                        var modalSuccess = new bootstrap.Modal(document.getElementById('produituccessModal'));
                             modalSuccess.show();
                         } else {
                             // Affiche la modale d'erreur avec le message retourné

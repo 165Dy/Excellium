@@ -4524,13 +4524,13 @@
                                       <label for="swal-nom" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
                                         <i class="bi bi-cube"></i> Nom du produit <span style="color:#e74c3c;">*</span>
                                       </label>
-                                      <input id="swal-nom" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Nom" value="${escapeHtml(produit.nom)}">
+                                      <input type="text" id="swal-nom" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Nom" value="${escapeHtml(produit.nom)}">
                                     </div>
                                     <div>
                                       <label for="swal-description" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
                                         <i class="bi bi-text-left"></i> Description
                                       </label>
-                                      <input id="swal-description" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Description" value="${_.escape(produit.description || '')}">
+                                      <input type="text" id="swal-description" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Description" value="${escapeHtml(produit.description || '')}">
                                     </div>
                                   </div>
                                   <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
@@ -4538,7 +4538,7 @@
                                       <label for="swal-slug" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
                                         <i class="bi bi-link"></i> Slug <span style="color:#e74c3c;">*</span>
                                       </label>
-                                      <input id="swal-slug" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Slug" value="${_.escape(produit.slug)}">
+                                      <input type="text" id="swal-slug" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Slug" value="${escapeHtml(produit.slug)}">
                                     </div>
                                     <div>
                                       <label for="swal-categorie" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
@@ -4650,6 +4650,7 @@
                     .replace(/'/g, "&#039;");
             }
         </script>
+        <!-- ///////////////////////////////////// -->
 </body>
 
 </html>
