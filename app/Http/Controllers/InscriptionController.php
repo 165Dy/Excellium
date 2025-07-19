@@ -71,19 +71,19 @@ class InscriptionController extends Controller
         }
 
         // Prépare les variables pour le template Mailgun
-        $nomsProduits = Produit::whereIn('id', $request->produits)->pluck('nom')->toArray();
         $variables = [
-            'name' => $user->prenom . ' ' . $user->nom,
-            'produits' => $nomsProduits,
-            'message' => "Notre équipe reviendra vers vous pour plus d'informations sur les produits sélectionnés."
+            'title'   => 'Confirmation de votre sélection de produits',
+            'name'    => $user->prenom . ' ' . $user->nom,
+            'message' => "Notre équipe reviendra vers vous pour plus d'informations sur les produits sélectionnés.",
+            'produits' => Produit::whereIn('id', $request->produits)->pluck('nom')->toArray(),
         ];
 
         $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
         $mg->messages()->send(env('MAILGUN_DOMAIN'), [
-            'from' => 'contact@excelliumconseils.com',
-            'to' => $user->email,
+            'from'    => 'Excellium Conseils <contact@excelliumconseils.com>',
+            'to'      => $user->email,
             'subject' => 'Confirmation de votre sélection de produits',
-            'template' => 'excellium_emailproduit', // à adapter selon ton template Mailgun
+            'template' => 'excellium_emailwelcome', // nom du template dans Mailgun
             'h:X-Mailgun-Variables' => json_encode($variables),
         ]);
 

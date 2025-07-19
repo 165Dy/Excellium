@@ -23,7 +23,7 @@ use App\Http\Controllers\LocalController;
 
 
 Route::get('/locale/{lang}',[LocalController::class,'setLocale']);
-Route::get('/', function () {return view('welcome');})->name('welcome');
+Route::get('/', [ProduitController::class, 'index'])->name('welcome');
 
 
 

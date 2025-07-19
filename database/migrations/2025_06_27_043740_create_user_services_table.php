@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
+            $table->text('description');
             $table->decimal('prix_indicatif', 10, 2)->nullable();
             $table->integer('duree_estimee')->nullable();
             $table->json('caracteristiques')->nullable();

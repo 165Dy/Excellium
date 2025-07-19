@@ -606,7 +606,7 @@
                             style="height: 60px; margin-right: 16px;">
                         <div>
                             <h5 class="modal-title" id="choixProduitModalLabel" style="color: #222; font-weight: bold;">
-                                Bienvenue dans notre menu produits</h5>
+                                Bienvenue dans notre menu </h5>
                             <p style="margin:0; color:#444; font-size:15px;">Veuillez sélectionner les produits qui vous
                                 intéressent.</p>
                         </div>
@@ -619,34 +619,21 @@
                             <input class="form-check-input" type="checkbox" id="selectAllProduits">
                             <label class="form-check-label fw-bold" for="selectAllProduits">Tout sélectionner</label>
                         </div>
+                        @php
+                            $chunks = array_chunk($produits->all(), ceil($produits->count() / 2));
+                        @endphp
                         <div id="produits-list" class="row">
-                            <!-- Exemple de checkboxes produits, à adapter dynamiquement si besoin -->
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="1" id="produit1">
-                                    <label class="form-check-label" for="produit1">Produit 1</label>
+                            @foreach($chunks as $col)
+                                <div class="col-md-6">
+                                    @foreach($col as $produit)
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="{{ $produit['id'] }}" id="produit{{ $produit['id'] }}">
+                                            <label class="form-check-label" for="produit{{ $produit['id'] }}">{{ $produit['nom'] }}</label>
+                                        </div>
+                                        <hr>
+                                    @endforeach
                                 </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="2" id="produit2">
-                                    <label class="form-check-label" for="produit2">Produit 2</label>
-                                </div>
-                                <hr>
-                                <!-- Ajoute d'autres produits ici -->
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="3" id="produit3">
-                                    <label class="form-check-label" for="produit3">Produit 3</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="4" id="produit4">
-                                    <label class="form-check-label" for="produit4">Produit 4</label>
-                                </div>
-                                <hr>
-                                <!-- Ajoute d'autres produits ici -->
-                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="modal-footer justify-content-end">
@@ -657,8 +644,8 @@
         </div>
     </div>
 
-    <!-- Modal de succès services -->
-    <div class="modal fade" id="serviceSuccessModal" tabindex="-1" aria-labelledby="serviceSuccessModalLabel"
+    <!-- Modal de succès produits -->
+    <div class="modal fade" id="produituccessModal" tabindex="-1" aria-labelledby="produituccessModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center">
@@ -676,7 +663,7 @@
         </div>
     </div>
 
-    <!-- Modal d'erreur services -->
+    <!-- Modal d'erreur produits -->
     <div class="modal fade" id="serviceErrorModal" tabindex="-1" aria-labelledby="serviceErrorModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -799,7 +786,7 @@
                     return;
                 }
 
-                fetch('/inscription/produits', {
+                fetch('/choix-produit', {
                         method: 'POST',
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}',
@@ -817,7 +804,7 @@
                         // Ferme la modale de choix de produit
                         bootstrap.Modal.getInstance(document.getElementById('choixProduitModal')).hide();
                             // Affiche la modale de succès
-                        var modalSuccess = new bootstrap.Modal(document.getElementById('serviceSuccessModal'));
+                        var modalSuccess = new bootstrap.Modal(document.getElementById('produituccessModal'));
                             modalSuccess.show();
                         } else {
                             // Affiche la modale d'erreur avec le message retourné
