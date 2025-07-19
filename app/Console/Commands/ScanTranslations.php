@@ -3,112 +3,93 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use Illuminate\Support\Str;
 
 class ScanTranslations extends Command
 {
-    protected $signature = 'scan:translations-html';
-    protected $description = 'Scan Blade files for visible HTML texts and replace them with @lang(...)';
-    protected $translationFile = 'resources/lang/fr/extracted.php';
-    protected $prefix = 'extracted';
+    protected $signature = 'scan:translations';
+    protected $description = 'Scanne les vues Blade, extrait les textes statiques et les remplace par @lang';
+
+    private $translations = [];
+    private $langPath = 'app/lang/fr/extracted.php';
 
     public function handle()
-{
-    $this->info('🔍 Scan des fichiers Blade (hors /admin)...');
-
-    $bladeFiles = $this->getBladeFiles(resource_path('views'));
-    $translations = [];
-
-    foreach ($bladeFiles as $file) {
-        $originalContent = file_get_contents($file);
-        $content = $originalContent;
-
-        // 🔒 Supprimer le contenu des balises <style>, <script>, <svg>
-        $content = preg_replace('#<style[^>]*>.*?</style>#si', '', $content);
-        $content = preg_replace('#<script[^>]*>.*?</script>#si', '', $content);
-        $content = preg_replace('#<svg[^>]*>.*?</svg>#si', '', $content);
-
-        // 🎯 Trouver les textes entre balises HTML simples
-        preg_match_all('#<([a-zA-Z0-9]+)[^>]*>([^<>@]+)</\1>#', $content, $matches, PREG_SET_ORDER);
-
-        foreach ($matches as $match) {
-            $tag = $match[1];
-            $text = trim($match[2]);
-
-            // Filtrage : ignorer vide, directives blade, numériques
-            if (
-                $text === '' ||
-                Str::startsWith($text, ['@lang(', '{{', '<?php', '@if', '@endif']) ||
-                is_numeric($text)
-            ) {
-                continue;
-            }
-
-            // Génération de la clé
-            $key = Str::slug(Str::limit($text, 50), '_');
-
-            if (!isset($translations[$key])) {
-                $translations[$key] = $text;
-            }
-
-            // 🔁 Remplacement dans le fichier original
-            $escapedOriginalText = preg_quote($match[0], '/');
-            $newLine = "<$tag>@lang('{$this->prefix}.$key')</$tag>";
-            $originalContent = str_replace($match[0], $newLine, $originalContent);
-        }
-
-        file_put_contents($file, $originalContent);
-    }
-
-    if (empty($translations)) {
-        $this->warn("⚠️ Aucun texte à traduire trouvé.");
-        return;
-    }
-
-    $this->saveTranslations($translations);
-    $this->info("✅ Traductions enregistrées dans $this->translationFile");
-}
-
-
-    protected function getBladeFiles($basePath)
     {
-        $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($basePath));
-        $files = [];
+        $bladePath = resource_path('views');
+        $bladeFiles = $this->getBladeFiles($bladePath);
 
-        foreach ($rii as $file) {
-            if ($file->isDir()) continue;
-
-            $filePath = $file->getPathname();
-
-            if (!Str::endsWith($filePath, '.blade.php')) continue;
-
-            // Exclure les chemins contenant /admin ou /layouts/admin
-            if (
-                Str::contains($filePath, [
-                    'resources/views/admin',
-                    'resources/views/layouts/admin'
-                ])
-            ) continue;
-
-            $files[] = $filePath;
+        foreach ($bladeFiles as $filePath) {
+            $this->scanAndReplaceFile($filePath);
         }
 
+        if (empty($this->translations)) {
+            $this->warn("Aucun texte statique trouvé.");
+            return Command::SUCCESS;
+        }
+
+        $this->writeTranslationFile();
+
+        $this->info("✅ Remplacement terminé et fichier de traduction mis à jour :");
+        $this->line("→ " . base_path($this->langPath));
+
+        return Command::SUCCESS;
+    }
+
+    private function getBladeFiles($path)
+    {
+        $files = [];
+        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
+        foreach ($iterator as $file) {
+            if ($file->isFile() && str_ends_with($file, '.blade.php')) {
+                $files[] = $file->getPathname();
+            }
+        }
         return $files;
     }
 
-    protected function saveTranslations($translations)
+    private function scanAndReplaceFile($filePath)
     {
-        $content = "<?php\n\nreturn [\n";
-        foreach ($translations as $key => $value) {
-            $escaped = addslashes($value);
-            $content .= "    '$key' => '$escaped',\n";
-        }
-        $content .= "];\n";
+        $originalContent = file_get_contents($filePath);
+        $modifiedContent = $originalContent;
 
-        File::ensureDirectoryExists(dirname($this->translationFile));
-        file_put_contents($this->translationFile, $content);
+        preg_match_all('/>([^<>{}@]+)</', $originalContent, $matches);
+
+        foreach ($matches[1] as $rawText) {
+            $text = trim($rawText);
+            if (!$text || is_numeric($text) || Str::startsWith($text, '@') || strlen($text) < 2) {
+                continue;
+            }
+
+            $key = Str::slug($text, '_');
+            if (!isset($this->translations[$key])) {
+                $this->translations[$key] = $text;
+            }
+
+            // Crée la forme à remplacer : >texte<
+            $pattern = '>' . preg_quote($text, '/') . '<';
+            $replacement = '>@lang(\'extracted.' . $key . '\')<';
+            $modifiedContent = preg_replace('/' . $pattern . '/', $replacement, $modifiedContent);
+        }
+
+        // Sauvegarde si modification détectée
+        if ($modifiedContent !== $originalContent) {
+            file_put_contents($filePath, $modifiedContent);
+            $this->info("✔ Texte remplacé dans : " . str_replace(base_path(), '', $filePath));
+        }
+    }
+
+    private function writeTranslationFile()
+    {
+        $output = "<?php\n\nreturn [\n";
+        foreach ($this->translations as $key => $val) {
+            $escapedVal = addslashes($val);
+            $output .= "    '{$key}' => '{$escapedVal}',\n";
+        }
+        $output .= "];\n";
+
+        $langFilePath = base_path($this->langPath);
+        file_put_contents($langFilePath, $output);
     }
 }

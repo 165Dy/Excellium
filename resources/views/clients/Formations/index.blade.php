@@ -12,13 +12,13 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h2 class="page-title">Nos Formations</h2>
+                            <h2 class="page-title">@lang('extracted.nos_formations')</h2>
                             <p>
                                 Nous vous proposons des formations adaptées à vos besoins et à votre niveau.
                             </p>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="{{ route('welcome') }}">Accueil</a></li>
-                                <li class="active">Nos Formations</li>
+                                <li><a href="{{ route('welcome') }}">@lang('extracted.accueil')</a></li>
+                                <li class="active">@lang('extracted.nos_formations')</li>
                             </ul>
                         </div>
                     </div>
@@ -44,13 +44,13 @@
                             <div class="col-md-5">
                                 <div class="filter-dropdown float-md-end wow fadeInRight">
                                     <select class="wide" id="typeContratSelect">
-                                        <option value="TOUT">TOUT</option>
-                                        <option value="STAGE">COMPTABILITE</option>
-                                        <option value="CDI">AUDIT</option>
-                                        <option value="CDD">R.HUMAINES</option>
-                                        <option value="CDD">R.FINANCEMENT</option>
-                                        <option value="CDD">GESTION.PAIE</option>
-                                        <option value="CDD">AUTRES</option>
+                                        <option value="TOUT">@lang('extracted.tout')</option>
+                                        <option value="STAGE">@lang('extracted.comptabilite')</option>
+                                        <option value="CDI">@lang('extracted.audit')</option>
+                                        <option value="CDD">@lang('extracted.rhumaines')</option>
+                                        <option value="CDD">@lang('extracted.rfinancement')</option>
+                                        <option value="CDD">@lang('extracted.gestionpaie')</option>
+                                        <option value="CDD">@lang('extracted.autres')</option>
                                     </select>
                                 </div>
                             </div>
@@ -62,8 +62,8 @@
                 @if ($formations->isEmpty())
                     <div class="col-12">
                         <div class="text-center text-white py-5">
-                            <h3>Aucune formation disponible</h3>
-                            <p>Revenez bientôt pour découvrir nos nouvelles formations !</p>
+                            <h3>@lang('extracted.aucune_formation_disponible')</h3>
+                            <p>@lang('extracted.revenez_bientot_pour_decouvrir_nos_nouvelles_formations')</p>
                         </div>
                     </div>
                 @else

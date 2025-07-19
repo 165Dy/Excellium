@@ -12,7 +12,7 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h1 class="page-title">Details</h1>
+                            <h1 class="page-title">@lang('extracted.details')</h1>
                             {{-- <p>Lorem voluptatem accusantium dolorem </p> --}}
 
                         </div>
@@ -51,15 +51,14 @@
                             @endphp
 
                             <div class="categ">
-                                <h3>Offres similaires</h3>
+                                <h3>@lang('extracted.offres_similaires')</h3>
                             </div>
                             <br>
 
                             @if ($memeOpportunites->isEmpty())
                                 <div class="section-content-box pr-xl-400 mb-40 wow fadeInLeft" style="width:500px">
                                     <div class="iconic-box style-two mb-80" style="width: 500px">
-                                        <h5 style="color: rgb(243, 35, 35)">Aucune autre offre disponible avec ce type de
-                                            contrat</h5>
+                                        <h5 style="color: rgb(243, 35, 35)">@lang('extracted.aucune_autre_offre_disponible_avec_ce_type_de_contrat')</h5>
                                     </div>
                                 </div>
                             @else
@@ -162,7 +161,7 @@
                                         Description</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#reviews">Avis</a>
+                                    <a class="nav-link" data-bs-toggle="tab" href="#reviews">@lang('extracted.avis')</a>
                                 </li>
                             </ul>
                         </div>
@@ -258,19 +257,19 @@
                                         <i class="fas fa-info-circle me-1"></i>Détails de - {{ $opportunite->titre }}
                                     </h6>
                                     <p class="text-dark mb-1">
-                                        <strong>📅 Date:</strong>
+                                        <strong>@lang('extracted.date')</strong>
                                         {{ $opportunite->created_at ? \Carbon\Carbon::parse($opportunite->created_at)->format('d/m/Y') : 'À définir' }}
                                         @if ($opportunite->date_expiration)
                                             - {{ \Carbon\Carbon::parse($opportunite->date_expiration)->format('d/m/Y') }}
                                         @endif
                                     </p>
                                     @if ($opportunite->localisation)
-                                        <p class="text-dark mb-1"><strong>📍 Lieu:</strong>
+                                        <p class="text-dark mb-1"><strong>@lang('extracted.lieu')</strong>
                                             {{ $opportunite->localisation }}</p>
                                     @endif
                                     @if ($opportunite->salaire_min)
                                         <p class="text-dark mb-0">
-                                            <strong>💰 Salaire:</strong>
+                                            <strong>@lang('extracted.salaire')</strong>
                                             <span
                                                 class="text-success fw-bold">{{ number_format($opportunite->salaire_min, 0, ',', ' ') }}
                                                 FCFA</span> -
@@ -357,7 +356,7 @@
                                     <input class="form-check-input" type="checkbox" id="acceptConditions" required
                                         style="border: 2px solid #ffc107;">
                                     <label class="form-check-label text-light" for="acceptConditions">
-                                        <strong> <u>J'accepte d'être contacté par Excellium Conseil</strong> concernant
+                                        <strong> <u>@lang('extracted.jaccepte_detre_contacte_par_excellium_conseil')</strong> concernant
                                         cette
                                         formation et je consens au traitement de mes données personnelles. *</u>
                                     </label>
@@ -406,9 +405,9 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center">
                 <div class="modal-body">
-                    <h5 style="color: black">Votre candidature a bien été envoyée !</h5>
-                    <p>Un email de confirmation vous a été envoyé.</p>
-                    <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Fermer</button>
+                    <h5 style="color: black">@lang('extracted.votre_candidature_a_bien_ete_envoyee')</h5>
+                    <p>@lang('extracted.un_email_de_confirmation_vous_a_ete_envoye')</p>
+                    <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>
@@ -422,7 +421,7 @@
                     <h5 style="color: red" id="errorMsg">
                         Cette adresse email a déjà été utilisée pour postuler à cette offre. Veuillez en saisir une autre.
                     </h5>
-                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">FERMER</button>
+                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>

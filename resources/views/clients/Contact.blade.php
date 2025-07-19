@@ -15,15 +15,15 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h1 class="page-title">Notre Contact</h1>
+                            <h1 class="page-title">@lang('extracted.notre_contact')</h1>
                             <p>
                                 Pour toute question, information ou prise de rendez-vous, n’hésitez pas à nous contacter.
                                 Notre équipe vous répondra dans les plus brefs délais et vous accompagnera dans vos
                                 démarches.
                             </p>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="index.html">Pages</a></li>
-                                <li class="active">Contact</li>
+                                <li><a href="index.html">@lang('extracted.pages')</a></li>
+                                <li class="active">@lang('extracted.contact')</li>
                         </div>
                     </div>
                 </div>
@@ -51,11 +51,11 @@
                                         <img src="{{ asset('assets/images/icon/map.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
-                                        {{-- <h4>Localisation</h4> --}}
+                                        {{-- <h4>@lang('extracted.localisation')</h4> --}}
                                         <a
                                             href="https://www.google.com/maps/place/5%C2%B019'18.6%22N+4%C2%B004'40.9%22W/@5.3218463,-4.0805939,17z/data=!3m1!4b1!4m4!3m3!8m2!3d5.321841!4d-4.078019?entry=ttu&g_ep=EgoyMDI1MDYwMS4wIKXMDSoASAFQAw%3D%3D">
-                                            <h4>Localisation</h4>
-                                            <p>Yopougon Palais non loin de la Gare Jet Express,</p>
+                                            <h4>@lang('extracted.localisation')</h4>
+                                            <p>@lang('extracted.yopougon_palais_non_loin_de_la_gare_jet_express')</p>
                                         </a>
                                         <style>
                                             .content a {
@@ -78,8 +78,8 @@
                                         <img src="{{ asset('assets/images/icon/call.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
-                                        <h4>Notre Contact</h4>
-                                        <p><a href="tel:0707672957">+255 07 07 672 957</a></p>
+                                        <h4>@lang('extracted.notre_contact')</h4>
+                                        <p><a href="tel:0707672957">@lang('extracted.255_07_07_672_957')</a></p>
                                     </div>
                                 </div>
                             </li>
@@ -89,7 +89,7 @@
                                         <img src="{{ asset('assets/images/icon/envelope.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
-                                        <h4>Addresse Email</h4>
+                                        <h4>@lang('extracted.addresse_email')</h4>
                                         <p><a href="mailto:yourmailaddress@gmail.com">direction@excelliumconseils.com</a>
                                         </p>
                                     </div>
@@ -101,9 +101,9 @@
                                         <img src="{{ asset('assets/images/icon/send.svg') }}" alt="icon">
                                     </div>
                                     <div class="content">
-                                        <h4>Website</h4>
+                                        <h4>@lang('extracted.website')</h4>
                                         <p><a
-                                                href="https://web.facebook.com/Excellium.conseils?rdid=XJWbWQrGv2Okb1cm&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F199uiSgsQ7%2F%3F_rdc%3D1%26_rdr#">www.facebook.com/Excellium</a>
+                                                href="https://web.facebook.com/Excellium.conseils?rdid=XJWbWQrGv2Okb1cm&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F199uiSgsQ7%2F%3F_rdc%3D1%26_rdr#">@lang('extracted.wwwfacebookcomexcellium')</a>
                                         </p>
                                     </div>
                                 </div>
@@ -134,8 +134,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="section-title text-center mb-30 wow fadeInUp">
-                        <span class="sub-title">Contactez-nous</span>
-                        <h2>Posez vos questions</h2>
+                        <span class="sub-title">@lang('extracted.contactez_nous')</span>
+                        <h2>@lang('extracted.posez_vos_questions')</h2>
                     </div>
                 </div>
             </div>
@@ -171,7 +171,7 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group text-center">
-                                <button class="theme-btn style-one">Envoyer votre message</button>
+                                <button class="theme-btn style-one">@lang('extracted.envoyer_votre_message')</button>
                             </div>
                         </div>
                     </div>

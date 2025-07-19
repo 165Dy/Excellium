@@ -162,17 +162,17 @@
                                 <div class="text-center">
                                     <i class="fa fa-file fs-6 d-block mb-2"></i>
                                     <h4 class="mb-0 fw-semibold lh-1">938</h4>
-                                    <p class="mb-0 fs-4">Posts</p>
+                                    <p class="mb-0 fs-4">@lang('extracted.posts')</p>
                                 </div>
                                 <div class="text-center">
                                     <i class="fa fa-user fs-6 d-block mb-2"></i>
-                                    <h4 class="mb-0 fw-semibold lh-1">3,586</h4>
-                                    <p class="mb-0 fs-4">Followers</p>
+                                    <h4 class="mb-0 fw-semibold lh-1">@lang('extracted.3586')</h4>
+                                    <p class="mb-0 fs-4">@lang('extracted.followers')</p>
                                 </div>
                                 <div class="text-center">
                                     <i class="fa fa-check fs-6 d-block mb-2"></i>
-                                    <h4 class="mb-0 fw-semibold lh-1">2,659</h4>
-                                    <p class="mb-0 fs-4">Following</p>
+                                    <h4 class="mb-0 fw-semibold lh-1">@lang('extracted.2659')</h4>
+                                    <p class="mb-0 fs-4">@lang('extracted.following')</p>
                                 </div>
                             @elseif (Auth::check() && Auth::user()->account_type == 'fidèle')
                                 <div class="text-center">
@@ -263,7 +263,7 @@
                             id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profil" type="button"
                             role="tab" aria-controls="pills-profil" aria-selected="true">
                             <i class="fa fa-user me-2 fs-6"></i>
-                            <span class="d-none d-md-block">Profil</span>
+                            <span class="d-none d-md-block">@lang('extracted.profil')</span>
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -272,7 +272,7 @@
                             id="pills-password-tab" data-bs-toggle="pill" data-bs-target="#pills-password"
                             type="button" role="tab" aria-controls="pills-password" aria-selected="false">
                             <i class="fa fa-lock me-2 fs-6"></i>
-                            <span class="d-none d-md-block">Mot de passe</span>
+                            <span class="d-none d-md-block">@lang('extracted.mot_de_passe')</span>
                         </button>
                     </li>
 
@@ -282,7 +282,7 @@
                             id="pills-sessions-tab" data-bs-toggle="pill" data-bs-target="#pills-sessions"
                             type="button" role="tab" aria-controls="pills-sessions" aria-selected="false">
                             <i class="fa fa-desktop me-2 fs-6"></i>
-                            <span class="d-none d-md-block">Sessions</span>
+                            <span class="d-none d-md-block">@lang('extracted.sessions')</span>
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -291,7 +291,7 @@
                             id="pills-delete-tab" data-bs-toggle="pill" data-bs-target="#pills-delete"
                             type="button" role="tab" aria-controls="pills-delete" aria-selected="false">
                             <i class="fa fa-trash me-2 fs-6"></i>
-                            <span class="d-none d-md-block">Supprimer le compte</span>
+                            <span class="d-none d-md-block">@lang('extracted.supprimer_le_compte')</span>
                         </button>
                     </li>
                 </ul>

@@ -8,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Admin | Excellium Conseils</title>
+    <title>@lang('extracted.admin_excellium_conseils')</title>
 
     <meta name="description" content="" />
 
@@ -67,6 +67,7 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
     <style>
         /* Animations pour SweetAlert */
@@ -152,6 +153,30 @@
             pointer-events: auto !important;
             opacity: 1 !important;
         }
+
+        .swal2-card {
+            border-radius: 24px !important;
+            box-shadow: 0 6px 32px rgba(80,105,151,0.13);
+            padding-bottom: 0 !important;
+        }
+        .swal2-confirm--primary {
+            background: linear-gradient(90deg,#6C63FF,#3b94fa)!important;
+            border-radius: 18px!important;
+            font-size:1em!important;
+            font-weight:600!important;
+            box-shadow:0 2px 8px #a4bce7a0;
+        }
+        .swal2-popup .swal2-input {
+            border-radius: 10px !important;
+            border: 1px solid #e0e6ed !important;
+            background: #fff !important;
+            font-size: 1em !important;
+            margin-top: 0.2em !important;
+        }
+        .swal2-popup label {
+            margin-bottom: 0.2em;
+            display: block;
+        }
     </style>
 </head>
 
@@ -204,7 +229,7 @@
                                     </svg>
                                 </span>
                             </span>
-                            <span class="app-brand-text demo menu-text fw-semibold ms-1">Materialize</span>
+                            <span class="app-brand-text demo menu-text fw-semibold ms-1">@lang('extracted.materialize')</span>
                         </a>
 
                         <a href="javascript:void(0);"
@@ -236,28 +261,28 @@
                                 <a class="nav-link dropdown-toggle hide-arrow btn btn-icon btn-text-secondary rounded-pill"
                                     id="nav-theme" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <i class="icon-base ri ri-sun-line icon-22px theme-icon-active"></i>
-                                    <span class="d-none ms-2" id="nav-theme-text">Toggle theme</span>
+                                    <span class="d-none ms-2" id="nav-theme-text">@lang('extracted.toggle_theme')</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-theme-text">
                                     <li>
                                         <button type="button" class="dropdown-item align-items-center active"
                                             data-bs-theme-value="light" aria-pressed="false">
                                             <span><i class="icon-base ri ri-sun-line icon-22px me-3"
-                                                    data-icon="sun-line"></i>Light</span>
+                                                    data-icon="sun-line"></i>@lang('extracted.light')</span>
                                         </button>
                                     </li>
                                     <li>
                                         <button type="button" class="dropdown-item align-items-center"
                                             data-bs-theme-value="dark" aria-pressed="true">
                                             <span><i class="icon-base ri ri-moon-clear-line icon-22px me-3"
-                                                    data-icon="moon-clear-line"></i>Dark</span>
+                                                    data-icon="moon-clear-line"></i>@lang('extracted.dark')</span>
                                         </button>
                                     </li>
                                     <li>
                                         <button type="button" class="dropdown-item align-items-center"
                                             data-bs-theme-value="system" aria-pressed="false">
                                             <span><i class="icon-base ri ri-computer-line icon-22px me-3"
-                                                    data-icon="computer-line"></i>System</span>
+                                                    data-icon="computer-line"></i>@lang('extracted.system')</span>
                                         </button>
                                     </li>
                                 </ul>
@@ -274,7 +299,7 @@
                                 <div class="dropdown-menu dropdown-menu-end p-0">
                                     <div class="dropdown-menu-header border-bottom">
                                         <div class="dropdown-header d-flex align-items-center py-3">
-                                            <h6 class="mb-0 me-auto">Shortcuts</h6>
+                                            <h6 class="mb-0 me-auto">@lang('extracted.shortcuts')</h6>
                                             <a href="javascript:void(0)"
                                                 class="btn btn-text-secondary rounded-pill btn-icon dropdown-shortcuts-add text-heading"
                                                 data-bs-toggle="tooltip" data-bs-placement="top"
@@ -290,16 +315,16 @@
                                                     <i
                                                         class="icon-base ri ri-calendar-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-calendar.html" class="stretched-link">Calendar</a>
-                                                <small>Appointments</small>
+                                                <a href="app-calendar.html" class="stretched-link">@lang('extracted.calendar')</a>
+                                                <small>@lang('extracted.appointments')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i
                                                         class="icon-base ri ri-file-text-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
-                                                <small>Manage Accounts</small>
+                                                <a href="app-invoice-list.html" class="stretched-link">@lang('extracted.invoice_app')</a>
+                                                <small>@lang('extracted.manage_accounts')</small>
                                             </div>
                                         </div>
                                         <div class="row row-bordered overflow-visible g-0">
@@ -307,17 +332,16 @@
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i class="icon-base ri ri-user-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-user-list.html" class="stretched-link">User App</a>
-                                                <small>Manage Users</small>
+                                                <a href="app-user-list.html" class="stretched-link">@lang('extracted.user_app')</a>
+                                                <small>@lang('extracted.manage_users')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i
                                                         class="icon-base ri ri-computer-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-access-roles.html" class="stretched-link">Role
-                                                    Management</a>
-                                                <small>Permission</small>
+                                                <a href="app-access-roles.html" class="stretched-link">@lang('extracted.role_management')</a>
+                                                <small>@lang('extracted.permission')</small>
                                             </div>
                                         </div>
                                         <div class="row row-bordered overflow-visible g-0">
@@ -326,8 +350,8 @@
                                                     <i
                                                         class="icon-base ri ri-pie-chart-2-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="#" class="stretched-link">Dashboard</a>
-                                                <small>User Dashboard</small>
+                                                <a href="#" class="stretched-link">@lang('extracted.dashboard')</a>
+                                                <small>@lang('extracted.user_dashboard')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
@@ -335,8 +359,8 @@
                                                         class="icon-base ri ri-settings-4-line icon-26px text-heading"></i>
                                                 </span>
                                                 <a href="pages-account-settings-account.html"
-                                                    class="stretched-link">Setting</a>
-                                                <small>Account Settings</small>
+                                                    class="stretched-link">@lang('extracted.setting')</a>
+                                                <small>@lang('extracted.account_settings')</small>
                                             </div>
                                         </div>
                                         <div class="row row-bordered overflow-visible g-0">
@@ -345,15 +369,15 @@
                                                     <i
                                                         class="icon-base ri ri-question-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="pages-faq.html" class="stretched-link">FAQs</a>
-                                                <small>FAQs & Articles</small>
+                                                <a href="pages-faq.html" class="stretched-link">@lang('extracted.faqs')</a>
+                                                <small>@lang('extracted.faqs_articles')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i class="icon-base ri ri-tv-2-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="modal-examples.html" class="stretched-link">Modals</a>
-                                                <small>Useful Popups</small>
+                                                <a href="modal-examples.html" class="stretched-link">@lang('extracted.modals')</a>
+                                                <small>@lang('extracted.useful_popups')</small>
                                             </div>
                                         </div>
                                     </div>
@@ -373,10 +397,9 @@
                                 <ul class="dropdown-menu dropdown-menu-end py-0">
                                     <li class="dropdown-menu-header border-bottom py-50">
                                         <div class="dropdown-header d-flex align-items-center py-2">
-                                            <h6 class="mb-0 me-auto">Notification</h6>
+                                            <h6 class="mb-0 me-auto">@lang('extracted.notification')</h6>
                                             <div class="d-flex align-items-center h6 mb-0">
-                                                <span class="badge rounded-pill bg-label-primary fs-xsmall me-2">8
-                                                    New</span>
+                                                <span class="badge rounded-pill bg-label-primary fs-xsmall me-2">@lang('extracted.8_new')</span>
                                                 <a href="javascript:void(0)" class="dropdown-notifications-all p-2"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Mark all as read"><i
@@ -396,10 +419,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Congratulation Lettie 🎉</h6>
-                                                        <small class="mb-1 d-block text-body">Won the monthly best
-                                                            seller gold badge</small>
-                                                        <small class="text-body-secondary">1h ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.congratulation_lettie')</h6>
+                                                        <small class="mb-1 d-block text-body">@lang('extracted.won_the_monthly_best_seller_gold_badge')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -417,14 +439,13 @@
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar">
                                                             <span
-                                                                class="avatar-initial rounded-circle bg-label-danger">CF</span>
+                                                                class="avatar-initial rounded-circle bg-label-danger">@lang('extracted.cf')</span>
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Charles Franklin</h6>
-                                                        <small class="mb-1 d-block text-body">Accepted your
-                                                            connection</small>
-                                                        <small class="text-body-secondary">12hr ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.charles_franklin')</h6>
+                                                        <small class="mb-1 d-block text-body">@lang('extracted.accepted_your_connection')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.12hr_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -446,10 +467,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">New Message ✉️</h6>
-                                                        <small class="mb-1 d-block text-body">You have new message from
-                                                            Natalie</small>
-                                                        <small class="text-body-secondary">1h ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.new_message')</h6>
+                                                        <small class="mb-1 d-block text-body">@lang('extracted.you_have_new_message_from_natalie')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -472,10 +492,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Whoo! You have new order 🛒</h6>
-                                                        <small class="mb-1 d-block text-body">ACME Inc. made new order
-                                                            $1,154</small>
-                                                        <small class="text-body-secondary">1 day ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.whoo_you_have_new_order')</h6>
+                                                        <small class="mb-1 d-block text-body">@lang('extracted.acme_inc_made_new_order_1154')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.1_day_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -497,10 +516,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Application has been approved 🚀</h6>
-                                                        <small class="mb-1 d-block text-body">Your ABC project
-                                                            application has been approved.</small>
-                                                        <small class="text-body-secondary">2 days ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.application_has_been_approved')</h6>
+                                                        <small class="mb-1 d-block text-body">@lang('extracted.your_abc_project_application_has_been_approved')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.2_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -523,10 +541,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Monthly report is generated</h6>
+                                                        <h6 class="small mb-1">@lang('extracted.monthly_report_is_generated')</h6>
                                                         <small class="mb-1 d-block text-body">July monthly financial
                                                             report is generated </small>
-                                                        <small class="text-body-secondary">3 days ago</small>
+                                                        <small class="text-body-secondary">@lang('extracted.3_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -548,10 +566,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Send connection request</h6>
-                                                        <small class="mb-1 d-block text-body">Peter sent you connection
-                                                            request</small>
-                                                        <small class="text-body-secondary">4 days ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.send_connection_request')</h6>
+                                                        <small class="mb-1 d-block text-body">@lang('extracted.peter_sent_you_connection_request')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.4_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -573,10 +590,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">New message from Jane</h6>
-                                                        <small class="mb-1 d-block text-body">Your have new message
-                                                            from Jane</small>
-                                                        <small class="text-body-secondary">5 days ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.new_message_from_jane')</h6>
+                                                        <small class="mb-1 d-block text-body">@lang('extracted.your_have_new_message_from_jane')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -599,10 +615,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">CPU is running high</h6>
-                                                        <small class="mb-1 d-block text-body">CPU Utilization Percent
-                                                            is currently at 88.63%,</small>
-                                                        <small class="text-body-secondary">5 days ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.cpu_is_running_high')</h6>
+                                                        <small class="mb-1 d-block text-body">@lang('extracted.cpu_utilization_percent_is_currently_at_8863')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -619,7 +634,7 @@
                                     <li class="border-top">
                                         <div class="d-grid p-4">
                                             <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
-                                                <small class="align-middle">View all notifications</small>
+                                                <small class="align-middle">@lang('extracted.view_all_notifications')</small>
                                             </a>
                                         </div>
                                     </li>
@@ -647,8 +662,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <h6 class="mb-0 small">John Doe</h6>
-                                                    <small class="text-body-secondary">Admin</small>
+                                                    <h6 class="mb-0 small">@lang('extracted.john_doe')</h6>
+                                                    <small class="text-body-secondary">@lang('extracted.admin')</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -659,13 +674,13 @@
                                     <li>
                                         <a class="dropdown-item" href="pages-profile-user.html">
                                             <i class="icon-base ri ri-user-3-line icon-22px me-3"></i><span
-                                                class="align-middle">My Profile</span>
+                                                class="align-middle">@lang('extracted.my_profile')</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="pages-account-settings-account.html">
                                             <i class="icon-base ri ri-settings-4-line icon-22px me-3"></i><span
-                                                class="align-middle">Settings</span>
+                                                class="align-middle">@lang('extracted.settings')</span>
                                         </a>
                                     </li>
                                     <li>
@@ -673,7 +688,7 @@
                                             <span class="d-flex align-items-center align-middle">
                                                 <i
                                                     class="flex-shrink-0 icon-base ri ri-file-text-line icon-22px me-3"></i>
-                                                <span class="flex-grow-1 align-middle">Billing Plan</span>
+                                                <span class="flex-grow-1 align-middle">@lang('extracted.billing_plan')</span>
                                                 <span
                                                     class="flex-shrink-0 badge badge-center rounded-pill bg-danger">4</span>
                                             </span>
@@ -686,20 +701,20 @@
                                         <a class="dropdown-item" href="pages-pricing.html">
                                             <i
                                                 class="icon-base ri ri-money-dollar-circle-line icon-22px me-3"></i><span
-                                                class="align-middle">Pricing</span>
+                                                class="align-middle">@lang('extracted.pricing')</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="pages-faq.html">
                                             <i class="icon-base ri ri-question-line icon-22px me-3"></i><span
-                                                class="align-middle">FAQ</span>
+                                                class="align-middle">@lang('extracted.faq')</span>
                                         </a>
                                     </li>
                                     <li>
                                         <div class="d-grid px-4 pt-2 pb-1">
                                             <a class="btn btn-sm btn-danger d-flex" href="auth-login-cover.html"
                                                 target="_blank">
-                                                <small class="align-middle">Logout</small>
+                                                <small class="align-middle">@lang('extracted.logout')</small>
                                                 <i class="icon-base ri ri-logout-box-r-line ms-2 icon-16px"></i>
                                             </a>
                                         </div>
@@ -726,7 +741,7 @@
                                 <li class="menu-item">
                                     <a href="{{ route('dashboard') }}" class="menu-link ">
                                         <i class="menu-icon icon-base ri ri-home-smile-line"></i>
-                                        <div data-i18n="Dashboards">Dashboards</div>
+                                        <div data-i18n="Dashboards">@lang('extracted.dashboards')</div>
                                     </a>
                                 </li>
 
@@ -734,25 +749,25 @@
                                 <li class="menu-item active">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-mail-open-line"></i>
-                                        <div data-i18n="Apps">Apps</div>
+                                        <div data-i18n="Apps">@lang('extracted.apps')</div>
                                     </a>
                                     <ul class="menu-sub">
                                         <li class="menu-item">
                                             <a href="{{ route('users.index') }}" class="menu-link ">
                                                 <i class="menu-icon icon-base ri ri-user-line"></i>
-                                                <div data-i18n="Users">Users</div>
+                                                <div data-i18n="Users">@lang('extracted.users')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="{{ route('email.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-mail-line"></i>
-                                                <div data-i18n="Email">Email</div>
+                                                <div data-i18n="Email">@lang('extracted.email')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="{{ route('calendrier.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-calendar-line"></i>
-                                                <div data-i18n="Calendrier">Calendrier</div>
+                                                <div data-i18n="Calendrier">@lang('extracted.calendrier')</div>
                                             </a>
                                         </li>
                                     </ul>
@@ -762,7 +777,7 @@
                                 <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-drag-drop-line"></i>
-                                        <div data-i18n="Formation">Formation</div>
+                                        <div data-i18n="Formation">@lang('extracted.formation')</div>
                                     </a>
                                     <ul class="menu-sub">
 
@@ -771,14 +786,14 @@
                                                 data-bs-target="#create_formations" data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
-                                                <div>CREER UNE FORMATION</div>
+                                                <div>@lang('extracted.creer_une_formation')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="#" class="menu-link" data-bs-target="#liste_formations"
                                                 data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
-                                                <div>Voir la liste</div>
+                                                <div>@lang('extracted.voir_la_liste')</div>
                                             </a>
                                         </li>
                                     </ul>
@@ -788,7 +803,7 @@
                                     class="menu-item {{ request()->routeIs('admin.opportunites.*') ? 'active open' : '' }}">
                                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-computer-line"></i>
-                                        <div data-i18n="Opportunités">Opportunités</div>
+                                        <div data-i18n="Opportunités">@lang('extracted.opportunites')</div>
                                         <div class="badge badge-center rounded-pill bg-primary ms-auto"
                                             style="width:10px, height:10px">
                                             {{-- Count active opportunities --}}
@@ -800,21 +815,21 @@
                                             class="menu-item {{ request()->routeIs('opportunites.index') ? 'active' : '' }}">
                                             <a href="{{ route('opportunites.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-list"></i>
-                                                <div data-i18n="Liste des opportunités">Liste des opportunités</div>
+                                                <div data-i18n="Liste des opportunités">@lang('extracted.liste_des_opportunites')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
                                                 data-bs-target="#create_opportunites">
                                                 <i class="menu-icon tf-icons fas fa-plus-circle"></i>
-                                                <div data-i18n="Nouvelle opportunité">Nouvelle opportunité</div>
+                                                <div data-i18n="Nouvelle opportunité">@lang('extracted.nouvelle_opportunite')</div>
                                             </a>
                                         </li>
                                         <li
                                             class="menu-item {{ request()->routeIs('admin.candidatures.*') ? 'active' : '' }}">
                                             <a href="{{ route('opportunites.candidatures.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-users"></i>
-                                                <div data-i18n="Candidatures">Candidatures</div>
+                                                <div data-i18n="Candidatures">@lang('extracted.candidatures')</div>
                                                 <div class="badge badge-center rounded-pill bg-warning ms-auto">
                                                     {{ App\Models\Candidature::where('statut', 'en_attente')->count() }}
                                                 </div>
@@ -822,11 +837,11 @@
                                         </li>
                                     </ul>
                                 </li>
-                                {{-- Divers --}}
+                                <!-- Divers -->
                                 <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-price-tag-line"></i>
-                                        <div data-i18n="Divers">Divers</div>
+                                        <div data-i18n="Divers">@lang('extracted.divers')</div>
                                     </a>
                                     <ul class="menu-sub">
 
@@ -834,28 +849,28 @@
                                             <a href="{{ route('partenaires.index') }}" class="menu-link">
                                                 <i
                                                     class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
-                                                <div>Partenaires</div>
+                                                <div>@lang('extracted.partenaires')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="{{ route('temoignages.index') }}" class="menu-link ">
                                                 <i class="menu-icon icon-base ri ri-kakao-talk-line"></i>
-                                                <div>Temoignages</div>
+                                                <div>@lang('extracted.temoignages')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="{{ route('articles.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-book-open-line"></i>
-                                                <div>Articles</div>
+                                                <div>@lang('extracted.articles')</div>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> 
                                 </li>
                                 <!-- Categories -->
                                 <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-folder-5-line"></i>
-                                        <div data-i18n="Categories">Categories</div>
+                                        <div data-i18n="Categories">@lang('extracted.categories')</div>
                                     </a>
                                     <ul class="menu-sub">
 
@@ -871,9 +886,33 @@
                                             <a href="#" class="menu-link"data-bs-target="#liste_categories"
                                                 data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
-                                                <div>Voir la liste</div>
+                                                <div>@lang('extracted.voir_la_liste')</div>
                                             </a>
+                                        </li>
+                                    </ul>
+                                </li>
 
+                                <!-- Produits -->
+                                <li class="menu-item ">
+                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-folder-5-line"></i>
+                                        <div data-i18n="Produits">@lang('extracted.produits')</div>
+                                    </a>
+                                    <ul class="menu-sub">
+
+                                        <li class="menu-item">
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_produits" data-bs-toggle="modal">
+                                                <i
+                                                    class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                                <div>AJOUTER </div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                        <a href="#" class="menu-link" data-bs-target="#liste_produits" data-bs-toggle="modal">
+                                                <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
+                                                <div>@lang('extracted.voir_la_liste')</div>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -912,7 +951,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6">
-                                        <h4 class="mb-2">Ajouter une Formation</h4>
+                                        <h4 class="mb-2">@lang('extracted.ajouter_une_formation')</h4>
                                     </div>
                                     <!-- Formulaire de création de formation stylisé -->
                                     <form id="formationForm" action="{{ route('formations.store') }}" method="POST"
@@ -922,7 +961,7 @@
                                             <div class="form-floating form-floating-outline">
                                                 <input type="text" id="titre" name="titre"
                                                     class="form-control" placeholder="Titre" required>
-                                                <label for="titre">Titre</label>
+                                                <label for="titre">@lang('extracted.titre')</label>
                                             </div>
                                         </div>
 
@@ -936,57 +975,57 @@
                                                                 {{ $categorie->nom }}</option>
                                                         @endforeach
                                                     @else
-                                                        <option value="">Aucune catégorie disponible</option>
+                                                        <option value="">@lang('extracted.aucune_categorie_disponible')</option>
                                                     @endif
                                                 </select>
-                                                <label for="categorie_id">Catégorie</label>
+                                                <label for="categorie_id">@lang('extracted.categorie')</label>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>
-                                                <label for="programme">Programme</label>
+                                                <label for="programme">@lang('extracted.programme')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="number" step="0.01" id="cout" name="cout"
                                                     class="form-control" placeholder="Coût">
-                                                <label for="cout">Coût</label>
+                                                <label for="cout">@lang('extracted.cout')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="text" id="lieu" name="lieu"
                                                     class="form-control" placeholder="Lieu">
-                                                <label for="lieu">Lieu</label>
+                                                <label for="lieu">@lang('extracted.lieu')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="date" id="date_debut" name="date_debut"
                                                     class="form-control" placeholder="Date de début">
-                                                <label for="date_debut">Date de début</label>
+                                                <label for="date_debut">@lang('extracted.date_de_debut')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="date" id="date_fin" name="date_fin"
                                                     class="form-control" placeholder="Date de fin">
-                                                <label for="date_fin">Date de fin</label>
+                                                <label for="date_fin">@lang('extracted.date_de_fin')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <textarea name="prerequis" id="prerequis" class="form-control" placeholder="Prérequis" style="height: 80px"></textarea>
-                                                <label for="prerequis">Prérequis</label>
+                                                <label for="prerequis">@lang('extracted.prerequis')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <textarea name="bonus" id="bonus" class="form-control" placeholder="Bonus" style="height: 80px"></textarea>
-                                                <label for="bonus">Bonus</label>
+                                                <label for="bonus">@lang('extracted.bonus')</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -994,12 +1033,12 @@
                                                 <input type="file" id="file" name="file"
                                                     class="form-control" accept="image/*,video/*"
                                                     onchange="previewFile(this)">
-                                                <label for="file">Fichier (Image ou Vidéo) - Max 150 MB</label>
+                                                <label for="file">@lang('extracted.fichier_image_ou_video_max_150_mb')</label>
                                             </div>
                                             <div id="file-error" class="mt-2" style="display: none;">
                                                 <div class="alert alert-danger d-flex align-items-center">
                                                     <i class="ri-error-warning-line me-2"></i>
-                                                    <span>La taille du fichier ne doit pas dépasser 150 MB</span>
+                                                    <span>@lang('extracted.la_taille_du_fichier_ne_doit_pas_depasser_150_mb')</span>
                                                 </div>
                                             </div>
                                             <div id="file-preview" class="mt-3 d-flex justify-content-center"
@@ -1052,7 +1091,7 @@
                                             <i class="ri-graduation-cap-line me-2"></i>
                                             LISTE DES FORMATIONS
                                         </h4>
-                                        <p class="text-muted">Gérez toutes vos formations disponibles</p>
+                                        <p class="text-muted">@lang('extracted.gerez_toutes_vos_formations_disponibles')</p>
                                     </div>
 
                                     <div class="card-datatable px-4 pb-4">
@@ -1061,12 +1100,12 @@
                                                 <thead class="table-primary">
                                                     <tr>
                                                         <th class="text-center">#</th>
-                                                        <th>Titre</th>
-                                                        <th>Catégorie</th>
-                                                        <th class="text-center">Coût</th>
-                                                        <th>Lieu</th>
-                                                        <th class="text-center">Dates</th>
-                                                        <th class="text-center">Actions</th>
+                                                        <th>@lang('extracted.titre')</th>
+                                                        <th>@lang('extracted.categorie')</th>
+                                                        <th class="text-center">@lang('extracted.cout')</th>
+                                                        <th>@lang('extracted.lieu')</th>
+                                                        <th class="text-center">@lang('extracted.dates')</th>
+                                                        <th class="text-center">@lang('extracted.actions')</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="table-border-bottom-0">
@@ -1171,7 +1210,7 @@
                                             </div>
                                         @else
                                             <div class="text-muted">
-                                                <small>Aucune formation disponible</small>
+                                                <small>@lang('extracted.aucune_formation_disponible')</small>
                                             </div>
                                         @endif
                                     </div>
@@ -1194,8 +1233,8 @@
                                                 <i class="fas fa-briefcase text-white" style="font-size: 2rem;"></i>
                                             </div>
                                         </div>
-                                        <h4 class="mb-2 text-primary fw-bold">✨ Ajouter une Opportunité</h4>
-                                        <p class="text-muted">Créez une nouvelle offre d'emploi attractive</p>
+                                        <h4 class="mb-2 text-primary fw-bold">@lang('extracted.ajouter_une_opportunite')</h4>
+                                        <p class="text-muted">@lang('extracted.creez_une_nouvelle_offre_demploi_attractive')</p>
                                     </div>
 
                                     <form id="createOpportuniteForm" action="{{ route('admin.opportunites.store') }}"
@@ -1228,12 +1267,12 @@
                                             <div class="form-floating form-floating-outline">
                                                 <select id="type_contrat" name="type_contrat" class="form-select"
                                                     required>
-                                                    <option value="">Sélectionner...</option>
-                                                    <option value="CDI">CDI - Contrat à Durée Indéterminée</option>
-                                                    <option value="CDD">CDD - Contrat à Durée Déterminée</option>
-                                                    <option value="Stage">Stage</option>
-                                                    <option value="Freelance">Freelance</option>
-                                                    <option value="Alternance">Alternance</option>
+                                                    <option value="">@lang('extracted.selectionner')</option>
+                                                    <option value="CDI">@lang('extracted.cdi_contrat_a_duree_indeterminee')</option>
+                                                    <option value="CDD">@lang('extracted.cdd_contrat_a_duree_determinee')</option>
+                                                    <option value="Stage">@lang('extracted.stage')</option>
+                                                    <option value="Freelance">@lang('extracted.freelance')</option>
+                                                    <option value="Alternance">@lang('extracted.alternance')</option>
                                                 </select>
                                                 <label for="type_contrat">
                                                     <i class="fas fa-file-contract me-1"></i>Type de contrat *
@@ -1277,12 +1316,12 @@
                                             <div class="form-floating form-floating-outline">
                                                 <select id="experience_requise" name="experience_requise"
                                                     class="form-select">
-                                                    <option value="">Sélectionner...</option>
-                                                    <option value="Débutant">Débutant accepté</option>
-                                                    <option value="1-2 ans">1-2 ans d'expérience</option>
-                                                    <option value="3-5 ans">3-5 ans d'expérience</option>
-                                                    <option value="5+ ans">5+ ans d'expérience</option>
-                                                    <option value="Senior">Senior (10+ ans)</option>
+                                                    <option value="">@lang('extracted.selectionner')</option>
+                                                    <option value="Débutant">@lang('extracted.debutant_accepte')</option>
+                                                    <option value="1-2 ans">@lang('extracted.1_2_ans_dexperience')</option>
+                                                    <option value="3-5 ans">@lang('extracted.3_5_ans_dexperience')</option>
+                                                    <option value="5+ ans">@lang('extracted.5_ans_dexperience')</option>
+                                                    <option value="Senior">@lang('extracted.senior_10_ans')</option>
                                                 </select>
                                                 <label for="experience_requise">
                                                     <i class="fas fa-user-tie me-1"></i>Expérience requise
@@ -1292,12 +1331,12 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <select id="niveau_etude" name="niveau_etude" class="form-select">
-                                                    <option value="">Sélectionner...</option>
-                                                    <option value="Bac">Baccalauréat</option>
-                                                    <option value="Bac+2">Bac+2 (BTS/DUT)</option>
-                                                    <option value="Bac+3">Bac+3 (Licence)</option>
-                                                    <option value="Bac+5">Bac+5 (Master)</option>
-                                                    <option value="Doctorat">Doctorat</option>
+                                                    <option value="">@lang('extracted.selectionner')</option>
+                                                    <option value="Bac">@lang('extracted.baccalaureat')</option>
+                                                    <option value="Bac+2">@lang('extracted.bac2_btsdut')</option>
+                                                    <option value="Bac+3">@lang('extracted.bac3_licence')</option>
+                                                    <option value="Bac+5">@lang('extracted.bac5_master')</option>
+                                                    <option value="Doctorat">@lang('extracted.doctorat')</option>
                                                 </select>
                                                 <label for="niveau_etude">
                                                     <i class="fas fa-graduation-cap me-1"></i>Niveau d'étude
@@ -1384,9 +1423,8 @@
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <select id="statut" name="statut" class="form-select">
-                                                    <option value="active" selected>✅ Active - Visible pour les
-                                                        candidats</option>
-                                                    <option value="fermee">🔒 Fermée - Plus de candidatures</option>
+                                                    <option value="active" selected>@lang('extracted.active_visible_pour_les_candidats')</option>
+                                                    <option value="fermee">@lang('extracted.fermee_plus_de_candidatures')</option>
                                                 </select>
                                                 <label for="statut">
                                                     <i class="fas fa-toggle-on me-1"></i>Statut de l'offre
@@ -1410,7 +1448,7 @@
                         </div>
                     </div>
 
-                    <!-- Categories User Modal -->
+                    <!-- Categories Modal -->
                     <div class="modal fade" id="create_categories" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                             <div class="modal-content">
@@ -1418,7 +1456,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6">
-                                        <h4 class="mb-2">NOUVELLE CATEGORIE</h4>
+                                        <h4 class="mb-2">@lang('extracted.nouvelle_categorie')</h4>
                                     </div>
                                     <form id="createCategorieForm" class="row g-5" method="POST"
                                         action="{{ route('categories.store') }}">
@@ -1427,14 +1465,14 @@
                                             <div class="form-floating form-floating-outline">
                                                 <input type="text" id="nomCategorie" name="nom"
                                                     class="form-control" placeholder="comptabilité" required />
-                                                <label for="nomCategorie">Nom Catégorie</label>
+                                                <label for="nomCategorie">@lang('extracted.nom_categorie')</label>
                                             </div>
                                         </div>
 
                                         <div class="col-12 text-center">
                                             <button type="reset" class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal" aria-label="Close">Fermer</button>
-                                            <button type="submit" class="btn btn-primary me-3">Valider</button>
+                                                data-bs-dismiss="modal" aria-label="Close">@lang('extracted.fermer')</button>
+                                            <button type="submit" class="btn btn-primary me-3">@lang('extracted.valider')</button>
 
                                         </div>
                                     </form>
@@ -1447,7 +1485,6 @@
                         <div class="content-backdrop fade"></div>
                     </div>
 
-
                     <!-- Categories Liste Modal -->
                     <div class="modal fade" id="liste_categories" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
@@ -1456,15 +1493,15 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6">
-                                        <h4 class="mb-2">LISTE DES CATEGORIES</h4>
+                                        <h4 class="mb-2">@lang('extracted.liste_des_categories')</h4>
                                     </div>
                                     <div class="card-datatable text-nowrap">
                                         <table class="dt-scrollableTable table table-bordered table-responsive">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Nom Categorie</th>
-                                                    <th>Action</th>
+                                                    <th>@lang('extracted.id')</th>
+                                                    <th>@lang('extracted.nom_categorie')</th>
+                                                    <th>@lang('extracted.action')</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="categoriesTableBody">
@@ -1477,7 +1514,7 @@
                                                 <a href="javascript:;" data-bs-target="#create_categories"
                                                     class="" data-bs-toggle="modal" >
                                                     <i class="menu-icon tf-icons fas fa-plus-circle"></i>
-                                                    <div class="btn btn-primary me-3" >Ajouter une Categorie</div>
+                                                    <div class="btn btn-primary me-3" >@lang('extracted.ajouter_une_categorie')</div>
                                                 </a>
                                             </li>
                                         </center>
@@ -1490,6 +1527,99 @@
                         <div class="content-backdrop fade"></div>
                     </div>
 
+                    <!-- Modal Création Produit -->
+                    <div class="modal fade" id="create_produits" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">@lang('extracted.nouveau_produit')</h4>
+                                    </div>
+                                    <form id="createProduitForm" class="row g-5" method="POST" action="{{ route('produits.store') }}">
+                                        @csrf
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="nomProduit" name="nom" class="form-control" placeholder="Nom du produit" required />
+                                                <label for="nomProduit">@lang('extracted.nom_produit')</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <textarea id="descriptionProduit" name="description" class="form-control" placeholder="Description du produit" rows="4"></textarea>
+                                                <label for="descriptionProduit">@lang('extracted.description')</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="slugProduit" name="slug" class="form-control" placeholder="Slug (ex: produit-1)" required />
+                                                <label for="slugProduit">@lang('extracted.slug')</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="categorieProduit" name="categorie_id" class="form-control" required>
+                                                    <option value="">@lang('extracted.selectionnez_une_categorie')</option>
+                                                    @foreach($categories as $categorie)
+                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="categorieProduit">@lang('extracted.categorie')</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="statutProduit" name="statut" class="form-control" required>
+                                                    <option value="actif">@lang('extracted.actif')</option>
+                                                    <option value="inactif">@lang('extracted.inactif')</option>
+                                                </select>
+                                                <label for="statutProduit">@lang('extracted.statut')</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">@lang('extracted.fermer')</button>
+                                            <button type="submit" class="btn btn-primary me-3">@lang('extracted.valider')</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Liste Produits -->
+                    <div class="modal fade" id="liste_produits" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">@lang('extracted.liste_des_produits')</h4>
+                                    </div>
+                                    
+                                    <div class="card">
+                                        <div class="card-datatable table-responsive pt-0">
+                                            <table id="tableProduits" class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>@lang('extracted.nom')</th>
+                                                        <th>@lang('extracted.description')</th>
+                                                        <th>@lang('extracted.categorie')</th>
+                                                        <th>@lang('extracted.statut')</th>
+                                                        <th>@lang('extracted.actions')</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!--/ Fin des Modales -->
                 </div>
@@ -1682,7 +1812,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="text" id="edit_titre" name="titre" class="form-control"
                                         placeholder="Titre de la formation" required>
-                                    <label for="edit_titre">Titre</label>
+                                    <label for="edit_titre">@lang('extracted.titre')</label>
                                 </div>
                             </div>
 
@@ -1691,17 +1821,17 @@
                                 <div class="form-floating form-floating-outline">
                                     <select id="edit_categorie_id" name="categorie_id" class="form-select"
                                         required>
-                                        <option value="">Choisir une catégorie</option>
+                                        <option value="">@lang('extracted.choisir_une_categorie')</option>
                                         @if (isset($categories) && $categories->count() > 0)
                                             @foreach ($categories as $categorie)
                                                 <option value="{{ $categorie->id }}">{{ $categorie->nom }}
                                                 </option>
                                             @endforeach
                                         @else
-                                            <option value="">Aucune catégorie disponible</option>
+                                            <option value="">@lang('extracted.aucune_categorie_disponible')</option>
                                         @endif
                                     </select>
-                                    <label for="edit_categorie_id">Catégorie</label>
+                                    <label for="edit_categorie_id">@lang('extracted.categorie')</label>
                                 </div>
                             </div>
 
@@ -1710,7 +1840,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <textarea id="edit_programme" name="programme" class="form-control" placeholder="Programme de la formation"
                                         rows="3"></textarea>
-                                    <label for="edit_programme">Programme</label>
+                                    <label for="edit_programme">@lang('extracted.programme')</label>
                                 </div>
                             </div>
 
@@ -1719,7 +1849,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="number" id="edit_cout" name="cout" class="form-control"
                                         placeholder="0" min="0" step="0.01">
-                                    <label for="edit_cout">Coût (FCFA)</label>
+                                    <label for="edit_cout">@lang('extracted.cout_fcfa')</label>
                                 </div>
                             </div>
 
@@ -1728,7 +1858,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="text" id="edit_lieu" name="lieu" class="form-control"
                                         placeholder="Lieu de la formation">
-                                    <label for="edit_lieu">Lieu</label>
+                                    <label for="edit_lieu">@lang('extracted.lieu')</label>
                                 </div>
                             </div>
 
@@ -1737,7 +1867,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="date" id="edit_date_debut" name="date_debut"
                                         class="form-control" min="" onchange="updateDateConstraints()">
-                                    <label for="edit_date_debut">Date de début</label>
+                                    <label for="edit_date_debut">@lang('extracted.date_de_debut')</label>
                                 </div>
                             </div>
 
@@ -1746,7 +1876,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="date" id="edit_date_fin" name="date_fin"
                                         class="form-control" min="" onchange="validateDateFin()">
-                                    <label for="edit_date_fin">Date de fin</label>
+                                    <label for="edit_date_fin">@lang('extracted.date_de_fin')</label>
                                 </div>
                             </div>
 
@@ -1754,7 +1884,7 @@
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
                                     <textarea id="edit_prerequis" name="prerequis" class="form-control" placeholder="Prérequis" rows="2"></textarea>
-                                    <label for="edit_prerequis">Prérequis</label>
+                                    <label for="edit_prerequis">@lang('extracted.prerequis')</label>
                                 </div>
                             </div>
 
@@ -1762,17 +1892,16 @@
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
                                     <textarea id="edit_bonus" name="bonus" class="form-control" placeholder="Bonus" rows="2"></textarea>
-                                    <label for="edit_bonus">Bonus</label>
+                                    <label for="edit_bonus">@lang('extracted.bonus')</label>
                                 </div>
                             </div>
 
                             <!-- Fichier -->
                             <div class="col-12">
-                                <label class="form-label">Fichier (Image ou Vidéo) - Optionnel</label>
+                                <label class="form-label">@lang('extracted.fichier_image_ou_video_optionnel')</label>
                                 <input type="file" id="edit_file" name="file" class="form-control"
                                     accept="image/*,video/*" onchange="previewEditFile(this)">
-                                <div class="form-text">Formats acceptés: JPG, PNG, GIF, MP4, AVI, MOV, WMV. Taille
-                                    max: 150MB</div>
+                                <div class="form-text">@lang('extracted.formats_acceptes_jpg_png_gif_mp4_avi_mov_wmv_taille_max_150mb')</div>
                             </div>
 
                             <!-- Prévisualisation -->
@@ -1819,10 +1948,10 @@
                             <div class="mb-4">
                                 <i class="ri-error-warning-line ri-96px text-danger"></i>
                             </div>
-                            <h4 class="mb-2">Confirmer la suppression</h4>
-                            <p class="text-muted mb-2">Êtes-vous sûr de vouloir supprimer cette formation ?</p>
+                            <h4 class="mb-2">@lang('extracted.confirmer_la_suppression')</h4>
+                            <p class="text-muted mb-2">@lang('extracted.etes_vous_sur_de_vouloir_supprimer_cette_formation')</p>
                             <p class="fw-bold text-dark mb-2" id="formation-to-delete"></p>
-                            <p class="text-danger mb-0"><strong>Cette action est irréversible.</strong></p>
+                            <p class="text-danger mb-0"><strong>@lang('extracted.cette_action_est_irreversible')</strong></p>
                         </div>
                         <div class="text-center">
                             <button type="button" class="btn btn-outline-secondary me-3" data-bs-dismiss="modal">
@@ -1856,9 +1985,9 @@
                         {{-- Le contenu sera chargé dynamiquement --}}
                         <div class="text-center p-5">
                             <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Chargement...</span>
+                                <span class="visually-hidden">@lang('extracted.chargement')</span>
                             </div>
-                            <p class="mt-3">Chargement des détails...</p>
+                            <p class="mt-3">@lang('extracted.chargement_des_details')</p>
                         </div>
                     </div>
 
@@ -1874,6 +2003,9 @@
                 </div>
             </div>
         </div>
+
+
+        <!--////////////////////////////////////////////////////////////////////////////////////////////////-->
 
         <!-- Script pour la modale de Modification et de Suppression des formations -->
         <script>
@@ -2160,10 +2292,10 @@
                             <div class="d-flex align-items-center gap-3">
                                 <img src="${imagePath}" alt="Image actuelle" style="max-width: 150px; max-height: 150px; border-radius: 8px; object-fit: cover;">
                                 <div>
-                                    <h6 class="mb-1">Fichier actuel :</h6>
+                                    <h6 class="mb-1">@lang('extracted.fichier_actuel')</h6>
                                     <p class="text-muted mb-1"><strong>${fileName}</strong></p>
-                                    <p class="text-muted mb-0"><small>Type: Image</small></p>
-                                    <small class="text-info">Sélectionnez un nouveau fichier pour le remplacer</small>
+                                    <p class="text-muted mb-0"><small>@lang('extracted.type_image')</small></p>
+                                    <small class="text-info">@lang('extracted.selectionnez_un_nouveau_fichier_pour_le_remplacer')</small>
                                 </div>
                             </div>
                         `;
@@ -2175,10 +2307,10 @@
                                     Votre navigateur ne supporte pas la vidéo.
                                 </video>
                                 <div>
-                                    <h6 class="mb-1">Fichier actuel :</h6>
+                                    <h6 class="mb-1">@lang('extracted.fichier_actuel')</h6>
                                     <p class="text-muted mb-1"><strong>${fileName}</strong></p>
-                                    <p class="text-muted mb-0"><small>Type: Vidéo</small></p>
-                                    <small class="text-info">Sélectionnez un nouveau fichier pour le remplacer</small>
+                                    <p class="text-muted mb-0"><small>@lang('extracted.type_video')</small></p>
+                                    <small class="text-info">@lang('extracted.selectionnez_un_nouveau_fichier_pour_le_remplacer')</small>
                                 </div>
                             </div>
                         `;
@@ -2231,9 +2363,9 @@
                             html: `
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="spinner-border text-primary mb-3" role="status">
-                                        <span class="visually-hidden">Chargement...</span>
+                                        <span class="visually-hidden">@lang('extracted.chargement')</span>
                                     </div>
-                                    <p class="mb-0">Veuillez patienter pendant la modification</p>
+                                    <p class="mb-0">@lang('extracted.veuillez_patienter_pendant_la_modification')</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -2318,7 +2450,7 @@
                                     icon: 'error',
                                     title: 'Erreur de connexion',
                                     html: `
-                                    <p>Problème de connexion ou de format de réponse</p>
+                                    <p>@lang('extracted.probleme_de_connexion_ou_de_format_de_reponse')</p>
                                     <small class="text-muted">Détails: ${error.message}</small>
                                 `,
                                     confirmButtonText: 'OK'
@@ -2904,9 +3036,9 @@
                             html: `
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="spinner-border text-primary mb-3" role="status">
-                                        <span class="visually-hidden">Chargement...</span>
+                                        <span class="visually-hidden">@lang('extracted.chargement')</span>
                                     </div>
-                                    <p class="mb-0">Veuillez patienter pendant la création</p>
+                                    <p class="mb-0">@lang('extracted.veuillez_patienter_pendant_la_creation')</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -2985,7 +3117,7 @@
                                     icon: 'error',
                                     title: 'Erreur de connexion',
                                     html: `
-                                    <p>Problème de connexion ou de format de réponse</p>
+                                    <p>@lang('extracted.probleme_de_connexion_ou_de_format_de_reponse')</p>
                                     <small class="text-muted">Détails: ${error.message}</small>
                                 `,
                                     confirmButtonText: 'Réessayer'
@@ -3174,9 +3306,9 @@
                             html: `
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="spinner-border text-success mb-3" role="status">
-                                        <span class="visually-hidden">Création...</span>
+                                        <span class="visually-hidden">@lang('extracted.creation')</span>
                                     </div>
-                                    <p class="mb-0">Création de la nouvelle formation</p>
+                                    <p class="mb-0">@lang('extracted.creation_de_la_nouvelle_formation')</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -3251,7 +3383,7 @@
                                     icon: 'error',
                                     title: 'Erreur de connexion',
                                     html: `
-                                    <p>Impossible de créer la formation</p>
+                                    <p>@lang('extracted.impossible_de_creer_la_formation')</p>
                                     <small class="text-muted">Erreur: ${error.message}</small>
                                 `,
                                     confirmButtonText: 'Réessayer',
@@ -3296,15 +3428,13 @@
                         <div class="text-center">
                             <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
                             <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
-                            ${isConfirm ? '<p class="text-muted">Le candidat sera notifié de la confirmation.</p>' : '<p class="text-muted">Cette action peut être annulée plus tard.</p>'}
+                            ${isConfirm ? '<p class="text-muted">@lang('extracted.le_candidat_sera_notifie_de_la_confirmation')</p>@lang('extracted.')<p class="text-muted">@lang('extracted.cette_action_peut_etre_annulee_plus_tard')</p>'}
                         </div>
                     `,
                     showCancelButton: true,
                     confirmButtonColor: isConfirm ? '#28a745' : '#dc3545',
                     cancelButtonColor: '#6c757d',
-                    confirmButtonText: isConfirm ? '<i class="fas fa-check me-1"></i>Oui, confirmer' :
-                        '<i class="fas fa-times me-1"></i>Oui, refuser',
-                    cancelButtonText: '<i class="fas fa-arrow-left me-1"></i>Annuler',
+                    confirmButtonText: isConfirm ? '<i class="fas fa-check me-1"></i>@lang('extracted.oui_confirmer')<i class="fas fa-times me-1"></i>@lang('extracted.oui_refuser_cancelbuttontext')<i class="fas fa-arrow-left me-1"></i>Annuler',
                     reverseButtons: true,
                     focusConfirm: false,
                     background: '#ffffff',
@@ -3321,9 +3451,9 @@
                             html: `
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="spinner-border ${isConfirm ? 'text-success' : 'text-danger'} mb-3" role="status">
-                                        <span class="visually-hidden">Chargement...</span>
+                                        <span class="visually-hidden">@lang('extracted.chargement')</span>
                                     </div>
-                                    <p class="mb-0">Mise à jour du statut...</p>
+                                    <p class="mb-0">@lang('extracted.mise_a_jour_du_statut')</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -3358,8 +3488,8 @@
                                             '✅ Inscription refusée',
                                         html: `
                                         <div class="text-center">
-                                            <p>Le statut a été mis à jour avec succès.</p>
-                                            ${isConfirm ? '<p class="text-muted">Le candidat peut maintenant être contacté.</p>' : '<p class="text-muted">Vous pouvez changer d\'avis à tout moment.</p>'}
+                                            <p>@lang('extracted.le_statut_a_ete_mis_a_jour_avec_succes')</p>
+                                            ${isConfirm ? '<p class="text-muted">@lang('extracted.le_candidat_peut_maintenant_etre_contacte')</p>@lang('extracted.')<p class="text-muted">@lang('extracted.vous_pouvez_changer_davis_a_tout_moment')</p>'}
                                         </div>
                                     `,
                                         timer: 3000,
@@ -3385,8 +3515,8 @@
                                     title: '🚫 Erreur de connexion',
                                     html: `
                                     <div class="text-center">
-                                        <p>Impossible de mettre à jour le statut.</p>
-                                        <p class="text-muted">Vérifiez votre connexion et réessayez.</p>
+                                        <p>@lang('extracted.impossible_de_mettre_a_jour_le_statut')</p>
+                                        <p class="text-muted">@lang('extracted.verifiez_votre_connexion_et_reessayez')</p>
                                     </div>
                                 `,
                                     confirmButtonText: '🔄 Réessayer',
@@ -3446,9 +3576,9 @@
                             html: `
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="spinner-border text-primary mb-3" role="status">
-                                        <span class="visually-hidden">Chargement...</span>
+                                        <span class="visually-hidden">@lang('extracted.chargement')</span>
                                     </div>
-                                    <p class="mb-0">Veuillez patienter pendant la modification</p>
+                                    <p class="mb-0">@lang('extracted.veuillez_patienter_pendant_la_modification')</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -3531,7 +3661,7 @@
                                     icon: 'error',
                                     title: 'Erreur de connexion',
                                     html: `
-                                    <p>Problème de connexion ou de format de réponse</p>
+                                    <p>@lang('extracted.probleme_de_connexion_ou_de_format_de_reponse')</p>
                                     <small class="text-muted">Détails: ${error.message}</small>
                                 `,
                                     confirmButtonText: 'OK'
@@ -3557,9 +3687,9 @@
                 contentDiv.innerHTML = `
                     <div class="text-center p-5">
                         <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Chargement...</span>
+                            <span class="visually-hidden">@lang('extracted.chargement')</span>
                         </div>
-                        <p class="mt-3">Chargement des détails...</p>
+                        <p class="mt-3">@lang('extracted.chargement_des_details')</p>
                     </div>
                 `;
 
@@ -3611,36 +3741,36 @@
                         <div class="col-md-6">
                             <div class="card h-100">
                                 <div class="card-header bg-light">
-                                    <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Informations générales</h6>
+                                    <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>@lang('extracted.informations_generales')</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12 mb-3">
-                                            <strong>📝 Description:</strong>
+                                            <strong>@lang('extracted.description')</strong>
                                             <p class="mt-1 text-muted">${formation.programme || 'Aucune description'}</p>
                                         </div>
                                         <div class="col-6 mb-2">
-                                            <strong>📂 Catégorie:</strong><br>
+                                            <strong>@lang('extracted.categorie')</strong><br>
                                             <span class="badge bg-success">${formation.categorie?.nom || 'Non définie'}</span>
                                         </div>
                                         <div class="col-6 mb-2">
-                                            <strong>💰 Coût:</strong><br>
+                                            <strong>@lang('extracted.cout')</strong><br>
                                             <span class="text-primary fw-bold">${formation.cout ? new Intl.NumberFormat('fr-FR').format(formation.cout) + ' FCFA' : 'Gratuit'}</span>
                                         </div>
                                         <div class="col-6 mb-2">
-                                            <strong>📅 Date début:</strong><br>
+                                            <strong>@lang('extracted.date_debut')</strong><br>
                                             <span class="text-info">${formation.date_debut ? new Date(formation.date_debut).toLocaleDateString('fr-FR') : 'À définir'}</span>
                                         </div>
                                         <div class="col-6 mb-2">
-                                            <strong>📅 Date fin:</strong><br>
+                                            <strong>@lang('extracted.date_fin')</strong><br>
                                             <span class="text-info">${formation.date_fin ? new Date(formation.date_fin).toLocaleDateString('fr-FR') : 'À définir'}</span>
                                         </div>
                                         <div class="col-12 mb-2">
-                                            <strong>📍 Lieu:</strong><br>
+                                            <strong>@lang('extracted.lieu')</strong><br>
                                             <span class="text-secondary">${formation.lieu || 'À définir'}</span>
                                         </div>
                                         <div class="col-12">
-                                            <strong>🎯 Prérequis:</strong><br>
+                                            <strong>@lang('extracted.prerequis')</strong><br>
                                             <span class="text-muted">${formation.prerequis || 'Aucun prérequis'}</span>
                                         </div>
                                     </div>
@@ -3652,7 +3782,7 @@
                         <div class="col-md-6">
                             <div class="card h-100">
                                 <div class="card-header bg-light">
-                                    <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Statistiques d'inscription</h6>
+                                    <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>@lang('extracted.statistiques_dinscription')</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="row text-center">
@@ -3661,7 +3791,7 @@
                                                 <div class="card-body p-3">
                                                     <i class="fas fa-users fa-2x mb-2"></i>
                                                     <h4 class="mb-0">${inscriptions.length}</h4>
-                                                    <small>Total inscriptions</small>
+                                                    <small>@lang('extracted.total_inscriptions')</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -3670,7 +3800,7 @@
                                                 <div class="card-body p-3">
                                                     <i class="fas fa-clock fa-2x mb-2"></i>
                                                     <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'en_attente').length}</h4>
-                                                    <small>En attente</small>
+                                                    <small>@lang('extracted.en_attente')</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -3679,7 +3809,7 @@
                                                 <div class="card-body p-3">
                                                     <i class="fas fa-check fa-2x mb-2"></i>
                                                     <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'confirme').length}</h4>
-                                                    <small>Confirmés</small>
+                                                    <small>@lang('extracted.confirmes')</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -3687,10 +3817,9 @@
                                     
                                     ${formation.file_path ? `
                                                             <div class="text-center mt-3">
-                                                                <strong>🎬 Média de présentation:</strong><br>
+                                                                <strong>@lang('extracted.media_de_presentation')</strong><br>
                                                                 ${formation.file_type === 'image' ? 
-                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
-                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">@lang('extracted.')<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
                                             </video>`
                                                                 }
@@ -3718,13 +3847,13 @@
                                                             <thead class="table-light">
                                                                 <tr>
                                                                     <th>#</th>
-                                                                    <th><i class="fas fa-user me-1"></i>Nom complet</th>
-                                                                    <th><i class="fas fa-envelope me-1"></i>Email</th>
-                                                                    <th><i class="fas fa-phone me-1"></i>Téléphone</th>
-                                                                    <th><i class="fas fa-comment me-1"></i>Message</th>
-                                                                    <th><i class="fas fa-clock me-1"></i>Date inscription</th>
-                                                                    <th><i class="fas fa-flag me-1"></i>Statut</th>
-                                                                    <th>Actions</th>
+                                                                    <th><i class="fas fa-user me-1"></i>@lang('extracted.nom_complet')</th>
+                                                                    <th><i class="fas fa-envelope me-1"></i>@lang('extracted.email')</th>
+                                                                    <th><i class="fas fa-phone me-1"></i>@lang('extracted.telephone')</th>
+                                                                    <th><i class="fas fa-comment me-1"></i>@lang('extracted.message')</th>
+                                                                    <th><i class="fas fa-clock me-1"></i>@lang('extracted.date_inscription')</th>
+                                                                    <th><i class="fas fa-flag me-1"></i>@lang('extracted.statut')</th>
+                                                                    <th>@lang('extracted.actions')</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -3745,12 +3874,11 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                ${inscription.telephone ? `<a href="tel:${inscription.telephone}" class="text-decoration-none">${inscription.telephone}</a>` : '<span class="text-muted">Non renseigné</span>'}
+                                                ${inscription.telephone ? `<a href="tel:${inscription.telephone}" class="text-decoration-none">${inscription.telephone}</a>@lang('extracted.')<span class="text-muted">@lang('extracted.non_renseigne')</span>'}
                                             </td>
                                             <td>
                                                 ${inscription.message ? 
-                                                    `<span class="text-truncate d-inline-block" style="max-width: 200px;" title="${inscription.message}">${inscription.message}</span>` : 
-                                                    '<span class="text-muted">Aucun message</span>'
+                                                    `<span class="text-truncate d-inline-block" style="max-width: 200px;" title="${inscription.message}">${inscription.message}</span>@lang('extracted.')<span class="text-muted">@lang('extracted.aucun_message')</span>'
                                                 }
                                             </td>
                                             <td>
@@ -3784,8 +3912,8 @@
                                                     </div>` : `
                                                     <div class="text-center p-5">
                                                         <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                                        <h5 class="text-muted">Aucune inscription pour le moment</h5>
-                                                        <p class="text-muted">Les candidatures apparaîtront ici dès qu'il y en aura.</p>
+                                                        <h5 class="text-muted">@lang('extracted.aucune_inscription_pour_le_moment')</h5>
+                                                        <p class="text-muted">@lang('extracted.les_candidatures_apparaitront_ici_des_quil_y_en_aura')</p>
                                                     </div>`}
                         </div>
                     </div>
@@ -3836,7 +3964,7 @@
                 }
             }
         </script>
-
+ 
         <!-- Script pour la création d'opportunités -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -3925,7 +4053,7 @@
                             title: '⚠️ Formulaire incomplet',
                             html: `
                             <div class="text-center">
-                                <p>Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*).</p>
+                                <p>@lang('extracted.veuillez_remplir_tous_les_champs_obligatoires_marques_dun_asterisque')</p>
                                 <div class="alert alert-light border mt-3">
                                     <small class="text-muted">
                                         <i class="fas fa-lightbulb me-1"></i>
@@ -3934,9 +4062,9 @@
                                 </div>
                             </div>
                         `,
-                        confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
-                        confirmButtonColor: '#ffc107'
-                    });
+                            confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
+                            confirmButtonColor: '#ffc107'
+                        });
                 }
                 
                 return isValid;
@@ -3985,79 +4113,81 @@
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('createCategorieForm');
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('createCategorieForm');
+                if (form) {
+                    form.addEventListener('submit', function (e) {
+                        e.preventDefault();
 
-                    // Animation de chargement
-                    Swal.fire({
-                        title: 'Création en cours...',
-                        allowOutsideClick: false,
-                        didOpen: () => {
-                            Swal.showLoading();
-                        },
-                        preConfirm: () => {
-                            const nom = Swal.getInputValue('nom');
-                            if (!nom) {
-                                Swal.showValidationMessage('Le nom est requis');
+                        // Animation de chargement
+                        Swal.fire({
+                            title: 'Création en cours...',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            },
+                            preConfirm: () => {
+                                const nom = Swal.getInputValue('nom');
+                                if (!nom) {
+                                    Swal.showValidationMessage('Le nom est requis');
+                                }
+                                return nom;
+                            },
+                            didOpen: () => {
+                                setTimeout(() => {
+                                    const input = Swal.getInput();
+                                    if (input) input.focus();
+                                }, 100);
                             }
-                            return nom;
-                        },
-                        didOpen: () => {
-                            setTimeout(() => {
-                                const input = Swal.getInput();
-                                if (input) input.focus();
-                            }, 100);
-                        }
-                    });
+                        });
 
-                    const formData = new FormData(form);
+                        const formData = new FormData(form);
 
-                    fetch(form.action, {
-                        method: 'POST',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                        },
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        Swal.close();
-                        if (data.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Succès',
-                                text: data.message,
-                                confirmButtonText: 'OK'
-                            }).then(() => {
-                                // Optionnel : reset le formulaire ou rafraîchir la liste
-                                form.reset();
-                                // Tu peux aussi recharger dynamiquement la liste ici si besoin
-                            });
-                        } else {
+                        fetch(form.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Succès',
+                                    text: data.message,
+                                    confirmButtonText: 'OK'
+                                }).then(() => {
+                                    // Optionnel : reset le formulaire ou rafraîchir la liste
+                                    form.reset();
+                                    // Tu peux aussi recharger dynamiquement la liste ici si besoin
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    text: data.message || 'Une erreur est survenue.'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            Swal.close();
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Erreur',
-                                text: data.message || 'Une erreur est survenue.'
+                                text: 'Une erreur inattendue est survenue.'
                             });
-                        }
-                    })
-                    .catch(error => {
-                        Swal.close();
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Erreur',
-                            text: 'Une erreur inattendue est survenue.'
                         });
                     });
-                });
-            }
-        });
+                }
+            });
+            
         </script>
 
+        <!-- Scripts pour la gestion des catégories -->
         <script>
             function fetchCategories() {
                 fetch('/admin/categories/list')
@@ -4071,8 +4201,8 @@
                                     <td>${cat.id}</td>
                                     <td>${cat.nom}</td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary" onclick="showEditModal(${cat.id}, '${cat.nom.replace(/'/g, "\\'")}')">✏️</button>
-                                        <button class="btn btn-sm btn-danger" onclick="deleteCategorie(${cat.id})">🗑️</button>
+                                        <button class="btn btn-sm btn-primary" onclick="showEditModal(${cat.id}, '${cat.nom.replace(/'/g, "\\'")}')">@lang('extracted.')</button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteCategorie(${cat.id})">@lang('extracted.')</button>
                                     </td>
                                 </tr>
                             `;
@@ -4177,6 +4307,349 @@
             });
         </script>
 
+       
+        
+        <!-- Scripts pour la gestion des produits -->
+        <script>
+            // Scripts pour la gestion des produits
+            document.addEventListener('DOMContentLoaded', function () {
+                // Gestion de la création de produit
+                const createProduitForm = document.getElementById('createProduitForm');
+                if (createProduitForm) {
+                    createProduitForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        // Afficher une animation de chargement
+                        const loading =Swal.fire({
+                            title: 'Création en cours...',
+                            html: `
+                                <div class="text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">@lang('extracted.chargement')</span>
+                                </div>
+                                <p class="mt-2">@lang('extracted.creation_du_produit')</p>
+                                </div>
+                            `,
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        const loading = Swal.fire({...});
+                        const formData = new FormData(createProduitForm);
+
+                        fetch(createProduitForm.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
+                                const success = Swal.mixin({
+                                    customClass: {
+                                        confirmButton: 'btn btn-success',
+                                        cancelButton: 'btn btn-danger'
+                                    },
+                                    buttonsStyling: false
+                                });
+
+                                success.fire({
+                                    icon: 'success',
+                                    title: 'Succès',
+                                    html: `
+                                        <div class="text-center">
+                                            <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
+                                            <h5 class="mt-3">@lang('extracted.produit_cree')</h5>
+                                            <p class="mb-0">${data.message}</p>
+                                        </div>
+                                    `,
+                                    confirmButtonText: 'OK',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#2196f3'
+                                }).then(() => {
+                                    createProduitForm.reset();
+                                    fetchProduits();
+                                });
+                            } else {
+                                const error = Swal.mixin({
+                                    customClass: {
+                                        confirmButton: 'btn btn-danger'
+                                    },
+                                    buttonsStyling: false
+                                });
+
+                                error.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    html: `
+                                        <div class="text-center">
+                                            <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
+                                            <h5 class="mt-3">@lang('extracted.erreur')</h5>
+                                            <p class="mb-0">${data.message || 'Une erreur est survenue.'}</p>
+                                        </div>
+                                    `,
+                                    confirmButtonText: 'OK',
+                                    confirmButtonColor: '#dc3545'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            loading.close();
+                            const error = Swal.mixin({
+                                customClass: {
+                                    confirmButton: 'btn btn-danger'
+                                },
+                                buttonsStyling: false
+                            });
+
+                            error.fire({
+                                icon: 'error',
+                                title: 'Erreur',
+                                html: `
+                                    <div class="text-center">
+                                        <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
+                                        <h5 class="mt-3">@lang('extracted.erreur_inattendue')</h5>
+                                        <p class="mb-0">@lang('extracted.une_erreur_inattendue_est_survenue')</p>
+                                    </div>
+                                `,
+                                confirmButtonText: 'OK',
+                                confirmButtonColor: '#dc3545'
+                            });
+                        });
+                    });
+                }
+            });
+            
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Initialisation de la DataTable pour la table des produits
+                // Assure-toi que ta table HTML a bien l'id "tableProduits"
+                var table = $('#tableProduits').DataTable({
+                    ajax: '/admin/produits/list',
+                    columns: [
+                        { data: 'nom', title: 'Nom' },
+                        { data: 'description', title: 'Description' },
+                        { data: 'categorie', title: 'Catégorie' },
+                        { 
+                            data: 'statut_label', 
+                            title: 'Statut', 
+                            render: function(data, type, row) {
+                                var couleur = row.statut_color === 'success' ? 'green' : 'red';
+                                return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
+                            }
+                        },
+                        { 
+                            data: 'actions', 
+                            title: 'Actions', 
+                            orderable: false, 
+                            searchable: false 
+                        }
+                    ],
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
+                    }
+                });
+            
+                // Gestion des clics sur les boutons d'action (modification/suppression)
+                // On utilise la délégation d'événement pour gérer les éléments générés dynamiquement
+                document.querySelector('#tableProduits').addEventListener('click', function (e) {
+                    // Bouton Modifier
+                    if (e.target.closest('.btn-edit-produit')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-edit-produit').dataset.id;
+                        // Appelle ta fonction d'ouverture de modale d'édition ici
+                        openEditProduitModal(id);
+                    }
+            
+                    // Bouton Supprimer
+                    if (e.target.closest('.btn-delete-produit')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-delete-produit').dataset.id;
+            
+                        // Confirmation avec SweetAlert2
+                        Swal.fire({
+                            title: 'Supprimer ce produit ?',
+                            text: 'Cette action est irréversible !',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, supprimer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch(`/admin/produits/${id}`, {
+                                    method: 'DELETE',
+                                    headers: {
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                    }
+                                })
+                            .then(res => res.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        Swal.fire('Supprimé !', data.message, 'success');
+                                        table.ajax.reload(); // Rafraîchit la DataTable
+                                    } else {
+                                        Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                    }
+                                })
+                                .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                            }
+                        });
+                    }
+                });
+            
+                // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
+                window.openEditProduitModal = function(id) {
+                    // Récupère les infos du produit via AJAX
+                        fetch(`/admin/produits/${id}`)
+                            .then(res => res.json())
+                            .then(produit => {
+                            Swal.fire({
+                                title: `
+                                    <div style="display:flex;align-items:center;gap:10px;">
+                                        <i class="bi bi-pencil-square" style="font-size:1.8em;color:#6C63FF;"></i>
+                                        <span style="font-size:1.3em;font-weight:600;">@lang('extracted.modifier_le_produit')</span>
+                                    </div>`,
+                                html: `
+                                <div style="background: #eff2f7; border-radius: 18px; box-shadow: 0 4px 14px rgba(41,63,87,0.06); padding: 25px 18px;">
+                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
+                                    <div>
+                                      <label for="swal-nom" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                        <i class="bi bi-cube"></i> Nom du produit <span style="color:#e74c3c;">*</span>
+                                      </label>
+                                      <input id="swal-nom" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Nom" value="${escapeHtml(produit.nom)}">
+                                    </div>
+                                    <div>
+                                      <label for="swal-description" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                        <i class="bi bi-text-left"></i> Description
+                                      </label>
+                                      <input id="swal-description" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Description" value="${_.escape(produit.description || '')}">
+                                    </div>
+                                  </div>
+                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
+                                    <div>
+                                      <label for="swal-slug" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                        <i class="bi bi-link"></i> Slug <span style="color:#e74c3c;">*</span>
+                                      </label>
+                                      <input id="swal-slug" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Slug" value="${_.escape(produit.slug)}">
+                                    </div>
+                                    <div>
+                                      <label for="swal-categorie" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                        <i class="bi bi-collection"></i> Catégorie <span style="color:#e74c3c;">*</span>
+                                      </label>
+                                      <select id="swal-categorie" class="swal2-input" style="width:100%;margin-bottom:0.5em;">
+                                        <option value="">@lang('extracted.selectionnez_une_categorie')</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div style="margin-top:12px;">
+                                    <label for="swal-statut" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
+                                      <i class="bi bi-toggle2-on"></i> Statut
+                                    </label>
+                                    <select id="swal-statut" class="swal2-input" style="width:50%;">
+                                        <option value="actif" ${produit.statut === 'actif' ? 'selected' : ''}>@lang('extracted.actif')</option>
+                                        <option value="inactif" ${produit.statut === 'inactif' ? 'selected' : ''}>@lang('extracted.inactif')</option>
+                                    </select>
+                                  </div>
+                                  <div style="margin-top:10px;font-size:0.95em;color:#888;">
+                                    <span><span style="color:#e74c3c;">*</span> Champs obligatoires</span>
+                                  </div>
+                                </div>
+                                `,
+                                focusConfirm: false,
+                                showCancelButton: true,
+                                confirmButtonText: '<i class="bi bi-save"></i> Enregistrer',
+                                cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
+                                customClass: {
+                                    popup: 'swal2-card',
+                                    confirmButton: 'swal2-confirm--primary'
+                                },
+                                width: 600,
+                                background: "#f9fafe",
+                                scrollbarPadding: false,
+                                preConfirm: () => {
+                                    const nom = document.getElementById('swal-nom').value.trim();
+                                    const description = document.getElementById('swal-description').value.trim();
+                                    const slug = document.getElementById('swal-slug').value.trim();
+                                    const categorie_id = document.getElementById('swal-categorie').value;
+                                    const statut = document.getElementById('swal-statut').value;
+                                    if (!nom || !slug || !categorie_id) {
+                                        Swal.showValidationMessage('Tous les champs obligatoires doivent être remplis');
+                                        return false;
+                                    }
+                                    return { nom, description, slug, categorie_id, statut };
+                                },
+                                didOpen: () => {
+                                    // Charger dynamiquement les catégories
+                                    fetch('/admin/categories/list')
+                                        .then(res => res.json())
+                                        .then(categories => {
+                                            const select = document.getElementById('swal-categorie');
+                                            categories.forEach(cat => {
+                                                const opt = document.createElement('option');
+                                                opt.value = cat.id;
+                                                opt.textContent = cat.nom;
+                                                if (cat.id == produit.categorie_id) opt.selected = true;
+                                                select.appendChild(opt);
+                                            });
+                                        });
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed && result.value) {
+                                    Swal.fire({title: 'Mise à jour...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
+                                    fetch(`/admin/produits/${id}`, {
+                                        method: 'PUT',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                            'X-Requested-With': 'XMLHttpRequest'
+                                        },
+                                        body: JSON.stringify(result.value)
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        Swal.close();
+                                        if (data.success) {
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Succès',
+                                                text: data.message,
+                                                timer: 1800,
+                                                showConfirmButton: false
+                                            });
+                                            $('#tableProduits').DataTable().ajax.reload();
+                                        } else {
+                                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                                        }
+                                    })
+                                    .catch(() => {
+                                        Swal.close();
+                                        Swal.fire('Erreur', 'Erreur réseau', 'error');
+                                    });
+                                }
+                            });
+                        });
+                };
+            });
+        </script>
+
+        <script>
+            function escapeHtml(text) {
+                return text
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+        </script>
 </body>
 
 </html>

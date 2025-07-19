@@ -7,7 +7,7 @@
         <meta name="description" content="Insurance, Health, Agency">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Title ======-->
-        <title>Excellium | Error 404</title>
+        <title>@lang('extracted.excellium_error_404')</title>
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" type="image/png">
         <!--====== Google Fonts ======-->
@@ -50,9 +50,9 @@
                     <div class="col-lg-12">
                         <div class="error-content text-center">
                             <img src="{{asset('assets/images/error-404.svg')}}" alt="404 Error">
-                            <h4>Oops... Page Not Found!</h4>
-                            <p>Please return to the site's homepage, It looks like nothing was found at this location</p>
-                            <a href="{{ route('welcome') }}" class="theme-btn">Back To Home</a>
+                            <h4>@lang('extracted.oops_page_not_found')</h4>
+                            <p>@lang('extracted.please_return_to_the_sites_homepage_it_looks_like_nothing_was_found_at_this_location')</p>
+                            <a href="{{ route('welcome') }}" class="theme-btn">@lang('extracted.back_to_home')</a>
                         </div>
                     </div>
                 </div>

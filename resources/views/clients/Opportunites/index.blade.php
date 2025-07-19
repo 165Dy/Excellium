@@ -13,7 +13,7 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h1 class="page-title">Opportunités</h1>
+                            <h1 class="page-title">@lang('extracted.opportunites')</h1>
                             <p>Lorem voluptatem accusantium dolorem quis its tium totamrem aperiam eaque ipsaquae inventore
                             </p>
 
@@ -37,10 +37,10 @@
                             <div class="col-md-5">
                                 <div class="filter-dropdown float-md-end wow fadeInRight">
                                     <select class="wide" id="typeContratSelect">
-                                        <option value="TOUT">TOUT</option>
-                                        <option value="STAGE">STAGE</option>
-                                        <option value="CDI">CDI</option>
-                                        <option value="CDD">CDD</option>
+                                        <option value="TOUT">@lang('extracted.tout')</option>
+                                        <option value="STAGE">@lang('extracted.stage')</option>
+                                        <option value="CDI">@lang('extracted.cdi')</option>
+                                        <option value="CDD">@lang('extracted.cdd')</option>
                                     </select>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                 @if ($opportunites->isEmpty())
                     <div class="col-12">
                         <div class="alert alert-info text-center">
-                            <strong>Aucune opportunité trouvée.</strong>
+                            <strong>@lang('extracted.aucune_opportunite_trouvee')</strong>
                         </div>
                     </div>
                 @else

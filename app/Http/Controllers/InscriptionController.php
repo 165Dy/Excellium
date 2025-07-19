@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Http;
+
 
 use Mailgun\Mailgun;
+use App\Models\Produit;
+use App\Models\UserProduit;
 
 class InscriptionController extends Controller
 {
@@ -52,36 +53,37 @@ class InscriptionController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function saveServices(Request $request)
+    public function saveProduits(Request $request)
     {
         $request->validate([
             'email' => 'required|email|exists:users,email',
-            'services' => 'required|array|min:1'
+            'produits' => 'required|array|min:1'
         ]);
 
         $user = User::where('email', $request->email)->firstOrFail();
 
-        // Enregistre les services
-        foreach ($request->services as $service) {
-            $user->services()->create(['service' => $service]);
+        // Enregistre les produits sélectionnés
+        foreach ($request->produits as $produitId) {
+            UserProduit::firstOrCreate([
+                'user_id' => $user->id,
+                'produit_id' => $produitId
+            ]);
         }
 
         // Prépare les variables pour le template Mailgun
+        $nomsProduits = Produit::whereIn('id', $request->produits)->pluck('nom')->toArray();
         $variables = [
             'name' => $user->prenom . ' ' . $user->nom,
-            'services' => $request->services,
-            'message' => "Notre équipe reviendra vers vous pour plus d'informations."
+            'produits' => $nomsProduits,
+            'message' => "Notre équipe reviendra vers vous pour plus d'informations sur les produits sélectionnés."
         ];
 
         $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
-
-        // Envoi du mail via l'API Mailgun
-        
-        $result = $mg->messages()->send(env('MAILGUN_DOMAIN'), [
+        $mg->messages()->send(env('MAILGUN_DOMAIN'), [
             'from' => 'contact@excelliumconseils.com',
             'to' => $user->email,
-            'subject' => 'Bienvenue sur Excellium Conseils',
-            'template' => 'excellium_emailwelcome',
+            'subject' => 'Confirmation de votre sélection de produits',
+            'template' => 'excellium_emailproduit', // à adapter selon ton template Mailgun
             'h:X-Mailgun-Variables' => json_encode($variables),
         ]);
 

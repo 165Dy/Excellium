@@ -13,7 +13,7 @@
                         <div class="page-banner-content text-center text-white">
                             <h1 class="page-title">{{ $formations->titre }}</h1>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="{{ route('Formations.index') }}">Formations</a></li>
+                                <li><a href="{{ route('Formations.index') }}">@lang('extracted.formations')</a></li>
                                 <li class="active">{{ $formations->categorie->nom }}</li>
                             </ul>
                         </div>
@@ -52,14 +52,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="meta-item mb-3">
-                                                <strong class="text-warning">📅 Date de début:</strong>
+                                                <strong class="text-warning">@lang('extracted.date_de_debut')</strong>
                                                 <span class="text-light">
                                                     {{ $formations->date_debut ? \Carbon\Carbon::parse($formations->date_debut)->format('d/m/Y') : 'À définir' }}
                                                 </span>
                                             </div>
                                             @if ($formations->date_fin)
                                                 <div class="meta-item mb-3">
-                                                    <strong class="text-warning">📅 Date de fin:</strong>
+                                                    <strong class="text-warning">@lang('extracted.date_de_fin')</strong>
                                                     <span class="text-light">
                                                         {{ \Carbon\Carbon::parse($formations->date_fin)->format('d/m/Y') }}
                                                     </span>
@@ -69,7 +69,7 @@
                                         <div class="col-md-6">
                                             @if ($formations->cout)
                                                 <div class="meta-item mb-3">
-                                                    <strong class="text-warning">💰 Coût:</strong>
+                                                    <strong class="text-warning">@lang('extracted.cout')</strong>
                                                     <span class="text-success fw-bold">
                                                         {{ number_format($formations->cout, 0, ',', ' ') }} FCFA
                                                     </span>
@@ -77,7 +77,7 @@
                                             @endif
                                             @if ($formations->lieu)
                                                 <div class="meta-item mb-3">
-                                                    <strong class="text-warning">📍 Lieu:</strong>
+                                                    <strong class="text-warning">@lang('extracted.lieu')</strong>
                                                     <span class="text-light">{{ $formations->lieu }}</span>
                                                 </div>
                                             @endif
@@ -88,7 +88,7 @@
                                 <div class="entry-content">
                                     {{-- Programme de la formation --}}
                                     @if ($formations->programme)
-                                        <h3 class="text-warning mb-3">📋 Programme de la formation</h3>
+                                        <h3 class="text-warning mb-3">@lang('extracted.programme_de_la_formation')</h3>
                                         <div class="formation-programme mb-4 p-3"
                                             style="background: rgba(255,255,255,0.1); border-radius: 8px;">
                                             <p class="text-light" style="line-height: 1.8;">
@@ -99,7 +99,7 @@
 
                                     {{-- Prérequis --}}
                                     @if ($formations->prerequis)
-                                        <h3 class="text-warning mb-3">✅ Prérequis</h3>
+                                        <h3 class="text-warning mb-3">@lang('extracted.prerequis')</h3>
                                         <div class="formation-prerequis mb-4 p-3"
                                             style="background: rgba(255,193,7,0.1); border-left: 4px solid #ffc107; border-radius: 0 8px 8px 0;">
                                             <p class="text-light" style="line-height: 1.8;">
@@ -110,7 +110,7 @@
 
                                     {{-- Bonus --}}
                                     @if ($formations->bonus)
-                                        <h3 class="text-warning mb-3">🎁 Bonus inclus</h3>
+                                        <h3 class="text-warning mb-3">@lang('extracted.bonus_inclus')</h3>
                                         <div class="formation-bonus mb-4 p-3"
                                             style="background: rgba(40,167,69,0.1); border-left: 4px solid #28a745; border-radius: 0 8px 8px 0;">
                                             <p class="text-light" style="line-height: 1.8;">
@@ -122,9 +122,8 @@
                                     <!--===  Section Contact  ===-->
                                     <div class="formation-cta text-center mt-5 p-4"
                                         style="background: linear-gradient(45deg, #ffc107, #ff8c00); border-radius: 12px;">
-                                        <h4 class="text-dark mb-3">Intéressé par cette formation ?</h4>
-                                        <p class="text-dark mb-3">Contactez-nous pour plus d'informations ou pour vous
-                                            inscrire.</p>
+                                        <h4 class="text-dark mb-3">@lang('extracted.interesse_par_cette_formation')</h4>
+                                        <p class="text-dark mb-3">@lang('extracted.contactez_nous_pour_plus_dinformations_ou_pour_vous_inscrire')</p>
                                         <button type="button" class="btn btn-dark btn-lg" data-bs-toggle="modal"
                                             data-bs-target="#inscriptionModal">
                                             <i class="fas fa-phone me-2"></i>Nous contacter
@@ -159,7 +158,7 @@
                         </div>
                         <!--===  Autres formations  ===-->
                         <div class="sidebar-widget sidebar-post-widget mb-35 wow fadeInDown">
-                            <h4 class="widget-title">Autres Formations<span class="line"></span></h4>
+                            <h4 class="widget-title">@lang('extracted.autres_formations')<span class="line"></span></h4>
                             <ul class="recent-post-list">
                                 @php
                                     $autresFormations = \App\Models\Formation::where('id', '!=', $formations->id)
@@ -202,7 +201,7 @@
                         </div>
                         <!--===  Category Widget  ===-->
                         <div class="sidebar-widget sidebar-category-widget mb-35 wow fadeInDown">
-                            <h4 class="widget-title">Catégories<span class="line"></span></h4>
+                            <h4 class="widget-title">@lang('extracted.categories')<span class="line"></span></h4>
                             <ul class="category-nav">
                                 @foreach ($categories as $categorie)
                                     @php
@@ -223,7 +222,7 @@
                         </div>
 
                         <div class="sidebar-widget sidebar-post-widget mb-35 wow fadeInDown">
-                            <h4 class="widget-title">Contenu qui pourrait vous intéresser??<span class="line"></span>
+                            <h4 class="widget-title">@lang('extracted.contenu_qui_pourrait_vous_interesser')<span class="line"></span>
                             </h4>
                             <ul class="recent-post-list">
                                 @php
@@ -310,18 +309,18 @@
                                         <i class="fas fa-info-circle me-1"></i>Détails de la formation
                                     </h6>
                                     <p class="text-dark mb-1">
-                                        <strong>📅 Date:</strong>
+                                        <strong>@lang('extracted.date')</strong>
                                         {{ $formations->date_debut ? \Carbon\Carbon::parse($formations->date_debut)->format('d/m/Y') : 'À définir' }}
                                         @if ($formations->date_fin)
                                             - {{ \Carbon\Carbon::parse($formations->date_fin)->format('d/m/Y') }}
                                         @endif
                                     </p>
                                     @if ($formations->lieu)
-                                        <p class="text-dark mb-1"><strong>📍 Lieu:</strong> {{ $formations->lieu }}</p>
+                                        <p class="text-dark mb-1"><strong>@lang('extracted.lieu')</strong> {{ $formations->lieu }}</p>
                                     @endif
                                     @if ($formations->cout)
                                         <p class="text-dark mb-0">
-                                            <strong>💰 Coût:</strong>
+                                            <strong>@lang('extracted.cout')</strong>
                                             <span
                                                 class="text-success fw-bold">{{ number_format($formations->cout, 0, ',', ' ') }}
                                                 FCFA</span>
@@ -380,7 +379,7 @@
                                     <input class="form-check-input" type="checkbox" id="acceptConditions" required
                                         style="border: 2px solid #ffc107;">
                                     <label class="form-check-label text-light" for="acceptConditions">
-                                        <strong>J'accepte d'être contacté par Excellium Conseil</strong> concernant cette
+                                        <strong>@lang('extracted.jaccepte_detre_contacte_par_excellium_conseil')</strong> concernant cette
                                         formation et je consens au traitement de mes données personnelles. *
                                     </label>
                                 </div>
@@ -469,9 +468,9 @@
                         html: `
                         <div class="d-flex flex-column align-items-center">
                             <div class="spinner-border text-warning mb-3" role="status">
-                                <span class="visually-hidden">Envoi...</span>
+                                <span class="visually-hidden">@lang('extracted.envoi')</span>
                             </div>
-                            <p class="mb-0">Envoi de votre demande d'inscription</p>
+                            <p class="mb-0">@lang('extracted.envoi_de_votre_demande_dinscription')</p>
                         </div>
                     `,
                         allowOutsideClick: false,
@@ -508,7 +507,7 @@
                                 // Message de succès personnalisé
                                 Swal.fire({
                                     icon: 'success',
-                                    title: '<span class="text-success">✅ Demande envoyée avec succès !</span>',
+                                    title: '<span class="text-success">@lang('extracted.demande_envoyee_avec_succes')</span>',
                                     html: `
                                 <div class="text-center">
                                     <div class="mb-3">
@@ -519,11 +518,11 @@
                                         <strong>Votre demande d'inscription à la formation "${data.inscription ? data.inscription.formation_titre : '{{ $formations->titre }}'}" a été reçue.</strong>
                                     </p>
                                     <div class="alert alert-info mt-3">
-                                        <p class="mb-2"><strong>📞 Prochaines étapes :</strong></p>
+                                        <p class="mb-2"><strong>@lang('extracted.prochaines_etapes')</strong></p>
                                         <ul class="text-start mb-0">
-                                            <li>Notre équipe va examiner votre demande</li>
-                                            <li>Nous vous recontacterons dans les <strong>24-48h</strong></li>
-                                            <li>Vous recevrez les détails de confirmation par email</li>
+                                            <li>@lang('extracted.notre_equipe_va_examiner_votre_demande')</li>
+                                            <li>Nous vous recontacterons dans les <strong>@lang('extracted.24_48h')</strong></li>
+                                            <li>@lang('extracted.vous_recevrez_les_details_de_confirmation_par_email')</li>
                                         </ul>
                                     </div>
                                     <p class="text-muted mt-3">
@@ -579,7 +578,7 @@
 
                                 if (data.errors) {
                                     errorMessage =
-                                        '<div class="text-start"><strong>Veuillez corriger les erreurs suivantes :</strong><ul class="mt-2">';
+                                        '<div class="text-start"><strong>@lang('extracted.veuillez_corriger_les_erreurs_suivantes')</strong><ul class="mt-2">';
                                     for (const field in data.errors) {
                                         errorMessage += `<li>${data.errors[field].join(', ')}</li>`;
                                     }
@@ -605,9 +604,9 @@
                                 title: '🚫 Erreur de connexion',
                                 html: `
                             <div class="text-center">
-                                <p><strong>Impossible d'envoyer votre demande actuellement.</strong></p>
+                                <p><strong>@lang('extracted.impossible_denvoyer_votre_demande_actuellement')</strong></p>
                                 <p class="text-muted">Détails de l'erreur : ${error.message}</p>
-                                <p class="text-muted">Veuillez vérifier votre connexion internet et réessayer.</p>
+                                <p class="text-muted">@lang('extracted.veuillez_verifier_votre_connexion_internet_et_reessayer')</p>
                             </div>
                         `,
                                 confirmButtonText: '🔄 Réessayer',

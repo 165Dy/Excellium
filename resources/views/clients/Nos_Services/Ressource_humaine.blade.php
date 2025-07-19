@@ -16,13 +16,13 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h2 class="page-title">Ressources Humaines</h2>
+                            <h2 class="page-title">@lang('extracted.ressources_humaines')</h2>
                             <p>
                                 Optimisez la gestion de vos ressources humaines grâce à notre expertise.
                             </p>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="index.html">Pages</a></li>
-                                <li class="active">Ressources Humaines</li>
+                                <li><a href="index.html">@lang('extracted.pages')</a></li>
+                                <li class="active">@lang('extracted.ressources_humaines')</li>
                             </ul>
                         </div>
                     </div>
@@ -41,30 +41,21 @@
                             <img src="{{ asset('assets/images/8.jpg') }}" alt="case image">
                         </div> <br>
                         <div class="case-content">
-                            <h3>la Gestion des Ressources Humaines avec nos Solutions</h3>
-                            <p>Nous vous
-                                accompagnons dans le recrutement, la formation et le développement de vos équipes pour
-                                garantir la performance et le bien-être au sein de votre entreprise. Faites confiance à nos
-                                solutions RH sur mesure pour répondre à tous vos besoins. Nos experts en gestion des
-                                ressources humaines vous
-                                aident à mieux structurer et organiser votre équipe, tout en favorisant un environnement de
-                                travail sain et performant. Avec des stratégies de recrutement adaptées et des solutions de
-                                gestion des talents, nous vous accompagnons pour atteindre vos objectifs RH.</p>
+                            <h3>@lang('extracted.la_gestion_des_ressources_humaines_avec_nos_solutions')</h3>
+                            <p>@lang('extracted.nous_vous_accompagnons_dans_le_recrutement_la_formation_et_le_developpement_de_vos_equipes_pour_garantir_la_performance_et_le_bien_etre_au_sein_de_votre_entreprise_faites_confiance_a_nos_solutions_rh_sur_mesure_pour_repondre_a_tous_vos_besoins_nos_experts_en_gestion_des_ressources_humaines_vous_aident_a_mieux_structurer_et_organiser_votre_equipe_tout_en_favorisant_un_environnement_de_travail_sain_et_performant_avec_des_strategies_de_recrutement_adaptees_et_des_solutions_de_gestion_des_talents_nous_vous_accompagnons_pour_atteindre_vos_objectifs_rh')</p>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Optimisation du processus de recrutement</li>
-                                        <li><i class="far fa-check"></i>Formation continue pour vos employés</li>
-                                        <li><i class="far fa-check"></i>Création d'une culture d'entreprise positive</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.optimisation_du_processus_de_recrutement')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.formation_continue_pour_vos_employes')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.creation_dune_culture_dentreprise_positive')</li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-6">
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Gestion efficace des talents et compétences</li>
-                                        <li><i class="far fa-check"></i>Accompagnement personnalisé dans le développement
-                                            des équipes</li>
-                                        <li><i class="far fa-check"></i>Évaluation continue des performances des
-                                            collaborateurs</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.gestion_efficace_des_talents_et_competences')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.accompagnement_personnalise_dans_le_developpement_des_equipes')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.evaluation_continue_des_performances_des_collaborateurs')</li>
                                     </ul>
                                 </div>
                             </div>
@@ -77,7 +68,7 @@
                                             </div>
                                             <div class="content">
                                                 <h2><span class="count">65</span>+</h2>
-                                                <p>Recrutements réussis</p>
+                                                <p>@lang('extracted.recrutements_reussis')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -88,7 +79,7 @@
                                             </div>
                                             <div class="content">
                                                 <h2><span class="count">100</span>+</h2>
-                                                <p>Employés formés</p>
+                                                <p>@lang('extracted.employes_formes')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -99,7 +90,7 @@
                                             </div>
                                             <div class="content">
                                                 <h2><span class="count">200</span>+</h2>
-                                                <p>Clients satisfaits</p>
+                                                <p>@lang('extracted.clients_satisfaits')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -113,16 +104,12 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="content-box mb-50 wow fadeInRight">
-                                        <h3>Stratégies RH Personnalisées pour Chaque Entreprise</h3>
-                                        <p>Nous proposons des stratégies RH sur mesure qui répondent aux besoins spécifiques
-                                            de chaque entreprise. Que ce soit pour la gestion des talents, l'amélioration de
-                                            la culture d'entreprise, ou l'optimisation des processus de recrutement, nous
-                                            mettons en œuvre des solutions adaptées à votre organisation.</p>
+                                        <h3>@lang('extracted.strategies_rh_personnalisees_pour_chaque_entreprise')</h3>
+                                        <p>@lang('extracted.nous_proposons_des_strategies_rh_sur_mesure_qui_repondent_aux_besoins_specifiques_de_chaque_entreprise_que_ce_soit_pour_la_gestion_des_talents_lamelioration_de_la_culture_dentreprise_ou_loptimisation_des_processus_de_recrutement_nous_mettons_en_oeuvre_des_solutions_adaptees_a_votre_organisation')</p>
                                         <ul class="check-list style-one mb-30">
-                                            <li><i class="far fa-check"></i>Accompagnement dans le changement
-                                                organisationnel</li>
-                                            <li><i class="far fa-check"></i>Évaluation des besoins RH spécifiques</li>
-                                            <li><i class="far fa-check"></i>Développement d'une stratégie RH durable</li>
+                                            <li><i class="far fa-check"></i>@lang('extracted.accompagnement_dans_le_changement_organisationnel')</li>
+                                            <li><i class="far fa-check"></i>@lang('extracted.evaluation_des_besoins_rh_specifiques')</li>
+                                            <li><i class="far fa-check"></i>@lang('extracted.developpement_dune_strategie_rh_durable')</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -134,26 +121,26 @@
             </div>
 
             <div class="read-button mb-30 text-center">
-                <a href="{{ route('Formations.index') }}" class="read-more"
-                    style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
+                
 
-                    <svg width="120" height="100" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="32" cy="16" r="6" fill="black" />
-                        <rect x="26" y="24" width="12" height="18" fill="black" />
-                        <circle cx="16" cy="20" r="4" fill="#555">
-                            <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite" />
-                        </circle>
-                        <rect x="12" y="26" width="8" height="12" fill="#555" />
-                        <circle cx="48" cy="20" r="4" fill="#555">
-                            <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite"
-                                begin="0.5s" />
-                        </circle>
-                        <rect x="44" y="26" width="8" height="12" fill="#555" />
-                    </svg>
+                <svg width="120" height="100" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="16" r="6" fill="black" />
+                    <rect x="26" y="24" width="12" height="18" fill="black" />
+                    <circle cx="16" cy="20" r="4" fill="#555">
+                        <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite" />
+                    </circle>
+                    <rect x="12" y="26" width="8" height="12" fill="#555" />
+                    <circle cx="48" cy="20" r="4" fill="#555">
+                        <animate attributeName="cy" values="20;18;20" dur="1s" repeatCount="indefinite"
+                            begin="0.5s" />
+                    </circle>
+                    <rect x="44" y="26" width="8" height="12" fill="#555" />
+                </svg>
 
-                    Voir toutes les Formations a ce sujet
-                </a>
+                Vous souhaitez renforcer votre capital humain ? Remplissez ce formulaire pour échanger sur nos services RH.
+                
 
             </div>
-    </section><!--====== End Case Details Section ======-->
+    </section>
+    <!--====== End Case Details Section ======-->
 @endsection

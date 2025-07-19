@@ -11,10 +11,10 @@
                         <div class="row">
                             <!--=== Page Banner Content ===-->
                             <div class="page-banner-content text-center text-white">
-                                <h1 class="page-title">Team Details</h1>
+                                <h1 class="page-title">@lang('extracted.team_details')</h1>
                                 <ul class="breadcrumb-link text-white">
-                                    <li><a href="index.html">Pages</a></li>
-                                    <li class="active">Team Details</li>
+                                    <li><a href="index.html">@lang('extracted.pages')</a></li>
+                                    <li class="active">@lang('extracted.team_details')</li>
                                 </ul>
                             </div>
                         </div>
@@ -40,11 +40,11 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="member-info mb-50 wow fadeInRight">
-                                <h3>Benjamin R. Parker</h3>
-                                <p class="position">Product Designer</p>
-                                <p>Digital agencies offer businesses a competitive edge by crafting customized strategies that align with specific goals. They leverage market insights to identify target audiences and design campaigns that resonate across various digital platforms. By interpreting data analytics, these agencies refine their strategies, ensuring maximum impact and return on investment.</p>
+                                <h3>@lang('extracted.benjamin_r_parker')</h3>
+                                <p class="position">@lang('extracted.product_designer')</p>
+                                <p>@lang('extracted.digital_agencies_offer_businesses_a_competitive_edge_by_crafting_customized_strategies_that_align_with_specific_goals_they_leverage_market_insights_to_identify_target_audiences_and_design_campaigns_that_resonate_across_various_digital_platforms_by_interpreting_data_analytics_these_agencies_refine_their_strategies_ensuring_maximum_impact_and_return_on_investment')</p>
                                 <div class="member-contact mt-35">
-                                    <h3>Get In Touch</h3>
+                                    <h3>@lang('extracted.get_in_touch')</h3>
                                     <ul>
                                         <li>
                                             <div class="iconic-box style-seven mb-50">
@@ -52,8 +52,8 @@
                                                     <img src="{{ asset('assets/images/icon/call2.png')}}" alt="icon">
                                                 </div>
                                                 <div class="content">
-                                                    <h4>Call Us</h4>
-                                                    <p><a href="tel:+8802838394782">+88012 2390 3829</a></p>
+                                                    <h4>@lang('extracted.call_us')</h4>
+                                                    <p><a href="tel:+8802838394782">@lang('extracted.88012_2390_3829')</a></p>
                                                 </div>
                                             </div>
                                         </li>
@@ -63,7 +63,7 @@
                                                     <img src="{{ asset('assets/images/icon/envelope2.png')}}" alt="icon">
                                                 </div>
                                                 <div class="content">
-                                                    <h4>Email Us</h4>
+                                                    <h4>@lang('extracted.email_us')</h4>
                                                     <p><a href="mailto:yourmailaddress@gmail.com">yourmailaddress@gmail.com</a></p>
                                                 </div>
                                             </div>
@@ -74,8 +74,8 @@
                                                     <img src="{{ asset('assets/images/icon/map2.png')}}" alt="icon">
                                                 </div>
                                                 <div class="content">
-                                                    <h4>Location</h4>
-                                                    <p>Silvermist Stone Meadows, Mythosian Highlands, NY, USA</p>
+                                                    <h4>@lang('extracted.location')</h4>
+                                                    <p>@lang('extracted.silvermist_stone_meadows_mythosian_highlands_ny_usa')</p>
                                                 </div>
                                             </div>
                                         </li>

@@ -44,24 +44,24 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="app-brand-text demo text-heading fw-semibold">Materialize</span>
+                        <span class="app-brand-text demo text-heading fw-semibold">@lang('extracted.materialize')</span>
                     </a>
                 </div>
                 <!-- /Logo -->
                 <div class="card-body mt-1">
-                    <h4 class="mb-1">Adventure starts here 🚀</h4>
-                    <p class="mb-5">Make your app management easy and fun!</p>
+                    <h4 class="mb-1">@lang('extracted.adventure_starts_here')</h4>
+                    <p class="mb-5">@lang('extracted.make_your_app_management_easy_and_fun')</p>
 
                     <form id="formAuthentication" class="mb-5" action="index.html" method="GET">
                         <div class="form-floating form-floating-outline mb-5 form-control-validation">
                             <input type="text" class="form-control" id="username" name="username"
                                 placeholder="Enter your username" autofocus />
-                            <label for="username">Nom d'utilisateur</label>
+                            <label for="username">@lang('extracted.nom_dutilisateur')</label>
                         </div>
                         <div class="form-floating form-floating-outline mb-5 form-control-validation">
                             <input type="text" class="form-control" id="email" name="email"
                                 placeholder="Enter your email" />
-                            <label for="email">Adresse Email</label>
+                            <label for="email">@lang('extracted.adresse_email')</label>
                         </div>
                         <div class="mb-5 form-password-toggle form-control-validation">
                             <div class="input-group input-group-merge">
@@ -69,20 +69,20 @@
                                     <input type="password" id="password" class="form-control" name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                         aria-describedby="password" />
-                                    <label for="password">Mot de passe</label>
+                                    <label for="password">@lang('extracted.mot_de_passe')</label>
                                 </div>
                                 <span class="input-group-text cursor-pointer"><i
                                         class="icon-base ri ri-eye-off-line icon-20px"></i></span>
                             </div>
                         </div>
 
-                        <button class="btn btn-primary d-grid w-100 mb-5">S'inscrire</button>
+                        <button class="btn btn-primary d-grid w-100 mb-5">@lang('extracted.sinscrire')</button>
                     </form>
 
                     <p class="text-center mb-5">
-                        <span>Avez-vous deja un compte?</span>
+                        <span>@lang('extracted.avez_vous_deja_un_compte')</span>
                         <a href="auth-login-basic.html">
-                            <span>Se connecter</span>
+                            <span>@lang('extracted.se_connecter')</span>
                         </a>
                     </p>
 

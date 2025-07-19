@@ -8,7 +8,7 @@
     <meta name="description" content="Insurance, Health, Agency">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--====== Title ======-->
-    <title>Excellium Conseils - Agence</title>
+    <title>@lang('extracted.excellium_conseils_agence')</title>
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
     <!--====== Google Fonts ======-->
@@ -88,7 +88,7 @@
                                                 <path
                                                     d="M4 20v-5h3v5H4zm5-8h3v8h-3v-8zm5-4h3v12h-3V8zm5-4h3v16h-3V4z" />
                                             </svg>
-                                            <i>FLASH INFO</i>
+                                            <i>@lang('extracted.flash_info')</i>
                                         </div>
 
                                         <div class="blocbourse2 Container80 TexAlCenter"
@@ -135,7 +135,8 @@
                                             <li><a
                                                     href="{{ route('Ressources.achat_location') }}">@lang('extracted.achats_location')</a>
                                             </li>
-                                            <li><a href="{{ route('Ressources.Articles') }}">@lang('extracted.articles')</a></li>
+                                            <li><a href="{{ route('Ressources.Articles') }}">@lang('extracted.articles')</a>
+                                            </li>
                                             <li><a
                                                     href="{{ route('Ressources.conseils_actualites') }}">@lang('extracted.conseils_actualites')</a>
                                             </li>
@@ -161,17 +162,18 @@
                                             $locale = app()->getLocale();
                                         @endphp
 
-                                        @if ($locale === 'fr')
-                                            <a href="{{ url('locale/en') }}">
+                                        @if ($locale == 'fr')
+                                            <a href="{{ route('locale.switch', 'en') }}">
                                                 <img src="{{ asset('assets/images/icon/united-kingdom.svg') }}"
                                                     width="20"> English
                                             </a>
-                                        @elseif($locale === 'en')
-                                            <a href="{{ url('locale/fr') }}">
+                                        @elseif ($locale == 'en')
+                                            <a href="{{ route('locale.switch', 'fr') }}">
                                                 <img src="{{ asset('assets/images/icon/france.svg') }}"
                                                     width="20"> Français
                                             </a>
                                         @endif
+                                    
                                     </li>
                                 </ul>
 
@@ -186,7 +188,7 @@
                                         <div class="blocbourse noire Container10"
                                             style="background-color:#0C2B30;padding:1px 22px 2px 22px;">
                                             <div class="EmptyBox10"></div>
-                                            <i>FLASH INFO</i>
+                                            <i>@lang('extracted.flash_info')</i>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
                                                 fill="black" viewBox="0 0 24 24">
                                                 <path d="M3 10v4h3l5 5V5L6 10H3zm13.5 2a2.5 2.5 0 1 0 0-5h-1v5h1z" />
@@ -303,18 +305,18 @@
                         <div class="footer-widget footer-nav-widget mb-25 wow fadeInDown">
                             <div class="row">
                                 <div class="col-md-6 col-12 mb-3">
-                                    <h4 class="footer-title">Explore</h4>
+                                    <h4 class="footer-title">@lang('extracted.explore')</h4>
                                     <ul class="footer-nav">
-                                        <li><a href="#">A propos de nous</a></li>
-                                        <li><a href="#">Notre Equipe</a></li>
+                                        <li><a href="#">@lang('extracted.a_propos_de_nous')</a></li>
+                                        <li><a href="#">@lang('extracted.notre_equipe')</a></li>
                                         <li><a href="#"></a></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-6 col-12 mb-3">
-                                    <h4 class="footer-title">Lien</h4>
+                                    <h4 class="footer-title">@lang('extracted.lien')</h4>
                                     <ul class="footer-nav">
-                                        <li><a href="#">Pricing Plan</a></li>
-                                        <li><a href="#">Notre Objectifs</a></li>
+                                        <li><a href="#">@lang('extracted.pricing_plan')</a></li>
+                                        <li><a href="#">@lang('extracted.notre_objectifs')</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -323,7 +325,7 @@
                     <div class="col-lg-3 col-md-12 col-12 mb-4">
                         <!--=== Footer Widget ===-->
                         <div class="footer-widget contact-info-widget mb-15 wow fadeInUp">
-                            <h4 class="footer-title">Contactez-nous</h4>
+                            <h4 class="footer-title">@lang('extracted.contactez_nous')</h4>
                             <ul>
                                 <li>
                                     <div class="iconic-box style-five mb-25">
@@ -331,7 +333,7 @@
                                             <i class="icon-map"></i>
                                         </div>
                                         <div class="content">
-                                            <p>Abidjan, Yopougon Palais</p>
+                                            <p>@lang('extracted.abidjan_yopougon_palais')</p>
                                         </div>
                                     </div>
                                 </li>
@@ -354,7 +356,7 @@
                                             <i class="icon-phone"></i>
                                         </div>
                                         <div class="content">
-                                            <p><a href="tel:(+225)0707672957">(+225) 0707672957</a></p>
+                                            <p><a href="tel:(+225)0707672957">@lang('extracted.225_0707672957')</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -368,7 +370,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright-text text-center">
-                            <p>Copyright &copy;2025, <span>Excellium Conseils</span> All Rights Reserved</p>
+                            <p>Copyright &copy;2025, <span>@lang('extracted.excellium_conseils')</span> All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
