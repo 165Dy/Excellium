@@ -13,12 +13,12 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h2 class="page-title">Commerce Generale</h2>
+                            <h2 class="page-title">@lang('extracted.commerce_generale')</h2>
                             <p>Lorem voluptatem accusantium dolorem quis its tium totamrem aperiam eaque ipsaquae inventore
                             </p>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="index.html">Pages</a></li>
-                                <li class="active">Articles</li>
+                                <li><a href="index.html">@lang('extracted.pages')</a></li>
+                                <li class="active">@lang('extracted.articles')</li>
                             </ul>
                         </div>
                     </div>
@@ -35,16 +35,15 @@
                         <div class="post-thumbnail">
                             <img src="{{asset('assets/images/blog/blog-6.jpg')}}" alt="Post Image">
                             <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
+                                <li><a href="#">@lang('extracted.marketing')</a></li>
                             </ul>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
+                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>@lang('extracted.by_admin')</a>
+                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>@lang('extracted.25_sep_2023')</a>
                             </div>
-                            <h4 class="title"><a href="blog-details.html">Reflect Your Brilliance with
-                                    Business Captivating</a></h4>
+                            <h4 class="title"><a href="blog-details.html">@lang('extracted.reflect_your_brilliance_with_business_captivating')</a></h4>
                         </div>
                     </div>
                 </div>
@@ -53,15 +52,15 @@
                         <div class="post-thumbnail">
                             <img src="{{asset('assets/images/blog/blog-7.jpg')}}" alt="Post Image">
                             <ul class="post-categories">
-                                <li><a href="#">Business</a></li>
+                                <li><a href="#">@lang('extracted.business')</a></li>
                             </ul>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
+                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>@lang('extracted.by_admin')</a>
+                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>@lang('extracted.25_sep_2023')</a>
                             </div>
-                            <h4 class="title"><a href="blog-details.html">Let’s the Wave of Cleint’s Splash You</a></h4>
+                            <h4 class="title"><a href="blog-details.html">@lang('extracted.lets_the_wave_of_cleints_splash_you')</a></h4>
                         </div>
                     </div>
                 </div>
@@ -70,15 +69,15 @@
                         <div class="post-thumbnail">
                             <img src="{{asset('assets/images/blog/blog-8.jpg')}}" alt="Post Image">
                             <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
+                                <li><a href="#">@lang('extracted.marketing')</a></li>
                             </ul>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
+                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>@lang('extracted.by_admin')</a>
+                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>@lang('extracted.25_sep_2023')</a>
                             </div>
-                            <h4 class="title"><a href="blog-details.html">Sharing you and your company with the world</a>
+                            <h4 class="title"><a href="blog-details.html">@lang('extracted.sharing_you_and_your_company_with_the_world')</a>
                             </h4>
                         </div>
                     </div>
@@ -88,15 +87,15 @@
                         <div class="post-thumbnail">
                             <img src="{{asset('assets/images/blog/blog-9.jpg')}}" alt="Post Image">
                             <ul class="post-categories">
-                                <li><a href="#">Business</a></li>
+                                <li><a href="#">@lang('extracted.business')</a></li>
                             </ul>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
+                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>@lang('extracted.by_admin')</a>
+                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>@lang('extracted.25_sep_2023')</a>
                             </div>
-                            <h4 class="title"><a href="blog-details.html">The Breeding Ground for Breakthrough Ideas</a>
+                            <h4 class="title"><a href="blog-details.html">@lang('extracted.the_breeding_ground_for_breakthrough_ideas')</a>
                             </h4>
                         </div>
                     </div>
@@ -106,15 +105,15 @@
                         <div class="post-thumbnail">
                             <img src="{{asset('assets/images/blog/blog-10.jpg')}}" alt="Post Image">
                             <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
+                                <li><a href="#">@lang('extracted.marketing')</a></li>
                             </ul>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
+                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>@lang('extracted.by_admin')</a>
+                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>@lang('extracted.25_sep_2023')</a>
                             </div>
-                            <h4 class="title"><a href="blog-details.html">Unleash Growth with Ingenious Hacks</a></h4>
+                            <h4 class="title"><a href="blog-details.html">@lang('extracted.unleash_growth_with_ingenious_hacks')</a></h4>
                         </div>
                     </div>
                 </div>
@@ -123,15 +122,15 @@
                         <div class="post-thumbnail">
                             <img src="{{asset('assets/images/blog/blog-11.jpg')}}" alt="Post Image">
                             <ul class="post-categories">
-                                <li><a href="#">Business</a></li>
+                                <li><a href="#">@lang('extracted.business')</a></li>
                             </ul>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
+                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>@lang('extracted.by_admin')</a>
+                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>@lang('extracted.25_sep_2023')</a>
                             </div>
-                            <h4 class="title"><a href="blog-details.html">Propel Forward with Data-Driven Marketing</a>
+                            <h4 class="title"><a href="blog-details.html">@lang('extracted.propel_forward_with_data_driven_marketing')</a>
                             </h4>
                         </div>
                     </div>
@@ -141,15 +140,15 @@
                         <div class="post-thumbnail">
                             <img src="{{asset('assets/images/blog/blog-12.jpg')}}" alt="Post Image">
                             <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
+                                <li><a href="#">@lang('extracted.marketing')</a></li>
                             </ul>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
+                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>@lang('extracted.by_admin')</a>
+                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>@lang('extracted.25_sep_2023')</a>
                             </div>
-                            <h4 class="title"><a href="blog-details.html">Maximize ROI with Our Expert Insights</a></h4>
+                            <h4 class="title"><a href="blog-details.html">@lang('extracted.maximize_roi_with_our_expert_insights')</a></h4>
                         </div>
                     </div>
                 </div>
@@ -158,15 +157,15 @@
                         <div class="post-thumbnail">
                             <img src="{{asset('assets/images/blog/blog-13.jpg')}}" alt="Post Image">
                             <ul class="post-categories">
-                                <li><a href="#">Business</a></li>
+                                <li><a href="#">@lang('extracted.business')</a></li>
                             </ul>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
+                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>@lang('extracted.by_admin')</a>
+                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>@lang('extracted.25_sep_2023')</a>
                             </div>
-                            <h4 class="title"><a href="blog-details.html">Build Futures of The Leave Excuses Behind</a>
+                            <h4 class="title"><a href="blog-details.html">@lang('extracted.build_futures_of_the_leave_excuses_behind')</a>
                             </h4>
                         </div>
                     </div>
@@ -176,15 +175,15 @@
                         <div class="post-thumbnail">
                             <img src="{{asset('assets/images/blog/blog-14.jpg')}}" alt="Post Image">
                             <ul class="post-categories">
-                                <li><a href="#">Marketing</a></li>
+                                <li><a href="#">@lang('extracted.marketing')</a></li>
                             </ul>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>By Admin</a>
-                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>25 Sep 2023</a>
+                                <a href="#" class="post-admin"><i class="far fa-user-alt"></i>@lang('extracted.by_admin')</a>
+                                <a href="#" class="post-date"><i class="far fa-calendar-alt"></i>@lang('extracted.25_sep_2023')</a>
                             </div>
-                            <h4 class="title"><a href="blog-details.html">Grow Smarter with The Strategic Marketing</a>
+                            <h4 class="title"><a href="blog-details.html">@lang('extracted.grow_smarter_with_the_strategic_marketing')</a>
                             </h4>
                         </div>
                     </div>

@@ -6,15 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 
-class LocalController extends Controller
+class LocaleController extends Controller
 {
     public function setLocale($lang)
     {
-        if (in_array($lang, ['en', 'fr'])) {
+        if (in_array($lang, ['fr','en'])) {
             App::setLocale($lang);
             Session::put('locale', $lang);
         }
-
         return redirect()->back();
     }
 }

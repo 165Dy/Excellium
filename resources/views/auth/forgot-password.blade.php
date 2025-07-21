@@ -56,13 +56,13 @@
                 </svg>
               </span>
             </span>
-            <span class="app-brand-text demo text-heading fw-semibold">Materialize</span>
+            <span class="app-brand-text demo text-heading fw-semibold">@lang('extracted.materialize')</span>
           </a>
         </div>
         <!-- /Logo -->
         <div class="card-body mt-1">
-          <h4 class="mb-1">Forgot Password? 🔒</h4>
-          <p class="mb-5">Enter your email and we'll send you instructions to reset your password</p>
+          <h4 class="mb-1">@lang('extracted.forgot_password')</h4>
+          <p class="mb-5">@lang('extracted.enter_your_email_and_well_send_you_instructions_to_reset_your_password')</p>
           <form id="formAuthentication" class="mb-5" action="auth-reset-password-basic.html" method="GET">
             <div class="form-floating form-floating-outline mb-5 form-control-validation">
               <input
@@ -72,9 +72,9 @@
                 name="email"
                 placeholder="Enter your email"
                 autofocus />
-              <label>Email</label>
+              <label>@lang('extracted.email')</label>
             </div>
-            <button class="btn btn-primary d-grid w-100 mb-5">Envoyez le lien</button>
+            <button class="btn btn-primary d-grid w-100 mb-5">@lang('extracted.envoyez_le_lien')</button>
           </form>
           <div class="text-center">
             <a href="{{ route('register') }}" class="d-flex align-items-center justify-content-center">

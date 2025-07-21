@@ -16,14 +16,11 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h2 class="page-title">Comptable & Fiscale</h2>
-                            <p>Notre équipe d'experts en comptabilité et fiscalité vous accompagne dans la gestion optimale
-                                de vos finances, tout en vous assurant de respecter les obligations légales. Grâce à des
-                                solutions personnalisées, nous vous aidons à optimiser vos ressources tout en maximisant vos
-                                avantages fiscaux.</p>
+                            <h2 class="page-title">@lang('extracted.comptable_fiscale')</h2>
+                            <p>@lang('extracted.notre_equipe_dexperts_en_comptabilite_et_fiscalite_vous_accompagne_dans_la_gestion_optimale_de_vos_finances_tout_en_vous_assurant_de_respecter_les_obligations_legales_grace_a_des_solutions_personnalisees_nous_vous_aidons_a_optimiser_vos_ressources_tout_en_maximisant_vos_avantages_fiscaux')</p>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="index.html">Pages</a></li>
-                                <li class="active">Comptable & Fiscale</li>
+                                <li><a href="index.html">@lang('extracted.pages')</a></li>
+                                <li class="active">@lang('extracted.comptable_fiscale')</li>
                             </ul>
                         </div>
                     </div>
@@ -43,22 +40,19 @@
                         </div><br>
                         <div class="case-content">
 
-                            <h3>Maximisez votre rentabilité avec une gestion fiscale optimisée</h3>
-                            <p>Notre service d'audit fiscal vous permet d'identifier les meilleures stratégies pour
-                                optimiser vos impôts tout en restant conforme aux exigences légales. Nous vous proposons des
-                                solutions personnalisées qui répondent aux besoins spécifiques de votre entreprise, tout en
-                                vous permettant de profiter des avantages fiscaux disponibles.</p>
+                            <h3>@lang('extracted.maximisez_votre_rentabilite_avec_une_gestion_fiscale_optimisee')</h3>
+                            <p>@lang('extracted.notre_service_daudit_fiscal_vous_permet_didentifier_les_meilleures_strategies_pour_optimiser_vos_impots_tout_en_restant_conforme_aux_exigences_legales_nous_vous_proposons_des_solutions_personnalisees_qui_repondent_aux_besoins_specifiques_de_votre_entreprise_tout_en_vous_permettant_de_profiter_des_avantages_fiscaux_disponibles')</p>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Optimisation de votre déclaration fiscale</li>
-                                        <li><i class="far fa-check"></i>Audit complet de votre situation fiscale</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.optimisation_de_votre_declaration_fiscale')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.audit_complet_de_votre_situation_fiscale')</li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-6">
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Conseils sur les dispositifs fiscaux avantageux</li>
-                                        <li><i class="far fa-check"></i>Suivi personnalisé et adapté à votre activité</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.conseils_sur_les_dispositifs_fiscaux_avantageux')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.suivi_personnalise_et_adapte_a_votre_activite')</li>
                                     </ul>
                                 </div>
                             </div>
@@ -71,7 +65,7 @@
                                             </div>
                                             <div class="content">
                                                 <h2><span class="count">50</span>K</h2>
-                                                <p>Clients Satisfaits</p>
+                                                <p>@lang('extracted.clients_satisfaits')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +76,7 @@
                                             </div>
                                             <div class="content">
                                                 <h2><span class="count">100</span>K</h2>
-                                                <p>Optimisation réalisée</p>
+                                                <p>@lang('extracted.optimisation_realisee')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -92,8 +86,8 @@
                                                 <i class="icon-target-2"></i>
                                             </div>
                                             <div class="content">
-                                                <h2><span class="count">75</span>K+</h2>
-                                                <p>Réductions fiscales obtenues</p>
+                                                <h2><span class="count">75</span>@lang('extracted.k')</h2>
+                                                <p>@lang('extracted.reductions_fiscales_obtenues')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -108,17 +102,12 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="content-box mb-50 wow fadeInRight">
-                                        <h3>Une approche stratégique pour la gestion fiscale</h3>
-                                        <p>Notre équipe d'experts vous guide à travers les différentes étapes pour vous
-                                            assurer une gestion fiscale efficace et optimale. Nous identifions les
-                                            opportunités fiscales qui vous permettent de réduire vos coûts tout en
-                                            respectant la législation en vigueur. Grâce à notre accompagnement, vous gagnez
-                                            en efficacité et en rentabilité.</p>
+                                        <h3>@lang('extracted.une_approche_strategique_pour_la_gestion_fiscale')</h3>
+                                        <p>@lang('extracted.notre_equipe_dexperts_vous_guide_a_travers_les_differentes_etapes_pour_vous_assurer_une_gestion_fiscale_efficace_et_optimale_nous_identifions_les_opportunites_fiscales_qui_vous_permettent_de_reduire_vos_couts_tout_en_respectant_la_legislation_en_vigueur_grace_a_notre_accompagnement_vous_gagnez_en_efficacite_et_en_rentabilite')</p>
                                         <ul class="check-list style-one mb-30">
                                             <li><i class="far fa-check"></i>Conseils pratiques pour optimiser vos finances
                                             </li>
-                                            <li><i class="far fa-check"></i>Suivi et gestion continue de vos obligations
-                                                fiscales</li>
+                                            <li><i class="far fa-check"></i>@lang('extracted.suivi_et_gestion_continue_de_vos_obligations_fiscales')</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -139,7 +128,7 @@
                     <rect x="32" y="20" width="8" height="8" fill="#000" />
                     <rect x="20" y="32" width="8" height="8" fill="#000" />
                     <circle cx="48" cy="48" r="6" stroke="#000" stroke-width="2" />
-                    <text x="45" y="52" font-size="10" fill="black">€</text>
+                    <text x="45" y="52" font-size="10" fill="black">@lang('extracted.eur')</text>
                     <style>
                         text {
                             animation: bounce 1s infinite;

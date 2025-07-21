@@ -16,7 +16,7 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h2 class="page-title">Gestion de la Paie</h2>
+                            <h2 class="page-title">@lang('extracted.gestion_de_la_paie')</h2>
                             <p>
                                 Simplifiez la gestion de vos salaires grâce à notre service professionnel et sécurisé.
                                 Confiez-nous la gestion de la paie de votre entreprise et bénéficiez d’un traitement rapide,
@@ -25,8 +25,8 @@
                                 employés avec une solution fiable et adaptée à vos besoins.
                             </p>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="index.html">Pages</a></li>
-                                <li class="active">Gestion de la Paie</li>
+                                <li><a href="index.html">@lang('extracted.pages')</a></li>
+                                <li class="active">@lang('extracted.gestion_de_la_paie')</li>
                             </ul>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         </div><br>
                         <div class="case-content">
 
-                            <h3>Optimisez la Gestion de la Paie avec Notre Expertise</h3>
+                            <h3>@lang('extracted.optimisez_la_gestion_de_la_paie_avec_notre_expertise')</h3>
                             <p>
                                 Confiez la gestion de la paie de votre entreprise à des experts et concentrez-vous sur le
                                 développement de votre activité.
@@ -58,17 +58,17 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Gestion fiable et conforme à la législation</li>
-                                        <li><i class="far fa-check"></i>Calculs de paie rapides et précis</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.gestion_fiable_et_conforme_a_la_legislation')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.calculs_de_paie_rapides_et_precis')</li>
                                         <li><i class="far fa-check"></i>Assistance dans la gestion des déclarations fiscales
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-6">
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Rapports détaillés pour la gestion RH</li>
-                                        <li><i class="far fa-check"></i>Réduction des risques d'erreurs de paie</li>
-                                        <li><i class="far fa-check"></i>Accès sécurisé aux informations des employés</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.rapports_detailles_pour_la_gestion_rh')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.reduction_des_risques_derreurs_de_paie')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.acces_securise_aux_informations_des_employes')</li>
                                     </ul>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                             </div>
                                             <div class="content">
                                                 <h2><span class="count">150</span>K</h2>
-                                                <p>Salaires traités chaque mois</p>
+                                                <p>@lang('extracted.salaires_traites_chaque_mois')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@
                                             </div>
                                             <div class="content">
                                                 <h2><span class="count">150</span>+</h2>
-                                                <p>Employés payés chaque mois</p>
+                                                <p>@lang('extracted.employes_payes_chaque_mois')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                                             </div>
                                             <div class="content">
                                                 <h2><span class="count">500</span>+</h2>
-                                                <p>Clients satisfaits</p>
+                                                <p>@lang('extracted.clients_satisfaits')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -117,18 +117,12 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="content-box mb-50 wow fadeInRight">
-                                        <h3>Améliorez Votre Gestion de Paie pour un Meilleur Suivi</h3>
-                                        <p>Notre service de gestion de la paie vous offre une solution complète et
-                                            personnalisée, que vous soyez une PME ou une grande entreprise. Nous vous
-                                            garantissons une gestion fluide et conforme de la paie, permettant à vos
-                                            employés de recevoir leur salaire en toute sécurité et dans les délais. De plus,
-                                            nous nous occupons des déclarations fiscales et des cotisations sociales pour
-                                            vous.</p>
+                                        <h3>@lang('extracted.ameliorez_votre_gestion_de_paie_pour_un_meilleur_suivi')</h3>
+                                        <p>@lang('extracted.notre_service_de_gestion_de_la_paie_vous_offre_une_solution_complete_et_personnalisee_que_vous_soyez_une_pme_ou_une_grande_entreprise_nous_vous_garantissons_une_gestion_fluide_et_conforme_de_la_paie_permettant_a_vos_employes_de_recevoir_leur_salaire_en_toute_securite_et_dans_les_delais_de_plus_nous_nous_occupons_des_declarations_fiscales_et_des_cotisations_sociales_pour_vous')</p>
                                         <ul class="check-list style-one mb-30">
-                                            <li><i class="far fa-check"></i>Conformité complète avec les lois fiscales
-                                                locales</li>
-                                            <li><i class="far fa-check"></i>Traitement des salaires sans erreur</li>
-                                            <li><i class="far fa-check"></i>Gain de temps pour votre équipe RH</li>
+                                            <li><i class="far fa-check"></i>@lang('extracted.conformite_complete_avec_les_lois_fiscales_locales')</li>
+                                            <li><i class="far fa-check"></i>@lang('extracted.traitement_des_salaires_sans_erreur')</li>
+                                            <li><i class="far fa-check"></i>@lang('extracted.gain_de_temps_pour_votre_equipe_rh')</li>
                                         </ul>
                                     </div>
                                 </div>

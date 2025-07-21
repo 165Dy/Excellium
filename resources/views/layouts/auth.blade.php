@@ -15,7 +15,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Demo: Login Basic - Pages | Materialize - Bootstrap Dashboard PRO</title>
+    <title>@lang('extracted.demo_login_basic_pages_materialize_bootstrap_dashboard_pro')</title>
 
     <meta name="description" content="" />
 

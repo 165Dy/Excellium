@@ -12,8 +12,8 @@
                         </div>
 
                         <div class="auth-title-section mb-4 text-center">
-                            <h3 class="text-dark fs-24 fw-bold">Bienvenue</h3>
-                            <p class="text-muted fs-16">Réinitialiser votre mot de passe !!.</p>
+                            <h3 class="text-dark fs-24 fw-bold">@lang('extracted.bienvenue')</h3>
+                            <p class="text-muted fs-16">@lang('extracted.reinitialiser_votre_mot_de_passe')</p>
                         </div>
                         <form method="POST" action="{{ route('password.update') }}">
                             @csrf

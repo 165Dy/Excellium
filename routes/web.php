@@ -9,7 +9,7 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OpportuniteController;
-use App\Http\Controllers\LocalController;
+use App\Http\Controllers\LocaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -147,7 +147,7 @@ Route::prefix('admin')->group(function () {
     Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
 
     //CONTACTS
-    Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
+    // Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
     // CALENDRIER
     Route::get('/calendrier/index',[DashboardController::class, 'index_calendrier']  )->name('calendrier.index');
@@ -157,7 +157,6 @@ Route::prefix('admin')->group(function () {
 
     // ENVOI SERVICES
     Route::post('/envoi-services', [InscriptionController::class, 'envoiServices'])->name('envoi.services');
-
    
 });
 
@@ -165,4 +164,8 @@ Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax
 
     
     
+
+
+    // tes routes ici...
+});
 

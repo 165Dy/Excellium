@@ -8,7 +8,7 @@
     <meta name="description" content="Insurance, Health, Agency">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--====== Title ======-->
-    <title>Excellium | Error 500</title>
+    <title>@lang('extracted.excellium_error_500')</title>
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
     <!--====== Google Fonts ======-->
@@ -58,10 +58,9 @@
                 <div class="col-lg-12">
                     <div class="error-content text-center">
                         <img src="{{ asset('assets/images/error-500.svg') }}" alt="Erreur 500">
-                        <h4>Oups... Une erreur est survenue !</h4>
-                        <p>Veuillez retourner à la page d'accueil du site. Il semble qu'une erreur se soit produite à
-                            cet emplacement.</p>
-                        <a href="{{ route('welcome') }}" class="theme-btn">Retour à l'accueil</a>
+                        <h4>@lang('extracted.oups_une_erreur_est_survenue')</h4>
+                        <p>@lang('extracted.veuillez_retourner_a_la_page_daccueil_du_site_il_semble_quune_erreur_se_soit_produite_a_cet_emplacement')</p>
+                        <a href="{{ route('welcome') }}" class="theme-btn">@lang('extracted.retour_a_laccueil')</a>
                     </div>
                 </div>
             </div>

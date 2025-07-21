@@ -63,23 +63,23 @@ class Emploi extends Model
     public function getStatutBadgeAttribute()
     {
         $badges = [
-            'active' => '<span class="badge bg-success">Active</span>',
-            'fermee' => '<span class="badge bg-secondary">Fermée</span>',
-            'pourvue' => '<span class="badge bg-info">Pourvue</span>',
+            'active' => '<span class="badge bg-success">@lang('extracted.active')</span>',
+            'fermee' => '<span class="badge bg-secondary">@lang('extracted.fermee')</span>',
+            'pourvue' => '<span class="badge bg-info">@lang('extracted.pourvue')</span>',
         ];
-        return $badges[$this->statut] ?? '<span class="badge bg-secondary">Inconnue</span>';
+        return $badges[$this->@lang('extracted.statut')<span class="badge bg-secondary">@lang('extracted.inconnue')</span>';
     }
 
     public function getTypeContratBadgeAttribute()
     {
         $badges = [
-            'CDI' => '<span class="badge bg-primary">CDI</span>',
-            'CDD' => '<span class="badge bg-warning">CDD</span>',
-            'Stage' => '<span class="badge bg-info">Stage</span>',
-            'Freelance' => '<span class="badge bg-success">Freelance</span>',
-            'Alternance' => '<span class="badge bg-purple">Alternance</span>',
+            'CDI' => '<span class="badge bg-primary">@lang('extracted.cdi')</span>',
+            'CDD' => '<span class="badge bg-warning">@lang('extracted.cdd')</span>',
+            'Stage' => '<span class="badge bg-info">@lang('extracted.stage')</span>',
+            'Freelance' => '<span class="badge bg-success">@lang('extracted.freelance')</span>',
+            'Alternance' => '<span class="badge bg-purple">@lang('extracted.alternance')</span>',
         ];
-        return $badges[$this->type_contrat] ?? '<span class="badge bg-secondary">Autre</span>';
+        return $badges[$this->@lang('extracted.type_contrat')<span class="badge bg-secondary">@lang('extracted.autre')</span>';
     }
 
     // Méthodes utilitaires
