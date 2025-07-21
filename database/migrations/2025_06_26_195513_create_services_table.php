@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom', 150);
             $table->string('slug')->unique();
+            $table->foreignId('categorie_id')->constrained('categories');
             $table->text('description')->nullable();
             $table->timestamps();
         });

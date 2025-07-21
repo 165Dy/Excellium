@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class UserService extends Model
 {
-    use HasFactory;
-    protected $table = 'user_services';
+    protected $table = 'users_services';
+
     protected $fillable = [
         'user_id',
         'service_id',
@@ -33,10 +32,13 @@ class UserService extends Model
         'prix_indicatif' => 'decimal:2',
     ];
 
-    public function user() {
+    // Relation avec l'utilisateur
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
+    // Relation avec le service
     public function service()
     {
         return $this->belongsTo(Service::class);

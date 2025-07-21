@@ -926,6 +926,30 @@
                                     </ul>
                                 </li>
 
+                                <!-- Services -->
+                                <li class="menu-item ">
+                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-customer-service-2-line"></i>
+                                        <div data-i18n="Services">Services</div>
+                                    </a>
+                                    <ul class="menu-sub">
+
+                                        <li class="menu-item">
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_services" data-bs-toggle="modal">
+                                                <i
+                                                    class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                                <div>AJOUTER </div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                        <a href="#" class="menu-link" data-bs-target="#liste_services" data-bs-toggle="modal">
+                                                <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
+                                                <div>Voir la liste</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
 
 
                             </ul>
@@ -1624,6 +1648,96 @@
                                         </div>
                                     </div>
                                     
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Création Service -->
+                    <div class="modal fade" id="create_services" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">NOUVEAU SERVICE</h4>
+                                    </div>
+                                    <form id="createServiceForm" class="row g-5" method="POST" action="{{ route('services.store') }}">
+                                        @csrf
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="nomService" name="nom" class="form-control" placeholder="Nom du service" required />
+                                                <label for="nomService">Nom Service</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <textarea id="descriptionService" name="description" class="form-control" placeholder="Description du service" rows="4"></textarea>
+                                                <label for="descriptionService">Description</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="slugService" name="slug" class="form-control" placeholder="Slug (ex: service-1)" required />
+                                                <label for="slugService">Slug</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="categorieService" name="categorie_id" class="form-control" required>
+                                                    <option value="">Sélectionnez une catégorie</option>
+                                                    @foreach($categories as $categorie)
+                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="categorieService">Catégorie</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 text-center">
+                                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Fermer</button>
+                                            <button type="submit" class="btn btn-primary me-3">Valider</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Liste Services -->
+                    <div class="modal fade" id="liste_services" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">LISTE DES SERVICES</h4>
+                                    </div>
+                                    <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
+                                        <table class="is-zebra w-full text-left">
+                                          <thead>
+                                            <tr>
+                                              <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">#</th>
+                                              <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Name</th>
+                                              <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Job</th>
+                                              <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Favorite Color</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            @foreach($services as $service)
+                                              <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $service->nom }}</td>
+                                                <td>{{ $service->job ?? '' }}</td>
+                                                <td>{{ $service->favorite_color ?? '' }}</td>
+                                              </tr>
+                                            @endforeach
+                                          </tbody>
+                                        </table>
+                                      </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fermer</button>
                                     </div>
@@ -4322,6 +4436,7 @@
                 fetchCategories();
             });
         </script>
+        <!-- ///////////////////////////////////// -->
 
        
         
@@ -4491,34 +4606,34 @@
                         const id = e.target.closest('.btn-delete-produit').dataset.id;
             
                         // Confirmation avec SweetAlert2
-                        Swal.fire({
+                Swal.fire({
                             title: 'Supprimer ce produit ?',
                             text: 'Cette action est irréversible !',
                             icon: 'warning',
-                            showCancelButton: true,
+                    showCancelButton: true,
                             confirmButtonText: 'Oui, supprimer',
                             cancelButtonText: 'Annuler'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                fetch(`/admin/produits/${id}`, {
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                fetch(`/admin/produits/${id}`, {
                                     method: 'DELETE',
-                                    headers: {
+                    headers: {
                                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                                     }
-                                })
-                            .then(res => res.json())
-                                .then(data => {
-                                    if (data.success) {
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
                                         Swal.fire('Supprimé !', data.message, 'success');
                                         table.ajax.reload(); // Rafraîchit la DataTable
-                                    } else {
+                    } else {
                                         Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
                                     }
                                 })
                                 .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
-                            }
-                        });
                     }
+                });
+            }
                 });
             
                 // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
@@ -4527,7 +4642,7 @@
                         fetch(`/admin/produits/${id}`)
                             .then(res => res.json())
                             .then(produit => {
-                            Swal.fire({
+                Swal.fire({
                                 title: `
                                     <div style="display:flex;align-items:center;gap:10px;">
                                         <i class="bi bi-pencil-square" style="font-size:1.8em;color:#6C63FF;"></i>
@@ -4580,7 +4695,7 @@
                                 </div>
                                 `,
                                 focusConfirm: false,
-                                showCancelButton: true,
+                    showCancelButton: true,
                                 confirmButtonText: '<i class="bi bi-save"></i> Enregistrer',
                                 cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
                                 customClass: {
@@ -4617,22 +4732,22 @@
                                             });
                                         });
                                 }
-                            }).then((result) => {
+                }).then((result) => {
                                 if (result.isConfirmed && result.value) {
                                     Swal.fire({title: 'Mise à jour...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
-                                    fetch(`/admin/produits/${id}`, {
+                        fetch(`/admin/produits/${id}`, {
                                         method: 'PUT',
-                                        headers: {
+                            headers: {
                                             'Content-Type': 'application/json',
                                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                            'X-Requested-With': 'XMLHttpRequest'
+                                'X-Requested-With': 'XMLHttpRequest'
                                         },
                                         body: JSON.stringify(result.value)
-                                    })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        Swal.close();
-                                        if (data.success) {
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
                                             Swal.fire({
                                                 icon: 'success',
                                                 title: 'Succès',
@@ -4641,16 +4756,16 @@
                                                 showConfirmButton: false
                                             });
                                             $('#tableProduits').DataTable().ajax.reload();
-                                        } else {
+                            } else {
                                             Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
-                                        }
+                            }
                                     })
                                     .catch(() => {
                                         Swal.close();
                                         Swal.fire('Erreur', 'Erreur réseau', 'error');
-                                    });
-                                }
-                            });
+                        });
+                    }
+                });
                         });
                 };
             });
@@ -4665,6 +4780,248 @@
                     .replace(/"/g, "&quot;")
                     .replace(/'/g, "&#039;");
             }
+        </script>
+        <!-- ///////////////////////////////////// -->
+
+        <!-- Scripts pour la gestion des services -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Initialisation de la DataTable pour les services
+                var tableServices = $('#tableServices').DataTable({
+                    ajax: {
+                        url: '/admin/services/list',
+                        type: 'GET'
+                    },
+                    columns: [
+                        { data: 'nom' },
+                        { data: 'description' },
+                        { data: 'categorie' },
+                        { 
+                            data: 'actions',
+                            orderable: false,
+                            searchable: false
+                        }
+                    ],
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
+                    }
+                });
+
+                // Gestion de la création de service
+                const createServiceForm = document.getElementById('createServiceForm');
+                if (createServiceForm) {
+                    createServiceForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        Swal.fire({
+                            title: 'Création en cours...',
+                            html: `
+                                <div class="text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Chargement...</span>
+                                </div>
+                                <p class="mt-2">Création du service...</p>
+                                </div>
+                            `,
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        const formData = new FormData(createServiceForm);
+
+                        fetch(createServiceForm.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Succès',
+                                    html: `
+                                        <div class="text-center">
+                                            <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
+                                            <h5 class="mt-3">Service créé !</h5>
+                                            <p class="mb-0">${data.message}</p>
+                                        </div>
+                                    `,
+                                    confirmButtonText: 'OK',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#2196f3'
+                                }).then(() => {
+                                    createServiceForm.reset();
+                                    tableServices.ajax.reload();
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    text: data.message || 'Erreur lors de la création'
+                                });
+                            }
+                        })
+                        .catch(() => {
+                            Swal.close();
+                            Swal.fire('Erreur', 'Erreur réseau', 'error');
+                        });
+                    });
+                }
+
+                // Gestion des clics sur les boutons d'action des services
+                document.querySelector('#tableServices').addEventListener('click', function (e) {
+                    // Bouton Modifier
+                    if (e.target.closest('.btn-edit-service')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-edit-service').dataset.id;
+                        openEditServiceModal(id);
+                    }
+
+                    // Bouton Supprimer
+                    if (e.target.closest('.btn-delete-service')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-delete-service').dataset.id;
+
+                        Swal.fire({
+                            title: 'Supprimer ce service ?',
+                            text: 'Cette action est irréversible !',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, supprimer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch(`/admin/services/${id}`, {
+                                    method: 'DELETE',
+                                    headers: {
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                    }
+                                })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        Swal.fire('Supprimé !', data.message, 'success');
+                                        tableServices.ajax.reload();
+                            } else {
+                                        Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                    }
+                                })
+                                .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                            }
+                        });
+                }
+                });
+
+                // Fonction pour ouvrir la modale d'édition des services
+                window.openEditServiceModal = function(id) {
+                    fetch(`/admin/services/${id}`)
+                            .then(res => res.json())
+                        .then(service => {
+                            Swal.fire({
+                                title: `
+                                    <div style="display:flex;align-items:center;gap:10px;">
+                                        <i class="bi bi-pencil-square" style="font-size:1.8em;color:#6C63FF;"></i>
+                                        <span style="font-size:1.3em;font-weight:600;">Modifier le service</span>
+                                    </div>`,
+                                html: `
+                                <div style="background: #eff2f7; border-radius: 18px; box-shadow: 0 4px 14px rgba(41,63,87,0.06); padding: 25px 18px;">
+                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
+                                    <div>
+                                      <label for="swal-nom" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;"><i class="bi bi-cube"></i> Nom du service <span style="color:#e74c3c;">*</span></label>
+                                      <input id="swal-nom" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Nom" value="${escapeHtml(service.nom)}">
+                                    </div>
+                                    <div>
+                                      <label for="swal-description" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;"><i class="bi bi-text-left"></i> Description</label>
+                                      <input id="swal-description" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Description" value="${escapeHtml(service.description || '')}">
+                                    </div>
+                                  </div>
+                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
+                                    <div>
+                                      <label for="swal-slug" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;"><i class="bi bi-link"></i> Slug <span style="color:#e74c3c;">*</span></label>
+                                      <input id="swal-slug" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Slug" value="${escapeHtml(service.slug)}">
+                                    </div>
+                                    <div>
+                                      <label for="swal-categorie" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;"><i class="bi bi-collection"></i> Catégorie <span style="color:#e74c3c;">*</span></label>
+                                      <select id="swal-categorie" class="swal2-input" style="width:100%;margin-bottom:0.5em;">
+                                        <option value="">Sélectionnez une catégorie</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                </div>`,
+                                showCancelButton: true,
+                                confirmButtonText: '<i class="bi bi-check2"></i> Modifier',
+                                cancelButtonText: '<i class="bi bi-x"></i> Annuler',
+                                confirmButtonColor: '#6C63FF',
+                                cancelButtonColor: '#6c757d',
+                                width: '600px',
+                                preConfirm: () => {
+                                    return {
+                                        nom: document.getElementById('swal-nom').value,
+                                        description: document.getElementById('swal-description').value,
+                                        slug: document.getElementById('swal-slug').value,
+                                        categorie_id: document.getElementById('swal-categorie').value
+                                    };
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    updateService(id, result.value);
+                                }
+                            });
+
+                            // Charger les catégories dans la modale
+                            fetch('/admin/categories/list')
+                            .then(res => res.json())
+                                .then(categories => {
+                                    const select = document.getElementById('swal-categorie');
+                                    categories.forEach(cat => {
+                                        const opt = document.createElement('option');
+                                        opt.value = cat.id;
+                                        opt.textContent = cat.nom;
+                                        if (cat.id == service.categorie_id) opt.selected = true;
+                                        select.appendChild(opt);
+                                    });
+                                });
+                        });
+                };
+
+                // Fonction pour mettre à jour un service
+                function updateService(id, data) {
+                    fetch(`/admin/services/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Succès !',
+                                text: data.message
+                            });
+                            tableServices.ajax.reload();
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur !',
+                                text: data.message
+                            });
+                        }
+                    });
+                }
+            });
         </script>
         <!-- ///////////////////////////////////// -->
 </body>

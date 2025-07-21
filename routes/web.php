@@ -6,6 +6,7 @@ use App\Http\Controllers\formationsController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OpportuniteController;
 use App\Http\Controllers\LocalController;
@@ -137,6 +138,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/produits/{id}', [ProduitController::class, 'show']);
     Route::delete('/produits/{id}', [ProduitController::class, 'destroy']);
 
+    //SERVICES
+    Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+    Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+    Route::get('/services/list', [ServiceController::class, 'list'])->name('services.list');
+    Route::put('/services/{id}', [ServiceController::class, 'update'])->name('services.update');
+    Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+    Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
     //CONTACTS
     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
@@ -152,7 +161,7 @@ Route::prefix('admin')->group(function () {
    
 });
 
-Route::post('/inscription/services', [InscriptionController::class, 'saveServices'])->name('inscription.services');
+Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax'])->name('inscription.services');
 
     
     

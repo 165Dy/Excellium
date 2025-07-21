@@ -620,17 +620,18 @@
                             <label class="form-check-label fw-bold" for="selectAllProduits">Tout sélectionner</label>
                         </div>
                         @php
-                            $chunks = array_chunk($produits->all(), ceil($produits->count() / 2));
+                            $count = max(1, ceil($produits->count() / 2));
+                            $chunks = array_chunk($produits->all(), $count);
                         @endphp
                         <div id="produits-list" class="row">
                             @foreach($chunks as $col)
-                                <div class="col-md-6">
+                            <div class="col-md-6">
                                     @foreach($col as $produit)
-                                        <div class="form-check mb-3">
+                                <div class="form-check mb-3">
                                             <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="{{ $produit['id'] }}" id="produit{{ $produit['id'] }}">
                                             <label class="form-check-label" for="produit{{ $produit['id'] }}">{{ $produit['nom'] }}</label>
-                                        </div>
-                                        <hr>
+                                </div>
+                                <hr>
                                     @endforeach
                                 </div>
                             @endforeach
