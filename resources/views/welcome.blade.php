@@ -1,5 +1,135 @@
 @extends('layouts.master')
 @section('welcome')
+
+    <style>
+        .form-check-label,
+        .modal-title {
+            color: black;
+        }
+
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #choixProduitModal .modal-content {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+            border: 2px solid #FFD22F;
+        }
+
+        #choixProduitModal .modal-header {
+            border-bottom: 1px solid #eee;
+        }
+
+        #choixProduitModal .modal-footer {
+            border-top: 1px solid #eee;
+            background: #fafafa;
+            border-radius: 0 0 18px 18px;
+        }
+
+        #choixProduitModal .form-check-label {
+            font-size: 16px;
+            color: #222;
+        }
+
+        #choixProduitModal hr {
+            margin: 0.5rem 0;
+            border-top: 1px dashed #FFD22F;
+        }
+
+        @media (max-width: 767px) {
+            #choixProduitModal .modal-dialog {
+                max-width: 98vw;
+            }
+
+            #choixProduitModal .modal-content {
+                padding: 0 5px;
+            }
+
+            #choixProduitModal .modal-header img {
+                height: 40px;
+            }
+        }
+
+        #inscriptionModal .modal-content {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+            border: 2px solid #FFD22F;
+        }
+
+        #inscriptionModal .modal-header {
+            border-bottom: 1px solid #eee;
+            background: #FFD22F;
+            border-radius: 18px 18px 0 0;
+        }
+
+        #inscriptionModal .modal-title {
+            font-size: 1.5rem;
+            color: #222;
+            font-weight: bold;
+        }
+
+        #inscriptionModal .form-label {
+            color: #222;
+            font-weight: 500;
+        }
+
+        #inscriptionModal .form-control {
+            border-radius: 8px;
+            border: 1px solid #FFD22F;
+        }
+
+        #inscriptionModal .modal-footer {
+            border-top: 1px solid #eee;
+            background: #fafafa;
+            border-radius: 0 0 18px 18px;
+        }
+
+        @media (max-width: 767px) {
+            #inscriptionModal .modal-dialog {
+                max-width: 98vw;
+            }
+
+            #inscriptionModal .modal-content {
+                padding: 0 5px;
+            }
+        }
+
+        /* Limite la hauteur et ajoute un effet de texte tronqué avec "..." pour les témoignages */
+        .testimonial-content p {
+            max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            /* Limite à 4 lignes, ajuste selon besoin */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-height: 90px;
+            /* Garde une hauteur uniforme même si le texte est court */
+        }
+        .author-info h4 {
+        
+            max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            /* Limite à 4 lignes, ajuste selon besoin */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
     <!--====== Start Header Section ======-->
 
     <section class="hero-section">
@@ -828,136 +958,6 @@
                 }
             });
         });
-    </script>
-
-    <style>
-        .form-check-label,
-        .modal-title {
-            color: black;
-        }
-
-        .pulse {
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.3;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        #choixProduitModal .modal-content {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-            border: 2px solid #FFD22F;
-        }
-
-        #choixProduitModal .modal-header {
-            border-bottom: 1px solid #eee;
-        }
-
-        #choixProduitModal .modal-footer {
-            border-top: 1px solid #eee;
-            background: #fafafa;
-            border-radius: 0 0 18px 18px;
-        }
-
-        #choixProduitModal .form-check-label {
-            font-size: 16px;
-            color: #222;
-        }
-
-        #choixProduitModal hr {
-            margin: 0.5rem 0;
-            border-top: 1px dashed #FFD22F;
-        }
-
-        @media (max-width: 767px) {
-            #choixProduitModal .modal-dialog {
-                max-width: 98vw;
-            }
-
-            #choixProduitModal .modal-content {
-                padding: 0 5px;
-            }
-
-            #choixProduitModal .modal-header img {
-                height: 40px;
-            }
-        }
-
-        #inscriptionModal .modal-content {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-            border: 2px solid #FFD22F;
-        }
-
-        #inscriptionModal .modal-header {
-            border-bottom: 1px solid #eee;
-            background: #FFD22F;
-            border-radius: 18px 18px 0 0;
-        }
-
-        #inscriptionModal .modal-title {
-            font-size: 1.5rem;
-            color: #222;
-            font-weight: bold;
-        }
-
-        #inscriptionModal .form-label {
-            color: #222;
-            font-weight: 500;
-        }
-
-        #inscriptionModal .form-control {
-            border-radius: 8px;
-            border: 1px solid #FFD22F;
-        }
-
-        #inscriptionModal .modal-footer {
-            border-top: 1px solid #eee;
-            background: #fafafa;
-            border-radius: 0 0 18px 18px;
-        }
-
-        @media (max-width: 767px) {
-            #inscriptionModal .modal-dialog {
-                max-width: 98vw;
-            }
-
-            #inscriptionModal .modal-content {
-                padding: 0 5px;
-            }
-        }
-
-        /* Limite la hauteur et ajoute un effet de texte tronqué avec "..." pour les témoignages */
-        .testimonial-content p {
-            max-width: 100%;
-            display: -webkit-box;
-            -webkit-line-clamp: 5;
-            /* Limite à 4 lignes, ajuste selon besoin */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            min-height: 90px;
-            /* Garde une hauteur uniforme même si le texte est court */
-        }
-        .author-info h4 {
-           
-            max-width: 100%;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            /* Limite à 4 lignes, ajuste selon besoin */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    </style>
+    </script> 
 
 @endsection

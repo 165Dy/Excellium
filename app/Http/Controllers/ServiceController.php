@@ -37,7 +37,7 @@ class ServiceController extends Controller
                 ];
             });
 
-        return response()->json($services);
+        return response()->json(['data' => $services]);
     }
 
     // Récupérer un service pour modification

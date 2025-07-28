@@ -67,6 +67,8 @@ Route::prefix('clients')->group(function () {
     Route::get('/Nos_Services/Financement',function () { return view('clients.Nos_Services.Financement'); } )->name('Financement');
     Route::get('/Nos_Services/Gestion_paie',function () { return view('clients.Nos_Services.Gestion_Paie'); } )->name('Gestion_Paie');
     Route::get('/Nos_Services/Ressources_Humaines',function () { return view('clients.Nos_Services.Ressource_humaine'); } )->name('Ressources_humaines');
+    Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax'])->name('inscription.services');
+
 
      // NOS PARTENAIRES
      Route::get('/Partenaires',function () { return view('clients.Partenaires.index'); } )->name('Partenaires.Collaborateurs');
@@ -160,12 +162,4 @@ Route::prefix('admin')->group(function () {
    
 });
 
-Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax'])->name('inscription.services');
-
-    
-    
-
-
-    // tes routes ici...
-});
 

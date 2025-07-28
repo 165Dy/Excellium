@@ -156,16 +156,18 @@
 
         .swal2-card {
             border-radius: 24px !important;
-            box-shadow: 0 6px 32px rgba(80,105,151,0.13);
+            box-shadow: 0 6px 32px rgba(80, 105, 151, 0.13);
             padding-bottom: 0 !important;
         }
+
         .swal2-confirm--primary {
-            background: linear-gradient(90deg,#6C63FF,#3b94fa)!important;
-            border-radius: 18px!important;
-            font-size:1em!important;
-            font-weight:600!important;
-            box-shadow:0 2px 8px #a4bce7a0;
+            background: linear-gradient(90deg, #6C63FF, #3b94fa) !important;
+            border-radius: 18px !important;
+            font-size: 1em !important;
+            font-weight: 600 !important;
+            box-shadow: 0 2px 8px #a4bce7a0;
         }
+
         .swal2-popup .swal2-input {
             border-radius: 10px !important;
             border: 1px solid #e0e6ed !important;
@@ -173,6 +175,7 @@
             font-size: 1em !important;
             margin-top: 0.2em !important;
         }
+
         .swal2-popup label {
             margin-bottom: 0.2em;
             display: block;
@@ -315,7 +318,8 @@
                                                     <i
                                                         class="icon-base ri ri-calendar-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-calendar.html" class="stretched-link">@lang('extracted.calendar')</a>
+                                                <a href="app-calendar.html"
+                                                    class="stretched-link">@lang('extracted.calendar')</a>
                                                 <small>@lang('extracted.appointments')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
@@ -323,7 +327,8 @@
                                                     <i
                                                         class="icon-base ri ri-file-text-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-invoice-list.html" class="stretched-link">@lang('extracted.invoice_app')</a>
+                                                <a href="app-invoice-list.html"
+                                                    class="stretched-link">@lang('extracted.invoice_app')</a>
                                                 <small>@lang('extracted.manage_accounts')</small>
                                             </div>
                                         </div>
@@ -332,7 +337,8 @@
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i class="icon-base ri ri-user-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-user-list.html" class="stretched-link">@lang('extracted.user_app')</a>
+                                                <a href="app-user-list.html"
+                                                    class="stretched-link">@lang('extracted.user_app')</a>
                                                 <small>@lang('extracted.manage_users')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
@@ -340,7 +346,8 @@
                                                     <i
                                                         class="icon-base ri ri-computer-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-access-roles.html" class="stretched-link">@lang('extracted.role_management')</a>
+                                                <a href="app-access-roles.html"
+                                                    class="stretched-link">@lang('extracted.role_management')</a>
                                                 <small>@lang('extracted.permission')</small>
                                             </div>
                                         </div>
@@ -376,7 +383,8 @@
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i class="icon-base ri ri-tv-2-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="modal-examples.html" class="stretched-link">@lang('extracted.modals')</a>
+                                                <a href="modal-examples.html"
+                                                    class="stretched-link">@lang('extracted.modals')</a>
                                                 <small>@lang('extracted.useful_popups')</small>
                                             </div>
                                         </div>
@@ -399,7 +407,8 @@
                                         <div class="dropdown-header d-flex align-items-center py-2">
                                             <h6 class="mb-0 me-auto">@lang('extracted.notification')</h6>
                                             <div class="d-flex align-items-center h6 mb-0">
-                                                <span class="badge rounded-pill bg-label-primary fs-xsmall me-2">@lang('extracted.8_new')</span>
+                                                <span
+                                                    class="badge rounded-pill bg-label-primary fs-xsmall me-2">@lang('extracted.8_new')</span>
                                                 <a href="javascript:void(0)" class="dropdown-notifications-all p-2"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Mark all as read"><i
@@ -420,7 +429,8 @@
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h6 class="small mb-1">@lang('extracted.congratulation_lettie')</h6>
-                                                        <small class="mb-1 d-block text-body">@lang('extracted.won_the_monthly_best_seller_gold_badge')</small>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.won_the_monthly_best_seller_gold_badge')</small>
                                                         <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
@@ -444,7 +454,8 @@
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h6 class="small mb-1">@lang('extracted.charles_franklin')</h6>
-                                                        <small class="mb-1 d-block text-body">@lang('extracted.accepted_your_connection')</small>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.accepted_your_connection')</small>
                                                         <small class="text-body-secondary">@lang('extracted.12hr_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
@@ -468,7 +479,8 @@
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h6 class="small mb-1">@lang('extracted.new_message')</h6>
-                                                        <small class="mb-1 d-block text-body">@lang('extracted.you_have_new_message_from_natalie')</small>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.you_have_new_message_from_natalie')</small>
                                                         <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
@@ -493,7 +505,8 @@
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h6 class="small mb-1">@lang('extracted.whoo_you_have_new_order')</h6>
-                                                        <small class="mb-1 d-block text-body">@lang('extracted.acme_inc_made_new_order_1154')</small>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.acme_inc_made_new_order_1154')</small>
                                                         <small class="text-body-secondary">@lang('extracted.1_day_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
@@ -517,7 +530,8 @@
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h6 class="small mb-1">@lang('extracted.application_has_been_approved')</h6>
-                                                        <small class="mb-1 d-block text-body">@lang('extracted.your_abc_project_application_has_been_approved')</small>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.your_abc_project_application_has_been_approved')</small>
                                                         <small class="text-body-secondary">@lang('extracted.2_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
@@ -567,7 +581,8 @@
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h6 class="small mb-1">@lang('extracted.send_connection_request')</h6>
-                                                        <small class="mb-1 d-block text-body">@lang('extracted.peter_sent_you_connection_request')</small>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.peter_sent_you_connection_request')</small>
                                                         <small class="text-body-secondary">@lang('extracted.4_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
@@ -591,7 +606,8 @@
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h6 class="small mb-1">@lang('extracted.new_message_from_jane')</h6>
-                                                        <small class="mb-1 d-block text-body">@lang('extracted.your_have_new_message_from_jane')</small>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.your_have_new_message_from_jane')</small>
                                                         <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
@@ -616,7 +632,8 @@
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h6 class="small mb-1">@lang('extracted.cpu_is_running_high')</h6>
-                                                        <small class="mb-1 d-block text-body">@lang('extracted.cpu_utilization_percent_is_currently_at_8863')</small>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.cpu_utilization_percent_is_currently_at_8863')</small>
                                                         <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
@@ -827,7 +844,8 @@
                                         </li>
                                         <li
                                             class="menu-item {{ request()->routeIs('admin.candidatures.*') ? 'active' : '' }}">
-                                            <a href="{{ route('opportunites.candidatures.index') }}" class="menu-link">
+                                            <a href="{{ route('opportunites.candidatures.index') }}"
+                                                class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-users"></i>
                                                 <div data-i18n="Candidatures">@lang('extracted.candidatures')</div>
                                                 <div class="badge badge-center rounded-pill bg-warning ms-auto">
@@ -864,7 +882,7 @@
                                                 <div>@lang('extracted.articles')</div>
                                             </a>
                                         </li>
-                                    </ul> 
+                                    </ul>
                                 </li>
                                 <!-- Categories -->
                                 <li class="menu-item ">
@@ -901,14 +919,16 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_produits" data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_produits" data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>AJOUTER </div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                        <a href="#" class="menu-link" data-bs-target="#liste_produits" data-bs-toggle="modal">
+                                            <a href="#" class="menu-link" data-bs-target="#liste_produits"
+                                                data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
                                                 <div>@lang('extracted.voir_la_liste')</div>
                                             </a>
@@ -925,14 +945,16 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_services" data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_services" data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>AJOUTER </div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                        <a href="#" class="menu-link" data-bs-target="#liste_services" data-bs-toggle="modal">
+                                            <a href="#" class="menu-link" data-bs-target="#liste_services"
+                                                data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
                                                 <div>Voir la liste</div>
                                             </a>
@@ -1458,7 +1480,8 @@
 
                                         {{-- Boutons d'action --}}
                                         <div class="col-12 text-center pt-4">
-                                            <button type="submit" class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
                                                 <i class="fas fa-paper-plane me-2"></i>Publier l'opportunité
                                             </button>
                                             <button type="button" class="btn btn-outline-secondary btn-lg px-4"
@@ -1495,8 +1518,10 @@
 
                                         <div class="col-12 text-center">
                                             <button type="reset" class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal" aria-label="Close">@lang('extracted.fermer')</button>
-                                            <button type="submit" class="btn btn-primary me-3">@lang('extracted.valider')</button>
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">@lang('extracted.fermer')</button>
+                                            <button type="submit"
+                                                class="btn btn-primary me-3">@lang('extracted.valider')</button>
 
                                         </div>
                                     </form>
@@ -1533,12 +1558,12 @@
                                             </tbody>
                                         </table>
                                         <center>
-                                            <li class="menu-item" >
+                                            <li class="menu-item">
 
                                                 <a href="javascript:;" data-bs-target="#create_categories"
-                                                    class="" data-bs-toggle="modal" >
+                                                    class="" data-bs-toggle="modal">
                                                     <i class="menu-icon tf-icons fas fa-plus-circle"></i>
-                                                    <div class="btn btn-primary me-3" >@lang('extracted.ajouter_une_categorie')</div>
+                                                    <div class="btn btn-primary me-3">@lang('extracted.ajouter_une_categorie')</div>
                                                 </a>
                                             </li>
                                         </center>
@@ -1556,36 +1581,44 @@
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                     <div class="text-center mb-6">
                                         <h4 class="mb-2">@lang('extracted.nouveau_produit')</h4>
                                     </div>
-                                    <form id="createProduitForm" class="row g-5" method="POST" action="{{ route('produits.store') }}">
+                                    <form id="createProduitForm" class="row g-5" method="POST"
+                                        action="{{ route('produits.store') }}">
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomProduit" name="nom" class="form-control" placeholder="Nom du produit" required />
+                                                <input type="text" id="nomProduit" name="nom"
+                                                    class="form-control" placeholder="Nom du produit" required />
                                                 <label for="nomProduit">@lang('extracted.nom_produit')</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="descriptionProduit" name="description" class="form-control" placeholder="Description du produit" rows="4"></textarea>
+                                                <textarea id="descriptionProduit" name="description" class="form-control" placeholder="Description du produit"
+                                                    rows="4"></textarea>
                                                 <label for="descriptionProduit">@lang('extracted.description')</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="slugProduit" name="slug" class="form-control" placeholder="Slug (ex: produit-1)" required />
+                                                <input type="text" id="slugProduit" name="slug"
+                                                    class="form-control" placeholder="Slug (ex: produit-1)"
+                                                    required />
                                                 <label for="slugProduit">@lang('extracted.slug')</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="categorieProduit" name="categorie_id" class="form-control" required>
+                                                <select id="categorieProduit" name="categorie_id"
+                                                    class="form-control" required>
                                                     <option value="">@lang('extracted.selectionnez_une_categorie')</option>
-                                                    @foreach($categories as $categorie)
-                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                                    @foreach ($categories as $categorie)
+                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                                 <label for="categorieProduit">@lang('extracted.categorie')</label>
@@ -1593,7 +1626,8 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="statutProduit" name="statut" class="form-control" required>
+                                                <select id="statutProduit" name="statut" class="form-control"
+                                                    required>
                                                     <option value="actif">@lang('extracted.actif')</option>
                                                     <option value="inactif">@lang('extracted.inactif')</option>
                                                 </select>
@@ -1601,8 +1635,11 @@
                                             </div>
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">@lang('extracted.fermer')</button>
-                                            <button type="submit" class="btn btn-primary me-3">@lang('extracted.valider')</button>
+                                            <button type="reset" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">@lang('extracted.fermer')</button>
+                                            <button type="submit"
+                                                class="btn btn-primary me-3">@lang('extracted.valider')</button>
                                         </div>
                                     </form>
                                 </div>
@@ -1615,11 +1652,12 @@
                         <div class="modal-dialog modal-xl modal-simple modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                     <div class="text-center mb-6">
                                         <h4 class="mb-2">@lang('extracted.liste_des_produits')</h4>
                                     </div>
-                                    
+
                                     <div class="card">
                                         <div class="card-datatable table-responsive pt-0">
                                             <table id="tableProduits" class="table table-hover">
@@ -1636,9 +1674,10 @@
                                             </table>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                                     </div>
                                 </div>
                             </div>
@@ -1650,36 +1689,44 @@
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                     <div class="text-center mb-6">
                                         <h4 class="mb-2">NOUVEAU SERVICE</h4>
                                     </div>
-                                    <form id="createServiceForm" class="row g-5" method="POST" action="{{ route('services.store') }}">
+                                    <form id="createServiceForm" class="row g-5" method="POST"
+                                        action="{{ route('services.store') }}">
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomService" name="nom" class="form-control" placeholder="Nom du service" required />
+                                                <input type="text" id="nomService" name="nom"
+                                                    class="form-control" placeholder="Nom du service" required />
                                                 <label for="nomService">Nom Service</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="descriptionService" name="description" class="form-control" placeholder="Description du service" rows="4"></textarea>
+                                                <textarea id="descriptionService" name="description" class="form-control" placeholder="Description du service"
+                                                    rows="4"></textarea>
                                                 <label for="descriptionService">Description</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="slugService" name="slug" class="form-control" placeholder="Slug (ex: service-1)" required />
+                                                <input type="text" id="slugService" name="slug"
+                                                    class="form-control" placeholder="Slug (ex: service-1)"
+                                                    required />
                                                 <label for="slugService">Slug</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="categorieService" name="categorie_id" class="form-control" required>
+                                                <select id="categorieService" name="categorie_id"
+                                                    class="form-control" required>
                                                     <option value="">Sélectionnez une catégorie</option>
-                                                    @foreach($categories as $categorie)
-                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                                    @foreach ($categories as $categorie)
+                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                                 <label for="categorieService">Catégorie</label>
@@ -1687,7 +1734,8 @@
                                         </div>
 
                                         <div class="col-12 text-center">
-                                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Fermer</button>
+                                            <button type="reset" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal" aria-label="Close">Fermer</button>
                                             <button type="submit" class="btn btn-primary me-3">Valider</button>
                                         </div>
                                     </form>
@@ -1701,34 +1749,27 @@
                         <div class="modal-dialog modal-xl modal-simple modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                     <div class="text-center mb-6">
                                         <h4 class="mb-2">LISTE DES SERVICES</h4>
                                     </div>
                                     <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
-                                        <table class="is-zebra w-full text-left">
-                                          <thead>
-                                            <tr>
-                                              <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">#</th>
-                                              <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Name</th>
-                                              <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Job</th>
-                                              <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Favorite Color</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            @foreach($services as $service)
-                                              <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $service->nom }}</td>
-                                                <td>{{ $service->job ?? '' }}</td>
-                                                <td>{{ $service->favorite_color ?? '' }}</td>
-                                              </tr>
-                                            @endforeach
-                                          </tbody>
+                                        <table id="tableServices" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nom</th>
+                                                    <th>Description</th>
+                                                    <th>Catégorie</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
                                         </table>
-                                      </div>
+                                    </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">Fermer</button>
                                     </div>
                                 </div>
                             </div>
@@ -3548,7 +3589,8 @@
                     showCancelButton: true,
                     confirmButtonColor: isConfirm ? '#28a745' : '#dc3545',
                     cancelButtonColor: '#6c757d',
-                    confirmButtonText: isConfirm ? '<i class="fas fa-check me-1"></i>@lang('extracted.oui_confirmer')<i class="fas fa-times me-1"></i>@lang('extracted.oui_refuser_cancelbuttontext')<i class="fas fa-arrow-left me-1"></i>Annuler',
+                    confirmButtonText: isConfirm ?
+                        '<i class="fas fa-check me-1"></i>@lang('extracted.oui_confirmer')<i class="fas fa-times me-1"></i>@lang('extracted.oui_refuser_cancelbuttontext')<i class="fas fa-arrow-left me-1"></i>Annuler',
                     reverseButtons: true,
                     focusConfirm: false,
                     background: '#ffffff',
@@ -3849,7 +3891,8 @@
 
                 // Générer le contenu de la modale
                 const contentDiv = document.getElementById('detailsFormationContent');
-                contentDiv.innerHTML = `
+                contentDiv.innerHTML =
+                    `
                     <div class="row">
                         {{-- Détails de la formation --}}
                         <div class="col-md-6">
@@ -3930,14 +3973,14 @@
                                     </div>
                                     
                                     ${formation.file_path ? `
-                                                            <div class="text-center mt-3">
-                                                                <strong>@lang('extracted.media_de_presentation')</strong><br>
-                                                                ${formation.file_type === 'image' ? 
-                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">@lang('extracted.')<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                                                    <div class="text-center mt-3">
+                                                                        <strong>@lang('extracted.media_de_presentation')</strong><br>
+                                                                        ${formation.file_type === 'image' ? 
+                                                                            `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">@lang('extracted.')<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
                                             </video>`
-                                                                }
-                                                            </div>` : ''}
+                                                                        }
+                                                                    </div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -3950,28 +3993,28 @@
                         <div class="card-header bg-light d-flex justify-content-between align-items-center">
                             <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
                             ${inscriptions.length > 0 ? `
-                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
-                                                        <i class="fas fa-download me-1"></i>Exporter Excel
-                                                    </button>` : ''}
+                                                            <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
+                                                                <i class="fas fa-download me-1"></i>Exporter Excel
+                                                            </button>` : ''}
                         </div>
                         <div class="card-body p-0">
                             ${inscriptions.length > 0 ? `
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover mb-0">
-                                                            <thead class="table-light">
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th><i class="fas fa-user me-1"></i>@lang('extracted.nom_complet')</th>
-                                                                    <th><i class="fas fa-envelope me-1"></i>@lang('extracted.email')</th>
-                                                                    <th><i class="fas fa-phone me-1"></i>@lang('extracted.telephone')</th>
-                                                                    <th><i class="fas fa-comment me-1"></i>@lang('extracted.message')</th>
-                                                                    <th><i class="fas fa-clock me-1"></i>@lang('extracted.date_inscription')</th>
-                                                                    <th><i class="fas fa-flag me-1"></i>@lang('extracted.statut')</th>
-                                                                    <th>@lang('extracted.actions')</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                ${inscriptions.map((inscription, index) => `
+                                                            <div class="table-responsive">
+                                                                <table class="table table-hover mb-0">
+                                                                    <thead class="table-light">
+                                                                        <tr>
+                                                                            <th>#</th>
+                                                                            <th><i class="fas fa-user me-1"></i>@lang('extracted.nom_complet')</th>
+                                                                            <th><i class="fas fa-envelope me-1"></i>@lang('extracted.email')</th>
+                                                                            <th><i class="fas fa-phone me-1"></i>@lang('extracted.telephone')</th>
+                                                                            <th><i class="fas fa-comment me-1"></i>@lang('extracted.message')</th>
+                                                                            <th><i class="fas fa-clock me-1"></i>@lang('extracted.date_inscription')</th>
+                                                                            <th><i class="fas fa-flag me-1"></i>@lang('extracted.statut')</th>
+                                                                            <th>@lang('extracted.actions')</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        ${inscriptions.map((inscription, index) => `
                                         <tr>
                                             <td><strong>${index + 1}</strong></td>
                                             <td>
@@ -3989,10 +4032,10 @@
                                             </td>
                                             <td>
                                                 ${inscription.telephone ? `<a href="tel:${inscription.telephone}" class="text-decoration-none">${inscription.telephone}</a>@lang('extracted.')<span class="text-muted">@lang('extracted.non_renseigne')</span>'}
-                                            </td>
-                                            <td>
-                                                ${inscription.message ? 
-                                                    `<span class="text-truncate d-inline-block" style="max-width: 200px;" title="${inscription.message}">${inscription.message}</span>@lang('extracted.')<span class="text-muted">@lang('extracted.aucun_message')</span>'
+                                                    </td>
+                                                    <td>
+                                                        ${inscription.message ? 
+                                                            `<span class="text-truncate d-inline-block" style="max-width: 200px;" title="${inscription.message}">${inscription.message}</span>@lang('extracted.')<span class="text-muted">@lang('extracted.aucun_message')</span>'
                                                 }
                                             </td>
                                             <td>
@@ -4009,45 +4052,45 @@
                                             <td>
                                                 <div class="btn-group btn-group-sm">
                                                     ${inscription.statut === 'en_attente' ? `
-                                                                            <button class="btn btn-success btn-sm" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
-                                                                                <i class="fas fa-check"></i>
-                                                                            </button>
-                                                                            <button class="btn btn-danger btn-sm" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
-                                                                                <i class="fas fa-times"></i>
-                                                                            </button>` : ''}
+                                                                                    <button class="btn btn-success btn-sm" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
+                                                                                        <i class="fas fa-check"></i>
+                                                                                    </button>
+                                                                                    <button class="btn btn-danger btn-sm" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
+                                                                                        <i class="fas fa-times"></i>
+                                                                                    </button>` : ''}
                                                     <button class="btn btn-outline-primary btn-sm" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
                                                         <i class="fas fa-envelope"></i>
                                                     </button>
                                                 </div>
                                             </td>
                                         </tr>`).join('')}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>` : `
-                                                    <div class="text-center p-5">
-                                                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                                        <h5 class="text-muted">@lang('extracted.aucune_inscription_pour_le_moment')</h5>
-                                                        <p class="text-muted">@lang('extracted.les_candidatures_apparaitront_ici_des_quil_y_en_aura')</p>
-                                                    </div>`}
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>` : `
+                                                            <div class="text-center p-5">
+                                                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                                                <h5 class="text-muted">@lang('extracted.aucune_inscription_pour_le_moment')</h5>
+                                                                <p class="text-muted">@lang('extracted.les_candidatures_apparaitront_ici_des_quil_y_en_aura')</p>
+                                                            </div>`}
                         </div>
                     </div>
                 `;
 
-                // Afficher le bouton d'export si il y a des inscriptions
-                const exportBtn = document.getElementById('exporterInscriptions');
-                if (inscriptions.length > 0) {
-                    exportBtn.style.display = 'inline-block';
-                    exportBtn.onclick = () => exporterInscriptions(formation.id);
-                } else {
-                    exportBtn.style.display = 'none';
-                }
-            }
+                        // Afficher le bouton d'export si il y a des inscriptions
+                        const exportBtn = document.getElementById('exporterInscriptions');
+                        if (inscriptions.length > 0) {
+                            exportBtn.style.display = 'inline-block';
+                            exportBtn.onclick = () => exporterInscriptions(formation.id);
+                        } else {
+                            exportBtn.style.display = 'none';
+                        }
+                    }
 
-            // Fonction pour contacter un candidat
-            function contacterCandidat(email, nom) {
-                const subject = `Formation Excellium Conseil - Votre candidature`;
-                const body =
-                    `Bonjour ${nom},\n\nNous avons bien reçu votre demande d'inscription à notre formation.\n\nCordialement,\nL'équipe Excellium Conseil`;
+                    // Fonction pour contacter un candidat
+                    function contacterCandidat(email, nom) {
+                        const subject = `Formation Excellium Conseil - Votre candidature`;
+                        const body =
+                            `Bonjour ${nom},\n\nNous avons bien reçu votre demande d'inscription à notre formation.\n\nCordialement,\nL'équipe Excellium Conseil`;
 
                 window.location.href =
                     `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -4078,7 +4121,7 @@
                 }
             }
         </script>
- 
+
         <!-- Script pour la création d'opportunités -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -4179,58 +4222,59 @@
                             confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
                             confirmButtonColor: '#ffc107'
                         });
-                }
-                
-                return isValid;
-            }
-            
-            // Réinitialiser le formulaire à la fermeture
-            modal.addEventListener('hidden.bs.modal', function() {
-                form.reset();
-                form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
-                    field.classList.remove('is-valid', 'is-invalid');
-                });
-                
-                // Réinitialiser le bouton de soumission
-                const submitBtn = form.querySelector('button[type="submit"]');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
-            });
-            
-            // Auto-complétion intelligente
-            document.getElementById('titre').addEventListener('input', function(e) {
-                const titre = e.target.value.toLowerCase();
-                const entrepriseField = document.getElementById('entreprise');
-                
-                // Si le titre contient certains mots-clés, suggérer Excellium
-                if (titre.includes('développeur') || titre.includes('web') || titre.includes('consultant')) {
-                    if (!entrepriseField.value) {
-                        entrepriseField.value = 'Excellium Conseils';
-                        entrepriseField.classList.add('is-valid');
                     }
+
+                    return isValid;
                 }
+
+                // Réinitialiser le formulaire à la fermeture
+                modal.addEventListener('hidden.bs.modal', function() {
+                    form.reset();
+                    form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
+                        field.classList.remove('is-valid', 'is-invalid');
+                    });
+
+                    // Réinitialiser le bouton de soumission
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
+                });
+
+                // Auto-complétion intelligente
+                document.getElementById('titre').addEventListener('input', function(e) {
+                    const titre = e.target.value.toLowerCase();
+                    const entrepriseField = document.getElementById('entreprise');
+
+                    // Si le titre contient certains mots-clés, suggérer Excellium
+                    if (titre.includes('développeur') || titre.includes('web') || titre.includes(
+                        'consultant')) {
+                        if (!entrepriseField.value) {
+                            entrepriseField.value = 'Excellium Conseils';
+                            entrepriseField.classList.add('is-valid');
+                        }
+                    }
+                });
+
+                // Formatage automatique du téléphone
+                document.getElementById('contact_telephone').addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 0 && !value.startsWith('225')) {
+                        value = '225' + value;
+                    }
+                    if (value.length > 3) {
+                        value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
+                    }
+                    e.target.value = value;
+                });
             });
-            
-            // Formatage automatique du téléphone
-            document.getElementById('contact_telephone').addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 0 && !value.startsWith('225')) {
-                    value = '225' + value;
-                }
-                if (value.length > 3) {
-                    value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
-                }
-                e.target.value = value;
-            });
-        });
         </script>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 const form = document.getElementById('createCategorieForm');
                 if (form) {
-                    form.addEventListener('submit', function (e) {
+                    form.addEventListener('submit', function(e) {
                         e.preventDefault();
 
                         // Animation de chargement
@@ -4258,47 +4302,46 @@
                         const formData = new FormData(form);
 
                         fetch(form.action, {
-                            method: 'POST',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                            },
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Succès',
-                                    text: data.message,
-                                    confirmButtonText: 'OK'
-                                }).then(() => {
-                                    // Optionnel : reset le formulaire ou rafraîchir la liste
-                                    form.reset();
-                                    // Tu peux aussi recharger dynamiquement la liste ici si besoin
-                                });
-                            } else {
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        text: data.message,
+                                        confirmButtonText: 'OK'
+                                    }).then(() => {
+                                        // Optionnel : reset le formulaire ou rafraîchir la liste
+                                        form.reset();
+                                        // Tu peux aussi recharger dynamiquement la liste ici si besoin
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        text: data.message || 'Une erreur est survenue.'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Erreur',
-                                    text: data.message || 'Une erreur est survenue.'
+                                    text: 'Une erreur inattendue est survenue.'
                                 });
-                            }
-                        })
-                        .catch(error => {
-                            Swal.close();
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur',
-                                text: 'Une erreur inattendue est survenue.'
                             });
-                        });
                     });
                 }
             });
-            
         </script>
 
         <!-- Scripts pour la gestion des catégories -->
@@ -4359,26 +4402,32 @@
 
             // Modifier une catégorie
             function updateCategorie(id, nom) {
-                Swal.fire({title: 'Mise à jour...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
-                fetch(`/admin/categories/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: JSON.stringify({nom})
-                })
-                .then(res => res.json())
-                .then(data => {
-                    Swal.close();
-                    if (data.success) {
-                        Swal.fire('Succès', data.message, 'success');
-                        fetchCategories();
-                    } else {
-                        Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
-                    }
+                Swal.fire({
+                    title: 'Mise à jour...',
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
                 });
+                fetch(`/admin/categories/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify({
+                            nom
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        Swal.close();
+                        if (data.success) {
+                            Swal.fire('Succès', data.message, 'success');
+                            fetchCategories();
+                        } else {
+                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                        }
+                    });
             }
 
             // Supprimer une catégorie
@@ -4392,50 +4441,54 @@
                     cancelButtonText: 'Annuler'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire({title: 'Suppression...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
-                        fetch(`/admin/categories/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                Swal.fire('Succès', data.message, 'success');
-                                fetchCategories();
-                            } else {
-                                Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                            }
+                        Swal.fire({
+                            title: 'Suppression...',
+                            allowOutsideClick: false,
+                            didOpen: () => Swal.showLoading()
                         });
+                        fetch(`/admin/categories/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    fetchCategories();
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                }
+                            });
                     }
                 });
             }
 
             // Rafraîchir la liste à l'ouverture de la modale
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
                 fetchCategories();
             });
         </script>
         <!-- ///////////////////////////////////// -->
 
-       
-        
+
+
         <!-- Scripts pour la gestion des produits -->
         <script>
             // Scripts pour la gestion des produits
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 // Gestion de la création de produit
                 const createProduitForm = document.getElementById('createProduitForm');
                 if (createProduitForm) {
-                    createProduitForm.addEventListener('submit', function (e) {
+                    createProduitForm.addEventListener('submit', function(e) {
                         e.preventDefault();
 
                         // Afficher une animation de chargement
-                        const loading =Swal.fire({
+                        const loading = Swal.fire({
                             title: 'Création en cours...',
                             html: `
                                 <div class="text-center">
@@ -4451,47 +4504,73 @@
                             }
                         });
 
-                        const loading = Swal.fire({...});
+                        const loading = Swal.fire({
+                            ...
+                        });
                         const formData = new FormData(createProduitForm);
 
                         fetch(createProduitForm.action, {
-                            method: 'POST',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                            },
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                const success = Swal.mixin({
-                                    customClass: {
-                                        confirmButton: 'btn btn-success',
-                                        cancelButton: 'btn btn-danger'
-                                    },
-                                    buttonsStyling: false
-                                });
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    const success = Swal.mixin({
+                                        customClass: {
+                                            confirmButton: 'btn btn-success',
+                                            cancelButton: 'btn btn-danger'
+                                        },
+                                        buttonsStyling: false
+                                    });
 
-                                success.fire({
-                                    icon: 'success',
-                                    title: 'Succès',
-                                    html: `
+                                    success.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        html: `
                                         <div class="text-center">
                                             <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
                                             <h5 class="mt-3">@lang('extracted.produit_cree')</h5>
                                             <p class="mb-0">${data.message}</p>
                                         </div>
                                     `,
-                                    confirmButtonText: 'OK',
-                                    showCancelButton: false,
-                                    confirmButtonColor: '#2196f3'
-                                }).then(() => {
-                                    createProduitForm.reset();
-                                    fetchProduits();
-                                });
-                            } else {
+                                        confirmButtonText: 'OK',
+                                        showCancelButton: false,
+                                        confirmButtonColor: '#2196f3'
+                                    }).then(() => {
+                                        createProduitForm.reset();
+                                        fetchProduits();
+                                    });
+                                } else {
+                                    const error = Swal.mixin({
+                                        customClass: {
+                                            confirmButton: 'btn btn-danger'
+                                        },
+                                        buttonsStyling: false
+                                    });
+
+                                    error.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        html: `
+                                        <div class="text-center">
+                                            <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
+                                            <h5 class="mt-3">@lang('extracted.erreur')</h5>
+                                            <p class="mb-0">${data.message || 'Une erreur est survenue.'}</p>
+                                        </div>
+                                    `,
+                                        confirmButtonText: 'OK',
+                                        confirmButtonColor: '#dc3545'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                loading.close();
                                 const error = Swal.mixin({
                                     customClass: {
                                         confirmButton: 'btn btn-danger'
@@ -4503,79 +4582,62 @@
                                     icon: 'error',
                                     title: 'Erreur',
                                     html: `
-                                        <div class="text-center">
-                                            <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
-                                            <h5 class="mt-3">@lang('extracted.erreur')</h5>
-                                            <p class="mb-0">${data.message || 'Une erreur est survenue.'}</p>
-                                        </div>
-                                    `,
-                                    confirmButtonText: 'OK',
-                                    confirmButtonColor: '#dc3545'
-                                });
-                            }
-                        })
-                        .catch(error => {
-                            loading.close();
-                            const error = Swal.mixin({
-                                customClass: {
-                                    confirmButton: 'btn btn-danger'
-                                },
-                                buttonsStyling: false
-                            });
-
-                            error.fire({
-                                icon: 'error',
-                                title: 'Erreur',
-                                html: `
                                     <div class="text-center">
                                         <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
                                         <h5 class="mt-3">@lang('extracted.erreur_inattendue')</h5>
                                         <p class="mb-0">@lang('extracted.une_erreur_inattendue_est_survenue')</p>
                                     </div>
                                 `,
-                                confirmButtonText: 'OK',
-                                confirmButtonColor: '#dc3545'
+                                    confirmButtonText: 'OK',
+                                    confirmButtonColor: '#dc3545'
+                                });
                             });
-                        });
                     });
                 }
             });
-            
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 // Initialisation de la DataTable pour la table des produits
                 // Assure-toi que ta table HTML a bien l'id "tableProduits"
                 var table = $('#tableProduits').DataTable({
                     ajax: '/admin/produits/list',
-                    columns: [
-                        { data: 'nom', title: 'Nom' },
-                        { data: 'description', title: 'Description' },
-                        { data: 'categorie', title: 'Catégorie' },
-                        { 
-                            data: 'statut_label', 
-                            title: 'Statut', 
+                    columns: [{
+                            data: 'nom',
+                            title: 'Nom'
+                        },
+                        {
+                            data: 'description',
+                            title: 'Description'
+                        },
+                        {
+                            data: 'categorie',
+                            title: 'Catégorie'
+                        },
+                        {
+                            data: 'statut_label',
+                            title: 'Statut',
                             render: function(data, type, row) {
                                 var couleur = row.statut_color === 'success' ? 'green' : 'red';
                                 return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
                             }
                         },
-                        { 
-                            data: 'actions', 
-                            title: 'Actions', 
-                            orderable: false, 
-                            searchable: false 
+                        {
+                            data: 'actions',
+                            title: 'Actions',
+                            orderable: false,
+                            searchable: false
                         }
                     ],
                     language: {
                         url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
                     }
                 });
-            
+
                 // Gestion des clics sur les boutons d'action (modification/suppression)
                 // On utilise la délégation d'événement pour gérer les éléments générés dynamiquement
-                document.querySelector('#tableProduits').addEventListener('click', function (e) {
+                document.querySelector('#tableProduits').addEventListener('click', function(e) {
                     // Bouton Modifier
                     if (e.target.closest('.btn-edit-produit')) {
                         e.preventDefault();
@@ -4583,50 +4645,53 @@
                         // Appelle ta fonction d'ouverture de modale d'édition ici
                         openEditProduitModal(id);
                     }
-            
+
                     // Bouton Supprimer
                     if (e.target.closest('.btn-delete-produit')) {
                         e.preventDefault();
                         const id = e.target.closest('.btn-delete-produit').dataset.id;
-            
+
                         // Confirmation avec SweetAlert2
-                Swal.fire({
+                        Swal.fire({
                             title: 'Supprimer ce produit ?',
                             text: 'Cette action est irréversible !',
                             icon: 'warning',
-                    showCancelButton: true,
+                            showCancelButton: true,
                             confirmButtonText: 'Oui, supprimer',
                             cancelButtonText: 'Annuler'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                fetch(`/admin/produits/${id}`, {
-                                    method: 'DELETE',
-                    headers: {
-                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                                    }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                                        Swal.fire('Supprimé !', data.message, 'success');
-                                        table.ajax.reload(); // Rafraîchit la DataTable
-                    } else {
-                                        Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                                    }
-                                })
-                                .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch(`/admin/produits/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector(
+                                                'meta[name="csrf-token"]').getAttribute(
+                                                'content')
+                                        }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Supprimé !', data.message, 'success');
+                                            table.ajax.reload(); // Rafraîchit la DataTable
+                                        } else {
+                                            Swal.fire('Erreur', data.message ||
+                                                'Erreur lors de la suppression', 'error');
+                                        }
+                                    })
+                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                            }
+                        });
                     }
                 });
-            }
-                });
-            
+
                 // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
                 window.openEditProduitModal = function(id) {
                     // Récupère les infos du produit via AJAX
-                        fetch(`/admin/produits/${id}`)
-                            .then(res => res.json())
-                            .then(produit => {
-                Swal.fire({
+                    fetch(`/admin/produits/${id}`)
+                        .then(res => res.json())
+                        .then(produit => {
+                            Swal.fire({
                                 title: `
                                     <div style="display:flex;align-items:center;gap:10px;">
                                         <i class="bi bi-pencil-square" style="font-size:1.8em;color:#6C63FF;"></i>
@@ -4679,7 +4744,7 @@
                                 </div>
                                 `,
                                 focusConfirm: false,
-                    showCancelButton: true,
+                                showCancelButton: true,
                                 confirmButtonText: '<i class="bi bi-save"></i> Enregistrer',
                                 cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
                                 customClass: {
@@ -4691,65 +4756,84 @@
                                 scrollbarPadding: false,
                                 preConfirm: () => {
                                     const nom = document.getElementById('swal-nom').value.trim();
-                                    const description = document.getElementById('swal-description').value.trim();
+                                    const description = document.getElementById('swal-description')
+                                        .value.trim();
                                     const slug = document.getElementById('swal-slug').value.trim();
-                                    const categorie_id = document.getElementById('swal-categorie').value;
+                                    const categorie_id = document.getElementById('swal-categorie')
+                                        .value;
                                     const statut = document.getElementById('swal-statut').value;
                                     if (!nom || !slug || !categorie_id) {
-                                        Swal.showValidationMessage('Tous les champs obligatoires doivent être remplis');
+                                        Swal.showValidationMessage(
+                                            'Tous les champs obligatoires doivent être remplis');
                                         return false;
                                     }
-                                    return { nom, description, slug, categorie_id, statut };
+                                    return {
+                                        nom,
+                                        description,
+                                        slug,
+                                        categorie_id,
+                                        statut
+                                    };
                                 },
                                 didOpen: () => {
                                     // Charger dynamiquement les catégories
                                     fetch('/admin/categories/list')
                                         .then(res => res.json())
                                         .then(categories => {
-                                            const select = document.getElementById('swal-categorie');
+                                            const select = document.getElementById(
+                                                'swal-categorie');
                                             categories.forEach(cat => {
-                                                const opt = document.createElement('option');
+                                                const opt = document.createElement(
+                                                    'option');
                                                 opt.value = cat.id;
                                                 opt.textContent = cat.nom;
-                                                if (cat.id == produit.categorie_id) opt.selected = true;
+                                                if (cat.id == produit.categorie_id) opt
+                                                    .selected = true;
                                                 select.appendChild(opt);
                                             });
                                         });
                                 }
-                }).then((result) => {
+                            }).then((result) => {
                                 if (result.isConfirmed && result.value) {
-                                    Swal.fire({title: 'Mise à jour...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
-                        fetch(`/admin/produits/${id}`, {
-                                        method: 'PUT',
-                            headers: {
-                                            'Content-Type': 'application/json',
-                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                'X-Requested-With': 'XMLHttpRequest'
-                                        },
-                                        body: JSON.stringify(result.value)
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                            Swal.fire({
-                                                icon: 'success',
-                                                title: 'Succès',
-                                                text: data.message,
-                                                timer: 1800,
-                                                showConfirmButton: false
-                                            });
-                                            $('#tableProduits').DataTable().ajax.reload();
-                            } else {
-                                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
-                            }
-                                    })
-                                    .catch(() => {
-                                        Swal.close();
-                                        Swal.fire('Erreur', 'Erreur réseau', 'error');
-                        });
-                    }
-                });
+                                    Swal.fire({
+                                        title: 'Mise à jour...',
+                                        allowOutsideClick: false,
+                                        didOpen: () => Swal.showLoading()
+                                    });
+                                    fetch(`/admin/produits/${id}`, {
+                                            method: 'PUT',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': document.querySelector(
+                                                    'meta[name="csrf-token"]').getAttribute(
+                                                    'content'),
+                                                'X-Requested-With': 'XMLHttpRequest'
+                                            },
+                                            body: JSON.stringify(result.value)
+                                        })
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            Swal.close();
+                                            if (data.success) {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'Succès',
+                                                    text: data.message,
+                                                    timer: 1800,
+                                                    showConfirmButton: false
+                                                });
+                                                $('#tableProduits').DataTable().ajax.reload();
+                                            } else {
+                                                Swal.fire('Erreur', data.message ||
+                                                    'Erreur lors de la modification', 'error');
+                                            }
+                                        })
+                                        .catch(() => {
+                                            Swal.close();
+                                            Swal.fire('Erreur', 'Erreur réseau', 'error');
+                                        });
+                                }
+                            });
                         });
                 };
             });
@@ -4769,18 +4853,23 @@
 
         <!-- Scripts pour la gestion des services -->
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 // Initialisation de la DataTable pour les services
                 var tableServices = $('#tableServices').DataTable({
                     ajax: {
                         url: '/admin/services/list',
                         type: 'GET'
                     },
-                    columns: [
-                        { data: 'nom' },
-                        { data: 'description' },
-                        { data: 'categorie' },
-                        { 
+                    columns: [{
+                            data: 'nom'
+                        },
+                        {
+                            data: 'description'
+                        },
+                        {
+                            data: 'categorie'
+                        },
+                        {
                             data: 'actions',
                             orderable: false,
                             searchable: false
@@ -4794,7 +4883,7 @@
                 // Gestion de la création de service
                 const createServiceForm = document.getElementById('createServiceForm');
                 if (createServiceForm) {
-                    createServiceForm.addEventListener('submit', function (e) {
+                    createServiceForm.addEventListener('submit', function(e) {
                         e.preventDefault();
 
                         Swal.fire({
@@ -4816,51 +4905,51 @@
                         const formData = new FormData(createServiceForm);
 
                         fetch(createServiceForm.action, {
-                            method: 'POST',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                            },
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Succès',
-                                    html: `
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        html: `
                                         <div class="text-center">
                                             <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
                                             <h5 class="mt-3">Service créé !</h5>
                                             <p class="mb-0">${data.message}</p>
                                         </div>
                                     `,
-                                    confirmButtonText: 'OK',
-                                    showCancelButton: false,
-                                    confirmButtonColor: '#2196f3'
-                                }).then(() => {
-                                    createServiceForm.reset();
-                                    tableServices.ajax.reload();
-                                });
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur',
-                                    text: data.message || 'Erreur lors de la création'
-                                });
-                            }
-                        })
-                        .catch(() => {
-                            Swal.close();
-                            Swal.fire('Erreur', 'Erreur réseau', 'error');
-                        });
+                                        confirmButtonText: 'OK',
+                                        showCancelButton: false,
+                                        confirmButtonColor: '#2196f3'
+                                    }).then(() => {
+                                        createServiceForm.reset();
+                                        tableServices.ajax.reload();
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        text: data.message || 'Erreur lors de la création'
+                                    });
+                                }
+                            })
+                            .catch(() => {
+                                Swal.close();
+                                Swal.fire('Erreur', 'Erreur réseau', 'error');
+                            });
                     });
                 }
 
                 // Gestion des clics sur les boutons d'action des services
-                document.querySelector('#tableServices').addEventListener('click', function (e) {
+                document.querySelector('#tableServices').addEventListener('click', function(e) {
                     // Bouton Modifier
                     if (e.target.closest('.btn-edit-service')) {
                         e.preventDefault();
@@ -4883,30 +4972,33 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 fetch(`/admin/services/${id}`, {
-                                    method: 'DELETE',
-                                    headers: {
-                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                                    }
-                                })
-                                .then(res => res.json())
-                                .then(data => {
-                                    if (data.success) {
-                                        Swal.fire('Supprimé !', data.message, 'success');
-                                        tableServices.ajax.reload();
-                            } else {
-                                        Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                                    }
-                                })
-                                .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector(
+                                                'meta[name="csrf-token"]').getAttribute(
+                                                'content')
+                                        }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Supprimé !', data.message, 'success');
+                                            tableServices.ajax.reload();
+                                        } else {
+                                            Swal.fire('Erreur', data.message ||
+                                                'Erreur lors de la suppression', 'error');
+                                        }
+                                    })
+                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
                             }
                         });
-                }
+                    }
                 });
 
                 // Fonction pour ouvrir la modale d'édition des services
                 window.openEditServiceModal = function(id) {
                     fetch(`/admin/services/${id}`)
-                            .then(res => res.json())
+                        .then(res => res.json())
                         .then(service => {
                             Swal.fire({
                                 title: `
@@ -4949,9 +5041,11 @@
                                 preConfirm: () => {
                                     return {
                                         nom: document.getElementById('swal-nom').value,
-                                        description: document.getElementById('swal-description').value,
+                                        description: document.getElementById('swal-description')
+                                            .value,
                                         slug: document.getElementById('swal-slug').value,
-                                        categorie_id: document.getElementById('swal-categorie').value
+                                        categorie_id: document.getElementById('swal-categorie')
+                                            .value
                                     };
                                 }
                             }).then((result) => {
@@ -4962,7 +5056,7 @@
 
                             // Charger les catégories dans la modale
                             fetch('/admin/categories/list')
-                            .then(res => res.json())
+                                .then(res => res.json())
                                 .then(categories => {
                                     const select = document.getElementById('swal-categorie');
                                     categories.forEach(cat => {
@@ -4979,31 +5073,31 @@
                 // Fonction pour mettre à jour un service
                 function updateService(id, data) {
                     fetch(`/admin/services/${id}`, {
-                        method: 'PUT',
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Succès !',
-                                text: data.message
-                            });
-                            tableServices.ajax.reload();
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur !',
-                                text: data.message
-                            });
-                        }
-                    });
+                            method: 'PUT',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Succès !',
+                                    text: data.message
+                                });
+                                tableServices.ajax.reload();
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur !',
+                                    text: data.message
+                                });
+                            }
+                        });
                 }
             });
         </script>
