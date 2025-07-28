@@ -1596,13 +1596,7 @@
                                                 <label for="nomProduit">@lang('extracted.nom_produit')</label>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <textarea id="descriptionProduit" name="description" class="form-control" placeholder="Description du produit"
-                                                    rows="4"></textarea>
-                                                <label for="descriptionProduit">@lang('extracted.description')</label>
-                                            </div>
-                                        </div>
+
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="text" id="slugProduit" name="slug"
@@ -1664,13 +1658,14 @@
                                                 <thead>
                                                     <tr>
                                                         <th>@lang('extracted.nom')</th>
-                                                        <th>@lang('extracted.description')</th>
                                                         <th>@lang('extracted.categorie')</th>
                                                         <th>@lang('extracted.statut')</th>
                                                         <th>@lang('extracted.actions')</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody></tbody>
+                                                <tbody>
+
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -3580,17 +3575,20 @@
                 Swal.fire({
                     title: isConfirm ? '✅ Confirmer l\'inscription ?' : '❌ Refuser l\'inscription ?',
                     html: `
-                        <div class="text-center">
-                            <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
-                            <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
-                            ${isConfirm ? '<p class="text-muted">@lang('extracted.le_candidat_sera_notifie_de_la_confirmation')</p>@lang('extracted.')<p class="text-muted">@lang('extracted.cette_action_peut_etre_annulee_plus_tard')</p>'}
-                        </div>
-                    `,
+            <div class="text-center">
+                <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
+                <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
+                ${isConfirm ? `
+                            <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
+                            <p class="text-muted">Cette action peut être annulée plus tard.</p>
+                        ` : ''}
+            </div>
+        `,
                     showCancelButton: true,
                     confirmButtonColor: isConfirm ? '#28a745' : '#dc3545',
                     cancelButtonColor: '#6c757d',
-                    confirmButtonText: isConfirm ?
-                        '<i class="fas fa-check me-1"></i>@lang('extracted.oui_confirmer')<i class="fas fa-times me-1"></i>@lang('extracted.oui_refuser_cancelbuttontext')<i class="fas fa-arrow-left me-1"></i>Annuler',
+                    confirmButtonText: isConfirm ? '✅ Oui, confirmer' : '❌ Oui, refuser',
+                    cancelButtonText: '🔙 Annuler',
                     reverseButtons: true,
                     focusConfirm: false,
                     background: '#ffffff',
@@ -3601,17 +3599,17 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Afficher une modale de chargement
+                        // Affiche une modale de chargement
                         Swal.fire({
                             title: 'Mise à jour en cours...',
                             html: `
-                                <div class="d-flex flex-column align-items-center">
-                                    <div class="spinner-border ${isConfirm ? 'text-success' : 'text-danger'} mb-3" role="status">
-                                        <span class="visually-hidden">@lang('extracted.chargement')</span>
-                                    </div>
-                                    <p class="mb-0">@lang('extracted.mise_a_jour_du_statut')</p>
-                                </div>
-                            `,
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="spinner-border ${isConfirm ? 'text-success' : 'text-danger'} mb-3" role="status">
+                            <span class="visually-hidden">Chargement...</span>
+                        </div>
+                        <p class="mb-0">Mise à jour du statut</p>
+                    </div>
+                `,
                             allowOutsideClick: false,
                             allowEscapeKey: false,
                             showConfirmButton: false,
@@ -3633,21 +3631,22 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.success) {
-                                    // Recharger les détails de la formation
                                     const formationId = data.formation_id;
                                     voirDetailsFormation(formationId);
 
-                                    // Notification de succès
                                     Swal.fire({
                                         icon: 'success',
                                         title: isConfirm ? '🎉 Inscription confirmée !' :
                                             '✅ Inscription refusée',
                                         html: `
-                                        <div class="text-center">
-                                            <p>@lang('extracted.le_statut_a_ete_mis_a_jour_avec_succes')</p>
-                                            ${isConfirm ? '<p class="text-muted">@lang('extracted.le_candidat_peut_maintenant_etre_contacte')</p>@lang('extracted.')<p class="text-muted">@lang('extracted.vous_pouvez_changer_davis_a_tout_moment')</p>'}
-                                        </div>
-                                    `,
+                            <div class="text-center">
+                                <p>Le statut a été mis à jour avec succès.</p>
+                                ${isConfirm ? `
+                                            <p class="text-muted">Le candidat peut maintenant être contacté.</p>
+                                            <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
+                                        ` : ''}
+                            </div>
+                        `,
                                         timer: 3000,
                                         timerProgressBar: true,
                                         showConfirmButton: false,
@@ -3670,11 +3669,11 @@
                                     icon: 'error',
                                     title: '🚫 Erreur de connexion',
                                     html: `
-                                    <div class="text-center">
-                                        <p>@lang('extracted.impossible_de_mettre_a_jour_le_statut')</p>
-                                        <p class="text-muted">@lang('extracted.verifiez_votre_connexion_et_reessayez')</p>
-                                    </div>
-                                `,
+                        <div class="text-center">
+                            <p>Impossible de mettre à jour le statut.</p>
+                            <p class="text-muted">Vérifiez votre connexion et réessayez.</p>
+                        </div>
+                    `,
                                     confirmButtonText: '🔄 Réessayer',
                                     confirmButtonColor: '#dc3545',
                                     background: '#ffffff'
@@ -3683,6 +3682,7 @@
                     }
                 });
             }
+
 
             // ... existing code ...
         </script>
@@ -3830,26 +3830,22 @@
 
         <!-- Script pour la modale des détails de formation -->
         <script>
-            // Fonction pour afficher les détails d'une formation
             function voirDetailsFormation(formationId) {
                 console.log('📋 Ouverture détails formation ID:', formationId);
 
-                // Ouvrir la modale
                 const modal = new bootstrap.Modal(document.getElementById('detailsFormationModal'));
                 modal.show();
 
-                // Réinitialiser le contenu
                 const contentDiv = document.getElementById('detailsFormationContent');
                 contentDiv.innerHTML = `
                     <div class="text-center p-5">
                         <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">@lang('extracted.chargement')</span>
+                            <span class="visually-hidden">Chargement...</span>
                         </div>
-                        <p class="mt-3">@lang('extracted.chargement_des_details')</p>
+                        <p class="mt-3">Chargement des détails en cours...</p>
                     </div>
                 `;
 
-                // Requête AJAX pour récupérer les détails
                 fetch(`/admin/formations/${formationId}/details`, {
                         method: 'GET',
                         headers: {
@@ -3871,258 +3867,201 @@
                     .catch(error => {
                         console.error('❌ Erreur chargement détails:', error);
                         contentDiv.innerHTML = `
-                        <div class="alert alert-danger text-center">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            Erreur lors du chargement des détails: ${error.message}
-                        </div>
-                    `;
+                <div class="alert alert-danger text-center">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Erreur lors du chargement des détails : ${error.message}
+                </div>
+            `;
                     });
-            }
+                }
 
-            // Fonction pour afficher les détails dans la modale
             function afficherDetailsFormation(data) {
                 const formation = data.formation;
                 const inscriptions = data.inscriptions;
 
-                // Mettre à jour le titre de la modale
                 document.getElementById('detailsFormationModalLabel').innerHTML = `
                     <i class="fas fa-graduation-cap me-2"></i>${formation.titre}
                 `;
 
-                // Générer le contenu de la modale
                 const contentDiv = document.getElementById('detailsFormationContent');
-                contentDiv.innerHTML =
-                    `
-                    <div class="row">
-                        {{-- Détails de la formation --}}
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>@lang('extracted.informations_generales')</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 mb-3">
-                                            <strong>@lang('extracted.description')</strong>
-                                            <p class="mt-1 text-muted">${formation.programme || 'Aucune description'}</p>
-                                        </div>
-                                        <div class="col-6 mb-2">
-                                            <strong>@lang('extracted.categorie')</strong><br>
-                                            <span class="badge bg-success">${formation.categorie?.nom || 'Non définie'}</span>
-                                        </div>
-                                        <div class="col-6 mb-2">
-                                            <strong>@lang('extracted.cout')</strong><br>
-                                            <span class="text-primary fw-bold">${formation.cout ? new Intl.NumberFormat('fr-FR').format(formation.cout) + ' FCFA' : 'Gratuit'}</span>
-                                        </div>
-                                        <div class="col-6 mb-2">
-                                            <strong>@lang('extracted.date_debut')</strong><br>
-                                            <span class="text-info">${formation.date_debut ? new Date(formation.date_debut).toLocaleDateString('fr-FR') : 'À définir'}</span>
-                                        </div>
-                                        <div class="col-6 mb-2">
-                                            <strong>@lang('extracted.date_fin')</strong><br>
-                                            <span class="text-info">${formation.date_fin ? new Date(formation.date_fin).toLocaleDateString('fr-FR') : 'À définir'}</span>
-                                        </div>
-                                        <div class="col-12 mb-2">
-                                            <strong>@lang('extracted.lieu')</strong><br>
-                                            <span class="text-secondary">${formation.lieu || 'À définir'}</span>
-                                        </div>
-                                        <div class="col-12">
-                                            <strong>@lang('extracted.prerequis')</strong><br>
-                                            <span class="text-muted">${formation.prerequis || 'Aucun prérequis'}</span>
-                                        </div>
+                contentDiv.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Informations générales</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <strong>Description</strong>
+                                        <p class="mt-1 text-muted">${formation.programme || 'Aucune description'}</p>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <strong>Catégorie</strong><br>
+                                        <span class="badge bg-success">${formation.categorie?.nom || 'Non définie'}</span>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <strong>Coût</strong><br>
+                                        <span class="text-primary fw-bold">${formation.cout ? new Intl.NumberFormat('fr-FR').format(formation.cout) + ' FCFA' : 'Gratuit'}</span>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <strong>Date de début</strong><br>
+                                        <span class="text-info">${formation.date_debut ? new Date(formation.date_debut).toLocaleDateString('fr-FR') : 'À définir'}</span>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <strong>Date de fin</strong><br>
+                                        <span class="text-info">${formation.date_fin ? new Date(formation.date_fin).toLocaleDateString('fr-FR') : 'À définir'}</span>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <strong>Lieu</strong><br>
+                                        <span class="text-secondary">${formation.lieu || 'À définir'}</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <strong>Prérequis</strong><br>
+                                        <span class="text-muted">${formation.prerequis || 'Aucun prérequis'}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        {{-- Statistiques --}}
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>@lang('extracted.statistiques_dinscription')</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row text-center">
-                                        <div class="col-4 mb-3">
-                                            <div class="card bg-primary text-white">
-                                                <div class="card-body p-3">
-                                                    <i class="fas fa-users fa-2x mb-2"></i>
-                                                    <h4 class="mb-0">${inscriptions.length}</h4>
-                                                    <small>@lang('extracted.total_inscriptions')</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 mb-3">
-                                            <div class="card bg-warning text-white">
-                                                <div class="card-body p-3">
-                                                    <i class="fas fa-clock fa-2x mb-2"></i>
-                                                    <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'en_attente').length}</h4>
-                                                    <small>@lang('extracted.en_attente')</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 mb-3">
-                                            <div class="card bg-success text-white">
-                                                <div class="card-body p-3">
-                                                    <i class="fas fa-check fa-2x mb-2"></i>
-                                                    <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'confirme').length}</h4>
-                                                    <small>@lang('extracted.confirmes')</small>
-                                                </div>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Statistiques d'inscription</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-4 mb-3">
+                                        <div class="card bg-primary text-white">
+                                            <div class="card-body p-3">
+                                                <i class="fas fa-users fa-2x mb-2"></i>
+                                                <h4 class="mb-0">${inscriptions.length}</h4>
+                                                <small>Total des inscriptions</small>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    ${formation.file_path ? `
-                                                                    <div class="text-center mt-3">
-                                                                        <strong>@lang('extracted.media_de_presentation')</strong><br>
-                                                                        ${formation.file_type === 'image' ? 
-                                                                            `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">@lang('extracted.')<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                    <div class="col-4 mb-3">
+                                        <div class="card bg-warning text-white">
+                                            <div class="card-body p-3">
+                                                <i class="fas fa-clock fa-2x mb-2"></i>
+                                                <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'en_attente').length}</h4>
+                                                <small>En attente</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 mb-3">
+                                        <div class="card bg-success text-white">
+                                            <div class="card-body p-3">
+                                                <i class="fas fa-check fa-2x mb-2"></i>
+                                                <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'confirme').length}</h4>
+                                                <small>Confirmées</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                ${formation.file_path ? `
+                                            <div class="text-center mt-3">
+                                                <strong>Média de présentation</strong><br>
+                                                ${formation.file_type === 'image' ? 
+                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
+                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
-                                            </video>`
-                                                                        }
-                                                                    </div>` : ''}
+                                            </video>`}
+                                            </div>` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <hr class="my-4">
+                                <div class="card">
+                                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                        <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
+                                        ${inscriptions.length > 0 ? `
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
+                                                        <i class="fas fa-download me-1"></i>Exporter Excel
+                                                    </button>` : ''}
+                                    </div>
+                                    <div class="card-body p-0">
+                                        ${inscriptions.length > 0 ? `
+                                            <div class="table-responsive">
+                                                <table class="table table-hover mb-0">
+                                                    <thead class="table-light">
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th><i class="fas fa-user me-1"></i>Nom complet</th>
+                                                            <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                                            <th><i class="fas fa-phone me-1"></i>Téléphone</th>
+                                                            <th><i class="fas fa-comment me-1"></i>Message</th>
+                                                            <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
+                                                            <th><i class="fas fa-flag me-1"></i>Statut</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        ${inscriptions.map((inscription, index) => `
+                                                    <tr>
+                                                        <td><strong>${index + 1}</strong></td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar-circle bg-primary text-white me-2" style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                                                    ${inscription.nom.charAt(0).toUpperCase()}
+                                                                </div>
+                                                                <strong>${inscription.nom}</strong>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="mailto:${inscription.email}">${inscription.email}</a></td>
+                                                        <td>${inscription.telephone ? `<a href="tel:${inscription.telephone}">${inscription.telephone}</a>` : '<span class="text-muted">Non renseigné</span>'}</td>
+                                                        <td>${inscription.message ? `<span title="${inscription.message}">${inscription.message}</span>` : '<span class="text-muted">Aucun message</span>'}</td>
+                                                        <td>
+                                                            <small class="text-muted">
+                                                                ${new Date(inscription.created_at).toLocaleDateString('fr-FR')} à 
+                                                                ${new Date(inscription.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}
+                                                            </small>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge ${inscription.statut === 'confirme' ? 'bg-success' : inscription.statut === 'refuse' ? 'bg-danger' : 'bg-warning'}">
+                                                                ${inscription.statut === 'confirme' ? '✅ Confirmé' : inscription.statut === 'refuse' ? '❌ Refusé' : '⏳ En attente'}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="btn-group btn-group-sm">
+                                                                ${inscription.statut === 'en_attente' ? `
+                                                                            <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
+                                                                                <i class="fas fa-check"></i>
+                                                                            </button>
+                                                                            <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
+                                                                                <i class="fas fa-times"></i>
+                                                                            </button>` : ''}
+                                                                <button class="btn btn-outline-primary" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
+                                                                    <i class="fas fa-envelope"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>`).join('')}
+                                                    </tbody>
+                                                </table>
+                                            </div>` : `
+                                            <div class="text-center p-5">
+                                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                                <h5 class="text-muted">Aucune inscription pour le moment</h5>
+                                                <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
+                                            </div>`}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <hr class="my-4">
-                    
-                    {{-- Liste des inscriptions --}}
-                    <div class="card">
-                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                            <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
-                            ${inscriptions.length > 0 ? `
-                                                            <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
-                                                                <i class="fas fa-download me-1"></i>Exporter Excel
-                                                            </button>` : ''}
-                        </div>
-                        <div class="card-body p-0">
-                            ${inscriptions.length > 0 ? `
-                                                            <div class="table-responsive">
-                                                                <table class="table table-hover mb-0">
-                                                                    <thead class="table-light">
-                                                                        <tr>
-                                                                            <th>#</th>
-                                                                            <th><i class="fas fa-user me-1"></i>@lang('extracted.nom_complet')</th>
-                                                                            <th><i class="fas fa-envelope me-1"></i>@lang('extracted.email')</th>
-                                                                            <th><i class="fas fa-phone me-1"></i>@lang('extracted.telephone')</th>
-                                                                            <th><i class="fas fa-comment me-1"></i>@lang('extracted.message')</th>
-                                                                            <th><i class="fas fa-clock me-1"></i>@lang('extracted.date_inscription')</th>
-                                                                            <th><i class="fas fa-flag me-1"></i>@lang('extracted.statut')</th>
-                                                                            <th>@lang('extracted.actions')</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        ${inscriptions.map((inscription, index) => `
-                                        <tr>
-                                            <td><strong>${index + 1}</strong></td>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar-circle bg-primary text-white me-2" style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                                                        ${inscription.nom.charAt(0).toUpperCase()}
-                                                    </div>
-                                                    <strong>${inscription.nom}</strong>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="mailto:${inscription.email}" class="text-decoration-none">
-                                                    ${inscription.email}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                ${inscription.telephone ? `<a href="tel:${inscription.telephone}" class="text-decoration-none">${inscription.telephone}</a>@lang('extracted.')<span class="text-muted">@lang('extracted.non_renseigne')</span>'}
-                                                    </td>
-                                                    <td>
-                                                        ${inscription.message ? 
-                                                            `<span class="text-truncate d-inline-block" style="max-width: 200px;" title="${inscription.message}">${inscription.message}</span>@lang('extracted.')<span class="text-muted">@lang('extracted.aucun_message')</span>'
-                                                }
-                                            </td>
-                                            <td>
-                                                <small class="text-muted">
-                                                    ${new Date(inscription.created_at).toLocaleDateString('fr-FR')} à 
-                                                    ${new Date(inscription.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}
-                                                </small>
-                                            </td>
-                                            <td>
-                                                <span class="badge ${inscription.statut === 'confirme' ? 'bg-success' : inscription.statut === 'refuse' ? 'bg-danger' : 'bg-warning'}">
-                                                    ${inscription.statut === 'confirme' ? '✅ Confirmé' : inscription.statut === 'refuse' ? '❌ Refusé' : '⏳ En attente'}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group btn-group-sm">
-                                                    ${inscription.statut === 'en_attente' ? `
-                                                                                    <button class="btn btn-success btn-sm" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
-                                                                                        <i class="fas fa-check"></i>
-                                                                                    </button>
-                                                                                    <button class="btn btn-danger btn-sm" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
-                                                                                        <i class="fas fa-times"></i>
-                                                                                    </button>` : ''}
-                                                    <button class="btn btn-outline-primary btn-sm" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
-                                                        <i class="fas fa-envelope"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>`).join('')}
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>` : `
-                                                            <div class="text-center p-5">
-                                                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                                                <h5 class="text-muted">@lang('extracted.aucune_inscription_pour_le_moment')</h5>
-                                                                <p class="text-muted">@lang('extracted.les_candidatures_apparaitront_ici_des_quil_y_en_aura')</p>
-                                                            </div>`}
-                        </div>
-                    </div>
+
+                </div>    
                 `;
-
-                        // Afficher le bouton d'export si il y a des inscriptions
-                        const exportBtn = document.getElementById('exporterInscriptions');
-                        if (inscriptions.length > 0) {
-                            exportBtn.style.display = 'inline-block';
-                            exportBtn.onclick = () => exporterInscriptions(formation.id);
-                        } else {
-                            exportBtn.style.display = 'none';
-                        }
-                    }
-
-                    // Fonction pour contacter un candidat
-                    function contacterCandidat(email, nom) {
-                        const subject = `Formation Excellium Conseil - Votre candidature`;
-                        const body =
-                            `Bonjour ${nom},\n\nNous avons bien reçu votre demande d'inscription à notre formation.\n\nCordialement,\nL'équipe Excellium Conseil`;
-
-                window.location.href =
-                    `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            }
-
-            // Fonction pour exporter les inscriptions
-            function exporterInscriptions(formationId) {
-                const link = document.createElement('a');
-                link.href = `/admin/formations/${formationId}/export-inscriptions`;
-                link.download = `inscriptions_formation_${formationId}.xlsx`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-
-            // Fonction utilitaire pour afficher des notifications
-            function showNotification(message, type) {
-                // Tu peux utiliser ton système de notification existant
-                if (typeof Swal !== 'undefined') {
-                    Swal.fire({
-                        text: message,
-                        icon: type === 'success' ? 'success' : 'error',
-                        timer: 3000,
-                        showConfirmButton: false
-                    });
-                } else {
-                    alert(message);
                 }
-            }
         </script>
 
-        <!-- Script pour la création d'opportunités -->
+        <!-- Script pour la création de nouvelles opportunités -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const form = document.getElementById('createOpportuniteForm');
@@ -4247,7 +4186,7 @@
 
                     // Si le titre contient certains mots-clés, suggérer Excellium
                     if (titre.includes('développeur') || titre.includes('web') || titre.includes(
-                        'consultant')) {
+                            'consultant')) {
                         if (!entrepriseField.value) {
                             entrepriseField.value = 'Excellium Conseils';
                             entrepriseField.classList.add('is-valid');
@@ -4269,7 +4208,6 @@
             });
         </script>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const form = document.getElementById('createCategorieForm');
@@ -4344,7 +4282,7 @@
             });
         </script>
 
-        <!-- Scripts pour la gestion des catégories -->
+         <!-- Scripts pour la gestion des catégories -->
         <script>
             function fetchCategories() {
                 fetch('/admin/categories/list')
@@ -4477,7 +4415,7 @@
 
 
 
-        <!-- Scripts pour la gestion des produits -->
+         <!-- Scripts pour la gestion des produits -->
         <script>
             // Scripts pour la gestion des produits
             document.addEventListener('DOMContentLoaded', function() {
@@ -4608,10 +4546,6 @@
                             title: 'Nom'
                         },
                         {
-                            data: 'description',
-                            title: 'Description'
-                        },
-                        {
                             data: 'categorie',
                             title: 'Catégorie'
                         },
@@ -4630,9 +4564,9 @@
                             searchable: false
                         }
                     ],
-                    language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
-                    }
+                    // language: {
+                    //     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
+                    // }
                 });
 
                 // Gestion des clics sur les boutons d'action (modification/suppression)
@@ -4705,12 +4639,6 @@
                                         <i class="bi bi-cube"></i> Nom du produit <span style="color:#e74c3c;">*</span>
                                       </label>
                                       <input type="text" id="swal-nom" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Nom" value="${escapeHtml(produit.nom)}">
-                                    </div>
-                                    <div>
-                                      <label for="swal-description" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
-                                        <i class="bi bi-text-left"></i> Description
-                                      </label>
-                                      <input type="text" id="swal-description" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Description" value="${escapeHtml(produit.description || '')}">
                                     </div>
                                   </div>
                                   <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
@@ -4849,7 +4777,7 @@
                     .replace(/'/g, "&#039;");
             }
         </script>
-        <!-- ///////////////////////////////////// -->
+         <!-- ///////////////////////////////////// -->
 
         <!-- Scripts pour la gestion des services -->
         <script>
@@ -4875,9 +4803,9 @@
                             searchable: false
                         }
                     ],
-                    language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
-                    }
+                    // language: {
+                    //     url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
+                    // }
                 });
 
                 // Gestion de la création de service
@@ -5101,7 +5029,10 @@
                 }
             });
         </script>
-        <!-- ///////////////////////////////////// -->
-</body>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        
+    </body>
 
 </html>

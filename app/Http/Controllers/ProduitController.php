@@ -15,7 +15,6 @@ class ProduitController extends Controller
         try {
             $validated = $request->validate([
                 'nom' => 'required|string|max:255',
-                'description' => 'nullable|string',
                 'slug' => 'required|string|max:255|unique:produits',
                 'categorie_id' => 'required|exists:categories,id',
                 'statut' => 'required|in:actif,inactif'
@@ -46,7 +45,6 @@ class ProduitController extends Controller
                 return [
                     'id' => $produit->id,
                     'nom' => $produit->nom,
-                    'description' => $produit->description,
                     'categorie' => $produit->categorie ? $produit->categorie->nom : 'Non défini',
                     'statut' => $produit->statut,
                     'statut_label' => ucfirst($produit->statut),
@@ -73,7 +71,6 @@ class ProduitController extends Controller
 
             $validated = $request->validate([
                 'nom' => 'required|string|max:255',
-                'description' => 'nullable|string',
                 'slug' => [
                     'required',
                     'string',

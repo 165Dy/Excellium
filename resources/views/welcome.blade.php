@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('welcome')
-
     <style>
         .form-check-label,
         .modal-title {
@@ -119,8 +118,9 @@
             min-height: 90px;
             /* Garde une hauteur uniforme même si le texte est court */
         }
+
         .author-info h4 {
-        
+
             max-width: 100%;
             display: -webkit-box;
             -webkit-line-clamp: 1;
@@ -232,7 +232,7 @@
                 </div>
             </div>
         </div>
-   
+
     </section>
     <!--====== Start Why-choose Section ======-->
     {{-- <section class="why-choose-us pt-130 pb-90"> --}}
@@ -733,62 +733,58 @@
                             style="height: 60px; margin-right: 16px;">
                         <div>
                             <h5 class="modal-title" id="choixProduitModalLabel" style="color: #222; font-weight: bold;">
-                                Bienvenue dans notre menu produits</h5>
-                            <p style="margin:0; color:#444; font-size:15px;">@lang('extracted.veuillez_selectionner_les_produits_qui_vous_interessent')</p>
+                                Bienvenue dans notre menu produits
+                            </h5>
+                            <p style="margin:0; color:#444; font-size:15px;">
+                                Veuillez sélectionner les produits qui vous intéressent.
+                            </p>
                         </div>
                     </div>
                     <div class="modal-body py-4">
                         <div id="produit-alert" class="alert alert-danger" style="display:none; font-size:15px;">
                             Veuillez sélectionner au moins un produit pour continuer.
                         </div>
+
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" id="selectAllProduits">
-                            <label class="form-check-label fw-bold" for="selectAllProduits">@lang('extracted.tout_selectionner')</label>
+                            <label class="form-check-label fw-bold" for="selectAllProduits">
+                                Tout sélectionner
+                            </label>
                         </div>
-                        @php
-                            $count = max(1, ceil($produits->count() / 2));
-                            $chunks = array_chunk($produits->all(), $count);
-                        @endphp
 
-                        <div id="produits-list" class="row">
-                            @foreach($chunks as $col)
-                            <div class="col-md-6">
-                                    @foreach($col as $produit)
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="1" id="produit1">
-                                    <label class="form-check-label" for="produit1">@lang('extracted.produit_1')</label>
+                        <hr>
+
+                        <div class="row">
+                            @php
+                                $count = max(1, ceil($produits->count() / 2));
+                                $chunks = array_chunk($produits->all(), $count);
+                            @endphp
+
+                            @foreach ($chunks as $col)
+                                <div class="col-md-6">
+                                    @foreach ($col as $produit)
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input produit-checkbox" type="checkbox"
+                                                name="produits[]" value="{{ $produit['id'] }}"
+                                                id="produit{{ $produit['id'] }}">
+                                            <label class="form-check-label" for="produit{{ $produit['id'] }}">
+                                                {{ $produit['nom'] }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="2" id="produit2">
-                                    <label class="form-check-label" for="produit2">@lang('extracted.produit_2')</label>
-                                </div>
-                                <hr>
-                                <!-- Ajoute d'autres produits ici -->
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]"
-                                        value="3" id="produit3">
-                                    <label class="form-check-label" for="produit3">@lang('extracted.produit_3')</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]"
-                                        value="4" id="produit4">
-                                    <label class="form-check-label" for="produit4">@lang('extracted.produit_4')</label>
-                                </div>
-                                <hr>
-                                <!-- Ajoute d'autres produits ici -->
-                            </div>
+                            @endforeach
                         </div>
-                    </div>
-                    <div class="modal-footer justify-content-end">
-                        <button type="submit" class="btn btn-primary">@lang('extracted.envoyer_mes_choix')</button>
+
+                        <div class="modal-footer justify-content-end">
+                            <button type="submit" class="btn btn-primary">Envoyer mes choix</button>
+                        </div>
                     </div>
                 </form>
+
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Modal de succès produits -->
@@ -827,6 +823,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Script pour la création du compte et la confirmation du succès -->
     <script>
@@ -982,136 +979,5 @@
                 }
             });
         });
-    </script> 
-
-    <style>
-        .form-check-label,
-        .modal-title {
-            color: black;
-        }
-
-        .pulse {
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.3;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        #choixProduitModal .modal-content {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-            border: 2px solid #FFD22F;
-        }
-
-        #choixProduitModal .modal-header {
-            border-bottom: 1px solid #eee;
-        }
-
-        #choixProduitModal .modal-footer {
-            border-top: 1px solid #eee;
-            background: #fafafa;
-            border-radius: 0 0 18px 18px;
-        }
-
-        #choixProduitModal .form-check-label {
-            font-size: 16px;
-            color: #222;
-        }
-
-        #choixProduitModal hr {
-            margin: 0.5rem 0;
-            border-top: 1px dashed #FFD22F;
-        }
-
-        @media (max-width: 767px) {
-            #choixProduitModal .modal-dialog {
-                max-width: 98vw;
-            }
-
-            #choixProduitModal .modal-content {
-                padding: 0 5px;
-            }
-
-            #choixProduitModal .modal-header img {
-                height: 40px;
-            }
-        }
-
-        #inscriptionModal .modal-content {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-            border: 2px solid #FFD22F;
-        }
-
-        #inscriptionModal .modal-header {
-            border-bottom: 1px solid #eee;
-            background: #FFD22F;
-            border-radius: 18px 18px 0 0;
-        }
-
-        #inscriptionModal .modal-title {
-            font-size: 1.5rem;
-            color: #222;
-            font-weight: bold;
-        }
-
-        #inscriptionModal .form-label {
-            color: #222;
-            font-weight: 500;
-        }
-
-        #inscriptionModal .form-control {
-            border-radius: 8px;
-            border: 1px solid #FFD22F;
-        }
-
-        #inscriptionModal .modal-footer {
-            border-top: 1px solid #eee;
-            background: #fafafa;
-            border-radius: 0 0 18px 18px;
-        }
-
-        @media (max-width: 767px) {
-            #inscriptionModal .modal-dialog {
-                max-width: 98vw;
-            }
-
-            #inscriptionModal .modal-content {
-                padding: 0 5px;
-            }
-        }
-
-        /* Limite la hauteur et ajoute un effet de texte tronqué avec "..." pour les témoignages */
-        .testimonial-content p {
-            max-width: 100%;
-            display: -webkit-box;
-            -webkit-line-clamp: 5;
-            /* Limite à 4 lignes, ajuste selon besoin */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            min-height: 90px;
-            /* Garde une hauteur uniforme même si le texte est court */
-        }
-        .author-info h4 {
-           
-            max-width: 100%;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            /* Limite à 4 lignes, ajuste selon besoin */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    </style>
-
+    </script>
 @endsection
