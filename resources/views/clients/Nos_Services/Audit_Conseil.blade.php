@@ -199,6 +199,11 @@
                             <label for="telephone" class="form-label">@lang('extracted.telephone')</label>
                             <input type="text" class="form-control" name="telephone" placeholder="+225 XX XX XX XX">
                         </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description de vos besoins</label>
+                            <textarea class="form-control" name="description" rows="4" placeholder="Décrivez vos besoins spécifiques..."></textarea>
+                        </div>
+                        <input type="hidden" name="service_id" value="1">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
