@@ -158,7 +158,8 @@
                                     <div class="content-wrap">
                                         <div class="content">
                                             <span><a href="{{ route('audit&Conseil') }}">@lang('extracted.analyse_financiere_gestion_des_risques_et_amelioration_des_performances')</a></span>
-                                            <h4 class="title"><a href="{{ route('audit&Conseil') }}">@lang('extracted.audit_et_conseil')</a>
+                                            <h4 class="title"><a
+                                                    href="{{ route('audit&Conseil') }}">@lang('extracted.audit_et_conseil')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -173,8 +174,10 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Ressources_humaines') }}">@lang('extracted.mise_en_relation_avec_des_talents_qualifies_pour_renforcer_vos_equipes')</a></span>
-                                            <h4 class="title"><a href="{{ route('Ressources_humaines') }}">@lang('extracted.recrutement_et_placement')</a>
+                                            <span><a
+                                                    href="{{ route('Ressources_humaines') }}">@lang('extracted.mise_en_relation_avec_des_talents_qualifies_pour_renforcer_vos_equipes')</a></span>
+                                            <h4 class="title"><a
+                                                    href="{{ route('Ressources_humaines') }}">@lang('extracted.recrutement_et_placement')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -192,7 +195,8 @@
                                             <span><a href="{{ route('Gestion_Paie') }}"> Externalisation de la gestion
                                                     salariale pour garantir
                                                     conformité et efficacité.</a></span>
-                                            <h4 class="title"><a href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a>
+                                            <h4 class="title"><a
+                                                    href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -282,12 +286,14 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.marketing')</a></li>
+                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.marketing')</a>
+                                        </li>
                                     </ul>
                                     <div class="post-meta">
 
                                     </div>
-                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.chargee_de_communication_digitale')</a></h4>
+                                    <h4 class="title"><a
+                                            href="{{ route('opportunites.clients.index') }}">@lang('extracted.chargee_de_communication_digitale')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -298,12 +304,14 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.audit')</a></li>
+                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.audit')</a>
+                                        </li>
                                     </ul>
                                     <div class="post-meta">
 
                                     </div>
-                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.consultante_audit_financier')</a></h4>
+                                    <h4 class="title"><a
+                                            href="{{ route('opportunites.clients.index') }}">@lang('extracted.consultante_audit_financier')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -317,12 +325,14 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.comptabilite')</a></li>
+                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.comptabilite')</a>
+                                        </li>
                                     </ul>
                                     <div class="post-meta">
 
                                     </div>
-                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.comptable_generale')</a></h4>
+                                    <h4 class="title"><a
+                                            href="{{ route('opportunites.clients.index') }}">@lang('extracted.comptable_generale')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -336,11 +346,13 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.informatique')</a></li>
+                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.informatique')</a>
+                                        </li>
                                     </ul>
                                     <div class="post-meta">
                                     </div>
-                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.developpeur_web_fullstack')</a></h4>
+                                    <h4 class="title"><a
+                                            href="{{ route('opportunites.clients.index') }}">@lang('extracted.developpeur_web_fullstack')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -603,18 +615,23 @@
                             <label class="form-check-label fw-bold" for="selectAllProduits">@lang('extracted.tout_selectionner')</label>
                         </div>
                         @php
-                            $chunks = array_chunk($produits->all(), ceil($produits->count() / 2));
+                            $count = $produits->count();
+                            $chunkSize = $count > 0 ? ceil($count / 2) : 1; // au moins 1
+                            $chunks = array_chunk($produits->all(), $chunkSize);
                         @endphp
+
                         <div id="produits-list" class="row">
                             <!-- Exemple de checkboxes produits, à adapter dynamiquement si besoin -->
                             <div class="col-md-6">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="1" id="produit1">
+                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]"
+                                        value="1" id="produit1">
                                     <label class="form-check-label" for="produit1">@lang('extracted.produit_1')</label>
                                 </div>
                                 <hr>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="2" id="produit2">
+                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]"
+                                        value="2" id="produit2">
                                     <label class="form-check-label" for="produit2">@lang('extracted.produit_2')</label>
                                 </div>
                                 <hr>
@@ -622,17 +639,19 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="3" id="produit3">
+                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]"
+                                        value="3" id="produit3">
                                     <label class="form-check-label" for="produit3">@lang('extracted.produit_3')</label>
                                 </div>
                                 <hr>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]" value="4" id="produit4">
+                                    <input class="form-check-input produit-checkbox" type="checkbox" name="produits[]"
+                                        value="4" id="produit4">
                                     <label class="form-check-label" for="produit4">@lang('extracted.produit_4')</label>
                                 </div>
                                 <hr>
                                 <!-- Ajoute d'autres produits ici -->
-                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-end">
@@ -655,7 +674,8 @@
                     </svg><br>
                     <h5 style="color: black">@lang('extracted.vos_choix_ont_bien_ete_enregistres')<br>@lang('extracted.un_email_de_bienvenue_vous_a_ete_envoye')</h5>
                     <br>
-                    <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
+                    <button type="button" class="btn btn-success mt-3"
+                        data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>
@@ -672,7 +692,8 @@
                             d="M4 20v-6a8 8 0 1 1 16 0v6h1v2H3v-2zm2 0h12v-6a6 6 0 0 0-12 0zm5-18h2v3h-2zm8.778 2.808l1.414 1.414l-2.12 2.121l-1.415-1.414zM2.808 6.222l1.414-1.414l2.121 2.12L4.93 8.344zM7 14a5 5 0 0 1 5-5v2a3 3 0 0 0-3 3z" />
                     </svg><br>
                     <h5 style="color:black" id="serviceErrorMsg">@lang('extracted.une_erreur_est_survenue_veuillez_reessayer')</h5>
-                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
+                    <button type="button" class="btn btn-warning mt-3"
+                        data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>
@@ -793,22 +814,25 @@
                         },
                         body: JSON.stringify({
                             email,
-                        produits: checkedProduits
+                            produits: checkedProduits
                         })
                     })
                     .then(res => res.json())
                     .then(data => {
                         if (data.success) {
-                        // Ferme la modale de choix de produit
-                        bootstrap.Modal.getInstance(document.getElementById('choixProduitModal')).hide();
+                            // Ferme la modale de choix de produit
+                            bootstrap.Modal.getInstance(document.getElementById('choixProduitModal'))
+                                .hide();
                             // Affiche la modale de succès
-                        var modalSuccess = new bootstrap.Modal(document.getElementById('produituccessModal'));
+                            var modalSuccess = new bootstrap.Modal(document.getElementById(
+                                'produituccessModal'));
                             modalSuccess.show();
                         } else {
                             // Affiche la modale d'erreur avec le message retourné
                             document.getElementById('serviceErrorMsg').textContent = data.message ||
                                 "Une erreur est survenue, veuillez réessayer.";
-                        var modalError = new bootstrap.Modal(document.getElementById('serviceErrorModal'));
+                            var modalError = new bootstrap.Modal(document.getElementById(
+                                'serviceErrorModal'));
                             modalError.show();
                         }
                     })
@@ -816,7 +840,8 @@
                         // Affiche la modale d'erreur en cas d'erreur réseau/serveur
                         document.getElementById('serviceErrorMsg').textContent =
                             "Erreur serveur, veuillez réessayer.";
-                    var modalError = new bootstrap.Modal(document.getElementById('serviceErrorModal'));
+                        var modalError = new bootstrap.Modal(document.getElementById(
+                            'serviceErrorModal'));
                         modalError.show();
                     });
             });
@@ -948,8 +973,9 @@
             min-height: 90px;
             /* Garde une hauteur uniforme même si le texte est court */
         }
+
         .author-info h4 {
-           
+
             max-width: 100%;
             display: -webkit-box;
             -webkit-line-clamp: 1;
@@ -959,5 +985,5 @@
             text-overflow: ellipsis;
         }
     </style>
-
+    
 @endsection

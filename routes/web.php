@@ -22,7 +22,7 @@ use App\Http\Controllers\LocaleController;
 */
 
 
-Route::get('/locale/{lang}',[LocalController::class,'setLocale']);
+Route::get('/locale/{lang}',[LocaleController::class,'setLocale'])->name('locale.switch');
 Route::get('/', [ProduitController::class, 'index'])->name('welcome');
 
 
@@ -141,22 +141,17 @@ Route::prefix('admin')->group(function () {
     // Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
     // CALENDRIER
-    Route::get('/calendrier/index',[DashboardController::class, 'index_calendrier']  )->name('calendrier.index');
+    Route::get('/calendrier/index',[DashboardController::class, 'index_calendrier'])->name('calendrier.index');
 
     // CALENDRIER
-    Route::get('/email/index',[DashboardController::class, 'index_email']  )->name('email.index');
+    Route::get('/email/index',[DashboardController::class, 'index_email'])->name('email.index');
 
     // ENVOI SERVICES
     Route::post('/envoi-services', [InscriptionController::class, 'envoiServices'])->name('envoi.services');
-   
+    Route::post('/inscription/services', [InscriptionController::class, 'saveServices'])->name('inscription.services');
+
 });
 
-Route::post('/inscription/services', [InscriptionController::class, 'saveServices'])->name('inscription.services');
-
-    
-    
 
 
-    // tes routes ici...
-});
 
