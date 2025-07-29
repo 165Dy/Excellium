@@ -270,8 +270,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Compta_Fiscale') }}">@lang('extracted.tenue_de_comptabilite_declarations_fiscales_et_optimisation_fiscale')</a></span>
-                                            <h4 class="title"><a href="{{ route('Compta_Fiscale') }}">Assistance comptable
+                                            <span><a href="#">@lang('extracted.tenue_de_comptabilite_declarations_fiscales_et_optimisation_fiscale')</a></span>
+                                                 <h4 class="title"><a href="#">Assistance comptable
                                                     et fiscale
                                                 </a>
                                             </h4>
@@ -288,9 +288,9 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('audit&Conseil') }}">@lang('extracted.analyse_financiere_gestion_des_risques_et_amelioration_des_performances')</a></span>
+                                            <span><a href="#">@lang('extracted.analyse_financiere_gestion_des_risques_et_amelioration_des_performances')</a></span>
                                             <h4 class="title"><a
-                                                    href="{{ route('audit&Conseil') }}">@lang('extracted.audit_et_conseil')</a>
+                                                    href="#">@lang('extracted.audit_et_conseil')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -306,9 +306,9 @@
                                     <div class="content-wrap">
                                         <div class="content">
                                             <span><a
-                                                    href="{{ route('Ressources_humaines') }}">@lang('extracted.mise_en_relation_avec_des_talents_qualifies_pour_renforcer_vos_equipes')</a></span>
+                                                    href="#">@lang('extracted.mise_en_relation_avec_des_talents_qualifies_pour_renforcer_vos_equipes')</a></span>
                                             <h4 class="title"><a
-                                                    href="{{ route('Ressources_humaines') }}">@lang('extracted.recrutement_et_placement')</a>
+                                                    href="#">@lang('extracted.recrutement_et_placement')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -323,11 +323,11 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Gestion_Paie') }}"> Externalisation de la gestion
+                                            <span><a href="#"> Externalisation de la gestion
                                                     salariale pour garantir
                                                     conformité et efficacité.</a></span>
                                             <h4 class="title"><a
-                                                    href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a>
+                                                    href="#">@lang('extracted.gestion_de_la_paie')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -342,8 +342,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Financement') }}">@lang('extracted.accompagnement_dans_lobtention_de_credits_et_subventions')</a></span>
-                                            <h4 class="title"><a href="{{ route('Financement') }}">Recherche de
+                                            <span><a href="#">@lang('extracted.accompagnement_dans_lobtention_de_credits_et_subventions')</a></span>
+                                            <h4 class="title"><a href="#">Recherche de
                                                     financement </a>
                                             </h4>
                                         </div>

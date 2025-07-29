@@ -122,12 +122,28 @@
                                         </a>
                                     </li>
                                     <li class="menu-item has-children"><a href="#">@lang('extracted.nos_services')</a>
+                                        @php
+                                            use App\Models\Service;
+                                            $services = Service::with('categorie')->orderBy('id', 'desc')->get();
+                                        @endphp
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('audit&Conseil') }}">@lang('extracted.audit_conseil')</a></li>
-                                            <li><a href="{{ route('Compta_Fiscale') }}">@lang('extracted.comptable_fiscale')</a></li>
-                                            <li><a href="{{ route('Financement') }}">@lang('extracted.financement')</a></li>
-                                            <li><a href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a></li>
-                                            <li><a href="{{ route('Ressources_humaines') }}">@lang('extracted.r_humaines')</a></li>
+                                            @if ($services->count() > 0)
+                                                @foreach ($services as $service)
+                                                    <li>
+                                                        <a
+                                                            href="{{ route('services_client.show', $service->slug)}}">
+                                                            {{ $service->nom }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            @else
+                                                <li><a href="{{ route('audit&Conseil') }}">@lang('extracted.audit_conseil')</a></li>
+                                                <li><a href="{{ route('Compta_Fiscale') }}">@lang('extracted.comptable_fiscale')</a></li>
+                                                <li><a href="{{ route('Financement') }}">@lang('extracted.financement')</a></li>
+                                                <li><a href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a></li>
+                                                <li><a href="{{ route('Ressources_humaines') }}">@lang('extracted.r_humaines')</a>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </li>
                                     <li class="menu-item has-children"><a href="#">@lang('extracted.ressources')</a>
@@ -173,7 +189,7 @@
                                                     width="20"> Français
                                             </a>
                                         @endif
-                                    
+
                                     </li>
                                 </ul>
 
@@ -259,12 +275,10 @@
     @yield('indexOpportunite')
 
     {{-- /////////// --}}
-    @yield('Audit_conseil')
-    @yield('compta_fiscale')
-    @yield('financement')
-    @yield('R_humaines')
+    @yield('Services')
+    
     {{-- /RESSOURCES HUMAINES/ --}}
-    @yield('Gestion_paie')
+    
     {{-- /FORMATIONS/ --}}
 
     @yield('formations.index')

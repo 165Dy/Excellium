@@ -51,6 +51,12 @@ class ServiceController extends Controller
         }
     }
 
+    public function showClient($slug)
+    {
+        $service = Service::where('slug', $slug)->firstOrFail();
+        return view('clients.Nos_Services.Show', compact('service'));
+    }
+
     // Créer un service
     public function store(Request $request)
     {

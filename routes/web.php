@@ -10,6 +10,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OpportuniteController;
 use App\Http\Controllers\LocaleController;
+use App\Models\Service;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ use App\Http\Controllers\LocaleController;
 
 Route::get('/locale/{lang}',[LocaleController::class,'setLocale'])->name('locale.switch');
 Route::get('/', [ProduitController::class, 'index'])->name('welcome');
+
 
 
 
@@ -48,6 +50,7 @@ Route::get('/confirm-password', function () {return view('auth.confirm-password'
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 Route::prefix('clients')->group(function () {
 
     
@@ -62,12 +65,13 @@ Route::prefix('clients')->group(function () {
     Route::post('/Formations/participer', [formationsController::class, 'participer'])->name('formations.participer');
 
     // NOS SERVICES
-    Route::get('/Nos_Services/audit&Conseil',function () { return view('clients.Nos_Services.Audit_Conseil'); } )->name('audit&Conseil');
-    Route::get('/Nos_Services/Compta_Fiscale',function () { return view('clients.Nos_Services.compta_Fiscale'); } )->name('Compta_Fiscale');
-    Route::get('/Nos_Services/Financement',function () { return view('clients.Nos_Services.Financement'); } )->name('Financement');
-    Route::get('/Nos_Services/Gestion_paie',function () { return view('clients.Nos_Services.Gestion_Paie'); } )->name('Gestion_Paie');
-    Route::get('/Nos_Services/Ressources_Humaines',function () { return view('clients.Nos_Services.Ressource_humaine'); } )->name('Ressources_humaines');
-    Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax'])->name('inscription.services');
+
+    Route::get('/Nos_Services/fsdgsexxdzs/{slug}',[ServiceController::class, 'showClient'] )->name('services_client.show');
+    // Route::get('/Nos_Services/Compta_Fiscale',function () { return view('clients.Nos_Services.compta_Fiscale'); } )->name('Compta_Fiscale');
+    // Route::get('/Nos_Services/Financement',function () { return view('clients.Nos_Services.Financement'); } )->name('Financement');
+    // Route::get('/Nos_Services/Gestion_paie',function () { return view('clients.Nos_Services.Gestion_Paie'); } )->name('Gestion_Paie');
+    // Route::get('/Nos_Services/Ressources_Humaines',function () { return view('clients.Nos_Services.Ressource_humaine'); } )->name('Ressources_humaines');
+    // Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax'])->name('inscription.services');
 
 
      // NOS PARTENAIRES
@@ -89,13 +93,9 @@ Route::prefix('clients')->group(function () {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::prefix('admin')->group(function () {  
-    
     Route::get('/Dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
-
-    
     Route::get('/users/index',[DashboardController::class, 'index_user'] )->name('users.index');
     Route::get('/users/show',function () { return view('Admin.users.show'); } )->name('users.show');
-
     // FORMATIONS
     Route::get('/categories/index',function () { return view('Admin.categorie.index'); } )->name('categories.index');
     Route::post('/categories', [CategorieController::class, 'store'])->name('categories.store');
