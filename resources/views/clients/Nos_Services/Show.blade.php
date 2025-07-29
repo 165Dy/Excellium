@@ -122,10 +122,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="read-button mb-30 text-center">
+                <div class="read-button2 mb-30 text-center">
                     <a href="#" id="btnInscriptionService"
-                        style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
-                        <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
+                        style="color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
+                        <svg width="50" height="50" viewBox="0 0 64 64" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="8" y="8" width="40" height="48" rx="4" ry="4" stroke="#000"
                                 stroke-width="2" fill="white" />
@@ -160,9 +160,7 @@
                             </style>
                         </svg>
 
-                        Vous souhaitez optimiser vos performances ? Inscrivez-vous pour échanger avec nos experts en audit
-                        et
-                        conseil sur vos enjeux stratégiques.
+                        Vous souhaitez optimiser vos performances ? Inscrivez-vous pour échanger avec nos experts en audit et conseil sur vos enjeux stratégiques.
                     </a>
                 </div>
             </div>
@@ -484,9 +482,9 @@
 
                     </div>
                 </div>
-                <div class="read-button mb-30 text-center">
+                <div class="read-button2 mb-30 text-center">
 
-                    <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
+                    <svg width="50" height="50" viewBox="0 0 64 64" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="12" y="8" width="40" height="48" rx="4" ry="4" stroke="#000"
                             stroke-width="2" />
@@ -645,9 +643,9 @@
                     </div>
                 </div>
 
-                <div class="read-button mb-30 text-center">
+                <div class="read-button2 mb-30 text-center">
 
-                    <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
+                    <svg width="50" height="50" viewBox="0 0 64 64" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M32 12 L28 20 H36 L32 12 Z" fill="#000" />
                         <path d="M24 20 C16 32, 16 44, 32 52 C48 44, 48 32, 40 20 Z" fill="white" stroke="#000"
@@ -659,11 +657,8 @@
                                 repeatCount="indefinite" />
                         </polyline>
                     </svg>
-
                     Vous recherchez des solutions de financement adaptées ? Inscrivez-vous pour explorer avec nous les
                     meilleures opportunités.
-
-
                 </div>
         </section>
         <!--====== End Case Details Section ======-->
@@ -809,9 +804,8 @@
                     </div>
                 </div>
 
-                <div class="read-button mb-30 text-center">
-
-                    <svg width="100" height="100" viewBox="0 0 64 64" fill="none"
+                <div class="read-button2 mb-30 text-center">
+                    <svg width="50" height="50" viewBox="0 0 64 64" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="12" y="12" width="36" height="48" rx="2" ry="2" stroke="#000"
                             stroke-width="2" fill="white" />
@@ -838,9 +832,7 @@
                             }
                         </style>
                     </svg>
-
                     Optimisez la gestion salariale de votre entreprise : contactez-nous pour un accompagnement dédié.
-
                 </div>
 
         </section><!--====== End Case Details Section ======-->
@@ -966,8 +958,8 @@
                     </div>
                 </div>
 
-                <div class="read-button mb-30 text-center">
-                    <svg width="120" height="100" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <div class="read-button2 mb-30 text-center">
+                    <svg width="120" height="50" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="32" cy="16" r="6" fill="black" />
                         <rect x="26" y="24" width="12" height="18" fill="black" />
                         <circle cx="16" cy="20" r="4" fill="#555">
@@ -986,4 +978,31 @@
         </section>
         <!--====== End Case Details Section ======-->
     @endif
+    <style>
+        .read-button2 {
+            background: linear-gradient(135deg, #f3f2ef, #e0dfdc);
+            color: #333;
+            border: 1px solid #ccc;
+            /* padding: 10px 10px; */
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            /* text-transform: uppercase; */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .read-button2:hover {
+            background: linear-gradient(135deg, #e0dfdc, #cac9c7);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .read-button2:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.2);
+        }
+    </style>
 @endsection
