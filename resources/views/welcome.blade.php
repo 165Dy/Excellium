@@ -271,7 +271,7 @@
                                     <div class="content-wrap">
                                         <div class="content">
                                             <span><a href="#">@lang('extracted.tenue_de_comptabilite_declarations_fiscales_et_optimisation_fiscale')</a></span>
-                                                 <h4 class="title"><a href="#">Assistance comptable
+                                            <h4 class="title"><a href="#">Assistance comptable
                                                     et fiscale
                                                 </a>
                                             </h4>
@@ -289,8 +289,7 @@
                                     <div class="content-wrap">
                                         <div class="content">
                                             <span><a href="#">@lang('extracted.analyse_financiere_gestion_des_risques_et_amelioration_des_performances')</a></span>
-                                            <h4 class="title"><a
-                                                    href="#">@lang('extracted.audit_et_conseil')</a>
+                                            <h4 class="title"><a href="#">@lang('extracted.audit_et_conseil')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -305,10 +304,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a
-                                                    href="#">@lang('extracted.mise_en_relation_avec_des_talents_qualifies_pour_renforcer_vos_equipes')</a></span>
-                                            <h4 class="title"><a
-                                                    href="#">@lang('extracted.recrutement_et_placement')</a>
+                                            <span><a href="#">@lang('extracted.mise_en_relation_avec_des_talents_qualifies_pour_renforcer_vos_equipes')</a></span>
+                                            <h4 class="title"><a href="#">@lang('extracted.recrutement_et_placement')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -326,8 +323,7 @@
                                             <span><a href="#"> Externalisation de la gestion
                                                     salariale pour garantir
                                                     conformité et efficacité.</a></span>
-                                            <h4 class="title"><a
-                                                    href="#">@lang('extracted.gestion_de_la_paie')</a>
+                                            <h4 class="title"><a href="#">@lang('extracted.gestion_de_la_paie')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -372,10 +368,10 @@
                     </p>
                 </div>
                 <div class="zency-isotope wow fadeInDown" style="text-align:center;">
-                    <video width="100%" height="500" controls autoplay loop muted
-                        poster="assets/images/formation_poster.jpg" class="case-img"
+                    <video id="myVideo" width="100%" height="500" controls autoplay loop muted
+                        poster="{{ asset('assets/images/formation_poster.jpg') }}" class="case-img"
                         style="max-width:900px; border-radius:10px; display:block; margin:0 auto;">
-                        <source src="{{ asset('assets/images/10.mp4') }}" type="video/mp4">
+                        <source src="{{ asset('assets/images/video.mp4') }}" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéos.
                     </video>
 
@@ -978,6 +974,13 @@
                     e.preventDefault();
                 }
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var vid = document.getElementById('myVideo');
+            vid.muted = true; // force le mute
         });
     </script>
 @endsection

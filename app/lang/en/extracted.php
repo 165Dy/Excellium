@@ -747,7 +747,7 @@ return [
     'abidjan_yopougon_palais' => 'Abidjan, Yopougon Palais',
     '225_0707672957' => '(+225) 0707672957',
     'copyright_copy2025' => 'Copyright &copy;2025,',
-    'excellium_conseils' => 'Excellium Conseils',
+    'excellium_conseils' => 'Home',
     'all_rights_reserved' => 'All Rights Reserved',
     'fermee' => 'Fermée',
     'pourvue' => 'Pourvue',

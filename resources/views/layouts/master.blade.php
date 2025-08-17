@@ -130,8 +130,7 @@
                                             @if ($services->count() > 0)
                                                 @foreach ($services as $service)
                                                     <li>
-                                                        <a
-                                                            href="{{ route('services_client.show', $service->slug)}}">
+                                                        <a href="{{ route('services_client.show', $service->slug) }}">
                                                             {{ $service->nom }}
                                                         </a>
                                                     </li>
@@ -172,27 +171,7 @@
                                     <li class="menu-item has-children">
                                         <a href="{{ route('Formations.index') }}">@lang('extracted.formations')</a>
                                     </li>
-
-                                    <li>
-                                        @php
-                                            $locale = app()->getLocale();
-                                        @endphp
-
-                                        @if ($locale == 'fr')
-                                            <a href="{{ route('locale.switch', 'en') }}">
-                                                <img src="{{ asset('assets/images/icon/united-kingdom.svg') }}"
-                                                    width="20"> English
-                                            </a>
-                                        @elseif ($locale == 'en')
-                                            <a href="{{ route('locale.switch', 'fr') }}">
-                                                <img src="{{ asset('assets/images/icon/france.svg') }}"
-                                                    width="20"> Français
-                                            </a>
-                                        @endif
-
-                                    </li>
                                 </ul>
-
                             </nav>
 
                             {{-- <!-- Flash Bourse Banner -->
@@ -234,7 +213,23 @@
                                 </div>
                             </div> --}}
                         </div>
+                        @php
+                            $locale = app()->getLocale();
+                        @endphp
+                        {{-- Language Switcher --}}
+
+                        @if ($locale == 'fr')
+                            <a href="{{ route('locale.switch', 'en') }}">
+                                <i class="far fa-globe"></i> English
+                            </a>
+                        @elseif ($locale == 'en')
+                            <a href="{{ route('locale.switch', 'fr') }}">
+                                <i class="far fa-globe"></i> Français
+                            </a>
+                        @endif
                         <div class="nav-right-item">
+
+                            <a href="{{ route('contacts') }}"><i class="far fa-envelope"></i></a>
                             <div class="navbar-toggler">
                                 <span></span>
                                 <span></span>
@@ -276,9 +271,9 @@
 
     {{-- /////////// --}}
     @yield('Services')
-    
+
     {{-- /RESSOURCES HUMAINES/ --}}
-    
+
     {{-- /FORMATIONS/ --}}
 
     @yield('formations.index')
@@ -394,8 +389,6 @@
 
     <!--====== End Footer Section ======-->
     <!--====== Back To Top  ======-->
-    <a href="{{ route('contacts') }}" style="background-color: #FFAC1E" class="back-to-top-message"><i
-            class="far fa-envelope"></i></a>
     <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
     <!--====== Jquery js ======-->
     <script src="{{ asset('assets/vendor/jquery-3.6.0.min.js') }}"></script>
