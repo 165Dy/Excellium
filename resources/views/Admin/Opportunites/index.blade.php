@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('index_opportunites')
+@section('index_emplois')
 <br><br>
     <style>
         .bg-gradient-primary {
@@ -39,18 +39,18 @@
                 <p class="text-muted mb-0">Gérez toutes vos offres d'emploi et candidatures</p>
             </div>
             <div class="d-flex gap-2">
-                <button type="button" class="btn btn-outline-primary" onclick="refreshOpportunites()">
+                <button type="button" class="btn btn-outline-primary" onclick="refreshEmplois()">
                     <i class="fas fa-sync-alt me-1"></i>Actualiser
                 </button>
                 <button type="button" class="btn btn-primary btn-lg shadow-sm" data-bs-toggle="modal"
-                    data-bs-target="#create_opportunites">
+                    data-bs-target="#create_emplois">
                     <i class="fas fa-plus-circle me-2"></i>Nouvelle Opportunité
                 </button>
             </div>
         </div>
 
         {{-- Debug : Vérifier si les données arrivent --}}
-        @if ($opportunites->isEmpty())
+        @if ($emplois->isEmpty())
             <div class="alert alert-danger mb-4">
                 <i class="fas fa-exclamation-triangle me-2"></i>
                 <strong>Alerte :</strong> Opportunités non définies
@@ -58,13 +58,13 @@
         @else
             <div class="alert alert-success mb-4">
                 <i class="fas fa-check-circle me-2"></i>
-                <strong>Données chargées :</strong> {{ $opportunites->count() }} opportunité(s) trouvée(s)
+                <strong>Données chargées :</strong> {{ $emplois->count() }} opportunité(s) trouvée(s)
             </div>
         @endif
 
 
         {{-- Statistiques rapides --}}
-        @if (isset($opportunites) && $opportunites->count() > 0)
+        @if (isset($emplois) && $emplois->count() > 0)
             <div class="row mb-4">
                 <div class="col-md-3">
                     <div class="card bg-gradient-primary text-white shadow-sm">
@@ -74,7 +74,7 @@
                                     <i class="fas fa-briefcase fa-2x"></i>
                                 </div>
                             </div>
-                            <h3 class="fw-bold mb-1">{{ $opportunites->count() }}</h3>
+                            <h3 class="fw-bold mb-1">{{ $emplois->count() }}</h3>
                             <p class="mb-0 opacity-75">Total Opportunités</p>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                                     <i class="fas fa-check-circle fa-2x"></i>
                                 </div>
                             </div>
-                            <h3 class="fw-bold mb-1">{{ $opportunites->where('statut', 'active')->count() }}</h3>
+                            <h3 class="fw-bold mb-1">{{ $emplois->where('statut', 'active')->count() }}</h3>
                             <p class="mb-0 opacity-75">Actives</p>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                             <h3 class="fw-bold mb-1">
-                                {{ $opportunites->sum(function ($o) {return $o->totalCandidatures();}) }}</h3>
+                                {{ $emplois->sum(function ($o) {return $o->totalCandidatures();}) }}</h3>
                             <p class="mb-0 opacity-75">Candidatures</p>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                                     <i class="fas fa-clock fa-2x"></i>
                                 </div>
                             </div>
-                            <h3 class="fw-bold mb-1">{{ $opportunites->where('date_expiration', '>=', now())->count() }}
+                            <h3 class="fw-bold mb-1">{{ $emplois->where('date_expiration', '>=', now())->count() }}
                             </h3>
                             <p class="mb-0 opacity-75">À pourvoir</p>
                         </div>
@@ -132,7 +132,7 @@
             </div>
 
             <div class="card-body p-0">
-                @if (isset($opportunites) && $opportunites->count() > 0)
+                @if (isset($emplois) && $emplois->count() > 0)
                     <div class="table-responsive">
                         <table class="table table-hover mb-0">
                             <thead class="table-light">
@@ -148,7 +148,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($opportunites as $opportunite)
+                                @foreach ($emplois as $emploi)
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -156,51 +156,51 @@
                                                     <i class="fas fa-briefcase text-primary"></i>
                                                 </div>
                                                 <div>
-                                                    <h6 class="mb-0 fw-bold">{{ $opportunite->titre }}</h6>
+                                                    <h6 class="mb-0 fw-bold">{{ $emploi->titre }}</h6>
                                                     <small class="text-muted">
-                                                        💰 {{ $opportunite->salaire_formate ?? 'Non spécifié' }}
+                                                        💰 {{ $emploi->salaire_formate ?? 'Non spécifié' }}
                                                     </small>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <span class="fw-semibold">{{ $opportunite->entreprise }}</span>
+                                            <span class="fw-semibold">{{ $emploi->entreprise }}</span>
                                         </td>
-                                        <td>{!! $opportunite->type_contrat_badge !!}</td>
+                                        <td>{!! $emploi->type_contrat_badge !!}</td>
                                         <td>
                                             <i class="fas fa-map-marker-alt text-danger me-1"></i>
-                                            {{ $opportunite->localisation }}
+                                            {{ $emploi->localisation }}
                                         </td>
                                         <td>
                                             <span class="badge bg-primary rounded-pill">
-                                                {{ $opportunite->totalCandidatures() }}
+                                                {{ $emploi->totalCandidatures() }}
                                             </span>
                                         </td>
                                         <td>
                                             <small class="text-muted">
-                                                {{ $opportunite->date_expiration }}
-                                                @if ($opportunite->isExpired())
+                                                {{ $emploi->date_expiration }}
+                                                @if ($emploi->isExpired())
                                                     <br><span class="text-danger">Expirée</span>
                                                 @else
-                                                    <br><span class="text-success">{{ $opportunite->joursRestants() }}
+                                                    <br><span class="text-success">{{ $emploi->joursRestants() }}
                                                         jour(s)</span>
                                                 @endif
                                             </small>
                                         </td>
-                                        <td>{!! $opportunite->statut_badge !!}</td>
+                                        <td>{!! $emploi->statut_badge !!}</td>
                                         <td>
                                             <div class="d-flex gap-1">
                                                 <button class="btn btn-info btn-sm"
-                                                    onclick="voirDetailsOpportunite({{ $opportunite->id }})"
+                                                    onclick="voirDetailsEmploi({{ $emploi->id }})"
                                                     title="Voir détails">
                                                     <i class="ri ri-eye-line"></i>
                                                 </button>
                                                 <button class="btn btn-warning btn-sm"
-                                                    onclick="editerOpportunite({{ $opportunite->id }})" title="Modifier">
+                                                    onclick="editerEmploi({{ $emploi->id }})" title="Modifier">
                                                     <i class="ri ri-edit-line"></i>
                                                 </button>
                                                 <button class="btn btn-danger btn-sm"
-                                                    onclick="supprimerOpportunite({{ $opportunite->id }}, '{{ addslashes($opportunite->titre) }}')"
+                                                    onclick="supprimerEmploi({{ $emploi->id }}, '{{ addslashes($emploi->titre) }}')"
                                                     title="Supprimer">
                                                     <i class="ri ri-delete-bin-line"></i>
                                                 </button>
@@ -217,7 +217,7 @@
                         <h5 class="text-muted">Aucune opportunité</h5>
                         <p class="text-muted">Commencez par créer votre première offre d'emploi</p>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#create_opportunites">
+                            data-bs-target="#create_emplois">
                             <i class="fas fa-plus me-2"></i>Créer une opportunité
                         </button>
                     </div>
@@ -227,19 +227,19 @@
     </div>
 
     <script>
-        function refreshOpportunites() {
+        function refreshEmplois() {
             window.location.reload();
         }
 
-        function voirDetailsOpportunite(id) {
+        function voirDetailsEmploi(id) {
             console.log('Voir détails:', id);
         }
 
-        function editerOpportunite(id) {
+        function editerEmploi(id) {
             console.log('Éditer:', id);
         }
 
-        function supprimerOpportunite(id, titre) {
+        function supprimerEmploi(id, titre) {
             console.log('Supprimer:', id, titre);
         }
     </script>

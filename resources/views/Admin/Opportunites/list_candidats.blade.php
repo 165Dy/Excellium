@@ -86,7 +86,7 @@
                                 </span>
                                 <div class="mt-2">
                                     <strong>Postulé pour :</strong>
-                                    {{ $candidat->opportunite->titre ?? 'N/A' }}
+                                    {{ $candidat->emploi->titre ?? 'N/A' }}
                                 </div>
                             </div>
                         </div>

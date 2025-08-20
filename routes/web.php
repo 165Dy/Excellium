@@ -8,7 +8,7 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\OpportuniteController;
+use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\LocaleController;
 use App\Models\Service;
 
@@ -31,6 +31,7 @@ Route::get('/', [ProduitController::class, 'index'])->name('welcome');
 
 
 Route::post('/inscription', [InscriptionController::class, 'inscriptionAjax'])->name('inscription.ajax');
+Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax'])->name('inscription.services');
 
 Route::post('/choix-produit', [InscriptionController::class, 'saveProduits'])->name('choix-produit');
 
@@ -55,9 +56,9 @@ Route::prefix('clients')->group(function () {
 
     
     // OPPORTUNITES
-    Route::get('opportunites', [OpportuniteController::class, 'index_public'])->name('opportunites.clients.index');
-    Route::get('/opportunites/clients/show/{opportnuite}', [OpportuniteController::class, 'show_public'])->name('opportunites.clients.show');
-    Route::post('/candidature/postuler', [OpportuniteController::class, 'postuler'])->name('candidature.postuler');
+    Route::get('emplois', [EmploiController::class, 'index_public'])->name('emplois.clients.index');
+    Route::get('/emplois/clients/show/{opportnuite}', [EmploiController::class, 'show_public'])->name('emplois.clients.show');
+    Route::post('/candidature/postuler', [EmploiController::class, 'postuler'])->name('candidature.postuler');
     
     // FORMATIONS
     Route::get('/Formations',[formationsController::class, 'index_public'])->name('Formations.index');
@@ -67,11 +68,7 @@ Route::prefix('clients')->group(function () {
     // NOS SERVICES
 
     Route::get('/Nos_Services/fsdgsexxdzs/{slug}',[ServiceController::class, 'showClient'] )->name('services_client.show');
-    // Route::get('/Nos_Services/Compta_Fiscale',function () { return view('clients.Nos_Services.compta_Fiscale'); } )->name('Compta_Fiscale');
-    // Route::get('/Nos_Services/Financement',function () { return view('clients.Nos_Services.Financement'); } )->name('Financement');
-    // Route::get('/Nos_Services/Gestion_paie',function () { return view('clients.Nos_Services.Gestion_Paie'); } )->name('Gestion_Paie');
-    // Route::get('/Nos_Services/Ressources_Humaines',function () { return view('clients.Nos_Services.Ressource_humaine'); } )->name('Ressources_humaines');
-    // Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax'])->name('inscription.services');
+    
 
 
      // NOS PARTENAIRES
@@ -113,20 +110,20 @@ Route::prefix('admin')->group(function () {
     Route::patch('inscriptions/{inscription}/statut', [formationsController::class, 'changerStatutInscription'])->name('inscriptions.statut');
 
     // Routes Opportunités
-    Route::get('opportunites', [OpportuniteController::class, 'index'])->name('opportunites.index');
-    Route::get('opportunites/candidatures', [OpportuniteController::class, 'candidats'])->name('opportunites.candidatures.index');
-    Route::get('opportunites/create', [OpportuniteController::class, 'create'])->name('admin.opportunites.create');
-    Route::post('opportunites', [OpportuniteController::class, 'store'])->name('admin.opportunites.store');
-    Route::get('opportunites/{opportunite}', [OpportuniteController::class, 'show'])->name('admin.opportunites.show');
-    Route::get('opportunites/{opportunite}/edit', [OpportuniteController::class, 'edit'])->name('admin.opportunites.edit');
-    Route::put('opportunites/{opportunite}', [OpportuniteController::class, 'update'])->name('admin.opportunites.update');
-    Route::delete('opportunites/{opportunite}', [OpportuniteController::class, 'destroy'])->name('admin.opportunites.destroy');
+    Route::get('emplois', [EmploiController::class, 'index'])->name('emplois.index');
+    Route::get('emplois/candidatures', [EmploiController::class, 'candidats'])->name('emplois.candidatures.index');
+    Route::get('emplois/create', [EmploiController::class, 'create'])->name('admin.emplois.create');
+    Route::post('emplois', [EmploiController::class, 'store'])->name('admin.emplois.store');
+    Route::get('emplois/{emploi}', [EmploiController::class, 'show'])->name('admin.emplois.show');
+    Route::get('emplois/{emploi}/edit', [EmploiController::class, 'edit'])->name('admin.emplois.edit');
+    Route::put('emplois/{emploi}', [EmploiController::class, 'update'])->name('admin.emplois.update');
+    Route::delete('emplois/{emploi}', [EmploiController::class, 'destroy'])->name('admin.emplois.destroy');
     
     
-    Route::get('opportunites/{opportunite}/details', [OpportuniteController::class, 'getDetails'])->name('admin.opportunites.details');
-    Route::patch('candidatures/{candidature}/statut', [OpportuniteController::class, 'changerStatutCandidature'])->name('admin.candidatures.statut');
-    Route::get('opportunites/{opportunite}/export-candidatures', [OpportuniteController::class, 'exportCandidatures'])->name('opportunites.export-candidatures');
-    Route::get('candidatures/{candidature}', [OpportuniteController::class, 'showCandidature'])->name('candidatures.show');
+    Route::get('emplois/{emploi}/details', [EmploiController::class, 'getDetails'])->name('admin.emplois.details');
+    Route::patch('candidatures/{candidature}/statut', [EmploiController::class, 'changerStatutCandidature'])->name('admin.candidatures.statut');
+    Route::get('emplois/{emploi}/export-candidatures', [EmploiController::class, 'exportCandidatures'])->name('emplois.export-candidatures');
+    Route::get('candidatures/{candidature}', [EmploiController::class, 'showCandidature'])->name('candidatures.show');
 
 
     Route::get('/articles',[DashboardController::class, 'index_articles'] )->name('articles.index');
@@ -144,6 +141,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
     Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
     Route::get('/services/list', [ServiceController::class, 'list'])->name('services.list');
+    Route::get('/services/users-subscriptions', [ServiceController::class, 'listUserServices'])->name('services.users_subscriptions');
     Route::put('/services/{id}', [ServiceController::class, 'update'])->name('services.update');
     Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
     Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
@@ -156,10 +154,6 @@ Route::prefix('admin')->group(function () {
 
     // CALENDRIER
     Route::get('/email/index',[DashboardController::class, 'index_email'])->name('email.index');
-
-    // ENVOI SERVICES
-    Route::post('/envoi-services', [InscriptionController::class, 'envoiServices'])->name('envoi.services');
-    Route::post('/inscription/services', [InscriptionController::class, 'saveServices'])->name('inscription.services');
 
 });
 

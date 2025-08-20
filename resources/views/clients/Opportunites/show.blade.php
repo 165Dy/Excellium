@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('showOpportunite')
+@section('showEmploi')
     <!--====== Start Page Section ======-->
     <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
         <div class="shape shape-one scene"><span data-depth="1"><img src="{{ asset('assets/images/shape/p-1.png') }}"
@@ -40,11 +40,11 @@
 
                             @php
                                 // Offres similaires par type de contrat, hors offre courante
-                                $memeOpportunites = \App\Models\Emploi::where(
+                                $memeEmplois = \App\Models\Emploi::where(
                                     'type_contrat',
-                                    $opportunite->type_contrat,
+                                    $emploi->type_contrat,
                                 )
-                                    ->where('id', '!=', $opportunite->id)
+                                    ->where('id', '!=', $emploi->id)
                                     ->latest()
                                     ->limit(3)
                                     ->get();
@@ -55,7 +55,7 @@
                             </div>
                             <br>
 
-                            @if ($memeOpportunites->isEmpty())
+                            @if ($memeEmplois->isEmpty())
                                 <div class="section-content-box pr-xl-400 mb-40 wow fadeInLeft" style="width:500px">
                                     <div class="iconic-box style-two mb-80" style="width: 500px">
                                         <h5 style="color: rgb(243, 35, 35)">@lang('extracted.aucune_autre_offre_disponible_avec_ce_type_de_contrat')</h5>
@@ -63,17 +63,17 @@
                                 </div>
                             @else
                                 <div class="product-thumb-slider">
-                                    @foreach ($memeOpportunites as $memeOpportunite)
+                                    @foreach ($memeEmplois as $memeEmploi)
                                         <div class="product-img">
                                             <img src="{{ asset('assets/images/products/thumb-1.jpg') }}" alt="Product">
                                             <p
                                                 style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                                {{ $memeOpportunite->description }}
+                                                {{ $memeEmploi->description }}
                                             </p>
-                                            <p><i class="far fa-calendar-alt"></i> {{ $memeOpportunite->date_expiration }}
+                                            <p><i class="far fa-calendar-alt"></i> {{ $memeEmploi->date_expiration }}
                                             </p>
                                             <a
-                                                href="{{ route('opportunites.clients.show', $memeOpportunite->id) }}">{{ $memeOpportunite->entreprise }}</a>
+                                                href="{{ route('emplois.clients.show', $memeEmploi->id) }}">{{ $memeEmploi->entreprise }}</a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -84,48 +84,48 @@
                     <div class="col-xl-6">
                         <!--=== Product Info ===-->
                         <div class="product-info mb-50 wow fadeInRight">
-                            <span class="stock">Expire le : {{ $opportunite->date_expiration }}</span>
-                            <h4>{{ $opportunite->titre }}</h4>
+                            <span class="stock">Expire le : {{ $emploi->date_expiration }}</span>
+                            <h4>{{ $emploi->titre }}</h4>
 
                             <ul class="ratings">
-                                <li><i class="icon-map"></i> {{ $opportunite->localisation }}</li>
+                                <li><i class="icon-map"></i> {{ $emploi->localisation }}</li>
                                 {{-- <li><i class="fas fa-star"></i></li>
                                 <li><i class="fas fa-star"></i></li> --}}
 
                             </ul>
                             <hr>
-                            <p>{{ $opportunite->description }}</p>
+                            <p>{{ $emploi->description }}</p>
                             <hr>
                             <div class="description-content">
                                 <ul>
                                     <ul class="check-list style-one">
                                         <li><i class="far fa-check"></i>Entreprise :
-                                            {{ $opportunite->entreprise }} </li>
+                                            {{ $emploi->entreprise }} </li>
                                         <li><i class="far fa-check"></i>Type de Contrat :
-                                            {{ $opportunite->type_contrat }}
+                                            {{ $emploi->type_contrat }}
                                         </li>
                                         <li><i class="far fa-check"></i>Experience :
-                                            {{ $opportunite->experience_requise }}
+                                            {{ $emploi->experience_requise }}
                                         </li>
                                         <li><i class="far fa-check"></i>Salaire :
-                                            {{ $opportunite->salaire_min }} FCFA <=>
-                                                {{ $opportunite->salaire_max }} FCFA</li>
+                                            {{ $emploi->salaire_min }} FCFA <=>
+                                                {{ $emploi->salaire_max }} FCFA</li>
                                         <li><i class="far fa-check"></i>Niveau :
-                                            {{ $opportunite->niveau_etude }} </li>
+                                            {{ $emploi->niveau_etude }} </li>
                                         <li><i class="far fa-check"></i>Poste Disponible :
-                                            {{ $opportunite->nombre_postes }} </li>
+                                            {{ $emploi->nombre_postes }} </li>
                                         <li><i class="far fa-check"></i>Contact :
-                                            {{ $opportunite->contact_telephone }}
+                                            {{ $emploi->contact_telephone }}
                                         </li>
 
                                     </ul><br>
 
-                                    {{-- filepath: c:\Users\home\Desktop\Projet_Excellium\Excellium\resources\views\clients\Opportunites\show.blade.php --}}
+                                    {{-- filepath: c:\Users\home\Desktop\Projet_Excellium\Excellium\resources\views\clients\Emplois\show.blade.php --}}
                                     @php
                                         use Carbon\Carbon;
                                         $estExpiree =
-                                            $opportunite->date_expiration &&
-                                            Carbon::parse($opportunite->date_expiration)->isPast();
+                                            $emploi->date_expiration &&
+                                            Carbon::parse($emploi->date_expiration)->isPast();
                                     @endphp
 
                                     @if (!$estExpiree)
@@ -221,7 +221,7 @@
                             Revenez à la page des opportunités pour découvrir d'autres
                             offres similaires.
                         </p>
-                        <a href="{{ route('opportunites.clients.index') }}" class="btn btn-danger px-4">
+                        <a href="{{ route('emplois.clients.index') }}" class="btn btn-danger px-4">
                             OK
                         </a>
                     </div>
@@ -237,8 +237,8 @@
             <div class="modal-content" style="background: #2c3e50; color: white;">
                 <div class="modal-header border-secondary">
                     <h5 class="modal-title text-warning" id="inscriptionModalLabel">
-                        <i class="fas fa-graduation-cap me-2"></i>Inscription - {{ $opportunite->entreprise }}-
-                        {{ $opportunite->type_contrat }}
+                        <i class="fas fa-graduation-cap me-2"></i>Inscription - {{ $emploi->entreprise }}-
+                        {{ $emploi->type_contrat }}
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Fermer"></button>
@@ -246,7 +246,7 @@
 
                 <form id="inscriptionForm" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="opportunite_id" value="{{ $opportunite->id }}">
+                    <input type="hidden" name="emploi_id" value="{{ $emploi->id }}">
 
                     <div class="modal-body">
                         <div class="row">
@@ -254,27 +254,27 @@
                             <div class="col-md-12 mb-4">
                                 <div class="alert alert-info">
                                     <h6 class="text-dark mb-2">
-                                        <i class="fas fa-info-circle me-1"></i>Détails de - {{ $opportunite->titre }}
+                                        <i class="fas fa-info-circle me-1"></i>Détails de - {{ $emploi->titre }}
                                     </h6>
                                     <p class="text-dark mb-1">
                                         <strong>@lang('extracted.date')</strong>
-                                        {{ $opportunite->created_at ? \Carbon\Carbon::parse($opportunite->created_at)->format('d/m/Y') : 'À définir' }}
-                                        @if ($opportunite->date_expiration)
-                                            - {{ \Carbon\Carbon::parse($opportunite->date_expiration)->format('d/m/Y') }}
+                                        {{ $emploi->created_at ? \Carbon\Carbon::parse($emploi->created_at)->format('d/m/Y') : 'À définir' }}
+                                        @if ($emploi->date_expiration)
+                                            - {{ \Carbon\Carbon::parse($emploi->date_expiration)->format('d/m/Y') }}
                                         @endif
                                     </p>
-                                    @if ($opportunite->localisation)
+                                    @if ($emploi->localisation)
                                         <p class="text-dark mb-1"><strong>@lang('extracted.lieu')</strong>
-                                            {{ $opportunite->localisation }}</p>
+                                            {{ $emploi->localisation }}</p>
                                     @endif
-                                    @if ($opportunite->salaire_min)
+                                    @if ($emploi->salaire_min)
                                         <p class="text-dark mb-0">
                                             <strong>@lang('extracted.salaire')</strong>
                                             <span
-                                                class="text-success fw-bold">{{ number_format($opportunite->salaire_min, 0, ',', ' ') }}
+                                                class="text-success fw-bold">{{ number_format($emploi->salaire_min, 0, ',', ' ') }}
                                                 FCFA</span> -
                                             <span
-                                                class="text-success fw-bold">{{ number_format($opportunite->salaire_max, 0, ',', ' ') }}
+                                                class="text-success fw-bold">{{ number_format($emploi->salaire_max, 0, ',', ' ') }}
                                                 FCFA</span>
                                         </p>
                                     @endif

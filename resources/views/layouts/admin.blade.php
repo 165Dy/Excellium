@@ -817,10 +817,10 @@
                                 </li>
                                 {{-- Opportunités --}}
                                 <li
-                                    class="menu-item {{ request()->routeIs('admin.opportunites.*') ? 'active open' : '' }}">
+                                    class="menu-item {{ request()->routeIs('admin.emplois.*') ? 'active open' : '' }}">
                                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-computer-line"></i>
-                                        <div data-i18n="Opportunités">@lang('extracted.opportunites')</div>
+                                        <div data-i18n="Opportunités">@lang('extracted.emplois')</div>
                                         <div class="badge badge-center rounded-pill bg-primary ms-auto"
                                             style="width:10px, height:10px">
                                             {{-- Count active opportunities --}}
@@ -829,22 +829,22 @@
                                     </a>
                                     <ul class="menu-sub">
                                         <li
-                                            class="menu-item {{ request()->routeIs('opportunites.index') ? 'active' : '' }}">
-                                            <a href="{{ route('opportunites.index') }}" class="menu-link">
+                                            class="menu-item {{ request()->routeIs('emplois.index') ? 'active' : '' }}">
+                                            <a href="{{ route('emplois.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-list"></i>
-                                                <div data-i18n="Liste des opportunités">@lang('extracted.liste_des_opportunites')</div>
+                                                <div data-i18n="Liste des opportunités">@lang('extracted.liste_des_emplois')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
-                                                data-bs-target="#create_opportunites">
+                                                data-bs-target="#create_emplois">
                                                 <i class="menu-icon tf-icons fas fa-plus-circle"></i>
-                                                <div data-i18n="Nouvelle opportunité">@lang('extracted.nouvelle_opportunite')</div>
+                                                <div data-i18n="Nouvelle opportunité">@lang('extracted.nouvelle_emploi')</div>
                                             </a>
                                         </li>
                                         <li
                                             class="menu-item {{ request()->routeIs('admin.candidatures.*') ? 'active' : '' }}">
-                                            <a href="{{ route('opportunites.candidatures.index') }}"
+                                            <a href="{{ route('emplois.candidatures.index') }}"
                                                 class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-users"></i>
                                                 <div data-i18n="Candidatures">@lang('extracted.candidatures')</div>
@@ -882,7 +882,7 @@
                                                 <div>@lang('extracted.articles')</div>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> 
                                 </li>
                                 <!-- Categories -->
                                 <li class="menu-item ">
@@ -959,6 +959,12 @@
                                                 <div>Voir la liste</div>
                                             </a>
                                         </li>
+                                        <li class="menu-item">
+                                            <a href="#" class="menu-link" data-bs-toggle="modal" data-bs-target="#liste_user_services">
+                                              <i class="menu-icon icon-base ri ri-user-shared-line"></i>
+                                              <div>Abonnements Utilisateurs aux Services</div>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -979,7 +985,7 @@
 
                     {{-- //Create// --}}
                     @yield('index_formations')
-                    @yield('index_opportunites')
+                    @yield('index_emplois')
                     @yield('candidatures_index')
                     @yield('index_partenaires')
                     @yield('index_articles')
@@ -1266,7 +1272,7 @@
                     </div>
 
                     <!-- Opportunités Class Modal -->
-                    <div class="modal fade" id="create_opportunites" tabindex="-1" aria-hidden="true">
+                    <div class="modal fade" id="create_emplois" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-xl modal-simple modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
@@ -1279,11 +1285,11 @@
                                                 <i class="fas fa-briefcase text-white" style="font-size: 2rem;"></i>
                                             </div>
                                         </div>
-                                        <h4 class="mb-2 text-primary fw-bold">@lang('extracted.ajouter_une_opportunite')</h4>
+                                        <h4 class="mb-2 text-primary fw-bold">@lang('extracted.ajouter_une_emploi')</h4>
                                         <p class="text-muted">@lang('extracted.creez_une_nouvelle_offre_demploi_attractive')</p>
                                     </div>
 
-                                    <form id="createOpportuniteForm" action="{{ route('admin.opportunites.store') }}"
+                                    <form id="createEmploiForm" action="{{ route('admin.emplois.store') }}"
                                         method="POST" class="row g-4">
                                         @csrf
 
@@ -1651,7 +1657,7 @@
                                     <div class="text-center mb-6">
                                         <h4 class="mb-2">@lang('extracted.liste_des_produits')</h4>
                                     </div>
-
+                                    
                                     <div class="card">
                                         <div class="card-datatable table-responsive pt-0">
                                             <table id="tableProduits" class="table table-hover">
@@ -1751,20 +1757,54 @@
                                     </div>
                                     <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
                                         <table id="tableServices" class="table table-striped">
-                                            <thead>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nom</th>
+                                                        <th>Description</th>
+                                                        <th>Catégorie</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                            <tbody></tbody>
+                                            </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                                        </div>
+                                    </div>
+                                    
+                    <!-- Modal Liste Inscriptions Utilisateur-Service -->
+                    <div class="modal fade" id="liste_user_services" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">Abonnements Utilisateurs aux Services</h4>
+                                    </div>
+                                    <div class="is-scrollbar-hidden min-w-full overflow-x-auto px-3 pb-3">
+                                        <table id="tableUserServices" class="table table-hover table-bordered">
+                                            <thead class="table-light">
                                                 <tr>
-                                                    <th>Nom</th>
+                                                    <th>#</th>
+                                                    <th>Utilisateur</th>
+                                                    <th>Email</th>
+                                                    <th>Service</th>
+                                                    <th>Statut</th>
                                                     <th>Description</th>
-                                                    <th>Catégorie</th>
-                                                    <th>Actions</th>
+                                                    <th>Début</th>
+                                                    <th>Fin prévue</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
                                         </table>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary"
-                                            data-bs-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fermer</button>
                                     </div>
                                 </div>
                             </div>
@@ -3575,15 +3615,15 @@
                 Swal.fire({
                     title: isConfirm ? '✅ Confirmer l\'inscription ?' : '❌ Refuser l\'inscription ?',
                     html: `
-            <div class="text-center">
-                <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
-                <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
+                        <div class="text-center">
+                            <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
+                            <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
                 ${isConfirm ? `
                             <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
                             <p class="text-muted">Cette action peut être annulée plus tard.</p>
                         ` : ''}
-            </div>
-        `,
+                        </div>
+                    `,
                     showCancelButton: true,
                     confirmButtonColor: isConfirm ? '#28a745' : '#dc3545',
                     cancelButtonColor: '#6c757d',
@@ -3603,13 +3643,13 @@
                         Swal.fire({
                             title: 'Mise à jour en cours...',
                             html: `
-                    <div class="d-flex flex-column align-items-center">
-                        <div class="spinner-border ${isConfirm ? 'text-success' : 'text-danger'} mb-3" role="status">
-                            <span class="visually-hidden">Chargement...</span>
-                        </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="spinner-border ${isConfirm ? 'text-success' : 'text-danger'} mb-3" role="status">
+                                        <span class="visually-hidden">Chargement...</span>
+                                    </div>
                         <p class="mb-0">Mise à jour du statut</p>
-                    </div>
-                `,
+                                </div>
+                            `,
                             allowOutsideClick: false,
                             allowEscapeKey: false,
                             showConfirmButton: false,
@@ -3639,14 +3679,14 @@
                                         title: isConfirm ? '🎉 Inscription confirmée !' :
                                             '✅ Inscription refusée',
                                         html: `
-                            <div class="text-center">
-                                <p>Le statut a été mis à jour avec succès.</p>
+                                        <div class="text-center">
+                                            <p>Le statut a été mis à jour avec succès.</p>
                                 ${isConfirm ? `
                                             <p class="text-muted">Le candidat peut maintenant être contacté.</p>
                                             <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
                                         ` : ''}
-                            </div>
-                        `,
+                                        </div>
+                                    `,
                                         timer: 3000,
                                         timerProgressBar: true,
                                         showConfirmButton: false,
@@ -3669,11 +3709,11 @@
                                     icon: 'error',
                                     title: '🚫 Erreur de connexion',
                                     html: `
-                        <div class="text-center">
-                            <p>Impossible de mettre à jour le statut.</p>
-                            <p class="text-muted">Vérifiez votre connexion et réessayez.</p>
-                        </div>
-                    `,
+                                    <div class="text-center">
+                                        <p>Impossible de mettre à jour le statut.</p>
+                                        <p class="text-muted">Vérifiez votre connexion et réessayez.</p>
+                                    </div>
+                                `,
                                     confirmButtonText: '🔄 Réessayer',
                                     confirmButtonColor: '#dc3545',
                                     background: '#ffffff'
@@ -3867,13 +3907,13 @@
                     .catch(error => {
                         console.error('❌ Erreur chargement détails:', error);
                         contentDiv.innerHTML = `
-                <div class="alert alert-danger text-center">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
+                        <div class="alert alert-danger text-center">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
                     Erreur lors du chargement des détails : ${error.message}
-                </div>
-            `;
+                        </div>
+                    `;
                     });
-                }
+            }
 
             function afficherDetailsFormation(data) {
                 const formation = data.formation;
@@ -3885,151 +3925,151 @@
 
                 const contentDiv = document.getElementById('detailsFormationContent');
                 contentDiv.innerHTML = `
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-header bg-light">
-                                <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Informations générales</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12 mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Informations générales</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
                                         <strong>Description</strong>
-                                        <p class="mt-1 text-muted">${formation.programme || 'Aucune description'}</p>
-                                    </div>
-                                    <div class="col-6 mb-2">
+                                            <p class="mt-1 text-muted">${formation.programme || 'Aucune description'}</p>
+                                        </div>
+                                        <div class="col-6 mb-2">
                                         <strong>Catégorie</strong><br>
-                                        <span class="badge bg-success">${formation.categorie?.nom || 'Non définie'}</span>
-                                    </div>
-                                    <div class="col-6 mb-2">
+                                            <span class="badge bg-success">${formation.categorie?.nom || 'Non définie'}</span>
+                                        </div>
+                                        <div class="col-6 mb-2">
                                         <strong>Coût</strong><br>
-                                        <span class="text-primary fw-bold">${formation.cout ? new Intl.NumberFormat('fr-FR').format(formation.cout) + ' FCFA' : 'Gratuit'}</span>
-                                    </div>
-                                    <div class="col-6 mb-2">
+                                            <span class="text-primary fw-bold">${formation.cout ? new Intl.NumberFormat('fr-FR').format(formation.cout) + ' FCFA' : 'Gratuit'}</span>
+                                        </div>
+                                        <div class="col-6 mb-2">
                                         <strong>Date de début</strong><br>
-                                        <span class="text-info">${formation.date_debut ? new Date(formation.date_debut).toLocaleDateString('fr-FR') : 'À définir'}</span>
-                                    </div>
-                                    <div class="col-6 mb-2">
+                                            <span class="text-info">${formation.date_debut ? new Date(formation.date_debut).toLocaleDateString('fr-FR') : 'À définir'}</span>
+                                        </div>
+                                        <div class="col-6 mb-2">
                                         <strong>Date de fin</strong><br>
-                                        <span class="text-info">${formation.date_fin ? new Date(formation.date_fin).toLocaleDateString('fr-FR') : 'À définir'}</span>
-                                    </div>
-                                    <div class="col-12 mb-2">
+                                            <span class="text-info">${formation.date_fin ? new Date(formation.date_fin).toLocaleDateString('fr-FR') : 'À définir'}</span>
+                                        </div>
+                                        <div class="col-12 mb-2">
                                         <strong>Lieu</strong><br>
-                                        <span class="text-secondary">${formation.lieu || 'À définir'}</span>
-                                    </div>
-                                    <div class="col-12">
+                                            <span class="text-secondary">${formation.lieu || 'À définir'}</span>
+                                        </div>
+                                        <div class="col-12">
                                         <strong>Prérequis</strong><br>
-                                        <span class="text-muted">${formation.prerequis || 'Aucun prérequis'}</span>
+                                            <span class="text-muted">${formation.prerequis || 'Aucun prérequis'}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-header bg-light">
-                                <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Statistiques d'inscription</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="row text-center">
-                                    <div class="col-4 mb-3">
-                                        <div class="card bg-primary text-white">
-                                            <div class="card-body p-3">
-                                                <i class="fas fa-users fa-2x mb-2"></i>
-                                                <h4 class="mb-0">${inscriptions.length}</h4>
-                                                <small>Total des inscriptions</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 mb-3">
-                                        <div class="card bg-warning text-white">
-                                            <div class="card-body p-3">
-                                                <i class="fas fa-clock fa-2x mb-2"></i>
-                                                <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'en_attente').length}</h4>
-                                                <small>En attente</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 mb-3">
-                                        <div class="card bg-success text-white">
-                                            <div class="card-body p-3">
-                                                <i class="fas fa-check fa-2x mb-2"></i>
-                                                <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'confirme').length}</h4>
-                                                <small>Confirmées</small>
-                                            </div>
-                                        </div>
-                                    </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Statistiques d'inscription</h6>
                                 </div>
-                                
-                                ${formation.file_path ? `
-                                            <div class="text-center mt-3">
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-4 mb-3">
+                                            <div class="card bg-primary text-white">
+                                                <div class="card-body p-3">
+                                                    <i class="fas fa-users fa-2x mb-2"></i>
+                                                    <h4 class="mb-0">${inscriptions.length}</h4>
+                                                <small>Total des inscriptions</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mb-3">
+                                            <div class="card bg-warning text-white">
+                                                <div class="card-body p-3">
+                                                    <i class="fas fa-clock fa-2x mb-2"></i>
+                                                    <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'en_attente').length}</h4>
+                                                    <small>En attente</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mb-3">
+                                            <div class="card bg-success text-white">
+                                                <div class="card-body p-3">
+                                                    <i class="fas fa-check fa-2x mb-2"></i>
+                                                    <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'confirme').length}</h4>
+                                                <small>Confirmées</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    ${formation.file_path ? `
+                                                            <div class="text-center mt-3">
                                                 <strong>Média de présentation</strong><br>
-                                                ${formation.file_type === 'image' ? 
-                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
-                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                                                ${formation.file_type === 'image' ? 
+                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
+                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
                                             </video>`}
-                                            </div>` : ''}
-                                        </div>
-                                    </div>
+                                                            </div>` : ''}
                                 </div>
                             </div>
-
-                                <hr class="my-4">
-                                <div class="card">
-                                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                                        <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
-                                        ${inscriptions.length > 0 ? `
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    <div class="card">
+                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
+                            ${inscriptions.length > 0 ? `
                                                     <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
                                                         <i class="fas fa-download me-1"></i>Exporter Excel
                                                     </button>` : ''}
-                                    </div>
-                                    <div class="card-body p-0">
-                                        ${inscriptions.length > 0 ? `
-                                            <div class="table-responsive">
-                                                <table class="table table-hover mb-0">
-                                                    <thead class="table-light">
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th><i class="fas fa-user me-1"></i>Nom complet</th>
-                                                            <th><i class="fas fa-envelope me-1"></i>Email</th>
-                                                            <th><i class="fas fa-phone me-1"></i>Téléphone</th>
-                                                            <th><i class="fas fa-comment me-1"></i>Message</th>
+                        </div>
+                        <div class="card-body p-0">
+                            ${inscriptions.length > 0 ? `
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover mb-0">
+                                                            <thead class="table-light">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th><i class="fas fa-user me-1"></i>Nom complet</th>
+                                                                    <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                                                    <th><i class="fas fa-phone me-1"></i>Téléphone</th>
+                                                                    <th><i class="fas fa-comment me-1"></i>Message</th>
                                                             <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
-                                                            <th><i class="fas fa-flag me-1"></i>Statut</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        ${inscriptions.map((inscription, index) => `
-                                                    <tr>
-                                                        <td><strong>${index + 1}</strong></td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-circle bg-primary text-white me-2" style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                                                                    ${inscription.nom.charAt(0).toUpperCase()}
-                                                                </div>
-                                                                <strong>${inscription.nom}</strong>
-                                                            </div>
-                                                        </td>
+                                                                    <th><i class="fas fa-flag me-1"></i>Statut</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                ${inscriptions.map((inscription, index) => `
+                                        <tr>
+                                            <td><strong>${index + 1}</strong></td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="avatar-circle bg-primary text-white me-2" style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                                        ${inscription.nom.charAt(0).toUpperCase()}
+                                                    </div>
+                                                    <strong>${inscription.nom}</strong>
+                                                </div>
+                                            </td>
                                                         <td><a href="mailto:${inscription.email}">${inscription.email}</a></td>
                                                         <td>${inscription.telephone ? `<a href="tel:${inscription.telephone}">${inscription.telephone}</a>` : '<span class="text-muted">Non renseigné</span>'}</td>
                                                         <td>${inscription.message ? `<span title="${inscription.message}">${inscription.message}</span>` : '<span class="text-muted">Aucun message</span>'}</td>
-                                                        <td>
-                                                            <small class="text-muted">
-                                                                ${new Date(inscription.created_at).toLocaleDateString('fr-FR')} à 
-                                                                ${new Date(inscription.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}
-                                                            </small>
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge ${inscription.statut === 'confirme' ? 'bg-success' : inscription.statut === 'refuse' ? 'bg-danger' : 'bg-warning'}">
-                                                                ${inscription.statut === 'confirme' ? '✅ Confirmé' : inscription.statut === 'refuse' ? '❌ Refusé' : '⏳ En attente'}
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <div class="btn-group btn-group-sm">
-                                                                ${inscription.statut === 'en_attente' ? `
+                                            <td>
+                                                <small class="text-muted">
+                                                    ${new Date(inscription.created_at).toLocaleDateString('fr-FR')} à 
+                                                    ${new Date(inscription.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}
+                                                </small>
+                                            </td>
+                                            <td>
+                                                <span class="badge ${inscription.statut === 'confirme' ? 'bg-success' : inscription.statut === 'refuse' ? 'bg-danger' : 'bg-warning'}">
+                                                    ${inscription.statut === 'confirme' ? '✅ Confirmé' : inscription.statut === 'refuse' ? '❌ Refusé' : '⏳ En attente'}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group btn-group-sm">
+                                                    ${inscription.statut === 'en_attente' ? `
                                                                             <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
                                                                                 <i class="fas fa-check"></i>
                                                                             </button>
@@ -4037,35 +4077,35 @@
                                                                                 <i class="fas fa-times"></i>
                                                                             </button>` : ''}
                                                                 <button class="btn btn-outline-primary" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
-                                                                    <i class="fas fa-envelope"></i>
-                                                                </button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>`).join('')}
-                                                    </tbody>
-                                                </table>
-                                            </div>` : `
-                                            <div class="text-center p-5">
-                                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                                <h5 class="text-muted">Aucune inscription pour le moment</h5>
+                                                        <i class="fas fa-envelope"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>`).join('')}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>` : `
+                                                    <div class="text-center p-5">
+                                                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                                        <h5 class="text-muted">Aucune inscription pour le moment</h5>
                                                 <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
-                                            </div>`}
-                                    </div>
-                                </div>
+                                                    </div>`}
+                        </div>
+                    </div>
                             </div>
                         </div>
                     </div>
 
                 </div>    
                 `;
-                }
+            }
         </script>
-
+ 
         <!-- Script pour la création de nouvelles opportunités -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                const form = document.getElementById('createOpportuniteForm');
-                const modal = document.getElementById('create_opportunites');
+                const form = document.getElementById('createEmploiForm');
+                const modal = document.getElementById('create_emplois');
 
                 // Validation en temps réel
                 form.addEventListener('input', function(e) {
@@ -4161,51 +4201,51 @@
                             confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
                             confirmButtonColor: '#ffc107'
                         });
-                    }
-
-                    return isValid;
                 }
-
-                // Réinitialiser le formulaire à la fermeture
-                modal.addEventListener('hidden.bs.modal', function() {
-                    form.reset();
-                    form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
-                        field.classList.remove('is-valid', 'is-invalid');
-                    });
-
-                    // Réinitialiser le bouton de soumission
-                    const submitBtn = form.querySelector('button[type="submit"]');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
+                
+                return isValid;
+            }
+            
+            // Réinitialiser le formulaire à la fermeture
+            modal.addEventListener('hidden.bs.modal', function() {
+                form.reset();
+                form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
+                    field.classList.remove('is-valid', 'is-invalid');
                 });
-
-                // Auto-complétion intelligente
-                document.getElementById('titre').addEventListener('input', function(e) {
-                    const titre = e.target.value.toLowerCase();
-                    const entrepriseField = document.getElementById('entreprise');
-
-                    // Si le titre contient certains mots-clés, suggérer Excellium
+                
+                // Réinitialiser le bouton de soumission
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
+            });
+            
+            // Auto-complétion intelligente
+            document.getElementById('titre').addEventListener('input', function(e) {
+                const titre = e.target.value.toLowerCase();
+                const entrepriseField = document.getElementById('entreprise');
+                
+                // Si le titre contient certains mots-clés, suggérer Excellium
                     if (titre.includes('développeur') || titre.includes('web') || titre.includes(
                             'consultant')) {
-                        if (!entrepriseField.value) {
-                            entrepriseField.value = 'Excellium Conseils';
-                            entrepriseField.classList.add('is-valid');
-                        }
+                    if (!entrepriseField.value) {
+                        entrepriseField.value = 'Excellium Conseils';
+                        entrepriseField.classList.add('is-valid');
                     }
-                });
-
-                // Formatage automatique du téléphone
-                document.getElementById('contact_telephone').addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.length > 0 && !value.startsWith('225')) {
-                        value = '225' + value;
-                    }
-                    if (value.length > 3) {
-                        value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
-                    }
-                    e.target.value = value;
-                });
+                }
             });
+            
+            // Formatage automatique du téléphone
+            document.getElementById('contact_telephone').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0 && !value.startsWith('225')) {
+                    value = '225' + value;
+                }
+                if (value.length > 3) {
+                    value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
+                }
+                e.target.value = value;
+            });
+        });
         </script>
 
         <script>
@@ -4240,43 +4280,43 @@
                         const formData = new FormData(form);
 
                         fetch(form.action, {
-                                method: 'POST',
-                                headers: {
-                                    'X-Requested-With': 'XMLHttpRequest',
-                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                                },
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                Swal.close();
-                                if (data.success) {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Succès',
-                                        text: data.message,
-                                        confirmButtonText: 'OK'
-                                    }).then(() => {
-                                        // Optionnel : reset le formulaire ou rafraîchir la liste
-                                        form.reset();
-                                        // Tu peux aussi recharger dynamiquement la liste ici si besoin
-                                    });
-                                } else {
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Erreur',
-                                        text: data.message || 'Une erreur est survenue.'
-                                    });
-                                }
-                            })
-                            .catch(error => {
-                                Swal.close();
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Succès',
+                                    text: data.message,
+                                    confirmButtonText: 'OK'
+                                }).then(() => {
+                                    // Optionnel : reset le formulaire ou rafraîchir la liste
+                                    form.reset();
+                                    // Tu peux aussi recharger dynamiquement la liste ici si besoin
+                                });
+                            } else {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Erreur',
-                                    text: 'Une erreur inattendue est survenue.'
+                                    text: data.message || 'Une erreur est survenue.'
                                 });
+                            }
+                        })
+                        .catch(error => {
+                            Swal.close();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur',
+                                text: 'Une erreur inattendue est survenue.'
                             });
+                        });
                     });
                 }
             });
@@ -4346,26 +4386,26 @@
                     didOpen: () => Swal.showLoading()
                 });
                 fetch(`/admin/categories/${id}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                            'X-Requested-With': 'XMLHttpRequest'
-                        },
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
                         body: JSON.stringify({
                             nom
                         })
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        Swal.close();
-                        if (data.success) {
-                            Swal.fire('Succès', data.message, 'success');
-                            fetchCategories();
-                        } else {
-                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
-                        }
-                    });
+                })
+                .then(res => res.json())
+                .then(data => {
+                    Swal.close();
+                    if (data.success) {
+                        Swal.fire('Succès', data.message, 'success');
+                        fetchCategories();
+                    } else {
+                        Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                    }
+                });
             }
 
             // Supprimer une catégorie
@@ -4385,22 +4425,22 @@
                             didOpen: () => Swal.showLoading()
                         });
                         fetch(`/admin/categories/${id}`, {
-                                method: 'DELETE',
-                                headers: {
-                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                                    'X-Requested-With': 'XMLHttpRequest'
-                                }
-                            })
-                            .then(res => res.json())
-                            .then(data => {
-                                Swal.close();
-                                if (data.success) {
-                                    Swal.fire('Succès', data.message, 'success');
-                                    fetchCategories();
-                                } else {
-                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                                }
-                            });
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
+                                Swal.fire('Succès', data.message, 'success');
+                                fetchCategories();
+                            } else {
+                                Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                            }
+                        });
                     }
                 });
             }
@@ -4448,17 +4488,17 @@
                         const formData = new FormData(createProduitForm);
 
                         fetch(createProduitForm.action, {
-                                method: 'POST',
-                                headers: {
-                                    'X-Requested-With': 'XMLHttpRequest',
-                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                                },
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                Swal.close();
-                                if (data.success) {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
                                     const success = Swal.mixin({
                                         customClass: {
                                             confirmButton: 'btn btn-success',
@@ -4468,8 +4508,8 @@
                                     });
 
                                     success.fire({
-                                        icon: 'success',
-                                        title: 'Succès',
+                                    icon: 'success',
+                                    title: 'Succès',
                                         html: `
                                         <div class="text-center">
                                             <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
@@ -4480,11 +4520,11 @@
                                         confirmButtonText: 'OK',
                                         showCancelButton: false,
                                         confirmButtonColor: '#2196f3'
-                                    }).then(() => {
+                                }).then(() => {
                                         createProduitForm.reset();
                                         fetchProduits();
-                                    });
-                                } else {
+                                });
+                            } else {
                                     const error = Swal.mixin({
                                         customClass: {
                                             confirmButton: 'btn btn-danger'
@@ -4493,8 +4533,8 @@
                                     });
 
                                     error.fire({
-                                        icon: 'error',
-                                        title: 'Erreur',
+                                    icon: 'error',
+                                    title: 'Erreur',
                                         html: `
                                         <div class="text-center">
                                             <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
@@ -4504,10 +4544,10 @@
                                     `,
                                         confirmButtonText: 'OK',
                                         confirmButtonColor: '#dc3545'
-                                    });
-                                }
-                            })
-                            .catch(error => {
+                                });
+                            }
+                        })
+                        .catch(error => {
                                 loading.close();
                                 const error = Swal.mixin({
                                     customClass: {
@@ -4517,8 +4557,8 @@
                                 });
 
                                 error.fire({
-                                    icon: 'error',
-                                    title: 'Erreur',
+                                icon: 'error',
+                                title: 'Erreur',
                                     html: `
                                     <div class="text-center">
                                         <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
@@ -4528,8 +4568,8 @@
                                 `,
                                     confirmButtonText: 'OK',
                                     confirmButtonColor: '#dc3545'
-                                });
                             });
+                        });
                     });
                 }
             });
@@ -4586,37 +4626,37 @@
                         const id = e.target.closest('.btn-delete-produit').dataset.id;
 
                         // Confirmation avec SweetAlert2
-                        Swal.fire({
+                Swal.fire({
                             title: 'Supprimer ce produit ?',
                             text: 'Cette action est irréversible !',
                             icon: 'warning',
-                            showCancelButton: true,
+                    showCancelButton: true,
                             confirmButtonText: 'Oui, supprimer',
                             cancelButtonText: 'Annuler'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                fetch(`/admin/produits/${id}`, {
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                fetch(`/admin/produits/${id}`, {
                                         method: 'DELETE',
-                                        headers: {
+                    headers: {
                                             'X-CSRF-TOKEN': document.querySelector(
                                                 'meta[name="csrf-token"]').getAttribute(
                                                 'content')
                                         }
-                                    })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        if (data.success) {
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
                                             Swal.fire('Supprimé !', data.message, 'success');
                                             table.ajax.reload(); // Rafraîchit la DataTable
-                                        } else {
+                    } else {
                                             Swal.fire('Erreur', data.message ||
                                                 'Erreur lors de la suppression', 'error');
                                         }
                                     })
                                     .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
-                            }
-                        });
                     }
+                });
+            }
                 });
 
                 // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
@@ -4625,7 +4665,7 @@
                     fetch(`/admin/produits/${id}`)
                         .then(res => res.json())
                         .then(produit => {
-                            Swal.fire({
+                Swal.fire({
                                 title: `
                                     <div style="display:flex;align-items:center;gap:10px;">
                                         <i class="bi bi-pencil-square" style="font-size:1.8em;color:#6C63FF;"></i>
@@ -4672,7 +4712,7 @@
                                 </div>
                                 `,
                                 focusConfirm: false,
-                                showCancelButton: true,
+                    showCancelButton: true,
                                 confirmButtonText: '<i class="bi bi-save"></i> Enregistrer',
                                 cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
                                 customClass: {
@@ -4721,28 +4761,28 @@
                                             });
                                         });
                                 }
-                            }).then((result) => {
+                }).then((result) => {
                                 if (result.isConfirmed && result.value) {
                                     Swal.fire({
                                         title: 'Mise à jour...',
                                         allowOutsideClick: false,
                                         didOpen: () => Swal.showLoading()
                                     });
-                                    fetch(`/admin/produits/${id}`, {
+                        fetch(`/admin/produits/${id}`, {
                                             method: 'PUT',
-                                            headers: {
+                            headers: {
                                                 'Content-Type': 'application/json',
                                                 'X-CSRF-TOKEN': document.querySelector(
                                                     'meta[name="csrf-token"]').getAttribute(
                                                     'content'),
-                                                'X-Requested-With': 'XMLHttpRequest'
+                                'X-Requested-With': 'XMLHttpRequest'
                                             },
                                             body: JSON.stringify(result.value)
-                                        })
-                                        .then(res => res.json())
-                                        .then(data => {
-                                            Swal.close();
-                                            if (data.success) {
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
                                                 Swal.fire({
                                                     icon: 'success',
                                                     title: 'Succès',
@@ -4751,17 +4791,17 @@
                                                     showConfirmButton: false
                                                 });
                                                 $('#tableProduits').DataTable().ajax.reload();
-                                            } else {
+                            } else {
                                                 Swal.fire('Erreur', data.message ||
                                                     'Erreur lors de la modification', 'error');
-                                            }
+                            }
                                         })
                                         .catch(() => {
                                             Swal.close();
                                             Swal.fire('Erreur', 'Erreur réseau', 'error');
-                                        });
-                                }
-                            });
+                        });
+                    }
+                });
                         });
                 };
             });
@@ -4833,46 +4873,46 @@
                         const formData = new FormData(createServiceForm);
 
                         fetch(createServiceForm.action, {
-                                method: 'POST',
-                                headers: {
-                                    'X-Requested-With': 'XMLHttpRequest',
-                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                                },
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                Swal.close();
-                                if (data.success) {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
+                            if (data.success) {
                                     Swal.fire({
-                                        icon: 'success',
-                                        title: 'Succès',
-                                        html: `
+                                    icon: 'success',
+                                    title: 'Succès',
+                                    html: `
                                         <div class="text-center">
                                             <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
                                             <h5 class="mt-3">Service créé !</h5>
                                             <p class="mb-0">${data.message}</p>
                                         </div>
                                     `,
-                                        confirmButtonText: 'OK',
-                                        showCancelButton: false,
-                                        confirmButtonColor: '#2196f3'
-                                    }).then(() => {
+                                    confirmButtonText: 'OK',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#2196f3'
+                                }).then(() => {
                                         createServiceForm.reset();
                                         tableServices.ajax.reload();
-                                    });
-                                } else {
+                                });
+                            } else {
                                     Swal.fire({
-                                        icon: 'error',
-                                        title: 'Erreur',
+                                    icon: 'error',
+                                    title: 'Erreur',
                                         text: data.message || 'Erreur lors de la création'
-                                    });
-                                }
-                            })
+                                });
+                            }
+                        })
                             .catch(() => {
                                 Swal.close();
                                 Swal.fire('Erreur', 'Erreur réseau', 'error');
-                            });
+                        });
                     });
                 }
 
@@ -4912,7 +4952,7 @@
                                         if (data.success) {
                                             Swal.fire('Supprimé !', data.message, 'success');
                                             tableServices.ajax.reload();
-                                        } else {
+                            } else {
                                             Swal.fire('Erreur', data.message ||
                                                 'Erreur lors de la suppression', 'error');
                                         }
@@ -4920,13 +4960,13 @@
                                     .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
                             }
                         });
-                    }
+                }
                 });
 
                 // Fonction pour ouvrir la modale d'édition des services
                 window.openEditServiceModal = function(id) {
                     fetch(`/admin/services/${id}`)
-                        .then(res => res.json())
+                            .then(res => res.json())
                         .then(service => {
                             Swal.fire({
                                 title: `
@@ -4984,7 +5024,7 @@
 
                             // Charger les catégories dans la modale
                             fetch('/admin/categories/list')
-                                .then(res => res.json())
+                            .then(res => res.json())
                                 .then(categories => {
                                     const select = document.getElementById('swal-categorie');
                                     categories.forEach(cat => {
@@ -5030,9 +5070,41 @@
             });
         </script>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialisation DataTable des abonnements utilisateur-service
+                const tableEl = document.getElementById('tableUserServices');
+                if (tableEl) {
+                    $('#tableUserServices').DataTable({
+                        ajax: {
+                            url: '/admin/services/users-subscriptions',
+                            type: 'GET'
+                        },
+                        columns: [
+                            { data: 'id' },
+                            { data: 'utilisateur' },
+                            { data: 'email' },
+                            { data: 'service' },
+                            { data: 'statut' },
+                            { data: 'description' },
+                            { data: 'date_debut' },
+                            { data: 'date_fin_prevue' }
+                        ]
+                    });
+
+                    // Ouvrir la modale via un déclencheur si besoin
+                    document.querySelectorAll('[data-bs-target="#liste_user_services"]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            $('#tableUserServices').DataTable().ajax.reload();
+                        });
+                    });
+                }
+            });
+        </script>
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         
-    </body>
+</body>
 
 </html>

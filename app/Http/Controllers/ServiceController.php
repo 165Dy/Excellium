@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Mailgun\Mailgun;
 use Exception;
+use Illuminate\Support\Str;
 
 class ServiceController extends Controller
 {
@@ -215,5 +216,28 @@ class ServiceController extends Controller
                 'message' => 'Erreur serveur: ' . $e->getMessage()
             ], 500);
         }
+    }
+
+    // Liste des inscriptions Utilisateur-Service (pivot)
+    public function listUserServices()
+    {
+        $items = UserService::with(['user', 'service'])
+            ->orderByDesc('id')
+            ->get()
+            ->map(function (UserService $us) {
+                $userFullName = trim(($us->user->prenom ?? '') . ' ' . ($us->user->nom ?? ($us->user->name ?? '')));
+                return [
+                    'id' => $us->id,
+                    'utilisateur' => $userFullName !== '' ? $userFullName : 'Utilisateur',
+                    'email' => $us->user->email ?? '',
+                    'service' => $us->service->nom ?? '—',
+                    'statut' => $us->statut ?? '—',
+                    'description' => Str::limit($us->description ?? '', 100),
+                    'date_debut' => $us->date_debut ?? null,
+                    'date_fin_prevue' => $us->date_fin_prevue ?? null,
+                ];
+            });
+
+        return response()->json(['data' => $items]);
     }
 }

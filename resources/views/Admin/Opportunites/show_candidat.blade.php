@@ -11,7 +11,7 @@
                     <h1 class="page-title">Détail de la Candidature</h1>
                     <p>
                         Candidature de <strong>{{ $candidature->nom }}</strong> pour le poste de 
-                        <strong>{{ $candidature->opportunite->titre ?? 'N/A' }}</strong>
+                        <strong>{{ $candidature->emploi->titre ?? 'N/A' }}</strong>
                     </p>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                                 <p class="user-email">{{ $candidature->email }}</p>
                             </div>
                         </div>
-                        <a href="{{ route('opportunites.candidatures.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('emplois.candidatures.index') }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> Retour à la liste
                         </a>
                     </div>
@@ -49,7 +49,7 @@
                             <div class="col-md-6">
                                 <h4>Informations sur la Candidature</h4>
                                 <ul class="list-group">
-                                    <li class="list-group-item"><strong>Poste :</strong> {{ $candidature->opportunite->titre ?? 'N/A' }}</li>
+                                    <li class="list-group-item"><strong>Poste :</strong> {{ $candidature->emploi->titre ?? 'N/A' }}</li>
                                     <li class="list-group-item"><strong>Statut :</strong> 
                                         <span class="badge 
                                             @if($candidature->statut == 'accepte') bg-success 

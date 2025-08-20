@@ -166,7 +166,7 @@
                                         <a href="{{ route('Partenaires.Collaborateurs') }}">@lang('extracted.partenaires')</a>
                                     </li>
                                     <li class="menu-item has-children">
-                                        <a href="{{ route('opportunites.clients.index') }}">@lang('extracted.opportunites')</a>
+                                        <a href="{{ route('emplois.clients.index') }}">@lang('extracted.emplois')</a>
                                     </li>
                                     <li class="menu-item has-children">
                                         <a href="{{ route('Formations.index') }}">@lang('extracted.formations')</a>
@@ -266,8 +266,8 @@
     @yield('showPartenaire')
 
     {{-- /OPPORTUNITES/ --}}
-    @yield('showOpportunite')
-    @yield('indexOpportunite')
+    @yield('showEmploi')
+    @yield('indexEmploi')
 
     {{-- /////////// --}}
     @yield('Services')

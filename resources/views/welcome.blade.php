@@ -392,7 +392,7 @@
                 <div class="col-lg-12">
                     <!--=== Section Title ===-->
                     <div class="section-title mb-35 wow fadeInDown text-center">
-                        <h2>@lang('extracted.nos_opportunites')</h2><br>
+                        <h2>@lang('extracted.nos_emplois')</h2><br>
                         <p class="mb-20" style="font-size: 1.1rem">
                             Découvrez nos offres d'emploi et de stage sélectionnées pour vous !
                             Excellium Conseils vous connecte aux meilleures opportunités du marché, dans des secteurs
@@ -413,14 +413,14 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.marketing')</a>
+                                        <li><a href="{{ route('emplois.clients.index') }}">@lang('extracted.marketing')</a>
                                         </li>
                                     </ul>
                                     <div class="post-meta">
 
                                     </div>
                                     <h4 class="title"><a
-                                            href="{{ route('opportunites.clients.index') }}">@lang('extracted.chargee_de_communication_digitale')</a></h4>
+                                            href="{{ route('emplois.clients.index') }}">@lang('extracted.chargee_de_communication_digitale')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -431,14 +431,14 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.audit')</a>
+                                        <li><a href="{{ route('emplois.clients.index') }}">@lang('extracted.audit')</a>
                                         </li>
                                     </ul>
                                     <div class="post-meta">
 
                                     </div>
                                     <h4 class="title"><a
-                                            href="{{ route('opportunites.clients.index') }}">@lang('extracted.consultante_audit_financier')</a></h4>
+                                            href="{{ route('emplois.clients.index') }}">@lang('extracted.consultante_audit_financier')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -452,14 +452,14 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.comptabilite')</a>
+                                        <li><a href="{{ route('emplois.clients.index') }}">@lang('extracted.comptabilite')</a>
                                         </li>
                                     </ul>
                                     <div class="post-meta">
 
                                     </div>
                                     <h4 class="title"><a
-                                            href="{{ route('opportunites.clients.index') }}">@lang('extracted.comptable_generale')</a></h4>
+                                            href="{{ route('emplois.clients.index') }}">@lang('extracted.comptable_generale')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -473,19 +473,19 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="{{ route('opportunites.clients.index') }}">@lang('extracted.informatique')</a>
+                                        <li><a href="{{ route('emplois.clients.index') }}">@lang('extracted.informatique')</a>
                                         </li>
                                     </ul>
                                     <div class="post-meta">
                                     </div>
                                     <h4 class="title"><a
-                                            href="{{ route('opportunites.clients.index') }}">@lang('extracted.developpeur_web_fullstack')</a></h4>
+                                            href="{{ route('emplois.clients.index') }}">@lang('extracted.developpeur_web_fullstack')</a></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="read-button mb-30 text-center">
-                        <a href="{{ route('opportunites.clients.index') }}" class="read-more"
+                        <a href="{{ route('emplois.clients.index') }}" class="read-more"
                             style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
                             <i class="fas fa-eye" style="margin-right:10px"></i>
                             Voir toutes les opportunités
