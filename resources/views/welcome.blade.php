@@ -665,7 +665,6 @@
         </div>
     </div>
 
-
     <!-- Modal d'alerte email requis -->
     <div class="modal fade" id="alertEmailModal" tabindex="-1" aria-labelledby="alertEmailModalLabel"
         aria-hidden="true">
@@ -682,7 +681,7 @@
                         <text x="50" y="58" text-anchor="middle" font-size="40" fill="#df291c" font-weight="bold"
                             font-family="Arial">!</text>
                     </svg>
-                    <h5 style="color:#222; font-weight:600;">Veuillez entrer une adresse email valide avant de continuer
+                    <h5 style="color:#222; font-weight:600;">Veuillez entrer une adresse email valide avant de continuer l'inscription
                     </h5>
                     <button type="button" class="btn btn-warning mt-4 px-5 py-2"
                         style="font-weight:bold; border-radius:8px;" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
