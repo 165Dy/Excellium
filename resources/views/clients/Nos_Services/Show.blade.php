@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('Services')
+
     @if ($service->slug === 'service_1')
         {{-- Audit & Conseil --}}
 
@@ -160,7 +161,8 @@
                             </style>
                         </svg>
 
-                        Vous souhaitez optimiser vos performances ? Inscrivez-vous pour échanger avec nos experts en audit et conseil sur vos enjeux stratégiques.
+                        Vous souhaitez optimiser vos performances ? Inscrivez-vous pour échanger avec nos experts en audit
+                        et conseil sur vos enjeux stratégiques.
                     </a>
                 </div>
             </div>
@@ -978,6 +980,7 @@
         </section>
         <!--====== End Case Details Section ======-->
     @endif
+
     <style>
         .read-button2 {
             background: linear-gradient(135deg, #f3f2ef, #e0dfdc);
@@ -1005,4 +1008,5 @@
             box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.2);
         }
     </style>
+
 @endsection
