@@ -16,7 +16,7 @@ return [
     'commerce_generale'       => 'Commerce Generale',
     'service_divers'          => 'Service Divers',
     'partenaires'             => 'Partenaires',
-    'opportunites'            => 'Emplois',
+    'emplois'            => 'Emplois',
     'formations'              => 'Formations',
 
     'materialize' => 'Materialize',
@@ -138,7 +138,7 @@ return [
                                 stratégiques et opérationnelles.',
     'audits_conseils' => 'Audits & Conseils',
     'optimisez_vos_performances_grace_a_nos_audits_specialises' => 'Optimisez vos performances grâce à nos audits spécialisés',
-    'nous_analysons_en_profondeur_vos_processus_internes_et_vos_pratiques_commerciales_pour_identifier_des_opportunites_damelioration_nos_recommandations_sont_basees_sur_des_analyses_objectives_et_des_benchmarks_industriels_pour_vous_offrir_des_solutions_pratiques_et_efficaces_adaptees_a_votre_contexte_specifique' => 'Nous analysons en profondeur vos processus internes et vos pratiques commerciales pour
+    'nous_analysons_en_profondeur_vos_processus_internes_et_vos_pratiques_commerciales_pour_identifier_des_emplois_damelioration_nos_recommandations_sont_basees_sur_des_analyses_objectives_et_des_benchmarks_industriels_pour_vous_offrir_des_solutions_pratiques_et_efficaces_adaptees_a_votre_contexte_specifique' => 'Nous analysons en profondeur vos processus internes et vos pratiques commerciales pour
                                 identifier des opportunités d\'amélioration. Nos recommandations sont basées sur des analyses
                                 objectives et des benchmarks industriels pour vous offrir des solutions pratiques et
                                 efficaces, adaptées à votre contexte spécifique.',
@@ -193,7 +193,7 @@ return [
     'optimisation_realisee' => 'Optimisation réalisée',
     'reductions_fiscales_obtenues' => 'Réductions fiscales obtenues',
     'une_approche_strategique_pour_la_gestion_fiscale' => 'Une approche stratégique pour la gestion fiscale',
-    'notre_equipe_dexperts_vous_guide_a_travers_les_differentes_etapes_pour_vous_assurer_une_gestion_fiscale_efficace_et_optimale_nous_identifions_les_opportunites_fiscales_qui_vous_permettent_de_reduire_vos_couts_tout_en_respectant_la_legislation_en_vigueur_grace_a_notre_accompagnement_vous_gagnez_en_efficacite_et_en_rentabilite' => 'Notre équipe d\'experts vous guide à travers les différentes étapes pour vous
+    'notre_equipe_dexperts_vous_guide_a_travers_les_differentes_etapes_pour_vous_assurer_une_gestion_fiscale_efficace_et_optimale_nous_identifions_les_emplois_fiscales_qui_vous_permettent_de_reduire_vos_couts_tout_en_respectant_la_legislation_en_vigueur_grace_a_notre_accompagnement_vous_gagnez_en_efficacite_et_en_rentabilite' => 'Notre équipe d\'experts vous guide à travers les différentes étapes pour vous
                                             assurer une gestion fiscale efficace et optimale. Nous identifions les
                                             opportunités fiscales qui vous permettent de réduire vos coûts tout en
                                             respectant la législation en vigueur. Grâce à notre accompagnement, vous gagnez
@@ -240,7 +240,7 @@ return [
                                                 objectifs à long terme.',
     'profitez_de_notre_expertise_pour_naviguer_dans_le_monde_complexe_du_financement' => 'Profitez de notre expertise pour naviguer dans
                                                 le monde complexe du financement.',
-    'vous_recherchez_des_solutions_de_financement_adaptees_inscrivez_vous_pour_explorer_avec_nous_les_meilleures_opportunites' => 'Vous recherchez des solutions de financement adaptées ? Inscrivez-vous pour explorer avec nous les meilleures opportunités.',
+    'vous_recherchez_des_solutions_de_financement_adaptees_inscrivez_vous_pour_explorer_avec_nous_les_meilleures_emplois' => 'Vous recherchez des solutions de financement adaptées ? Inscrivez-vous pour explorer avec nous les meilleures opportunités.',
     'simplifiez_la_gestion_de_vos_salaires_grace_a_notre_service_professionnel_et_securise_confiez_nous_la_gestion_de_la_paie_de_votre_entreprise_et_beneficiez_dun_traitement_rapide_conforme_a_la_legislation_tout_en_reduisant_les_risques_derreurs_gagnez_du_temps_et_assurez_la_satisfaction_de_vos_employes_avec_une_solution_fiable_et_adaptee_a_vos_besoins' => 'Simplifiez la gestion de vos salaires grâce à notre service professionnel et sécurisé.
                                 Confiez-nous la gestion de la paie de votre entreprise et bénéficiez d’un traitement rapide,
                                 conforme à la législation,
@@ -308,7 +308,7 @@ return [
     'stage' => 'STAGE',
     'cdi' => 'CDI',
     'cdd' => 'CDD',
-    'aucune_opportunite_trouvee' => 'Aucune opportunité trouvée.',
+    'aucune_emploi_trouvee' => 'Aucune opportunité trouvée.',
     'details' => 'Details',
     'lorem_voluptatem_accusantium_dolorem' => 'Lorem voluptatem accusantium dolorem',
     'offres_similaires' => 'Offres similaires',
@@ -319,21 +319,21 @@ return [
                                                     plus disponible',
     'description' => 'Description',
     'avis' => 'Avis',
-    'cette_opportunite_vous_permet_de_rejoindre_une_entreprise_dynamique_et_innovante_reconnue_pour_son_engagement_envers_le_developpement_professionnel_de_ses_collaborateurs_vous_aurez_loccasion_de_mettre_en_valeur_vos_competences_de_relever_de_nouveaux_defis_et_de_contribuer_activement_a_la_reussite_de_lequipe_nous_recherchons_des_candidats_motives_rigoureux_et_passionnes_prets_a_sinvestir_dans_un_environnement_stimulant_et_evolutif' => 'Cette opportunité vous permet de rejoindre une entreprise dynamique et innovante,
+    'cette_emploi_vous_permet_de_rejoindre_une_entreprise_dynamique_et_innovante_reconnue_pour_son_engagement_envers_le_developpement_professionnel_de_ses_collaborateurs_vous_aurez_loccasion_de_mettre_en_valeur_vos_competences_de_relever_de_nouveaux_defis_et_de_contribuer_activement_a_la_reussite_de_lequipe_nous_recherchons_des_candidats_motives_rigoureux_et_passionnes_prets_a_sinvestir_dans_un_environnement_stimulant_et_evolutif' => 'Cette opportunité vous permet de rejoindre une entreprise dynamique et innovante,
                                         reconnue pour son engagement envers le développement professionnel de ses
                                         collaborateurs.
                                         Vous aurez l’occasion de mettre en valeur vos compétences, de relever de nouveaux
                                         défis et de contribuer activement à la réussite de l’équipe.
                                         Nous recherchons des candidats motivés, rigoureux et passionnés, prêts à s’investir
                                         dans un environnement stimulant et évolutif.',
-    'nos_anciens_candidats_temoignent_de_leur_satisfaction_quant_a_la_qualite_de_laccompagnement_et_a_la_diversite_des_opportunites_proposees_rejoignez_une_communaute_de_professionnels_ambitieux_et_beneficiez_dun_suivi_personnalise_tout_au_long_de_votre_parcours_avec_excellium_conseils' => 'Nos anciens candidats témoignent de leur satisfaction quant à la qualité de
+    'nos_anciens_candidats_temoignent_de_leur_satisfaction_quant_a_la_qualite_de_laccompagnement_et_a_la_diversite_des_emplois_proposees_rejoignez_une_communaute_de_professionnels_ambitieux_et_beneficiez_dun_suivi_personnalise_tout_au_long_de_votre_parcours_avec_excellium_conseils' => 'Nos anciens candidats témoignent de leur satisfaction quant à la qualité de
                                         l’accompagnement et à la diversité des opportunités proposées.
                                         Rejoignez une communauté de professionnels ambitieux et bénéficiez d’un suivi
                                         personnalisé tout au long de votre parcours avec Excellium Conseils.',
     'offre_indisponible' => 'Offre indisponible',
     'cette_offre_nest_plus_disponible_vous_ne_pouvez_plus_candidater' => 'Cette offre n\'est plus disponible, vous ne pouvez plus
                             candidater.',
-    'revenez_a_la_page_des_opportunites_pour_decouvrir_dautres_offres_similaires' => 'Revenez à la page des opportunités pour découvrir d\'autres
+    'revenez_a_la_page_des_emplois_pour_decouvrir_dautres_offres_similaires' => 'Revenez à la page des opportunités pour découvrir d\'autres
                             offres similaires.',
     'ok' => 'OK',
     'salaire_min' => 'salaire_min)',
@@ -579,8 +579,8 @@ return [
     'formation' => 'Formation',
     'creer_une_formation' => 'CREER UNE FORMATION',
     'voir_la_liste' => 'Voir la liste',
-    'liste_des_opportunites' => 'Liste des opportunités',
-    'nouvelle_opportunite' => 'Nouvelle opportunité',
+    'liste_des_emplois' => 'Liste des opportunités',
+    'nouvelle_emploi' => 'Nouvelle opportunité',
     'candidatures' => 'Candidatures',
     'divers' => 'Divers',
     'partenaires' => 'Partenaires',
@@ -600,7 +600,7 @@ return [
     'actions' => 'Actions',
     'isnotempty' => 'isNotEmpty())',
     'nouvelle_formation' => 'Nouvelle formation',
-    'ajouter_une_opportunite' => '✨ Ajouter une Opportunité',
+    'ajouter_une_emploi' => '✨ Ajouter une Opportunité',
     'creez_une_nouvelle_offre_demploi_attractive' => 'Créez une nouvelle offre d\'emploi attractive',
     'titre_du_poste' => 'Titre du poste *',
     'entreprise' => 'Entreprise *',
@@ -635,7 +635,7 @@ return [
                                                         candidats',
     'fermee_plus_de_candidatures' => '🔒 Fermée - Plus de candidatures',
     'statut_de_loffre' => 'Statut de l\'offre',
-    'publier_lopportunite' => 'Publier l\'opportunité',
+    'publier_lemploi' => 'Publier l\'opportunité',
     'nouvelle_categorie' => 'NOUVELLE CATEGORIE',
     'nom_categorie' => 'Nom Catégorie',
     'valider' => 'Valider',
@@ -864,8 +864,8 @@ return [
                         programmes innovants, interactifs et conçus pour répondre aux exigences du marché actuel.',
     'votre_navigateur_ne_supporte_pas_la_lecture_de_videos' => 'Votre navigateur ne supporte pas la lecture de vidéos.',
     'aller_au_menu_formation' => 'Aller au menu formation',
-    'nos_opportunites' => 'Nos Opportunités',
-    'decouvrez_nos_offres_demploi_et_de_stage_selectionnees_pour_vous_excellium_conseils_vous_connecte_aux_meilleures_opportunites_du_marche_dans_des_secteurs_varies_pour_postuler_deposez_votre_cv_directement_sur_notre_plateforme_dediee_en_cliquant_sur_le_bouton_ci_dessous_donnez_un_nouvel_elan_a_votre_carriere_avec_excellium_conseils' => 'Découvrez nos offres d\'emploi et de stage sélectionnées pour vous !
+    'nos_emplois' => 'Nos Opportunités',
+    'decouvrez_nos_offres_demploi_et_de_stage_selectionnees_pour_vous_excellium_conseils_vous_connecte_aux_meilleures_emplois_du_marche_dans_des_secteurs_varies_pour_postuler_deposez_votre_cv_directement_sur_notre_plateforme_dediee_en_cliquant_sur_le_bouton_ci_dessous_donnez_un_nouvel_elan_a_votre_carriere_avec_excellium_conseils' => 'Découvrez nos offres d\'emploi et de stage sélectionnées pour vous !
                             Excellium Conseils vous connecte aux meilleures opportunités du marché, dans des secteurs
                             variés.
                             Pour postuler, déposez votre CV directement sur notre plateforme dédiée en cliquant sur le
@@ -881,7 +881,7 @@ return [
     'developpeur_web_fullstack' => 'Développeur
                                             Web
                                             Fullstack',
-    'voir_toutes_les_opportunites' => 'Voir toutes les opportunités',
+    'voir_toutes_les_emplois' => 'Voir toutes les opportunités',
     'nos_clients_parlent_de_nous' => 'Nos clients parlent de nous !',
     'decouvrez_les_retours_dexperience_de_ceux_qui_nous_font_confiance_et_comment_excellium_conseils_les_a_aides_a_optimiser_leur_gestion_financiere_et_a_atteindre_leurs_objectifs' => 'Découvrez les retours d\'expérience de ceux
                             qui nous font confiance et comment Excellium Conseils

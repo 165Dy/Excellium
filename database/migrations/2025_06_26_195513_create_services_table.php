@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->foreignId('categorie_id')->constrained('categories');
             $table->text('description')->nullable();
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

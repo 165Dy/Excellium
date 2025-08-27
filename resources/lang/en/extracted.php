@@ -16,7 +16,7 @@ return [
     'commerce_generale'       => 'General Commerce',
     'service_divers'          => 'Miscellaneous Services',
     'partenaires'             => 'Partners',
-    'opportunites'            => 'Jobs',
+    'emplois'            => 'Jobs',
     'formations'              => 'Training',
 
     'materialize' => 'Materialize',
@@ -129,7 +129,7 @@ return [
 'nos_services_daudit_et_de_conseil_sont_concus_pour_aider_votre_entreprise_a_atteindre_ses_objectifs_grace_a_des_strategies_personnalisees_et_basees_sur_des_donnees_concretes_nous_mettons_notre_expertise_a_votre_service_pour_vous_guider_dans_vos_prises_de_decisions_strategiques_et_operationnelles' => 'Our audit and consulting services are designed to help your business achieve its goals through personalized, data-driven strategies. We put our expertise at your service to guide you in your strategic and operational decision-making.',
 'audits_conseils' => 'Audits & Consulting',
 'optimisez_vos_performances_grace_a_nos_audits_specialises' => 'Optimize your performance with our specialized audits',
-'nous_analysons_en_profondeur_vos_processus_internes_et_vos_pratiques_commerciales_pour_identifier_des_opportunites_damelioration_nos_recommandations_sont_basees_sur_des_analyses_objectives_et_des_benchmarks_industriels_pour_vous_offrir_des_solutions_pratiques_et_efficaces_adaptees_a_votre_contexte_specifique' => 'We deeply analyze your internal processes and business practices to identify improvement opportunities. Our recommendations are based on objective analyses and industry benchmarks to provide practical and effective solutions tailored to your specific context.',
+'nous_analysons_en_profondeur_vos_processus_internes_et_vos_pratiques_commerciales_pour_identifier_des_emplois_damelioration_nos_recommandations_sont_basees_sur_des_analyses_objectives_et_des_benchmarks_industriels_pour_vous_offrir_des_solutions_pratiques_et_efficaces_adaptees_a_votre_contexte_specifique' => 'We deeply analyze your internal processes and business practices to identify improvement opportunities. Our recommendations are based on objective analyses and industry benchmarks to provide practical and effective solutions tailored to your specific context.',
 'audit_approfondi_de_vos_processus_internes' => 'In-depth audit of your internal processes',
 'conseils_pratiques_pour_ameliorer_votre_rentabilite' => 'Practical advice to improve your profitability',
 'suivi_personnalise_pour_une_mise_en_oeuvre_reussie' => 'Personalized follow-up for successful implementation',
@@ -172,7 +172,7 @@ return [
 'remplissez_ce_formulaire_pour_etre_contacte_par_nos_experts_en_comptabilite_et_fiscalite' => 'Fill out this form to be contacted by our accounting and tax experts.',
 
 'financement_et_subvention' => 'Financing & Grants',
-'nous_vous_accompagnons_dans_la_recherche_et_lobtention_de_financements_pour_soutenir_vos_projets_entrepreneuriaux_quil_sagisse_de_subventions_publiques_de_partenariats_prives_ou_de_dispositifs_dappui_nous_identifions_les_opportunites_les_plus_adaptees_a_votre_profil_et_vous_aidons_a_constituer_des_dossiers_solides' => 'We support you in identifying and obtaining funding to support your entrepreneurial projects. Whether it is public grants, private partnerships, or support programs, we identify the most suitable opportunities for your profile and help you prepare strong applications.',
+'nous_vous_accompagnons_dans_la_recherche_et_lobtention_de_financements_pour_soutenir_vos_projets_entrepreneuriaux_quil_sagisse_de_subventions_publiques_de_partenariats_prives_ou_de_dispositifs_dappui_nous_identifions_les_emplois_les_plus_adaptees_a_votre_profil_et_vous_aidons_a_constituer_des_dossiers_solides' => 'We support you in identifying and obtaining funding to support your entrepreneurial projects. Whether it is public grants, private partnerships, or support programs, we identify the most suitable opportunities for your profile and help you prepare strong applications.',
 'accompagnement_dans_les_demandes_de_subvention_et_de_credit' => 'Support in grant and credit applications',
 'identification_des_sources_de_financement_pertinentes' => 'Identification of relevant funding sources',
 'elaboration_de_dossiers_solides_et_complets' => 'Preparation of complete and strong application files',

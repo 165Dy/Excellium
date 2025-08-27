@@ -95,13 +95,13 @@
  </div>
 
  <!-- Opportunités Class Modal -->
- <div class="modal fade" id="create_opportunites" tabindex="-1" aria-hidden="true">
+ <div class="modal fade" id="create_emplois" tabindex="-1" aria-hidden="true">
      <div class="modal-dialog modal-lg modal-simple modal-edit-user">
          <div class="modal-content">
              <div class="modal-body p-0">
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                  <div class="text-center mb-6">
-                     <h4 class="mb-2">@lang('extracted.ajouter_une_opportunite')</h4>
+                     <h4 class="mb-2">@lang('extracted.ajouter_une_emploi')</h4>
                  </div>
                  <form id="editUserForm" class="row g-5" onsubmit="return false">
                      <div class="col-12 col-md-6">

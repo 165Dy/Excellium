@@ -12,12 +12,12 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Mailgun\Mailgun;
 
-class OpportuniteController extends Controller
+class EmploiController extends Controller
 {
     /**
      * Afficher la liste des opportunités
      */
-    public function index()
+    public function index() 
     {
         try {
             // Debug : vérifier la connexion à la base
@@ -28,21 +28,21 @@ class OpportuniteController extends Controller
             Log::info('Nombre d\'emplois dans la table: ' . $count);
             
             // Récupérer avec Eloquent
-            $opportunites = Emploi::all();
-            Log::info('Nombre d\'opportunités via Eloquent: ' . $opportunites->count());
+            $emplois = Emploi::all();
+            Log::info('Nombre d\'opportunités via Eloquent: ' . $emplois->count());
             
             // Ajouter les variables de sécurité pour le layout
             $categories = \App\Models\Categorie::all() ?? collect();
             $formations = \App\Models\Formation::all() ?? collect();
             
-            return view('admin.opportunites.index', compact('opportunites', 'categories', 'formations'));
+            return view('admin.emplois.index', compact('emplois', 'categories', 'formations'));
             
         } catch (\Exception $e) {
-            Log::error('Erreur dans OpportuniteController@index: ' . $e->getMessage());
+            Log::error('Erreur dans EmploiController@index: ' . $e->getMessage());
             
             // Retourner une vue d'erreur ou rediriger
-            return view('admin.opportunites.index', [
-                'opportunites' => collect(),
+            return view('admin.emplois.index', [
+                'emplois' => collect(),
                 'categories' => collect(),
                 'formations' => collect(),
                 'error' => $e->getMessage()
@@ -62,21 +62,21 @@ class OpportuniteController extends Controller
             Log::info('Nombre d\'emplois dans la table: ' . $count);
             
             // Récupérer avec Eloquent
-            $opportunites = Emploi::all();
-            Log::info('Nombre d\'opportunités via Eloquent: ' . $opportunites->count());
+            $emplois = Emploi::all();
+            Log::info('Nombre d\'opportunités via Eloquent: ' . $emplois->count());
             
             // Ajouter les variables de sécurité pour le layout
             $categories = \App\Models\Categorie::all() ?? collect();
             $formations = \App\Models\Formation::all() ?? collect();
             
-            return view('clients.Opportunites.index', compact('opportunites', 'categories', 'formations'));
+            return view('clients.Emplois.index', compact('emplois', 'categories', 'formations'));
             
         } catch (\Exception $e) {
-            Log::error('Erreur dans OpportuniteController@index: ' . $e->getMessage());
+            Log::error('Erreur dans EmploiController@index: ' . $e->getMessage());
             
             // Retourner une vue d'erreur ou rediriger
-            return view('clients.Opportunites.index', [
-                'opportunites' => collect(),
+            return view('clients.Emplois.index', [
+                'emplois' => collect(),
                 'categories' => collect(),
                 'formations' => collect(),
                 'error' => $e->getMessage()
@@ -89,7 +89,11 @@ class OpportuniteController extends Controller
      */
     public function create()
     {
-        return view('admin.opportunites.create');
+        // Ajouter les variables nécessaires pour le layout admin
+        $categories = \App\Models\Categorie::all() ?? collect();
+        $formations = \App\Models\Formation::all() ?? collect();
+        
+        return view('admin.emplois.create', compact('categories', 'formations'));
     }
 
     /**
@@ -120,7 +124,7 @@ class OpportuniteController extends Controller
                 'admin' => 'Excellium Conseils'
             ]);
 
-            return redirect()->route('admin.opportunites.index')
+            return redirect()->route('admin.emplois.index')
                 ->with('success', 'Opportunité créée avec succès !');
 
         } catch (\Exception $e) {
@@ -139,28 +143,37 @@ class OpportuniteController extends Controller
      */
     public function show($id)
     {
-        $opportunite = Emploi::with(['candidatures' => function($query) {
+        $emploi = Emploi::with(['candidatures' => function($query) {
             $query->orderBy('created_at', 'desc');
         }])->findOrFail($id);
 
-        return view('admin.opportunites.show', compact('opportunite'));
+        // Ajouter les variables nécessaires pour le layout admin
+        $categories = \App\Models\Categorie::all() ?? collect();
+        $formations = \App\Models\Formation::all() ?? collect();
+
+        return view('admin.emplois.show', compact('emploi', 'categories', 'formations'));
     }
 
     public function show_public($id)
     {
-        $opportunite = Emploi::with(['candidatures' => function($query) {
+        $emploi = Emploi::with(['candidatures' => function($query) {
             $query->orderBy('created_at', 'desc');
         }])->findOrFail($id);
 
-        return view('clients.Opportunites.show', compact('opportunite'));
+        return view('clients.Emplois.show', compact('emploi'));
     }
     /**
      * Afficher le formulaire d'édition
      */
     public function edit($id)
     {
-        $opportunite = Emploi::findOrFail($id);
-        return view('admin.opportunites.edit', compact('opportunite'));
+        $emploi = Emploi::findOrFail($id);
+        
+        // Ajouter les variables nécessaires pour le layout admin
+        $categories = \App\Models\Categorie::all() ?? collect();
+        $formations = \App\Models\Formation::all() ?? collect();
+        
+        return view('admin.emplois.edit', compact('emploi', 'categories', 'formations'));
     }
 
     /**
@@ -168,7 +181,7 @@ class OpportuniteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $opportunite = Emploi::findOrFail($id);
+        $emploi = Emploi::findOrFail($id);
 
         $request->validate([
             'titre' => 'required|string|max:255',
@@ -185,15 +198,15 @@ class OpportuniteController extends Controller
         ]);
 
         try {
-            $opportunite->update($request->all());
+            $emploi->update($request->all());
 
             Log::info('Opportunité mise à jour:', [
-                'id' => $opportunite->id,
-                'titre' => $opportunite->titre,
+                'id' => $emploi->id,
+                'titre' => $emploi->titre,
                 'admin' => 'Excellium Conseils'
             ]);
 
-            return redirect()->route('admin.opportunites.index')
+            return redirect()->route('admin.emplois.index')
                 ->with('success', 'Opportunité mise à jour avec succès !');
 
         } catch (\Exception $e) {
@@ -213,17 +226,17 @@ class OpportuniteController extends Controller
     public function destroy($id)
     {
         try {
-            $opportunite = Emploi::findOrFail($id);
+            $emploi = Emploi::findOrFail($id);
             
             // Supprimer les CVs associés
-            foreach ($opportunite->candidatures as $candidature) {
+            foreach ($emploi->candidatures as $candidature) {
                 if ($candidature->cv_path && Storage::disk('public')->exists($candidature->cv_path)) {
                     Storage::disk('public')->delete($candidature->cv_path);
                 }
             }
             
-            $titre = $opportunite->titre;
-            $opportunite->delete();
+            $titre = $emploi->titre;
+            $emploi->delete();
 
             Log::info('Opportunité supprimée:', [
                 'id' => $id,
@@ -231,7 +244,7 @@ class OpportuniteController extends Controller
                 'admin' => 'Excellium Conseils'
             ]);
 
-            return redirect()->route('admin.opportunites.index')
+            return redirect()->route('admin.emplois.index')
                 ->with('success', 'Opportunité supprimée avec succès !');
 
         } catch (\Exception $e) {
@@ -250,14 +263,14 @@ class OpportuniteController extends Controller
     public function getDetails($id)
     {
         try {
-            $opportunite = Emploi::with(['candidatures' => function($query) {
+            $emploi = Emploi::with(['candidatures' => function($query) {
                 $query->orderBy('created_at', 'desc');
             }])->findOrFail($id);
             
             return response()->json([
                 'success' => true,
-                'opportunite' => $opportunite,
-                'candidatures' => $opportunite->candidatures
+                'emploi' => $emploi,
+                'candidatures' => $emploi->candidatures
             ]);
             
         } catch (\Exception $e) {
@@ -314,19 +327,19 @@ class OpportuniteController extends Controller
     /**
      * Exporter les candidatures en CSV
      */
-    public function exportCandidatures($opportunite_id)
+    public function exportCandidatures($emploi_id)
     {
         try {
-            $opportunite = Emploi::with('candidatures')->findOrFail($opportunite_id);
+            $emploi = Emploi::with('candidatures')->findOrFail($emploi_id);
             
-            $filename = 'candidatures_' . Str::slug($opportunite->titre) . '_' . date('Y-m-d') . '.csv';
+            $filename = 'candidatures_' . Str::slug($emploi->titre) . '_' . date('Y-m-d') . '.csv';
             
             $headers = [
                 'Content-Type' => 'text/csv',
                 'Content-Disposition' => 'attachment; filename="' . $filename . '"',
             ];
             
-            $callback = function() use ($opportunite) {
+            $callback = function() use ($emploi) {
                 $file = fopen('php://output', 'w');
                 
                 // En-têtes CSV
@@ -340,7 +353,7 @@ class OpportuniteController extends Controller
                 ]);
                 
                 // Données
-                foreach ($opportunite->candidatures as $candidature) {
+                foreach ($emploi->candidatures as $candidature) {
                     fputcsv($file, [
                         $candidature->nom,
                         $candidature->email,
@@ -358,7 +371,7 @@ class OpportuniteController extends Controller
             
         } catch (\Exception $e) {
             Log::error('Erreur export candidatures:', [
-                'opportunite_id' => $opportunite_id,
+                'emploi_id' => $emploi_id,
                 'error' => $e->getMessage()
             ]);
             
@@ -369,7 +382,7 @@ class OpportuniteController extends Controller
     public function postuler(Request $request)
     {
         $request->validate([
-            'opportunite_id' => 'required|exists:emplois,id',
+            'emploi_id' => 'required|exists:emplois,id',
             'nom' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'telephone' => 'nullable|string|max:20',
@@ -393,7 +406,7 @@ class OpportuniteController extends Controller
 
             // Création de la candidature
             $candidature = Candidature::create([
-                'emploi_id' => $request->opportunite_id,
+                'emploi_id' => $request->emploi_id,
                 'nom' => $request->nom,
                 'email' => $request->email,
                 'telephone' => $request->telephone,
@@ -404,7 +417,7 @@ class OpportuniteController extends Controller
             ]);
 
             // Préparation des variables pour l'email
-            $emploi = Emploi::find($request->opportunite_id);
+            $emploi = Emploi::find($request->emploi_id);
             $variables = [
                 'nom' => $candidature->nom,
                 'poste' => $emploi->titre,
@@ -450,9 +463,13 @@ class OpportuniteController extends Controller
     public function candidats()
     {
         // Récupère toutes les candidatures avec l'emploi associé
-        $candidats = Candidature::with('opportunite')->orderBy('created_at', 'desc')->get();
+        $candidats = Candidature::with('emploi')->orderBy('created_at', 'desc')->get();
+        
+        // Ajouter les variables nécessaires pour le layout admin
+        $categories = \App\Models\Categorie::all() ?? collect();
+        $formations = \App\Models\Formation::all() ?? collect();
     
-        return view('admin.opportunites.list_candidats', compact('candidats'));
+        return view('admin.emplois.list_candidats', compact('candidats', 'categories', 'formations'));
     }
 
     /**
@@ -460,10 +477,14 @@ class OpportuniteController extends Controller
      */
     public function showCandidature(Candidature $candidature)
     {
-        $candidature->load('opportunite');
+        $candidature->load('emploi');
+        
+        // Ajouter les variables nécessaires pour le layout admin
+        $categories = \App\Models\Categorie::all() ?? collect();
+        $formations = \App\Models\Formation::all() ?? collect();
         
         // La vue 'show_candidat' devra être créée
-        return view('admin.opportunites.show_candidat', compact('candidature'));
+        return view('admin.emplois.show_candidat', compact('candidature', 'categories', 'formations'));
     }
 
 } 

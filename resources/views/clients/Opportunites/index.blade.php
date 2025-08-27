@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('indexOpportunite')
+@section('indexEmploi')
 
     <!--====== Start Page Section ======-->
     <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
@@ -13,7 +13,7 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h1 class="page-title">@lang('extracted.opportunites')</h1>
+                            <h1 class="page-title">@lang('extracted.emplois')</h1>
                             <p>Lorem voluptatem accusantium dolorem quis its tium totamrem aperiam eaque ipsaquae inventore
                             </p>
 
@@ -31,7 +31,7 @@
                         <div class="row align-items-center">
                             <div class="col-md-7">
                                 <div class="show-text wow fadeInLeft">
-                                    <span>Nombre d'offres : {{ $opportunites->count() }}</span>
+                                    <span>Nombre d'offres : {{ $emplois->count() }}</span>
                                 </div>
                             </div>
                             <div class="col-md-5">
@@ -50,21 +50,21 @@
             </div>
 
             <div class="row">
-                @if ($opportunites->isEmpty())
+                @if ($emplois->isEmpty())
                     <div class="col-12">
                         <div class="alert alert-info text-center">
-                            <strong>@lang('extracted.aucune_opportunite_trouvee')</strong>
+                            <strong>@lang('extracted.aucune_emploi_trouvee')</strong>
                         </div>
                     </div>
                 @else
-                    @foreach ($opportunites as $opportunite)
-                        <div class="col-lg-4 col-md-6 col-sm-12 opportunite-item"
-                            data-type-contrat="{{ strtoupper($opportunite->type_contrat) }}">
+                    @foreach ($emplois as $emploi)
+                        <div class="col-lg-4 col-md-6 col-sm-12 emploi-item"
+                            data-type-contrat="{{ strtoupper($emploi->type_contrat) }}">
                             <div class="product-item mb-45 wow fadeInDown">
                                 <div class="product-image">
                                     <img src="{{ asset('assets/images/products/product-1.jpg') }}" alt="Product image">
                                     <div class="hover-content">
-                                        <a href="{{ route('opportunites.clients.show', $opportunite->id) }}"
+                                        <a href="{{ route('emplois.clients.show', $emploi->id) }}"
                                             class="icon-btn">
                                             <i class="icon-briefcase"></i>
                                         </a>
@@ -72,24 +72,24 @@
                                 </div>
                                 <div class="product-info">
                                     <h4>
-                                        <a href="{{ route('opportunites.clients.show', $opportunite->id) }}">
-                                            {{ $opportunite->titre }} | {{ $opportunite->type_contrat }}
+                                        <a href="{{ route('emplois.clients.show', $emploi->id) }}">
+                                            {{ $emploi->titre }} | {{ $emploi->type_contrat }}
                                         </a>
                                     </h4>
                                     <div class="post-meta">
                                         <a href="#" class="post-admin">
                                             <i class="far fa-envelope"></i>
-                                            {{ $opportunite->contact_email }}
+                                            {{ $emploi->contact_email }}
                                         </a> |
                                         <a href="#" class="post-date">
                                             <i class="far fa-calendar-alt"></i>
-                                            {{ \Carbon\Carbon::parse($opportunite->created_at)->format('d M Y') }}
+                                            {{ \Carbon\Carbon::parse($emploi->created_at)->format('d M Y') }}
                                         </a>
                                         <hr>
                                     </div>
                                     <span class="price"
                                         style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                        {{ $opportunite->description }}
+                                        {{ $emploi->description }}
                                     </span>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                 const select = document.getElementById('typeContratSelect');
                 select.addEventListener('change', function() {
                     const selected = this.value.toUpperCase();
-                    document.querySelectorAll('.opportunite-item').forEach(function(item) {
+                    document.querySelectorAll('.emploi-item').forEach(function(item) {
                         const type = item.dataset.typeContrat.toUpperCase();
                         if (selected === "TOUT" || selected === type) {
                             item.style.display = "";

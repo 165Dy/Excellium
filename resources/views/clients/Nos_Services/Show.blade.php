@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('Services')
 
     @if ($service->slug === 'service_1')
@@ -45,7 +46,7 @@
                             <div class="case-content">
 
                                 <h3>@lang('extracted.optimisez_vos_performances_grace_a_nos_audits_specialises')</h3>
-                                <p>@lang('extracted.nous_analysons_en_profondeur_vos_processus_internes_et_vos_pratiques_commerciales_pour_identifier_des_opportunites_damelioration_nos_recommandations_sont_basees_sur_des_analyses_objectives_et_des_benchmarks_industriels_pour_vous_offrir_des_solutions_pratiques_et_efficaces_adaptees_a_votre_contexte_specifique')</p>
+                                <p>@lang('extracted.nous_analysons_en_profondeur_vos_processus_internes_et_vos_pratiques_commerciales_pour_identifier_des_emplois_damelioration_nos_recommandations_sont_basees_sur_des_analyses_objectives_et_des_benchmarks_industriels_pour_vous_offrir_des_solutions_pratiques_et_efficaces_adaptees_a_votre_contexte_specifique')</p>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <ul class="check-list style-one mb-30">
@@ -124,7 +125,7 @@
                     </div>
                 </div>
                 <div class="read-button2 mb-30 text-center">
-                    <a href="#" id="btnInscriptionService"
+                    <a href="#" class="btn-inscription-service"
                         style="color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
                         <svg width="50" height="50" viewBox="0 0 64 64" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -169,199 +170,7 @@
         </section>
         <!--====== End Case Details Section ======-->
 
-        <!-- Modal d'inscription -->
-        <div class="modal fade" id="modalInscriptionService" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <form id="formInscriptionService">
-                        <div class="modal-header bg-primary text-white">
-                            <h5 class="modal-title">
-                                <i class="fas fa-user-plus me-2"></i>
-                                Inscription au service Audit & Conseils
-                            </h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="alert alert-info">
-                                <i class="fas fa-info-circle me-2"></i>
-                                Remplissez ce formulaire pour être contacté par nos experts en audit et conseil.
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="nom" class="form-label">@lang('extracted.nom')</label>
-                                        <input type="text" class="form-control" name="nom" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="prenom" class="form-label">@lang('extracted.prenom')</label>
-                                        <input type="text" class="form-control" name="prenom" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">@lang('extracted.e_mail')</label>
-                                <input type="email" class="form-control" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="telephone" class="form-label">@lang('extracted.telephone')</label>
-                                <input type="text" class="form-control" name="telephone"
-                                    placeholder="+225 XX XX XX XX">
-                            </div>
-                            <div class="mb-3">
-                                <label for="description" class="form-label">Description de vos besoins</label>
-                                <textarea class="form-control" name="description" rows="4" placeholder="Décrivez vos besoins spécifiques..."></textarea>
-                            </div>
-                            <input type="hidden" name="service_id" value="1">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                <i class="fas fa-times me-1"></i>Annuler
-                            </button>
-                            <button type="submit" class="btn btn-primary" id="btnSubmit">
-                                <i class="fas fa-paper-plane me-1"></i>Envoyer ma demande
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
-        <!-- Modal Succès -->
-        <div class="modal fade" id="modalSuccess" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content border-success">
-                    <div class="modal-header bg-success text-white border-0">
-                        <h5 class="modal-title">
-                            <i class="fas fa-check-circle me-2"></i>
-                            Inscription réussie !
-                        </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <div class="mb-4">
-                            <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
-                        </div>
-                        <h6 class="text-success mb-3">@lang('extracted.merci_pour_votre_inscription')</h6>
-                        <p class="text-muted mb-0">
-                            Un email de confirmation vous a été envoyé.<br>
-                            Notre équipe vous contactera dans les plus brefs délais.
-                        </p>
-                    </div>
-                    <div class="modal-footer border-0">
-                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
-                            <i class="fas fa-check me-1"></i>Parfait !
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal Échec -->
-        <div class="modal fade" id="modalError" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content border-danger">
-                    <div class="modal-header bg-danger text-white border-0">
-                        <h5 class="modal-title">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            Erreur d'inscription
-                        </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <div class="mb-4">
-                            <i class="fas fa-times-circle text-danger" style="font-size: 4rem;"></i>
-                        </div>
-                        <h6 class="text-danger mb-3">@lang('extracted.une_erreur_est_survenue')</h6>
-                        <p id="errorMessage" class="text-muted mb-0">
-                            Veuillez réessayer ou nous contacter directement.
-                        </p>
-                    </div>
-                    <div class="modal-footer border-0">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-                            <i class="fas fa-times me-1"></i>Fermer
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Ouvrir la modale d'inscription
-                document.getElementById('btnInscriptionService').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var modal = new bootstrap.Modal(document.getElementById('modalInscriptionService'));
-                    modal.show();
-                });
-
-                // Soumission AJAX du formulaire
-                document.getElementById('formInscriptionService').addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    var form = this;
-                    var submitBtn = document.getElementById('btnSubmit');
-                    var originalText = submitBtn.innerHTML;
-
-                    // Désactiver le bouton et afficher le loader
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML =
-                        '<span class="spinner-border spinner-border-sm me-2"></span>Envoi en cours...';
-
-                    var formData = new FormData(form);
-
-                    fetch("{{ route('inscription.ajax') }}", {
-                            method: 'POST',
-                            headers: {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                                'Accept': 'application/json'
-                            },
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            // Fermer la modale d'inscription
-                            bootstrap.Modal.getInstance(document.getElementById('modalInscriptionService'))
-                                .hide();
-
-                            if (data.success) {
-                                // Réinitialiser le formulaire
-                                form.reset();
-
-                                // Afficher la modale de succès
-                                var modalSuccess = new bootstrap.Modal(document.getElementById(
-                                    'modalSuccess'));
-                                modalSuccess.show();
-                            } else {
-                                // Afficher le message d'erreur
-                                document.getElementById('errorMessage').textContent = data.message ||
-                                    'Erreur lors de l\'inscription';
-                                var modalError = new bootstrap.Modal(document.getElementById('modalError'));
-                                modalError.show();
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Erreur:', error);
-
-                            // Fermer la modale d'inscription
-                            bootstrap.Modal.getInstance(document.getElementById('modalInscriptionService'))
-                                .hide();
-
-                            // Afficher l'erreur
-                            document.getElementById('errorMessage').textContent =
-                                'Erreur de connexion. Veuillez réessayer.';
-                            var modalError = new bootstrap.Modal(document.getElementById('modalError'));
-                            modalError.show();
-                        })
-                        .finally(() => {
-                            // Réactiver le bouton
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = originalText;
-                        });
-                });
-            });
-        </script>
     @elseif($service->slug === 'service_2')
         {{-- Comptabilité & Fiscalité --}}
 
@@ -468,7 +277,7 @@
                                     <div class="col-xl-6">
                                         <div class="content-box mb-50 wow fadeInRight">
                                             <h3>@lang('extracted.une_approche_strategique_pour_la_gestion_fiscale')</h3>
-                                            <p>@lang('extracted.notre_equipe_dexperts_vous_guide_a_travers_les_differentes_etapes_pour_vous_assurer_une_gestion_fiscale_efficace_et_optimale_nous_identifions_les_opportunites_fiscales_qui_vous_permettent_de_reduire_vos_couts_tout_en_respectant_la_legislation_en_vigueur_grace_a_notre_accompagnement_vous_gagnez_en_efficacite_et_en_rentabilite')</p>
+                                            <p>@lang('extracted.notre_equipe_dexperts_vous_guide_a_travers_les_differentes_etapes_pour_vous_assurer_une_gestion_fiscale_efficace_et_optimale_nous_identifions_les_emplois_fiscales_qui_vous_permettent_de_reduire_vos_couts_tout_en_respectant_la_legislation_en_vigueur_grace_a_notre_accompagnement_vous_gagnez_en_efficacite_et_en_rentabilite')</p>
                                             <ul class="check-list style-one mb-30">
                                                 <li><i class="far fa-check"></i>Conseils pratiques pour optimiser vos
                                                     finances
@@ -517,9 +326,18 @@
                     Simplifiez la gestion de vos obligations comptables : contactez-nous via ce formulaire pour une
                     collaboration sur mesure.
                 </div>
+                <!-- Bouton d'inscription pour service_2 -->
+                <div class="text-center mb-4">
+                    <a href="#" class="btn-inscription-service btn btn-primary btn-lg">
+                        <i class="fas fa-calculator me-2"></i>
+                        Inscrivez-vous pour nos services comptables
+                    </a>
+                </div>
         </section>
         <!--====== End Case Details Section ======-->
-    @elseif($service->slug === 'service_3')
+    @elseif($service->slug === 'service_3')       
+        {{-- Financement --}}
+
         <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
             <div class="shape shape-one scene"><span data-depth="1"><img
                         src="{{ asset('assets/images/shape/p-1.png') }}" alt="shape"></span>
@@ -662,10 +480,17 @@
                     Vous recherchez des solutions de financement adaptées ? Inscrivez-vous pour explorer avec nous les
                     meilleures opportunités.
                 </div>
+                <!-- Bouton d'inscription pour service_3 -->
+                <div class="text-center mb-4">
+                    <a href="#" class="btn-inscription-service btn btn-primary btn-lg">
+                        <i class="fas fa-coins me-2"></i>
+                        Inscrivez-vous pour nos solutions de financement
+                    </a>
+                </div>
         </section>
         <!--====== End Case Details Section ======-->
     @elseif($service->slug === 'service_4')
-        {{-- Audit & Conseils --}}
+        {{-- Gestion de la Paie --}}
 
         <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
             <div class="shape shape-one scene"><span data-depth="1"><img
@@ -836,10 +661,17 @@
                     </svg>
                     Optimisez la gestion salariale de votre entreprise : contactez-nous pour un accompagnement dédié.
                 </div>
+                <!-- Bouton d'inscription pour service_4 -->
+                <div class="text-center mb-4">
+                    <a href="#" class="btn-inscription-service btn btn-primary btn-lg">
+                        <i class="fas fa-money-check-alt me-2"></i>
+                        Inscrivez-vous pour nos services de gestion de paie
+                    </a>
+                </div>
 
         </section><!--====== End Case Details Section ======-->
     @elseif($service->slug === 'service_5')
-        {{-- Comptabilité & Fiscalité --}}
+        {{-- Ressources Humaines --}}
 
         <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
             <div class="shape shape-one scene"><span data-depth="1"><img
@@ -977,10 +809,116 @@
                     Vous souhaitez renforcer votre capital humain ? Remplissez ce formulaire pour échanger sur nos services
                     RH.
                 </div>
+                <!-- Bouton d'inscription pour service_5 -->
+                <div class="text-center mb-4">
+                    <a href="#" class="btn-inscription-service btn btn-primary btn-lg">
+                        <i class="fas fa-users me-2"></i>
+                        Inscrivez-vous pour nos services RH
+                    </a>
+                </div>
         </section>
         <!--====== End Case Details Section ======-->
-    @endif
+    
+    @else
+        {{-- Aucun service trouvé --}}
+        <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
+            <div class="shape shape-one scene"><span data-depth="1"><img src="{{ asset('assets/images/shape/p-1.png') }}" alt="shape"></span></div>
+            <div class="shape shape-two scene"><span data-depth="2"><img src="{{ asset('assets/images/shape/p-2.png') }}" alt="shape"></span></div>
+            <div class="shape shape-three"><span><img src="{{ asset('assets/images/shape/p-3.png') }}" alt="shape"></span></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="page-banner-content text-center text-white">
+                            <h2 class="page-title">Service en cours de préparation</h2>
+                            <p>Nous travaillons actuellement sur de nouveaux services pour mieux vous servir. Revenez bientôt pour découvrir nos offres !</p>
+                            <ul class="breadcrumb-link text-white">
+                                <li><a href="{{ route('welcome') }}">Accueil</a></li>
+                                <li class="active">Services</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section class="case-details-section secondary-dark-bg pt-140 pb-140">
+            <div class="container" style="margin-top: -80px;">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="case-details-wrapper wow fadeInDown text-center">
+                            <div class="case-img mb-4">
+                                <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="100" cy="100" r="80" stroke="#6C63FF" stroke-width="4" fill="none" opacity="0.3"/>
+                                    <circle cx="100" cy="100" r="60" stroke="#6C63FF" stroke-width="3" fill="none" opacity="0.5"/>
+                                    <circle cx="100" cy="100" r="40" stroke="#6C63FF" stroke-width="2" fill="none" opacity="0.7"/>
+                                    <circle cx="100" cy="100" r="20" fill="#6C63FF" opacity="0.9">
+                                        <animate attributeName="r" values="20;25;20" dur="2s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.9;0.6;0.9" dur="2s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <text x="100" y="105" text-anchor="middle" fill="#6C63FF" font-size="24" font-weight="bold">...</text>
+                                </svg>
+                            </div>
+                            <div class="case-content">
+                                <h3 class="mb-4">🚀 Nouveaux services en préparation</h3>
+                                <p class="lead mb-4">
+                                    Notre équipe d'experts travaille actuellement sur le développement de nouveaux services 
+                                    innovants pour répondre encore mieux à vos besoins professionnels.
+                                </p>
+                                
+                                <div class="row mt-5">
+                                    <div class="col-md-4 mb-4">
+                                        <div class="feature-box text-center p-4" style="background: rgba(108, 99, 255, 0.8); border-radius: 15px;">
+                                            <i class="fas fa-cogs fa-2x mb-3" style="color: white;"></i>
+                                            <h5 style="color: white;">En développement</h5>
+                                            <p class="small" style="color: white; opacity: 0.9;">Services sur mesure en cours d'élaboration</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="feature-box text-center p-4" style="background: rgba(40, 167, 69, 0.8); border-radius: 15px;">
+                                            <i class="fas fa-rocket fa-2x mb-3" style="color: white;"></i>
+                                            <h5 style="color: white;">Bientôt disponible</h5>
+                                            <p class="small" style="color: white; opacity: 0.9;">Lancement prévu très prochainement</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="feature-box text-center p-4" style="background: rgba(255, 193, 7, 0.8); border-radius: 15px;">
+                                            <i class="fas fa-bell fa-2x mb-3" style="color: white;"></i>
+                                            <h5 style="color: white;">Restez informé</h5>
+                                            <p class="small" style="color: white; opacity: 0.9;">Soyez notifié du lancement</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5">
+                                    <h4 class="mb-3">💼 En attendant, découvrez nos autres services</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <a href="{{ route('welcome') }}" class="btn btn-outline-primary btn-lg w-100">
+                                                <i class="fas fa-home me-2"></i>Retour à l'accueil
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <a href="{{ route('contacts') }}" class="btn btn-primary btn-lg w-100">
+                                                <i class="fas fa-envelope me-2"></i>Nous contacter
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-info mt-4" style="border-radius: 15px; border: none; background: linear-gradient(135deg, #e3f2fd, #bbdefb);">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    <strong>Besoin d'un service spécifique ?</strong><br>
+                                    N'hésitez pas à nous contacter pour discuter de vos besoins. 
+                                    Nous pourrons peut-être vous proposer une solution personnalisée !
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    
     <style>
         .read-button2 {
             background: linear-gradient(135deg, #f3f2ef, #e0dfdc);
@@ -1009,4 +947,200 @@
         }
     </style>
 
+    <!-- Modales d'inscription communes à tous les services -->
+    <!-- Modal d'inscription -->
+    <div class="modal fade" id="modalInscriptionService" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="formInscriptionService">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">
+                            <i class="fas fa-user-plus me-2"></i>
+                            Inscription au service {{ $service->nom }}
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Remplissez ce formulaire pour être contacté par nos experts.
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nom" class="form-label text-primary fw-semibold">@lang('extracted.nom') <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="nom" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="prenom" class="form-label text-primary fw-semibold">@lang('extracted.prenom') <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="prenom" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-primary fw-semibold">@lang('extracted.e_mail') <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telephone" class="form-label text-primary fw-semibold">@lang('extracted.telephone') <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="telephone" required
+                                placeholder="+225 XX XX XX XX XX">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label text-primary fw-semibold">Description de vos besoins <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="description" rows="4" required placeholder="Décrivez vos besoins spécifiques..."></textarea>
+                        </div>
+                        <input type="hidden" name="service_id" value="{{ $service->id }}">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fas fa-times me-1"></i>Annuler
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="btnSubmit">
+                            <i class="fas fa-paper-plane me-1"></i>Envoyer ma demande
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Succès -->
+    <div class="modal fade" id="modalSuccess" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-success">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Inscription réussie !
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    <h6 class="text-success mb-3">@lang('extracted.merci_pour_votre_inscription')</h6>
+                    <p class="text-muted mb-0">
+                        Un email de confirmation vous a été envoyé.<br>
+                        Notre équipe vous contactera dans les plus brefs délais.
+                    </p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                        <i class="fas fa-check me-1"></i>Parfait !
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Échec -->
+    <div class="modal fade" id="modalError" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-danger">
+                <div class="modal-header bg-danger text-white border-0">
+                    <h5 class="modal-title">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Erreur d'inscription
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-times-circle text-danger" style="font-size: 4rem;"></i>
+                    </div>
+                    <h6 class="text-danger mb-3">@lang('extracted.une_erreur_est_survenue')</h6>
+                    <p id="errorMessage" class="text-muted mb-0">
+                        Veuillez réessayer ou nous contacter directement.
+                    </p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i>Fermer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ouvrir la modale d'inscription (générique pour tous les services)
+            document.querySelectorAll('.btn-inscription-service').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var modal = new bootstrap.Modal(document.getElementById('modalInscriptionService'));
+                    modal.show();
+                });
+            });
+
+            // Soumission AJAX du formulaire
+            document.getElementById('formInscriptionService').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var form = this;
+                var submitBtn = document.getElementById('btnSubmit');
+                var originalText = submitBtn.innerHTML;
+
+                // Désactiver le bouton et afficher le loader
+                submitBtn.disabled = true;
+                submitBtn.innerHTML =
+                    '<span class="spinner-border spinner-border-sm me-2"></span>Envoi en cours...';
+
+                var formData = new FormData(form);
+
+                fetch("{{ route('inscription.services') }}", {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json'
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Fermer la modale d'inscription
+                        bootstrap.Modal.getInstance(document.getElementById('modalInscriptionService'))
+                            .hide();
+
+                        if (data.success) {
+                            // Réinitialiser le formulaire
+                            form.reset();
+
+                            // Afficher la modale de succès
+                            var modalSuccess = new bootstrap.Modal(document.getElementById(
+                                'modalSuccess'));
+                            modalSuccess.show();
+                        } else {
+                            // Afficher le message d'erreur
+                            document.getElementById('errorMessage').textContent = data.message ||
+                                'Erreur lors de l\'inscription';
+                            var modalError = new bootstrap.Modal(document.getElementById('modalError'));
+                            modalError.show();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+
+                        // Fermer la modale d'inscription
+                        bootstrap.Modal.getInstance(document.getElementById('modalInscriptionService'))
+                            .hide();
+
+                        // Afficher l'erreur
+                        document.getElementById('errorMessage').textContent =
+                            'Erreur de connexion. Veuillez réessayer.';
+                        var modalError = new bootstrap.Modal(document.getElementById('modalError'));
+                        modalError.show();
+                    })
+                    .finally(() => {
+                        // Réactiver le bouton
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    });
+            });
+        });
+    </script>
 @endsection
