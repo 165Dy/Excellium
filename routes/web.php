@@ -10,6 +10,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\ActualiteController;
 use App\Models\Service;
 
 /*
@@ -26,6 +27,8 @@ use App\Models\Service;
 
 Route::get('/locale/{lang}',[LocaleController::class,'setLocale'])->name('locale.switch');
 Route::get('/', [ProduitController::class, 'index'])->name('welcome');
+// Route vers la page d'accueil avec le ticker
+// Route::get('/', [ActualiteController::class, 'index'])->name('welcome');
 
 
 
@@ -75,12 +78,12 @@ Route::prefix('clients')->group(function () {
      Route::get('/Partenaires',function () { return view('clients.Partenaires.index'); } )->name('Partenaires.Collaborateurs');
      Route::get('/Partenaires/show',function () { return view('clients.Partenaires.show'); } )->name('Partenaires.show');
 
-     // RESSOURCES
-     Route::get('/Ressources/Articles',function () { return view('clients.Ressources.Articles'); } )->name('Ressources.Articles');
-     Route::get('/Ressources/Conseils&Actualites',function () { return view('clients.Ressources.Conseils_Actualites'); } )->name('Ressources.conseils_actualites');
-     Route::get('/Ressources/Service_divers',function () { return view('clients.Ressources.service_divers'); } )->name('Ressources.service_divers');
-     Route::get('/Ressources/Commerce',function () { return view('clients.Ressources.commerce'); } )->name('Ressources.commerce');
-      Route::get('/Ressources/Achats&Location',function () { return view('clients.Ressources.Achat_location'); } )->name('Ressources.achat_location');
+     // Opportunites
+     Route::get('/Opportunites/Articles',function () { return view('clients.Opportunites.Articles'); } )->name('Opportunites.Articles');
+     Route::get('/Opportunites/Conseils&Actualites',function () { return view('clients.Opportunites.Conseils_Actualites'); } )->name('Opportunites.conseils_actualites');
+     Route::get('/Opportunites/Service_divers',function () { return view('clients.Opportunites.service_divers'); } )->name('Opportunites.service_divers');
+     Route::get('/Opportunites/Commerce',function () { return view('clients.Opportunites.commerce'); } )->name('Opportunites.commerce');
+      Route::get('/Opportunites/Achats&Location',function () { return view('clients.Opportunites.Achat_location'); } )->name('Opportunites.achat_location');
      //CONTACTS
      Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 

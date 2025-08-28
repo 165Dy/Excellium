@@ -844,8 +844,7 @@
                                         </li>
                                         <li
                                             class="menu-item {{ request()->routeIs('admin.candidatures.*') ? 'active' : '' }}">
-                                            <a href="{{ route('emplois.candidatures.index') }}"
-                                                class="menu-link">
+                                            <a href="{{ route('emplois.candidatures.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-users"></i>
                                                 <div data-i18n="Candidatures">@lang('extracted.candidatures')</div>
                                                 <div class="badge badge-center rounded-pill bg-warning ms-auto">
@@ -882,7 +881,7 @@
                                                 <div>@lang('extracted.articles')</div>
                                             </a>
                                         </li>
-                                    </ul> 
+                                    </ul>
                                 </li>
                                 <!-- Categories -->
                                 <li class="menu-item ">
@@ -960,9 +959,10 @@
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="#" class="menu-link" data-bs-toggle="modal" data-bs-target="#liste_user_services">
-                                              <i class="menu-icon icon-base ri ri-user-shared-line"></i>
-                                              <div>Abonnements Utilisateurs aux Services</div>
+                                            <a href="#" class="menu-link" data-bs-toggle="modal"
+                                                data-bs-target="#liste_user_services">
+                                                <i class="menu-icon icon-base ri ri-user-shared-line"></i>
+                                                <div>Abonnements Utilisateurs aux Services</div>
                                             </a>
                                         </li>
                                     </ul>
@@ -1657,7 +1657,7 @@
                                     <div class="text-center mb-6">
                                         <h4 class="mb-2">@lang('extracted.liste_des_produits')</h4>
                                     </div>
-                                    
+
                                     <div class="card">
                                         <div class="card-datatable table-responsive pt-0">
                                             <table id="tableProduits" class="table table-hover">
@@ -1746,27 +1746,29 @@
                     </div>
 
                     <!-- Modal Liste Services -->
+                    <!-- Modal Liste Services -->
                     <div class="modal fade" id="liste_services" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-xl modal-simple modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    <button type="button" class="btn-close m-3" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
-                                    <div class="text-center mb-6">
-                                        <h4 class="mb-2">LISTE DES SERVICES</h4>
+                                    <div class="text-center mb-4 mt-2">
+                                        <h4 class="fw-bold text-primary">📋 LISTE DES SERVICES</h4>
                                     </div>
-                                    <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
-                                        <table id="tableServices" class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nom</th>
-                                                        <th>Description</th>
-                                                        <th>Catégorie</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
+                                    <div class="is-scrollbar-hidden min-w-full overflow-x-auto p-3">
+                                        <table id="tableServices"
+                                            class="table table-striped table-hover align-middle">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Nom</th>
+                                                    <th>Description</th>
+                                                    <th>Catégorie</th>
+                                                    <th class="text-center">Actions</th>
+                                                </tr>
+                                            </thead>
                                             <tbody></tbody>
-                                            </table>
+                                        </table>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary"
@@ -1774,15 +1776,17 @@
                                     </div>
                                 </div>
                             </div>
-                                        </div>
-                                    </div>
-                                    
+                        </div>
+                    </div>
+
+
                     <!-- Modal Liste Inscriptions Utilisateur-Service -->
                     <div class="modal fade" id="liste_user_services" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-xl modal-simple modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                     <div class="text-center mb-6">
                                         <h4 class="mb-2">Abonnements Utilisateurs aux Services</h4>
                                     </div>
@@ -1804,7 +1808,8 @@
                                         </table>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">Fermer</button>
                                     </div>
                                 </div>
                             </div>
@@ -3619,9 +3624,9 @@
                             <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
                             <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
                 ${isConfirm ? `
-                            <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
-                            <p class="text-muted">Cette action peut être annulée plus tard.</p>
-                        ` : ''}
+                                                                                            <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
+                                                                                            <p class="text-muted">Cette action peut être annulée plus tard.</p>
+                                                                                        ` : ''}
                         </div>
                     `,
                     showCancelButton: true,
@@ -3682,9 +3687,9 @@
                                         <div class="text-center">
                                             <p>Le statut a été mis à jour avec succès.</p>
                                 ${isConfirm ? `
-                                            <p class="text-muted">Le candidat peut maintenant être contacté.</p>
-                                            <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
-                                        ` : ''}
+                                                                                                            <p class="text-muted">Le candidat peut maintenant être contacté.</p>
+                                                                                                            <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
+                                                                                                        ` : ''}
                                         </div>
                                     `,
                                         timer: 3000,
@@ -4003,14 +4008,14 @@
                                     </div>
                                     
                                     ${formation.file_path ? `
-                                                            <div class="text-center mt-3">
-                                                <strong>Média de présentation</strong><br>
-                                                                ${formation.file_type === 'image' ? 
-                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
-                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                                                                                                            <div class="text-center mt-3">
+                                                                                                                <strong>Média de présentation</strong><br>
+                                                                                                                                ${formation.file_type === 'image' ? 
+                                                                                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
+                                                                                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
                                             </video>`}
-                                                            </div>` : ''}
+                                                                                                                            </div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -4021,1090 +4026,1161 @@
                         <div class="card-header bg-light d-flex justify-content-between align-items-center">
                             <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
                             ${inscriptions.length > 0 ? `
-                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
-                                                        <i class="fas fa-download me-1"></i>Exporter Excel
-                                                    </button>` : ''}
+                                                                                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
+                                                                                                                        <i class="fas fa-download me-1"></i>Exporter Excel
+                                                                                                                    </button>` : ''}
                         </div>
                         <div class="card-body p-0">
                             ${inscriptions.length > 0 ? `
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover mb-0">
-                                                            <thead class="table-light">
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th><i class="fas fa-user me-1"></i>Nom complet</th>
-                                                                    <th><i class="fas fa-envelope me-1"></i>Email</th>
-                                                                    <th><i class="fas fa-phone me-1"></i>Téléphone</th>
-                                                                    <th><i class="fas fa-comment me-1"></i>Message</th>
-                                                            <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
-                                                                    <th><i class="fas fa-flag me-1"></i>Statut</th>
-                                                                    <th>Actions</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                ${inscriptions.map((inscription, index) => `
-                                        <tr>
-                                            <td><strong>${index + 1}</strong></td>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar-circle bg-primary text-white me-2" style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                                                        ${inscription.nom.charAt(0).toUpperCase()}
-                                                    </div>
-                                                    <strong>${inscription.nom}</strong>
-                                                </div>
-                                            </td>
-                                                        <td><a href="mailto:${inscription.email}">${inscription.email}</a></td>
-                                                        <td>${inscription.telephone ? `<a href="tel:${inscription.telephone}">${inscription.telephone}</a>` : '<span class="text-muted">Non renseigné</span>'}</td>
-                                                        <td>${inscription.message ? `<span title="${inscription.message}">${inscription.message}</span>` : '<span class="text-muted">Aucun message</span>'}</td>
-                                            <td>
-                                                <small class="text-muted">
-                                                    ${new Date(inscription.created_at).toLocaleDateString('fr-FR')} à 
-                                                    ${new Date(inscription.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}
-                                                </small>
-                                            </td>
-                                            <td>
-                                                <span class="badge ${inscription.statut === 'confirme' ? 'bg-success' : inscription.statut === 'refuse' ? 'bg-danger' : 'bg-warning'}">
-                                                    ${inscription.statut === 'confirme' ? '✅ Confirmé' : inscription.statut === 'refuse' ? '❌ Refusé' : '⏳ En attente'}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group btn-group-sm">
-                                                    ${inscription.statut === 'en_attente' ? `
-                                                                            <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
-                                                                                <i class="fas fa-check"></i>
-                                                                            </button>
-                                                                            <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
-                                                                                <i class="fas fa-times"></i>
-                                                                            </button>` : ''}
-                                                                <button class="btn btn-outline-primary" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
-                                                        <i class="fas fa-envelope"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>`).join('')}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>` : `
-                                                    <div class="text-center p-5">
-                                                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                                        <h5 class="text-muted">Aucune inscription pour le moment</h5>
-                                                <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
-                                                    </div>`}
-                        </div>
-                    </div>
-                            </div>
-                        </div>
-                    </div>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover mb-0">
+                                                                <thead class="table-light">
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th><i class="fas fa-user me-1"></i>Nom complet</th>
+                                                                        <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                                                        <th><i class="fas fa-phone me-1"></i>Téléphone</th>
+                                                                        <th><i class="fas fa-comment me-1"></i>Message</th>
+                                                                <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
+                                                                        <th><i class="fas fa-flag me-1"></i>Statut</th>
+                                                                        <th>Actions</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    ${inscriptions.map((inscription, index) => `
+<tr>
+<td><strong>${index + 1}</strong></td>
+<td>
+<div class="d-flex align-items-center">
+<div class="avatar-circle bg-primary text-white me-2" style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+${inscription.nom.charAt(0).toUpperCase()}
+</div>
+<strong>${inscription.nom}</strong>
+</div>
+</td>
+<td><a href="mailto:${inscription.email}">${inscription.email}</a></td>
+<td>${inscription.telephone ? `<a href="tel:${inscription.telephone}">${inscription.telephone}</a>` : '<span class="text-muted">Non renseigné</span>'}</td>
+<td>${inscription.message ? `<span title="${inscription.message}">${inscription.message}</span>` : '<span class="text-muted">Aucun message</span>'}</td>
+<td>
+<small class="text-muted">
+${new Date(inscription.created_at).toLocaleDateString('fr-FR')} à 
+${new Date(inscription.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}
+</small>
+</td>
+<td>
+<span class="badge ${inscription.statut === 'confirme' ? 'bg-success' : inscription.statut === 'refuse' ? 'bg-danger' : 'bg-warning'}">
+${inscription.statut === 'confirme' ? '✅ Confirmé' : inscription.statut === 'refuse' ? '❌ Refusé' : '⏳ En attente'}
+</span>
+</td>
+<td>
+<div class="btn-group btn-group-sm">
+${inscription.statut === 'en_attente' ? `
+                                                                                <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
+                                                                                    <i class="fas fa-check"></i>
+                                                                                </button>
+                                                                                <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
+                                                                                    <i class="fas fa-times"></i>
+                                                                                </button>` : ''}
+    <button class="btn btn-outline-primary" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
+<i class="fas fa-envelope"></i>
+</button>
+</div>
+</td>
+</tr>`).join('')}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>` : `
+                                                        <div class="text-center p-5">
+                                                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                                            <h5 class="text-muted">Aucune inscription pour le moment</h5>
+                                                    <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
+                                                        </div>`}
+</div>
+</div>
+</div>
+</div>
+</div>
 
-                </div>    
-                `;
-            }
-        </script>
- 
-        <!-- Script pour la création de nouvelles opportunités -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const form = document.getElementById('createEmploiForm');
-                const modal = document.getElementById('create_emplois');
+</div>    
+`;
+}
+</script>
 
-                // Validation en temps réel
-                form.addEventListener('input', function(e) {
-                    validateField(e.target);
-                });
+<!-- Script pour la création de nouvelles opportunités -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const form = document.getElementById('createEmploiForm');
+const modal = document.getElementById('create_emplois');
 
-                // Soumission du formulaire
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
+// Validation en temps réel
+form.addEventListener('input', function(e) {
+validateField(e.target);
+});
 
-                    if (validateForm()) {
-                        // Animation de chargement
-                        const submitBtn = form.querySelector('button[type="submit"]');
-                        const originalText = submitBtn.innerHTML;
+// Soumission du formulaire
+form.addEventListener('submit', function(e) {
+e.preventDefault();
 
-                        submitBtn.disabled = true;
-                        submitBtn.innerHTML = `
-                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Publication en cours...
-                    `;
+if (validateForm()) {
+// Animation de chargement
+const submitBtn = form.querySelector('button[type="submit"]');
+const originalText = submitBtn.innerHTML;
 
-                        // Soumission réelle
-                        setTimeout(() => {
-                            form.submit();
-                        }, 500);
-                    }
-                });
+submitBtn.disabled = true;
+submitBtn.innerHTML = `
+<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+Publication en cours...
+`;
 
-                // Validation des champs individuels
-                function validateField(field) {
-                    const value = field.value.trim();
-                    const isValid = field.checkValidity();
+// Soumission réelle
+setTimeout(() => {
+form.submit();
+}, 500);
+}
+});
 
-                    // Supprime les classes précédentes
-                    field.classList.remove('is-valid', 'is-invalid');
+// Validation des champs individuels
+function validateField(field) {
+const value = field.value.trim();
+const isValid = field.checkValidity();
 
-                    if (value !== '') {
-                        if (isValid) {
-                            field.classList.add('is-valid');
+// Supprime les classes précédentes
+field.classList.remove('is-valid', 'is-invalid');
 
-                            // Validations spécifiques
-                            if (field.name === 'salaire_max' && field.value !== '') {
-                                const salaireMin = document.getElementById('salaire_min').value;
-                                if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
-                                    field.classList.remove('is-valid');
-                                    field.classList.add('is-invalid');
-                                    return;
-                                }
-                            }
-                        } else {
-                            field.classList.add('is-invalid');
-                        }
-                    }
-                }
+if (value !== '') {
+if (isValid) {
+field.classList.add('is-valid');
 
-                // Validation complète du formulaire
-                function validateForm() {
-                    const requiredFields = form.querySelectorAll('[required]');
-                    let isValid = true;
+// Validations spécifiques
+if (field.name === 'salaire_max' && field.value !== '') {
+const salaireMin = document.getElementById('salaire_min').value;
+if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
+field.classList.remove('is-valid');
+field.classList.add('is-invalid');
+return;
+}
+}
+} else {
+field.classList.add('is-invalid');
+}
+}
+}
 
-                    requiredFields.forEach(field => {
-                        validateField(field);
-                        if (!field.checkValidity() || field.value.trim() === '') {
-                            isValid = false;
-                        }
-                    });
+// Validation complète du formulaire
+function validateForm() {
+const requiredFields = form.querySelectorAll('[required]');
+let isValid = true;
 
-                    // Validation personnalisée des salaires
-                    const salaireMin = document.getElementById('salaire_min');
-                    const salaireMax = document.getElementById('salaire_max');
+requiredFields.forEach(field => {
+validateField(field);
+if (!field.checkValidity() || field.value.trim() === '') {
+isValid = false;
+}
+});
 
-                    if (salaireMin.value && salaireMax.value &&
-                        parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
-                        salaireMax.classList.add('is-invalid');
-                        isValid = false;
-                    }
+// Validation personnalisée des salaires
+const salaireMin = document.getElementById('salaire_min');
+const salaireMax = document.getElementById('salaire_max');
 
-                    if (!isValid) {
-                        Swal.fire({
-                            icon: 'warning',
-                            title: '⚠️ Formulaire incomplet',
-                            html: `
-                            <div class="text-center">
-                                <p>@lang('extracted.veuillez_remplir_tous_les_champs_obligatoires_marques_dun_asterisque')</p>
-                                <div class="alert alert-light border mt-3">
-                                    <small class="text-muted">
-                                        <i class="fas fa-lightbulb me-1"></i>
-                                        Les champs en rouge nécessitent votre attention.
-                                    </small>
-                                </div>
-                            </div>
-                        `,
-                            confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
-                            confirmButtonColor: '#ffc107'
-                        });
-                }
-                
-                return isValid;
-            }
-            
-            // Réinitialiser le formulaire à la fermeture
-            modal.addEventListener('hidden.bs.modal', function() {
-                form.reset();
-                form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
-                    field.classList.remove('is-valid', 'is-invalid');
-                });
-                
-                // Réinitialiser le bouton de soumission
-                const submitBtn = form.querySelector('button[type="submit"]');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
-            });
-            
-            // Auto-complétion intelligente
-            document.getElementById('titre').addEventListener('input', function(e) {
-                const titre = e.target.value.toLowerCase();
-                const entrepriseField = document.getElementById('entreprise');
-                
-                // Si le titre contient certains mots-clés, suggérer Excellium
-                    if (titre.includes('développeur') || titre.includes('web') || titre.includes(
-                            'consultant')) {
-                    if (!entrepriseField.value) {
-                        entrepriseField.value = 'Excellium Conseils';
-                        entrepriseField.classList.add('is-valid');
-                    }
-                }
-            });
-            
-            // Formatage automatique du téléphone
-            document.getElementById('contact_telephone').addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 0 && !value.startsWith('225')) {
-                    value = '225' + value;
-                }
-                if (value.length > 3) {
-                    value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
-                }
-                e.target.value = value;
-            });
-        });
-        </script>
+if (salaireMin.value && salaireMax.value &&
+parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
+salaireMax.classList.add('is-invalid');
+isValid = false;
+}
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const form = document.getElementById('createCategorieForm');
-                if (form) {
-                    form.addEventListener('submit', function(e) {
-                        e.preventDefault();
+if (!isValid) {
+Swal.fire({
+icon: 'warning',
+title: '⚠️ Formulaire incomplet',
+html: `
+<div class="text-center">
+<p>@lang('extracted.veuillez_remplir_tous_les_champs_obligatoires_marques_dun_asterisque')</p>
+<div class="alert alert-light border mt-3">
+<small class="text-muted">
+<i class="fas fa-lightbulb me-1"></i>
+Les champs en rouge nécessitent votre attention.
+</small>
+</div>
+</div>
+`,
+confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
+confirmButtonColor: '#ffc107'
+});
+}
 
-                        // Animation de chargement
-                        Swal.fire({
-                            title: 'Création en cours...',
-                            allowOutsideClick: false,
-                            didOpen: () => {
-                                Swal.showLoading();
-                            },
-                            preConfirm: () => {
-                                const nom = Swal.getInputValue('nom');
-                                if (!nom) {
-                                    Swal.showValidationMessage('Le nom est requis');
-                                }
-                                return nom;
-                            },
-                            didOpen: () => {
-                                setTimeout(() => {
-                                    const input = Swal.getInput();
-                                    if (input) input.focus();
-                                }, 100);
-                            }
-                        });
+return isValid;
+}
 
-                        const formData = new FormData(form);
+// Réinitialiser le formulaire à la fermeture
+modal.addEventListener('hidden.bs.modal', function() {
+form.reset();
+form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
+field.classList.remove('is-valid', 'is-invalid');
+});
 
-                        fetch(form.action, {
-                            method: 'POST',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                            },
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Succès',
-                                    text: data.message,
-                                    confirmButtonText: 'OK'
-                                }).then(() => {
-                                    // Optionnel : reset le formulaire ou rafraîchir la liste
-                                    form.reset();
-                                    // Tu peux aussi recharger dynamiquement la liste ici si besoin
-                                });
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur',
-                                    text: data.message || 'Une erreur est survenue.'
-                                });
-                            }
-                        })
-                        .catch(error => {
-                            Swal.close();
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur',
-                                text: 'Une erreur inattendue est survenue.'
-                            });
-                        });
-                    });
-                }
-            });
-        </script>
+// Réinitialiser le bouton de soumission
+const submitBtn = form.querySelector('button[type="submit"]');
+submitBtn.disabled = false;
+submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
+});
 
-         <!-- Scripts pour la gestion des catégories -->
-        <script>
-            function fetchCategories() {
-                fetch('/admin/categories/list')
-                    .then(res => res.json())
-                    .then(categories => {
-                        const tbody = document.getElementById('categoriesTableBody');
-                        tbody.innerHTML = '';
-                        categories.forEach(cat => {
-                            tbody.innerHTML += `
-                                <tr>
-                                    <td>${cat.id}</td>
-                                    <td>${cat.nom}</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary" onclick="showEditModal(${cat.id}, '${cat.nom.replace(/'/g, "\\'")}')">@lang('extracted.')</button>
-                                        <button class="btn btn-sm btn-danger" onclick="deleteCategorie(${cat.id})">@lang('extracted.')</button>
-                                    </td>
-                                </tr>
-                            `;
-                        });
-                    });
-            }
+// Auto-complétion intelligente
+document.getElementById('titre').addEventListener('input', function(e) {
+const titre = e.target.value.toLowerCase();
+const entrepriseField = document.getElementById('entreprise');
 
-            // Afficher la modale d'édition
-            function showEditModal(id, nom) {
-                // Fermer la modale Bootstrap si elle est ouverte
-                const modal = bootstrap.Modal.getInstance(document.getElementById('liste_categories'));
-                if (modal) modal.hide();
+// Si le titre contient certains mots-clés, suggérer Excellium
+if (titre.includes('développeur') || titre.includes('web') || titre.includes(
+'consultant')) {
+if (!entrepriseField.value) {
+entrepriseField.value = 'Excellium Conseils';
+entrepriseField.classList.add('is-valid');
+}
+}
+});
 
-                // Puis ouvrir SweetAlert2
-                Swal.fire({
-                    title: 'Modifier la catégorie',
-                    input: 'text',
-                    inputValue: nom,
-                    showCancelButton: true,
-                    confirmButtonText: 'Enregistrer',
-                    cancelButtonText: 'Annuler',
-                    preConfirm: (newNom) => {
-                        if (!newNom) {
-                            Swal.showValidationMessage('Le nom est requis');
-                        }
-                        return newNom;
-                    },
-                    didOpen: () => {
-                        setTimeout(() => {
-                            const input = Swal.getInput();
-                            if (input) input.focus();
-                        }, 100);
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        updateCategorie(id, result.value);
-                    }
-                });
-            }
+// Formatage automatique du téléphone
+document.getElementById('contact_telephone').addEventListener('input', function(e) {
+let value = e.target.value.replace(/\D/g, '');
+if (value.length > 0 && !value.startsWith('225')) {
+value = '225' + value;
+}
+if (value.length > 3) {
+value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
+}
+e.target.value = value;
+});
+});
+</script>
 
-            // Modifier une catégorie
-            function updateCategorie(id, nom) {
-                Swal.fire({
-                    title: 'Mise à jour...',
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
-                fetch(`/admin/categories/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                        body: JSON.stringify({
-                            nom
-                        })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    Swal.close();
-                    if (data.success) {
-                        Swal.fire('Succès', data.message, 'success');
-                        fetchCategories();
-                    } else {
-                        Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
-                    }
-                });
-            }
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const form = document.getElementById('createCategorieForm');
+if (form) {
+form.addEventListener('submit', function(e) {
+e.preventDefault();
 
-            // Supprimer une catégorie
-            function deleteCategorie(id) {
-                Swal.fire({
-                    title: 'Supprimer cette catégorie ?',
-                    text: 'Cette action est irréversible !',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Oui, supprimer',
-                    cancelButtonText: 'Annuler'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Suppression...',
-                            allowOutsideClick: false,
-                            didOpen: () => Swal.showLoading()
-                        });
-                        fetch(`/admin/categories/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                Swal.fire('Succès', data.message, 'success');
-                                fetchCategories();
-                            } else {
-                                Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                            }
-                        });
-                    }
-                });
-            }
+// Animation de chargement
+Swal.fire({
+title: 'Création en cours...',
+allowOutsideClick: false,
+didOpen: () => {
+Swal.showLoading();
+},
+preConfirm: () => {
+const nom = Swal.getInputValue('nom');
+if (!nom) {
+Swal.showValidationMessage('Le nom est requis');
+}
+return nom;
+},
+didOpen: () => {
+setTimeout(() => {
+const input = Swal.getInput();
+if (input) input.focus();
+}, 100);
+}
+});
 
-            // Rafraîchir la liste à l'ouverture de la modale
-            document.addEventListener('DOMContentLoaded', function() {
-                // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
-                fetchCategories();
-            });
-        </script>
-        <!-- ///////////////////////////////////// -->
+const formData = new FormData(form);
+
+fetch(form.action, {
+method: 'POST',
+headers: {
+'X-Requested-With': 'XMLHttpRequest',
+'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+},
+body: formData
+})
+.then(response => response.json())
+.then(data => {
+Swal.close();
+if (data.success) {
+Swal.fire({
+icon: 'success',
+title: 'Succès',
+text: data.message,
+confirmButtonText: 'OK'
+}).then(() => {
+// Optionnel : reset le formulaire ou rafraîchir la liste
+form.reset();
+// Tu peux aussi recharger dynamiquement la liste ici si besoin
+});
+} else {
+Swal.fire({
+icon: 'error',
+title: 'Erreur',
+text: data.message || 'Une erreur est survenue.'
+});
+}
+})
+.catch(error => {
+Swal.close();
+Swal.fire({
+icon: 'error',
+title: 'Erreur',
+text: 'Une erreur inattendue est survenue.'
+});
+});
+});
+}
+});
+</script>
+
+<!-- Scripts pour la gestion des catégories -->
+<script>
+function fetchCategories() {
+fetch('/admin/categories/list')
+.then(res => res.json())
+.then(categories => {
+const tbody = document.getElementById('categoriesTableBody');
+tbody.innerHTML = '';
+categories.forEach(cat => {
+tbody.innerHTML += `
+<tr>
+<td>${cat.id}</td>
+<td>${cat.nom}</td>
+<td>
+<button class="btn btn-sm btn-primary" onclick="showEditModal(${cat.id}, '${cat.nom.replace(/'/g, "\\'")}')">@lang('extracted.')</button>
+<button class="btn btn-sm btn-danger" onclick="deleteCategorie(${cat.id})">@lang('extracted.')</button>
+</td>
+</tr>
+`;
+});
+});
+}
+
+// Afficher la modale d'édition
+function showEditModal(id, nom) {
+// Fermer la modale Bootstrap si elle est ouverte
+const modal = bootstrap.Modal.getInstance(document.getElementById('liste_categories'));
+if (modal) modal.hide();
+
+// Puis ouvrir SweetAlert2
+Swal.fire({
+title: 'Modifier la catégorie',
+input: 'text',
+inputValue: nom,
+showCancelButton: true,
+confirmButtonText: 'Enregistrer',
+cancelButtonText: 'Annuler',
+preConfirm: (newNom) => {
+if (!newNom) {
+Swal.showValidationMessage('Le nom est requis');
+}
+return newNom;
+},
+didOpen: () => {
+setTimeout(() => {
+const input = Swal.getInput();
+if (input) input.focus();
+}, 100);
+}
+}).then((result) => {
+if (result.isConfirmed) {
+updateCategorie(id, result.value);
+}
+});
+}
+
+// Modifier une catégorie
+function updateCategorie(id, nom) {
+Swal.fire({
+title: 'Mise à jour...',
+allowOutsideClick: false,
+didOpen: () => Swal.showLoading()
+});
+fetch(`/admin/categories/${id}`, {
+method: 'PUT',
+headers: {
+'Content-Type': 'application/json',
+'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+'X-Requested-With': 'XMLHttpRequest'
+},
+body: JSON.stringify({
+nom
+})
+})
+.then(res => res.json())
+.then(data => {
+Swal.close();
+if (data.success) {
+Swal.fire('Succès', data.message, 'success');
+fetchCategories();
+} else {
+Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+}
+});
+}
+
+// Supprimer une catégorie
+function deleteCategorie(id) {
+Swal.fire({
+title: 'Supprimer cette catégorie ?',
+text: 'Cette action est irréversible !',
+icon: 'warning',
+showCancelButton: true,
+confirmButtonText: 'Oui, supprimer',
+cancelButtonText: 'Annuler'
+}).then((result) => {
+if (result.isConfirmed) {
+Swal.fire({
+title: 'Suppression...',
+allowOutsideClick: false,
+didOpen: () => Swal.showLoading()
+});
+fetch(`/admin/categories/${id}`, {
+method: 'DELETE',
+headers: {
+'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+'X-Requested-With': 'XMLHttpRequest'
+}
+})
+.then(res => res.json())
+.then(data => {
+Swal.close();
+if (data.success) {
+Swal.fire('Succès', data.message, 'success');
+fetchCategories();
+} else {
+Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+}
+});
+}
+});
+}
+
+// Rafraîchir la liste à l'ouverture de la modale
+document.addEventListener('DOMContentLoaded', function() {
+// Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
+fetchCategories();
+});
+</script>
+<!-- ///////////////////////////////////// -->
 
 
 
-         <!-- Scripts pour la gestion des produits -->
-        <script>
-            // Scripts pour la gestion des produits
-            document.addEventListener('DOMContentLoaded', function() {
-                // Gestion de la création de produit
-                const createProduitForm = document.getElementById('createProduitForm');
-                if (createProduitForm) {
-                    createProduitForm.addEventListener('submit', function(e) {
-                        e.preventDefault();
+<!-- Scripts pour la gestion des produits -->
+<script>
+// Scripts pour la gestion des produits
+document.addEventListener('DOMContentLoaded', function() {
+// Gestion de la création de produit
+const createProduitForm = document.getElementById('createProduitForm');
+if (createProduitForm) {
+createProduitForm.addEventListener('submit', function(e) {
+e.preventDefault();
 
-                        // Afficher une animation de chargement
-                        const loading = Swal.fire({
-                            title: 'Création en cours...',
-                            html: `
-                                <div class="text-center">
-                                <div class="spinner-border text-primary" role="status">
-                                    <span class="visually-hidden">@lang('extracted.chargement')</span>
-                                </div>
-                                <p class="mt-2">@lang('extracted.creation_du_produit')</p>
-                                </div>
-                            `,
-                            allowOutsideClick: false,
-                            didOpen: () => {
-                                Swal.showLoading();
-                            }
-                        });
+// Afficher une animation de chargement
+const loading = Swal.fire({
+title: 'Création en cours...',
+html: `
+<div class="text-center">
+<div class="spinner-border text-primary" role="status">
+<span class="visually-hidden">@lang('extracted.chargement')</span>
+</div>
+<p class="mt-2">@lang('extracted.creation_du_produit')</p>
+</div>
+`,
+allowOutsideClick: false,
+didOpen: () => {
+Swal.showLoading();
+}
+});
 
-                        const loading = Swal.fire({
-                            ...
-                        });
-                        const formData = new FormData(createProduitForm);
+const loading = Swal.fire({
+...
+});
+const formData = new FormData(createProduitForm);
 
-                        fetch(createProduitForm.action, {
-                            method: 'POST',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                            },
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                    const success = Swal.mixin({
-                                        customClass: {
-                                            confirmButton: 'btn btn-success',
-                                            cancelButton: 'btn btn-danger'
-                                        },
-                                        buttonsStyling: false
-                                    });
+fetch(createProduitForm.action, {
+method: 'POST',
+headers: {
+'X-Requested-With': 'XMLHttpRequest',
+'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+},
+body: formData
+})
+.then(response => response.json())
+.then(data => {
+Swal.close();
+if (data.success) {
+const success = Swal.mixin({
+customClass: {
+confirmButton: 'btn btn-success',
+cancelButton: 'btn btn-danger'
+},
+buttonsStyling: false
+});
 
-                                    success.fire({
-                                    icon: 'success',
-                                    title: 'Succès',
-                                        html: `
-                                        <div class="text-center">
-                                            <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
-                                            <h5 class="mt-3">@lang('extracted.produit_cree')</h5>
-                                            <p class="mb-0">${data.message}</p>
-                                        </div>
-                                    `,
-                                        confirmButtonText: 'OK',
-                                        showCancelButton: false,
-                                        confirmButtonColor: '#2196f3'
-                                }).then(() => {
-                                        createProduitForm.reset();
-                                        fetchProduits();
-                                });
-                            } else {
-                                    const error = Swal.mixin({
-                                        customClass: {
-                                            confirmButton: 'btn btn-danger'
-                                        },
-                                        buttonsStyling: false
-                                    });
+success.fire({
+icon: 'success',
+title: 'Succès',
+html: `
+<div class="text-center">
+<i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
+<h5 class="mt-3">@lang('extracted.produit_cree')</h5>
+<p class="mb-0">${data.message}</p>
+</div>
+`,
+confirmButtonText: 'OK',
+showCancelButton: false,
+confirmButtonColor: '#2196f3'
+}).then(() => {
+createProduitForm.reset();
+fetchProduits();
+});
+} else {
+const error = Swal.mixin({
+customClass: {
+confirmButton: 'btn btn-danger'
+},
+buttonsStyling: false
+});
 
-                                    error.fire({
-                                    icon: 'error',
-                                    title: 'Erreur',
-                                        html: `
-                                        <div class="text-center">
-                                            <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
-                                            <h5 class="mt-3">@lang('extracted.erreur')</h5>
-                                            <p class="mb-0">${data.message || 'Une erreur est survenue.'}</p>
-                                        </div>
-                                    `,
-                                        confirmButtonText: 'OK',
-                                        confirmButtonColor: '#dc3545'
-                                });
-                            }
-                        })
-                        .catch(error => {
-                                loading.close();
-                                const error = Swal.mixin({
-                                    customClass: {
-                                        confirmButton: 'btn btn-danger'
-                                    },
-                                    buttonsStyling: false
-                                });
+error.fire({
+icon: 'error',
+title: 'Erreur',
+html: `
+<div class="text-center">
+<i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
+<h5 class="mt-3">@lang('extracted.erreur')</h5>
+<p class="mb-0">${data.message || 'Une erreur est survenue.'}</p>
+</div>
+`,
+confirmButtonText: 'OK',
+confirmButtonColor: '#dc3545'
+});
+}
+})
+.catch(error => {
+loading.close();
+const error = Swal.mixin({
+customClass: {
+confirmButton: 'btn btn-danger'
+},
+buttonsStyling: false
+});
 
-                                error.fire({
-                                icon: 'error',
-                                title: 'Erreur',
-                                    html: `
-                                    <div class="text-center">
-                                        <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
-                                        <h5 class="mt-3">@lang('extracted.erreur_inattendue')</h5>
-                                        <p class="mb-0">@lang('extracted.une_erreur_inattendue_est_survenue')</p>
-                                    </div>
-                                `,
-                                    confirmButtonText: 'OK',
-                                    confirmButtonColor: '#dc3545'
-                            });
-                        });
-                    });
-                }
-            });
-        </script>
+error.fire({
+icon: 'error',
+title: 'Erreur',
+html: `
+<div class="text-center">
+<i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
+<h5 class="mt-3">@lang('extracted.erreur_inattendue')</h5>
+<p class="mb-0">@lang('extracted.une_erreur_inattendue_est_survenue')</p>
+</div>
+`,
+confirmButtonText: 'OK',
+confirmButtonColor: '#dc3545'
+});
+});
+});
+}
+});
+</script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Initialisation de la DataTable pour la table des produits
-                // Assure-toi que ta table HTML a bien l'id "tableProduits"
-                var table = $('#tableProduits').DataTable({
-                    ajax: '/admin/produits/list',
-                    columns: [{
-                            data: 'nom',
-                            title: 'Nom'
-                        },
-                        {
-                            data: 'categorie',
-                            title: 'Catégorie'
-                        },
-                        {
-                            data: 'statut_label',
-                            title: 'Statut',
-                            render: function(data, type, row) {
-                                var couleur = row.statut_color === 'success' ? 'green' : 'red';
-                                return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
-                            }
-                        },
-                        {
-                            data: 'actions',
-                            title: 'Actions',
-                            orderable: false,
-                            searchable: false
-                        }
-                    ],
-                    // language: {
-                    //     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
-                    // }
-                });
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Initialisation de la DataTable pour la table des produits
+// Assure-toi que ta table HTML a bien l'id "tableProduits"
+var table = $('#tableProduits').DataTable({
+ajax: '/admin/produits/list',
+columns: [{
+data: 'nom',
+title: 'Nom'
+},
+{
+data: 'categorie',
+title: 'Catégorie'
+},
+{
+data: 'statut_label',
+title: 'Statut',
+render: function(data, type, row) {
+var couleur = row.statut_color === 'success' ? 'green' : 'red';
+return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
+}
+},
+{
+data: 'actions',
+title: 'Actions',
+orderable: false,
+searchable: false
+}
+],
+// language: {
+//     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
+// }
+});
 
-                // Gestion des clics sur les boutons d'action (modification/suppression)
-                // On utilise la délégation d'événement pour gérer les éléments générés dynamiquement
-                document.querySelector('#tableProduits').addEventListener('click', function(e) {
-                    // Bouton Modifier
-                    if (e.target.closest('.btn-edit-produit')) {
-                        e.preventDefault();
-                        const id = e.target.closest('.btn-edit-produit').dataset.id;
-                        // Appelle ta fonction d'ouverture de modale d'édition ici
-                        openEditProduitModal(id);
-                    }
+// Gestion des clics sur les boutons d'action (modification/suppression)
+// On utilise la délégation d'événement pour gérer les éléments générés dynamiquement
+document.querySelector('#tableProduits').addEventListener('click', function(e) {
+// Bouton Modifier
+if (e.target.closest('.btn-edit-produit')) {
+e.preventDefault();
+const id = e.target.closest('.btn-edit-produit').dataset.id;
+// Appelle ta fonction d'ouverture de modale d'édition ici
+openEditProduitModal(id);
+}
 
-                    // Bouton Supprimer
-                    if (e.target.closest('.btn-delete-produit')) {
-                        e.preventDefault();
-                        const id = e.target.closest('.btn-delete-produit').dataset.id;
+// Bouton Supprimer
+if (e.target.closest('.btn-delete-produit')) {
+e.preventDefault();
+const id = e.target.closest('.btn-delete-produit').dataset.id;
 
-                        // Confirmation avec SweetAlert2
-                Swal.fire({
-                            title: 'Supprimer ce produit ?',
-                            text: 'Cette action est irréversible !',
-                            icon: 'warning',
-                    showCancelButton: true,
-                            confirmButtonText: 'Oui, supprimer',
-                            cancelButtonText: 'Annuler'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                fetch(`/admin/produits/${id}`, {
-                                        method: 'DELETE',
-                    headers: {
-                                            'X-CSRF-TOKEN': document.querySelector(
-                                                'meta[name="csrf-token"]').getAttribute(
-                                                'content')
-                                        }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                                            Swal.fire('Supprimé !', data.message, 'success');
-                                            table.ajax.reload(); // Rafraîchit la DataTable
-                    } else {
-                                            Swal.fire('Erreur', data.message ||
-                                                'Erreur lors de la suppression', 'error');
-                                        }
-                                    })
-                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
-                    }
-                });
-            }
-                });
+// Confirmation avec SweetAlert2
+Swal.fire({
+title: 'Supprimer ce produit ?',
+text: 'Cette action est irréversible !',
+icon: 'warning',
+showCancelButton: true,
+confirmButtonText: 'Oui, supprimer',
+cancelButtonText: 'Annuler'
+}).then((result) => {
+if (result.isConfirmed) {
+fetch(`/admin/produits/${id}`, {
+method: 'DELETE',
+headers: {
+'X-CSRF-TOKEN': document.querySelector(
+'meta[name="csrf-token"]').getAttribute(
+'content')
+}
+})
+.then(res => res.json())
+.then(data => {
+if (data.success) {
+Swal.fire('Supprimé !', data.message, 'success');
+table.ajax.reload(); // Rafraîchit la DataTable
+} else {
+Swal.fire('Erreur', data.message ||
+'Erreur lors de la suppression', 'error');
+}
+})
+.catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+}
+});
+}
+});
 
-                // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
-                window.openEditProduitModal = function(id) {
-                    // Récupère les infos du produit via AJAX
-                    fetch(`/admin/produits/${id}`)
-                        .then(res => res.json())
-                        .then(produit => {
-                Swal.fire({
-                                title: `
-                                    <div style="display:flex;align-items:center;gap:10px;">
-                                        <i class="bi bi-pencil-square" style="font-size:1.8em;color:#6C63FF;"></i>
-                                        <span style="font-size:1.3em;font-weight:600;">@lang('extracted.modifier_le_produit')</span>
-                                    </div>`,
-                                html: `
-                                <div style="background: #eff2f7; border-radius: 18px; box-shadow: 0 4px 14px rgba(41,63,87,0.06); padding: 25px 18px;">
-                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
-                                    <div>
-                                      <label for="swal-nom" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
-                                        <i class="bi bi-cube"></i> Nom du produit <span style="color:#e74c3c;">*</span>
-                                      </label>
-                                      <input type="text" id="swal-nom" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Nom" value="${escapeHtml(produit.nom)}">
-                                    </div>
-                                  </div>
-                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
-                                    <div>
-                                      <label for="swal-slug" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
-                                        <i class="bi bi-link"></i> Slug <span style="color:#e74c3c;">*</span>
-                                      </label>
-                                      <input type="text" id="swal-slug" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Slug" value="${escapeHtml(produit.slug)}">
-                                    </div>
-                                    <div>
-                                      <label for="swal-categorie" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
-                                        <i class="bi bi-collection"></i> Catégorie <span style="color:#e74c3c;">*</span>
-                                      </label>
-                                      <select id="swal-categorie" class="swal2-input" style="width:100%;margin-bottom:0.5em;">
-                                        <option value="">@lang('extracted.selectionnez_une_categorie')</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div style="margin-top:12px;">
-                                    <label for="swal-statut" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;">
-                                      <i class="bi bi-toggle2-on"></i> Statut
-                                    </label>
-                                    <select id="swal-statut" class="swal2-input" style="width:50%;">
-                                        <option value="actif" ${produit.statut === 'actif' ? 'selected' : ''}>@lang('extracted.actif')</option>
-                                        <option value="inactif" ${produit.statut === 'inactif' ? 'selected' : ''}>@lang('extracted.inactif')</option>
-                                    </select>
-                                  </div>
-                                  <div style="margin-top:10px;font-size:0.95em;color:#888;">
-                                    <span><span style="color:#e74c3c;">*</span> Champs obligatoires</span>
-                                  </div>
-                                </div>
-                                `,
-                                focusConfirm: false,
-                    showCancelButton: true,
-                                confirmButtonText: '<i class="bi bi-save"></i> Enregistrer',
-                                cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
-                                customClass: {
-                                    popup: 'swal2-card',
-                                    confirmButton: 'swal2-confirm--primary'
-                                },
-                                width: 600,
-                                background: "#f9fafe",
-                                scrollbarPadding: false,
-                                preConfirm: () => {
-                                    const nom = document.getElementById('swal-nom').value.trim();
-                                    const description = document.getElementById('swal-description')
-                                        .value.trim();
-                                    const slug = document.getElementById('swal-slug').value.trim();
-                                    const categorie_id = document.getElementById('swal-categorie')
-                                        .value;
-                                    const statut = document.getElementById('swal-statut').value;
-                                    if (!nom || !slug || !categorie_id) {
-                                        Swal.showValidationMessage(
-                                            'Tous les champs obligatoires doivent être remplis');
-                                        return false;
-                                    }
-                                    return {
-                                        nom,
-                                        description,
-                                        slug,
-                                        categorie_id,
-                                        statut
-                                    };
-                                },
-                                didOpen: () => {
-                                    // Charger dynamiquement les catégories
-                                    fetch('/admin/categories/list')
-                                        .then(res => res.json())
-                                        .then(categories => {
-                                            const select = document.getElementById(
-                                                'swal-categorie');
-                                            categories.forEach(cat => {
-                                                const opt = document.createElement(
-                                                    'option');
-                                                opt.value = cat.id;
-                                                opt.textContent = cat.nom;
-                                                if (cat.id == produit.categorie_id) opt
-                                                    .selected = true;
-                                                select.appendChild(opt);
-                                            });
-                                        });
-                                }
-                }).then((result) => {
-                                if (result.isConfirmed && result.value) {
-                                    Swal.fire({
-                                        title: 'Mise à jour...',
-                                        allowOutsideClick: false,
-                                        didOpen: () => Swal.showLoading()
-                                    });
-                        fetch(`/admin/produits/${id}`, {
-                                            method: 'PUT',
-                            headers: {
-                                                'Content-Type': 'application/json',
-                                                'X-CSRF-TOKEN': document.querySelector(
-                                                    'meta[name="csrf-token"]').getAttribute(
-                                                    'content'),
-                                'X-Requested-With': 'XMLHttpRequest'
-                                            },
-                                            body: JSON.stringify(result.value)
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                                Swal.fire({
-                                                    icon: 'success',
-                                                    title: 'Succès',
-                                                    text: data.message,
-                                                    timer: 1800,
-                                                    showConfirmButton: false
-                                                });
-                                                $('#tableProduits').DataTable().ajax.reload();
-                            } else {
-                                                Swal.fire('Erreur', data.message ||
-                                                    'Erreur lors de la modification', 'error');
-                            }
-                                        })
-                                        .catch(() => {
-                                            Swal.close();
-                                            Swal.fire('Erreur', 'Erreur réseau', 'error');
-                        });
-                    }
-                });
-                        });
-                };
-            });
-        </script>
+// Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
+window.openEditProduitModal = function(id) {
+// Récupère les infos du produit via AJAX
+fetch(`/admin/produits/${id}`)
+.then(res => res.json())
+.then(produit => {
+Swal.fire({
 
-        <script>
-            function escapeHtml(text) {
-                return text
-                    .replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/"/g, "&quot;")
-                    .replace(/'/g, "&#039;");
-            }
-        </script>
-         <!-- ///////////////////////////////////// -->
+html: `
+<div class="swal-custom-modal">
+<!-- Titre -->
+<div class="d-flex justify-content-around mb-4">
+<h3><i class="bi bi-pencil-square"></i> Modifier le produit</h3>
+</div>
 
-        <!-- Scripts pour la gestion des services -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Initialisation de la DataTable pour les services
-                var tableServices = $('#tableServices').DataTable({
-                    ajax: {
-                        url: '/admin/services/list',
-                        type: 'GET'
-                    },
-                    columns: [{
-                            data: 'nom'
-                        },
-                        {
-                            data: 'description'
-                        },
-                        {
-                            data: 'categorie'
-                        },
-                        {
-                            data: 'actions',
-                            orderable: false,
-                            searchable: false
-                        }
-                    ],
-                    // language: {
-                    //     url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
-                    // }
-                });
+<!-- Formulaire -->
+<form id="editProduitForm" class="text-start">
+<div class="mb-3">
+<label for="swal-nom" class="form-label fw-semibold">
+<i class="bi bi-cube"></i> Nom du produit <span class="text-danger">*</span>
+</label>
+<input type="text" id="swal-nom" class="form-control"
+placeholder="Nom"
+value="${escapeHtml(produit.nom)}" required>
+</div>
 
-                // Gestion de la création de service
-                const createServiceForm = document.getElementById('createServiceForm');
-                if (createServiceForm) {
-                    createServiceForm.addEventListener('submit', function(e) {
-                        e.preventDefault();
+<div class="row">
+<div class="col-md-6 mb-3">
+<label for="swal-slug" class="form-label fw-semibold">
+<i class="bi bi-link"></i> Slug <span class="text-danger">*</span>
+</label>
+<input type="text" id="swal-slug" class="form-control"
+placeholder="Slug"
+value="${escapeHtml(produit.slug)}" required>
+</div>
 
-                        Swal.fire({
-                            title: 'Création en cours...',
-                            html: `
-                                <div class="text-center">
-                                <div class="spinner-border text-primary" role="status">
-                                    <span class="visually-hidden">Chargement...</span>
-                                </div>
-                                <p class="mt-2">Création du service...</p>
-                                </div>
-                            `,
-                            allowOutsideClick: false,
-                            didOpen: () => {
-                                Swal.showLoading();
-                            }
-                        });
+<div class="col-md-6 mb-3">
+<label for="swal-categorie" class="form-label fw-semibold">
+<i class="bi bi-collection"></i> Catégorie <span class="text-danger">*</span>
+</label>
+<select id="swal-categorie" class="form-select" required>
+<option value="">@lang('extracted.selectionnez_une_categorie')</option>
+</select>
+</div>
+</div>
 
-                        const formData = new FormData(createServiceForm);
+<div class="mb-3">
+<label for="swal-statut" class="form-label fw-semibold">
+<i class="bi bi-toggle2-on"></i> Statut
+</label>
+<select id="swal-statut" class="form-select w-50">
+<option value="actif" ${produit.statut === 'actif' ? 'selected' : ''}>
+@lang('extracted.actif')
+</option>
+<option value="inactif" ${produit.statut === 'inactif' ? 'selected' : ''}>
+@lang('extracted.inactif')
+</option>
+</select>
+</div>
 
-                        fetch(createServiceForm.action, {
-                            method: 'POST',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                            },
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                    Swal.fire({
-                                    icon: 'success',
-                                    title: 'Succès',
-                                    html: `
-                                        <div class="text-center">
-                                            <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
-                                            <h5 class="mt-3">Service créé !</h5>
-                                            <p class="mb-0">${data.message}</p>
-                                        </div>
-                                    `,
-                                    confirmButtonText: 'OK',
-                                    showCancelButton: false,
-                                    confirmButtonColor: '#2196f3'
-                                }).then(() => {
-                                        createServiceForm.reset();
-                                        tableServices.ajax.reload();
-                                });
-                            } else {
-                                    Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur',
-                                        text: data.message || 'Erreur lors de la création'
-                                });
-                            }
-                        })
-                            .catch(() => {
-                                Swal.close();
-                                Swal.fire('Erreur', 'Erreur réseau', 'error');
-                        });
-                    });
-                }
+<div class="mt-2 text-muted small">
+<span class="text-danger">*</span> Champs obligatoires
+</div>
+</form>
+</div>
+`,
 
-                // Gestion des clics sur les boutons d'action des services
-                document.querySelector('#tableServices').addEventListener('click', function(e) {
-                    // Bouton Modifier
-                    if (e.target.closest('.btn-edit-service')) {
-                        e.preventDefault();
-                        const id = e.target.closest('.btn-edit-service').dataset.id;
-                        openEditServiceModal(id);
-                    }
+focusConfirm: false,
+showCancelButton: true,
+confirmButtonText: '<i class="bi bi-check"></i> Enregistrer',
+cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
+customClass: {
+popup: 'swal2-card',
+confirmButton: 'swal2-confirm--primary'
+},
+width: 600,
+background: "#f9fafe",
+scrollbarPadding: false,
+preConfirm: () => {
+const nom = document.getElementById('swal-nom').value.trim();
+const description = document.getElementById('swal-description')
+.value.trim();
+const slug = document.getElementById('swal-slug').value.trim();
+const categorie_id = document.getElementById('swal-categorie')
+.value;
+const statut = document.getElementById('swal-statut').value;
+if (!nom || !slug || !categorie_id) {
+Swal.showValidationMessage(
+'Tous les champs obligatoires doivent être remplis');
+return false;
+}
+return {
+nom,
+description,
+slug,
+categorie_id,
+statut
+};
+},
+didOpen: () => {
+// Charger dynamiquement les catégories
+fetch('/admin/categories/list')
+.then(res => res.json())
+.then(categories => {
+const select = document.getElementById(
+'swal-categorie');
+categories.forEach(cat => {
+const opt = document.createElement(
+'option');
+opt.value = cat.id;
+opt.textContent = cat.nom;
+if (cat.id == produit.categorie_id) opt
+.selected = true;
+select.appendChild(opt);
+});
+});
+}
+}).then((result) => {
+if (result.isConfirmed && result.value) {
+Swal.fire({
+title: 'Mise à jour...',
+allowOutsideClick: false,
+didOpen: () => Swal.showLoading()
+});
+fetch(`/admin/produits/${id}`, {
+method: 'PUT',
+headers: {
+'Content-Type': 'application/json',
+'X-CSRF-TOKEN': document.querySelector(
+'meta[name="csrf-token"]').getAttribute(
+'content'),
+'X-Requested-With': 'XMLHttpRequest'
+},
+body: JSON.stringify(result.value)
+})
+.then(res => res.json())
+.then(data => {
+Swal.close();
+if (data.success) {
+Swal.fire({
+icon: 'success',
+title: 'Succès',
+text: data.message,
+timer: 1800,
+showConfirmButton: false
+});
+$('#tableProduits').DataTable().ajax.reload();
+} else {
+Swal.fire('Erreur', data.message ||
+'Erreur lors de la modification', 'error');
+}
+})
+.catch(() => {
+Swal.close();
+Swal.fire('Erreur', 'Erreur réseau', 'error');
+});
+}
+});
+});
+};
+});
+</script>
 
-                    // Bouton Supprimer
-                    if (e.target.closest('.btn-delete-service')) {
-                        e.preventDefault();
-                        const id = e.target.closest('.btn-delete-service').dataset.id;
+<script>
+function escapeHtml(text) {
+return text
+.replace(/&/g, "&amp;")
+.replace(/</g, "&lt;")
+.replace(/>/g, "&gt;")
+.replace(/"/g, "&quot;")
+.replace(/'/g, "&#039;");
+}
+</script>
+<!-- ///////////////////////////////////// -->
 
-                        Swal.fire({
-                            title: 'Supprimer ce service ?',
-                            text: 'Cette action est irréversible !',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonText: 'Oui, supprimer',
-                            cancelButtonText: 'Annuler'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                fetch(`/admin/services/${id}`, {
-                                        method: 'DELETE',
-                                        headers: {
-                                            'X-CSRF-TOKEN': document.querySelector(
-                                                'meta[name="csrf-token"]').getAttribute(
-                                                'content')
-                                        }
-                                    })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        if (data.success) {
-                                            Swal.fire('Supprimé !', data.message, 'success');
-                                            tableServices.ajax.reload();
-                            } else {
-                                            Swal.fire('Erreur', data.message ||
-                                                'Erreur lors de la suppression', 'error');
-                                        }
-                                    })
-                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
-                            }
-                        });
-                }
-                });
+<!-- Scripts pour la gestion des services -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Initialisation de la DataTable pour les services
+var tableServices = $('#tableServices').DataTable({
+ajax: {
+url: '/admin/services/list',
+type: 'GET'
+},
+columns: [{
+data: 'nom'
+},
+{
+data: 'description'
+},
+{
+data: 'categorie'
+},
+{
+data: 'actions',
+orderable: false,
+searchable: false
+}
+],
+// language: {
+//     url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
+// }
+});
 
-                // Fonction pour ouvrir la modale d'édition des services
-                window.openEditServiceModal = function(id) {
-                    fetch(`/admin/services/${id}`)
-                            .then(res => res.json())
-                        .then(service => {
-                            Swal.fire({
-                                title: `
-                                    <div style="display:flex;align-items:center;gap:10px;">
-                                        <i class="bi bi-pencil-square" style="font-size:1.8em;color:#6C63FF;"></i>
-                                        <span style="font-size:1.3em;font-weight:600;">Modifier le service</span>
-                                    </div>`,
-                                html: `
-                                <div style="background: #eff2f7; border-radius: 18px; box-shadow: 0 4px 14px rgba(41,63,87,0.06); padding: 25px 18px;">
-                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
-                                    <div>
-                                      <label for="swal-nom" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;"><i class="bi bi-cube"></i> Nom du service <span style="color:#e74c3c;">*</span></label>
-                                      <input id="swal-nom" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Nom" value="${escapeHtml(service.nom)}">
-                                    </div>
-                                    <div>
-                                      <label for="swal-description" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;"><i class="bi bi-text-left"></i> Description</label>
-                                      <input id="swal-description" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Description" value="${escapeHtml(service.description || '')}">
-                                    </div>
-                                  </div>
-                                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:baseline;">
-                                    <div>
-                                      <label for="swal-slug" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;"><i class="bi bi-link"></i> Slug <span style="color:#e74c3c;">*</span></label>
-                                      <input id="swal-slug" class="swal2-input" style="width:100%;margin-bottom:0.5em;" placeholder="Slug" value="${escapeHtml(service.slug)}">
-                                    </div>
-                                    <div>
-                                      <label for="swal-categorie" style="font-weight:500;letter-spacing:0.5px;color:#5a5a5a;"><i class="bi bi-collection"></i> Catégorie <span style="color:#e74c3c;">*</span></label>
-                                      <select id="swal-categorie" class="swal2-input" style="width:100%;margin-bottom:0.5em;">
-                                        <option value="">Sélectionnez une catégorie</option>
-                                      </select>
-                                    </div>
-                                  </div>
+// Gestion de la création de service
+const createServiceForm = document.getElementById('createServiceForm');
+if (createServiceForm) {
+createServiceForm.addEventListener('submit', function(e) {
+e.preventDefault();
 
-                                </div>`,
-                                showCancelButton: true,
-                                confirmButtonText: '<i class="bi bi-check2"></i> Modifier',
-                                cancelButtonText: '<i class="bi bi-x"></i> Annuler',
-                                confirmButtonColor: '#6C63FF',
-                                cancelButtonColor: '#6c757d',
-                                width: '600px',
-                                preConfirm: () => {
-                                    return {
-                                        nom: document.getElementById('swal-nom').value,
-                                        description: document.getElementById('swal-description')
-                                            .value,
-                                        slug: document.getElementById('swal-slug').value,
-                                        categorie_id: document.getElementById('swal-categorie')
-                                            .value
-                                    };
-                                }
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    updateService(id, result.value);
-                                }
-                            });
+Swal.fire({
+title: 'Création en cours...',
+html: `
+<div class="text-center">
+<div class="spinner-border text-primary" role="status">
+<span class="visually-hidden">Chargement...</span>
+</div>
+<p class="mt-2">Création du service...</p>
+</div>
+`,
+allowOutsideClick: false,
+didOpen: () => {
+Swal.showLoading();
+}
+});
 
-                            // Charger les catégories dans la modale
-                            fetch('/admin/categories/list')
-                            .then(res => res.json())
-                                .then(categories => {
-                                    const select = document.getElementById('swal-categorie');
-                                    categories.forEach(cat => {
-                                        const opt = document.createElement('option');
-                                        opt.value = cat.id;
-                                        opt.textContent = cat.nom;
-                                        if (cat.id == service.categorie_id) opt.selected = true;
-                                        select.appendChild(opt);
-                                    });
-                                });
-                        });
-                };
+const formData = new FormData(createServiceForm);
 
-                // Fonction pour mettre à jour un service
-                function updateService(id, data) {
-                    fetch(`/admin/services/${id}`, {
-                            method: 'PUT',
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(data)
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Succès !',
-                                    text: data.message
-                                });
-                                tableServices.ajax.reload();
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur !',
-                                    text: data.message
-                                });
-                            }
-                        });
-                }
-            });
-        </script>
+fetch(createServiceForm.action, {
+method: 'POST',
+headers: {
+'X-Requested-With': 'XMLHttpRequest',
+'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+},
+body: formData
+})
+.then(response => response.json())
+.then(data => {
+Swal.close();
+if (data.success) {
+Swal.fire({
+icon: 'success',
+title: 'Succès',
+html: `
+<div class="text-center">
+<i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
+<h5 class="mt-3">Service créé !</h5>
+<p class="mb-0">${data.message}</p>
+</div>
+`,
+confirmButtonText: 'OK',
+showCancelButton: false,
+confirmButtonColor: '#2196f3'
+}).then(() => {
+createServiceForm.reset();
+tableServices.ajax.reload();
+});
+} else {
+Swal.fire({
+icon: 'error',
+title: 'Erreur',
+text: data.message || 'Erreur lors de la création'
+});
+}
+})
+.catch(() => {
+Swal.close();
+Swal.fire('Erreur', 'Erreur réseau', 'error');
+});
+});
+}
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Initialisation DataTable des abonnements utilisateur-service
-                const tableEl = document.getElementById('tableUserServices');
-                if (tableEl) {
-                    $('#tableUserServices').DataTable({
-                        ajax: {
-                            url: '/admin/services/users-subscriptions',
-                            type: 'GET'
-                        },
-                        columns: [
-                            { data: 'id' },
-                            { data: 'utilisateur' },
-                            { data: 'email' },
-                            { data: 'service' },
-                            { data: 'statut' },
-                            { data: 'description' },
-                            { data: 'date_debut' },
-                            { data: 'date_fin_prevue' }
-                        ]
-                    });
+// Gestion des clics sur les boutons d'action des services
+document.querySelector('#tableServices').addEventListener('click', function(e) {
+// Bouton Modifier
+if (e.target.closest('.btn-edit-service')) {
+e.preventDefault();
+const id = e.target.closest('.btn-edit-service').dataset.id;
+openEditServiceModal(id);
+}
 
-                    // Ouvrir la modale via un déclencheur si besoin
-                    document.querySelectorAll('[data-bs-target="#liste_user_services"]').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            $('#tableUserServices').DataTable().ajax.reload();
-                        });
-                    });
-                }
-            });
-        </script>
+// Bouton Supprimer
+if (e.target.closest('.btn-delete-service')) {
+e.preventDefault();
+const id = e.target.closest('.btn-delete-service').dataset.id;
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+Swal.fire({
+title: 'Supprimer ce service ?',
+text: 'Cette action est irréversible !',
+icon: 'warning',
+showCancelButton: true,
+confirmButtonText: 'Oui, supprimer',
+cancelButtonText: 'Annuler'
+}).then((result) => {
+if (result.isConfirmed) {
+fetch(`/admin/services/${id}`, {
+method: 'DELETE',
+headers: {
+'X-CSRF-TOKEN': document.querySelector(
+'meta[name="csrf-token"]').getAttribute(
+'content')
+}
+})
+.then(res => res.json())
+.then(data => {
+if (data.success) {
+Swal.fire('Supprimé !', data.message, 'success');
+tableServices.ajax.reload();
+} else {
+Swal.fire('Erreur', data.message ||
+'Erreur lors de la suppression', 'error');
+}
+})
+.catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+}
+});
+}
+});
 
-        
+// Fonction pour ouvrir la modale d'édition des services
+// Fonction pour ouvrir la modale d'édition
+window.openEditServiceModal = function(id) {
+fetch(`/admin/services/${id}`)
+.then(res => res.json())
+.then(service => {
+Swal.fire({
+html: `
+<div class="swal-custom-modal">
+<!-- Onglets -->
+<div class="d-flex justify-content-around mb-4">
+<h3> <i class="bi bi-pencil-square"></i> Modifier le service</h3>
+
+</div>
+
+<!-- Form -->
+<form id="editServiceForm" class="text-start">
+<div class="mb-3">
+<label class="form-label fw-semibold"><i class="bi bi-cube"></i> Nom du service <span class="text-danger">*</span></label>
+<input id="swal-nom" type="text" class="form-control" value="${escapeHtml(service.nom)}" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label fw-semibold"><i class="bi bi-text-left"></i> Description</label>
+<textarea id="swal-description" class="form-control" rows="2">${escapeHtml(service.description || '')}</textarea>
+</div>
+
+<div class="mb-3">
+<label class="form-label fw-semibold"><i class="bi bi-link"></i> Slug <span class="text-danger">*</span></label>
+<input id="swal-slug" type="text" class="form-control" value="${escapeHtml(service.slug)}" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label fw-semibold"><i class="bi bi-collection"></i> Catégorie <span class="text-danger">*</span></label>
+<select id="swal-categorie" class="form-select" required>
+<option value="">Sélectionnez une catégorie</option>
+</select>
+</div>
+</form>
+</div>
+`,
+showCancelButton: true,
+confirmButtonText: '<i class="bi bi-check2"></i> Modifier',
+cancelButtonText: '<i class="bi bi-x"></i> Annuler',
+confirmButtonColor: '#4e73df',
+cancelButtonColor: '#6c757d',
+width: '500px',
+focusConfirm: false,
+preConfirm: () => {
+return {
+nom: document.getElementById('swal-nom').value,
+description: document.getElementById('swal-description')
+.value,
+slug: document.getElementById('swal-slug').value,
+categorie_id: document.getElementById('swal-categorie')
+.value
+};
+}
+}).then((result) => {
+if (result.isConfirmed) {
+updateService(id, result.value);
+}
+});
+
+// Charger dynamiquement les catégories
+fetch('/admin/categories/list')
+.then(res => res.json())
+.then(categories => {
+const select = document.getElementById('swal-categorie');
+categories.forEach(cat => {
+const opt = document.createElement('option');
+opt.value = cat.id;
+opt.textContent = cat.nom;
+if (cat.id == service.categorie_id) opt.selected = true;
+select.appendChild(opt);
+});
+});
+});
+};
+
+
+
+// Fonction pour mettre à jour un service
+function updateService(id, data) {
+fetch(`/admin/services/${id}`, {
+method: 'PUT',
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+'Accept': 'application/json',
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(data)
+})
+.then(res => res.json())
+.then(data => {
+if (data.success) {
+Swal.fire({
+icon: 'success',
+title: 'Succès !',
+text: data.message
+});
+tableServices.ajax.reload();
+} else {
+Swal.fire({
+icon: 'error',
+title: 'Erreur !',
+text: data.message
+});
+}
+});
+}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Initialisation DataTable des abonnements utilisateur-service
+const tableEl = document.getElementById('tableUserServices');
+if (tableEl) {
+$('#tableUserServices').DataTable({
+ajax: {
+url: '/admin/services/users-subscriptions',
+type: 'GET'
+},
+columns: [{
+data: 'id'
+},
+{
+data: 'utilisateur'
+},
+{
+data: 'email'
+},
+{
+data: 'service'
+},
+{
+data: 'statut'
+},
+{
+data: 'description'
+},
+{
+data: 'date_debut'
+},
+{
+data: 'date_fin_prevue'
+}
+]
+});
+
+// Ouvrir la modale via un déclencheur si besoin
+document.querySelectorAll('[data-bs-target="#liste_user_services"]').forEach(btn => {
+btn.addEventListener('click', () => {
+$('#tableUserServices').DataTable().ajax.reload();
+});
+});
+}
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+if (session('success'))
+Swal.fire({
+icon: 'success',
+title: 'Succès',
+text: "{{ session('success') }}",
+confirmButtonColor: '#198754',
+timer: 2500,
+timerProgressBar: true
+});
+endif
+
+if (session('error'))
+Swal.fire({
+icon: 'error',
+title: 'Erreur',
+text: "{{ session('error') }}",
+confirmButtonColor: '#dc3545',
+});
+endif
+
+if ($errors - > any())
+Swal.fire({
+icon: 'error',
+title: 'Erreurs de validation',
+html: `{!! implode('<br>', $errors->all()) !!}`,
+confirmButtonColor: '#dc3545',
+});
+endif
+});
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 </body>
 
 </html>

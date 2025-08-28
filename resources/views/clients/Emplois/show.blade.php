@@ -31,8 +31,8 @@
                         <div class="product-gallery-area mb-50 wow fadeInLeft">
                             <div class="product-big mb-30">
                                 <div class="product-img">
-                                    <a href="{{ asset('assets/images/products/product-big-1.jpg') }}" class="img-popup">
-                                        <img src="{{ asset('assets/images/products/product-big-1.jpg') }}" alt="Product1">
+                                    <a href="#" class="img-popup">
+                                        <img src="{{ asset('assets/images/emploi.jpeg') }}" alt="Product1">
                                     </a>
                                 </div>
                             </div>
@@ -40,10 +40,7 @@
 
                             @php
                                 // Offres similaires par type de contrat, hors offre courante
-                                $memeEmplois = \App\Models\Emploi::where(
-                                    'type_contrat',
-                                    $emploi->type_contrat,
-                                )
+                                $memeEmplois = \App\Models\Emploi::where('type_contrat', $emploi->type_contrat)
                                     ->where('id', '!=', $emploi->id)
                                     ->latest()
                                     ->limit(3)
@@ -104,12 +101,19 @@
                                         <li><i class="far fa-check"></i>Type de Contrat :
                                             {{ $emploi->type_contrat }}
                                         </li>
-                                        <li><i class="far fa-check"></i>Experience :
+                                       
+                                        <li><i class="far fa-check"></i>Salaire :
+                                            <span
+                                                class="text-white fw-bold">{{ number_format($emploi->salaire_min, 0, ',', ' ') }}
+                                                FCFA</span> -
+                                            <span
+                                                class="text-wite fw-bold">{{ number_format($emploi->salaire_max, 0, ',', ' ') }}
+                                                FCFA</span>
+                                            </p>
+                                        </li>
+                                         <li><i class="far fa-check"></i>Experience :
                                             {{ $emploi->experience_requise }}
                                         </li>
-                                        <li><i class="far fa-check"></i>Salaire :
-                                            {{ $emploi->salaire_min }} FCFA <=>
-                                                {{ $emploi->salaire_max }} FCFA</li>
                                         <li><i class="far fa-check"></i>Niveau :
                                             {{ $emploi->niveau_etude }} </li>
                                         <li><i class="far fa-check"></i>Poste Disponible :
@@ -148,7 +152,7 @@
 
                                 </ul>
                             </div><br>
-                          
+
                         </div>
                     </div>
                 </div>
@@ -407,7 +411,8 @@
                 <div class="modal-body">
                     <h5 style="color: black">@lang('extracted.votre_candidature_a_bien_ete_envoyee')</h5>
                     <p>@lang('extracted.un_email_de_confirmation_vous_a_ete_envoye')</p>
-                    <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
+                    <button type="button" class="btn btn-success mt-3"
+                        data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>
@@ -421,7 +426,8 @@
                     <h5 style="color: red" id="errorMsg">
                         Cette adresse email a déjà été utilisée pour postuler à cette offre. Veuillez en saisir une autre.
                     </h5>
-                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
+                    <button type="button" class="btn btn-warning mt-3"
+                        data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>

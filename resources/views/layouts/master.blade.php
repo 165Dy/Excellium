@@ -91,28 +91,14 @@
                                             <i>@lang('extracted.flash_info')</i>
                                         </div>
 
-                                        <div class="blocbourse2 Container80 TexAlCenter"
-                                            style="height:30px;width:63%;border-bottom: 0.2px solid #918e8e;background-color: #FFAC1E;">
-                                            <div class="White Container50 TexAlLeft">
-                                                <div class="Container100">
-                                                    <div class="EmptyBox10"></div>
-                                                    <marquee scrolldelay="130" truespeed="true"
-                                                        style="border-right: 3px solid #f0eded;border-left: 3px solid #f0eded; padding-right: 10px;">
-                                                        <span
-                                                            style="font-size: 12px; font-weight: normal; color: #f0eded;">
-                                                            FTSC 17000 FCFA 4,14% - SVOC 4000 FCFA 0% - NEIC 1200 FCFA
-                                                            0% - NTLC 49500 FCFA 0,01% -
-                                                            ONTBF 8200 FCFA 12,72% - PALC 11000 FCFA 0% - SAFC 17500
-                                                            FCFA 0%
-                                                        </span>
-                                                    </marquee>
-                                                </div>
-                                            </div>
-                                        </div>
+                                      
+
 
                                     </div>
                                 </div>
                             </div>
+                             {{-- <x-news-ticker/> --}}
+
                             <!--=== Main Menu ===-->
                             <nav class="main-menu">
                                 <ul>
@@ -140,28 +126,30 @@
                                                 <li><a href="{{ route('Compta_Fiscale') }}">@lang('extracted.comptable_fiscale')</a></li>
                                                 <li><a href="{{ route('Financement') }}">@lang('extracted.financement')</a></li>
                                                 <li><a href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a></li>
-                                                <li><a href="{{ route('Ressources_humaines') }}">@lang('extracted.r_humaines')</a>
+                                                <li><a
+                                                        href="{{ route('Opportunites_humaines') }}">@lang('extracted.r_humaines')</a>
                                                 </li>
                                             @endif
                                         </ul>
                                     </li>
-                                    <li class="menu-item has-children"><a href="#">@lang('extracted.ressources')</a>
+                                    <li class="menu-item has-children"><a href="#">@lang('Opportunites')</a>
                                         <ul class="sub-menu">
                                             <li><a
-                                                    href="{{ route('Ressources.achat_location') }}">@lang('extracted.achats_location')</a>
+                                                    href="{{ route('Opportunites.achat_location') }}">@lang('extracted.achats_location')</a>
                                             </li>
-                                            <li><a href="{{ route('Ressources.Articles') }}">@lang('extracted.articles')</a>
-                                            </li>
-                                            <li><a
-                                                    href="{{ route('Ressources.conseils_actualites') }}">@lang('extracted.conseils_actualites')</a>
-                                            </li>
-                                            <li><a href="{{ route('Ressources.commerce') }}">@lang('extracted.commerce_generale')</a>
+                                            <li><a href="{{ route('Opportunites.Articles') }}">@lang('extracted.articles')</a>
                                             </li>
                                             <li><a
-                                                    href="{{ route('Ressources.service_divers') }}">@lang('extracted.service_divers')</a>
+                                                    href="{{ route('Opportunites.conseils_actualites') }}">@lang('extracted.conseils_actualites')</a>
+                                            </li>
+                                            <li><a href="{{ route('Opportunites.commerce') }}">@lang('extracted.commerce_generale')</a>
+                                            </li>
+                                            <li><a
+                                                    href="{{ route('Opportunites.service_divers') }}">@lang('extracted.service_divers')</a>
                                             </li>
                                         </ul>
                                     </li>
+
                                     <li class="menu-item has-children">
                                         <a href="{{ route('Partenaires.Collaborateurs') }}">@lang('extracted.partenaires')</a>
                                     </li>
@@ -255,7 +243,7 @@
     @yield('welcome')
     {{-- // --}}
 
-    {{-- /RESSOURCES/ --}}
+    {{-- /Opportunites/ --}}
     @yield('Achats')
     @yield('Articles')
     @yield('Commerce')
@@ -272,7 +260,7 @@
     {{-- /////////// --}}
     @yield('Services')
 
-    {{-- /RESSOURCES HUMAINES/ --}}
+    {{-- /Opportunites HUMAINES/ --}}
 
     {{-- /FORMATIONS/ --}}
 

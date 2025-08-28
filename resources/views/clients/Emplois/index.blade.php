@@ -14,7 +14,11 @@
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
                             <h1 class="page-title">@lang('extracted.emplois')</h1>
-                            <p>Lorem voluptatem accusantium dolorem quis its tium totamrem aperiam eaque ipsaquae inventore
+                            <p>
+                                Découvrez les meilleures opportunités professionnelles adaptées à votre profil.
+                                Que vous soyez débutant ou expérimenté, trouvez un emploi qui correspond à vos compétences
+                                et à vos ambitions. Rejoignez dès aujourd’hui un réseau dynamique et donnez un nouvel élan à
+                                votre carrière.
                             </p>
 
                         </div>
@@ -37,10 +41,12 @@
                             <div class="col-md-5">
                                 <div class="filter-dropdown float-md-end wow fadeInRight">
                                     <select class="wide" id="typeContratSelect">
-                                        <option value="TOUT">@lang('extracted.tout')</option>
-                                        <option value="STAGE">@lang('extracted.stage')</option>
-                                        <option value="CDI">@lang('extracted.cdi')</option>
-                                        <option value="CDD">@lang('extracted.cdd')</option>
+                                        <option value="TOUT">Tout</option>
+                                        <option value="STAGE">Stage</option>
+                                        <option value="CDI">CDI</option>
+                                        <option value="CDD">CDD</option>
+                                        <option value="FREELANCE">Freelance</option>
+                                        <option value="ALTERNANCE">Alternance</option>
                                     </select>
                                 </div>
                             </div>
@@ -62,10 +68,9 @@
                             data-type-contrat="{{ strtoupper($emploi->type_contrat) }}">
                             <div class="product-item mb-45 wow fadeInDown">
                                 <div class="product-image">
-                                    <img src="{{ asset('assets/images/products/product-1.jpg') }}" alt="Product image">
+                                    <img src="{{ asset('assets/images/emploi.jpeg') }}" alt="Product image">
                                     <div class="hover-content">
-                                        <a href="{{ route('emplois.clients.show', $emploi->id) }}"
-                                            class="icon-btn">
+                                        <a href="{{ route('emplois.clients.show', $emploi->id) }}" class="icon-btn">
                                             <i class="icon-briefcase"></i>
                                         </a>
                                     </div>
@@ -102,10 +107,13 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const select = document.getElementById('typeContratSelect');
+
                 select.addEventListener('change', function() {
-                    const selected = this.value.toUpperCase();
+                    const selected = this.value.toUpperCase().trim();
+
                     document.querySelectorAll('.emploi-item').forEach(function(item) {
-                        const type = item.dataset.typeContrat.toUpperCase();
+                        const type = item.getAttribute('data-type-contrat').toUpperCase().trim();
+
                         if (selected === "TOUT" || selected === type) {
                             item.style.display = "";
                         } else {
@@ -115,6 +123,9 @@
                 });
             });
         </script>
+
+
+
 
     </section>
 

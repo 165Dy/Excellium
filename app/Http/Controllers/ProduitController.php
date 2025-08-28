@@ -15,25 +15,25 @@ class ProduitController extends Controller
         try {
             $validated = $request->validate([
                 'nom' => 'required|string|max:255',
-                'slug' => 'required|string|max:255|unique:produits',
+                'slug' => 'required|string|max:255|unique:produits,slug',
                 'categorie_id' => 'required|exists:categories,id',
-                'statut' => 'required|in:actif,inactif'
+                'statut' => 'required|in:actif,inactif',
             ]);
 
-            $produit = Produit::create($validated);
+            Produit::create($validated);
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Produit créé avec succès !',
-                'produit' => $produit
-            ]);
-        } catch (Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 500);
+            return redirect()->back()->with('success', 'Produit créé avec succès !');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()
+                ->withErrors($e->errors())
+                ->withInput();
+
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur est survenue : '.$e->getMessage());
         }
     }
+
 
     // Liste AJAX des produits au niveau admin
     public function list()
