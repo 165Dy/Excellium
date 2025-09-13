@@ -19,11 +19,11 @@ class ServiceSeeder extends Seeder
         if ($categories->isEmpty()) {
             // Créer quelques catégories de base si aucune n'existe
             $categorieConseil = Categorie::create([
-                'nom' => 'Conseil & Audit'
+                'nom' => 'Audit & Conseil'
             ]);
             
             $categorieCompta = Categorie::create([
-                'nom' => 'Comptabilité'
+                'nom' => 'Comptabilité & Fiscalité'
             ]);
             
             $categorieRH = Categorie::create([
@@ -33,12 +33,17 @@ class ServiceSeeder extends Seeder
             $categorieFinancement = Categorie::create([
                 'nom' => 'Financement'
             ]);
+
+            $categorieGestionDeLaPaie = Categorie::create([
+                'nom' => 'Gestion de la Paie'
+            ]);
         } else {
             // Utiliser les catégories existantes
             $categorieConseil = $categories->first();
             $categorieCompta = $categories->skip(1)->first() ?? $categorieConseil;
             $categorieRH = $categories->skip(2)->first() ?? $categorieConseil;
             $categorieFinancement = $categories->skip(3)->first() ?? $categorieConseil;
+            $categorieGestionDeLaPaie = $categories->skip(4)->first() ?? $categorieConseil;
         }
 
         // Créer les services
@@ -67,7 +72,7 @@ class ServiceSeeder extends Seeder
             [
                 'nom' => 'Gestion de la Paie',
                 'slug' => 'service_4',
-                'categorie_id' => $categorieRH->id,
+                'categorie_id' => $categorieGestionDeLaPaie->id,
                 'description' => 'Simplifiez la gestion de vos salaires grâce à notre service professionnel et sécurisé. Confiez-nous la gestion de la paie de votre entreprise.',
                 'is_active' => true,
             ],

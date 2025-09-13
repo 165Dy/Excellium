@@ -216,15 +216,13 @@
                                             d="M7.82901 2.22569C8.87231 0.444187 11.1726 -0.172113 12.9668 0.849138C14.7611 1.87039 15.3698 4.14247 14.3265 5.92397L7.38656 17.7743C6.34325 19.5558 4.04298 20.1721 2.24875 19.1509C0.454514 18.1296 -0.154233 15.8575 0.88907 14.076L7.82901 2.22569Z"
                                             fill="currentColor" />
                                         <defs>
-                                            <linearGradient id="paint0_linear_2989_100980" x1="5.36642"
-                                                y1="0.849138" x2="10.532" y2="24.104"
-                                                gradientUnits="userSpaceOnUse">
+                                            <linearGradient id="paint0_linear_2989_100980" x1="5.36642" y1="0.849138"
+                                                x2="10.532" y2="24.104" gradientUnits="userSpaceOnUse">
                                                 <stop offset="0" stop-opacity="1" />
                                                 <stop offset="1" stop-opacity="0" />
                                             </linearGradient>
-                                            <linearGradient id="paint1_linear_2989_100980" x1="5.19475"
-                                                y1="0.849139" x2="10.3357" y2="24.1155"
-                                                gradientUnits="userSpaceOnUse">
+                                            <linearGradient id="paint1_linear_2989_100980" x1="5.19475" y1="0.849139"
+                                                x2="10.3357" y2="24.1155" gradientUnits="userSpaceOnUse">
                                                 <stop offset="0" stop-opacity="1" />
                                                 <stop offset="1" stop-opacity="0" />
                                             </linearGradient>
@@ -232,11 +230,11 @@
                                     </svg>
                                 </span>
                             </span>
-                            <span class="app-brand-text demo menu-text fw-semibold ms-1">@lang('extracted.materialize')</span>
+                            <span
+                                class="app-brand-text demo menu-text fw-semibold ms-1">@lang('extracted.materialize')</span>
                         </a>
 
-                        <a href="javascript:void(0);"
-                            class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
+                        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
                             <i class="icon-base ri ri-close-line icon-sm"></i>
                         </a>
                     </div>
@@ -252,8 +250,7 @@
                             <!-- Search -->
                             <li class="nav-item navbar-search-wrapper me-sm-2 me-xl-0">
                                 <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
-                                    <span class="d-inline-block text-body-secondary fw-normal"
-                                        id="autocomplete"></span>
+                                    <span class="d-inline-block text-body-secondary fw-normal" id="autocomplete"></span>
                                 </a>
                             </li>
                             <!-- /Search -->
@@ -305,8 +302,7 @@
                                             <h6 class="mb-0 me-auto">@lang('extracted.shortcuts')</h6>
                                             <a href="javascript:void(0)"
                                                 class="btn btn-text-secondary rounded-pill btn-icon dropdown-shortcuts-add text-heading"
-                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                title="Add shortcuts">
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts">
                                                 <i class="icon-base ri ri-add-line text-heading"></i>
                                             </a>
                                         </div>
@@ -315,8 +311,7 @@
                                         <div class="row row-bordered overflow-visible g-0">
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                    <i
-                                                        class="icon-base ri ri-calendar-line icon-26px text-heading"></i>
+                                                    <i class="icon-base ri ri-calendar-line icon-26px text-heading"></i>
                                                 </span>
                                                 <a href="app-calendar.html"
                                                     class="stretched-link">@lang('extracted.calendar')</a>
@@ -343,8 +338,7 @@
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                    <i
-                                                        class="icon-base ri ri-computer-line icon-26px text-heading"></i>
+                                                    <i class="icon-base ri ri-computer-line icon-26px text-heading"></i>
                                                 </span>
                                                 <a href="app-access-roles.html"
                                                     class="stretched-link">@lang('extracted.role_management')</a>
@@ -373,10 +367,10 @@
                                         <div class="row row-bordered overflow-visible g-0">
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                    <i
-                                                        class="icon-base ri ri-question-line icon-26px text-heading"></i>
+                                                    <i class="icon-base ri ri-question-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="pages-faq.html" class="stretched-link">@lang('extracted.faqs')</a>
+                                                <a href="pages-faq.html"
+                                                    class="stretched-link">@lang('extracted.faqs')</a>
                                                 <small>@lang('extracted.faqs_articles')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
@@ -428,10 +422,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">@lang('extracted.congratulation_lettie')</h6>
+                                                        <h6 class="small mb-1">@lang('extracted.congratulation_lettie')
+                                                        </h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.won_the_monthly_best_seller_gold_badge')</small>
-                                                        <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
+                                                        <small
+                                                            class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -456,7 +452,8 @@
                                                         <h6 class="small mb-1">@lang('extracted.charles_franklin')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.accepted_your_connection')</small>
-                                                        <small class="text-body-secondary">@lang('extracted.12hr_ago')</small>
+                                                        <small
+                                                            class="text-body-secondary">@lang('extracted.12hr_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -481,7 +478,8 @@
                                                         <h6 class="small mb-1">@lang('extracted.new_message')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.you_have_new_message_from_natalie')</small>
-                                                        <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
+                                                        <small
+                                                            class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -504,10 +502,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">@lang('extracted.whoo_you_have_new_order')</h6>
+                                                        <h6 class="small mb-1">
+                                                            @lang('extracted.whoo_you_have_new_order')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.acme_inc_made_new_order_1154')</small>
-                                                        <small class="text-body-secondary">@lang('extracted.1_day_ago')</small>
+                                                        <small
+                                                            class="text-body-secondary">@lang('extracted.1_day_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -529,10 +529,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">@lang('extracted.application_has_been_approved')</h6>
+                                                        <h6 class="small mb-1">
+                                                            @lang('extracted.application_has_been_approved')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.your_abc_project_application_has_been_approved')</small>
-                                                        <small class="text-body-secondary">@lang('extracted.2_days_ago')</small>
+                                                        <small
+                                                            class="text-body-secondary">@lang('extracted.2_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -555,10 +557,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">@lang('extracted.monthly_report_is_generated')</h6>
+                                                        <h6 class="small mb-1">
+                                                            @lang('extracted.monthly_report_is_generated')</h6>
                                                         <small class="mb-1 d-block text-body">July monthly financial
                                                             report is generated </small>
-                                                        <small class="text-body-secondary">@lang('extracted.3_days_ago')</small>
+                                                        <small
+                                                            class="text-body-secondary">@lang('extracted.3_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -580,10 +584,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">@lang('extracted.send_connection_request')</h6>
+                                                        <h6 class="small mb-1">
+                                                            @lang('extracted.send_connection_request')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.peter_sent_you_connection_request')</small>
-                                                        <small class="text-body-secondary">@lang('extracted.4_days_ago')</small>
+                                                        <small
+                                                            class="text-body-secondary">@lang('extracted.4_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -605,10 +611,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">@lang('extracted.new_message_from_jane')</h6>
+                                                        <h6 class="small mb-1">@lang('extracted.new_message_from_jane')
+                                                        </h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.your_have_new_message_from_jane')</small>
-                                                        <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
+                                                        <small
+                                                            class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -631,10 +639,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">@lang('extracted.cpu_is_running_high')</h6>
+                                                        <h6 class="small mb-1">@lang('extracted.cpu_is_running_high')
+                                                        </h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.cpu_utilization_percent_is_currently_at_8863')</small>
-                                                        <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
+                                                        <small
+                                                            class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -651,7 +661,8 @@
                                     <li class="border-top">
                                         <div class="d-grid p-4">
                                             <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
-                                                <small class="align-middle">@lang('extracted.view_all_notifications')</small>
+                                                <small
+                                                    class="align-middle">@lang('extracted.view_all_notifications')</small>
                                             </a>
                                         </div>
                                     </li>
@@ -674,8 +685,8 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0 me-2">
                                                     <div class="avatar avatar-online">
-                                                        <img src="{{ asset('assets_2/img/avatars/1.png') }}"
-                                                            alt="alt" class="w-px-40 h-auto rounded-circle" />
+                                                        <img src="{{ asset('assets_2/img/avatars/1.png') }}" alt="alt"
+                                                            class="w-px-40 h-auto rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -705,7 +716,8 @@
                                             <span class="d-flex align-items-center align-middle">
                                                 <i
                                                     class="flex-shrink-0 icon-base ri ri-file-text-line icon-22px me-3"></i>
-                                                <span class="flex-grow-1 align-middle">@lang('extracted.billing_plan')</span>
+                                                <span
+                                                    class="flex-grow-1 align-middle">@lang('extracted.billing_plan')</span>
                                                 <span
                                                     class="flex-shrink-0 badge badge-center rounded-pill bg-danger">4</span>
                                             </span>
@@ -716,8 +728,7 @@
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="pages-pricing.html">
-                                            <i
-                                                class="icon-base ri ri-money-dollar-circle-line icon-22px me-3"></i><span
+                                            <i class="icon-base ri ri-money-dollar-circle-line icon-22px me-3"></i><span
                                                 class="align-middle">@lang('extracted.pricing')</span>
                                         </a>
                                     </li>
@@ -799,8 +810,8 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link"
-                                                data-bs-target="#create_formations" data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_formations"
+                                                data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>@lang('extracted.creer_une_formation')</div>
@@ -815,31 +826,32 @@
                                         </li>
                                     </ul>
                                 </li>
-                                {{-- Opportunités --}}
-                                <li
-                                    class="menu-item {{ request()->routeIs('admin.emplois.*') ? 'active open' : '' }}">
+
+                                <!-- Emplois -->
+                                <li class="menu-item {{ request()->routeIs('admin.emplois.*') ? 'active open' : '' }}">
                                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-computer-line"></i>
-                                        <div data-i18n="Opportunités">@lang('extracted.emplois')</div>
+                                        <div data-i18n="Offres d'emploi">@lang('extracted.emplois')</div>
                                         <div class="badge badge-center rounded-pill bg-primary ms-auto"
                                             style="width:10px, height:10px">
-                                            {{-- Count active opportunities --}}
+                                            <!-- Count active emplois -->
                                             {{ App\Models\Emploi::where('statut', 'active')->count() }}
                                         </div>
                                     </a>
                                     <ul class="menu-sub">
-                                        <li
-                                            class="menu-item {{ request()->routeIs('emplois.index') ? 'active' : '' }}">
+                                        <li class="menu-item {{ request()->routeIs('emplois.index') ? 'active' : '' }}">
                                             <a href="{{ route('emplois.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-list"></i>
-                                                <div data-i18n="Liste des opportunités">@lang('extracted.liste_des_emplois')</div>
+                                                <div data-i18n="Liste des emplois">@lang('extracted.liste_des_emplois')
+                                                </div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
                                                 data-bs-target="#create_emplois">
                                                 <i class="menu-icon tf-icons fas fa-plus-circle"></i>
-                                                <div data-i18n="Nouvelle opportunité">@lang('extracted.nouvelle_emploi')</div>
+                                                <div data-i18n="Nouvelle emploi">@lang('extracted.nouvelle_emploi')
+                                                </div>
                                             </a>
                                         </li>
                                         <li
@@ -854,6 +866,47 @@
                                         </li>
                                     </ul>
                                 </li>
+
+                                <!-- Opportunités d'affaire -->
+                                <li
+                                    class="menu-item {{ request()->routeIs('admin.opportunites.*') ? 'active open' : '' }}">
+                                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-handshake-line"></i>
+                                        <div data-i18n="Opportunités d'affaire">Opportunités d'affaire</div>
+                                        <div class="badge badge-center rounded-pill bg-primary ms-auto"
+                                            style="width:10px, height:10px">
+                                            <!-- Count active opportunities -->
+                                            {{ App\Models\Opportunite::where('statut', 'en_ligne')->count() }}
+                                        </div>
+                                    </a>
+                                    <ul class="menu-sub">
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
+                                                data-bs-target="#create_opportunite">
+                                                <i class="menu-icon tf-icons fas fa-plus-circle"></i>
+                                                <div data-i18n="Nouvelle opportunité">Nouvelle opportunité</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
+                                                data-bs-target="#liste_opportunites">
+                                                <i class="menu-icon tf-icons fas fa-list"></i>
+                                                <div data-i18n="Liste des opportunités">Liste des opportunités</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
+                                                data-bs-target="#candidats_opportunites">
+                                                <i class="menu-icon tf-icons fas fa-users"></i>
+                                                <div data-i18n="Candidats intéressés">Candidats intéressés</div>
+                                                <div class="badge badge-center rounded-pill bg-warning ms-auto">
+                                                    {{ App\Models\Postulation::where('statut', 'en_attente')->count() }}
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
                                 <!-- Divers -->
                                 <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
@@ -864,8 +917,7 @@
 
                                         <li class="menu-item">
                                             <a href="{{ route('partenaires.index') }}" class="menu-link">
-                                                <i
-                                                    class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
+                                                <i class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
                                                 <div>@lang('extracted.partenaires')</div>
                                             </a>
                                         </li>
@@ -883,6 +935,7 @@
                                         </li>
                                     </ul>
                                 </li>
+
                                 <!-- Categories -->
                                 <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
@@ -892,15 +945,15 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link"
-                                                data-bs-target="#create_categories" data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_categories"
+                                                data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>AJOUTER </div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="#" class="menu-link"data-bs-target="#liste_categories"
+                                            <a href="#" class="menu-link" data-bs-target="#liste_categories"
                                                 data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
                                                 <div>@lang('extracted.voir_la_liste')</div>
@@ -918,8 +971,8 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link"
-                                                data-bs-target="#create_produits" data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_produits"
+                                                data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>AJOUTER </div>
@@ -944,8 +997,8 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link"
-                                                data-bs-target="#create_services" data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_services"
+                                                data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>AJOUTER </div>
@@ -968,11 +1021,11 @@
                                     </ul>
                                 </li>
 
-
-
                             </ul>
                         </div>
                     </aside>
+
+
                     <!-- / Menu -->
 
                     <!-- Content -->
@@ -1011,8 +1064,8 @@
                                         @csrf
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="titre" name="titre"
-                                                    class="form-control" placeholder="Titre" required>
+                                                <input type="text" id="titre" name="titre" class="form-control"
+                                                    placeholder="Titre" required>
                                                 <label for="titre">@lang('extracted.titre')</label>
                                             </div>
                                         </div>
@@ -1024,10 +1077,12 @@
                                                     @if (isset($categories) && $categories->count() > 0)
                                                         @foreach ($categories as $categorie)
                                                             <option value="{{ $categorie->id }}">
-                                                                {{ $categorie->nom }}</option>
+                                                                {{ $categorie->nom }}
+                                                            </option>
                                                         @endforeach
                                                     @else
-                                                        <option value="">@lang('extracted.aucune_categorie_disponible')</option>
+                                                        <option value="">@lang('extracted.aucune_categorie_disponible')
+                                                        </option>
                                                     @endif
                                                 </select>
                                                 <label for="categorie_id">@lang('extracted.categorie')</label>
@@ -1036,7 +1091,8 @@
 
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>
+                                                <textarea name="programme" id="programme" class="form-control"
+                                                    placeholder="Programme" style="height: 100px"></textarea>
                                                 <label for="programme">@lang('extracted.programme')</label>
                                             </div>
                                         </div>
@@ -1049,8 +1105,8 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="lieu" name="lieu"
-                                                    class="form-control" placeholder="Lieu">
+                                                <input type="text" id="lieu" name="lieu" class="form-control"
+                                                    placeholder="Lieu">
                                                 <label for="lieu">@lang('extracted.lieu')</label>
                                             </div>
                                         </div>
@@ -1063,29 +1119,31 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="date" id="date_fin" name="date_fin"
-                                                    class="form-control" placeholder="Date de fin">
+                                                <input type="date" id="date_fin" name="date_fin" class="form-control"
+                                                    placeholder="Date de fin">
                                                 <label for="date_fin">@lang('extracted.date_de_fin')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea name="prerequis" id="prerequis" class="form-control" placeholder="Prérequis" style="height: 80px"></textarea>
+                                                <textarea name="prerequis" id="prerequis" class="form-control"
+                                                    placeholder="Prérequis" style="height: 80px"></textarea>
                                                 <label for="prerequis">@lang('extracted.prerequis')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea name="bonus" id="bonus" class="form-control" placeholder="Bonus" style="height: 80px"></textarea>
+                                                <textarea name="bonus" id="bonus" class="form-control"
+                                                    placeholder="Bonus" style="height: 80px"></textarea>
                                                 <label for="bonus">@lang('extracted.bonus')</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="file" id="file" name="file"
-                                                    class="form-control" accept="image/*,video/*"
-                                                    onchange="previewFile(this)">
-                                                <label for="file">@lang('extracted.fichier_image_ou_video_max_150_mb')</label>
+                                                <input type="file" id="file" name="file" class="form-control"
+                                                    accept="image/*,video/*" onchange="previewFile(this)">
+                                                <label
+                                                    for="file">@lang('extracted.fichier_image_ou_video_max_150_mb')</label>
                                             </div>
                                             <div id="file-error" class="mt-2" style="display: none;">
                                                 <div class="alert alert-danger d-flex align-items-center">
@@ -1143,7 +1201,8 @@
                                             <i class="ri-graduation-cap-line me-2"></i>
                                             LISTE DES FORMATIONS
                                         </h4>
-                                        <p class="text-muted">@lang('extracted.gerez_toutes_vos_formations_disponibles')</p>
+                                        <p class="text-muted">@lang('extracted.gerez_toutes_vos_formations_disponibles')
+                                        </p>
                                     </div>
 
                                     <div class="card-datatable px-4 pb-4">
@@ -1206,23 +1265,19 @@
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <div class="d-flex justify-content-center gap-2">
-                                                                        <button
-                                                                            class="btn btn-sm btn-icon btn-outline-primary"
-                                                                            title="Voir les détails"
-                                                                            data-bs-toggle="tooltip"
+                                                                        <button class="btn btn-sm btn-icon btn-outline-primary"
+                                                                            title="Voir les détails" data-bs-toggle="tooltip"
                                                                             data-formation-id="{{ $formation->id }}"
                                                                             onclick="voirDetailsFormation({{ $formation->id }})">
                                                                             <i class="ri ri-eye-line"></i>
                                                                         </button>
-                                                                        <button
-                                                                            class="btn btn-sm btn-icon btn-outline-warning"
+                                                                        <button class="btn btn-sm btn-icon btn-outline-warning"
                                                                             title="Modifier" data-bs-toggle="tooltip"
                                                                             data-formation-id="{{ $formation->id }}"
                                                                             onclick="editFormation({{ $formation->id }})">
                                                                             <i class="ri ri-edit-line"></i>
                                                                         </button>
-                                                                        <button
-                                                                            class="btn btn-sm btn-icon btn-outline-danger"
+                                                                        <button class="btn btn-sm btn-icon btn-outline-danger"
                                                                             title="Supprimer" data-bs-toggle="tooltip"
                                                                             data-formation-id="{{ $formation->id }}"
                                                                             data-formation-title="{{ $formation->titre }}"
@@ -1252,9 +1307,8 @@
                                                         disponible(s)</small>
                                                 </div>
                                                 <div>
-                                                    <button class="btn btn-primary"
-                                                        data-bs-target="#create_formations" data-bs-toggle="modal"
-                                                        data-bs-dismiss="modal">
+                                                    <button class="btn btn-primary" data-bs-target="#create_formations"
+                                                        data-bs-toggle="modal" data-bs-dismiss="modal">
                                                         <i class="ri-add-line me-1"></i>
                                                         Nouvelle formation
                                                     </button>
@@ -1286,7 +1340,8 @@
                                             </div>
                                         </div>
                                         <h4 class="mb-2 text-primary fw-bold">@lang('extracted.ajouter_une_emploi')</h4>
-                                        <p class="text-muted">@lang('extracted.creez_une_nouvelle_offre_demploi_attractive')</p>
+                                        <p class="text-muted">
+                                            @lang('extracted.creez_une_nouvelle_offre_demploi_attractive')</p>
                                     </div>
 
                                     <form id="createEmploiForm" action="{{ route('admin.emplois.store') }}"
@@ -1296,9 +1351,8 @@
                                         {{-- Titre et Entreprise --}}
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="titre" name="titre"
-                                                    class="form-control" placeholder="Développeur Web Full Stack"
-                                                    required />
+                                                <input type="text" id="titre" name="titre" class="form-control"
+                                                    placeholder="Développeur Web Full Stack" required />
                                                 <label for="titre">
                                                     <i class="fas fa-briefcase me-1"></i>Titre du poste *
                                                 </label>
@@ -1320,8 +1374,10 @@
                                                 <select id="type_contrat" name="type_contrat" class="form-select"
                                                     required>
                                                     <option value="">@lang('extracted.selectionner')</option>
-                                                    <option value="CDI">@lang('extracted.cdi_contrat_a_duree_indeterminee')</option>
-                                                    <option value="CDD">@lang('extracted.cdd_contrat_a_duree_determinee')</option>
+                                                    <option value="CDI">
+                                                        @lang('extracted.cdi_contrat_a_duree_indeterminee')</option>
+                                                    <option value="CDD">
+                                                        @lang('extracted.cdd_contrat_a_duree_determinee')</option>
                                                     <option value="Stage">@lang('extracted.stage')</option>
                                                     <option value="Freelance">@lang('extracted.freelance')</option>
                                                     <option value="Alternance">@lang('extracted.alternance')</option>
@@ -1345,8 +1401,7 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="number" id="salaire_min" name="salaire_min"
-                                                    class="form-control" placeholder="500000" min="0"
-                                                    step="1000" />
+                                                    class="form-control" placeholder="500000" min="0" step="1000" />
                                                 <label for="salaire_min">
                                                     <i class="fas fa-money-bill-wave me-1"></i>Salaire minimum (FCFA)
                                                 </label>
@@ -1355,8 +1410,7 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="number" id="salaire_max" name="salaire_max"
-                                                    class="form-control" placeholder="800000" min="0"
-                                                    step="1000" />
+                                                    class="form-control" placeholder="800000" min="0" step="1000" />
                                                 <label for="salaire_max">
                                                     <i class="fas fa-money-bill-wave me-1"></i>Salaire maximum (FCFA)
                                                 </label>
@@ -1369,9 +1423,12 @@
                                                 <select id="experience_requise" name="experience_requise"
                                                     class="form-select">
                                                     <option value="">@lang('extracted.selectionner')</option>
-                                                    <option value="Débutant">@lang('extracted.debutant_accepte')</option>
-                                                    <option value="1-2 ans">@lang('extracted.1_2_ans_dexperience')</option>
-                                                    <option value="3-5 ans">@lang('extracted.3_5_ans_dexperience')</option>
+                                                    <option value="Débutant">@lang('extracted.debutant_accepte')
+                                                    </option>
+                                                    <option value="1-2 ans">@lang('extracted.1_2_ans_dexperience')
+                                                    </option>
+                                                    <option value="3-5 ans">@lang('extracted.3_5_ans_dexperience')
+                                                    </option>
                                                     <option value="5+ ans">@lang('extracted.5_ans_dexperience')</option>
                                                     <option value="Senior">@lang('extracted.senior_10_ans')</option>
                                                 </select>
@@ -1400,8 +1457,7 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="number" id="nombre_postes" name="nombre_postes"
-                                                    class="form-control" value="1" min="1"
-                                                    max="50" required />
+                                                    class="form-control" value="1" min="1" max="50" required />
                                                 <label for="nombre_postes">
                                                     <i class="fas fa-users me-1"></i>Nombre de postes *
                                                 </label>
@@ -1410,8 +1466,8 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="date" id="date_expiration" name="date_expiration"
-                                                    class="form-control"
-                                                    min="{{ date('Y-m-d', strtotime('+1 day')) }}" required />
+                                                    class="form-control" min="{{ date('Y-m-d', strtotime('+1 day')) }}"
+                                                    required />
                                                 <label for="date_expiration">
                                                     <i class="fas fa-calendar-alt me-1"></i>Date limite candidature *
                                                 </label>
@@ -1441,8 +1497,10 @@
                                         {{-- Description --}}
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="description" name="description" class="form-control" style="height: 120px;"
-                                                    placeholder="Décrivez le poste, les missions, l'environnement de travail..." required></textarea>
+                                                <textarea id="description" name="description" class="form-control"
+                                                    style="height: 120px;"
+                                                    placeholder="Décrivez le poste, les missions, l'environnement de travail..."
+                                                    required></textarea>
                                                 <label for="description">
                                                     <i class="fas fa-file-alt me-1"></i>Description du poste *
                                                 </label>
@@ -1452,7 +1510,8 @@
                                         {{-- Compétences requises --}}
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="competences_requises" name="competences_requises" class="form-control" style="height: 100px;"
+                                                <textarea id="competences_requises" name="competences_requises"
+                                                    class="form-control" style="height: 100px;"
                                                     placeholder="PHP, Laravel, JavaScript, Vue.js, MySQL..."></textarea>
                                                 <label for="competences_requises">
                                                     <i class="fas fa-cogs me-1"></i>Compétences requises
@@ -1463,7 +1522,8 @@
                                         {{-- Avantages --}}
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="avantages" name="avantages" class="form-control" style="height: 80px;"
+                                                <textarea id="avantages" name="avantages" class="form-control"
+                                                    style="height: 80px;"
                                                     placeholder="Télétravail, mutuelle, tickets restaurant, formation..."></textarea>
                                                 <label for="avantages">
                                                     <i class="fas fa-gift me-1"></i>Avantages
@@ -1475,8 +1535,10 @@
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <select id="statut" name="statut" class="form-select">
-                                                    <option value="active" selected>@lang('extracted.active_visible_pour_les_candidats')</option>
-                                                    <option value="fermee">@lang('extracted.fermee_plus_de_candidatures')</option>
+                                                    <option value="active" selected>
+                                                        @lang('extracted.active_visible_pour_les_candidats')</option>
+                                                    <option value="fermee">
+                                                        @lang('extracted.fermee_plus_de_candidatures')</option>
                                                 </select>
                                                 <label for="statut">
                                                     <i class="fas fa-toggle-on me-1"></i>Statut de l'offre
@@ -1486,8 +1548,7 @@
 
                                         {{-- Boutons d'action --}}
                                         <div class="col-12 text-center pt-4">
-                                            <button type="submit"
-                                                class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
+                                            <button type="submit" class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
                                                 <i class="fas fa-paper-plane me-2"></i>Publier l'opportunité
                                             </button>
                                             <button type="button" class="btn btn-outline-secondary btn-lg px-4"
@@ -1516,8 +1577,8 @@
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomCategorie" name="nom"
-                                                    class="form-control" placeholder="comptabilité" required />
+                                                <input type="text" id="nomCategorie" name="nom" class="form-control"
+                                                    placeholder="comptabilité" required />
                                                 <label for="nomCategorie">@lang('extracted.nom_categorie')</label>
                                             </div>
                                         </div>
@@ -1566,10 +1627,11 @@
                                         <center>
                                             <li class="menu-item">
 
-                                                <a href="javascript:;" data-bs-target="#create_categories"
-                                                    class="" data-bs-toggle="modal">
+                                                <a href="javascript:;" data-bs-target="#create_categories" class=""
+                                                    data-bs-toggle="modal">
                                                     <i class="menu-icon tf-icons fas fa-plus-circle"></i>
-                                                    <div class="btn btn-primary me-3">@lang('extracted.ajouter_une_categorie')</div>
+                                                    <div class="btn btn-primary me-3">
+                                                        @lang('extracted.ajouter_une_categorie')</div>
                                                 </a>
                                             </li>
                                         </center>
@@ -1597,25 +1659,25 @@
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomProduit" name="nom"
-                                                    class="form-control" placeholder="Nom du produit" required />
+                                                <input type="text" id="nomProduit" name="nom" class="form-control"
+                                                    placeholder="Nom du produit" required />
                                                 <label for="nomProduit">@lang('extracted.nom_produit')</label>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="slugProduit" name="slug"
-                                                    class="form-control" placeholder="Slug (ex: produit-1)"
-                                                    required />
+                                                <input type="text" id="slugProduit" name="slug" class="form-control"
+                                                    placeholder="Slug (ex: produit-1)" required />
                                                 <label for="slugProduit">@lang('extracted.slug')</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="categorieProduit" name="categorie_id"
-                                                    class="form-control" required>
-                                                    <option value="">@lang('extracted.selectionnez_une_categorie')</option>
+                                                <select id="categorieProduit" name="categorie_id" class="form-control"
+                                                    required>
+                                                    <option value="">@lang('extracted.selectionnez_une_categorie')
+                                                    </option>
                                                     @foreach ($categories as $categorie)
                                                         <option value="{{ $categorie->id }}">{{ $categorie->nom }}
                                                         </option>
@@ -1626,8 +1688,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="statutProduit" name="statut" class="form-control"
-                                                    required>
+                                                <select id="statutProduit" name="statut" class="form-control" required>
                                                     <option value="actif">@lang('extracted.actif')</option>
                                                     <option value="inactif">@lang('extracted.inactif')</option>
                                                 </select>
@@ -1700,30 +1761,30 @@
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomService" name="nom"
-                                                    class="form-control" placeholder="Nom du service" required />
+                                                <input type="text" id="nomService" name="nom" class="form-control"
+                                                    placeholder="Nom du service" required />
                                                 <label for="nomService">Nom Service</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="descriptionService" name="description" class="form-control" placeholder="Description du service"
+                                                <textarea id="descriptionService" name="description"
+                                                    class="form-control" placeholder="Description du service"
                                                     rows="4"></textarea>
                                                 <label for="descriptionService">Description</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="slugService" name="slug"
-                                                    class="form-control" placeholder="Slug (ex: service-1)"
-                                                    required />
+                                                <input type="text" id="slugService" name="slug" class="form-control"
+                                                    placeholder="Slug (ex: service-1)" required />
                                                 <label for="slugService">Slug</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="categorieService" name="categorie_id"
-                                                    class="form-control" required>
+                                                <select id="categorieService" name="categorie_id" class="form-control"
+                                                    required>
                                                     <option value="">Sélectionnez une catégorie</option>
                                                     @foreach ($categories as $categorie)
                                                         <option value="{{ $categorie->id }}">{{ $categorie->nom }}
@@ -1757,8 +1818,7 @@
                                         <h4 class="fw-bold text-primary">📋 LISTE DES SERVICES</h4>
                                     </div>
                                     <div class="is-scrollbar-hidden min-w-full overflow-x-auto p-3">
-                                        <table id="tableServices"
-                                            class="table table-striped table-hover align-middle">
+                                        <table id="tableServices" class="table table-striped table-hover align-middle">
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>Nom</th>
@@ -1996,8 +2056,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="editFormationForm" method="POST" class="row g-4"
-                            enctype="multipart/form-data">
+                        <form id="editFormationForm" method="POST" class="row g-4" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input type="hidden" id="edit_formation_id" name="formation_id">
@@ -2014,8 +2073,7 @@
                             <!-- Catégorie -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <select id="edit_categorie_id" name="categorie_id" class="form-select"
-                                        required>
+                                    <select id="edit_categorie_id" name="categorie_id" class="form-select" required>
                                         <option value="">@lang('extracted.choisir_une_categorie')</option>
                                         @if (isset($categories) && $categories->count() > 0)
                                             @foreach ($categories as $categorie)
@@ -2033,8 +2091,8 @@
                             <!-- Programme -->
                             <div class="col-12">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_programme" name="programme" class="form-control" placeholder="Programme de la formation"
-                                        rows="3"></textarea>
+                                    <textarea id="edit_programme" name="programme" class="form-control"
+                                        placeholder="Programme de la formation" rows="3"></textarea>
                                     <label for="edit_programme">@lang('extracted.programme')</label>
                                 </div>
                             </div>
@@ -2042,8 +2100,8 @@
                             <!-- Coût -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="number" id="edit_cout" name="cout" class="form-control"
-                                        placeholder="0" min="0" step="0.01">
+                                    <input type="number" id="edit_cout" name="cout" class="form-control" placeholder="0"
+                                        min="0" step="0.01">
                                     <label for="edit_cout">@lang('extracted.cout_fcfa')</label>
                                 </div>
                             </div>
@@ -2060,8 +2118,8 @@
                             <!-- Date début -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="date" id="edit_date_debut" name="date_debut"
-                                        class="form-control" min="" onchange="updateDateConstraints()">
+                                    <input type="date" id="edit_date_debut" name="date_debut" class="form-control"
+                                        min="" onchange="updateDateConstraints()">
                                     <label for="edit_date_debut">@lang('extracted.date_de_debut')</label>
                                 </div>
                             </div>
@@ -2069,8 +2127,8 @@
                             <!-- Date fin -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="date" id="edit_date_fin" name="date_fin"
-                                        class="form-control" min="" onchange="validateDateFin()">
+                                    <input type="date" id="edit_date_fin" name="date_fin" class="form-control" min=""
+                                        onchange="validateDateFin()">
                                     <label for="edit_date_fin">@lang('extracted.date_de_fin')</label>
                                 </div>
                             </div>
@@ -2078,7 +2136,8 @@
                             <!-- Prérequis -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_prerequis" name="prerequis" class="form-control" placeholder="Prérequis" rows="2"></textarea>
+                                    <textarea id="edit_prerequis" name="prerequis" class="form-control"
+                                        placeholder="Prérequis" rows="2"></textarea>
                                     <label for="edit_prerequis">@lang('extracted.prerequis')</label>
                                 </div>
                             </div>
@@ -2086,7 +2145,8 @@
                             <!-- Bonus -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_bonus" name="bonus" class="form-control" placeholder="Bonus" rows="2"></textarea>
+                                    <textarea id="edit_bonus" name="bonus" class="form-control" placeholder="Bonus"
+                                        rows="2"></textarea>
                                     <label for="edit_bonus">@lang('extracted.bonus')</label>
                                 </div>
                             </div>
@@ -2096,7 +2156,9 @@
                                 <label class="form-label">@lang('extracted.fichier_image_ou_video_optionnel')</label>
                                 <input type="file" id="edit_file" name="file" class="form-control"
                                     accept="image/*,video/*" onchange="previewEditFile(this)">
-                                <div class="form-text">@lang('extracted.formats_acceptes_jpg_png_gif_mp4_avi_mov_wmv_taille_max_150mb')</div>
+                                <div class="form-text">
+                                    @lang('extracted.formats_acceptes_jpg_png_gif_mp4_avi_mov_wmv_taille_max_150mb')
+                                </div>
                             </div>
 
                             <!-- Prévisualisation -->
@@ -2117,8 +2179,7 @@
 
                             <!-- Boutons -->
                             <div class="col-12 text-end">
-                                <button type="button" class="btn btn-outline-secondary me-2"
-                                    data-bs-dismiss="modal">
+                                <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">
                                     Annuler
                                 </button>
                                 <button type="submit" class="btn btn-warning">
@@ -2137,16 +2198,17 @@
             <div class="modal-dialog modal-simple">
                 <div class="modal-content">
                     <div class="modal-body p-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         <div class="text-center mb-6">
                             <div class="mb-4">
                                 <i class="ri-error-warning-line ri-96px text-danger"></i>
                             </div>
                             <h4 class="mb-2">@lang('extracted.confirmer_la_suppression')</h4>
-                            <p class="text-muted mb-2">@lang('extracted.etes_vous_sur_de_vouloir_supprimer_cette_formation')</p>
+                            <p class="text-muted mb-2">
+                                @lang('extracted.etes_vous_sur_de_vouloir_supprimer_cette_formation')</p>
                             <p class="fw-bold text-dark mb-2" id="formation-to-delete"></p>
-                            <p class="text-danger mb-0"><strong>@lang('extracted.cette_action_est_irreversible')</strong></p>
+                            <p class="text-danger mb-0">
+                                <strong>@lang('extracted.cette_action_est_irreversible')</strong></p>
                         </div>
                         <div class="text-center">
                             <button type="button" class="btn btn-outline-secondary me-3" data-bs-dismiss="modal">
@@ -2164,8 +2226,8 @@
         </div>
 
         <!-- Modale des détails de formation -->
-        <div class="modal fade" id="detailsFormationModal" tabindex="-1"
-            aria-labelledby="detailsFormationModalLabel" aria-hidden="true">
+        <div class="modal fade" id="detailsFormationModal" tabindex="-1" aria-labelledby="detailsFormationModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
@@ -2190,8 +2252,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             <i class="fas fa-times me-1"></i>Fermer
                         </button>
-                        <button type="button" class="btn btn-primary" id="exporterInscriptions"
-                            style="display: none;">
+                        <button type="button" class="btn btn-primary" id="exporterInscriptions" style="display: none;">
                             <i class="fas fa-download me-1"></i>Exporter les inscriptions
                         </button>
                     </div>
@@ -2199,6 +2260,347 @@
             </div>
         </div>
 
+        <!-- Modal Création Opportunité -->
+        <div class="modal fade" id="create_opportunite" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="text-center mb-6">
+                            <h4 class="mb-2 text-primary">
+                                <i class="ri-handshake-line me-2"></i>
+                                NOUVELLE OPPORTUNITÉ D'AFFAIRE
+                            </h4>
+                        </div>
+                        <form id="createOpportuniteForm" class="row g-5" method="POST"
+                            action="{{ route('opportunites.store') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="col-12">
+                                <label class="form-label" for="titre">Titre de l'opportunité</label>
+                                <input type="text" id="titre" name="titre" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea id="description" name="description" class="form-control" rows="4"
+                                    required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="categorie_id">Catégorie</label>
+                                <select id="categorie_id" name="categorie_id" class="form-select">
+                                    <option value="">Sélectionner une catégorie</option>
+                                    @foreach(App\Models\Categorie::all() as $categorie)
+                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="statut">Statut</label>
+                                <select id="statut" name="statut" class="form-select" required>
+                                    <option value="brouillon">Brouillon</option>
+                                    <option value="en_ligne">En ligne</option>
+                                    <option value="ferme">Fermé</option>
+                                    <option value="archive">Archivé</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="date_debut">Date de début</label>
+                                <input type="datetime-local" id="date_debut" name="date_debut" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="date_fin">Date de fin</label>
+                                <input type="datetime-local" id="date_fin" name="date_fin" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="lieu">Lieu</label>
+                                <input type="text" id="lieu" name="lieu" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="contact_email">Email de contact</label>
+                                <input type="email" id="contact_email" name="contact_email" class="form-control">
+                            </div>
+                            
+                            <!-- Critères -->
+                            <div class="col-12">
+                                <label class="form-label" for="criteres">Critères requis</label>
+                                <div id="criteres-container">
+                                    <div class="critere-item mb-2">
+                                        <div class="input-group">
+                                            <input type="text" name="criteres[]" class="form-control" placeholder="Ex: Expérience minimum 3 ans">
+                                            <button type="button" class="btn btn-outline-danger remove-critere" onclick="removeCritere(this)">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addCritere()">
+                                    <i class="ri-add-line me-1"></i>Ajouter un critère
+                                </button>
+                            </div>
+
+                            <!-- Informations complémentaires -->
+                            <div class="col-12">
+                                <label class="form-label" for="informations">Informations complémentaires</label>
+                                <div id="informations-container">
+                                    <div class="information-item mb-2">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input type="text" name="info_keys[]" class="form-control" placeholder="Clé (ex: Budget, Durée)">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="info_values[]" class="form-control" placeholder="Valeur (ex: 50000€, 6 mois)">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-outline-danger w-100" onclick="removeInformation(this)">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addInformation()">
+                                    <i class="ri-add-line me-1"></i>Ajouter une information
+                                </button>
+                            </div>
+
+                            <!-- Fichier joint -->
+                            <div class="col-12">
+                                <label class="form-label" for="fichier_joint">Fichier joint (optionnel)</label>
+                                <input type="file" id="fichier_joint" name="fichier_joint" class="form-control" 
+                                       accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt">
+                                <small class="form-text text-muted">
+                                    Formats acceptés: PDF, DOC, DOCX, JPG, PNG, TXT (Max: 5MB)
+                                </small>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                        Annuler
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="ri-save-line me-1"></i>
+                                        Créer l'opportunité
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Liste des Opportunités -->
+        <div class="modal fade" id="liste_opportunites" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-simple">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="text-center mb-6 p-4">
+                            <h4 class="mb-2 text-primary">
+                                <i class="ri-handshake-line me-2"></i>
+                                LISTE DES OPPORTUNITÉS D'AFFAIRE
+                            </h4>
+                            <p class="text-muted">Gérez toutes vos opportunités d'affaire disponibles</p>
+                        </div>
+
+                        <div class="card-datatable px-4 pb-4">
+                            <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
+                                <table id="tableOpportunites" class="table table-striped table-hover align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Titre</th>
+                                            <th>Description</th>
+                                            <th>Catégorie</th>
+                                            <th>Statut</th>
+                                            <th>Date début</th>
+                                            <th>Date fin</th>
+                                            <th>Lieu</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(App\Models\Opportunite::with('categorie')->get() as $opportunite)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar avatar-sm me-3">
+                                                            <span class="avatar-initial rounded bg-primary">
+                                                                {{ substr($opportunite->titre, 0, 2) }}
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-0">{{ $opportunite->titre }}</h6>
+                                                            <small class="text-muted">{{ $opportunite->slug }}</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-truncate d-inline-block" style="max-width: 200px;"
+                                                        title="{{ $opportunite->description }}">
+                                                        {{ \Illuminate\Support\Str::limit($opportunite->description, 50) }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span
+                                                        class="badge bg-label-info">{{ $opportunite->categorie->nom ?? 'N/A' }}</span>
+                                                </td>
+                                                <td>
+                                                    @php
+                                                        $badgeClass = match ($opportunite->statut) {
+                                                            'en_ligne' => 'bg-label-success',
+                                                            'brouillon' => 'bg-label-warning',
+                                                            'ferme' => 'bg-label-danger',
+                                                            'archive' => 'bg-label-secondary',
+                                                            default => 'bg-label-info'
+                                                        };
+                                                    @endphp
+                                                    <span
+                                                        class="badge {{ $badgeClass }}">{{ ucfirst($opportunite->statut) }}</span>
+                                                </td>
+                                                <td>{{ $opportunite->date_debut ? $opportunite->date_debut->format('d/m/Y H:i') : 'N/A' }}
+                                                </td>
+                                                <td>{{ $opportunite->date_fin ? $opportunite->date_fin->format('d/m/Y H:i') : 'N/A' }}
+                                                </td>
+                                                <td>{{ $opportunite->lieu ?? 'N/A' }}</td>
+                                                <td class="text-center">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                            data-bs-toggle="dropdown">
+                                                            <i class="ri-more-2-line"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                onclick="voirDetailsOpportunite({{ $opportunite->id }})">
+                                                                <i class="ri-eye-line me-1"></i> Voir détails
+                                                            </a>
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                onclick="modifierOpportunite({{ $opportunite->id }})">
+                                                                <i class="ri-edit-line me-1"></i> Modifier
+                                                            </a>
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                onclick="supprimerOpportunite({{ $opportunite->id }})">
+                                                                <i class="ri-delete-bin-7-line me-1"></i> Supprimer
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Fermer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Candidats Intéressés -->
+        <div class="modal fade" id="candidats_opportunites" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-simple">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="text-center mb-6 p-4">
+                            <h4 class="mb-2 text-primary">
+                                <i class="ri-user-line me-2"></i>
+                                CANDIDATS INTÉRESSÉS PAR LES OPPORTUNITÉS
+                            </h4>
+                            <p class="text-muted">Consultez les postulations pour chaque opportunité</p>
+                        </div>
+
+                        <div class="card-datatable px-4 pb-4">
+                            <div class="mb-4">
+                                <label class="form-label" for="selectOpportuniteCandidats">Sélectionner une opportunité
+                                    :</label>
+                                <select id="selectOpportuniteCandidats" class="form-select"
+                                    onchange="chargerCandidatsOpportunite(this.value)">
+                                    <option value="">Choisir une opportunité...</option>
+                                    @foreach(App\Models\Opportunite::where('statut', 'en_ligne')->get() as $opportunite)
+                                        <option value="{{ $opportunite->id }}">
+                                            {{ $opportunite->titre }}
+                                            ({{ $opportunite->postulations()->count() }}
+                                            candidat{{ $opportunite->postulations()->count() > 1 ? 's' : '' }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
+                                <table id="tableCandidatsOpportunites"
+                                    class="table table-striped table-hover align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Candidat</th>
+                                            <th>Email</th>
+                                            <th>Téléphone</th>
+                                            <th>Date de postulation</th>
+                                            <th>Statut</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyCandidatsOpportunites">
+                                        <tr>
+                                            <td colspan="6" class="text-center text-muted">
+                                                Sélectionnez une opportunité pour voir les candidats
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Fermer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .critere-item, .information-item {
+                transition: all 0.3s ease;
+            }
+            
+            .critere-item:hover, .information-item:hover {
+                background-color: rgba(0, 123, 255, 0.05);
+                border-radius: 5px;
+                padding: 5px;
+            }
+            
+            .remove-critere, .btn-outline-danger {
+                transition: all 0.3s ease;
+            }
+            
+            .remove-critere:hover, .btn-outline-danger:hover {
+                transform: scale(1.1);
+            }
+            
+            .form-text {
+                font-size: 0.875rem;
+                color: #6c757d;
+                margin-top: 0.25rem;
+            }
+            
+            .input-group .form-control {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            
+            .input-group .btn {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        </style>
 
         <!--////////////////////////////////////////////////////////////////////////////////////////////////-->
 
@@ -2230,7 +2632,7 @@
 
                     const reader = new FileReader();
 
-                    reader.onload = function(e) {
+                    reader.onload = function (e) {
                         preview.style.display = 'block';
 
                         if (file.type.startsWith('image/')) {
@@ -2285,7 +2687,7 @@
 
                     const reader = new FileReader();
 
-                    reader.onload = function(e) {
+                    reader.onload = function (e) {
                         preview.style.display = 'block';
 
                         if (file.type.startsWith('image/')) {
@@ -2521,12 +2923,12 @@
             }
 
             // Événement pour la soumission du formulaire d'édition - CORRIGÉ
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 console.log('SweetAlert disponible:', typeof Swal !== 'undefined');
 
                 const editForm = document.getElementById('editFormationForm');
                 if (editForm) {
-                    editForm.addEventListener('submit', function(e) {
+                    editForm.addEventListener('submit', function (e) {
                         e.preventDefault();
                         console.log('Formulaire soumis');
 
@@ -2656,13 +3058,13 @@
             });
 
             // Événement pour la confirmation de suppression - CORRIGER
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 // Vérifier que l'élément existe
                 const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
                 if (confirmDeleteBtn) {
                     console.log('Bouton de suppression trouvé ✅');
 
-                    confirmDeleteBtn.addEventListener('click', function() {
+                    confirmDeleteBtn.addEventListener('click', function () {
                         console.log('Bouton suppression cliqué, Formation ID:', currentFormationId);
 
                         if (!currentFormationId) {
@@ -3015,7 +3417,7 @@
             }
 
             // Test des modales au chargement
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 console.log('=== TEST DES MODALES ===');
 
                 // Vérifier que les modales existent
@@ -3045,7 +3447,7 @@
             });
 
             // Test des éléments du formulaire d'édition
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 console.log('=== VÉRIFICATION FORMULAIRE ÉDITION ===');
 
                 const elementsToCheck = [
@@ -3192,14 +3594,14 @@
             }
 
             // Gestionnaire pour le formulaire de CRÉATION
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 
                 // ... existing code pour edit ...
 
                 // NOUVEAU : Gestionnaire pour la création
                 const createForm = document.getElementById('createFormationForm');
                 if (createForm) {
-                    createForm.addEventListener('submit', function(e) {
+                    createForm.addEventListener('submit', function (e) {
                         e.preventDefault();
                         console.log('Formulaire de création soumis');
 
@@ -3456,7 +3858,7 @@
             }
 
             // Initialiser les contraintes au chargement de la page
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 // ... existing code ...
 
                 // NOUVEAU : Initialiser les contraintes pour la création
@@ -3464,7 +3866,7 @@
             });
 
             // NOUVELLE SECTION : Gestionnaire pour le formulaire de CRÉATION
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 console.log('=== INITIALISATION GESTIONNAIRES ===');
 
                 // ... existing code pour editFormationForm reste intact ...
@@ -3480,7 +3882,7 @@
                     console.log('ID du formulaire de création:', createForm.id);
                     console.log('Action du formulaire:', createForm.action);
 
-                    createForm.addEventListener('submit', function(e) {
+                    createForm.addEventListener('submit', function (e) {
                         e.preventDefault();
                         console.log('🆕 Formulaire de CRÉATION soumis');
 
@@ -3734,12 +4136,12 @@
 
         <!-- Événement pour la soumission du formulaire d'édition - MISE À JOUR -->
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 console.log('SweetAlert disponible:', typeof Swal !== 'undefined');
 
                 const editForm = document.getElementById('editFormationForm');
                 if (editForm) {
-                    editForm.addEventListener('submit', function(e) {
+                    editForm.addEventListener('submit', function (e) {
                         e.preventDefault();
                         console.log('Formulaire soumis');
 
@@ -4064,7 +4466,7 @@ ${inscription.nom.charAt(0).toUpperCase()}
 <td>
 <small class="text-muted">
 ${new Date(inscription.created_at).toLocaleDateString('fr-FR')} à 
-${new Date(inscription.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}
+${new Date(inscription.created_at).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
 </small>
 </td>
 <td>
@@ -4108,17 +4510,17 @@ ${inscription.statut === 'en_attente' ? `
 
 <!-- Script pour la création de nouvelles opportunités -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 const form = document.getElementById('createEmploiForm');
 const modal = document.getElementById('create_emplois');
 
 // Validation en temps réel
-form.addEventListener('input', function(e) {
+                form.addEventListener('input', function (e) {
 validateField(e.target);
 });
 
 // Soumission du formulaire
-form.addEventListener('submit', function(e) {
+                form.addEventListener('submit', function (e) {
 e.preventDefault();
 
 if (validateForm()) {
@@ -4212,7 +4614,7 @@ return isValid;
 }
 
 // Réinitialiser le formulaire à la fermeture
-modal.addEventListener('hidden.bs.modal', function() {
+                modal.addEventListener('hidden.bs.modal', function () {
 form.reset();
 form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
 field.classList.remove('is-valid', 'is-invalid');
@@ -4225,7 +4627,7 @@ submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportu
 });
 
 // Auto-complétion intelligente
-document.getElementById('titre').addEventListener('input', function(e) {
+                document.getElementById('titre').addEventListener('input', function (e) {
 const titre = e.target.value.toLowerCase();
 const entrepriseField = document.getElementById('entreprise');
 
@@ -4240,7 +4642,7 @@ entrepriseField.classList.add('is-valid');
 });
 
 // Formatage automatique du téléphone
-document.getElementById('contact_telephone').addEventListener('input', function(e) {
+                document.getElementById('contact_telephone').addEventListener('input', function (e) {
 let value = e.target.value.replace(/\D/g, '');
 if (value.length > 0 && !value.startsWith('225')) {
 value = '225' + value;
@@ -4251,13 +4653,481 @@ value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
 e.target.value = value;
 });
 });
+
+            // Scripts pour la gestion des opportunités
+            
+            // Fonctions pour gérer les critères
+            window.addCritere = function() {
+                const container = document.getElementById('criteres-container');
+                const newCritere = document.createElement('div');
+                newCritere.className = 'critere-item mb-2';
+                newCritere.innerHTML = `
+                    <div class="input-group">
+                        <input type="text" name="criteres[]" class="form-control" placeholder="Ex: Expérience minimum 3 ans">
+                        <button type="button" class="btn btn-outline-danger remove-critere" onclick="removeCritere(this)">
+                            <i class="ri-delete-bin-line"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(newCritere);
+            };
+            
+            window.removeCritere = function(button) {
+                const container = document.getElementById('criteres-container');
+                if (container.children.length > 1) {
+                    button.closest('.critere-item').remove();
+                } else {
+                    Swal.fire('Attention', 'Au moins un critère est requis', 'warning');
+                }
+            };
+            
+            // Fonctions pour gérer les informations
+            window.addInformation = function() {
+                const container = document.getElementById('informations-container');
+                const newInfo = document.createElement('div');
+                newInfo.className = 'information-item mb-2';
+                newInfo.innerHTML = `
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" name="info_keys[]" class="form-control" placeholder="Clé (ex: Budget, Durée)">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="info_values[]" class="form-control" placeholder="Valeur (ex: 50000€, 6 mois)">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-outline-danger w-100" onclick="removeInformation(this)">
+                                <i class="ri-delete-bin-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(newInfo);
+            };
+            
+            window.removeInformation = function(button) {
+                const container = document.getElementById('informations-container');
+                if (container.children.length > 1) {
+                    button.closest('.information-item').remove();
+                } else {
+                    Swal.fire('Attention', 'Au moins une information est requise', 'warning');
+                }
+            };
+            document.addEventListener('DOMContentLoaded', function () {
+
+                // Gestion du formulaire de création d'opportunité
+                const createOpportuniteForm = document.getElementById('createOpportuniteForm');
+                if (createOpportuniteForm) {
+                    createOpportuniteForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        const formData = new FormData(this);
+
+                        // S'assurer que le token CSRF est inclus dans FormData
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                        formData.append('_token', csrfToken);
+
+                        // Afficher une animation de chargement
+                        const loading = Swal.fire({
+                            title: 'Création en cours...',
+                            html: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Création...</span></div>',
+                            allowOutsideClick: false,
+                            showConfirmButton: false
+                        });
+
+                        fetch('/admin/opportunites', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    createOpportuniteForm.reset();
+                                    $('#create_opportunite').modal('hide');
+                                    // Recharger la page ou mettre à jour la liste
+                                    location.reload();
+                                } else {
+                                    let errorMessage = data.message || 'Erreur lors de la création';
+                                    if (data.errors) {
+                                        errorMessage += '\n\nErreurs :\n';
+                                        Object.values(data.errors).forEach(error => {
+                                            errorMessage += '- ' + error[0] + '\n';
+                                        });
+                                    }
+                                    Swal.fire('Erreur', errorMessage, 'error');
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
+                                console.error('Erreur:', error);
+                                Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
+                            });
+                    });
+                }
+            });
+
+            // Fonction pour voir les détails d'une opportunité
+            function voirDetailsOpportunite(id) {
+                fetch(`/admin/opportunites/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const opp = data.opportunite;
+                            Swal.fire({
+                                title: opp.titre,
+                                html: `
+                    <div class="text-start">
+                        <p><strong>Description :</strong><br>${opp.description}</p>
+                        <p><strong>Catégorie :</strong> ${opp.categorie ? opp.categorie.nom : 'N/A'}</p>
+                        <p><strong>Statut :</strong> <span class="badge bg-primary">${opp.statut}</span></p>
+                        <p><strong>Date de début :</strong> ${opp.date_debut ? new Date(opp.date_debut).toLocaleDateString('fr-FR') : 'N/A'}</p>
+                        <p><strong>Date de fin :</strong> ${opp.date_fin ? new Date(opp.date_fin).toLocaleDateString('fr-FR') : 'N/A'}</p>
+                        <p><strong>Lieu :</strong> ${opp.lieu || 'N/A'}</p>
+                        <p><strong>Email de contact :</strong> ${opp.contact_email || 'N/A'}</p>
+                        <p><strong>Nombre de candidats :</strong> ${opp.postulations ? opp.postulations.length : 0}</p>
+                    </div>
+                `,
+                                width: '600px',
+                                confirmButtonText: 'Fermer'
+                            });
+                        } else {
+                            Swal.fire('Erreur', 'Impossible de charger les détails', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                    });
+            }
+
+            // Fonction pour modifier une opportunité
+            function modifierOpportunite(id) {
+                fetch(`/admin/opportunites/${id}/edit`, {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const opp = data.opportunite;
+
+                            Swal.fire({
+                                title: 'Modifier l\'opportunité',
+                                html: `
+                    <form id="editOpportuniteForm">
+                        <div class="mb-3">
+                            <label class="form-label">Titre</label>
+                            <input type="text" id="edit_titre" class="form-control" value="${opp.titre}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea id="edit_description" class="form-control" rows="3" required>${opp.description}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Catégorie</label>
+                            <select id="edit_categorie_id" class="form-select">
+                                <option value="">Sélectionner une catégorie</option>
+                                ${data.categories.map(cat =>
+                                    `<option value="${cat.id}" ${cat.id == opp.categorie_id ? 'selected' : ''}>${cat.nom}</option>`
+                                ).join('')}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Statut</label>
+                            <select id="edit_statut" class="form-select" required>
+                                <option value="brouillon" ${opp.statut === 'brouillon' ? 'selected' : ''}>Brouillon</option>
+                                <option value="en_ligne" ${opp.statut === 'en_ligne' ? 'selected' : ''}>En ligne</option>
+                                <option value="ferme" ${opp.statut === 'ferme' ? 'selected' : ''}>Fermé</option>
+                                <option value="archive" ${opp.statut === 'archive' ? 'selected' : ''}>Archivé</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Date de début</label>
+                                    <input type="datetime-local" id="edit_date_debut" class="form-control" 
+                                           value="${opp.date_debut ? new Date(opp.date_debut).toISOString().slice(0, 16) : ''}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Date de fin</label>
+                                    <input type="datetime-local" id="edit_date_fin" class="form-control" 
+                                           value="${opp.date_fin ? new Date(opp.date_fin).toISOString().slice(0, 16) : ''}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Lieu</label>
+                                    <input type="text" id="edit_lieu" class="form-control" value="${opp.lieu || ''}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Email de contact</label>
+                                    <input type="email" id="edit_contact_email" class="form-control" value="${opp.contact_email || ''}">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                `,
+                                width: '700px',
+                                showCancelButton: true,
+                                confirmButtonText: 'Modifier',
+                                cancelButtonText: 'Annuler',
+                                preConfirm: () => {
+                                    const formData = {
+                                        titre: document.getElementById('edit_titre').value,
+                                        description: document.getElementById('edit_description').value,
+                                        categorie_id: document.getElementById('edit_categorie_id').value,
+                                        statut: document.getElementById('edit_statut').value,
+                                        date_debut: document.getElementById('edit_date_debut').value,
+                                        date_fin: document.getElementById('edit_date_fin').value,
+                                        lieu: document.getElementById('edit_lieu').value,
+                                        contact_email: document.getElementById('edit_contact_email').value
+                                    };
+
+                                    return fetch(`/admin/opportunites/${id}`, {
+                                        method: 'PUT',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                            'X-Requested-With': 'XMLHttpRequest'
+                                        },
+                                        body: JSON.stringify(formData)
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (!data.success) {
+                                                throw new Error(data.message || 'Erreur lors de la modification');
+                                            }
+                                            return data;
+                                        });
+                                }
+                            })
+                                .then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire('Succès', 'Opportunité modifiée avec succès', 'success');
+                                        location.reload();
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Erreur:', error);
+                                    Swal.fire('Erreur', error.message, 'error');
+                                });
+                        } else {
+                            Swal.fire('Erreur', 'Impossible de charger les données', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                    });
+            }
+
+            // Fonction pour supprimer une opportunité
+            function supprimerOpportunite(id) {
+                Swal.fire({
+                    title: 'Supprimer cette opportunité ?',
+                    text: 'Cette action est irréversible !',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler',
+                    confirmButtonColor: '#dc3545'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const loading = Swal.fire({
+                            title: 'Suppression en cours...',
+                            html: '<div class="spinner-border text-danger" role="status"><span class="visually-hidden">Suppression...</span></div>',
+                            allowOutsideClick: false,
+                            showConfirmButton: false
+                        });
+
+                        fetch(`/admin/opportunites/${id}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    location.reload();
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
+                                console.error('Erreur:', error);
+                                Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
+                            });
+                    }
+                });
+            }
+
+            // Fonction pour charger les candidats d'une opportunité
+            function chargerCandidatsOpportunite(opportuniteId) {
+                if (!opportuniteId) {
+                    document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                        '<tr><td colspan="6" class="text-center text-muted">Sélectionnez une opportunité pour voir les candidats</td></tr>';
+                    return;
+                }
+
+                // Afficher un indicateur de chargement
+                document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                    '<tr><td colspan="6" class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Chargement...</span></div></td></tr>';
+
+                fetch(`/admin/opportunites/${opportuniteId}/candidats`, {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const tbody = document.getElementById('tbodyCandidatsOpportunites');
+
+                            if (data.candidats.length === 0) {
+                                tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">Aucun candidat pour cette opportunité</td></tr>';
+                                return;
+                            }
+
+                            tbody.innerHTML = data.candidats.map(candidat => `
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-sm me-3">
+                                <span class="avatar-initial rounded bg-primary">
+                                    ${candidat.prenom.charAt(0)}${candidat.nom.charAt(0)}
+                                </span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">${candidat.prenom} ${candidat.nom}</h6>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${candidat.email}</td>
+                    <td>${candidat.telephone || 'N/A'}</td>
+                    <td>${candidat.date_postulation}</td>
+                    <td>
+                        <span class="badge ${getBadgeClassForStatut(candidat.statut)}">${getStatutLabel(candidat.statut)}</span>
+                    </td>
+                    <td class="text-center">
+                        <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <i class="ri-more-2-line"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'accepte')">
+                                    <i class="ri-check-line me-1 text-success"></i> Accepter
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'refuse')">
+                                    <i class="ri-close-line me-1 text-danger"></i> Refuser
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+                        } else {
+                            document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                                '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement des candidats</td></tr>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                            '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement</td></tr>';
+                    });
+            }
+
+            // Fonction pour changer le statut d'une postulation
+            function changerStatutPostulation(postulationId, nouveauStatut) {
+                const statutLabel = getStatutLabel(nouveauStatut);
+
+                Swal.fire({
+                    title: `Changer le statut à "${statutLabel}" ?`,
+                    text: 'Cette action modifiera le statut de la postulation',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirmer',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`/admin/postulations/${postulationId}/statut`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                'X-Requested-With': 'XMLHttpRequest'
+                            },
+                            body: JSON.stringify({ statut: nouveauStatut })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    // Recharger les candidats
+                                    const selectElement = document.getElementById('selectOpportuniteCandidats');
+                                    if (selectElement.value) {
+                                        chargerCandidatsOpportunite(selectElement.value);
+                                    }
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors du changement de statut', 'error');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erreur:', error);
+                                Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                            });
+                    }
+                });
+            }
+
+            // Fonctions utilitaires
+            function getBadgeClassForStatut(statut) {
+                switch (statut) {
+                    case 'accepte': return 'bg-label-success';
+                    case 'refuse': return 'bg-label-danger';
+                    case 'en_attente': return 'bg-label-warning';
+                    default: return 'bg-label-info';
+                }
+            }
+
+            function getStatutLabel(statut) {
+                switch (statut) {
+                    case 'accepte': return 'Accepté';
+                    case 'refuse': return 'Refusé';
+                    case 'en_attente': return 'En attente';
+                    default: return 'Inconnu';
+                }
+            }
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 const form = document.getElementById('createCategorieForm');
 if (form) {
-form.addEventListener('submit', function(e) {
+                    form.addEventListener('submit', function (e) {
 e.preventDefault();
 
 // Animation de chargement
@@ -4451,7 +5321,7 @@ Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
 }
 
 // Rafraîchir la liste à l'ouverture de la modale
-document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
 fetchCategories();
 });
@@ -4463,11 +5333,11 @@ fetchCategories();
 <!-- Scripts pour la gestion des produits -->
 <script>
 // Scripts pour la gestion des produits
-document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 // Gestion de la création de produit
 const createProduitForm = document.getElementById('createProduitForm');
 if (createProduitForm) {
-createProduitForm.addEventListener('submit', function(e) {
+                    createProduitForm.addEventListener('submit', function (e) {
 e.preventDefault();
 
 // Afficher une animation de chargement
@@ -4581,7 +5451,7 @@ confirmButtonColor: '#dc3545'
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 // Initialisation de la DataTable pour la table des produits
 // Assure-toi que ta table HTML a bien l'id "tableProduits"
 var table = $('#tableProduits').DataTable({
@@ -4597,7 +5467,7 @@ title: 'Catégorie'
 {
 data: 'statut_label',
 title: 'Statut',
-render: function(data, type, row) {
+                        render: function (data, type, row) {
 var couleur = row.statut_color === 'success' ? 'green' : 'red';
 return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
 }
@@ -4616,7 +5486,7 @@ searchable: false
 
 // Gestion des clics sur les boutons d'action (modification/suppression)
 // On utilise la délégation d'événement pour gérer les éléments générés dynamiquement
-document.querySelector('#tableProduits').addEventListener('click', function(e) {
+                document.querySelector('#tableProduits').addEventListener('click', function (e) {
 // Bouton Modifier
 if (e.target.closest('.btn-edit-produit')) {
 e.preventDefault();
@@ -4665,7 +5535,7 @@ Swal.fire('Erreur', data.message ||
 });
 
 // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
-window.openEditProduitModal = function(id) {
+                window.openEditProduitModal = function (id) {
 // Récupère les infos du produit via AJAX
 fetch(`/admin/produits/${id}`)
 .then(res => res.json())
@@ -4841,7 +5711,7 @@ return text
 
 <!-- Scripts pour la gestion des services -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 // Initialisation de la DataTable pour les services
 var tableServices = $('#tableServices').DataTable({
 ajax: {
@@ -4871,7 +5741,7 @@ searchable: false
 // Gestion de la création de service
 const createServiceForm = document.getElementById('createServiceForm');
 if (createServiceForm) {
-createServiceForm.addEventListener('submit', function(e) {
+                    createServiceForm.addEventListener('submit', function (e) {
 e.preventDefault();
 
 Swal.fire({
@@ -4937,7 +5807,7 @@ Swal.fire('Erreur', 'Erreur réseau', 'error');
 }
 
 // Gestion des clics sur les boutons d'action des services
-document.querySelector('#tableServices').addEventListener('click', function(e) {
+                document.querySelector('#tableServices').addEventListener('click', function (e) {
 // Bouton Modifier
 if (e.target.closest('.btn-edit-service')) {
 e.preventDefault();
@@ -4985,7 +5855,7 @@ Swal.fire('Erreur', data.message ||
 
 // Fonction pour ouvrir la modale d'édition des services
 // Fonction pour ouvrir la modale d'édition
-window.openEditServiceModal = function(id) {
+                window.openEditServiceModal = function (id) {
 fetch(`/admin/services/${id}`)
 .then(res => res.json())
 .then(service => {
@@ -5098,7 +5968,7 @@ text: data.message
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 // Initialisation DataTable des abonnements utilisateur-service
 const tableEl = document.getElementById('tableUserServices');
 if (tableEl) {
@@ -5145,7 +6015,7 @@ $('#tableUserServices').DataTable().ajax.reload();
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
 if (session('success'))
 Swal.fire({
 icon: 'success',

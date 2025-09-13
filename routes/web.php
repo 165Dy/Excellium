@@ -9,6 +9,7 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmploiController;
+use App\Http\Controllers\OpportuniteController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ActualiteController;
 use App\Models\Service;
@@ -74,18 +75,23 @@ Route::prefix('clients')->group(function () {
     
 
 
-     // NOS PARTENAIRES
-     Route::get('/Partenaires',function () { return view('clients.Partenaires.index'); } )->name('Partenaires.Collaborateurs');
-     Route::get('/Partenaires/show',function () { return view('clients.Partenaires.show'); } )->name('Partenaires.show');
+    // NOS PARTENAIRES
+    Route::get('/Partenaires',function () { return view('clients.Partenaires.index'); } )->name('Partenaires.Collaborateurs');
+    Route::get('/Partenaires/show',function () { return view('clients.Partenaires.show'); } )->name('Partenaires.show');
 
-     // Opportunites
-     Route::get('/Opportunites/Articles',function () { return view('clients.Opportunites.Articles'); } )->name('Opportunites.Articles');
-     Route::get('/Opportunites/Conseils&Actualites',function () { return view('clients.Opportunites.Conseils_Actualites'); } )->name('Opportunites.conseils_actualites');
-     Route::get('/Opportunites/Service_divers',function () { return view('clients.Opportunites.service_divers'); } )->name('Opportunites.service_divers');
-     Route::get('/Opportunites/Commerce',function () { return view('clients.Opportunites.commerce'); } )->name('Opportunites.commerce');
-      Route::get('/Opportunites/Achats&Location',function () { return view('clients.Opportunites.Achat_location'); } )->name('Opportunites.achat_location');
-     //CONTACTS
-     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
+    // Opportunites
+    Route::get('/Opportunites/Articles',function () { return view('clients.Opportunites.Articles'); } )->name('Opportunites.Articles');
+    Route::get('/Opportunites/Conseils&Actualites',function () { return view('clients.Opportunites.Conseils_Actualites'); } )->name('Opportunites.conseils_actualites');
+    Route::get('/Opportunites/Service_divers',function () { return view('clients.Opportunites.service_divers'); } )->name('Opportunites.service_divers');
+    Route::get('/Opportunites/Commerce',function () { return view('clients.Opportunites.commerce'); } )->name('Opportunites.commerce');
+    Route::get('/Opportunites/Achats&Location',function () { return view('clients.Opportunites.Achat_location'); } )->name('Opportunites.achat_location');
+    
+    // Opportunités d'affaire publiques
+    Route::get('/business/Opportunites', [OpportuniteController::class, 'index_public'])->name('opportunites.index_public');
+    Route::get('/business/Opportunites/{slug}', [OpportuniteController::class, 'show_public'])->name('opportunites.show_public');
+    Route::post('/business/Opportunites/candidature', [OpportuniteController::class, 'candidature'])->name('opportunites.candidature');
+    //CONTACTS
+    Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
 
    
 });
@@ -128,6 +134,15 @@ Route::prefix('admin')->group(function () {
     Route::get('emplois/{emploi}/export-candidatures', [EmploiController::class, 'exportCandidatures'])->name('emplois.export-candidatures');
     Route::get('candidatures/{candidature}', [EmploiController::class, 'showCandidature'])->name('candidatures.show');
 
+    // Routes Opportunités d'affaire
+    Route::get('opportunites', [OpportuniteController::class, 'index'])->name('opportunites.index');
+    Route::post('opportunites', [OpportuniteController::class, 'store'])->name('opportunites.store');
+    Route::get('opportunites/{opportunite}', [OpportuniteController::class, 'show'])->name('opportunites.show');
+    Route::get('opportunites/{opportunite}/edit', [OpportuniteController::class, 'edit'])->name('opportunites.edit');
+    Route::put('opportunites/{opportunite}', [OpportuniteController::class, 'update'])->name('opportunites.update');
+    Route::delete('opportunites/{opportunite}', [OpportuniteController::class, 'destroy'])->name('opportunites.destroy');
+    Route::get('opportunites/{opportunite}/candidats', [OpportuniteController::class, 'getCandidats'])->name('opportunites.candidats');
+    Route::patch('postulations/{postulation}/statut', [OpportuniteController::class, 'changerStatutPostulation'])->name('postulations.statut');
 
     Route::get('/articles',[DashboardController::class, 'index_articles'] )->name('articles.index');
     Route::get('/partenaires',[DashboardController::class, 'index_partenaires']  )->name('partenaires.index');

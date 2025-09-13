@@ -44,6 +44,8 @@ return new class extends Migration
             // Information complémentaire (ex : jointures fichiers, liens)
             $table->json('informations')->nullable();
 
+            $table->string('fichier_joint')->nullable();
+
             $table->timestamps();
         });
     }

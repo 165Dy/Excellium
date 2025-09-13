@@ -20,7 +20,21 @@ return new class extends Migration
             $table->string('cv_path')->nullable();
             $table->string('lettre_motivation')->nullable();
             $table->text('message')->nullable(); // Message de candidature
-            $table->enum('statut', ['en_attente', 'accepte', 'refuse'])->default('en_attente');
+            $table->enum('statut', [
+                'nouveau', 
+                'en_cours', 
+                'preselectionne', 
+                'entretien_programme', 
+                'entretien_realise',
+                'accepte', 
+                'rejete',            
+                'en_attente'
+            ])->default('nouveau');
+            
+            // Évaluation et notes
+            $table->integer('note_cv')->nullable()->comment('Note du CV (sur 10)');
+            $table->text('commentaires_rh')->nullable()->comment('Commentaires des RH');
+            $table->text('feedback_entretien')->nullable()->comment('Retour d\'entretien');
             $table->timestamps();
             
             // Éviter les doublons

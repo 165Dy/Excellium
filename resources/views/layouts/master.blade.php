@@ -200,6 +200,7 @@
                                     </div>
                                 </div>
                             </div> --}}
+
                         </div>
                         @php
                             $locale = app()->getLocale();
@@ -249,6 +250,9 @@
     @yield('Commerce')
     @yield('Conseils_actualites')
     @yield('Divers')
+    @yield('Opportunites')
+    @yield('Opportunite_show')
+
     {{-- /PARTENAIRES/ --}}
     @yield('indexPartenaire')
     @yield('showPartenaire')

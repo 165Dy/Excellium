@@ -131,9 +131,6 @@
         }
     </style>
     <!--====== Start Header Section ======-->
-
-    
-
     <section class="hero-section">
 
         <div class="hero-wrapper-two bg_cover" style="background-image: url(assets/images/hero/hero-bg-1.png);">

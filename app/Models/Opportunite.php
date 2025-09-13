@@ -12,8 +12,8 @@ class Opportunite extends Model
     protected $fillable = [
         'titre', 'description', 'slug', 'categorie_id', 'statut',
         'date_debut', 'date_fin', 'lieu', 'contact_email',
-        'criteres', 'informations'
-    ];
+        'criteres', 'informations', 'fichier_joint',
+        ];
 
     protected $casts = [
         'date_debut' => 'datetime',
@@ -27,9 +27,9 @@ class Opportunite extends Model
         return $this->belongsTo(Categorie::class);
     }
 
-    public function candidatures()
+    public function postulations()
     {
-        return $this->hasMany(Candidature::class);
+        return $this->hasMany(Postulation::class);
     }
 
     // Scope pour opportunités en ligne et encore ouvertes
