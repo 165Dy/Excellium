@@ -91,13 +91,13 @@
                                             <i>@lang('extracted.flash_info')</i>
                                         </div>
 
-                                      
+
 
 
                                     </div>
                                 </div>
                             </div>
-                             {{-- <x-news-ticker/> --}}
+                            {{-- <x-news-ticker/> --}}
 
                             <!--=== Main Menu ===-->
                             <nav class="main-menu">
@@ -126,21 +126,17 @@
                                                 <li><a href="{{ route('Compta_Fiscale') }}">@lang('extracted.comptable_fiscale')</a></li>
                                                 <li><a href="{{ route('Financement') }}">@lang('extracted.financement')</a></li>
                                                 <li><a href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a></li>
-                                                <li><a
-                                                        href="{{ route('Opportunites_humaines') }}">@lang('extracted.r_humaines')</a>
-                                                </li>
+                                                <li><a href="{{ route('Opportunites_humaines') }}">@lang('extracted.r_humaines')</a></li>
                                             @endif
                                         </ul>
                                     </li>
-                                    <li class="menu-item has-children"><a href="#">@lang('Opportunites')</a>
-                                        <ul class="sub-menu">
-                                            <li><a
-                                                    href="{{ route('Opportunites.achat_location') }}">@lang('extracted.achats_location')</a>
+                                    <li class="menu-item has-children"><a href="{{ route('opportunites.index_public') }}">@lang('Opportunites')</a>
+                                        {{-- <ul class="sub-menu">
+                                            <li><a href="{{ route('Opportunites.achat_location') }}">@lang('extracted.achats_location')</a>
                                             </li>
                                             <li><a href="{{ route('Opportunites.Articles') }}">@lang('extracted.articles')</a>
                                             </li>
-                                            <li><a
-                                                    href="{{ route('Opportunites.conseils_actualites') }}">@lang('extracted.conseils_actualites')</a>
+                                            <li><a href="{{ route('Opportunites.conseils_actualites') }}">@lang('extracted.conseils_actualites')</a>
                                             </li>
                                             <li><a href="{{ route('Opportunites.commerce') }}">@lang('extracted.commerce_generale')</a>
                                             </li>
@@ -148,7 +144,7 @@
                                                     href="{{ route('Opportunites.service_divers') }}">@lang('extracted.service_divers')</a>
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
 
                                     <li class="menu-item has-children">
                                         <a href="{{ route('Partenaires.Collaborateurs') }}">@lang('extracted.partenaires')</a>

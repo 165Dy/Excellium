@@ -101,7 +101,7 @@
                                         <li><i class="far fa-check"></i>Type de Contrat :
                                             {{ $emploi->type_contrat }}
                                         </li>
-                                       
+
                                         <li><i class="far fa-check"></i>Salaire :
                                             <span
                                                 class="text-white fw-bold">{{ number_format($emploi->salaire_min, 0, ',', ' ') }}
@@ -111,7 +111,7 @@
                                                 FCFA</span>
                                             </p>
                                         </li>
-                                         <li><i class="far fa-check"></i>Experience :
+                                        <li><i class="far fa-check"></i>Experience :
                                             {{ $emploi->experience_requise }}
                                         </li>
                                         <li><i class="far fa-check"></i>Niveau :

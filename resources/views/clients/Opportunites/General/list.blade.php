@@ -2,11 +2,14 @@
 @section('Opportunites')
     <!--====== Start Page Section ======-->
     <section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
-        <div class="shape shape-one scene"><span data-depth="1"><img src="{{asset('assets/images/shape/p-1.png')}}" alt="shape"></span>
+        <div class="shape shape-one scene"><span data-depth="1"><img src="{{ asset('assets/images/shape/p-1.png') }}"
+                    alt="shape"></span>
         </div>
-        <div class="shape shape-two scene"><span data-depth="2"><img src="{{asset('assets/images/shape/p-2.png')}}" alt="shape"></span>
+        <div class="shape shape-two scene"><span data-depth="2"><img src="{{ asset('assets/images/shape/p-2.png') }}"
+                    alt="shape"></span>
         </div>
-        <div class="shape shape-three"><span><img src="{{asset('assets/images/shape/p-3.png')}}" alt="shape"></span></div>
+        <div class="shape shape-three"><span><img src="{{ asset('assets/images/shape/p-3.png') }}" alt="shape"></span>
+        </div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
@@ -14,7 +17,8 @@
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
                             <h2 class="page-title">Opportunités d'Affaire</h2>
-                            <p>Découvrez les opportunités d'affaire qui s'offrent à vous et développez votre réseau professionnel</p>
+                            <p>Découvrez les opportunités d'affaire qui s'offrent à vous et développez votre réseau
+                                professionnel</p>
                             <ul class="breadcrumb-link text-white">
                                 <li><a href="{{ route('welcome') }}">Accueil</a></li>
                                 <li class="active">Opportunités d'Affaire</li>
@@ -28,28 +32,29 @@
 
     <!--====== Start Opportunities Section ======-->
     <section class="blog-grid-section secondary-dark-bg pt-140 pb-140">
-        <div class="container">
-            <!-- Filtres et recherche -->
-            <div class="row mb-50">
+        <div class="container" style="margin-top: -100px">
+
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="card bg-dark border-secondary">
                         <div class="card-body">
-                            <div class="row g-3">
-                                <div class="col-md-4">
-                                    <label class="form-label text-white">Rechercher</label>
-                                    <input type="text" id="searchInput" class="form-control" placeholder="Rechercher une opportunité...">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label for="searchInput" class="form-label text-white me-2 mb-0">Rechercher</label>
+                                    <input type="text" id="searchInput" class="form-control"
+                                        placeholder="Rechercher une opportunité...">
                                 </div>
-                                <div class="col-md-4">
-                                    <label class="form-label text-white">Catégorie</label>
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label for="categoryFilter" class="form-label text-white me-2 mb-0">Catégorie</label>
                                     <select id="categoryFilter" class="form-select">
                                         <option value="">Toutes les catégories</option>
-                                        @foreach($categories as $categorie)
+                                        @foreach ($categories as $categorie)
                                             <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-4">
-                                    <label class="form-label text-white">Statut</label>
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label for="statusFilter" class="form-label text-white me-2 mb-0">Statut</label>
                                     <select id="statusFilter" class="form-select">
                                         <option value="">Tous les statuts</option>
                                         <option value="en_ligne">En ligne</option>
@@ -57,28 +62,29 @@
                                     </select>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><br>
+
 
             <!-- Liste des opportunités -->
             <div class="row" id="opportunitiesContainer">
                 @forelse($opportunites as $opportunite)
-                    <div class="col-lg-4 col-md-6 col-sm-12 opportunity-item" 
-                         data-category="{{ $opportunite->categorie_id }}" 
-                         data-status="{{ $opportunite->statut }}"
-                         data-title="{{ strtolower($opportunite->titre) }}"
-                         data-description="{{ strtolower($opportunite->description) }}">
+                    <div class="col-lg-4 col-md-6 col-sm-12 opportunity-item"
+                        data-category="{{ $opportunite->categorie_id }}" data-status="{{ $opportunite->statut }}"
+                        data-title="{{ strtolower($opportunite->titre) }}"
+                        data-description="{{ strtolower($opportunite->description) }}">
                         <div class="blog-post-item style-two mb-30 wow fadeInDown">
                             <div class="post-thumbnail">
-                                <img src="{{ asset('assets/images/opportunities/opportunity-' . ($loop->iteration % 6 + 1) . '.jpg') }}" 
-                                     alt="{{ $opportunite->titre }}" 
-                                     onerror="this.src='{{ asset('assets/images/blog/blog-6.jpg') }}'">
+                                <img src="{{ asset('assets/images/opportunities/opportunity-' . (($loop->iteration % 6) + 1) . '.jpg') }}"
+                                    alt="{{ $opportunite->titre }}"
+                                    onerror="this.src='{{ asset('assets/images/blog/blog-6.jpg') }}'">
                                 <ul class="post-categories">
                                     <li><a href="#">{{ $opportunite->categorie->nom ?? 'Général' }}</a></li>
                                 </ul>
-                                @if($opportunite->statut === 'en_ligne')
+                                @if ($opportunite->statut === 'en_ligne')
                                     <div class="status-badge bg-success">
                                         <i class="fas fa-check-circle"></i> En ligne
                                     </div>
@@ -94,7 +100,7 @@
                                         <i class="far fa-calendar-alt"></i>
                                         {{ $opportunite->created_at->format('d M Y') }}
                                     </a>
-                                    @if($opportunite->lieu)
+                                    @if ($opportunite->lieu)
                                         <a href="#" class="post-date">
                                             <i class="fas fa-map-marker-alt"></i>
                                             {{ $opportunite->lieu }}
@@ -104,9 +110,10 @@
                                 <h4 class="title">
                                     <a href="{{ route('opportunites.show_public', $opportunite->slug) }}">{{ $opportunite->titre }}</a>
                                 </h4>
-                                <p class="description">{{ \Illuminate\Support\Str::limit($opportunite->description, 120) }}</p>
-                                
-                                @if($opportunite->date_fin)
+                                <p class="description">{{ \Illuminate\Support\Str::limit($opportunite->description, 120) }}
+                                </p>
+
+                                @if ($opportunite->date_fin)
                                     <div class="deadline-info">
                                         <i class="fas fa-clock"></i>
                                         <span class="text-muted">
@@ -118,10 +125,11 @@
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     <div class="candidats-count">
                                         <i class="fas fa-users"></i>
-                                        {{ $opportunite->postulations_count ?? 0 }} candidat{{ ($opportunite->postulations_count ?? 0) > 1 ? 's' : '' }}
+                                        {{ $opportunite->postulations_count ?? 0 }}
+                                        candidat{{ ($opportunite->postulations_count ?? 0) > 1 ? 's' : '' }}
                                     </div>
-                                    <a href="{{ route('opportunites.show_public', $opportunite->slug) }}" 
-                                       class="btn btn-primary btn-sm">
+                                    <a href="{{ route('opportunites.show_public', $opportunite->slug) }}"
+                                        class="btn btn-primary btn-sm">
                                         Voir détails
                                     </a>
                                 </div>
@@ -145,7 +153,7 @@
             </div>
 
             <!-- Pagination -->
-            @if($opportunites->hasPages())
+            @if ($opportunites->hasPages())
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-center mt-50">
@@ -165,32 +173,33 @@
                     <h5 class="modal-title text-white">
                         <i class="fas fa-handshake me-2"></i>Postuler à cette opportunité
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="candidatureForm">
                         @csrf
                         <input type="hidden" id="opportunite_id" name="opportunite_id">
-                        
+
                         <div class="mb-3">
                             <label class="form-label text-white">Nom complet</label>
                             <input type="text" id="nom_complet" name="nom_complet" class="form-control" required>
                         </div>
-                        
+
                         <div class="mb-3">
                             <label class="form-label text-white">Email</label>
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
-                        
+
                         <div class="mb-3">
                             <label class="form-label text-white">Téléphone</label>
                             <input type="tel" id="telephone" name="telephone" class="form-control">
                         </div>
-                        
+
                         <div class="mb-3">
                             <label class="form-label text-white">Message de motivation</label>
-                            <textarea id="message" name="message" class="form-control" rows="4" 
-                                      placeholder="Expliquez pourquoi vous êtes intéressé par cette opportunité..."></textarea>
+                            <textarea id="message" name="message" class="form-control" rows="4"
+                                placeholder="Expliquez pourquoi vous êtes intéressé par cette opportunité..."></textarea>
                         </div>
                     </form>
                 </div>
@@ -216,7 +225,7 @@
             color: white;
             z-index: 2;
         }
-        
+
         .deadline-info {
             margin-top: 10px;
             padding: 8px 12px;
@@ -224,33 +233,33 @@
             border-left: 3px solid #ffc107;
             border-radius: 4px;
         }
-        
+
         .candidats-count {
             color: #6c757d;
             font-size: 14px;
         }
-        
+
         .empty-state {
             padding: 60px 20px;
         }
-        
+
         .opportunity-item {
             transition: all 0.3s ease;
         }
-        
+
         .opportunity-item:hover {
             transform: translateY(-5px);
         }
-        
+
         .post-thumbnail {
             position: relative;
             overflow: hidden;
         }
-        
+
         .post-thumbnail img {
             transition: transform 0.3s ease;
         }
-        
+
         .opportunity-item:hover .post-thumbnail img {
             transform: scale(1.05);
         }
@@ -262,42 +271,43 @@
             const categoryFilter = document.getElementById('categoryFilter');
             const statusFilter = document.getElementById('statusFilter');
             const opportunitiesContainer = document.getElementById('opportunitiesContainer');
-            
+
             function filterOpportunities() {
                 const searchTerm = searchInput.value.toLowerCase();
                 const selectedCategory = categoryFilter.value;
                 const selectedStatus = statusFilter.value;
-                
+
                 const opportunities = document.querySelectorAll('.opportunity-item');
-                
+
                 opportunities.forEach(opportunity => {
                     const title = opportunity.dataset.title;
                     const description = opportunity.dataset.description;
                     const category = opportunity.dataset.category;
                     const status = opportunity.dataset.status;
-                    
+
                     let show = true;
-                    
+
                     // Filtre par recherche
                     if (searchTerm && !title.includes(searchTerm) && !description.includes(searchTerm)) {
                         show = false;
                     }
-                    
+
                     // Filtre par catégorie
                     if (selectedCategory && category !== selectedCategory) {
                         show = false;
                     }
-                    
+
                     // Filtre par statut
                     if (selectedStatus && status !== selectedStatus) {
                         show = false;
                     }
-                    
+
                     opportunity.style.display = show ? 'block' : 'none';
                 });
-                
+
                 // Vérifier s'il y a des résultats
-                const visibleOpportunities = document.querySelectorAll('.opportunity-item[style*="block"], .opportunity-item:not([style])');
+                const visibleOpportunities = document.querySelectorAll(
+                    '.opportunity-item[style*="block"], .opportunity-item:not([style])');
                 if (visibleOpportunities.length === 0) {
                     opportunitiesContainer.innerHTML = `
                         <div class="col-12">
@@ -312,72 +322,72 @@
                     `;
                 }
             }
-            
+
             searchInput.addEventListener('input', filterOpportunities);
             categoryFilter.addEventListener('change', filterOpportunities);
             statusFilter.addEventListener('change', filterOpportunities);
         });
-        
+
         function openCandidatureModal(opportuniteId) {
             document.getElementById('opportunite_id').value = opportuniteId;
             const modal = new bootstrap.Modal(document.getElementById('candidatureModal'));
             modal.show();
         }
-        
+
         function submitCandidature() {
             const form = document.getElementById('candidatureForm');
             const formData = new FormData(form);
-            
+
             // Afficher un indicateur de chargement
             const submitBtn = document.querySelector('#candidatureModal .btn-primary');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Envoi en cours...';
             submitBtn.disabled = true;
-            
-            fetch('{{ route("opportunites.candidature") }}', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Fermer la modale
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('candidatureModal'));
-                    modal.hide();
-                    
-                    // Afficher un message de succès
-                    Swal.fire({
-                        title: 'Candidature envoyée !',
-                        text: data.message,
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    });
-                    
-                    // Réinitialiser le formulaire
-                    form.reset();
-                } else {
-                    let errorMessage = data.message || 'Erreur lors de l\'envoi de la candidature';
-                    if (data.errors) {
-                        errorMessage += '\n\nErreurs :\n';
-                        Object.values(data.errors).forEach(error => {
-                            errorMessage += '- ' + error[0] + '\n';
-                        });
+
+            fetch('{{ route('opportunites.candidature') }}', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'X-Requested-With': 'XMLHttpRequest'
                     }
-                    Swal.fire('Erreur', errorMessage, 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Erreur:', error);
-                Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
-            })
-            .finally(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Fermer la modale
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('candidatureModal'));
+                        modal.hide();
+
+                        // Afficher un message de succès
+                        Swal.fire({
+                            title: 'Candidature envoyée !',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+
+                        // Réinitialiser le formulaire
+                        form.reset();
+                    } else {
+                        let errorMessage = data.message || 'Erreur lors de l\'envoi de la candidature';
+                        if (data.errors) {
+                            errorMessage += '\n\nErreurs :\n';
+                            Object.values(data.errors).forEach(error => {
+                                errorMessage += '- ' + error[0] + '\n';
+                            });
+                        }
+                        Swal.fire('Erreur', errorMessage, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
         }
     </script>
 @endsection
