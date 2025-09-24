@@ -1,138 +1,244 @@
 @extends('layouts.admin')
-
-@section('title', 'Détail du Candidat')
-
-@section('content')
-<section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="page-banner-content text-center text-white">
-                    <h1 class="page-title">Détail de la Candidature</h1>
-                    <p>
-                        Candidature de <strong>{{ $candidature->nom }}</strong> pour le poste de 
-                        <strong>{{ $candidature->emploi->titre ?? 'N/A' }}</strong>
-                    </p>
-                </div>
-            </div>
+@section('Detail_Candidature')
+    <section class="page-banner pt-150 pb-80 bg-primary text-white">
+        <div class="container text-center">
+            <h1 class="mb-2">Détail de la Candidature</h1>
+            <p>Candidature de <strong>{{ $candidature->nom }}</strong> pour le poste de
+                <strong>{{ $candidature->emploi->titre ?? 'N/A' }}</strong>
+            </p>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="user-profile-section pt-120 pb-120">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="user-profile-card">
-                    <div class="user-profile-header">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar" class="user-avatar">
-                            <div class="user-info">
-                                <h3 class="user-name">{{ $candidature->nom }}</h3>
-                                <p class="user-email">{{ $candidature->email }}</p>
+    <section class="user-profile-section py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                @php
+                                    $avatars = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png'];
+                                    $avatarIndex = $candidature->id % count($avatars);
+                                    $avatarFile = $avatars[$avatarIndex];
+                                @endphp
+
+                                <img src="{{ asset('assets_2/img/avatars/' . $avatarFile) }}" alt="Avatar"
+                                    class="rounded-circle me-3" style="width:70px; height:70px;">
+                                <div>
+                                    @php
+                                        use Carbon\Carbon;
+
+                                        $maintenant = Carbon::now();
+                                        $dateExpiration = Carbon::parse($candidature->emploi->date_expiration ?? now());
+
+                                        if ($dateExpiration->isFuture()) {
+                                            $totalHours = $maintenant->diffInHours($dateExpiration); // total d'heures restantes
+                                            $joursRestants = intdiv($totalHours, 24); // nombre de jours
+                                            $heuresRestantes = $totalHours % 24; // reste des heures
+                                        } else {
+                                            $joursRestants = 0;
+                                            $heuresRestantes = 0;
+                                        }
+                                    @endphp
+
+
+
+
+                                    <h3 class="mb-0">{{ $candidature->nom }}</h3>
+                                    <small class="text-muted">{{ $candidature->email }}</small>
+
+
+                                    <small class="text-muted">
+                                        <strong class="badge bg-info">Temps: {{ $joursRestants }}jr(s)  
+                                            {{ $heuresRestantes }}H
+                                        </strong>
+                                    </small>
+
+
+                                </div>
                             </div>
-                        </div>
-                        <a href="{{ route('emplois.candidatures.index') }}" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left"></i> Retour à la liste
-                        </a>
-                    </div>
-
-                    <div class="user-profile-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4>Informations Personnelles</h4>
-                                <ul class="list-group">
-                                    <li class="list-group-item"><strong>Téléphone :</strong> {{ $candidature->telephone ?? 'Non fourni' }}</li>
-                                    <li class="list-group-item"><strong>Date de candidature :</strong> {{ $candidature->created_at->format('d/m/Y H:i') }}</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h4>Informations sur la Candidature</h4>
-                                <ul class="list-group">
-                                    <li class="list-group-item"><strong>Poste :</strong> {{ $candidature->emploi->titre ?? 'N/A' }}</li>
-                                    <li class="list-group-item"><strong>Statut :</strong> 
-                                        <span class="badge 
-                                            @if($candidature->statut == 'accepte') bg-success 
-                                            @elseif($candidature->statut == 'refuse') bg-danger 
-                                            @else bg-warning text-dark @endif">
-                                            {{ ucfirst(str_replace('_', ' ', $candidature->statut)) }}
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="mt-4">
-                            <h4>Message de Motivation</h4>
-                            <p class="message-box">{{ $candidature->message ?: 'Aucun message.' }}</p>
-                        </div>
-
-                        <div class="mt-4">
-                            <h4>Documents</h4>
-                            @if($candidature->cv_path)
-                                <a href="{{ Storage::url($candidature->cv_path) }}" target="_blank" class="btn btn-primary">
-                                    <i class="fas fa-file-pdf"></i> Voir le CV
+                            <div class="d-flex align-items-center badge bg-primary">
+                                <a href="{{ route('emplois.candidatures.index') }}" class="btn-outline-secondary">
+                                    <i class="ri ri-arrow-left-line" style="color: rgb(255, 254, 254);font-size: 20px;"></i> 
                                 </a>
-                            @else
-                                <p>Aucun CV fourni.</p>
-                            @endif
-                            
-                            @if($candidature->lettre_motivation)
-                                <a href="{{ Storage::url($candidature->lettre_motivation) }}" target="_blank" class="btn btn-info ml-2">
-                                    <i class="fas fa-file-alt"></i> Voir la Lettre de Motivation
-                                </a>
-                            @else
-                                <p class="mt-2">Aucune lettre de motivation fournie.</p>
-                            @endif
+                            </div>
+
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+                        <div class="card-body">
+                            <div class="row g-4">
+                                <!-- Informations Personnelles -->
+                                <div class="col-md-6">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">Informations Personnelles</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item"><strong>Téléphone :</strong>
+                                                    {{ $candidature->telephone ?? 'Non fourni' }}</li>
+                                                <li class="list-group-item"><strong>Date de candidature :</strong>
+                                                    {{ $candidature->created_at->format('d/m/Y H:i') }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Informations sur la Candidature -->
+                                <div class="col-md-6">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">Informations sur la Candidature</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item"><strong>Poste :</strong>
+                                                    {{ $candidature->emploi->titre ?? 'N/A' }}</li>
+                                                <li class="list-group-item"><strong>Statut :</strong>
+                                                    <span
+                                                        class="badge 
+                                                    @if ($candidature->statut == 'accepte') bg-success 
+                                                    @elseif($candidature->statut == 'refuse') bg-danger 
+                                                    @else bg-warning text-dark @endif">
+                                                        {{ ucfirst(str_replace('_', ' ', $candidature->statut)) }}
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Message de motivation -->
+                            <div class="mt-4 card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">Détails de l'Emploi</h5>
+
+                                    <div class="mt-4 card border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">Détails de l'Emploi</h5>
+                                            <div class="row g-3">
+
+                                                <div class="col-md-6">
+                                                    <strong>Titre :</strong> {{ $candidature->emploi->titre ?? 'N/A' }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Entreprise :</strong>
+                                                    {{ $candidature->emploi->entreprise ?? 'N/A' }}
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <strong>Type de contrat :</strong>
+                                                    {{ $candidature->emploi->type_contrat ?? 'N/A' }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Localisation :</strong>
+                                                    {{ $candidature->emploi->localisation ?? 'N/A' }}
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <strong>Salaire :</strong>
+                                                    {{ $candidature->emploi->salaire_min ?? 'N/A' }} -
+                                                    {{ $candidature->emploi->salaire_max ?? 'N/A' }} €
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Nombre de postes :</strong>
+                                                    {{ $candidature->emploi->nombre_postes ?? 'N/A' }}
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <strong>Niveau d'étude :</strong>
+                                                    {{ $candidature->emploi->niveau_etude ?? 'N/A' }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Expérience requise :</strong>
+                                                    {{ $candidature->emploi->experience_requise ?? 'N/A' }}
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <strong>Compétences requises :</strong>
+                                                    {{ $candidature->emploi->competences_requises ?? 'N/A' }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Statut :</strong> {{ $candidature->emploi->statut ?? 'N/A' }}
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <strong>Contact email :</strong>
+                                                    {{ $candidature->emploi->contact_email ?? 'N/A' }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Contact téléphone :</strong>
+                                                    {{ $candidature->emploi->contact_telephone ?? 'N/A' }}
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <strong>Avantages :</strong>
+                                                    <p class=" badge bg-success">
+                                                        {{ $candidature->emploi->avantages ?? 'N/A' }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <strong>Date d'expiration :</strong>
+                                                    <p class=" badge bg-danger">
+                                                        {{ $candidature->emploi->date_expiration ? \Carbon\Carbon::parse($candidature->emploi->date_expiration)->format('d/m/Y') : 'N/A' }}
+                                                    </p>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <h5 class="card-title mt-4 mb-3">Message de Motivation</h5>
+                                    <p class="bg-light p-3 rounded">{{ $candidature->message ?: 'Aucun message fourni.' }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Documents -->
+                            <div class="mt-4 card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">Documents</h5>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        @if ($candidature->cv_path)
+                                            <a href="{{ $candidature->cv_path }}" target="_blank" class="btn btn-danger">
+                                                <i class="ri ri-file-paper-line"></i> CV
+                                            </a>
+                                        @else
+                                            <span class="text-muted">Aucun CV fourni</span>
+                                        @endif
+
+                                        @if ($candidature->lettre_motivation)
+                                            <a href="{{ $candidature->lettre_motivation }}" target="_blank"
+                                                class="btn btn-info">
+                                                <i class="ri ri-file-text-line me-1"></i> Lettre de Motivation
+                                            </a>
+                                        @else
+                                            <span class="text-muted">Aucune lettre fournie</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- card-body -->
+                    </div> <!-- card -->
+                </div> <!-- col-lg-10 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+
+
+
+    <style>
+        .user-profile-section .card-body h5 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .user-profile-section .badge {
+            font-size: 0.9rem;
+            padding: 0.4em 0.7em;
+        }
+
+        .user-profile-section .btn {
+            min-width: 120px;
+        }
+    </style>
 @endsection
-
-@push('styles')
-<style>
-.user-profile-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.05);
-    padding: 30px;
-}
-.user-profile-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-.user-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-right: 20px;
-}
-.user-name {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-.user-email {
-    color: #666;
-}
-.user-profile-body h4 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-.message-box {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 5px;
-    min-height: 100px;
-}
-</style>
-@endpush 
