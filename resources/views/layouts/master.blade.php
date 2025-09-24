@@ -239,37 +239,37 @@
         }
     </style>
 
-
-
+    {{-- /Welcome/ --}}
     @yield('welcome')
-    {{-- // --}}
+    
 
     {{-- /Opportunites/ --}}
-    @yield('Achats')
+    @yield('Opportunites')
+    @yield('Opportunite_show')
+    {{-- @yield('Achats')
     @yield('Articles')
     @yield('Commerce')
     @yield('Conseils_actualites')
-    @yield('Divers')
-    @yield('Opportunites')
-    @yield('Opportunite_show')
+    @yield('Divers') --}}
+    
 
     {{-- /PARTENAIRES/ --}}
     @yield('indexPartenaire')
     @yield('showPartenaire')
 
-    {{-- /OPPORTUNITES/ --}}
+    {{-- /Emploi/ --}}
     @yield('showEmploi')
     @yield('indexEmploi')
 
-    {{-- /////////// --}}
+    {{-- /////Services////// --}}
     @yield('Services')
 
-    {{-- /Opportunites HUMAINES/ --}}
 
     {{-- /FORMATIONS/ --}}
-
     @yield('formations.index')
     @yield('formations.show')
+
+
     {{-- /NOS SERVICES/ --}}
     @yield('contact')
 
@@ -285,7 +285,8 @@
                         <div class="footer-widget about-company-widget mb-40 wow fadeInUp">
                             <div class="footer-logo mb-3">
                                 <a href="index.html"><img src="{{ asset('assets/images/logo_new.jpg') }}"
-                                        alt="Footer Logo" style="width:100px; max-width:100%; height:auto;"></a>
+                                    alt="Footer Logo" style="width:100px; max-width:100%; height:auto;">
+                                </a>
                             </div>
                             <p>
                                 Excellium Conseils, c’est bien plus qu’un cabinet de conseil :
