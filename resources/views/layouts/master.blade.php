@@ -90,13 +90,60 @@
                                             </svg>
                                             <i>@lang('extracted.flash_info')</i>
                                         </div>
-
-
-
-
+                                        <div class="blocbourse2 Container80 TexAlCenter"
+                                            style="height:30px;width:63%;border-bottom: 0.2px solid #918e8e;background-color: #FFAC1E;">
+                                            <div class="White Container50 TexAlLeft">
+                                                <div class="Container100">
+                                                    <div class="EmptyBox10"></div>
+                                                    <marquee scrolldelay="130" truespeed="true"
+                                                        style="border-right: 3px solid #f0eded;border-left: 3px solid #f0eded; padding-right: 10px;">
+                                                        <span id="news"
+                                                            style="font-size: 15px; font-weight: normal; color: #f0eded;">
+                                                            chargement......
+                                                        </span>
+                                                    </marquee>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
+                            <script>
+                                async function loadRSS() {
+                                    try {
+                                        let response = await fetch("/rss"); // appelle ton proxy Laravel
+                                        if (!response.ok) throw new Error("Erreur lors du chargement du flux");
+
+                                        let text = await response.text();
+                                        let parser = new DOMParser();
+                                        let xml = parser.parseFromString(text, "application/xml");
+
+                                        let items = xml.querySelectorAll("item");
+                                        let html = "";
+                                        items.forEach((el, idx) => {
+                                            if (idx < 5) {
+                                                let title = el.querySelector("title").textContent;
+                                                let link = el.querySelector("link").textContent;
+                                                html += ` 🔹 <a href="${link}" target="_blank" style="color:#f0eded; text-decoration:none;">
+                                    ${title}
+                                     </a> &nbsp;&nbsp; | &nbsp;&nbsp; `;
+                                            }
+                                        });
+
+                                        document.getElementById("news").innerHTML = html;
+                                    } catch (e) {
+                                        document.getElementById("news").innerHTML = "Impossible de charger les actualités.";
+                                        console.error(e);
+                                    }
+                                }
+                                loadRSS();
+                            </script>
+
+
+
+
                             {{-- <x-news-ticker/> --}}
 
                             <!--=== Main Menu ===-->
@@ -126,11 +173,14 @@
                                                 <li><a href="{{ route('Compta_Fiscale') }}">@lang('extracted.comptable_fiscale')</a></li>
                                                 <li><a href="{{ route('Financement') }}">@lang('extracted.financement')</a></li>
                                                 <li><a href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a></li>
-                                                <li><a href="{{ route('Opportunites_humaines') }}">@lang('extracted.r_humaines')</a></li>
+                                                <li><a
+                                                        href="{{ route('Opportunites_humaines') }}">@lang('extracted.r_humaines')</a>
+                                                </li>
                                             @endif
                                         </ul>
                                     </li>
-                                    <li class="menu-item has-children"><a href="{{ route('opportunites.index_public') }}">@lang('Opportunites')</a>
+                                    <li class="menu-item has-children"><a
+                                            href="{{ route('opportunites.index_public') }}">@lang('Opportunites')</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="{{ route('Opportunites.achat_location') }}">@lang('extracted.achats_location')</a>
                                             </li>
@@ -157,45 +207,6 @@
                                     </li>
                                 </ul>
                             </nav>
-
-                            {{-- <!-- Flash Bourse Banner -->
-                            <div class="flash-bourse-banner"
-                                style="position: absolute; top:100%; left:0px; width: 100%; z-index: 9999;">
-                                <div class="blocOrange orange PosRelative Container100 Responsive100">
-                                    <div class="PosAbsolute blocBourse1 afficher afficherAutre Container80 TexAlCenter Responsive100"
-                                        style="display: flex; justify-content: center; align-items: center;">
-                                        <div class="blocbourse noire Container10"
-                                            style="background-color:#0C2B30;padding:1px 22px 2px 22px;">
-                                            <div class="EmptyBox10"></div>
-                                            <i>@lang('extracted.flash_info')</i>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                fill="black" viewBox="0 0 24 24">
-                                                <path d="M3 10v4h3l5 5V5L6 10H3zm13.5 2a2.5 2.5 0 1 0 0-5h-1v5h1z" />
-                                            </svg>
-                                        </div>
-
-                                        <div class="blocbourse2 Container80 TexAlCenter"
-                                            style="height:30px;width:88%;border-bottom: 0.2px solid #918e8e; background-color:#0C2B30;">
-                                            <div class="White Container50 TexAlLeft">
-                                                <div class="Container100">
-                                                    <div class="EmptyBox10"></div>
-                                                    <marquee scrolldelay="130" truespeed="true"
-                                                        style="border-right: 3px solid #f0eded;border-left: 3px solid #f0eded; padding-right: 10px;">
-                                                        <span
-                                                            style="font-size: 12px; font-weight: normal; color: #f0eded;">
-                                                            FTSC 17000 FCFA 4,14% - SVOC 4000 FCFA 0% - NEIC 1200 FCFA
-                                                            0% - NTLC 49500 FCFA 0,01% -
-                                                            ONTBF 8200 FCFA 12,72% - PALC 11000 FCFA 0% - SAFC 17500
-                                                            FCFA 0%
-                                                        </span>
-                                                    </marquee>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div> --}}
 
                         </div>
                         @php

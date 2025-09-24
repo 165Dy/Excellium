@@ -92,11 +92,23 @@ class Emploi extends Model
         return $this->date_expiration < now()->toDateString();
     }
 
+    // public function joursRestants()
+    // {
+    //     return Carbon::parse($this->date_expiration)->diffInDays(now());
+    // }
     public function joursRestants()
     {
-        return Carbon::parse($this->date_expiration)->diffInDays(now());
-    }
+        $aujourdhui = Carbon::today();
+        $expiration = Carbon::parse($this->date_expiration);
 
+        $diff = $aujourdhui->diffInDays($expiration, false); // false = peut être négatif si expiré
+
+        if ($diff < 0) {
+            return 0; // ou "Expiré"
+        }
+
+        return $diff;
+    }
     public function isEmailCandidate($email)
     {
         return $this->candidatures()->where('email', $email)->exists();

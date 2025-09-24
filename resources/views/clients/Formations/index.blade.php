@@ -32,32 +32,40 @@
 
     <section class="blog-grid-section secondary-dark-bg pt-140 pb-140">
         <div class="container" style="margin-top: -100px">
+
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="product-filter">
-                        <div class="row align-items-center">
-                            <div class="col-md-7">
-                                <div class="show-text wow fadeInLeft">
-                                    <span>Nombre d'offres : {{ $formations->count() }}</span>
+                    <div class="card bg-dark border-secondary">
+                        <div class="card-body">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label for="searchInput" class="form-label text-white me-2 mb-0">Rechercher</label>
+                                    <input type="text" id="searchInput" class="form-control"
+                                        placeholder="🔍....{{ $formations->count() }} formations disponibles">
                                 </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="filter-dropdown float-md-end wow fadeInRight">
-                                    <select class="wide" id="typeContratSelect">
-                                        <option value="TOUT">@lang('extracted.tout')</option>
-                                        <option value="STAGE">@lang('extracted.comptabilite')</option>
-                                        <option value="CDI">@lang('extracted.audit')</option>
-                                        <option value="CDD">@lang('extracted.rhumaines')</option>
-                                        <option value="CDD">@lang('extracted.rfinancement')</option>
-                                        <option value="CDD">@lang('extracted.gestionpaie')</option>
-                                        <option value="CDD">@lang('extracted.autres')</option>
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label for="categoryFilter" class="form-label text-white me-2 mb-0">Catégorie</label>
+                                    <select id="categoryFilter" class="form-select">
+                                        <option value="">Toutes les catégories</option>
+                                        @foreach ($categories as $categorie)
+                                            <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label for="statusFilter" class="form-label text-white me-2 mb-0">Statut</label>
+                                    <select id="statusFilter" class="form-select">
+                                        <option value="">Tous les statuts</option>
+                                        <option value="en_ligne">En ligne</option>
+                                        <option value="ferme">Fermé</option>
                                     </select>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><br>
             <div class="row">
                 @if ($formations->isEmpty())
                     <div class="col-12">
@@ -70,7 +78,8 @@
                     @foreach ($formations as $formation)
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="blog-post-item style-two mb-30 wow fadeInDown">
-                                <div class="post-thumbnail">
+                                <div class="post-thumbnail"
+                                    style="background-color: rgba(255, 252, 252, 0.89);border-radius: 10px">
                                     @if ($formation->file_path && $formation->file_type === 'image')
                                         <img src="{{ asset('storage/' . $formation->file_path) }}"
                                             alt="{{ $formation->titre }}"

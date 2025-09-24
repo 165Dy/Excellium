@@ -42,7 +42,7 @@
                                 <div class="col-md-4 d-flex align-items-center">
                                     <label for="searchInput" class="form-label text-white me-2 mb-0">Rechercher</label>
                                     <input type="text" id="searchInput" class="form-control"
-                                        placeholder="Rechercher une opportunité...">
+                                        placeholder="🔍...Rechercher une opportunité">
                                 </div>
                                 <div class="col-md-4 d-flex align-items-center">
                                     <label for="categoryFilter" class="form-label text-white me-2 mb-0">Catégorie</label>
@@ -390,4 +390,5 @@
                 });
         }
     </script>
+
 @endsection

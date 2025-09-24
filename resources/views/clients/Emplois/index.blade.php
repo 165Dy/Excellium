@@ -29,22 +29,29 @@
     </section><!--====== End Page Section ======-->
     <section class="shop-section secondary-dark-bg pt-140 pb-100">
         <div class="container" style="margin-top: -100px">
+
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="product-filter">
-                        <div class="row align-items-center">
-                            <div class="col-md-7">
-                                <div class="show-text wow fadeInLeft">
-                                    <span>Nombre d'offres : {{ $emplois->count() }}</span>
+                    <div class="card bg-dark border-secondary">
+                        <div class="card-body">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label for="searchInput" class="form-label text-white me-2 mb-0">Disponible</label>
+                                    <input type="text" value="{{ $emplois->count() }}" class="form-control" disabled>
                                 </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="filter-dropdown float-md-end wow fadeInRight">
-                                    <select class="wide" id="typeContratSelect">
-                                        <option value="TOUT">Tout</option>
-                                        <option value="STAGE">Stage</option>
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label for="searchInput" class="form-label text-white me-2 mb-0">Rechercher</label>
+                                    <input type="text" id="searchInput" class="form-control"
+                                        placeholder="🔍........Recherche........🔍">
+                                </div>
+
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label for="statusFilter" class="form-label text-white me-2 mb-0">Statut</label>
+                                    <select id="statusFilter" class="form-select">
+                                        <option value="">Tous les statuts</option>
                                         <option value="CDI">CDI</option>
                                         <option value="CDD">CDD</option>
+                                        <option value="STAGE">Stage</option>
                                         <option value="FREELANCE">Freelance</option>
                                         <option value="ALTERNANCE">Alternance</option>
                                     </select>
@@ -53,7 +60,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><br>
+
 
             <div class="row">
                 @if ($emplois->isEmpty())
@@ -106,26 +114,36 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                const select = document.getElementById('typeContratSelect');
+                const searchInput = document.getElementById('searchInput');
+                const statusFilter = document.getElementById('statusFilter');
+                const emploiItems = document.querySelectorAll('.emploi-item');
 
-                select.addEventListener('change', function() {
-                    const selected = this.value.toUpperCase().trim();
+                function filterEmplois() {
+                    const searchValue = searchInput.value.toLowerCase().trim();
+                    const statusValue = statusFilter.value.trim().toUpperCase();
 
-                    document.querySelectorAll('.emploi-item').forEach(function(item) {
-                        const type = item.getAttribute('data-type-contrat').toUpperCase().trim();
+                    emploiItems.forEach(item => {
+                        const title = item.querySelector('h4 a').textContent.toLowerCase();
+                        const description = item.querySelector('.price').textContent.toLowerCase();
+                        const typeContrat = item.getAttribute('data-type-contrat').toUpperCase();
 
-                        if (selected === "TOUT" || selected === type) {
-                            item.style.display = "";
+                        // Vérifie si le texte de recherche est présent et si le type de contrat correspond
+                        const matchesSearch = title.includes(searchValue) || description.includes(searchValue);
+                        const matchesStatus = statusValue === "" || typeContrat === statusValue;
+
+                        if (matchesSearch && matchesStatus) {
+                            item.style.display = "block";
                         } else {
                             item.style.display = "none";
                         }
                     });
-                });
+                }
+
+                // Événements pour filtrage instantané
+                searchInput.addEventListener('input', filterEmplois);
+                statusFilter.addEventListener('change', filterEmplois);
             });
         </script>
-
-
-
 
     </section>
 

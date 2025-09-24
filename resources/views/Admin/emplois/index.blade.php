@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('index_emplois')
-<br><br>
+    <br><br>
     <style>
         .bg-gradient-primary {
             background: linear-gradient(135deg, #696ac3, #4f46e5) !important;
@@ -190,18 +190,31 @@
                                         <td>{!! $emploi->statut_badge !!}</td>
                                         <td>
                                             <div class="d-flex gap-1">
-                                                <button class="btn btn-info btn-sm"
-                                                    onclick="voirDetailsEmploi({{ $emploi->id }})"
-                                                    title="Voir détails">
+                                                <button class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                                    data-bs-target="#modalVoirEmploi" title="Voir détails"
+                                                    data-id="{{ $emploi->id }}" data-titre="{{ $emploi->titre }}"
+                                                    data-entreprise="{{ $emploi->entreprise }}"
+                                                    data-salaireMin="{{ $emploi->salaire_min . ' FCFA' }}"
+                                                    data-salaireMax="{{ $emploi->salaire_max . ' FCFA' }}"
+                                                    data-localisation="{{ $emploi->localisation }}"
+                                                    data-contrat="{{ $emploi->type_contrat }}"
+                                                    data-expiration="{{ $emploi->date_expiration }}"
+                                                    data-statut="{{ $emploi->statut }}">
                                                     <i class="ri ri-eye-line"></i>
                                                 </button>
-                                                <button class="btn btn-warning btn-sm"
-                                                    onclick="editerEmploi({{ $emploi->id }})" title="Modifier">
+                                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                    data-bs-target="#modalEditEmploi" title="Modifier"
+                                                    data-id="{{ $emploi->id }}" data-titre="{{ $emploi->titre }}"
+                                                    data-entreprise="{{ $emploi->entreprise }}"
+                                                    data-salaireMin="{{ $emploi->salaire_min . ' FCFA' }}"
+                                                    data-salaireMax="{{ $emploi->salaire_max . ' FCFA' }}"
+                                                    data-localisation="{{ $emploi->localisation }}"
+                                                    data-contrat="{{ $emploi->type_contrat }}"
+                                                    data-expiration="{{ $emploi->date_expiration }}"
+                                                    data-statut="{{ $emploi->statut }}">
                                                     <i class="ri ri-edit-line"></i>
                                                 </button>
-                                                <button class="btn btn-danger btn-sm"
-                                                    onclick="supprimerEmploi({{ $emploi->id }}, '{{ addslashes($emploi->titre) }}')"
-                                                    title="Supprimer">
+                                                <button class="btn btn-danger btn-sm" title="Supprimer">
                                                     <i class="ri ri-delete-bin-line"></i>
                                                 </button>
                                             </div>
@@ -225,23 +238,162 @@
             </div>
         </div>
     </div>
+    <!-- Modal Voir Détails -->
+    <div class="modal fade" id="modalVoirEmploi" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Détails de l'emploi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Titre :</strong> <span id="emploiTitre"></span></li>
+                        <li class="list-group-item"><strong>Entreprise :</strong> <span id="emploiEntreprise"></span></li>
+                        <li class="list-group-item"><strong>Salaire minimum :</strong> <span id="emploiSalaireMin"></span>
+                        </li>
+                        <li class="list-group-item"><strong>Salaire maximum :</strong> <span id="emploiSalaireMax"></span>
+                        </li>
+                        <li class="list-group-item"><strong>Localisation :</strong> <span id="emploiLocalisation"></span>
+                        </li>
+                        <li class="list-group-item"><strong>Type de contrat :</strong> <span id="emploiContrat"></span>
+                        </li>
+                        <li class="list-group-item"><strong>Date d’expiration :</strong> <span
+                                id="emploiExpiration"></span></li>
+                        <li class="list-group-item"><strong>Statut :</strong> <span id="emploiStatut"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Éditer -->
+    <div class="modal fade" id="modalEditEmploi" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-white">
+                    <h5 class="modal-title">Modifier l'emploi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="formEditEmploi">
+                    <div class="modal-body">
+                        <input type="hidden" id="editId" name="id">
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Titre</label>
+                                <input type="text" class="form-control" id="editTitre" name="titre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Entreprise</label>
+                                <input type="text" class="form-control" id="editEntreprise" name="entreprise"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Salaire min</label>
+                                <input type="text" class="form-control" id="editSalaireMin" name="salaire_min">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Salaire max</label>
+                                <input type="text" class="form-control" id="editSalaireMax" name="salaire_max">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Localisation</label>
+                                <input type="text" class="form-control" id="editLocalisation" name="localisation">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Type de contrat</label>
+                                <select class="form-select" id="editContrat" name="type_contrat">
+                                    <option value="CDI">CDI</option>
+                                    <option value="CDD">CDD</option>
+                                    <option value="Stage">Stage</option>
+                                    <option value="Freelance">Freelance</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Date d’expiration</label>
+                                <input type="date" class="form-control" id="editExpiration" name="date_expiration">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Statut</label>
+                                <select class="form-select" id="editStatut" name="statut">
+                                    <option value="Actif">Actif</option>
+                                    <option value="Inactif">Inactif</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Enregistrer</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
 
     <script>
         function refreshEmplois() {
             window.location.reload();
         }
-
-        function voirDetailsEmploi(id) {
-            console.log('Voir détails:', id);
-        }
-
-        function editerEmploi(id) {
-            console.log('Éditer:', id);
-        }
-
-        function supprimerEmploi(id, titre) {
-            console.log('Supprimer:', id, titre);
-        }
     </script>
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Quand la modale Voir s’ouvre
+            var voirModal = document.getElementById('modalVoirEmploi');
+            voirModal.addEventListener('show.bs.modal', function(event) {
+                let button = event.relatedTarget; // bouton qui a ouvert la modale
+
+                document.getElementById("emploiTitre").textContent = button.getAttribute('data-titre');
+                document.getElementById("emploiEntreprise").textContent = button.getAttribute(
+                    'data-entreprise');
+                document.getElementById("emploiSalaireMin").textContent = button.getAttribute(
+                    'data-salaireMin');
+                document.getElementById("emploiSalaireMax").textContent = button.getAttribute(
+                    'data-salaireMax');
+                document.getElementById("emploiLocalisation").textContent = button.getAttribute(
+                    'data-localisation');
+                document.getElementById("emploiContrat").textContent = button.getAttribute('data-contrat');
+                document.getElementById("emploiExpiration").textContent = button.getAttribute(
+                    'data-expiration');
+                document.getElementById("emploiStatut").textContent = button.getAttribute('data-statut');
+            });
+
+            // Quand la modale Edit s’ouvre
+            var editModal = document.getElementById('modalEditEmploi');
+            editModal.addEventListener('show.bs.modal', function(event) {
+                let button = event.relatedTarget;
+
+                document.getElementById("editId").value = button.getAttribute('data-id');
+                document.getElementById("editTitre").value = button.getAttribute('data-titre');
+                document.getElementById("editEntreprise").value = button.getAttribute('data-entreprise');
+                document.getElementById("editSalaireMin").value = button.getAttribute('data-salaireMin');
+                document.getElementById("editSalaireMax").value = button.getAttribute('data-salaireMax');
+                document.getElementById("editLocalisation").value = button.getAttribute(
+                'data-localisation');
+                document.getElementById("editContrat").value = button.getAttribute('data-contrat');
+                document.getElementById("editExpiration").value = button.getAttribute('data-expiration');
+                document.getElementById("editStatut").value = button.getAttribute('data-statut');
+            });
+        });
+    </script>
+
+
+
+
+
 @endsection

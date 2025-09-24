@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
+
 
 use App\Http\Controllers\formationsController;
 use App\Http\Controllers\InscriptionController;
@@ -173,6 +175,25 @@ Route::prefix('admin')->group(function () {
     // CALENDRIER
     Route::get('/email/index',[DashboardController::class, 'index_email'])->name('email.index');
 
+
+
+
 });
 
+Route::get('/rss', function () {
+            $url = "https://news.google.com/rss/search?q=C%C3%B4te+d%27Ivoire&hl=fr&gl=CI&ceid=CI:fr";
 
+            try {
+                $response = Http::get($url);
+
+                if ($response->successful()) {
+                    return response($response->body(), 200)
+                        ->header('Content-Type', 'application/xml')
+                        ->header('Access-Control-Allow-Origin', '*');
+                } else {
+                    return response("Erreur lors du chargement du flux.", 500);
+                }
+            } catch (\Exception $e) {
+                return response("Impossible de contacter la source.", 500);
+            }
+        });

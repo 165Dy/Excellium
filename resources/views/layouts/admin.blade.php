@@ -216,13 +216,15 @@
                                             d="M7.82901 2.22569C8.87231 0.444187 11.1726 -0.172113 12.9668 0.849138C14.7611 1.87039 15.3698 4.14247 14.3265 5.92397L7.38656 17.7743C6.34325 19.5558 4.04298 20.1721 2.24875 19.1509C0.454514 18.1296 -0.154233 15.8575 0.88907 14.076L7.82901 2.22569Z"
                                             fill="currentColor" />
                                         <defs>
-                                            <linearGradient id="paint0_linear_2989_100980" x1="5.36642" y1="0.849138"
-                                                x2="10.532" y2="24.104" gradientUnits="userSpaceOnUse">
+                                            <linearGradient id="paint0_linear_2989_100980" x1="5.36642"
+                                                y1="0.849138" x2="10.532" y2="24.104"
+                                                gradientUnits="userSpaceOnUse">
                                                 <stop offset="0" stop-opacity="1" />
                                                 <stop offset="1" stop-opacity="0" />
                                             </linearGradient>
-                                            <linearGradient id="paint1_linear_2989_100980" x1="5.19475" y1="0.849139"
-                                                x2="10.3357" y2="24.1155" gradientUnits="userSpaceOnUse">
+                                            <linearGradient id="paint1_linear_2989_100980" x1="5.19475"
+                                                y1="0.849139" x2="10.3357" y2="24.1155"
+                                                gradientUnits="userSpaceOnUse">
                                                 <stop offset="0" stop-opacity="1" />
                                                 <stop offset="1" stop-opacity="0" />
                                             </linearGradient>
@@ -230,11 +232,11 @@
                                     </svg>
                                 </span>
                             </span>
-                            <span
-                                class="app-brand-text demo menu-text fw-semibold ms-1">@lang('extracted.materialize')</span>
+                            <span class="app-brand-text demo menu-text fw-semibold ms-1">@lang('extracted.materialize')</span>
                         </a>
 
-                        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
+                        <a href="javascript:void(0);"
+                            class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
                             <i class="icon-base ri ri-close-line icon-sm"></i>
                         </a>
                     </div>
@@ -250,7 +252,8 @@
                             <!-- Search -->
                             <li class="nav-item navbar-search-wrapper me-sm-2 me-xl-0">
                                 <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
-                                    <span class="d-inline-block text-body-secondary fw-normal" id="autocomplete"></span>
+                                    <span class="d-inline-block text-body-secondary fw-normal"
+                                        id="autocomplete"></span>
                                 </a>
                             </li>
                             <!-- /Search -->
@@ -302,7 +305,8 @@
                                             <h6 class="mb-0 me-auto">@lang('extracted.shortcuts')</h6>
                                             <a href="javascript:void(0)"
                                                 class="btn btn-text-secondary rounded-pill btn-icon dropdown-shortcuts-add text-heading"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts">
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Add shortcuts">
                                                 <i class="icon-base ri ri-add-line text-heading"></i>
                                             </a>
                                         </div>
@@ -311,7 +315,8 @@
                                         <div class="row row-bordered overflow-visible g-0">
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                    <i class="icon-base ri ri-calendar-line icon-26px text-heading"></i>
+                                                    <i
+                                                        class="icon-base ri ri-calendar-line icon-26px text-heading"></i>
                                                 </span>
                                                 <a href="app-calendar.html"
                                                     class="stretched-link">@lang('extracted.calendar')</a>
@@ -338,7 +343,8 @@
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                    <i class="icon-base ri ri-computer-line icon-26px text-heading"></i>
+                                                    <i
+                                                        class="icon-base ri ri-computer-line icon-26px text-heading"></i>
                                                 </span>
                                                 <a href="app-access-roles.html"
                                                     class="stretched-link">@lang('extracted.role_management')</a>
@@ -367,10 +373,10 @@
                                         <div class="row row-bordered overflow-visible g-0">
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                    <i class="icon-base ri ri-question-line icon-26px text-heading"></i>
+                                                    <i
+                                                        class="icon-base ri ri-question-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="pages-faq.html"
-                                                    class="stretched-link">@lang('extracted.faqs')</a>
+                                                <a href="pages-faq.html" class="stretched-link">@lang('extracted.faqs')</a>
                                                 <small>@lang('extracted.faqs_articles')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
@@ -426,8 +432,7 @@
                                                         </h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.won_the_monthly_best_seller_gold_badge')</small>
-                                                        <small
-                                                            class="text-body-secondary">@lang('extracted.1h_ago')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -452,8 +457,7 @@
                                                         <h6 class="small mb-1">@lang('extracted.charles_franklin')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.accepted_your_connection')</small>
-                                                        <small
-                                                            class="text-body-secondary">@lang('extracted.12hr_ago')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.12hr_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -478,8 +482,7 @@
                                                         <h6 class="small mb-1">@lang('extracted.new_message')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.you_have_new_message_from_natalie')</small>
-                                                        <small
-                                                            class="text-body-secondary">@lang('extracted.1h_ago')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -506,8 +509,7 @@
                                                             @lang('extracted.whoo_you_have_new_order')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.acme_inc_made_new_order_1154')</small>
-                                                        <small
-                                                            class="text-body-secondary">@lang('extracted.1_day_ago')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.1_day_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -533,8 +535,7 @@
                                                             @lang('extracted.application_has_been_approved')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.your_abc_project_application_has_been_approved')</small>
-                                                        <small
-                                                            class="text-body-secondary">@lang('extracted.2_days_ago')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.2_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -561,8 +562,7 @@
                                                             @lang('extracted.monthly_report_is_generated')</h6>
                                                         <small class="mb-1 d-block text-body">July monthly financial
                                                             report is generated </small>
-                                                        <small
-                                                            class="text-body-secondary">@lang('extracted.3_days_ago')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.3_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -588,8 +588,7 @@
                                                             @lang('extracted.send_connection_request')</h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.peter_sent_you_connection_request')</small>
-                                                        <small
-                                                            class="text-body-secondary">@lang('extracted.4_days_ago')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.4_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -615,8 +614,7 @@
                                                         </h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.your_have_new_message_from_jane')</small>
-                                                        <small
-                                                            class="text-body-secondary">@lang('extracted.5_days_ago')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -643,8 +641,7 @@
                                                         </h6>
                                                         <small
                                                             class="mb-1 d-block text-body">@lang('extracted.cpu_utilization_percent_is_currently_at_8863')</small>
-                                                        <small
-                                                            class="text-body-secondary">@lang('extracted.5_days_ago')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -661,8 +658,7 @@
                                     <li class="border-top">
                                         <div class="d-grid p-4">
                                             <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
-                                                <small
-                                                    class="align-middle">@lang('extracted.view_all_notifications')</small>
+                                                <small class="align-middle">@lang('extracted.view_all_notifications')</small>
                                             </a>
                                         </div>
                                     </li>
@@ -685,8 +681,8 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0 me-2">
                                                     <div class="avatar avatar-online">
-                                                        <img src="{{ asset('assets_2/img/avatars/1.png') }}" alt="alt"
-                                                            class="w-px-40 h-auto rounded-circle" />
+                                                        <img src="{{ asset('assets_2/img/avatars/1.png') }}"
+                                                            alt="alt" class="w-px-40 h-auto rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -716,8 +712,7 @@
                                             <span class="d-flex align-items-center align-middle">
                                                 <i
                                                     class="flex-shrink-0 icon-base ri ri-file-text-line icon-22px me-3"></i>
-                                                <span
-                                                    class="flex-grow-1 align-middle">@lang('extracted.billing_plan')</span>
+                                                <span class="flex-grow-1 align-middle">@lang('extracted.billing_plan')</span>
                                                 <span
                                                     class="flex-shrink-0 badge badge-center rounded-pill bg-danger">4</span>
                                             </span>
@@ -728,7 +723,8 @@
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="pages-pricing.html">
-                                            <i class="icon-base ri ri-money-dollar-circle-line icon-22px me-3"></i><span
+                                            <i
+                                                class="icon-base ri ri-money-dollar-circle-line icon-22px me-3"></i><span
                                                 class="align-middle">@lang('extracted.pricing')</span>
                                         </a>
                                     </li>
@@ -810,8 +806,8 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_formations"
-                                                data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_formations" data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>@lang('extracted.creer_une_formation')</div>
@@ -828,7 +824,8 @@
                                 </li>
 
                                 <!-- Emplois -->
-                                <li class="menu-item {{ request()->routeIs('admin.emplois.*') ? 'active open' : '' }}">
+                                <li
+                                    class="menu-item {{ request()->routeIs('admin.emplois.*') ? 'active open' : '' }}">
                                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-computer-line"></i>
                                         <div data-i18n="Offres d'emploi">@lang('extracted.emplois')</div>
@@ -839,7 +836,8 @@
                                         </div>
                                     </a>
                                     <ul class="menu-sub">
-                                        <li class="menu-item {{ request()->routeIs('emplois.index') ? 'active' : '' }}">
+                                        <li
+                                            class="menu-item {{ request()->routeIs('emplois.index') ? 'active' : '' }}">
                                             <a href="{{ route('emplois.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-list"></i>
                                                 <div data-i18n="Liste des emplois">@lang('extracted.liste_des_emplois')
@@ -871,7 +869,7 @@
                                 <li
                                     class="menu-item {{ request()->routeIs('admin.opportunites.*') ? 'active open' : '' }}">
                                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                        <i class="menu-icon icon-base ri ri-handshake-line"></i>
+                                        <i class="menu-icon icon-base ri ri-bag me-2"></i>
                                         <div data-i18n="Opportunités d'affaire">Opportunités d'affaire</div>
                                         <div class="badge badge-center rounded-pill bg-primary ms-auto"
                                             style="width:10px, height:10px">
@@ -917,7 +915,8 @@
 
                                         <li class="menu-item">
                                             <a href="{{ route('partenaires.index') }}" class="menu-link">
-                                                <i class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
+                                                <i
+                                                    class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
                                                 <div>@lang('extracted.partenaires')</div>
                                             </a>
                                         </li>
@@ -945,8 +944,8 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_categories"
-                                                data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_categories" data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>AJOUTER </div>
@@ -971,8 +970,8 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_produits"
-                                                data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_produits" data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>AJOUTER </div>
@@ -997,8 +996,8 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="javascript:;" class="menu-link" data-bs-target="#create_services"
-                                                data-bs-toggle="modal">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_services" data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
                                                 <div>AJOUTER </div>
@@ -1035,6 +1034,8 @@
                     @yield('calendrier_index')
                     @yield('index_email')
                     @yield('index_categorie')
+                    @yield('list_candidats')
+                    @yield('Detail_Candidature')
 
                     {{-- //Create// --}}
                     @yield('index_formations')
@@ -1064,8 +1065,8 @@
                                         @csrf
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="titre" name="titre" class="form-control"
-                                                    placeholder="Titre" required>
+                                                <input type="text" id="titre" name="titre"
+                                                    class="form-control" placeholder="Titre" required>
                                                 <label for="titre">@lang('extracted.titre')</label>
                                             </div>
                                         </div>
@@ -1091,8 +1092,7 @@
 
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea name="programme" id="programme" class="form-control"
-                                                    placeholder="Programme" style="height: 100px"></textarea>
+                                                <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>
                                                 <label for="programme">@lang('extracted.programme')</label>
                                             </div>
                                         </div>
@@ -1105,8 +1105,8 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="lieu" name="lieu" class="form-control"
-                                                    placeholder="Lieu">
+                                                <input type="text" id="lieu" name="lieu"
+                                                    class="form-control" placeholder="Lieu">
                                                 <label for="lieu">@lang('extracted.lieu')</label>
                                             </div>
                                         </div>
@@ -1119,31 +1119,29 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="date" id="date_fin" name="date_fin" class="form-control"
-                                                    placeholder="Date de fin">
+                                                <input type="date" id="date_fin" name="date_fin"
+                                                    class="form-control" placeholder="Date de fin">
                                                 <label for="date_fin">@lang('extracted.date_de_fin')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea name="prerequis" id="prerequis" class="form-control"
-                                                    placeholder="Prérequis" style="height: 80px"></textarea>
+                                                <textarea name="prerequis" id="prerequis" class="form-control" placeholder="Prérequis" style="height: 80px"></textarea>
                                                 <label for="prerequis">@lang('extracted.prerequis')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea name="bonus" id="bonus" class="form-control"
-                                                    placeholder="Bonus" style="height: 80px"></textarea>
+                                                <textarea name="bonus" id="bonus" class="form-control" placeholder="Bonus" style="height: 80px"></textarea>
                                                 <label for="bonus">@lang('extracted.bonus')</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="file" id="file" name="file" class="form-control"
-                                                    accept="image/*,video/*" onchange="previewFile(this)">
-                                                <label
-                                                    for="file">@lang('extracted.fichier_image_ou_video_max_150_mb')</label>
+                                                <input type="file" id="file" name="file"
+                                                    class="form-control" accept="image/*,video/*"
+                                                    onchange="previewFile(this)">
+                                                <label for="file">@lang('extracted.fichier_image_ou_video_max_150_mb')</label>
                                             </div>
                                             <div id="file-error" class="mt-2" style="display: none;">
                                                 <div class="alert alert-danger d-flex align-items-center">
@@ -1265,19 +1263,23 @@
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <div class="d-flex justify-content-center gap-2">
-                                                                        <button class="btn btn-sm btn-icon btn-outline-primary"
-                                                                            title="Voir les détails" data-bs-toggle="tooltip"
+                                                                        <button
+                                                                            class="btn btn-sm btn-icon btn-outline-primary"
+                                                                            title="Voir les détails"
+                                                                            data-bs-toggle="tooltip"
                                                                             data-formation-id="{{ $formation->id }}"
                                                                             onclick="voirDetailsFormation({{ $formation->id }})">
                                                                             <i class="ri ri-eye-line"></i>
                                                                         </button>
-                                                                        <button class="btn btn-sm btn-icon btn-outline-warning"
+                                                                        <button
+                                                                            class="btn btn-sm btn-icon btn-outline-warning"
                                                                             title="Modifier" data-bs-toggle="tooltip"
                                                                             data-formation-id="{{ $formation->id }}"
                                                                             onclick="editFormation({{ $formation->id }})">
                                                                             <i class="ri ri-edit-line"></i>
                                                                         </button>
-                                                                        <button class="btn btn-sm btn-icon btn-outline-danger"
+                                                                        <button
+                                                                            class="btn btn-sm btn-icon btn-outline-danger"
                                                                             title="Supprimer" data-bs-toggle="tooltip"
                                                                             data-formation-id="{{ $formation->id }}"
                                                                             data-formation-title="{{ $formation->titre }}"
@@ -1307,8 +1309,9 @@
                                                         disponible(s)</small>
                                                 </div>
                                                 <div>
-                                                    <button class="btn btn-primary" data-bs-target="#create_formations"
-                                                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                                                    <button class="btn btn-primary"
+                                                        data-bs-target="#create_formations" data-bs-toggle="modal"
+                                                        data-bs-dismiss="modal">
                                                         <i class="ri-add-line me-1"></i>
                                                         Nouvelle formation
                                                     </button>
@@ -1351,8 +1354,9 @@
                                         {{-- Titre et Entreprise --}}
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="titre" name="titre" class="form-control"
-                                                    placeholder="Développeur Web Full Stack" required />
+                                                <input type="text" id="titre" name="titre"
+                                                    class="form-control" placeholder="Développeur Web Full Stack"
+                                                    required />
                                                 <label for="titre">
                                                     <i class="fas fa-briefcase me-1"></i>Titre du poste *
                                                 </label>
@@ -1401,7 +1405,8 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="number" id="salaire_min" name="salaire_min"
-                                                    class="form-control" placeholder="500000" min="0" step="1000" />
+                                                    class="form-control" placeholder="500000" min="0"
+                                                    step="1000" />
                                                 <label for="salaire_min">
                                                     <i class="fas fa-money-bill-wave me-1"></i>Salaire minimum (FCFA)
                                                 </label>
@@ -1410,7 +1415,8 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="number" id="salaire_max" name="salaire_max"
-                                                    class="form-control" placeholder="800000" min="0" step="1000" />
+                                                    class="form-control" placeholder="800000" min="0"
+                                                    step="1000" />
                                                 <label for="salaire_max">
                                                     <i class="fas fa-money-bill-wave me-1"></i>Salaire maximum (FCFA)
                                                 </label>
@@ -1457,7 +1463,8 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="number" id="nombre_postes" name="nombre_postes"
-                                                    class="form-control" value="1" min="1" max="50" required />
+                                                    class="form-control" value="1" min="1"
+                                                    max="50" required />
                                                 <label for="nombre_postes">
                                                     <i class="fas fa-users me-1"></i>Nombre de postes *
                                                 </label>
@@ -1466,8 +1473,8 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="date" id="date_expiration" name="date_expiration"
-                                                    class="form-control" min="{{ date('Y-m-d', strtotime('+1 day')) }}"
-                                                    required />
+                                                    class="form-control"
+                                                    min="{{ date('Y-m-d', strtotime('+1 day')) }}" required />
                                                 <label for="date_expiration">
                                                     <i class="fas fa-calendar-alt me-1"></i>Date limite candidature *
                                                 </label>
@@ -1497,10 +1504,8 @@
                                         {{-- Description --}}
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="description" name="description" class="form-control"
-                                                    style="height: 120px;"
-                                                    placeholder="Décrivez le poste, les missions, l'environnement de travail..."
-                                                    required></textarea>
+                                                <textarea id="description" name="description" class="form-control" style="height: 120px;"
+                                                    placeholder="Décrivez le poste, les missions, l'environnement de travail..." required></textarea>
                                                 <label for="description">
                                                     <i class="fas fa-file-alt me-1"></i>Description du poste *
                                                 </label>
@@ -1510,8 +1515,7 @@
                                         {{-- Compétences requises --}}
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="competences_requises" name="competences_requises"
-                                                    class="form-control" style="height: 100px;"
+                                                <textarea id="competences_requises" name="competences_requises" class="form-control" style="height: 100px;"
                                                     placeholder="PHP, Laravel, JavaScript, Vue.js, MySQL..."></textarea>
                                                 <label for="competences_requises">
                                                     <i class="fas fa-cogs me-1"></i>Compétences requises
@@ -1522,8 +1526,7 @@
                                         {{-- Avantages --}}
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="avantages" name="avantages" class="form-control"
-                                                    style="height: 80px;"
+                                                <textarea id="avantages" name="avantages" class="form-control" style="height: 80px;"
                                                     placeholder="Télétravail, mutuelle, tickets restaurant, formation..."></textarea>
                                                 <label for="avantages">
                                                     <i class="fas fa-gift me-1"></i>Avantages
@@ -1548,7 +1551,8 @@
 
                                         {{-- Boutons d'action --}}
                                         <div class="col-12 text-center pt-4">
-                                            <button type="submit" class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
                                                 <i class="fas fa-paper-plane me-2"></i>Publier l'opportunité
                                             </button>
                                             <button type="button" class="btn btn-outline-secondary btn-lg px-4"
@@ -1577,8 +1581,8 @@
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomCategorie" name="nom" class="form-control"
-                                                    placeholder="comptabilité" required />
+                                                <input type="text" id="nomCategorie" name="nom"
+                                                    class="form-control" placeholder="comptabilité" required />
                                                 <label for="nomCategorie">@lang('extracted.nom_categorie')</label>
                                             </div>
                                         </div>
@@ -1627,8 +1631,8 @@
                                         <center>
                                             <li class="menu-item">
 
-                                                <a href="javascript:;" data-bs-target="#create_categories" class=""
-                                                    data-bs-toggle="modal">
+                                                <a href="javascript:;" data-bs-target="#create_categories"
+                                                    class="" data-bs-toggle="modal">
                                                     <i class="menu-icon tf-icons fas fa-plus-circle"></i>
                                                     <div class="btn btn-primary me-3">
                                                         @lang('extracted.ajouter_une_categorie')</div>
@@ -1659,23 +1663,24 @@
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomProduit" name="nom" class="form-control"
-                                                    placeholder="Nom du produit" required />
+                                                <input type="text" id="nomProduit" name="nom"
+                                                    class="form-control" placeholder="Nom du produit" required />
                                                 <label for="nomProduit">@lang('extracted.nom_produit')</label>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="slugProduit" name="slug" class="form-control"
-                                                    placeholder="Slug (ex: produit-1)" required />
+                                                <input type="text" id="slugProduit" name="slug"
+                                                    class="form-control" placeholder="Slug (ex: produit-1)"
+                                                    required />
                                                 <label for="slugProduit">@lang('extracted.slug')</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="categorieProduit" name="categorie_id" class="form-control"
-                                                    required>
+                                                <select id="categorieProduit" name="categorie_id"
+                                                    class="form-control" required>
                                                     <option value="">@lang('extracted.selectionnez_une_categorie')
                                                     </option>
                                                     @foreach ($categories as $categorie)
@@ -1688,7 +1693,8 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="statutProduit" name="statut" class="form-control" required>
+                                                <select id="statutProduit" name="statut" class="form-control"
+                                                    required>
                                                     <option value="actif">@lang('extracted.actif')</option>
                                                     <option value="inactif">@lang('extracted.inactif')</option>
                                                 </select>
@@ -1761,30 +1767,30 @@
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomService" name="nom" class="form-control"
-                                                    placeholder="Nom du service" required />
+                                                <input type="text" id="nomService" name="nom"
+                                                    class="form-control" placeholder="Nom du service" required />
                                                 <label for="nomService">Nom Service</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <textarea id="descriptionService" name="description"
-                                                    class="form-control" placeholder="Description du service"
+                                                <textarea id="descriptionService" name="description" class="form-control" placeholder="Description du service"
                                                     rows="4"></textarea>
                                                 <label for="descriptionService">Description</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="slugService" name="slug" class="form-control"
-                                                    placeholder="Slug (ex: service-1)" required />
+                                                <input type="text" id="slugService" name="slug"
+                                                    class="form-control" placeholder="Slug (ex: service-1)"
+                                                    required />
                                                 <label for="slugService">Slug</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
-                                                <select id="categorieService" name="categorie_id" class="form-control"
-                                                    required>
+                                                <select id="categorieService" name="categorie_id"
+                                                    class="form-control" required>
                                                     <option value="">Sélectionnez une catégorie</option>
                                                     @foreach ($categories as $categorie)
                                                         <option value="{{ $categorie->id }}">{{ $categorie->nom }}
@@ -1818,7 +1824,8 @@
                                         <h4 class="fw-bold text-primary">📋 LISTE DES SERVICES</h4>
                                     </div>
                                     <div class="is-scrollbar-hidden min-w-full overflow-x-auto p-3">
-                                        <table id="tableServices" class="table table-striped table-hover align-middle">
+                                        <table id="tableServices"
+                                            class="table table-striped table-hover align-middle">
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>Nom</th>
@@ -2056,7 +2063,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="editFormationForm" method="POST" class="row g-4" enctype="multipart/form-data">
+                        <form id="editFormationForm" method="POST" class="row g-4"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input type="hidden" id="edit_formation_id" name="formation_id">
@@ -2073,7 +2081,8 @@
                             <!-- Catégorie -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <select id="edit_categorie_id" name="categorie_id" class="form-select" required>
+                                    <select id="edit_categorie_id" name="categorie_id" class="form-select"
+                                        required>
                                         <option value="">@lang('extracted.choisir_une_categorie')</option>
                                         @if (isset($categories) && $categories->count() > 0)
                                             @foreach ($categories as $categorie)
@@ -2091,8 +2100,8 @@
                             <!-- Programme -->
                             <div class="col-12">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_programme" name="programme" class="form-control"
-                                        placeholder="Programme de la formation" rows="3"></textarea>
+                                    <textarea id="edit_programme" name="programme" class="form-control" placeholder="Programme de la formation"
+                                        rows="3"></textarea>
                                     <label for="edit_programme">@lang('extracted.programme')</label>
                                 </div>
                             </div>
@@ -2100,8 +2109,8 @@
                             <!-- Coût -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="number" id="edit_cout" name="cout" class="form-control" placeholder="0"
-                                        min="0" step="0.01">
+                                    <input type="number" id="edit_cout" name="cout" class="form-control"
+                                        placeholder="0" min="0" step="0.01">
                                     <label for="edit_cout">@lang('extracted.cout_fcfa')</label>
                                 </div>
                             </div>
@@ -2118,8 +2127,8 @@
                             <!-- Date début -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="date" id="edit_date_debut" name="date_debut" class="form-control"
-                                        min="" onchange="updateDateConstraints()">
+                                    <input type="date" id="edit_date_debut" name="date_debut"
+                                        class="form-control" min="" onchange="updateDateConstraints()">
                                     <label for="edit_date_debut">@lang('extracted.date_de_debut')</label>
                                 </div>
                             </div>
@@ -2127,8 +2136,8 @@
                             <!-- Date fin -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="date" id="edit_date_fin" name="date_fin" class="form-control" min=""
-                                        onchange="validateDateFin()">
+                                    <input type="date" id="edit_date_fin" name="date_fin"
+                                        class="form-control" min="" onchange="validateDateFin()">
                                     <label for="edit_date_fin">@lang('extracted.date_de_fin')</label>
                                 </div>
                             </div>
@@ -2136,8 +2145,7 @@
                             <!-- Prérequis -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_prerequis" name="prerequis" class="form-control"
-                                        placeholder="Prérequis" rows="2"></textarea>
+                                    <textarea id="edit_prerequis" name="prerequis" class="form-control" placeholder="Prérequis" rows="2"></textarea>
                                     <label for="edit_prerequis">@lang('extracted.prerequis')</label>
                                 </div>
                             </div>
@@ -2145,8 +2153,7 @@
                             <!-- Bonus -->
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
-                                    <textarea id="edit_bonus" name="bonus" class="form-control" placeholder="Bonus"
-                                        rows="2"></textarea>
+                                    <textarea id="edit_bonus" name="bonus" class="form-control" placeholder="Bonus" rows="2"></textarea>
                                     <label for="edit_bonus">@lang('extracted.bonus')</label>
                                 </div>
                             </div>
@@ -2179,7 +2186,8 @@
 
                             <!-- Boutons -->
                             <div class="col-12 text-end">
-                                <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">
+                                <button type="button" class="btn btn-outline-secondary me-2"
+                                    data-bs-dismiss="modal">
                                     Annuler
                                 </button>
                                 <button type="submit" class="btn btn-warning">
@@ -2198,7 +2206,8 @@
             <div class="modal-dialog modal-simple">
                 <div class="modal-content">
                     <div class="modal-body p-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                         <div class="text-center mb-6">
                             <div class="mb-4">
                                 <i class="ri-error-warning-line ri-96px text-danger"></i>
@@ -2208,7 +2217,8 @@
                                 @lang('extracted.etes_vous_sur_de_vouloir_supprimer_cette_formation')</p>
                             <p class="fw-bold text-dark mb-2" id="formation-to-delete"></p>
                             <p class="text-danger mb-0">
-                                <strong>@lang('extracted.cette_action_est_irreversible')</strong></p>
+                                <strong>@lang('extracted.cette_action_est_irreversible')</strong>
+                            </p>
                         </div>
                         <div class="text-center">
                             <button type="button" class="btn btn-outline-secondary me-3" data-bs-dismiss="modal">
@@ -2226,8 +2236,8 @@
         </div>
 
         <!-- Modale des détails de formation -->
-        <div class="modal fade" id="detailsFormationModal" tabindex="-1" aria-labelledby="detailsFormationModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="detailsFormationModal" tabindex="-1"
+            aria-labelledby="detailsFormationModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
@@ -2252,7 +2262,8 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             <i class="fas fa-times me-1"></i>Fermer
                         </button>
-                        <button type="button" class="btn btn-primary" id="exporterInscriptions" style="display: none;">
+                        <button type="button" class="btn btn-primary" id="exporterInscriptions"
+                            style="display: none;">
                             <i class="fas fa-download me-1"></i>Exporter les inscriptions
                         </button>
                     </div>
@@ -2265,7 +2276,8 @@
             <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                 <div class="modal-content">
                     <div class="modal-body p-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                         <div class="text-center mb-6">
                             <h4 class="mb-2 text-primary">
                                 <i class="ri-handshake-line me-2"></i>
@@ -2277,18 +2289,18 @@
                             @csrf
                             <div class="col-12">
                                 <label class="form-label" for="titre">Titre de l'opportunité</label>
-                                <input type="text" id="titre" name="titre" class="form-control" required>
+                                <input type="text" id="titre" name="titre" class="form-control"
+                                    required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label" for="description">Description</label>
-                                <textarea id="description" name="description" class="form-control" rows="4"
-                                    required></textarea>
+                                <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="categorie_id">Catégorie</label>
                                 <select id="categorie_id" name="categorie_id" class="form-select">
                                     <option value="">Sélectionner une catégorie</option>
-                                    @foreach(App\Models\Categorie::all() as $categorie)
+                                    @foreach (App\Models\Categorie::all() as $categorie)
                                         <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
                                     @endforeach
                                 </select>
@@ -2304,11 +2316,13 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="date_debut">Date de début</label>
-                                <input type="datetime-local" id="date_debut" name="date_debut" class="form-control">
+                                <input type="datetime-local" id="date_debut" name="date_debut"
+                                    class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="date_fin">Date de fin</label>
-                                <input type="datetime-local" id="date_fin" name="date_fin" class="form-control">
+                                <input type="datetime-local" id="date_fin" name="date_fin"
+                                    class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="lieu">Lieu</label>
@@ -2316,24 +2330,28 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="contact_email">Email de contact</label>
-                                <input type="email" id="contact_email" name="contact_email" class="form-control">
+                                <input type="email" id="contact_email" name="contact_email"
+                                    class="form-control">
                             </div>
-                            
+
                             <!-- Critères -->
                             <div class="col-12">
                                 <label class="form-label" for="criteres">Critères requis</label>
                                 <div id="criteres-container">
                                     <div class="critere-item mb-2">
                                         <div class="input-group">
-                                            <input type="text" name="criteres[]" class="form-control" placeholder="Ex: Expérience minimum 3 ans">
-                                            <button type="button" class="btn btn-outline-danger remove-critere" onclick="removeCritere(this)">
-                                                <i class="ri-delete-bin-line"></i>
+                                            <input type="text" name="criteres[]" class="form-control"
+                                                placeholder="Ex: Expérience minimum 3 ans">
+                                            <button type="button" class="btn btn-outline-danger remove-critere"
+                                                onclick="removeCritere(this)">
+                                                <i class="ri ri-delete-bin-line"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addCritere()">
-                                    <i class="ri-add-line me-1"></i>Ajouter un critère
+                                <button type="button" class="btn btn-outline-primary btn-sm"
+                                    onclick="addCritere()">
+                                    <i class="ri ri-add-bin-line"></i>Ajouter un critère
                                 </button>
                             </div>
 
@@ -2344,20 +2362,24 @@
                                     <div class="information-item mb-2">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <input type="text" name="info_keys[]" class="form-control" placeholder="Clé (ex: Budget, Durée)">
+                                                <input type="text" name="info_keys[]" class="form-control"
+                                                    placeholder="Clé (ex: Budget, Durée)">
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" name="info_values[]" class="form-control" placeholder="Valeur (ex: 50000€, 6 mois)">
+                                                <input type="text" name="info_values[]" class="form-control"
+                                                    placeholder="Valeur (ex: 50000€, 6 mois)">
                                             </div>
                                             <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger w-100" onclick="removeInformation(this)">
-                                                    <i class="ri-delete-bin-line"></i>
+                                                <button type="button" class="btn btn-outline-danger w-100"
+                                                    onclick="removeInformation(this)">
+                                                    <i class="ri ri-delete-bin-line"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addInformation()">
+                                <button type="button" class="btn btn-outline-primary btn-sm"
+                                    onclick="addInformation()">
                                     <i class="ri-add-line me-1"></i>Ajouter une information
                                 </button>
                             </div>
@@ -2365,16 +2387,22 @@
                             <!-- Fichier joint -->
                             <div class="col-12">
                                 <label class="form-label" for="fichier_joint">Fichier joint (optionnel)</label>
-                                <input type="file" id="fichier_joint" name="fichier_joint" class="form-control" 
-                                       accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt">
+                                <input type="file" id="fichier_joint" name="fichier_joint"
+                                    class="form-control" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt">
                                 <small class="form-text text-muted">
                                     Formats acceptés: PDF, DOC, DOCX, JPG, PNG, TXT (Max: 5MB)
                                 </small>
                             </div>
+                            <style>
+                                .form-control {
+                                    padding: 6px 8px;
+                                }
+                            </style>
 
                             <div class="col-12">
                                 <div class="d-flex justify-content-end gap-2">
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">
                                         Annuler
                                     </button>
                                     <button type="submit" class="btn btn-primary">
@@ -2394,7 +2422,8 @@
             <div class="modal-dialog modal-xl modal-simple">
                 <div class="modal-content">
                     <div class="modal-body p-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                         <div class="text-center mb-6 p-4">
                             <h4 class="mb-2 text-primary">
                                 <i class="ri-handshake-line me-2"></i>
@@ -2409,7 +2438,6 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>Titre</th>
-                                            <th>Description</th>
                                             <th>Catégorie</th>
                                             <th>Statut</th>
                                             <th>Date début</th>
@@ -2419,7 +2447,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach(App\Models\Opportunite::with('categorie')->get() as $opportunite)
+                                        @foreach (App\Models\Opportunite::with('categorie')->get() as $opportunite)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex align-items-center">
@@ -2430,16 +2458,12 @@
                                                         </div>
                                                         <div>
                                                             <h6 class="mb-0">{{ $opportunite->titre }}</h6>
-                                                            <small class="text-muted">{{ $opportunite->slug }}</small>
+                                                            <small
+                                                                class="text-muted">{{ $opportunite->slug }}</small>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <span class="text-truncate d-inline-block" style="max-width: 200px;"
-                                                        title="{{ $opportunite->description }}">
-                                                        {{ \Illuminate\Support\Str::limit($opportunite->description, 50) }}
-                                                    </span>
-                                                </td>
+
                                                 <td>
                                                     <span
                                                         class="badge bg-label-info">{{ $opportunite->categorie->nom ?? 'N/A' }}</span>
@@ -2451,7 +2475,7 @@
                                                             'brouillon' => 'bg-label-warning',
                                                             'ferme' => 'bg-label-danger',
                                                             'archive' => 'bg-label-secondary',
-                                                            default => 'bg-label-info'
+                                                            default => 'bg-label-info',
                                                         };
                                                     @endphp
                                                     <span
@@ -2464,22 +2488,24 @@
                                                 <td>{{ $opportunite->lieu ?? 'N/A' }}</td>
                                                 <td class="text-center">
                                                     <div class="dropdown">
-                                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                        <button type="button" style="width:20px;"
+                                                            class="badge bg-label-primary btn p-0 dropdown-toggle hide-arrow"
                                                             data-bs-toggle="dropdown">
-                                                            <i class="ri-more-2-line"></i>
+                                                            <i class="ri ri-more-2-line"
+                                                                style="font-size: 2rem"></i>
                                                         </button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="javascript:void(0);"
                                                                 onclick="voirDetailsOpportunite({{ $opportunite->id }})">
-                                                                <i class="ri-eye-line me-1"></i> Voir détails
+                                                                <i class="ri ri-eye-line me-1"></i> Voir détails
                                                             </a>
                                                             <a class="dropdown-item" href="javascript:void(0);"
                                                                 onclick="modifierOpportunite({{ $opportunite->id }})">
-                                                                <i class="ri-edit-line me-1"></i> Modifier
+                                                                <i class="ri ri-edit-line me-1"></i> Modifier
                                                             </a>
                                                             <a class="dropdown-item" href="javascript:void(0);"
                                                                 onclick="supprimerOpportunite({{ $opportunite->id }})">
-                                                                <i class="ri-delete-bin-7-line me-1"></i> Supprimer
+                                                                <i class="ri ri-delete-bin-7-line me-1"></i> Supprimer
                                                             </a>
                                                         </div>
                                                     </div>
@@ -2506,7 +2532,8 @@
             <div class="modal-dialog modal-xl modal-simple">
                 <div class="modal-content">
                     <div class="modal-body p-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                         <div class="text-center mb-6 p-4">
                             <h4 class="mb-2 text-primary">
                                 <i class="ri-user-line me-2"></i>
@@ -2517,12 +2544,13 @@
 
                         <div class="card-datatable px-4 pb-4">
                             <div class="mb-4">
-                                <label class="form-label" for="selectOpportuniteCandidats">Sélectionner une opportunité
+                                <label class="form-label" for="selectOpportuniteCandidats">Sélectionner une
+                                    opportunité
                                     :</label>
                                 <select id="selectOpportuniteCandidats" class="form-select"
                                     onchange="chargerCandidatsOpportunite(this.value)">
                                     <option value="">Choisir une opportunité...</option>
-                                    @foreach(App\Models\Opportunite::where('statut', 'en_ligne')->get() as $opportunite)
+                                    @foreach (App\Models\Opportunite::where('statut', 'en_ligne')->get() as $opportunite)
                                         <option value="{{ $opportunite->id }}">
                                             {{ $opportunite->titre }}
                                             ({{ $opportunite->postulations()->count() }}
@@ -2567,35 +2595,39 @@
         </div>
 
         <style>
-            .critere-item, .information-item {
+            .critere-item,
+            .information-item {
                 transition: all 0.3s ease;
             }
-            
-            .critere-item:hover, .information-item:hover {
+
+            .critere-item:hover,
+            .information-item:hover {
                 background-color: rgba(0, 123, 255, 0.05);
                 border-radius: 5px;
                 padding: 5px;
             }
-            
-            .remove-critere, .btn-outline-danger {
+
+            .remove-critere,
+            .btn-outline-danger {
                 transition: all 0.3s ease;
             }
-            
-            .remove-critere:hover, .btn-outline-danger:hover {
+
+            .remove-critere:hover,
+            .btn-outline-danger:hover {
                 transform: scale(1.1);
             }
-            
+
             .form-text {
                 font-size: 0.875rem;
                 color: #6c757d;
                 margin-top: 0.25rem;
             }
-            
+
             .input-group .form-control {
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
             }
-            
+
             .input-group .btn {
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
@@ -2632,7 +2664,7 @@
 
                     const reader = new FileReader();
 
-                    reader.onload = function (e) {
+                    reader.onload = function(e) {
                         preview.style.display = 'block';
 
                         if (file.type.startsWith('image/')) {
@@ -2687,7 +2719,7 @@
 
                     const reader = new FileReader();
 
-                    reader.onload = function (e) {
+                    reader.onload = function(e) {
                         preview.style.display = 'block';
 
                         if (file.type.startsWith('image/')) {
@@ -2923,12 +2955,12 @@
             }
 
             // Événement pour la soumission du formulaire d'édition - CORRIGÉ
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 console.log('SweetAlert disponible:', typeof Swal !== 'undefined');
 
                 const editForm = document.getElementById('editFormationForm');
                 if (editForm) {
-                    editForm.addEventListener('submit', function (e) {
+                    editForm.addEventListener('submit', function(e) {
                         e.preventDefault();
                         console.log('Formulaire soumis');
 
@@ -3058,13 +3090,13 @@
             });
 
             // Événement pour la confirmation de suppression - CORRIGER
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 // Vérifier que l'élément existe
                 const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
                 if (confirmDeleteBtn) {
                     console.log('Bouton de suppression trouvé ✅');
 
-                    confirmDeleteBtn.addEventListener('click', function () {
+                    confirmDeleteBtn.addEventListener('click', function() {
                         console.log('Bouton suppression cliqué, Formation ID:', currentFormationId);
 
                         if (!currentFormationId) {
@@ -3417,7 +3449,7 @@
             }
 
             // Test des modales au chargement
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 console.log('=== TEST DES MODALES ===');
 
                 // Vérifier que les modales existent
@@ -3447,7 +3479,7 @@
             });
 
             // Test des éléments du formulaire d'édition
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 console.log('=== VÉRIFICATION FORMULAIRE ÉDITION ===');
 
                 const elementsToCheck = [
@@ -3594,14 +3626,14 @@
             }
 
             // Gestionnaire pour le formulaire de CRÉATION
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
 
                 // ... existing code pour edit ...
 
                 // NOUVEAU : Gestionnaire pour la création
                 const createForm = document.getElementById('createFormationForm');
                 if (createForm) {
-                    createForm.addEventListener('submit', function (e) {
+                    createForm.addEventListener('submit', function(e) {
                         e.preventDefault();
                         console.log('Formulaire de création soumis');
 
@@ -3858,7 +3890,7 @@
             }
 
             // Initialiser les contraintes au chargement de la page
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 // ... existing code ...
 
                 // NOUVEAU : Initialiser les contraintes pour la création
@@ -3866,7 +3898,7 @@
             });
 
             // NOUVELLE SECTION : Gestionnaire pour le formulaire de CRÉATION
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 console.log('=== INITIALISATION GESTIONNAIRES ===');
 
                 // ... existing code pour editFormationForm reste intact ...
@@ -3882,7 +3914,7 @@
                     console.log('ID du formulaire de création:', createForm.id);
                     console.log('Action du formulaire:', createForm.action);
 
-                    createForm.addEventListener('submit', function (e) {
+                    createForm.addEventListener('submit', function(e) {
                         e.preventDefault();
                         console.log('🆕 Formulaire de CRÉATION soumis');
 
@@ -4026,9 +4058,9 @@
                             <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
                             <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
                 ${isConfirm ? `
-                                                                                            <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
-                                                                                            <p class="text-muted">Cette action peut être annulée plus tard.</p>
-                                                                                        ` : ''}
+                                                                                                            <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
+                                                                                                            <p class="text-muted">Cette action peut être annulée plus tard.</p>
+                                                                                                        ` : ''}
                         </div>
                     `,
                     showCancelButton: true,
@@ -4089,9 +4121,9 @@
                                         <div class="text-center">
                                             <p>Le statut a été mis à jour avec succès.</p>
                                 ${isConfirm ? `
-                                                                                                            <p class="text-muted">Le candidat peut maintenant être contacté.</p>
-                                                                                                            <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
-                                                                                                        ` : ''}
+                                                                                                                            <p class="text-muted">Le candidat peut maintenant être contacté.</p>
+                                                                                                                            <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
+                                                                                                                        ` : ''}
                                         </div>
                                     `,
                                         timer: 3000,
@@ -4136,12 +4168,12 @@
 
         <!-- Événement pour la soumission du formulaire d'édition - MISE À JOUR -->
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 console.log('SweetAlert disponible:', typeof Swal !== 'undefined');
 
                 const editForm = document.getElementById('editFormationForm');
                 if (editForm) {
-                    editForm.addEventListener('submit', function (e) {
+                    editForm.addEventListener('submit', function(e) {
                         e.preventDefault();
                         console.log('Formulaire soumis');
 
@@ -4410,14 +4442,14 @@
                                     </div>
                                     
                                     ${formation.file_path ? `
-                                                                                                                            <div class="text-center mt-3">
-                                                                                                                <strong>Média de présentation</strong><br>
-                                                                                                                                ${formation.file_type === 'image' ? 
-                                                                                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
-                                                                                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                                                                                                                            <div class="text-center mt-3">
+                                                                                                                                <strong>Média de présentation</strong><br>
+                                                                                                                                                ${formation.file_type === 'image' ? 
+                                                                                                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
+                                                                                                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
                                             </video>`}
-                                                                                                                            </div>` : ''}
+                                                                                                                                            </div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -4428,28 +4460,28 @@
                         <div class="card-header bg-light d-flex justify-content-between align-items-center">
                             <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
                             ${inscriptions.length > 0 ? `
-                                                                                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
-                                                                                                                        <i class="fas fa-download me-1"></i>Exporter Excel
-                                                                                                                    </button>` : ''}
+                                                                                                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
+                                                                                                                                        <i class="fas fa-download me-1"></i>Exporter Excel
+                                                                                                                                    </button>` : ''}
                         </div>
                         <div class="card-body p-0">
                             ${inscriptions.length > 0 ? `
-                                                        <div class="table-responsive">
-                                                            <table class="table table-hover mb-0">
-                                                                <thead class="table-light">
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th><i class="fas fa-user me-1"></i>Nom complet</th>
-                                                                        <th><i class="fas fa-envelope me-1"></i>Email</th>
-                                                                        <th><i class="fas fa-phone me-1"></i>Téléphone</th>
-                                                                        <th><i class="fas fa-comment me-1"></i>Message</th>
-                                                                <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
-                                                                        <th><i class="fas fa-flag me-1"></i>Statut</th>
-                                                                        <th>Actions</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    ${inscriptions.map((inscription, index) => `
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-hover mb-0">
+                                                                                <thead class="table-light">
+                                                                                    <tr>
+                                                                                        <th>#</th>
+                                                                                        <th><i class="fas fa-user me-1"></i>Nom complet</th>
+                                                                                        <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                                                                        <th><i class="fas fa-phone me-1"></i>Téléphone</th>
+                                                                                        <th><i class="fas fa-comment me-1"></i>Message</th>
+                                                                                <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
+                                                                                        <th><i class="fas fa-flag me-1"></i>Statut</th>
+                                                                                        <th>Actions</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    ${inscriptions.map((inscription, index) => `
 <tr>
 <td><strong>${index + 1}</strong></td>
 <td>
@@ -4477,26 +4509,26 @@ ${inscription.statut === 'confirme' ? '✅ Confirmé' : inscription.statut === '
 <td>
 <div class="btn-group btn-group-sm">
 ${inscription.statut === 'en_attente' ? `
-                                                                                <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
-                                                                                    <i class="fas fa-check"></i>
-                                                                                </button>
-                                                                                <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
-                                                                                    <i class="fas fa-times"></i>
-                                                                                </button>` : ''}
+                                                                                                <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
+                                                                                                    <i class="fas fa-check"></i>
+                                                                                                </button>
+                                                                                                <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
+                                                                                                    <i class="fas fa-times"></i>
+                                                                                                </button>` : ''}
     <button class="btn btn-outline-primary" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
 <i class="fas fa-envelope"></i>
 </button>
 </div>
 </td>
 </tr>`).join('')}
-                                                                </tbody>
-                                                            </table>
-                                                        </div>` : `
-                                                        <div class="text-center p-5">
-                                                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                                            <h5 class="text-muted">Aucune inscription pour le moment</h5>
-                                                    <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
-                                                        </div>`}
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>` : `
+                                                                        <div class="text-center p-5">
+                                                                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                                                            <h5 class="text-muted">Aucune inscription pour le moment</h5>
+                                                                    <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
+                                                                        </div>`}
 </div>
 </div>
 </div>
@@ -4505,96 +4537,96 @@ ${inscription.statut === 'en_attente' ? `
 
 </div>    
 `;
-}
-</script>
+            }
+        </script>
 
-<!-- Script pour la création de nouvelles opportunités -->
-<script>
-            document.addEventListener('DOMContentLoaded', function () {
-const form = document.getElementById('createEmploiForm');
-const modal = document.getElementById('create_emplois');
+        <!-- Script pour la création de nouvelles opportunités -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('createEmploiForm');
+                const modal = document.getElementById('create_emplois');
 
-// Validation en temps réel
-                form.addEventListener('input', function (e) {
-validateField(e.target);
-});
+                // Validation en temps réel
+                form.addEventListener('input', function(e) {
+                    validateField(e.target);
+                });
 
-// Soumission du formulaire
-                form.addEventListener('submit', function (e) {
-e.preventDefault();
+                // Soumission du formulaire
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
 
-if (validateForm()) {
-// Animation de chargement
-const submitBtn = form.querySelector('button[type="submit"]');
-const originalText = submitBtn.innerHTML;
+                    if (validateForm()) {
+                        // Animation de chargement
+                        const submitBtn = form.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.innerHTML;
 
-submitBtn.disabled = true;
-submitBtn.innerHTML = `
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = `
 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
 Publication en cours...
 `;
 
-// Soumission réelle
-setTimeout(() => {
-form.submit();
-}, 500);
-}
-});
+                        // Soumission réelle
+                        setTimeout(() => {
+                            form.submit();
+                        }, 500);
+                    }
+                });
 
-// Validation des champs individuels
-function validateField(field) {
-const value = field.value.trim();
-const isValid = field.checkValidity();
+                // Validation des champs individuels
+                function validateField(field) {
+                    const value = field.value.trim();
+                    const isValid = field.checkValidity();
 
-// Supprime les classes précédentes
-field.classList.remove('is-valid', 'is-invalid');
+                    // Supprime les classes précédentes
+                    field.classList.remove('is-valid', 'is-invalid');
 
-if (value !== '') {
-if (isValid) {
-field.classList.add('is-valid');
+                    if (value !== '') {
+                        if (isValid) {
+                            field.classList.add('is-valid');
 
-// Validations spécifiques
-if (field.name === 'salaire_max' && field.value !== '') {
-const salaireMin = document.getElementById('salaire_min').value;
-if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
-field.classList.remove('is-valid');
-field.classList.add('is-invalid');
-return;
-}
-}
-} else {
-field.classList.add('is-invalid');
-}
-}
-}
+                            // Validations spécifiques
+                            if (field.name === 'salaire_max' && field.value !== '') {
+                                const salaireMin = document.getElementById('salaire_min').value;
+                                if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
+                                    field.classList.remove('is-valid');
+                                    field.classList.add('is-invalid');
+                                    return;
+                                }
+                            }
+                        } else {
+                            field.classList.add('is-invalid');
+                        }
+                    }
+                }
 
-// Validation complète du formulaire
-function validateForm() {
-const requiredFields = form.querySelectorAll('[required]');
-let isValid = true;
+                // Validation complète du formulaire
+                function validateForm() {
+                    const requiredFields = form.querySelectorAll('[required]');
+                    let isValid = true;
 
-requiredFields.forEach(field => {
-validateField(field);
-if (!field.checkValidity() || field.value.trim() === '') {
-isValid = false;
-}
-});
+                    requiredFields.forEach(field => {
+                        validateField(field);
+                        if (!field.checkValidity() || field.value.trim() === '') {
+                            isValid = false;
+                        }
+                    });
 
-// Validation personnalisée des salaires
-const salaireMin = document.getElementById('salaire_min');
-const salaireMax = document.getElementById('salaire_max');
+                    // Validation personnalisée des salaires
+                    const salaireMin = document.getElementById('salaire_min');
+                    const salaireMax = document.getElementById('salaire_max');
 
-if (salaireMin.value && salaireMax.value &&
-parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
-salaireMax.classList.add('is-invalid');
-isValid = false;
-}
+                    if (salaireMin.value && salaireMax.value &&
+                        parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
+                        salaireMax.classList.add('is-invalid');
+                        isValid = false;
+                    }
 
-if (!isValid) {
-Swal.fire({
-icon: 'warning',
-title: '⚠️ Formulaire incomplet',
-html: `
+                    if (!isValid) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: '⚠️ Formulaire incomplet',
+                            html: `
 <div class="text-center">
 <p>@lang('extracted.veuillez_remplir_tous_les_champs_obligatoires_marques_dun_asterisque')</p>
 <div class="alert alert-light border mt-3">
@@ -4605,57 +4637,57 @@ Les champs en rouge nécessitent votre attention.
 </div>
 </div>
 `,
-confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
-confirmButtonColor: '#ffc107'
-});
-}
+                            confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
+                            confirmButtonColor: '#ffc107'
+                        });
+                    }
 
-return isValid;
-}
+                    return isValid;
+                }
 
-// Réinitialiser le formulaire à la fermeture
-                modal.addEventListener('hidden.bs.modal', function () {
-form.reset();
-form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
-field.classList.remove('is-valid', 'is-invalid');
-});
+                // Réinitialiser le formulaire à la fermeture
+                modal.addEventListener('hidden.bs.modal', function() {
+                    form.reset();
+                    form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
+                        field.classList.remove('is-valid', 'is-invalid');
+                    });
 
-// Réinitialiser le bouton de soumission
-const submitBtn = form.querySelector('button[type="submit"]');
-submitBtn.disabled = false;
-submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
-});
+                    // Réinitialiser le bouton de soumission
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
+                });
 
-// Auto-complétion intelligente
-                document.getElementById('titre').addEventListener('input', function (e) {
-const titre = e.target.value.toLowerCase();
-const entrepriseField = document.getElementById('entreprise');
+                // Auto-complétion intelligente
+                document.getElementById('titre').addEventListener('input', function(e) {
+                    const titre = e.target.value.toLowerCase();
+                    const entrepriseField = document.getElementById('entreprise');
 
-// Si le titre contient certains mots-clés, suggérer Excellium
-if (titre.includes('développeur') || titre.includes('web') || titre.includes(
-'consultant')) {
-if (!entrepriseField.value) {
-entrepriseField.value = 'Excellium Conseils';
-entrepriseField.classList.add('is-valid');
-}
-}
-});
+                    // Si le titre contient certains mots-clés, suggérer Excellium
+                    if (titre.includes('développeur') || titre.includes('web') || titre.includes(
+                            'consultant')) {
+                        if (!entrepriseField.value) {
+                            entrepriseField.value = 'Excellium Conseils';
+                            entrepriseField.classList.add('is-valid');
+                        }
+                    }
+                });
 
-// Formatage automatique du téléphone
-                document.getElementById('contact_telephone').addEventListener('input', function (e) {
-let value = e.target.value.replace(/\D/g, '');
-if (value.length > 0 && !value.startsWith('225')) {
-value = '225' + value;
-}
-if (value.length > 3) {
-value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
-}
-e.target.value = value;
-});
-});
+                // Formatage automatique du téléphone
+                document.getElementById('contact_telephone').addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 0 && !value.startsWith('225')) {
+                        value = '225' + value;
+                    }
+                    if (value.length > 3) {
+                        value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
+                    }
+                    e.target.value = value;
+                });
+            });
 
             // Scripts pour la gestion des opportunités
-            
+
             // Fonctions pour gérer les critères
             window.addCritere = function() {
                 const container = document.getElementById('criteres-container');
@@ -4671,7 +4703,7 @@ e.target.value = value;
                 `;
                 container.appendChild(newCritere);
             };
-            
+
             window.removeCritere = function(button) {
                 const container = document.getElementById('criteres-container');
                 if (container.children.length > 1) {
@@ -4680,7 +4712,7 @@ e.target.value = value;
                     Swal.fire('Attention', 'Au moins un critère est requis', 'warning');
                 }
             };
-            
+
             // Fonctions pour gérer les informations
             window.addInformation = function() {
                 const container = document.getElementById('informations-container');
@@ -4703,7 +4735,7 @@ e.target.value = value;
                 `;
                 container.appendChild(newInfo);
             };
-            
+
             window.removeInformation = function(button) {
                 const container = document.getElementById('informations-container');
                 if (container.children.length > 1) {
@@ -4712,18 +4744,19 @@ e.target.value = value;
                     Swal.fire('Attention', 'Au moins une information est requise', 'warning');
                 }
             };
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
 
                 // Gestion du formulaire de création d'opportunité
                 const createOpportuniteForm = document.getElementById('createOpportuniteForm');
                 if (createOpportuniteForm) {
-                    createOpportuniteForm.addEventListener('submit', function (e) {
+                    createOpportuniteForm.addEventListener('submit', function(e) {
                         e.preventDefault();
 
                         const formData = new FormData(this);
 
                         // S'assurer que le token CSRF est inclus dans FormData
-                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            'content');
                         formData.append('_token', csrfToken);
 
                         // Afficher une animation de chargement
@@ -4735,12 +4768,12 @@ e.target.value = value;
                         });
 
                         fetch('/admin/opportunites', {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        })
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
                             .then(response => response.json())
                             .then(data => {
                                 Swal.close();
@@ -4773,11 +4806,11 @@ e.target.value = value;
             // Fonction pour voir les détails d'une opportunité
             function voirDetailsOpportunite(id) {
                 fetch(`/admin/opportunites/${id}`, {
-                    method: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
@@ -4812,112 +4845,129 @@ e.target.value = value;
             // Fonction pour modifier une opportunité
             function modifierOpportunite(id) {
                 fetch(`/admin/opportunites/${id}/edit`, {
-                    method: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
                             const opp = data.opportunite;
 
                             Swal.fire({
-                                title: 'Modifier l\'opportunité',
-                                html: `
-                    <form id="editOpportuniteForm">
-                        <div class="mb-3">
-                            <label class="form-label">Titre</label>
-                            <input type="text" id="edit_titre" class="form-control" value="${opp.titre}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea id="edit_description" class="form-control" rows="3" required>${opp.description}</textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Catégorie</label>
-                            <select id="edit_categorie_id" class="form-select">
-                                <option value="">Sélectionner une catégorie</option>
-                                ${data.categories.map(cat =>
-                                    `<option value="${cat.id}" ${cat.id == opp.categorie_id ? 'selected' : ''}>${cat.nom}</option>`
-                                ).join('')}
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Statut</label>
-                            <select id="edit_statut" class="form-select" required>
-                                <option value="brouillon" ${opp.statut === 'brouillon' ? 'selected' : ''}>Brouillon</option>
-                                <option value="en_ligne" ${opp.statut === 'en_ligne' ? 'selected' : ''}>En ligne</option>
-                                <option value="ferme" ${opp.statut === 'ferme' ? 'selected' : ''}>Fermé</option>
-                                <option value="archive" ${opp.statut === 'archive' ? 'selected' : ''}>Archivé</option>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Date de début</label>
-                                    <input type="datetime-local" id="edit_date_debut" class="form-control" 
-                                           value="${opp.date_debut ? new Date(opp.date_debut).toISOString().slice(0, 16) : ''}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Date de fin</label>
-                                    <input type="datetime-local" id="edit_date_fin" class="form-control" 
-                                           value="${opp.date_fin ? new Date(opp.date_fin).toISOString().slice(0, 16) : ''}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Lieu</label>
-                                    <input type="text" id="edit_lieu" class="form-control" value="${opp.lieu || ''}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Email de contact</label>
-                                    <input type="email" id="edit_contact_email" class="form-control" value="${opp.contact_email || ''}">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                `,
-                                width: '700px',
-                                showCancelButton: true,
-                                confirmButtonText: 'Modifier',
-                                cancelButtonText: 'Annuler',
-                                preConfirm: () => {
-                                    const formData = {
-                                        titre: document.getElementById('edit_titre').value,
-                                        description: document.getElementById('edit_description').value,
-                                        categorie_id: document.getElementById('edit_categorie_id').value,
-                                        statut: document.getElementById('edit_statut').value,
-                                        date_debut: document.getElementById('edit_date_debut').value,
-                                        date_fin: document.getElementById('edit_date_fin').value,
-                                        lieu: document.getElementById('edit_lieu').value,
-                                        contact_email: document.getElementById('edit_contact_email').value
-                                    };
+                                    title: '<h4 class="fw-bold">Modifier l\'opportunité</h4>',
+                                    html: `
+                                    <form id="editOpportuniteForm" class="p-4 bg-white shadow-sm rounded">
 
-                                    return fetch(`/admin/opportunites/${id}`, {
-                                        method: 'PUT',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                            'X-Requested-With': 'XMLHttpRequest'
-                                        },
-                                        body: JSON.stringify(formData)
-                                    })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            if (!data.success) {
-                                                throw new Error(data.message || 'Erreur lors de la modification');
-                                            }
-                                            return data;
-                                        });
-                                }
-                            })
+                                    <!-- Section Titre et Description -->
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold">Titre</label>
+                                        <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="ri-edit-box-line"></i></span>
+                                        <input type="text" id="edit_titre" class="form-control" value="${opp.titre}" required placeholder="Titre de l'opportunité">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold">Description</label>
+                                        <textarea id="edit_description" class="form-control" rows="4" required placeholder="Description détaillée de l'opportunité">${opp.description}</textarea>
+                                    </div>
+
+                                    <!-- Catégorie et Statut -->
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Catégorie</label>
+                                        <select id="edit_categorie_id" class="form-select">
+                                            <option value="">Sélectionner une catégorie</option>
+                                            ${data.categories.map(cat =>
+                                            `<option value="${cat.id}" ${cat.id == opp.categorie_id ? 'selected' : ''}>${cat.nom}</option>`
+                                            ).join('')}
+                                        </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Statut</label>
+                                        <select id="edit_statut" class="form-select" required>
+                                            <option value="brouillon" ${opp.statut === 'brouillon' ? 'selected' : ''}>Brouillon</option>
+                                            <option value="en_ligne" ${opp.statut === 'en_ligne' ? 'selected' : ''}>En ligne</option>
+                                            <option value="ferme" ${opp.statut === 'ferme' ? 'selected' : ''}>Fermé</option>
+                                            <option value="archive" ${opp.statut === 'archive' ? 'selected' : ''}>Archivé</option>
+                                        </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Dates -->
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Date de début</label>
+                                        <input type="datetime-local" id="edit_date_debut" class="form-control" 
+                                                value="${opp.date_debut ? new Date(opp.date_debut).toISOString().slice(0, 16) : ''}">
+                                        </div>
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Date de fin</label>
+                                        <input type="datetime-local" id="edit_date_fin" class="form-control" 
+                                                value="${opp.date_fin ? new Date(opp.date_fin).toISOString().slice(0, 16) : ''}">
+                                        </div>
+                                    </div>
+
+                                    <!-- Lieu et Email de contact -->
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Lieu</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="ri-map-pin-line"></i></span>
+                                            <input type="text" id="edit_lieu" class="form-control" value="${opp.lieu || ''}" placeholder="Ville, pays">
+                                        </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Email de contact</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="ri-mail-line"></i></span>
+                                            <input type="email" id="edit_contact_email" class="form-control" value="${opp.contact_email || ''}" placeholder="email@exemple.com">
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                   
+                                    </form>
+
+                                `,
+                                    width: 'auto',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Modifier',
+                                    cancelButtonText: 'Annuler',
+                                    preConfirm: () => {
+                                        const formData = {
+                                            titre: document.getElementById('edit_titre').value,
+                                            description: document.getElementById('edit_description').value,
+                                            categorie_id: document.getElementById('edit_categorie_id').value,
+                                            statut: document.getElementById('edit_statut').value,
+                                            date_debut: document.getElementById('edit_date_debut').value,
+                                            date_fin: document.getElementById('edit_date_fin').value,
+                                            lieu: document.getElementById('edit_lieu').value,
+                                            contact_email: document.getElementById('edit_contact_email').value
+                                        };
+
+                                        return fetch(`/admin/opportunites/${id}`, {
+                                                method: 'PUT',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'X-CSRF-TOKEN': document.querySelector(
+                                                        'meta[name="csrf-token"]').getAttribute('content'),
+                                                    'X-Requested-With': 'XMLHttpRequest'
+                                                },
+                                                body: JSON.stringify(formData)
+                                            })
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                if (!data.success) {
+                                                    throw new Error(data.message ||
+                                                        'Erreur lors de la modification');
+                                                }
+                                                return data;
+                                            });
+                                    }
+                                })
                                 .then((result) => {
                                     if (result.isConfirmed) {
                                         Swal.fire('Succès', 'Opportunité modifiée avec succès', 'success');
@@ -4958,12 +5008,13 @@ e.target.value = value;
                         });
 
                         fetch(`/admin/opportunites/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        })
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                        'content'),
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
                             .then(response => response.json())
                             .then(data => {
                                 Swal.close();
@@ -4996,18 +5047,19 @@ e.target.value = value;
                     '<tr><td colspan="6" class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Chargement...</span></div></td></tr>';
 
                 fetch(`/admin/opportunites/${opportuniteId}/candidats`, {
-                    method: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
                             const tbody = document.getElementById('tbodyCandidatsOpportunites');
 
                             if (data.candidats.length === 0) {
-                                tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">Aucun candidat pour cette opportunité</td></tr>';
+                                tbody.innerHTML =
+                                    '<tr><td colspan="6" class="text-center text-muted">Aucun candidat pour cette opportunité</td></tr>';
                                 return;
                             }
 
@@ -5074,14 +5126,17 @@ e.target.value = value;
                 }).then((result) => {
                     if (result.isConfirmed) {
                         fetch(`/admin/postulations/${postulationId}/statut`, {
-                            method: 'PATCH',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                'X-Requested-With': 'XMLHttpRequest'
-                            },
-                            body: JSON.stringify({ statut: nouveauStatut })
-                        })
+                                method: 'PATCH',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                        'content'),
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                },
+                                body: JSON.stringify({
+                                    statut: nouveauStatut
+                                })
+                            })
                             .then(response => response.json())
                             .then(data => {
                                 if (data.success) {
@@ -5092,7 +5147,8 @@ e.target.value = value;
                                         chargerCandidatsOpportunite(selectElement.value);
                                     }
                                 } else {
-                                    Swal.fire('Erreur', data.message || 'Erreur lors du changement de statut', 'error');
+                                    Swal.fire('Erreur', data.message || 'Erreur lors du changement de statut',
+                                        'error');
                                 }
                             })
                             .catch(error => {
@@ -5106,107 +5162,115 @@ e.target.value = value;
             // Fonctions utilitaires
             function getBadgeClassForStatut(statut) {
                 switch (statut) {
-                    case 'accepte': return 'bg-label-success';
-                    case 'refuse': return 'bg-label-danger';
-                    case 'en_attente': return 'bg-label-warning';
-                    default: return 'bg-label-info';
+                    case 'accepte':
+                        return 'bg-label-success';
+                    case 'refuse':
+                        return 'bg-label-danger';
+                    case 'en_attente':
+                        return 'bg-label-warning';
+                    default:
+                        return 'bg-label-info';
                 }
             }
 
             function getStatutLabel(statut) {
                 switch (statut) {
-                    case 'accepte': return 'Accepté';
-                    case 'refuse': return 'Refusé';
-                    case 'en_attente': return 'En attente';
-                    default: return 'Inconnu';
+                    case 'accepte':
+                        return 'Accepté';
+                    case 'refuse':
+                        return 'Refusé';
+                    case 'en_attente':
+                        return 'En attente';
+                    default:
+                        return 'Inconnu';
                 }
             }
-</script>
+        </script>
 
-<script>
-            document.addEventListener('DOMContentLoaded', function () {
-const form = document.getElementById('createCategorieForm');
-if (form) {
-                    form.addEventListener('submit', function (e) {
-e.preventDefault();
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('createCategorieForm');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
 
-// Animation de chargement
-Swal.fire({
-title: 'Création en cours...',
-allowOutsideClick: false,
-didOpen: () => {
-Swal.showLoading();
-},
-preConfirm: () => {
-const nom = Swal.getInputValue('nom');
-if (!nom) {
-Swal.showValidationMessage('Le nom est requis');
-}
-return nom;
-},
-didOpen: () => {
-setTimeout(() => {
-const input = Swal.getInput();
-if (input) input.focus();
-}, 100);
-}
-});
+                        // Animation de chargement
+                        Swal.fire({
+                            title: 'Création en cours...',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            },
+                            preConfirm: () => {
+                                const nom = Swal.getInputValue('nom');
+                                if (!nom) {
+                                    Swal.showValidationMessage('Le nom est requis');
+                                }
+                                return nom;
+                            },
+                            didOpen: () => {
+                                setTimeout(() => {
+                                    const input = Swal.getInput();
+                                    if (input) input.focus();
+                                }, 100);
+                            }
+                        });
 
-const formData = new FormData(form);
+                        const formData = new FormData(form);
 
-fetch(form.action, {
-method: 'POST',
-headers: {
-'X-Requested-With': 'XMLHttpRequest',
-'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-},
-body: formData
-})
-.then(response => response.json())
-.then(data => {
-Swal.close();
-if (data.success) {
-Swal.fire({
-icon: 'success',
-title: 'Succès',
-text: data.message,
-confirmButtonText: 'OK'
-}).then(() => {
-// Optionnel : reset le formulaire ou rafraîchir la liste
-form.reset();
-// Tu peux aussi recharger dynamiquement la liste ici si besoin
-});
-} else {
-Swal.fire({
-icon: 'error',
-title: 'Erreur',
-text: data.message || 'Une erreur est survenue.'
-});
-}
-})
-.catch(error => {
-Swal.close();
-Swal.fire({
-icon: 'error',
-title: 'Erreur',
-text: 'Une erreur inattendue est survenue.'
-});
-});
-});
-}
-});
-</script>
+                        fetch(form.action, {
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        text: data.message,
+                                        confirmButtonText: 'OK'
+                                    }).then(() => {
+                                        // Optionnel : reset le formulaire ou rafraîchir la liste
+                                        form.reset();
+                                        // Tu peux aussi recharger dynamiquement la liste ici si besoin
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        text: data.message || 'Une erreur est survenue.'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    text: 'Une erreur inattendue est survenue.'
+                                });
+                            });
+                    });
+                }
+            });
+        </script>
 
-<!-- Scripts pour la gestion des catégories -->
-<script>
-function fetchCategories() {
-fetch('/admin/categories/list')
-.then(res => res.json())
-.then(categories => {
-const tbody = document.getElementById('categoriesTableBody');
-tbody.innerHTML = '';
-categories.forEach(cat => {
-tbody.innerHTML += `
+        <!-- Scripts pour la gestion des catégories -->
+        <script>
+            function fetchCategories() {
+                fetch('/admin/categories/list')
+                    .then(res => res.json())
+                    .then(categories => {
+                        const tbody = document.getElementById('categoriesTableBody');
+                        tbody.innerHTML = '';
+                        categories.forEach(cat => {
+                            tbody.innerHTML += `
 <tr>
 <td>${cat.id}</td>
 <td>${cat.nom}</td>
@@ -5216,134 +5280,134 @@ tbody.innerHTML += `
 </td>
 </tr>
 `;
-});
-});
-}
+                        });
+                    });
+            }
 
-// Afficher la modale d'édition
-function showEditModal(id, nom) {
-// Fermer la modale Bootstrap si elle est ouverte
-const modal = bootstrap.Modal.getInstance(document.getElementById('liste_categories'));
-if (modal) modal.hide();
+            // Afficher la modale d'édition
+            function showEditModal(id, nom) {
+                // Fermer la modale Bootstrap si elle est ouverte
+                const modal = bootstrap.Modal.getInstance(document.getElementById('liste_categories'));
+                if (modal) modal.hide();
 
-// Puis ouvrir SweetAlert2
-Swal.fire({
-title: 'Modifier la catégorie',
-input: 'text',
-inputValue: nom,
-showCancelButton: true,
-confirmButtonText: 'Enregistrer',
-cancelButtonText: 'Annuler',
-preConfirm: (newNom) => {
-if (!newNom) {
-Swal.showValidationMessage('Le nom est requis');
-}
-return newNom;
-},
-didOpen: () => {
-setTimeout(() => {
-const input = Swal.getInput();
-if (input) input.focus();
-}, 100);
-}
-}).then((result) => {
-if (result.isConfirmed) {
-updateCategorie(id, result.value);
-}
-});
-}
+                // Puis ouvrir SweetAlert2
+                Swal.fire({
+                    title: 'Modifier la catégorie',
+                    input: 'text',
+                    inputValue: nom,
+                    showCancelButton: true,
+                    confirmButtonText: 'Enregistrer',
+                    cancelButtonText: 'Annuler',
+                    preConfirm: (newNom) => {
+                        if (!newNom) {
+                            Swal.showValidationMessage('Le nom est requis');
+                        }
+                        return newNom;
+                    },
+                    didOpen: () => {
+                        setTimeout(() => {
+                            const input = Swal.getInput();
+                            if (input) input.focus();
+                        }, 100);
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        updateCategorie(id, result.value);
+                    }
+                });
+            }
 
-// Modifier une catégorie
-function updateCategorie(id, nom) {
-Swal.fire({
-title: 'Mise à jour...',
-allowOutsideClick: false,
-didOpen: () => Swal.showLoading()
-});
-fetch(`/admin/categories/${id}`, {
-method: 'PUT',
-headers: {
-'Content-Type': 'application/json',
-'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-'X-Requested-With': 'XMLHttpRequest'
-},
-body: JSON.stringify({
-nom
-})
-})
-.then(res => res.json())
-.then(data => {
-Swal.close();
-if (data.success) {
-Swal.fire('Succès', data.message, 'success');
-fetchCategories();
-} else {
-Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
-}
-});
-}
+            // Modifier une catégorie
+            function updateCategorie(id, nom) {
+                Swal.fire({
+                    title: 'Mise à jour...',
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
+                fetch(`/admin/categories/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify({
+                            nom
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        Swal.close();
+                        if (data.success) {
+                            Swal.fire('Succès', data.message, 'success');
+                            fetchCategories();
+                        } else {
+                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                        }
+                    });
+            }
 
-// Supprimer une catégorie
-function deleteCategorie(id) {
-Swal.fire({
-title: 'Supprimer cette catégorie ?',
-text: 'Cette action est irréversible !',
-icon: 'warning',
-showCancelButton: true,
-confirmButtonText: 'Oui, supprimer',
-cancelButtonText: 'Annuler'
-}).then((result) => {
-if (result.isConfirmed) {
-Swal.fire({
-title: 'Suppression...',
-allowOutsideClick: false,
-didOpen: () => Swal.showLoading()
-});
-fetch(`/admin/categories/${id}`, {
-method: 'DELETE',
-headers: {
-'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-'X-Requested-With': 'XMLHttpRequest'
-}
-})
-.then(res => res.json())
-.then(data => {
-Swal.close();
-if (data.success) {
-Swal.fire('Succès', data.message, 'success');
-fetchCategories();
-} else {
-Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-}
-});
-}
-});
-}
+            // Supprimer une catégorie
+            function deleteCategorie(id) {
+                Swal.fire({
+                    title: 'Supprimer cette catégorie ?',
+                    text: 'Cette action est irréversible !',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Suppression...',
+                            allowOutsideClick: false,
+                            didOpen: () => Swal.showLoading()
+                        });
+                        fetch(`/admin/categories/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    fetchCategories();
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                }
+                            });
+                    }
+                });
+            }
 
-// Rafraîchir la liste à l'ouverture de la modale
-            document.addEventListener('DOMContentLoaded', function () {
-// Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
-fetchCategories();
-});
-</script>
-<!-- ///////////////////////////////////// -->
+            // Rafraîchir la liste à l'ouverture de la modale
+            document.addEventListener('DOMContentLoaded', function() {
+                // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
+                fetchCategories();
+            });
+        </script>
+        <!-- ///////////////////////////////////// -->
 
 
 
-<!-- Scripts pour la gestion des produits -->
-<script>
-// Scripts pour la gestion des produits
-            document.addEventListener('DOMContentLoaded', function () {
-// Gestion de la création de produit
-const createProduitForm = document.getElementById('createProduitForm');
-if (createProduitForm) {
-                    createProduitForm.addEventListener('submit', function (e) {
-e.preventDefault();
+        <!-- Scripts pour la gestion des produits -->
+        <script>
+            // Scripts pour la gestion des produits
+            document.addEventListener('DOMContentLoaded', function() {
+                // Gestion de la création de produit
+                const createProduitForm = document.getElementById('createProduitForm');
+                if (createProduitForm) {
+                    createProduitForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
 
-// Afficher une animation de chargement
-const loading = Swal.fire({
-title: 'Création en cours...',
-html: `
+                        // Afficher une animation de chargement
+                        const loading = Swal.fire({
+                            title: 'Création en cours...',
+                            html: `
 <div class="text-center">
 <div class="spinner-border text-primary" role="status">
 <span class="visually-hidden">@lang('extracted.chargement')</span>
@@ -5351,198 +5415,198 @@ html: `
 <p class="mt-2">@lang('extracted.creation_du_produit')</p>
 </div>
 `,
-allowOutsideClick: false,
-didOpen: () => {
-Swal.showLoading();
-}
-});
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
 
-const loading = Swal.fire({
-...
-});
-const formData = new FormData(createProduitForm);
+                        const loading = Swal.fire({
+                            ...
+                        });
+                        const formData = new FormData(createProduitForm);
 
-fetch(createProduitForm.action, {
-method: 'POST',
-headers: {
-'X-Requested-With': 'XMLHttpRequest',
-'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-},
-body: formData
-})
-.then(response => response.json())
-.then(data => {
-Swal.close();
-if (data.success) {
-const success = Swal.mixin({
-customClass: {
-confirmButton: 'btn btn-success',
-cancelButton: 'btn btn-danger'
-},
-buttonsStyling: false
-});
+                        fetch(createProduitForm.action, {
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    const success = Swal.mixin({
+                                        customClass: {
+                                            confirmButton: 'btn btn-success',
+                                            cancelButton: 'btn btn-danger'
+                                        },
+                                        buttonsStyling: false
+                                    });
 
-success.fire({
-icon: 'success',
-title: 'Succès',
-html: `
+                                    success.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        html: `
 <div class="text-center">
 <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
 <h5 class="mt-3">@lang('extracted.produit_cree')</h5>
 <p class="mb-0">${data.message}</p>
 </div>
 `,
-confirmButtonText: 'OK',
-showCancelButton: false,
-confirmButtonColor: '#2196f3'
-}).then(() => {
-createProduitForm.reset();
-fetchProduits();
-});
-} else {
-const error = Swal.mixin({
-customClass: {
-confirmButton: 'btn btn-danger'
-},
-buttonsStyling: false
-});
+                                        confirmButtonText: 'OK',
+                                        showCancelButton: false,
+                                        confirmButtonColor: '#2196f3'
+                                    }).then(() => {
+                                        createProduitForm.reset();
+                                        fetchProduits();
+                                    });
+                                } else {
+                                    const error = Swal.mixin({
+                                        customClass: {
+                                            confirmButton: 'btn btn-danger'
+                                        },
+                                        buttonsStyling: false
+                                    });
 
-error.fire({
-icon: 'error',
-title: 'Erreur',
-html: `
+                                    error.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        html: `
 <div class="text-center">
 <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
 <h5 class="mt-3">@lang('extracted.erreur')</h5>
 <p class="mb-0">${data.message || 'Une erreur est survenue.'}</p>
 </div>
 `,
-confirmButtonText: 'OK',
-confirmButtonColor: '#dc3545'
-});
-}
-})
-.catch(error => {
-loading.close();
-const error = Swal.mixin({
-customClass: {
-confirmButton: 'btn btn-danger'
-},
-buttonsStyling: false
-});
+                                        confirmButtonText: 'OK',
+                                        confirmButtonColor: '#dc3545'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                loading.close();
+                                const error = Swal.mixin({
+                                    customClass: {
+                                        confirmButton: 'btn btn-danger'
+                                    },
+                                    buttonsStyling: false
+                                });
 
-error.fire({
-icon: 'error',
-title: 'Erreur',
-html: `
+                                error.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    html: `
 <div class="text-center">
 <i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
 <h5 class="mt-3">@lang('extracted.erreur_inattendue')</h5>
 <p class="mb-0">@lang('extracted.une_erreur_inattendue_est_survenue')</p>
 </div>
 `,
-confirmButtonText: 'OK',
-confirmButtonColor: '#dc3545'
-});
-});
-});
-}
-});
-</script>
+                                    confirmButtonText: 'OK',
+                                    confirmButtonColor: '#dc3545'
+                                });
+                            });
+                    });
+                }
+            });
+        </script>
 
-<script>
-            document.addEventListener('DOMContentLoaded', function () {
-// Initialisation de la DataTable pour la table des produits
-// Assure-toi que ta table HTML a bien l'id "tableProduits"
-var table = $('#tableProduits').DataTable({
-ajax: '/admin/produits/list',
-columns: [{
-data: 'nom',
-title: 'Nom'
-},
-{
-data: 'categorie',
-title: 'Catégorie'
-},
-{
-data: 'statut_label',
-title: 'Statut',
-                        render: function (data, type, row) {
-var couleur = row.statut_color === 'success' ? 'green' : 'red';
-return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
-}
-},
-{
-data: 'actions',
-title: 'Actions',
-orderable: false,
-searchable: false
-}
-],
-// language: {
-//     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
-// }
-});
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialisation de la DataTable pour la table des produits
+                // Assure-toi que ta table HTML a bien l'id "tableProduits"
+                var table = $('#tableProduits').DataTable({
+                    ajax: '/admin/produits/list',
+                    columns: [{
+                            data: 'nom',
+                            title: 'Nom'
+                        },
+                        {
+                            data: 'categorie',
+                            title: 'Catégorie'
+                        },
+                        {
+                            data: 'statut_label',
+                            title: 'Statut',
+                            render: function(data, type, row) {
+                                var couleur = row.statut_color === 'success' ? 'green' : 'red';
+                                return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
+                            }
+                        },
+                        {
+                            data: 'actions',
+                            title: 'Actions',
+                            orderable: false,
+                            searchable: false
+                        }
+                    ],
+                    // language: {
+                    //     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
+                    // }
+                });
 
-// Gestion des clics sur les boutons d'action (modification/suppression)
-// On utilise la délégation d'événement pour gérer les éléments générés dynamiquement
-                document.querySelector('#tableProduits').addEventListener('click', function (e) {
-// Bouton Modifier
-if (e.target.closest('.btn-edit-produit')) {
-e.preventDefault();
-const id = e.target.closest('.btn-edit-produit').dataset.id;
-// Appelle ta fonction d'ouverture de modale d'édition ici
-openEditProduitModal(id);
-}
+                // Gestion des clics sur les boutons d'action (modification/suppression)
+                // On utilise la délégation d'événement pour gérer les éléments générés dynamiquement
+                document.querySelector('#tableProduits').addEventListener('click', function(e) {
+                    // Bouton Modifier
+                    if (e.target.closest('.btn-edit-produit')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-edit-produit').dataset.id;
+                        // Appelle ta fonction d'ouverture de modale d'édition ici
+                        openEditProduitModal(id);
+                    }
 
-// Bouton Supprimer
-if (e.target.closest('.btn-delete-produit')) {
-e.preventDefault();
-const id = e.target.closest('.btn-delete-produit').dataset.id;
+                    // Bouton Supprimer
+                    if (e.target.closest('.btn-delete-produit')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-delete-produit').dataset.id;
 
-// Confirmation avec SweetAlert2
-Swal.fire({
-title: 'Supprimer ce produit ?',
-text: 'Cette action est irréversible !',
-icon: 'warning',
-showCancelButton: true,
-confirmButtonText: 'Oui, supprimer',
-cancelButtonText: 'Annuler'
-}).then((result) => {
-if (result.isConfirmed) {
-fetch(`/admin/produits/${id}`, {
-method: 'DELETE',
-headers: {
-'X-CSRF-TOKEN': document.querySelector(
-'meta[name="csrf-token"]').getAttribute(
-'content')
-}
-})
-.then(res => res.json())
-.then(data => {
-if (data.success) {
-Swal.fire('Supprimé !', data.message, 'success');
-table.ajax.reload(); // Rafraîchit la DataTable
-} else {
-Swal.fire('Erreur', data.message ||
-'Erreur lors de la suppression', 'error');
-}
-})
-.catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
-}
-});
-}
-});
+                        // Confirmation avec SweetAlert2
+                        Swal.fire({
+                            title: 'Supprimer ce produit ?',
+                            text: 'Cette action est irréversible !',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, supprimer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch(`/admin/produits/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector(
+                                                'meta[name="csrf-token"]').getAttribute(
+                                                'content')
+                                        }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Supprimé !', data.message, 'success');
+                                            table.ajax.reload(); // Rafraîchit la DataTable
+                                        } else {
+                                            Swal.fire('Erreur', data.message ||
+                                                'Erreur lors de la suppression', 'error');
+                                        }
+                                    })
+                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                            }
+                        });
+                    }
+                });
 
-// Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
-                window.openEditProduitModal = function (id) {
-// Récupère les infos du produit via AJAX
-fetch(`/admin/produits/${id}`)
-.then(res => res.json())
-.then(produit => {
-Swal.fire({
+                // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
+                window.openEditProduitModal = function(id) {
+                    // Récupère les infos du produit via AJAX
+                    fetch(`/admin/produits/${id}`)
+                        .then(res => res.json())
+                        .then(produit => {
+                            Swal.fire({
 
-html: `
+                                html: `
 <div class="swal-custom-modal">
 <!-- Titre -->
 <div class="d-flex justify-content-around mb-4">
@@ -5601,152 +5665,152 @@ value="${escapeHtml(produit.slug)}" required>
 </div>
 `,
 
-focusConfirm: false,
-showCancelButton: true,
-confirmButtonText: '<i class="bi bi-check"></i> Enregistrer',
-cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
-customClass: {
-popup: 'swal2-card',
-confirmButton: 'swal2-confirm--primary'
-},
-width: 600,
-background: "#f9fafe",
-scrollbarPadding: false,
-preConfirm: () => {
-const nom = document.getElementById('swal-nom').value.trim();
-const description = document.getElementById('swal-description')
-.value.trim();
-const slug = document.getElementById('swal-slug').value.trim();
-const categorie_id = document.getElementById('swal-categorie')
-.value;
-const statut = document.getElementById('swal-statut').value;
-if (!nom || !slug || !categorie_id) {
-Swal.showValidationMessage(
-'Tous les champs obligatoires doivent être remplis');
-return false;
-}
-return {
-nom,
-description,
-slug,
-categorie_id,
-statut
-};
-},
-didOpen: () => {
-// Charger dynamiquement les catégories
-fetch('/admin/categories/list')
-.then(res => res.json())
-.then(categories => {
-const select = document.getElementById(
-'swal-categorie');
-categories.forEach(cat => {
-const opt = document.createElement(
-'option');
-opt.value = cat.id;
-opt.textContent = cat.nom;
-if (cat.id == produit.categorie_id) opt
-.selected = true;
-select.appendChild(opt);
-});
-});
-}
-}).then((result) => {
-if (result.isConfirmed && result.value) {
-Swal.fire({
-title: 'Mise à jour...',
-allowOutsideClick: false,
-didOpen: () => Swal.showLoading()
-});
-fetch(`/admin/produits/${id}`, {
-method: 'PUT',
-headers: {
-'Content-Type': 'application/json',
-'X-CSRF-TOKEN': document.querySelector(
-'meta[name="csrf-token"]').getAttribute(
-'content'),
-'X-Requested-With': 'XMLHttpRequest'
-},
-body: JSON.stringify(result.value)
-})
-.then(res => res.json())
-.then(data => {
-Swal.close();
-if (data.success) {
-Swal.fire({
-icon: 'success',
-title: 'Succès',
-text: data.message,
-timer: 1800,
-showConfirmButton: false
-});
-$('#tableProduits').DataTable().ajax.reload();
-} else {
-Swal.fire('Erreur', data.message ||
-'Erreur lors de la modification', 'error');
-}
-})
-.catch(() => {
-Swal.close();
-Swal.fire('Erreur', 'Erreur réseau', 'error');
-});
-}
-});
-});
-};
-});
-</script>
+                                focusConfirm: false,
+                                showCancelButton: true,
+                                confirmButtonText: '<i class="bi bi-check"></i> Enregistrer',
+                                cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
+                                customClass: {
+                                    popup: 'swal2-card',
+                                    confirmButton: 'swal2-confirm--primary'
+                                },
+                                width: 600,
+                                background: "#f9fafe",
+                                scrollbarPadding: false,
+                                preConfirm: () => {
+                                    const nom = document.getElementById('swal-nom').value.trim();
+                                    const description = document.getElementById('swal-description')
+                                        .value.trim();
+                                    const slug = document.getElementById('swal-slug').value.trim();
+                                    const categorie_id = document.getElementById('swal-categorie')
+                                        .value;
+                                    const statut = document.getElementById('swal-statut').value;
+                                    if (!nom || !slug || !categorie_id) {
+                                        Swal.showValidationMessage(
+                                            'Tous les champs obligatoires doivent être remplis');
+                                        return false;
+                                    }
+                                    return {
+                                        nom,
+                                        description,
+                                        slug,
+                                        categorie_id,
+                                        statut
+                                    };
+                                },
+                                didOpen: () => {
+                                    // Charger dynamiquement les catégories
+                                    fetch('/admin/categories/list')
+                                        .then(res => res.json())
+                                        .then(categories => {
+                                            const select = document.getElementById(
+                                                'swal-categorie');
+                                            categories.forEach(cat => {
+                                                const opt = document.createElement(
+                                                    'option');
+                                                opt.value = cat.id;
+                                                opt.textContent = cat.nom;
+                                                if (cat.id == produit.categorie_id) opt
+                                                    .selected = true;
+                                                select.appendChild(opt);
+                                            });
+                                        });
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed && result.value) {
+                                    Swal.fire({
+                                        title: 'Mise à jour...',
+                                        allowOutsideClick: false,
+                                        didOpen: () => Swal.showLoading()
+                                    });
+                                    fetch(`/admin/produits/${id}`, {
+                                            method: 'PUT',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': document.querySelector(
+                                                    'meta[name="csrf-token"]').getAttribute(
+                                                    'content'),
+                                                'X-Requested-With': 'XMLHttpRequest'
+                                            },
+                                            body: JSON.stringify(result.value)
+                                        })
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            Swal.close();
+                                            if (data.success) {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'Succès',
+                                                    text: data.message,
+                                                    timer: 1800,
+                                                    showConfirmButton: false
+                                                });
+                                                $('#tableProduits').DataTable().ajax.reload();
+                                            } else {
+                                                Swal.fire('Erreur', data.message ||
+                                                    'Erreur lors de la modification', 'error');
+                                            }
+                                        })
+                                        .catch(() => {
+                                            Swal.close();
+                                            Swal.fire('Erreur', 'Erreur réseau', 'error');
+                                        });
+                                }
+                            });
+                        });
+                };
+            });
+        </script>
 
-<script>
-function escapeHtml(text) {
-return text
-.replace(/&/g, "&amp;")
-.replace(/</g, "&lt;")
-.replace(/>/g, "&gt;")
-.replace(/"/g, "&quot;")
-.replace(/'/g, "&#039;");
-}
-</script>
-<!-- ///////////////////////////////////// -->
+        <script>
+            function escapeHtml(text) {
+                return text
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+        </script>
+        <!-- ///////////////////////////////////// -->
 
-<!-- Scripts pour la gestion des services -->
-<script>
-            document.addEventListener('DOMContentLoaded', function () {
-// Initialisation de la DataTable pour les services
-var tableServices = $('#tableServices').DataTable({
-ajax: {
-url: '/admin/services/list',
-type: 'GET'
-},
-columns: [{
-data: 'nom'
-},
-{
-data: 'description'
-},
-{
-data: 'categorie'
-},
-{
-data: 'actions',
-orderable: false,
-searchable: false
-}
-],
-// language: {
-//     url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
-// }
-});
+        <!-- Scripts pour la gestion des services -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialisation de la DataTable pour les services
+                var tableServices = $('#tableServices').DataTable({
+                    ajax: {
+                        url: '/admin/services/list',
+                        type: 'GET'
+                    },
+                    columns: [{
+                            data: 'nom'
+                        },
+                        {
+                            data: 'description'
+                        },
+                        {
+                            data: 'categorie'
+                        },
+                        {
+                            data: 'actions',
+                            orderable: false,
+                            searchable: false
+                        }
+                    ],
+                    // language: {
+                    //     url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
+                    // }
+                });
 
-// Gestion de la création de service
-const createServiceForm = document.getElementById('createServiceForm');
-if (createServiceForm) {
-                    createServiceForm.addEventListener('submit', function (e) {
-e.preventDefault();
+                // Gestion de la création de service
+                const createServiceForm = document.getElementById('createServiceForm');
+                if (createServiceForm) {
+                    createServiceForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
 
-Swal.fire({
-title: 'Création en cours...',
-html: `
+                        Swal.fire({
+                            title: 'Création en cours...',
+                            html: `
 <div class="text-center">
 <div class="spinner-border text-primary" role="status">
 <span class="visually-hidden">Chargement...</span>
@@ -5754,113 +5818,113 @@ html: `
 <p class="mt-2">Création du service...</p>
 </div>
 `,
-allowOutsideClick: false,
-didOpen: () => {
-Swal.showLoading();
-}
-});
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
 
-const formData = new FormData(createServiceForm);
+                        const formData = new FormData(createServiceForm);
 
-fetch(createServiceForm.action, {
-method: 'POST',
-headers: {
-'X-Requested-With': 'XMLHttpRequest',
-'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-},
-body: formData
-})
-.then(response => response.json())
-.then(data => {
-Swal.close();
-if (data.success) {
-Swal.fire({
-icon: 'success',
-title: 'Succès',
-html: `
+                        fetch(createServiceForm.action, {
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        html: `
 <div class="text-center">
 <i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
 <h5 class="mt-3">Service créé !</h5>
 <p class="mb-0">${data.message}</p>
 </div>
 `,
-confirmButtonText: 'OK',
-showCancelButton: false,
-confirmButtonColor: '#2196f3'
-}).then(() => {
-createServiceForm.reset();
-tableServices.ajax.reload();
-});
-} else {
-Swal.fire({
-icon: 'error',
-title: 'Erreur',
-text: data.message || 'Erreur lors de la création'
-});
-}
-})
-.catch(() => {
-Swal.close();
-Swal.fire('Erreur', 'Erreur réseau', 'error');
-});
-});
-}
+                                        confirmButtonText: 'OK',
+                                        showCancelButton: false,
+                                        confirmButtonColor: '#2196f3'
+                                    }).then(() => {
+                                        createServiceForm.reset();
+                                        tableServices.ajax.reload();
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        text: data.message || 'Erreur lors de la création'
+                                    });
+                                }
+                            })
+                            .catch(() => {
+                                Swal.close();
+                                Swal.fire('Erreur', 'Erreur réseau', 'error');
+                            });
+                    });
+                }
 
-// Gestion des clics sur les boutons d'action des services
-                document.querySelector('#tableServices').addEventListener('click', function (e) {
-// Bouton Modifier
-if (e.target.closest('.btn-edit-service')) {
-e.preventDefault();
-const id = e.target.closest('.btn-edit-service').dataset.id;
-openEditServiceModal(id);
-}
+                // Gestion des clics sur les boutons d'action des services
+                document.querySelector('#tableServices').addEventListener('click', function(e) {
+                    // Bouton Modifier
+                    if (e.target.closest('.btn-edit-service')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-edit-service').dataset.id;
+                        openEditServiceModal(id);
+                    }
 
-// Bouton Supprimer
-if (e.target.closest('.btn-delete-service')) {
-e.preventDefault();
-const id = e.target.closest('.btn-delete-service').dataset.id;
+                    // Bouton Supprimer
+                    if (e.target.closest('.btn-delete-service')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-delete-service').dataset.id;
 
-Swal.fire({
-title: 'Supprimer ce service ?',
-text: 'Cette action est irréversible !',
-icon: 'warning',
-showCancelButton: true,
-confirmButtonText: 'Oui, supprimer',
-cancelButtonText: 'Annuler'
-}).then((result) => {
-if (result.isConfirmed) {
-fetch(`/admin/services/${id}`, {
-method: 'DELETE',
-headers: {
-'X-CSRF-TOKEN': document.querySelector(
-'meta[name="csrf-token"]').getAttribute(
-'content')
-}
-})
-.then(res => res.json())
-.then(data => {
-if (data.success) {
-Swal.fire('Supprimé !', data.message, 'success');
-tableServices.ajax.reload();
-} else {
-Swal.fire('Erreur', data.message ||
-'Erreur lors de la suppression', 'error');
-}
-})
-.catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
-}
-});
-}
-});
+                        Swal.fire({
+                            title: 'Supprimer ce service ?',
+                            text: 'Cette action est irréversible !',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, supprimer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch(`/admin/services/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector(
+                                                'meta[name="csrf-token"]').getAttribute(
+                                                'content')
+                                        }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Supprimé !', data.message, 'success');
+                                            tableServices.ajax.reload();
+                                        } else {
+                                            Swal.fire('Erreur', data.message ||
+                                                'Erreur lors de la suppression', 'error');
+                                        }
+                                    })
+                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                            }
+                        });
+                    }
+                });
 
-// Fonction pour ouvrir la modale d'édition des services
-// Fonction pour ouvrir la modale d'édition
-                window.openEditServiceModal = function (id) {
-fetch(`/admin/services/${id}`)
-.then(res => res.json())
-.then(service => {
-Swal.fire({
-html: `
+                // Fonction pour ouvrir la modale d'édition des services
+                // Fonction pour ouvrir la modale d'édition
+                window.openEditServiceModal = function(id) {
+                    fetch(`/admin/services/${id}`)
+                        .then(res => res.json())
+                        .then(service => {
+                            Swal.fire({
+                                html: `
 <div class="swal-custom-modal">
 <!-- Onglets -->
 <div class="d-flex justify-content-around mb-4">
@@ -5894,161 +5958,161 @@ html: `
 </form>
 </div>
 `,
-showCancelButton: true,
-confirmButtonText: '<i class="bi bi-check2"></i> Modifier',
-cancelButtonText: '<i class="bi bi-x"></i> Annuler',
-confirmButtonColor: '#4e73df',
-cancelButtonColor: '#6c757d',
-width: '500px',
-focusConfirm: false,
-preConfirm: () => {
-return {
-nom: document.getElementById('swal-nom').value,
-description: document.getElementById('swal-description')
-.value,
-slug: document.getElementById('swal-slug').value,
-categorie_id: document.getElementById('swal-categorie')
-.value
-};
-}
-}).then((result) => {
-if (result.isConfirmed) {
-updateService(id, result.value);
-}
-});
+                                showCancelButton: true,
+                                confirmButtonText: '<i class="bi bi-check2"></i> Modifier',
+                                cancelButtonText: '<i class="bi bi-x"></i> Annuler',
+                                confirmButtonColor: '#4e73df',
+                                cancelButtonColor: '#6c757d',
+                                width: '500px',
+                                focusConfirm: false,
+                                preConfirm: () => {
+                                    return {
+                                        nom: document.getElementById('swal-nom').value,
+                                        description: document.getElementById('swal-description')
+                                            .value,
+                                        slug: document.getElementById('swal-slug').value,
+                                        categorie_id: document.getElementById('swal-categorie')
+                                            .value
+                                    };
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    updateService(id, result.value);
+                                }
+                            });
 
-// Charger dynamiquement les catégories
-fetch('/admin/categories/list')
-.then(res => res.json())
-.then(categories => {
-const select = document.getElementById('swal-categorie');
-categories.forEach(cat => {
-const opt = document.createElement('option');
-opt.value = cat.id;
-opt.textContent = cat.nom;
-if (cat.id == service.categorie_id) opt.selected = true;
-select.appendChild(opt);
-});
-});
-});
-};
-
-
-
-// Fonction pour mettre à jour un service
-function updateService(id, data) {
-fetch(`/admin/services/${id}`, {
-method: 'PUT',
-headers: {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-'Accept': 'application/json',
-'Content-Type': 'application/json'
-},
-body: JSON.stringify(data)
-})
-.then(res => res.json())
-.then(data => {
-if (data.success) {
-Swal.fire({
-icon: 'success',
-title: 'Succès !',
-text: data.message
-});
-tableServices.ajax.reload();
-} else {
-Swal.fire({
-icon: 'error',
-title: 'Erreur !',
-text: data.message
-});
-}
-});
-}
-});
-</script>
-
-<script>
-            document.addEventListener('DOMContentLoaded', function () {
-// Initialisation DataTable des abonnements utilisateur-service
-const tableEl = document.getElementById('tableUserServices');
-if (tableEl) {
-$('#tableUserServices').DataTable({
-ajax: {
-url: '/admin/services/users-subscriptions',
-type: 'GET'
-},
-columns: [{
-data: 'id'
-},
-{
-data: 'utilisateur'
-},
-{
-data: 'email'
-},
-{
-data: 'service'
-},
-{
-data: 'statut'
-},
-{
-data: 'description'
-},
-{
-data: 'date_debut'
-},
-{
-data: 'date_fin_prevue'
-}
-]
-});
-
-// Ouvrir la modale via un déclencheur si besoin
-document.querySelectorAll('[data-bs-target="#liste_user_services"]').forEach(btn => {
-btn.addEventListener('click', () => {
-$('#tableUserServices').DataTable().ajax.reload();
-});
-});
-}
-});
-</script>
-
-<script>
-            document.addEventListener("DOMContentLoaded", function () {
-if (session('success'))
-Swal.fire({
-icon: 'success',
-title: 'Succès',
-text: "{{ session('success') }}",
-confirmButtonColor: '#198754',
-timer: 2500,
-timerProgressBar: true
-});
-endif
-
-if (session('error'))
-Swal.fire({
-icon: 'error',
-title: 'Erreur',
-text: "{{ session('error') }}",
-confirmButtonColor: '#dc3545',
-});
-endif
-
-if ($errors - > any())
-Swal.fire({
-icon: 'error',
-title: 'Erreurs de validation',
-html: `{!! implode('<br>', $errors->all()) !!}`,
-confirmButtonColor: '#dc3545',
-});
-endif
-});
-</script>
+                            // Charger dynamiquement les catégories
+                            fetch('/admin/categories/list')
+                                .then(res => res.json())
+                                .then(categories => {
+                                    const select = document.getElementById('swal-categorie');
+                                    categories.forEach(cat => {
+                                        const opt = document.createElement('option');
+                                        opt.value = cat.id;
+                                        opt.textContent = cat.nom;
+                                        if (cat.id == service.categorie_id) opt.selected = true;
+                                        select.appendChild(opt);
+                                    });
+                                });
+                        });
+                };
 
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                // Fonction pour mettre à jour un service
+                function updateService(id, data) {
+                    fetch(`/admin/services/${id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Succès !',
+                                    text: data.message
+                                });
+                                tableServices.ajax.reload();
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur !',
+                                    text: data.message
+                                });
+                            }
+                        });
+                }
+            });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialisation DataTable des abonnements utilisateur-service
+                const tableEl = document.getElementById('tableUserServices');
+                if (tableEl) {
+                    $('#tableUserServices').DataTable({
+                        ajax: {
+                            url: '/admin/services/users-subscriptions',
+                            type: 'GET'
+                        },
+                        columns: [{
+                                data: 'id'
+                            },
+                            {
+                                data: 'utilisateur'
+                            },
+                            {
+                                data: 'email'
+                            },
+                            {
+                                data: 'service'
+                            },
+                            {
+                                data: 'statut'
+                            },
+                            {
+                                data: 'description'
+                            },
+                            {
+                                data: 'date_debut'
+                            },
+                            {
+                                data: 'date_fin_prevue'
+                            }
+                        ]
+                    });
+
+                    // Ouvrir la modale via un déclencheur si besoin
+                    document.querySelectorAll('[data-bs-target="#liste_user_services"]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            $('#tableUserServices').DataTable().ajax.reload();
+                        });
+                    });
+                }
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                if (session('success'))
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Succès',
+                        text: "{{ session('success') }}",
+                        confirmButtonColor: '#198754',
+                        timer: 2500,
+                        timerProgressBar: true
+                    });
+                endif
+
+                if (session('error'))
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: "{{ session('error') }}",
+                        confirmButtonColor: '#dc3545',
+                    });
+                endif
+
+                if ($errors - > any())
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreurs de validation',
+                        html: `{!! implode('<br>', $errors->all()) !!}`,
+                        confirmButtonColor: '#dc3545',
+                    });
+                endif
+            });
+        </script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </body>

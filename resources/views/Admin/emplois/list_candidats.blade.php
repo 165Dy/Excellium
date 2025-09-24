@@ -1,100 +1,135 @@
 @extends('layouts.admin')
-@section('content')
+@section('list_candidats')
+   
 
-<section class="page-banner p-r z-1 pt-170 pb-70 overflow-hidden">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="page-banner-content text-center text-white">
-                    <h1 class="page-title">Liste des Candidats</h1>
-                    <p>Voici tous les candidats ayant postulé à vos offres d'emploi.</p>
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <!-- Data Tables -->
+        <div class="container text-center">
+            <h1 class="mb-2">Liste des Candidats</h1>
+            <h5>
+                <p class="mb-0">Voici tous les candidats ayant postulé à vos offres d'emploi.</p>
+            </h5>
+        </div>
+
+
+
+        @if ($candidats->isEmpty())
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    <strong>Aucun candidat trouvé.</strong>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="shop-section secondary-dark-bg pt-140 pb-100">
-    <div class="container" style="margin-top: -100px">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="product-filter">
-                    <div class="row align-items-center">
-                        <div class="col-md-7">
-                            <div class="show-text wow fadeInLeft">
-                                <span>Nombre de candidats : {{ $candidats->count() }}</span>
+        @else
+            <div class="card overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                            <div>
+                                &nbsp; <strong>Nombre de candidats :</strong> {{ $candidats->count() }}
                             </div>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="filter-dropdown float-md-end wow fadeInRight">
-                                <select class="wide" id="statutSelect">
+                            <div>
+                                <select class="form-select" id="statutSelect"
+                                    style="min-width: 200px;border:none;border-bottom:1px solid #a7a4a4">
                                     <option value="TOUT">TOUT</option>
                                     <option value="en_attente">En attente</option>
                                     <option value="accepte">Accepté</option>
                                     <option value="refuse">Refusé</option>
                                 </select>
                             </div>
+
                         </div>
-                    </div>
+                        <thead>
+
+                            <tr>
+                                <th class="text-truncate">N°</th>
+                                <th class="text-truncate">User</th>
+                                <th class="text-truncate">Email</th>
+                                <th class="text-truncate">Postulé pour</th>
+                                <th class="text-truncate">Status</th>
+                                <th class="text-truncate">Date</th>
+                                <th class="text-truncate">Heure</th>
+                                <th class="text-truncate">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($candidats as $candidat)
+                                <tr data-statut="{{ strtolower($candidat->statut) }}" class="candidat-item">
+                                    <td class="text-truncate">
+                                        <p>0{{ $loop->iteration }}</p>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-sm me-4">
+                                                @php
+                                                    $avatars = [
+                                                        '1.png',
+                                                        '2.png',
+                                                        '3.png',
+                                                        '4.png',
+                                                        '5.png',
+                                                        '6.png',
+                                                        '7.png',
+                                                    ];
+                                                    $avatarIndex = $candidat->id % count($avatars); // donne un index 0-6
+                                                    $avatarFile = $avatars[$avatarIndex];
+                                                @endphp
+
+
+                                                <img src="{{ asset('assets_2/img/avatars/' . $avatarFile) }}" alt="Avatar"
+                                                    class="rounded-circle" />
+
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0 text-truncate">{{ $candidat->nom }}</h6>
+                                                <small class="text-truncate">{{ $candidat->telephone }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-truncate">{{ $candidat->email }}</td>
+                                    <td class="text-truncate">
+                                        <div class="d-flex align-items-center">
+                                            <i class="icon-base ri ri-vip-crown-line icon-22px text-primary me-2"></i>
+                                            <span>{{ $candidat->emploi->titre }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @if ($candidat->statut == 'accepte')
+                                            <span class="badge bg-label-success rounded-pill">Accepté</span>
+                                        @elseif($candidat->statut == 'refuse')
+                                            <span class="badge bg-label-danger rounded-pill">Refusé</span>
+                                        @else
+                                            <span class="badge bg-label-warning rounded-pill">En attente</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <p class="mb-1"><i class="ri ri-calendar-fill me-1"></i>
+                                            {{ \Carbon\Carbon::parse($candidat->created_at)->format('d M Y') }}
+                                        </p>
+
+                                    </td>
+                                    <td>
+                                        {{ \Carbon\Carbon::parse($candidat->created_at)->format('h:i') }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('candidatures.show', $candidat->id) }}"
+                                            class="btn btn-sm btn-outline-primary">
+                                            Voir le détail <i class="fas fa-arrow-right ms-1"></i>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
+        @endif
 
-        <div class="row">
-            @if ($candidats->isEmpty())
-                <div class="col-12">
-                    <div class="alert alert-info text-center">
-                        <strong>Aucun candidat trouvé.</strong>
-                    </div>
-                </div>
-            @else
-                @foreach ($candidats as $candidat)
-                    <div class="col-lg-4 col-md-6 col-sm-12 candidat-item"
-                        data-statut="{{ strtolower($candidat->statut) }}">
-                        <div class="product-item mb-45 wow fadeInDown">
-                            <div class="product-image">
-                                <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar candidat">
-                                <div class="hover-content">
-                                    <a href="{{ route('candidatures.show', $candidat->id) }}"
-                                        class="icon-btn" title="Voir le détail">
-                                        <i class="icon-user"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h4>
-                                    <a href="{{ route('candidatures.show', $candidat->id) }}">
-                                        {{ $candidat->nom }}
-                                    </a>
-                                </h4>
-                                <div class="post-meta">
-                                    <span class="post-admin">
-                                        <i class="far fa-envelope"></i>
-                                        {{ $candidat->email }}
-                                    </span> |
-                                    <span class="post-date">
-                                        <i class="far fa-calendar-alt"></i>
-                                        {{ \Carbon\Carbon::parse($candidat->created_at)->format('d M Y') }}
-                                    </span>
-                                    <hr>
-                                </div>
-                                <span class="badge 
-                                    @if($candidat->statut == 'accepte') bg-success 
-                                    @elseif($candidat->statut == 'refuse') bg-danger 
-                                    @else bg-warning text-dark @endif">
-                                    {{ ucfirst($candidat->statut) }}
-                                </span>
-                                <div class="mt-2">
-                                    <strong>Postulé pour :</strong>
-                                    {{ $candidat->emploi->titre ?? 'N/A' }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-        </div>
     </div>
+
+
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -112,5 +147,6 @@
             });
         });
     </script>
-</section>
+
+
 @endsection
