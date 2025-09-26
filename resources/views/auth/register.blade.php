@@ -52,24 +52,77 @@
                     <h4 class="mb-1">@lang('extracted.adventure_starts_here')</h4>
                     <p class="mb-5">@lang('extracted.make_your_app_management_easy_and_fun')</p>
 
-                    <form id="formAuthentication" class="mb-5" action="index.html" method="GET">
+                    <form id="formAuthentication" class="mb-5" action="{{ route('register') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="token" value="{{ $token ?? '' }}">
+                        
+                        @if(session('error'))
+                            <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
                         <div class="form-floating form-floating-outline mb-5 form-control-validation">
-                            <input type="text" class="form-control" id="username" name="username"
-                                placeholder="Enter your username" autofocus />
-                            <label for="username">@lang('extracted.nom_dutilisateur')</label>
+                            <input type="text" class="form-control @error('nom') is-invalid @enderror" id="nom" name="nom"
+                                placeholder="Enter your last name" value="{{ old('nom', $invitation->nom ?? '') }}" autofocus required />
+                            <label for="nom">@lang('extracted.nom')</label>
+                            @error('nom')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+                        
                         <div class="form-floating form-floating-outline mb-5 form-control-validation">
-                            <input type="text" class="form-control" id="email" name="email"
-                                placeholder="Enter your email" />
+                            <input type="text" class="form-control @error('prenom') is-invalid @enderror" id="prenom" name="prenom"
+                                placeholder="Enter your first name" value="{{ old('prenom', $invitation->prenom ?? '') }}" required />
+                            <label for="prenom">@lang('extracted.prenom')</label>
+                            @error('prenom')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="form-floating form-floating-outline mb-5 form-control-validation">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
+                                placeholder="Enter your email" value="{{ old('email', $invitation->email ?? '') }}" required />
                             <label for="email">@lang('extracted.adresse_email')</label>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="form-floating form-floating-outline mb-5 form-control-validation">
+                            <input type="tel" class="form-control @error('telephone') is-invalid @enderror" id="telephone" name="telephone"
+                                placeholder="Enter your phone number" value="{{ old('telephone') }}" />
+                            <label for="telephone">@lang('extracted.telephone')</label>
+                            @error('telephone')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-5 form-password-toggle form-control-validation">
                             <div class="input-group input-group-merge">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="password" id="password" class="form-control" name="password"
+                                    <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                        aria-describedby="password" />
+                                        aria-describedby="password" required />
                                     <label for="password">@lang('extracted.mot_de_passe')</label>
+                                    @error('password')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <span class="input-group-text cursor-pointer"><i
+                                        class="icon-base ri ri-eye-off-line icon-20px"></i></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-5 form-password-toggle form-control-validation">
+                            <div class="input-group input-group-merge">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="password" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                        aria-describedby="password_confirmation" required />
+                                    <label for="password_confirmation">Confirmer le mot de passe</label>
+                                    @error('password_confirmation')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <span class="input-group-text cursor-pointer"><i
                                         class="icon-base ri ri-eye-off-line icon-20px"></i></span>
@@ -81,7 +134,7 @@
 
                     <p class="text-center mb-5">
                         <span>@lang('extracted.avez_vous_deja_un_compte')</span>
-                        <a href="auth-login-basic.html">
+                        <a href="{{ route('login') }}">
                             <span>@lang('extracted.se_connecter')</span>
                         </a>
                     </p>

@@ -43,15 +43,26 @@ Route::post('/choix-produit', [InscriptionController::class, 'saveProduits'])->n
 
 ///////////////////////////////AUTHENTIFICATION////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('/login', function () {return view('auth.login');})->name('login');
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\InvitationController;
 
-Route::get('/register', function () {return view('auth.register');})->name('register');
+// Routes d'authentification pour les administrateurs seulement
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+    
+    Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('forgot-password');
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLink']);
+    
+    Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
+    Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
+});
 
-Route::get('/forgot-password', function () {return view('auth.forgot-password');})->name('forgot-password');
-
-Route::get('/reset-password', function () {return view('auth.reset-password');})->name('reset-password');
-
-Route::get('/confirm-password', function () {return view('auth.confirm-password');})->name('confirm-password');
+// Route de déconnexion
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +111,15 @@ Route::prefix('clients')->group(function () {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Route::prefix('admin')->group(function () {  
+// Routes d'invitations pour les super_admin
+Route::middleware('admin.auth')->group(function () {
+    Route::get('/admin/invitations', [InvitationController::class, 'index'])->name('admin.invitations.index');
+    Route::post('/admin/invitations', [InvitationController::class, 'sendInvitation'])->name('admin.invitations.send');
+    Route::patch('/admin/invitations/{id}/revoke', [InvitationController::class, 'revokeInvitation'])->name('admin.invitations.revoke');
+    Route::patch('/admin/invitations/{id}/resend', [InvitationController::class, 'resendInvitation'])->name('admin.invitations.resend');
+});
+
+Route::prefix('admin')->middleware('admin.auth')->group(function () {  
     Route::get('/Dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
     Route::get('/users/index',[DashboardController::class, 'index_user'] )->name('users.index');
     Route::get('/users/show',function () { return view('Admin.users.show'); } )->name('users.show');
@@ -196,4 +215,4 @@ Route::get('/rss', function () {
             } catch (\Exception $e) {
                 return response("Impossible de contacter la source.", 500);
             }
-        });
+});
