@@ -1,8 +1,136 @@
 @extends('layouts.master')
 @section('welcome')
+    <style>
+        .form-check-label,
+        .modal-title {
+            color: black;
+        }
+
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #choixProduitModal .modal-content {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+            border: 2px solid #FFD22F;
+        }
+
+        #choixProduitModal .modal-header {
+            border-bottom: 1px solid #eee;
+        }
+
+        #choixProduitModal .modal-footer {
+            border-top: 1px solid #eee;
+            background: #fafafa;
+            border-radius: 0 0 18px 18px;
+        }
+
+        #choixProduitModal .form-check-label {
+            font-size: 16px;
+            color: #222;
+        }
+
+        #choixProduitModal hr {
+            margin: 0.5rem 0;
+            border-top: 1px dashed #FFD22F;
+        }
+
+        @media (max-width: 767px) {
+            #choixProduitModal .modal-dialog {
+                max-width: 98vw;
+            }
+
+            #choixProduitModal .modal-content {
+                padding: 0 5px;
+            }
+
+            #choixProduitModal .modal-header img {
+                height: 40px;
+            }
+        }
+
+        #inscriptionModal .modal-content {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+            border: 2px solid #FFD22F;
+        }
+
+        #inscriptionModal .modal-header {
+            border-bottom: 1px solid #eee;
+            background: #FFD22F;
+            border-radius: 18px 18px 0 0;
+        }
+
+        #inscriptionModal .modal-title {
+            font-size: 1.5rem;
+            color: #222;
+            font-weight: bold;
+        }
+
+        #inscriptionModal .form-label {
+            color: #222;
+            font-weight: 500;
+        }
+
+        #inscriptionModal .form-control {
+            border-radius: 8px;
+            border: 1px solid #FFD22F;
+        }
+
+        #inscriptionModal .modal-footer {
+            border-top: 1px solid #eee;
+            background: #fafafa;
+            border-radius: 0 0 18px 18px;
+        }
+
+        @media (max-width: 767px) {
+            #inscriptionModal .modal-dialog {
+                max-width: 98vw;
+            }
+
+            #inscriptionModal .modal-content {
+                padding: 0 5px;
+            }
+        }
+
+        /* Limite la hauteur et ajoute un effet de texte tronqué avec "..." pour les témoignages */
+        .testimonial-content p {
+            max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            /* Limite à 4 lignes, ajuste selon besoin */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-height: 90px;
+            /* Garde une hauteur uniforme même si le texte est court */
+        }
+
+        .author-info h4 {
+
+            max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            /* Limite à 4 lignes, ajuste selon besoin */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
     <!--====== Start Header Section ======-->
-
-
     <section class="hero-section">
 
         <div class="hero-wrapper-two bg_cover" style="background-image: url(assets/images/hero/hero-bg-1.png);">
@@ -10,7 +138,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-6">
                         <div class="hero-content mb-50 wow fadeInLeft">
-                            <h1>Excellium Conseils</h1>
+                            <h1>@lang('extracted.excellium_conseils')</h1>
                             <p>
                                 Bienvenue chez Excellium Conseils, votre partenaire stratégique
                                 en gestion financière et comptable. Nous accompagnons les entrepreneurs,
@@ -22,7 +150,7 @@
                                 <div class="form-group">
                                     <label><i class="far fa-envelope" aria-hidden="true"></i></label>
                                     <input type="email" placeholder="Entrer une adresse mail" name="email">
-                                    <button class="theme-btn style-one">Inscrivez-vous</button>
+                                    <button class="theme-btn style-one">@lang('extracted.inscrivez_vous')</button>
                                 </div>
                             </form>
                         </div>
@@ -40,7 +168,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-title text-center mb-60 wow fadeInDown">
-                        <h2>Pourquoi choisir Excellium Conseils ?</h2>
+                        <h2>@lang('extracted.pourquoi_choisir_excellium_conseils')</h2>
                     </div>
                 </div>
             </div>
@@ -74,9 +202,8 @@
                                         mérite un accompagnement sur mesure pour atteindre ses objectifs.
                                     </p>
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Votre réussite est notre priorité</li>
-                                        <li><i class="far fa-check"></i>Des conseils adaptés à chaque étape de votre
-                                            développement</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.votre_reussite_est_notre_priorite')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.des_conseils_adaptes_a_chaque_etape_de_votre_developpement')</li>
                                     </ul>
 
                                 </div>
@@ -89,8 +216,8 @@
                                         avec nos clients, fondé sur la confiance et l'excellence.
                                     </p>
                                     <ul class="check-list style-one mb-30">
-                                        <li><i class="far fa-check"></i>Anticiper les défis de demain</li>
-                                        <li><i class="far fa-check"></i>Vous accompagner vers un avenir meilleur</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.anticiper_les_defis_de_demain')</li>
+                                        <li><i class="far fa-check"></i>@lang('extracted.vous_accompagner_vers_un_avenir_meilleur')</li>
                                     </ul>
                                 </div>
                             </div>
@@ -104,21 +231,22 @@
                 </div>
             </div>
         </div>
+
     </section>
     <!--====== Start Why-choose Section ======-->
     {{-- <section class="why-choose-us pt-130 pb-90"> --}}
     <!--====== Start Slider text Section ======-->
     <section class="headline-text primary-bg pt-55 pb-55">
         <div class="animate-text">
-            <span class="text" style="color: white">Contactez-nous</span>
-            <span class="text" style="color: white">07 07 67 29 57</span>
+            <span class="text" style="color: white">@lang('extracted.contactez_nous')</span>
+            <span class="text" style="color: white">@lang('extracted.07_07_67_29_57')</span>
             <span class="text"></span>
-            <span class="text" style="color: white">07 07 67 29 57</span>
-            <span class="text" style="color: white">Contactez-nous</span>
-            <span class="text" style="color: white">07 07 67 29 57</span>
-            <span class="text" style="color: white">Contactez-nous</span>
-            <span class="text" style="color: white">07 07 67 29 57</span>
-            <span class="text" style="color: white">Contactez-nous</span>
+            <span class="text" style="color: white">@lang('extracted.07_07_67_29_57')</span>
+            <span class="text" style="color: white">@lang('extracted.contactez_nous')</span>
+            <span class="text" style="color: white">@lang('extracted.07_07_67_29_57')</span>
+            <span class="text" style="color: white">@lang('extracted.contactez_nous')</span>
+            <span class="text" style="color: white">@lang('extracted.07_07_67_29_57')</span>
+            <span class="text" style="color: white">@lang('extracted.contactez_nous')</span>
         </div>
     </section><!--====== End Slider text Section ======-->
     <br>
@@ -128,7 +256,7 @@
             <div class="row justify-content-center" style="margin-top:-100px;">
                 <div class="col-lg-8">
                     <div class="section-title text-center mb-50 wow fadeInDown">
-                        <h2>Nos Services</h2>
+                        <h2>@lang('extracted.nos_services')</h2>
                     </div>
                 </div>
             </div>
@@ -141,9 +269,9 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Compta_Fiscale') }}">Tenue de comptabilité, déclarations fiscales et
-                                                    optimisation fiscale.</a></span>
-                                            <h4 class="title"><a href="{{ route('Compta_Fiscale') }}">Assistance comptable et fiscale
+                                            <span><a href="#">@lang('extracted.tenue_de_comptabilite_declarations_fiscales_et_optimisation_fiscale')</a></span>
+                                            <h4 class="title"><a href="#">Assistance comptable
+                                                    et fiscale
                                                 </a>
                                             </h4>
                                         </div>
@@ -159,9 +287,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('audit&Conseil') }}">Analyse financière, gestion des risques et amélioration
-                                                    des performances.</a></span>
-                                            <h4 class="title"><a href="{{ route('audit&Conseil') }}">Audit et conseil</a>
+                                            <span><a href="#">@lang('extracted.analyse_financiere_gestion_des_risques_et_amelioration_des_performances')</a></span>
+                                            <h4 class="title"><a href="#">@lang('extracted.audit_et_conseil')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -176,9 +303,8 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Ressources_humaines') }}">Mise en relation avec des talents qualifiés pour
-                                                    renforcer vos équipes.</a></span>
-                                            <h4 class="title"><a href="{{ route('Ressources_humaines') }}">Recrutement et placement</a>
+                                            <span><a href="#">@lang('extracted.mise_en_relation_avec_des_talents_qualifies_pour_renforcer_vos_equipes')</a></span>
+                                            <h4 class="title"><a href="#">@lang('extracted.recrutement_et_placement')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -193,9 +319,10 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Gestion_Paie') }}"> Externalisation de la gestion salariale pour garantir
+                                            <span><a href="#"> Externalisation de la gestion
+                                                    salariale pour garantir
                                                     conformité et efficacité.</a></span>
-                                            <h4 class="title"><a href="{{ route('Gestion_Paie') }}">Gestion de la paie</a>
+                                            <h4 class="title"><a href="#">@lang('extracted.gestion_de_la_paie')</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -210,9 +337,9 @@
                                 <div class="hover-content">
                                     <div class="content-wrap">
                                         <div class="content">
-                                            <span><a href="{{ route('Financement') }}">Accompagnement dans l'obtention de crédits et
-                                                    subventions.</a></span>
-                                            <h4 class="title"><a href="{{ route('Financement') }}">Recherche de financement </a>
+                                            <span><a href="#">@lang('extracted.accompagnement_dans_lobtention_de_credits_et_subventions')</a></span>
+                                            <h4 class="title"><a href="#">Recherche de
+                                                    financement </a>
                                             </h4>
                                         </div>
                                     </div>
@@ -231,7 +358,7 @@
             <div class="row justify-content-center" style="margin-top:-100px;">
                 <div class="col-lg-8">
                     <div class="section-title text-center mb-50 wow fadeInDown">
-                        <h2>Nos Formations</h2>
+                        <h2>@lang('extracted.nos_formations')</h2>
                     </div>
                     <p class="mb-20">
                         Nous proposons des formations en ligne et en présentiel, adaptées à vos besoins et à votre rythme.
@@ -240,14 +367,14 @@
                     </p>
                 </div>
                 <div class="zency-isotope wow fadeInDown" style="text-align:center;">
-                    <video width="100%" height="500" controls autoplay loop muted
-                        poster="assets/images/formation_poster.jpg" class="case-img"
+                    <video id="myVideo" width="100%" height="500" controls autoplay loop muted
+                        poster="{{ asset('assets/images/formation_poster.jpg') }}" class="case-img"
                         style="max-width:900px; border-radius:10px; display:block; margin:0 auto;">
-                        <source src="{{ asset('assets/images/10.mp4') }}" type="video/mp4">
+                        <source src="{{ asset('assets/images/video.mp4') }}" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéos.
                     </video>
 
-                    <a href="{{ route('Formations.index') }}" class="btn btn-lg btn-primary mt-4"
+                    <a href="{{ route('clients.formations.index') }}" class="btn btn-lg btn-primary mt-4"
                         style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; padding: 18px 40px; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s;">
                         <i class="fas fa-graduation-cap" style="margin-right:10px"></i>
                         Aller au menu formation
@@ -264,9 +391,9 @@
                 <div class="col-lg-12">
                     <!--=== Section Title ===-->
                     <div class="section-title mb-35 wow fadeInDown text-center">
-                        <h2>Nos Opportunités</h2><br>
+                        <h2>@lang('extracted.nos_emplois')</h2><br>
                         <p class="mb-20" style="font-size: 1.1rem">
-                            Découvrez nos offres d’emploi et de stage sélectionnées pour vous !
+                            Découvrez nos offres d'emploi et de stage sélectionnées pour vous !
                             Excellium Conseils vous connecte aux meilleures opportunités du marché, dans des secteurs
                             variés.
                             Pour postuler, déposez votre CV directement sur notre plateforme dédiée en cliquant sur le
@@ -285,13 +412,14 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="{{ route('clients.emplois.index') }}">@lang('extracted.marketing')</a>
+                                        </li>
                                     </ul>
                                     <div class="post-meta">
-                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">28 Mai
-                                            2023</a>
+
                                     </div>
-                                    <h4 class="title"><a href="#">Chargé(e) de Communication Digitale</a></h4>
+                                    <h4 class="title"><a
+                                            href="{{ route('clients.emplois.index') }}">@lang('extracted.chargee_de_communication_digitale')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -302,14 +430,14 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="#">Audit</a></li>
+                                        <li><a href="{{ route('clients.emplois.index') }}">@lang('extracted.audit')</a>
+                                        </li>
                                     </ul>
                                     <div class="post-meta">
-                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">15 Mai
-                                            2025</a>
+
                                     </div>
-                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Consultant(e)
-                                            Audit Financier</a></h4>
+                                    <h4 class="title"><a
+                                            href="{{ route('clients.emplois.index') }}">@lang('extracted.consultante_audit_financier')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -323,14 +451,14 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="#">Informatique</a></li>
+                                        <li><a href="{{ route('clients.emplois.index') }}">@lang('extracted.comptabilite')</a>
+                                        </li>
                                     </ul>
                                     <div class="post-meta">
-                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">28 Mai
-                                            2023</a>
+
                                     </div>
-                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Technicien
-                                            Support IT</a></h4>
+                                    <h4 class="title"><a
+                                            href="{{ route('clients.emplois.index') }}">@lang('extracted.comptable_generale')</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -344,20 +472,19 @@
                             <div class="hover-content">
                                 <div class="post-content">
                                     <ul class="post-categories">
-                                        <li><a href="#">Informatique</a></li>
+                                        <li><a href="{{ route('clients.emplois.index') }}">@lang('extracted.informatique')</a>
+                                        </li>
                                     </ul>
                                     <div class="post-meta">
-                                        <a href="{{ route('opportunites.clients.index') }}" class="post-date">28 Mai
-                                            2023</a>
                                     </div>
-                                    <h4 class="title"><a href="{{ route('opportunites.clients.index') }}">Développeur Web
-                                            Fullstack</a></h4>
+                                    <h4 class="title"><a
+                                            href="{{ route('clients.emplois.index') }}">@lang('extracted.developpeur_web_fullstack')</a></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="read-button mb-30 text-center">
-                        <a href="{{ route('opportunites.clients.index') }}" class="read-more"
+                        <a href="{{ route('clients.emplois.index') }}" class="read-more"
                             style="background: #FFD22F; color: #222; border: none; font-size: 1.3rem; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: background 0.2s; padding: 14px 36px;">
                             <i class="fas fa-eye" style="margin-right:10px"></i>
                             Voir toutes les opportunités
@@ -375,7 +502,7 @@
                 <div class="col-lg-5">
                     <div class="seciton-content-box mb-40 wow fadeInLeft">
                         <div class="section-title mb-20">
-                            <span class="sub-title">Témoignages</span>
+                            <span class="sub-title">@lang('extracted.temoignages')</span>
                             <h2>Nos clients parlent de nous ! </h2>
                         </div>
                         <p>
@@ -397,16 +524,19 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <p>"There're many variation of this a passages Ipsum available but the majority have
-                                    suffered alteration a some form by injected humour randomised from this words."</p>
+                                <p>
+                                    "Grâce à l'accompagnement d'Excellium Conseils, notre service comptable a pu optimiser
+                                    ses processus et gagner en efficacité. Leur expertise et leur disponibilité ont fait la
+                                    différence dans la gestion de notre entreprise."
+                                </p>
                                 <div class="author-thumb-title style-one">
                                     <div class="author-thumb">
-                                        <img src="assets/images/testimoinal/author-1.jpg" alt="Author Image">
+                                        <img src="{{ asset('assets/images/T_3.jpg') }}" alt="Author Image">
                                         <div class="quote"><i class="fas fa-quote-right"></i></div>
                                     </div>
                                     <div class="author-info">
-                                        <h4>David Patel</h4>
-                                        <span class="position">Web Developer</span>
+                                        <h4>@lang('extracted.fatou_kone')</h4>
+                                        <span class="position">@lang('extracted.comptable')</span>
                                     </div>
                                 </div>
                             </div>
@@ -420,16 +550,19 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <p>"There're many variation of this a passages Ipsum available but the majority have
-                                    suffered alteration a some form by injected humour randomised from this words."</p>
+                                <p>
+                                    "L'équipe RH a bénéficié de conseils personnalisés pour la gestion de la paie et des
+                                    ressources humaines. Nous recommandons Excellium Conseils pour leur professionnalisme et
+                                    leur approche humaine."
+                                </p>
                                 <div class="author-thumb-title style-one">
                                     <div class="author-thumb">
-                                        <img src="assets/images/testimoinal/author-2.jpg" alt="Author Image">
+                                        <img src="{{ asset('assets/images/T_4.jpg') }}" alt="Author Image">
                                         <div class="quote"><i class="fas fa-quote-right"></i></div>
                                     </div>
                                     <div class="author-info">
-                                        <h4>David Patel</h4>
-                                        <span class="position">Web Developer</span>
+                                        <h4>@lang('extracted.jean_kouadio')</h4>
+                                        <span class="position">@lang('extracted.responsable_rh')</span>
                                     </div>
                                 </div>
                             </div>
@@ -443,16 +576,19 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <p>"There're many variation of this a passages Ipsum available but the majority have
-                                    suffered alteration a some form by injected humour randomised from this words."</p>
+                                <p>
+                                    "Nous avons sollicité Excellium Conseils pour un audit financier. Leur analyse détaillée
+                                    et leurs recommandations concrètes nous ont permis d'améliorer notre rentabilité et de
+                                    sécuriser nos opérations."
+                                </p>
                                 <div class="author-thumb-title style-one">
                                     <div class="author-thumb">
-                                        <img src="assets/images/testimoinal/author-2.jpg" alt="Author Image">
+                                        <img src="{{ asset('assets/images/T_1.png') }}" alt="Author Image">
                                         <div class="quote"><i class="fas fa-quote-right"></i></div>
                                     </div>
                                     <div class="author-info">
-                                        <h4>David Patel</h4>
-                                        <span class="position">Web Developer</span>
+                                        <h4>@lang('extracted.marie_diallo')</h4>
+                                        <span class="position">@lang('extracted.directrice_financiere')</span>
                                     </div>
                                 </div>
                             </div>
@@ -464,7 +600,6 @@
     </section><!--====== End Testimonial Section ======-->
 
     <!--====== End Blog Section ======-->
-
     <!-- Modal d'inscription étape 2 -->
     <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel"
         aria-hidden="true">
@@ -482,17 +617,17 @@
                         </p>
                         <input type="hidden" name="email" id="modal_email">
                         <div class="mb-3">
-                            <label for="nom" class="form-label" style="color: #222;">Nom</label>
+                            <label for="nom" class="form-label" style="color: #222;">@lang('extracted.nom')</label>
                             <input type="text" class="form-control" id="nom" name="nom"
                                 placeholder="Votre nom" required>
                         </div>
                         <div class="mb-3">
-                            <label for="prenom" class="form-label" style="color: #222;">Prénom</label>
+                            <label for="prenom" class="form-label" style="color: #222;">@lang('extracted.prenom')</label>
                             <input type="text" class="form-control" id="prenom" name="prenom"
                                 placeholder="Votre prénom" required>
                         </div>
                         <div class="mb-3">
-                            <label for="telephone" class="form-label" style="color: #222;">Téléphone</label>
+                            <label for="telephone" class="form-label" style="color: #222;">@lang('extracted.telephone')</label>
                             <input type="text" class="form-control" id="telephone" name="telephone"
                                 placeholder="ex: 0749095585" maxlength="10" pattern="\d{10}" required>
                             <div id="tel-error" style="color:red; display:none;">
@@ -504,7 +639,7 @@
                     </div>
                     <div class="modal-footer justify-content-end"
                         style="border-top: 1px solid #eee; background: #fafafa; border-radius: 0 0 18px 18px;">
-                        <button type="submit" class="btn btn-primary">Valider mon inscription</button>
+                        <button type="submit" class="btn btn-primary">@lang('extracted.valider_mon_inscription')</button>
                     </div>
                 </form>
             </div>
@@ -520,15 +655,14 @@
                         <path fill="#498830"
                             d="M4 12a8 8 0 1 1 16 0a8 8 0 0 1-16 0m8-10C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m5.457 7.457l-1.414-1.414L11 13.086l-2.793-2.793l-1.414 1.414L11 15.914z" />
                     </svg><br>
-                    <h5 style="color: black">Compte créé avec succès !</h5>
+                    <h5 style="color: black">@lang('extracted.compte_cree_avec_succes')</h5>
                     <br>
                     <button type="button" id="successRedirect" class="btn btn-success mt-3"
-                        data-bs-dismiss="modal">Choisir un service</button>
+                        data-bs-dismiss="modal">@lang('extracted.choisir_un_service')</button>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Modal d'alerte email requis -->
     <div class="modal fade" id="alertEmailModal" tabindex="-1" aria-labelledby="alertEmailModalLabel"
@@ -546,10 +680,10 @@
                         <text x="50" y="58" text-anchor="middle" font-size="40" fill="#df291c" font-weight="bold"
                             font-family="Arial">!</text>
                     </svg>
-                    <h5 style="color:#222; font-weight:600;">Veuillez entrer une adresse email valide avant de continuer
+                    <h5 style="color:#222; font-weight:600;">Veuillez entrer une adresse email valide avant de continuer l'inscription
                     </h5>
                     <button type="button" class="btn btn-warning mt-4 px-5 py-2"
-                        style="font-weight:bold; border-radius:8px;" data-bs-dismiss="modal">FERMER</button>
+                        style="font-weight:bold; border-radius:8px;" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>
@@ -573,128 +707,82 @@
                                 dur="0.8s" repeatCount="indefinite" />
                         </polyline>
                     </svg>
-                    <h5 style="color:rgb(245, 21, 21); font-weight:600;">Erreur... Cet email est déjà enregistré.</h5>
+                    <h5 style="color:rgb(245, 21, 21); font-weight:600;">@lang('extracted.erreur_cet_email_est_deja_enregistre')</h5>
                     <button type="button" class="btn btn-warning mt-4 px-5 py-2"
-                        style="font-weight:bold; border-radius:8px;" data-bs-dismiss="modal">FERMER</button>
+                        style="font-weight:bold; border-radius:8px;" data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <!-- Modal Choix des services améliorée -->
-    <div class="modal fade" id="choixServiceModal" tabindex="-1" aria-labelledby="choixServiceModalLabel"
+    <!-- Modal Choix des produits améliorée -->
+    <div class="modal fade" id="choixProduitModal" tabindex="-1" aria-labelledby="choixProduitModalLabel"
         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content" style="border-radius: 18px;">
-                <form id="choixServiceForm">
+                <form id="choixProduitForm">
                     <div class="modal-header border-0" style="background: #FFD22F; border-radius: 18px 18px 0 0;">
                         <img src="{{ asset('assets/images/logo_new.jpg') }}" alt="Logo"
                             style="height: 60px; margin-right: 16px;">
                         <div>
-                            <h5 class="modal-title" id="choixServiceModalLabel" style="color: #222; font-weight: bold;">
-                                Bienvenue dans notre menu services</h5>
-                            <p style="margin:0; color:#444; font-size:15px;">Veuillez sélectionner les services qui vous
-                                intéressent.</p>
+                            <h5 class="modal-title" id="choixProduitModalLabel" style="color: #222; font-weight: bold;">
+                                Bienvenue dans notre menu produits
+                            </h5>
+                            <p style="margin:0; color:#444; font-size:15px;">
+                                Veuillez sélectionner les produits qui vous intéressent.
+                            </p>
                         </div>
-                        <!-- Suppression du bouton de fermeture -->
                     </div>
                     <div class="modal-body py-4">
-                        <div id="service-alert" class="alert alert-danger" style="display:none; font-size:15px;">
-                            Veuillez sélectionner au moins un service pour continuer.
+                        <div id="produit-alert" class="alert alert-danger" style="display:none; font-size:15px;">
+                            Veuillez sélectionner au moins un produit pour continuer.
                         </div>
+
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="selectAllServices">
-                            <label class="form-check-label fw-bold" for="selectAllServices">Tout sélectionner</label>
+                            <input class="form-check-input" type="checkbox" id="selectAllProduits">
+                            <label class="form-check-label fw-bold" for="selectAllProduits">
+                                Tout sélectionner
+                            </label>
                         </div>
-                        <div id="services-list" class="row">
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 1" id="service1">
-                                    <label class="form-check-label" for="service1">Formation et Développement des
-                                        compétences</label>
+
+                        <hr>
+
+                        <div class="row">
+                            @php
+                                $count = max(1, ceil($produits->count() / 2));
+                                $chunks = array_chunk($produits->all(), $count);
+                            @endphp
+
+                            @foreach ($chunks as $col)
+                                <div class="col-md-6">
+                                    @foreach ($col as $produit)
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input produit-checkbox" type="checkbox"
+                                                name="produits[]" value="{{ $produit['id'] }}"
+                                                id="produit{{ $produit['id'] }}">
+                                            <label class="form-check-label" for="produit{{ $produit['id'] }}">
+                                                {{ $produit['nom'] }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 2" id="service2">
-                                    <label class="form-check-label" for="service2">Assistance Comptable et Fiscale</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 3" id="service3">
-                                    <label class="form-check-label" for="service3">Création, modification et Gestion
-                                        d'Entreprise</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 4" id="service4">
-                                    <label class="form-check-label" for="service4">Audit et Conseil Financier</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 5" id="service5">
-                                    <label class="form-check-label" for="service5">Gestion de la Paie et des Ressources
-                                        Humaines</label>
-                                </div>
-                                <hr>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 6" id="service6">
-                                    <label class="form-check-label" for="service6">Recrutement et Placement de Personnel
-                                        Qualifié</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 7" id="service7">
-                                    <label class="form-check-label" for="service7">Conseil en Recherche de Financement et
-                                        en Investissement</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 8" id="service8">
-                                    <label class="form-check-label" for="service8">Commerce Générale</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 9" id="service9">
-                                    <label class="form-check-label" for="service9">Import-Export</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 10" id="service10">
-                                    <label class="form-check-label" for="service10">Achat, Location et Vente de Biens
-                                        Mobiliers et Immobiliers</label>
-                                </div>
-                                <hr>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input service-checkbox" type="checkbox" name="services[]"
-                                        value="Service 11" id="service11">
-                                    <label class="form-check-label" for="service11">Prestations de Services Divers</label>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                    </div>
-                    <div class="modal-footer justify-content-end">
-                        <button type="submit" class="btn btn-primary">Envoyer mes choix</button>
+
+                        <div class="modal-footer justify-content-end">
+                            <button type="submit" class="btn btn-primary">Envoyer mes choix</button>
+                        </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
+    </div>
 
-    <!-- Modal de succès services -->
-    <div class="modal fade" id="serviceSuccessModal" tabindex="-1" aria-labelledby="serviceSuccessModalLabel"
+    <!-- Modal de succès produits -->
+    <div class="modal fade" id="produituccessModal" tabindex="-1" aria-labelledby="produituccessModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center">
@@ -703,16 +791,16 @@
                         <path fill="#498830"
                             d="M4 12a8 8 0 1 1 16 0a8 8 0 0 1-16 0m8-10C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m5.457 7.457l-1.414-1.414L11 13.086l-2.793-2.793l-1.414 1.414L11 15.914z" />
                     </svg><br>
-                    <h5 style="color: black">Vos choix ont bien été enregistrés !<br>Un email de bienvenue vous a été
-                        envoyé.</h5>
+                    <h5 style="color: black">@lang('extracted.vos_choix_ont_bien_ete_enregistres')<br>@lang('extracted.un_email_de_bienvenue_vous_a_ete_envoye')</h5>
                     <br>
-                    <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-success mt-3"
+                        data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal d'erreur services -->
+    <!-- Modal d'erreur produits -->
     <div class="modal fade" id="serviceErrorModal" tabindex="-1" aria-labelledby="serviceErrorModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -722,12 +810,14 @@
                         <path fill="#df291c"
                             d="M4 20v-6a8 8 0 1 1 16 0v6h1v2H3v-2zm2 0h12v-6a6 6 0 0 0-12 0zm5-18h2v3h-2zm8.778 2.808l1.414 1.414l-2.12 2.121l-1.415-1.414zM2.808 6.222l1.414-1.414l2.121 2.12L4.93 8.344zM7 14a5 5 0 0 1 5-5v2a3 3 0 0 0-3 3z" />
                     </svg><br>
-                    <h5 style="color:black" id="serviceErrorMsg">Une erreur est survenue, veuillez réessayer.</h5>
-                    <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">FERMER</button>
+                    <h5 style="color:black" id="serviceErrorMsg">@lang('extracted.une_erreur_est_survenue_veuillez_reessayer')</h5>
+                    <button type="button" class="btn btn-warning mt-3"
+                        data-bs-dismiss="modal">@lang('extracted.fermer')</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Script pour la création du compte et la confirmation du succès -->
     <script>
@@ -776,7 +866,7 @@
                                 bootstrap.Modal.getInstance(document.getElementById('successModal'))
                                     .hide();
                                 var choixModal = new bootstrap.Modal(document.getElementById(
-                                    'choixServiceModal'));
+                                    'choixProduitModal'));
                                 choixModal.show();
                             };
                         } else if (data.email_exists) {
@@ -817,25 +907,25 @@
                 }
             });
 
-            // Gestion du bouton "Tout cocher"
-            document.getElementById('selectAllServices').addEventListener('change', function() {
+            // Gestion du bouton "Tout sélectionner" pour les produits
+            document.getElementById('selectAllProduits').addEventListener('change', function() {
                 const checked = this.checked;
-                document.querySelectorAll('.service-checkbox').forEach(cb => cb.checked = checked);
+                document.querySelectorAll('.produit-checkbox').forEach(cb => cb.checked = checked);
             });
 
-            // Soumission du choix des services
-            document.getElementById('choixServiceForm').addEventListener('submit', function(e) {
+            // Soumission du choix des produits
+            document.getElementById('choixProduitForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                const checkedServices = Array.from(document.querySelectorAll('.service-checkbox:checked'))
-                    .map(cb => cb.nextElementSibling.textContent.trim());
+                const checkedProduits = Array.from(document.querySelectorAll('.produit-checkbox:checked'))
+                    .map(cb => parseInt(cb.value));
                 const email = document.getElementById('modal_email').value;
 
-                if (checkedServices.length === 0) {
-                    document.getElementById('service-alert').style.display = 'block';
+                if (checkedProduits.length === 0) {
+                    document.getElementById('produit-alert').style.display = 'block';
                     return;
                 }
 
-                fetch('/inscription/services', {
+                fetch('/choix-produit', {
                         method: 'POST',
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}',
@@ -844,18 +934,18 @@
                         },
                         body: JSON.stringify({
                             email,
-                            services: checkedServices
+                            produits: checkedProduits
                         })
                     })
                     .then(res => res.json())
                     .then(data => {
                         if (data.success) {
-                            // Ferme la modale de choix de service
-                            bootstrap.Modal.getInstance(document.getElementById('choixServiceModal'))
+                            // Ferme la modale de choix de produit
+                            bootstrap.Modal.getInstance(document.getElementById('choixProduitModal'))
                                 .hide();
                             // Affiche la modale de succès
                             var modalSuccess = new bootstrap.Modal(document.getElementById(
-                                'serviceSuccessModal'));
+                                'produituccessModal'));
                             modalSuccess.show();
                         } else {
                             // Affiche la modale d'erreur avec le message retourné
@@ -877,7 +967,7 @@
             });
 
             // Sécurité supplémentaire : empêche la fermeture de la modal par touche ESC
-            document.getElementById('choixServiceModal').addEventListener('keydown', function(e) {
+            document.getElementById('choixProduitModal').addEventListener('keydown', function(e) {
                 if (e.key === "Escape") {
                     e.preventDefault();
                 }
@@ -885,110 +975,10 @@
         });
     </script>
 
-    <style>
-        .form-check-label,
-        .modal-title {
-            color: black;
-        }
-
-        .pulse {
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.3;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        #choixServiceModal .modal-content {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-            border: 2px solid #FFD22F;
-        }
-
-        #choixServiceModal .modal-header {
-            border-bottom: 1px solid #eee;
-        }
-
-        #choixServiceModal .modal-footer {
-            border-top: 1px solid #eee;
-            background: #fafafa;
-            border-radius: 0 0 18px 18px;
-        }
-
-        #choixServiceModal .form-check-label {
-            font-size: 16px;
-            color: #222;
-        }
-
-        #choixServiceModal hr {
-            margin: 0.5rem 0;
-            border-top: 1px dashed #FFD22F;
-        }
-
-        @media (max-width: 767px) {
-            #choixServiceModal .modal-dialog {
-                max-width: 98vw;
-            }
-
-            #choixServiceModal .modal-content {
-                padding: 0 5px;
-            }
-
-            #choixServiceModal .modal-header img {
-                height: 40px;
-            }
-        }
-
-        #inscriptionModal .modal-content {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-            border: 2px solid #FFD22F;
-        }
-
-        #inscriptionModal .modal-header {
-            border-bottom: 1px solid #eee;
-            background: #FFD22F;
-            border-radius: 18px 18px 0 0;
-        }
-
-        #inscriptionModal .modal-title {
-            font-size: 1.5rem;
-            color: #222;
-            font-weight: bold;
-        }
-
-        #inscriptionModal .form-label {
-            color: #222;
-            font-weight: 500;
-        }
-
-        #inscriptionModal .form-control {
-            border-radius: 8px;
-            border: 1px solid #FFD22F;
-        }
-
-        #inscriptionModal .modal-footer {
-            border-top: 1px solid #eee;
-            background: #fafafa;
-            border-radius: 0 0 18px 18px;
-        }
-
-        @media (max-width: 767px) {
-            #inscriptionModal .modal-dialog {
-                max-width: 98vw;
-            }
-
-            #inscriptionModal .modal-content {
-                padding: 0 5px;
-            }
-        }
-    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var vid = document.getElementById('myVideo');
+            vid.muted = true; // force le mute
+        });
+    </script>
 @endsection

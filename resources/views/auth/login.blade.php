@@ -44,29 +44,43 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="app-brand-text demo text-heading fw-semibold">Materialize</span>
+                        <span class="app-brand-text demo text-heading fw-semibold">@lang('extracted.materialize')</span>
                     </a>
                 </div>
                 <!-- /Logo -->
 
                 <div class="card-body mt-1">
-                    <h4 class="mb-1">Welcome to Materialize! 👋</h4>
-                    <p class="mb-5">Please sign-in to your account and start the adventure</p>
+                    <h4 class="mb-1">@lang('extracted.welcome_to_materialize')</h4>
+                    <p class="mb-5">@lang('extracted.please_sign_in_to_your_account_and_start_the_adventure')</p>
 
-                    <form id="formAuthentication" class="mb-5" action="index.html" method="GET">
+                    <form id="formAuthentication" class="mb-5" action="{{ route('login') }}" method="POST">
+                        @csrf
+                        @if(session('error'))
+                            <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+                        
                         <div class="form-floating form-floating-outline mb-5 form-control-validation">
-                            <input type="text" class="form-control" id="email" name="email-username"
-                                placeholder="Enter your email or username" autofocus />
-                            <label for="email">Adresse Email</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
+                                placeholder="Enter your email" value="{{ old('email') }}" autofocus required />
+                            <label for="email">@lang('extracted.adresse_email')</label>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-5">
                             <div class="form-password-toggle form-control-validation">
                                 <div class="input-group input-group-merge">
                                     <div class="form-floating form-floating-outline">
-                                        <input type="password" id="password" class="form-control" name="password"
+                                        <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password"
                                             placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                            aria-describedby="password" />
-                                        <label for="password">Mot de passe</label>
+                                            aria-describedby="password" required />
+                                        <label for="password">@lang('extracted.mot_de_passe')</label>
+                                        @error('password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <span class="input-group-text cursor-pointer"><i
                                             class="icon-base ri ri-eye-off-line icon-20px"></i></span>
@@ -75,24 +89,19 @@
                         </div>
                         <div class="mb-5 d-flex justify-content-between mt-5">
                             <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" id="remember-me" />
-                                <label class="form-check-label" for="remember-me">Se Souvenir </label>
+                                <input class="form-check-input" type="checkbox" id="remember" name="remember" />
+                                <label class="form-check-label" for="remember">Se Souvenir </label>
                             </div>
                             <a href="{{route('forgot-password')}}" class="float-end mb-1 mt-2">
-                                <span>Mot de passe oublié?</span>
+                                <span>@lang('extracted.mot_de_passe_oublie')</span>
                             </a>
                         </div>
                         <div class="mb-5">
-                            <button class="btn btn-primary d-grid w-100" type="submit">Se connecter</button>
+                            <button class="btn btn-primary d-grid w-100" type="submit">@lang('extracted.se_connecter')</button>
                         </div>
                     </form>
 
-                    <p class="text-center mb-5">
-                        <span>New on our platform?</span>
-                        <a href="{{ route('register') }}">
-                            <span>Crée un compte</span>
-                        </a>
-                    </p>
+                    {{-- Les comptes ne sont créés que par invitation --}}
 
                   
                 </div>

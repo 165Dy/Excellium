@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Emploi;
-use App\Models\Candidature;
+use App\Models\Opportunite;
+use App\Models\Postulation;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
-use Mailgun\Mailgun;
+use Illuminate\Support\Facades\Validator;
 
 class OpportuniteController extends Controller
 {
@@ -19,451 +16,485 @@ class OpportuniteController extends Controller
      */
     public function index()
     {
-        try {
-            // Debug : vérifier la connexion à la base
-            Log::info('=== DEBUG OPPORTUNITES ===');
-            
-            // Compter les emplois directement
-            $count = DB::table('emplois')->count();
-            Log::info('Nombre d\'emplois dans la table: ' . $count);
-            
-            // Récupérer avec Eloquent
-            $opportunites = Emploi::all();
-            Log::info('Nombre d\'opportunités via Eloquent: ' . $opportunites->count());
-            
-            // Ajouter les variables de sécurité pour le layout
-            $categories = \App\Models\Categorie::all() ?? collect();
-            $formations = \App\Models\Formation::all() ?? collect();
-            
-            return view('admin.opportunites.index', compact('opportunites', 'categories', 'formations'));
-            
-        } catch (\Exception $e) {
-            Log::error('Erreur dans OpportuniteController@index: ' . $e->getMessage());
-            
-            // Retourner une vue d'erreur ou rediriger
-            return view('admin.opportunites.index', [
-                'opportunites' => collect(),
-                'categories' => collect(),
-                'formations' => collect(),
-                'error' => $e->getMessage()
-            ]);
-        }
-    }
-
-
-     public function index_public()
-    {
-        try {
-            // Debug : vérifier la connexion à la base
-            Log::info('=== DEBUG OPPORTUNITES ===');
-            
-            // Compter les emplois directement
-            $count = DB::table('emplois')->count();
-            Log::info('Nombre d\'emplois dans la table: ' . $count);
-            
-            // Récupérer avec Eloquent
-            $opportunites = Emploi::all();
-            Log::info('Nombre d\'opportunités via Eloquent: ' . $opportunites->count());
-            
-            // Ajouter les variables de sécurité pour le layout
-            $categories = \App\Models\Categorie::all() ?? collect();
-            $formations = \App\Models\Formation::all() ?? collect();
-            
-            return view('clients.Opportunites.index', compact('opportunites', 'categories', 'formations'));
-            
-        } catch (\Exception $e) {
-            Log::error('Erreur dans OpportuniteController@index: ' . $e->getMessage());
-            
-            // Retourner une vue d'erreur ou rediriger
-            return view('clients.Opportunites.index', [
-                'opportunites' => collect(),
-                'categories' => collect(),
-                'formations' => collect(),
-                'error' => $e->getMessage()
-            ]);
-        }
+        $opportunites = Opportunite::with('categorie', 'postulations')->get();
+        return view('admin.opportunites.index', compact('opportunites'));
     }
 
     /**
-     * Afficher le formulaire de création
-     */
-    public function create()
-    {
-        return view('admin.opportunites.create');
-    }
-
-    /**
-     * Enregistrer une nouvelle opportunité
+     * Créer une nouvelle opportunité
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'titre' => 'required|string|max:255',
             'description' => 'required|string',
-            'entreprise' => 'required|string|max:255',
-            'type_contrat' => 'required|in:CDI,CDD,Stage,Freelance,Alternance',
-            'localisation' => 'required|string|max:255',
-            'date_expiration' => 'required|date|after:today',
-            'nombre_postes' => 'required|integer|min:1',
-            'salaire_min' => 'nullable|numeric|min:0',
-            'salaire_max' => 'nullable|numeric|min:0|gte:salaire_min',
-            'contact_email' => 'nullable|email',
-            'contact_telephone' => 'nullable|string',
+            'categorie_id' => 'nullable|exists:categories,id',
+            'statut' => 'required|in:brouillon,en_ligne,ferme,archive',
+            'date_debut' => 'nullable|date',
+            'date_fin' => 'nullable|date|after:date_debut',
+            'lieu' => 'nullable|string|max:255',
+            'contact_email' => 'nullable|email|max:255',
+            'criteres' => 'nullable|array',
+            'criteres.*' => 'nullable|string|max:255',
+            'info_keys' => 'nullable|array',
+            'info_values' => 'nullable|array',
+            'info_keys.*' => 'nullable|string|max:255',
+            'info_values.*' => 'nullable|string|max:255',
+            'fichier_joint' => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png,txt|max:5120', // 5MB max
         ]);
 
-        try {
-            Emploi::create($request->all());
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur de validation',
+                'errors' => $validator->errors()
+            ], 422);
+        }
 
-            Log::info('Nouvelle opportunité créée:', [
+        try {
+            // Générer un slug unique
+            $slug = Str::slug($request->titre);
+            $originalSlug = $slug;
+            $counter = 1;
+            
+            while (Opportunite::where('slug', $slug)->exists()) {
+                $slug = $originalSlug . '-' . $counter;
+                $counter++;
+            }
+
+            // Traiter les critères
+            $criteres = null;
+            if ($request->criteres && is_array($request->criteres)) {
+                $criteres = array_filter($request->criteres, function($critere) {
+                    return !empty(trim($critere));
+                });
+                $criteres = !empty($criteres) ? $criteres : null;
+            }
+
+            // Traiter les informations complémentaires
+            $informations = null;
+            if ($request->info_keys && $request->info_values) {
+                $infoArray = [];
+                for ($i = 0; $i < count($request->info_keys); $i++) {
+                    if (!empty(trim($request->info_keys[$i])) && !empty(trim($request->info_values[$i]))) {
+                        $infoArray[trim($request->info_keys[$i])] = trim($request->info_values[$i]);
+                    }
+                }
+                $informations = !empty($infoArray) ? $infoArray : null;
+            }
+
+            // Gérer l'upload de fichier
+            $fichierPath = null;
+            if ($request->hasFile('fichier_joint')) {
+                $file = $request->file('fichier_joint');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('uploads/opportunites'), $filename);
+                $fichierPath = 'uploads/opportunites/' . $filename;
+            }
+
+            $opportunite = Opportunite::create([
                 'titre' => $request->titre,
-                'entreprise' => $request->entreprise,
-                'admin' => 'Excellium Conseils'
+                'description' => $request->description,
+                'slug' => $slug,
+                'categorie_id' => $request->categorie_id,
+                'statut' => $request->statut,
+                'date_debut' => $request->date_debut,
+                'date_fin' => $request->date_fin,
+                'lieu' => $request->lieu,
+                'contact_email' => $request->contact_email,
+                'criteres' => $criteres,
+                'informations' => $informations,
+                'fichier_joint' => $fichierPath,
             ]);
 
-            return redirect()->route('admin.opportunites.index')
-                ->with('success', 'Opportunité créée avec succès !');
+            return response()->json([
+                'success' => true,
+                'message' => 'Opportunité créée avec succès',
+                'opportunite' => $opportunite->load('categorie')
+            ]);
 
         } catch (\Exception $e) {
-            Log::error('Erreur création opportunité:', [
-                'error' => $e->getMessage(),
-                'data' => $request->all()
-            ]);
-
-            return back()->withInput()
-                ->with('error', 'Erreur lors de la création de l\'opportunité.');
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la création de l\'opportunité',
+                'error' => $e->getMessage()
+            ], 500);
         }
     }
 
     /**
-     * Afficher une opportunité
+     * Afficher les détails d'une opportunité
      */
-    public function show($id)
+    public function show(Opportunite $opportunite)
     {
-        $opportunite = Emploi::with(['candidatures' => function($query) {
-            $query->orderBy('created_at', 'desc');
-        }])->findOrFail($id);
-
-        return view('admin.opportunites.show', compact('opportunite'));
+        $opportunite->load('categorie', 'postulations.user');
+        
+        return response()->json([
+            'success' => true,
+            'opportunite' => $opportunite
+        ]);
     }
 
-    public function show_public($id)
-    {
-        $opportunite = Emploi::with(['candidatures' => function($query) {
-            $query->orderBy('created_at', 'desc');
-        }])->findOrFail($id);
-
-        return view('clients.Opportunites.show', compact('opportunite'));
-    }
     /**
      * Afficher le formulaire d'édition
      */
-    public function edit($id)
+    public function edit(Opportunite $opportunite)
     {
-        $opportunite = Emploi::findOrFail($id);
-        return view('admin.opportunites.edit', compact('opportunite'));
+        $categories = Categorie::all();
+        
+        return response()->json([
+            'success' => true,
+            'opportunite' => $opportunite,
+            'categories' => $categories
+        ]);
     }
 
     /**
      * Mettre à jour une opportunité
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Opportunite $opportunite)
     {
-        $opportunite = Emploi::findOrFail($id);
-
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'titre' => 'required|string|max:255',
             'description' => 'required|string',
-            'entreprise' => 'required|string|max:255',
-            'type_contrat' => 'required|in:CDI,CDD,Stage,Freelance,Alternance',
-            'localisation' => 'required|string|max:255',
-            'date_expiration' => 'required|date',
-            'nombre_postes' => 'required|integer|min:1',
-            'salaire_min' => 'nullable|numeric|min:0',
-            'salaire_max' => 'nullable|numeric|min:0|gte:salaire_min',
-            'contact_email' => 'nullable|email',
-            'contact_telephone' => 'nullable|string',
+            'categorie_id' => 'nullable|exists:categories,id',
+            'statut' => 'required|in:brouillon,en_ligne,ferme,archive',
+            'date_debut' => 'nullable|date',
+            'date_fin' => 'nullable|date|after:date_debut',
+            'lieu' => 'nullable|string|max:255',
+            'contact_email' => 'nullable|email|max:255',
+            'criteres' => 'nullable|array',
+            'criteres.*' => 'nullable|string|max:255',
+            'info_keys' => 'nullable|array',
+            'info_values' => 'nullable|array',
+            'info_keys.*' => 'nullable|string|max:255',
+            'info_values.*' => 'nullable|string|max:255',
+            'fichier_joint' => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png,txt|max:5120',
         ]);
 
-        try {
-            $opportunite->update($request->all());
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur de validation',
+                'errors' => $validator->errors()
+            ], 422);
+        }
 
-            Log::info('Opportunité mise à jour:', [
-                'id' => $opportunite->id,
-                'titre' => $opportunite->titre,
-                'admin' => 'Excellium Conseils'
+        try {
+            // Mettre à jour le slug si le titre a changé
+            if ($opportunite->titre !== $request->titre) {
+                $slug = Str::slug($request->titre);
+                $originalSlug = $slug;
+                $counter = 1;
+                
+                while (Opportunite::where('slug', $slug)->where('id', '!=', $opportunite->id)->exists()) {
+                    $slug = $originalSlug . '-' . $counter;
+                    $counter++;
+                }
+                
+                $opportunite->slug = $slug;
+            }
+
+            // Traiter les critères
+            $criteres = null;
+            if ($request->criteres && is_array($request->criteres)) {
+                $criteres = array_filter($request->criteres, function($critere) {
+                    return !empty(trim($critere));
+                });
+                $criteres = !empty($criteres) ? $criteres : null;
+            }
+
+            // Traiter les informations complémentaires
+            $informations = null;
+            if ($request->info_keys && $request->info_values) {
+                $infoArray = [];
+                for ($i = 0; $i < count($request->info_keys); $i++) {
+                    if (!empty(trim($request->info_keys[$i])) && !empty(trim($request->info_values[$i]))) {
+                        $infoArray[trim($request->info_keys[$i])] = trim($request->info_values[$i]);
+                    }
+                }
+                $informations = !empty($infoArray) ? $infoArray : null;
+            }
+
+            // Gérer l'upload de fichier
+            $fichierPath = $opportunite->fichier_joint; // Conserver l'ancien fichier par défaut
+            if ($request->hasFile('fichier_joint')) {
+                // Supprimer l'ancien fichier s'il existe
+                if ($opportunite->fichier_joint && file_exists(public_path($opportunite->fichier_joint))) {
+                    unlink(public_path($opportunite->fichier_joint));
+                }
+                
+                $file = $request->file('fichier_joint');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('uploads/opportunites'), $filename);
+                $fichierPath = 'uploads/opportunites/' . $filename;
+            }
+
+            $opportunite->update([
+                'titre' => $request->titre,
+                'description' => $request->description,
+                'categorie_id' => $request->categorie_id,
+                'statut' => $request->statut,
+                'date_debut' => $request->date_debut,
+                'date_fin' => $request->date_fin,
+                'lieu' => $request->lieu,
+                'contact_email' => $request->contact_email,
+                'criteres' => $criteres,
+                'informations' => $informations,
+                'fichier_joint' => $fichierPath,
             ]);
 
-            return redirect()->route('admin.opportunites.index')
-                ->with('success', 'Opportunité mise à jour avec succès !');
+            return response()->json([
+                'success' => true,
+                'message' => 'Opportunité mise à jour avec succès',
+                'opportunite' => $opportunite->load('categorie')
+            ]);
 
         } catch (\Exception $e) {
-            Log::error('Erreur mise à jour opportunité:', [
-                'id' => $id,
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la mise à jour de l\'opportunité',
                 'error' => $e->getMessage()
-            ]);
-
-            return back()->withInput()
-                ->with('error', 'Erreur lors de la mise à jour.');
+            ], 500);
         }
     }
 
     /**
      * Supprimer une opportunité
      */
-    public function destroy($id)
+    public function destroy(Opportunite $opportunite)
     {
         try {
-            $opportunite = Emploi::findOrFail($id);
-            
-            // Supprimer les CVs associés
-            foreach ($opportunite->candidatures as $candidature) {
-                if ($candidature->cv_path && Storage::disk('public')->exists($candidature->cv_path)) {
-                    Storage::disk('public')->delete($candidature->cv_path);
-                }
-            }
-            
-            $titre = $opportunite->titre;
             $opportunite->delete();
-
-            Log::info('Opportunité supprimée:', [
-                'id' => $id,
-                'titre' => $titre,
-                'admin' => 'Excellium Conseils'
-            ]);
-
-            return redirect()->route('admin.opportunites.index')
-                ->with('success', 'Opportunité supprimée avec succès !');
-
-        } catch (\Exception $e) {
-            Log::error('Erreur suppression opportunité:', [
-                'id' => $id,
-                'error' => $e->getMessage()
-            ]);
-
-            return back()->with('error', 'Erreur lors de la suppression.');
-        }
-    }
-
-    /**
-     * Récupérer les détails d'une opportunité avec candidatures (AJAX)
-     */
-    public function getDetails($id)
-    {
-        try {
-            $opportunite = Emploi::with(['candidatures' => function($query) {
-                $query->orderBy('created_at', 'desc');
-            }])->findOrFail($id);
             
             return response()->json([
                 'success' => true,
-                'opportunite' => $opportunite,
-                'candidatures' => $opportunite->candidatures
+                'message' => 'Opportunité supprimée avec succès'
             ]);
-            
+
         } catch (\Exception $e) {
-            Log::error('Erreur récupération détails opportunité:', [
-                'id' => $id,
-                'error' => $e->getMessage()
-            ]);
-            
             return response()->json([
                 'success' => false,
-                'message' => 'Opportunité introuvable'
-            ], 404);
+                'message' => 'Erreur lors de la suppression de l\'opportunité',
+                'error' => $e->getMessage()
+            ], 500);
         }
     }
 
     /**
-     * Changer le statut d'une candidature
+     * Récupérer les candidats d'une opportunité
      */
-    public function changerStatutCandidature(Request $request, $id)
+    public function getCandidats(Opportunite $opportunite)
     {
-        $request->validate([
+        try {
+            $candidats = $opportunite->postulations()
+                ->with('user')
+                ->get()
+                ->map(function ($postulation) {
+                    return [
+                        'id' => $postulation->id,
+                        'user_id' => $postulation->user_id,
+                        'nom' => $postulation->user->nom,
+                        'prenom' => $postulation->user->prenom,
+                        'email' => $postulation->user->email,
+                        'telephone' => $postulation->user->telephone,
+                        'statut' => $postulation->statut,
+                        'date_postulation' => $postulation->created_at->format('d/m/Y H:i'),
+                        'created_at' => $postulation->created_at
+                    ];
+                });
+
+            return response()->json([
+                'success' => true,
+                'candidats' => $candidats,
+                'opportunite' => [
+                    'id' => $opportunite->id,
+                    'titre' => $opportunite->titre
+                ]
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors du chargement des candidats',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * Changer le statut d'une postulation
+     */
+    public function changerStatutPostulation(Request $request, Postulation $postulation)
+    {
+        $validator = Validator::make($request->all(), [
             'statut' => 'required|in:en_attente,accepte,refuse'
         ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Statut invalide',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
         try {
-            $candidature = Candidature::findOrFail($id);
-            $candidature->update(['statut' => $request->statut]);
-
-            Log::info('Statut candidature modifié:', [
-                'candidature_id' => $id,
-                'nouveau_statut' => $request->statut,
-                'admin' => 'Excellium Conseils'
-            ]);
-
+            $postulation->update(['statut' => $request->statut]);
+            
             return response()->json([
                 'success' => true,
-                'message' => 'Statut mis à jour avec succès',
-                'nouveau_statut' => $request->statut
+                'message' => 'Statut de la postulation mis à jour avec succès',
+                'postulation' => $postulation->fresh()
             ]);
 
         } catch (\Exception $e) {
-            Log::error('Erreur changement statut candidature:', [
-                'id' => $id,
-                'error' => $e->getMessage()
-            ]);
-
             return response()->json([
                 'success' => false,
-                'message' => 'Erreur lors de la mise à jour'
+                'message' => 'Erreur lors de la mise à jour du statut',
+                'error' => $e->getMessage()
             ], 500);
         }
     }
 
     /**
-     * Exporter les candidatures en CSV
+     * Afficher la liste publique des opportunités
      */
-    public function exportCandidatures($opportunite_id)
+    public function index_public()
     {
-        try {
-            $opportunite = Emploi::with('candidatures')->findOrFail($opportunite_id);
-            
-            $filename = 'candidatures_' . Str::slug($opportunite->titre) . '_' . date('Y-m-d') . '.csv';
-            
-            $headers = [
-                'Content-Type' => 'text/csv',
-                'Content-Disposition' => 'attachment; filename="' . $filename . '"',
-            ];
-            
-            $callback = function() use ($opportunite) {
-                $file = fopen('php://output', 'w');
-                
-                // En-têtes CSV
-                fputcsv($file, [
-                    'Nom complet',
-                    'Email', 
-                    'Téléphone',
-                    'Message',
-                    'Statut',
-                    'Date candidature'
-                ]);
-                
-                // Données
-                foreach ($opportunite->candidatures as $candidature) {
-                    fputcsv($file, [
-                        $candidature->nom,
-                        $candidature->email,
-                        $candidature->telephone,
-                        $candidature->message ?: 'Aucun message',
-                        ucfirst(str_replace('_', ' ', $candidature->statut)),
-                        $candidature->created_at->format('d/m/Y H:i')
-                    ]);
-                }
-                
-                fclose($file);
-            };
-            
-            return Response::stream($callback, 200, $headers);
-            
-        } catch (\Exception $e) {
-            Log::error('Erreur export candidatures:', [
-                'opportunite_id' => $opportunite_id,
-                'error' => $e->getMessage()
-            ]);
-            
-            return back()->with('error', 'Erreur lors de l\'export');
-        }
+        $opportunites = Opportunite::with(['categorie', 'postulations'])
+            ->where('statut', 'en_ligne')
+            ->where(function($query) {
+                $query->whereNull('date_fin')
+                      ->orWhere('date_fin', '>=', now());
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(9);
+
+        // Compter les postulations pour chaque opportunité
+        $opportunites->getCollection()->transform(function ($opportunite) {
+            $opportunite->postulations_count = $opportunite->postulations->count();
+            return $opportunite;
+        });
+
+/*         dd($opportunites);
+ */        
+        $categories = Categorie::all();
+
+        return view('clients.Opportunites.General.list', compact('opportunites', 'categories'));
     }
 
-    public function postuler(Request $request)
+    /**
+     * Afficher les détails d'une opportunité (vue publique)
+     */
+    public function show_public($slug)
     {
-        $request->validate([
-            'opportunite_id' => 'required|exists:emplois,id',
-            'nom' => 'required|string|max:255',
+        $opportunite = Opportunite::with(['categorie', 'postulations.user'])
+            ->where('slug', $slug)
+            ->where('statut', 'en_ligne')
+            ->firstOrFail();
+
+        // Vérifier si l'opportunité est encore ouverte
+        if ($opportunite->date_fin && $opportunite->date_fin < now()) {
+            abort(404, 'Cette opportunité est fermée');
+        }
+
+        // Opportunités similaires
+        $similaires = Opportunite::with('categorie')
+            ->where('statut', 'en_ligne')
+            ->where('id', '!=', $opportunite->id)
+            ->where(function($query) use ($opportunite) {
+                $query->where('categorie_id', $opportunite->categorie_id)
+                      ->orWhere('lieu', $opportunite->lieu);
+            })
+            ->limit(3)
+            ->get();
+
+        return view('clients.Opportunites.General.show', compact('opportunite', 'similaires'));
+    }
+
+    /**
+     * Traiter une candidature publique
+     */
+    public function candidature(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'opportunite_id' => 'required|exists:opportunites,id',
+            'nom_complet' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'telephone' => 'nullable|string|max:20',
             'message' => 'nullable|string|max:1000',
-            'file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
-            'lettre_motivation' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
         ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur de validation',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
         try {
-            // Sauvegarde du CV
-            $cvPath = null;
-            if ($request->hasFile('file')) {
-                $cvPath = $request->file('file')->store('cvs', 'public');
+            $opportunite = Opportunite::findOrFail($request->opportunite_id);
+
+            // Vérifier si l'opportunité est encore ouverte
+            if ($opportunite->statut !== 'en_ligne' || 
+                ($opportunite->date_fin && $opportunite->date_fin < now())) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Cette opportunité n\'est plus disponible'
+                ], 400);
             }
 
-            // Sauvegarde de la lettre de motivation
-            $lettrePath = null;
-            if ($request->hasFile('lettre_motivation')) {
-                $lettrePath = $request->file('lettre_motivation')->store('lettres_motivation', 'public');
+            // Vérifier si l'utilisateur a déjà postulé
+            $existingPostulation = Postulation::where('opportunite_id', $opportunite->id)
+                ->where('email', $request->email)
+                ->first();
+
+            if ($existingPostulation) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Vous avez déjà postulé à cette opportunité'
+                ], 400);
             }
 
-            // Création de la candidature
-            $candidature = Candidature::create([
-                'emploi_id' => $request->opportunite_id,
-                'nom' => $request->nom,
-                'email' => $request->email,
-                'telephone' => $request->telephone,
-                'cv_path' => $cvPath,
-                'lettre_motivation' => $lettrePath,
-                'message' => $request->message,
+            // Créer ou récupérer l'utilisateur
+            $user = \App\Models\User::where('email', $request->email)->first();
+            
+            if (!$user) {
+                // Créer un nouvel utilisateur
+                $nomPrenom = explode(' ', $request->nom_complet, 2);
+                $user = \App\Models\User::create([
+                    'nom' => $nomPrenom[1] ?? '',
+                    'prenom' => $nomPrenom[0] ?? '',
+                    'email' => $request->email,
+                    'telephone' => $request->telephone,
+                    'type' => 'participant_autre',
+                    'password' => null, // Pas de mot de passe pour les candidatures externes
+                ]);
+            }
+
+            // Créer la postulation
+            $postulation = Postulation::create([
+                'uuid' => \Illuminate\Support\Str::uuid(),
                 'statut' => 'en_attente',
-            ]);
-
-            // Préparation des variables pour l'email
-            $emploi = Emploi::find($request->opportunite_id);
-            $variables = [
-                'nom' => $candidature->nom,
-                'poste' => $emploi->titre,
-                'type_contrat' => $emploi->type_contrat,
-                'localisation' => $emploi->localisation,
-                'entreprise' => $emploi->entreprise,
-                'cv_joint' => $cvPath ? 'Oui' : 'Non',
-                'lettre_jointe' => $lettrePath ? 'Oui' : 'Non',
-            ];
-
-            // Envoi de l'email via Mailgun
-            $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
-            $mg->messages()->send(env('MAILGUN_DOMAIN'), [
-                'from' => 'contact@excelliumconseils.com',
-                'to' => $candidature->email,
-                'subject' => 'Confirmation de réception de votre candidature',
-                'template' => 'excellium_candidature_confirmation',
-                'h:X-Mailgun-Variables' => json_encode($variables),
+                'user_id' => $user->id,
+                'opportunite_id' => $opportunite->id,
+                'message' => $request->message, // Si tu ajoutes ce champ à la table
             ]);
 
             return response()->json([
                 'success' => true,
-                'message' => 'Votre candidature a été envoyée avec succès !'
+                'message' => 'Votre candidature a été envoyée avec succès. Nous vous contacterons bientôt.',
+                'postulation' => $postulation
             ]);
 
         } catch (\Exception $e) {
-            Log::error('Erreur lors de la candidature:', [
-                'error' => $e->getMessage(),
-                'user' => $request->email
-            ]);
-
             return response()->json([
                 'success' => false,
-                'message' => 'Une erreur est survenue lors de l\'envoi de votre candidature.'
+                'message' => 'Erreur lors de l\'envoi de la candidature',
+                'error' => $e->getMessage()
             ], 500);
         }
     }
-
-       
-    /**
-     * Afficher la liste des candidats
-     */
-    public function candidats()
-    {
-        // Récupère toutes les candidatures avec l'emploi associé
-        $candidats = Candidature::with('opportunite')->orderBy('created_at', 'desc')->get();
-    
-        return view('admin.opportunites.list_candidats', compact('candidats'));
-    }
-
-    /**
-     * Afficher une candidature spécifique
-     */
-    public function showCandidature(Candidature $candidature)
-    {
-        $candidature->load('opportunite');
-        
-        // La vue 'show_candidat' devra être créée
-        return view('admin.opportunites.show_candidat', compact('candidature'));
-    }
-
-} 
+}

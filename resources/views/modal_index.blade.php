@@ -6,7 +6,7 @@
              <div class="modal-body p-0">
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                  <div class="text-center mb-6">
-                     <h4 class="mb-2">Ajouter une Formation</h4>
+                     <h4 class="mb-2">@lang('extracted.ajouter_une_formation')</h4>
                  </div>
                  <!-- Formulaire de création de formation stylisé -->
                  <form action="{{ route('formations.store') }}" method="POST" class="row g-4">
@@ -15,7 +15,7 @@
                          <div class="form-floating form-floating-outline">
                              <input type="text" id="titre" name="titre" class="form-control"
                                  placeholder="Titre" required>
-                             <label for="titre">Titre</label>
+                             <label for="titre">@lang('extracted.titre')</label>
                          </div>
                      </div>
 
@@ -26,54 +26,54 @@
                                      <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
                                  @endforeach --}}
                              </select>
-                             <label for="categorie_id">Catégorie</label>
+                             <label for="categorie_id">@lang('extracted.categorie')</label>
                          </div>
                      </div>
 
                      <div class="col-12">
                          <div class="form-floating form-floating-outline">
                              <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>
-                             <label for="programme">Programme</label>
+                             <label for="programme">@lang('extracted.programme')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <input type="number" step="0.01" id="cout" name="cout" class="form-control"
                                  placeholder="Coût">
-                             <label for="cout">Coût</label>
+                             <label for="cout">@lang('extracted.cout')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <input type="text" id="lieu" name="lieu" class="form-control"
                                  placeholder="Lieu">
-                             <label for="lieu">Lieu</label>
+                             <label for="lieu">@lang('extracted.lieu')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <input type="date" id="date_debut" name="date_debut" class="form-control"
                                  placeholder="Date de début">
-                             <label for="date_debut">Date de début</label>
+                             <label for="date_debut">@lang('extracted.date_de_debut')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <input type="date" id="date_fin" name="date_fin" class="form-control"
                                  placeholder="Date de fin">
-                             <label for="date_fin">Date de fin</label>
+                             <label for="date_fin">@lang('extracted.date_de_fin')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <textarea name="prerequis" id="prerequis" class="form-control" placeholder="Prérequis" style="height: 80px"></textarea>
-                             <label for="prerequis">Prérequis</label>
+                             <label for="prerequis">@lang('extracted.prerequis')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <textarea name="bonus" id="bonus" class="form-control" placeholder="Bonus" style="height: 80px"></textarea>
-                             <label for="bonus">Bonus</label>
+                             <label for="bonus">@lang('extracted.bonus')</label>
                          </div>
                      </div>
                      <div class="col-12 text-center">
@@ -81,7 +81,7 @@
                              aria-label="Close">
                              Annuler
                          </button>
-                         <button type="submit" class="btn btn-primary me-3">Créer</button>
+                         <button type="submit" class="btn btn-primary me-3">@lang('extracted.creer')</button>
 
                      </div>
                  </form>
@@ -95,34 +95,34 @@
  </div>
 
  <!-- Opportunités Class Modal -->
- <div class="modal fade" id="create_opportunites" tabindex="-1" aria-hidden="true">
+ <div class="modal fade" id="create_emplois" tabindex="-1" aria-hidden="true">
      <div class="modal-dialog modal-lg modal-simple modal-edit-user">
          <div class="modal-content">
              <div class="modal-body p-0">
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                  <div class="text-center mb-6">
-                     <h4 class="mb-2">Ajouter une Opportunité</h4>
+                     <h4 class="mb-2">@lang('extracted.ajouter_une_emploi')</h4>
                  </div>
                  <form id="editUserForm" class="row g-5" onsubmit="return false">
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <input type="text" id="modalEditUserFirstName" name="modalEditUserFirstName"
                                  class="form-control" value="Oliver" placeholder="Oliver" />
-                             <label for="modalEditUserFirstName">First Name</label>
+                             <label for="modalEditUserFirstName">@lang('extracted.first_name')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <input type="text" id="modalEditUserLastName" name="modalEditUserLastName"
                                  class="form-control" value="Queen" placeholder="Queen" />
-                             <label for="modalEditUserLastName">Last Name</label>
+                             <label for="modalEditUserLastName">@lang('extracted.last_name')</label>
                          </div>
                      </div>
                      <div class="col-12">
                          <div class="form-floating form-floating-outline">
                              <input type="text" id="modalEditUserName" name="modalEditUserName"
                                  class="form-control" value="oliver.queen" placeholder="oliver.queen" />
-                             <label for="modalEditUserName">Username</label>
+                             <label for="modalEditUserName">@lang('extracted.username')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
@@ -130,35 +130,35 @@
                              <input type="text" id="modalEditUserEmail" name="modalEditUserEmail"
                                  class="form-control" value="oliverqueen@gmail.com"
                                  placeholder="oliverqueen@gmail.com" />
-                             <label for="modalEditUserEmail">Email</label>
+                             <label for="modalEditUserEmail">@lang('extracted.email')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <select id="modalEditUserStatus" name="modalEditUserStatus" class="form-select"
                                  aria-label="Default select example">
-                                 <option value="1" selected>Active</option>
-                                 <option value="2">Inactive</option>
-                                 <option value="3">Suspended</option>
+                                 <option value="1" selected>@lang('extracted.active')</option>
+                                 <option value="2">@lang('extracted.inactive')</option>
+                                 <option value="3">@lang('extracted.suspended')</option>
                              </select>
-                             <label for="modalEditUserStatus">Status</label>
+                             <label for="modalEditUserStatus">@lang('extracted.status')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <input type="text" id="modalEditTaxID" name="modalEditTaxID"
                                  class="form-control modal-edit-tax-id" placeholder="123 456 7890" />
-                             <label for="modalEditTaxID">Tax ID</label>
+                             <label for="modalEditTaxID">@lang('extracted.tax_id')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="input-group input-group-merge">
-                             <span class="input-group-text">US (+1)</span>
+                             <span class="input-group-text">@lang('extracted.us_1')</span>
                              <div class="form-floating form-floating-outline">
                                  <input type="text" id="modalEditUserPhone" name="modalEditUserPhone"
                                      class="form-control phone-number-mask" value="+1 609 933 4422"
                                      placeholder="+1 609 933 4422" />
-                                 <label for="modalEditUserPhone">Phone Number</label>
+                                 <label for="modalEditUserPhone">@lang('extracted.phone_number')</label>
                              </div>
                          </div>
                      </div>
@@ -166,51 +166,50 @@
                          <div class="form-floating form-floating-outline">
                              <input id="modalEditUserLanguage" name="modalEditUserLanguage"
                                  class="form-control h-auto" placeholder="select technologies" value="English" />
-                             <label for="modalEditUserLanguage">Custom List Suggestions</label>
+                             <label for="modalEditUserLanguage">@lang('extracted.custom_list_suggestions')</label>
                          </div>
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="form-floating form-floating-outline">
                              <select id="modalEditUserCountry" name="modalEditUserCountry"
                                  class="select2 form-select" data-allow-clear="true">
-                                 <option value="">Select</option>
-                                 <option value="Australia">Australia</option>
-                                 <option value="Bangladesh">Bangladesh</option>
-                                 <option value="Belarus">Belarus</option>
-                                 <option value="Brazil">Brazil</option>
-                                 <option value="Canada">Canada</option>
-                                 <option value="China">China</option>
-                                 <option value="France">France</option>
-                                 <option value="Germany">Germany</option>
-                                 <option value="India" selected>India</option>
-                                 <option value="Indonesia">Indonesia</option>
-                                 <option value="Israel">Israel</option>
-                                 <option value="Italy">Italy</option>
-                                 <option value="Japan">Japan</option>
-                                 <option value="Korea">Korea, Republic of</option>
-                                 <option value="Mexico">Mexico</option>
-                                 <option value="Philippines">Philippines</option>
-                                 <option value="Russia">Russian Federation</option>
-                                 <option value="South Africa">South Africa</option>
-                                 <option value="Thailand">Thailand</option>
-                                 <option value="Turkey">Turkey</option>
-                                 <option value="Ukraine">Ukraine</option>
-                                 <option value="United Arab Emirates">United Arab Emirates</option>
-                                 <option value="United Kingdom">United Kingdom</option>
-                                 <option value="United States">United States</option>
+                                 <option value="">@lang('extracted.select')</option>
+                                 <option value="Australia">@lang('extracted.australia')</option>
+                                 <option value="Bangladesh">@lang('extracted.bangladesh')</option>
+                                 <option value="Belarus">@lang('extracted.belarus')</option>
+                                 <option value="Brazil">@lang('extracted.brazil')</option>
+                                 <option value="Canada">@lang('extracted.canada')</option>
+                                 <option value="China">@lang('extracted.china')</option>
+                                 <option value="France">@lang('extracted.france')</option>
+                                 <option value="Germany">@lang('extracted.germany')</option>
+                                 <option value="India" selected>@lang('extracted.india')</option>
+                                 <option value="Indonesia">@lang('extracted.indonesia')</option>
+                                 <option value="Israel">@lang('extracted.israel')</option>
+                                 <option value="Italy">@lang('extracted.italy')</option>
+                                 <option value="Japan">@lang('extracted.japan')</option>
+                                 <option value="Korea">@lang('extracted.korea_republic_of')</option>
+                                 <option value="Mexico">@lang('extracted.mexico')</option>
+                                 <option value="Philippines">@lang('extracted.philippines')</option>
+                                 <option value="Russia">@lang('extracted.russian_federation')</option>
+                                 <option value="South Africa">@lang('extracted.south_africa')</option>
+                                 <option value="Thailand">@lang('extracted.thailand')</option>
+                                 <option value="Turkey">@lang('extracted.turkey')</option>
+                                 <option value="Ukraine">@lang('extracted.ukraine')</option>
+                                 <option value="United Arab Emirates">@lang('extracted.united_arab_emirates')</option>
+                                 <option value="United Kingdom">@lang('extracted.united_kingdom')</option>
+                                 <option value="United States">@lang('extracted.united_states')</option>
                              </select>
-                             <label for="modalEditUserCountry">Country</label>
+                             <label for="modalEditUserCountry">@lang('extracted.country')</label>
                          </div>
                      </div>
                      <div class="col-12">
                          <div class="form-check form-switch">
                              <input type="checkbox" class="form-check-input" id="editBillingAddress" />
-                             <label for="editBillingAddress" class="text-heading">Use as a billing
-                                 address?</label>
+                             <label for="editBillingAddress" class="text-heading">@lang('extracted.use_as_a_billing_address')</label>
                          </div>
                      </div>
                      <div class="col-12 text-center">
-                         <button type="submit" class="btn btn-primary me-3">Submit</button>
+                         <button type="submit" class="btn btn-primary me-3">@lang('extracted.submit')</button>
                          <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
                              aria-label="Close">
                              Cancel
@@ -233,7 +232,7 @@
              <div class="modal-body p-0">
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                  <div class="text-center mb-6">
-                     <h4 class="mb-2">NOUVELLE CATEGORIE</h4>
+                     <h4 class="mb-2">@lang('extracted.nouvelle_categorie')</h4>
                  </div>
                  <form id="createCategorieForm" class="row g-5" method="POST"
                      action="{{ route('categories.store') }}">
@@ -242,14 +241,14 @@
                          <div class="form-floating form-floating-outline">
                              <input type="text" id="nomCategorie" name="nom" class="form-control"
                                  placeholder="comptabilité" required />
-                             <label for="nomCategorie">Nom Catégorie</label>
+                             <label for="nomCategorie">@lang('extracted.nom_categorie')</label>
                          </div>
                      </div>
 
                      <div class="col-12 text-center">
                          <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
-                             aria-label="Close">Fermer</button>
-                         <button type="submit" class="btn btn-primary me-3">Valider</button>
+                             aria-label="Close">@lang('extracted.fermer')</button>
+                         <button type="submit" class="btn btn-primary me-3">@lang('extracted.valider')</button>
 
                      </div>
                  </form>
@@ -270,21 +269,21 @@
              <div class="modal-body p-0">
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                  <div class="text-center mb-6">
-                     <h4 class="mb-2">LISTE DES CATEGORIES</h4>
+                     <h4 class="mb-2">@lang('extracted.liste_des_categories')</h4>
                  </div>
                  <div class="card-datatable text-nowrap">
                      <table class="dt-scrollableTable table table-bordered table-responsive">
                          <thead>
                              <tr>
-                                 <th>ID</th>
-                                 <th>Nom Categorie</th>
-                                 <th>Action</th>
+                                 <th>@lang('extracted.id')</th>
+                                 <th>@lang('extracted.nom_categorie')</th>
+                                 <th>@lang('extracted.action')</th>
                              </tr>
                          </thead>
                          <tbody>
                              <tr>
                                  <td>1</td>
-                                 <td>Lorem ipsum</td>
+                                 <td>@lang('extracted.lorem_ipsum')</td>
                                  {{-- ////////////////////ACTION ///////////////////////// --}}
                                  <td>
                                      <div class="action" style="justify-content: space-between">

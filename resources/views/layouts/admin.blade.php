@@ -8,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Admin | Excellium Conseils</title>
+    <title>@lang('extracted.admin_excellium_conseils')</title>
 
     <meta name="description" content="" />
 
@@ -67,6 +67,7 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
     <style>
         /* Animations pour SweetAlert */
@@ -152,6 +153,33 @@
             pointer-events: auto !important;
             opacity: 1 !important;
         }
+
+        .swal2-card {
+            border-radius: 24px !important;
+            box-shadow: 0 6px 32px rgba(80, 105, 151, 0.13);
+            padding-bottom: 0 !important;
+        }
+
+        .swal2-confirm--primary {
+            background: linear-gradient(90deg, #6C63FF, #3b94fa) !important;
+            border-radius: 18px !important;
+            font-size: 1em !important;
+            font-weight: 600 !important;
+            box-shadow: 0 2px 8px #a4bce7a0;
+        }
+
+        .swal2-popup .swal2-input {
+            border-radius: 10px !important;
+            border: 1px solid #e0e6ed !important;
+            background: #fff !important;
+            font-size: 1em !important;
+            margin-top: 0.2em !important;
+        }
+
+        .swal2-popup label {
+            margin-bottom: 0.2em;
+            display: block;
+        }
     </style>
 </head>
 
@@ -204,7 +232,7 @@
                                     </svg>
                                 </span>
                             </span>
-                            <span class="app-brand-text demo menu-text fw-semibold ms-1">Materialize</span>
+                            <span class="app-brand-text demo menu-text fw-semibold ms-1">@lang('extracted.materialize')</span>
                         </a>
 
                         <a href="javascript:void(0);"
@@ -236,28 +264,28 @@
                                 <a class="nav-link dropdown-toggle hide-arrow btn btn-icon btn-text-secondary rounded-pill"
                                     id="nav-theme" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <i class="icon-base ri ri-sun-line icon-22px theme-icon-active"></i>
-                                    <span class="d-none ms-2" id="nav-theme-text">Toggle theme</span>
+                                    <span class="d-none ms-2" id="nav-theme-text">@lang('extracted.toggle_theme')</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-theme-text">
                                     <li>
                                         <button type="button" class="dropdown-item align-items-center active"
                                             data-bs-theme-value="light" aria-pressed="false">
                                             <span><i class="icon-base ri ri-sun-line icon-22px me-3"
-                                                    data-icon="sun-line"></i>Light</span>
+                                                    data-icon="sun-line"></i>@lang('extracted.light')</span>
                                         </button>
                                     </li>
                                     <li>
                                         <button type="button" class="dropdown-item align-items-center"
                                             data-bs-theme-value="dark" aria-pressed="true">
                                             <span><i class="icon-base ri ri-moon-clear-line icon-22px me-3"
-                                                    data-icon="moon-clear-line"></i>Dark</span>
+                                                    data-icon="moon-clear-line"></i>@lang('extracted.dark')</span>
                                         </button>
                                     </li>
                                     <li>
                                         <button type="button" class="dropdown-item align-items-center"
                                             data-bs-theme-value="system" aria-pressed="false">
                                             <span><i class="icon-base ri ri-computer-line icon-22px me-3"
-                                                    data-icon="computer-line"></i>System</span>
+                                                    data-icon="computer-line"></i>@lang('extracted.system')</span>
                                         </button>
                                     </li>
                                 </ul>
@@ -274,7 +302,7 @@
                                 <div class="dropdown-menu dropdown-menu-end p-0">
                                     <div class="dropdown-menu-header border-bottom">
                                         <div class="dropdown-header d-flex align-items-center py-3">
-                                            <h6 class="mb-0 me-auto">Shortcuts</h6>
+                                            <h6 class="mb-0 me-auto">@lang('extracted.shortcuts')</h6>
                                             <a href="javascript:void(0)"
                                                 class="btn btn-text-secondary rounded-pill btn-icon dropdown-shortcuts-add text-heading"
                                                 data-bs-toggle="tooltip" data-bs-placement="top"
@@ -290,16 +318,18 @@
                                                     <i
                                                         class="icon-base ri ri-calendar-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-calendar.html" class="stretched-link">Calendar</a>
-                                                <small>Appointments</small>
+                                                <a href="app-calendar.html"
+                                                    class="stretched-link">@lang('extracted.calendar')</a>
+                                                <small>@lang('extracted.appointments')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i
                                                         class="icon-base ri ri-file-text-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
-                                                <small>Manage Accounts</small>
+                                                <a href="app-invoice-list.html"
+                                                    class="stretched-link">@lang('extracted.invoice_app')</a>
+                                                <small>@lang('extracted.manage_accounts')</small>
                                             </div>
                                         </div>
                                         <div class="row row-bordered overflow-visible g-0">
@@ -307,17 +337,18 @@
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i class="icon-base ri ri-user-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-user-list.html" class="stretched-link">User App</a>
-                                                <small>Manage Users</small>
+                                                <a href="app-user-list.html"
+                                                    class="stretched-link">@lang('extracted.user_app')</a>
+                                                <small>@lang('extracted.manage_users')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i
                                                         class="icon-base ri ri-computer-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="app-access-roles.html" class="stretched-link">Role
-                                                    Management</a>
-                                                <small>Permission</small>
+                                                <a href="app-access-roles.html"
+                                                    class="stretched-link">@lang('extracted.role_management')</a>
+                                                <small>@lang('extracted.permission')</small>
                                             </div>
                                         </div>
                                         <div class="row row-bordered overflow-visible g-0">
@@ -326,8 +357,8 @@
                                                     <i
                                                         class="icon-base ri ri-pie-chart-2-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="#" class="stretched-link">Dashboard</a>
-                                                <small>User Dashboard</small>
+                                                <a href="#" class="stretched-link">@lang('extracted.dashboard')</a>
+                                                <small>@lang('extracted.user_dashboard')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
@@ -335,8 +366,8 @@
                                                         class="icon-base ri ri-settings-4-line icon-26px text-heading"></i>
                                                 </span>
                                                 <a href="pages-account-settings-account.html"
-                                                    class="stretched-link">Setting</a>
-                                                <small>Account Settings</small>
+                                                    class="stretched-link">@lang('extracted.setting')</a>
+                                                <small>@lang('extracted.account_settings')</small>
                                             </div>
                                         </div>
                                         <div class="row row-bordered overflow-visible g-0">
@@ -345,15 +376,16 @@
                                                     <i
                                                         class="icon-base ri ri-question-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="pages-faq.html" class="stretched-link">FAQs</a>
-                                                <small>FAQs & Articles</small>
+                                                <a href="pages-faq.html" class="stretched-link">@lang('extracted.faqs')</a>
+                                                <small>@lang('extracted.faqs_articles')</small>
                                             </div>
                                             <div class="dropdown-shortcuts-item col">
                                                 <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                                                     <i class="icon-base ri ri-tv-2-line icon-26px text-heading"></i>
                                                 </span>
-                                                <a href="modal-examples.html" class="stretched-link">Modals</a>
-                                                <small>Useful Popups</small>
+                                                <a href="modal-examples.html"
+                                                    class="stretched-link">@lang('extracted.modals')</a>
+                                                <small>@lang('extracted.useful_popups')</small>
                                             </div>
                                         </div>
                                     </div>
@@ -373,10 +405,10 @@
                                 <ul class="dropdown-menu dropdown-menu-end py-0">
                                     <li class="dropdown-menu-header border-bottom py-50">
                                         <div class="dropdown-header d-flex align-items-center py-2">
-                                            <h6 class="mb-0 me-auto">Notification</h6>
+                                            <h6 class="mb-0 me-auto">@lang('extracted.notification')</h6>
                                             <div class="d-flex align-items-center h6 mb-0">
-                                                <span class="badge rounded-pill bg-label-primary fs-xsmall me-2">8
-                                                    New</span>
+                                                <span
+                                                    class="badge rounded-pill bg-label-primary fs-xsmall me-2">@lang('extracted.8_new')</span>
                                                 <a href="javascript:void(0)" class="dropdown-notifications-all p-2"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Mark all as read"><i
@@ -396,10 +428,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Congratulation Lettie 🎉</h6>
-                                                        <small class="mb-1 d-block text-body">Won the monthly best
-                                                            seller gold badge</small>
-                                                        <small class="text-body-secondary">1h ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.congratulation_lettie')
+                                                        </h6>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.won_the_monthly_best_seller_gold_badge')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -417,14 +450,14 @@
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar">
                                                             <span
-                                                                class="avatar-initial rounded-circle bg-label-danger">CF</span>
+                                                                class="avatar-initial rounded-circle bg-label-danger">@lang('extracted.cf')</span>
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Charles Franklin</h6>
-                                                        <small class="mb-1 d-block text-body">Accepted your
-                                                            connection</small>
-                                                        <small class="text-body-secondary">12hr ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.charles_franklin')</h6>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.accepted_your_connection')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.12hr_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -446,10 +479,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">New Message ✉️</h6>
-                                                        <small class="mb-1 d-block text-body">You have new message from
-                                                            Natalie</small>
-                                                        <small class="text-body-secondary">1h ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.new_message')</h6>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.you_have_new_message_from_natalie')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.1h_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -472,10 +505,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Whoo! You have new order 🛒</h6>
-                                                        <small class="mb-1 d-block text-body">ACME Inc. made new order
-                                                            $1,154</small>
-                                                        <small class="text-body-secondary">1 day ago</small>
+                                                        <h6 class="small mb-1">
+                                                            @lang('extracted.whoo_you_have_new_order')</h6>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.acme_inc_made_new_order_1154')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.1_day_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -497,10 +531,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Application has been approved 🚀</h6>
-                                                        <small class="mb-1 d-block text-body">Your ABC project
-                                                            application has been approved.</small>
-                                                        <small class="text-body-secondary">2 days ago</small>
+                                                        <h6 class="small mb-1">
+                                                            @lang('extracted.application_has_been_approved')</h6>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.your_abc_project_application_has_been_approved')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.2_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -523,10 +558,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Monthly report is generated</h6>
+                                                        <h6 class="small mb-1">
+                                                            @lang('extracted.monthly_report_is_generated')</h6>
                                                         <small class="mb-1 d-block text-body">July monthly financial
                                                             report is generated </small>
-                                                        <small class="text-body-secondary">3 days ago</small>
+                                                        <small class="text-body-secondary">@lang('extracted.3_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -548,10 +584,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">Send connection request</h6>
-                                                        <small class="mb-1 d-block text-body">Peter sent you connection
-                                                            request</small>
-                                                        <small class="text-body-secondary">4 days ago</small>
+                                                        <h6 class="small mb-1">
+                                                            @lang('extracted.send_connection_request')</h6>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.peter_sent_you_connection_request')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.4_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -573,10 +610,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">New message from Jane</h6>
-                                                        <small class="mb-1 d-block text-body">Your have new message
-                                                            from Jane</small>
-                                                        <small class="text-body-secondary">5 days ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.new_message_from_jane')
+                                                        </h6>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.your_have_new_message_from_jane')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -599,10 +637,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">CPU is running high</h6>
-                                                        <small class="mb-1 d-block text-body">CPU Utilization Percent
-                                                            is currently at 88.63%,</small>
-                                                        <small class="text-body-secondary">5 days ago</small>
+                                                        <h6 class="small mb-1">@lang('extracted.cpu_is_running_high')
+                                                        </h6>
+                                                        <small
+                                                            class="mb-1 d-block text-body">@lang('extracted.cpu_utilization_percent_is_currently_at_8863')</small>
+                                                        <small class="text-body-secondary">@lang('extracted.5_days_ago')</small>
                                                     </div>
                                                     <div class="flex-shrink-0 dropdown-notifications-actions">
                                                         <a href="javascript:void(0)"
@@ -619,7 +658,7 @@
                                     <li class="border-top">
                                         <div class="d-grid p-4">
                                             <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
-                                                <small class="align-middle">View all notifications</small>
+                                                <small class="align-middle">@lang('extracted.view_all_notifications')</small>
                                             </a>
                                         </div>
                                     </li>
@@ -647,8 +686,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <h6 class="mb-0 small">John Doe</h6>
-                                                    <small class="text-body-secondary">Admin</small>
+                                                    <h6 class="mb-0 small">@lang('extracted.john_doe')</h6>
+                                                    <small class="text-body-secondary">@lang('extracted.admin')</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -659,13 +698,13 @@
                                     <li>
                                         <a class="dropdown-item" href="pages-profile-user.html">
                                             <i class="icon-base ri ri-user-3-line icon-22px me-3"></i><span
-                                                class="align-middle">My Profile</span>
+                                                class="align-middle">@lang('extracted.my_profile')</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="pages-account-settings-account.html">
                                             <i class="icon-base ri ri-settings-4-line icon-22px me-3"></i><span
-                                                class="align-middle">Settings</span>
+                                                class="align-middle">@lang('extracted.settings')</span>
                                         </a>
                                     </li>
                                     <li>
@@ -673,7 +712,7 @@
                                             <span class="d-flex align-items-center align-middle">
                                                 <i
                                                     class="flex-shrink-0 icon-base ri ri-file-text-line icon-22px me-3"></i>
-                                                <span class="flex-grow-1 align-middle">Billing Plan</span>
+                                                <span class="flex-grow-1 align-middle">@lang('extracted.billing_plan')</span>
                                                 <span
                                                     class="flex-shrink-0 badge badge-center rounded-pill bg-danger">4</span>
                                             </span>
@@ -686,22 +725,24 @@
                                         <a class="dropdown-item" href="pages-pricing.html">
                                             <i
                                                 class="icon-base ri ri-money-dollar-circle-line icon-22px me-3"></i><span
-                                                class="align-middle">Pricing</span>
+                                                class="align-middle">@lang('extracted.pricing')</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="pages-faq.html">
                                             <i class="icon-base ri ri-question-line icon-22px me-3"></i><span
-                                                class="align-middle">FAQ</span>
+                                                class="align-middle">@lang('extracted.faq')</span>
                                         </a>
                                     </li>
                                     <li>
                                         <div class="d-grid px-4 pt-2 pb-1">
-                                            <a class="btn btn-sm btn-danger d-flex" href="auth-login-cover.html"
-                                                target="_blank">
-                                                <small class="align-middle">Logout</small>
-                                                <i class="icon-base ri ri-logout-box-r-line ms-2 icon-16px"></i>
-                                            </a>
+                                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger d-flex" style="width: 100%;">
+                                                    <small class="align-middle">@lang('extracted.logout')</small>
+                                                    <i class="icon-base ri ri-logout-box-r-line ms-2 icon-16px"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </li>
                                 </ul>
@@ -724,9 +765,9 @@
                             <ul class="menu-inner">
                                 <!-- Dashboards -->
                                 <li class="menu-item">
-                                    <a href="{{ route('dashboard') }}" class="menu-link ">
+                                    <a href="{{ route('admin.dashboard') }}" class="menu-link ">
                                         <i class="menu-icon icon-base ri ri-home-smile-line"></i>
-                                        <div data-i18n="Dashboards">Dashboards</div>
+                                        <div data-i18n="Dashboards">@lang('extracted.dashboards')</div>
                                     </a>
                                 </li>
 
@@ -734,25 +775,33 @@
                                 <li class="menu-item active">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-mail-open-line"></i>
-                                        <div data-i18n="Apps">Apps</div>
+                                        <div data-i18n="Apps">@lang('extracted.apps')</div>
                                     </a>
                                     <ul class="menu-sub">
                                         <li class="menu-item">
-                                            <a href="{{ route('users.index') }}" class="menu-link ">
+                                            <a href="{{ route('admin.users.index') }}" class="menu-link ">
                                                 <i class="menu-icon icon-base ri ri-user-line"></i>
-                                                <div data-i18n="Users">Users</div>
+                                                <div data-i18n="Users">@lang('extracted.users')</div>
                                             </a>
                                         </li>
+                                        @if(auth()->user()->type === 'super_admin')
                                         <li class="menu-item">
-                                            <a href="{{ route('email.index') }}" class="menu-link">
+                                            <a href="{{ route('admin.invitations.index') }}" class="menu-link">
+                                                <i class="menu-icon icon-base ri ri-mail-send-line"></i>
+                                                <div data-i18n="Invitations">Invitations Admin</div>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        <li class="menu-item">
+                                            <a href="{{ route('admin.email.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-mail-line"></i>
-                                                <div data-i18n="Email">Email</div>
+                                                <div data-i18n="Email">@lang('extracted.email')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('calendrier.index') }}" class="menu-link">
+                                            <a href="{{ route('admin.calendrier.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-calendar-line"></i>
-                                                <div data-i18n="Calendrier">Calendrier</div>
+                                                <div data-i18n="Calendrier">@lang('extracted.calendrier')</div>
                                             </a>
                                         </li>
                                     </ul>
@@ -762,7 +811,7 @@
                                 <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-drag-drop-line"></i>
-                                        <div data-i18n="Formation">Formation</div>
+                                        <div data-i18n="Formation">@lang('extracted.formation')</div>
                                     </a>
                                     <ul class="menu-sub">
 
@@ -771,50 +820,53 @@
                                                 data-bs-target="#create_formations" data-bs-toggle="modal">
                                                 <i
                                                     class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
-                                                <div>CREER UNE FORMATION</div>
+                                                <div>@lang('extracted.creer_une_formation')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="#" class="menu-link" data-bs-target="#liste_formations"
                                                 data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
-                                                <div>Voir la liste</div>
+                                                <div>@lang('extracted.voir_la_liste')</div>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
-                                {{-- Opportunités --}}
+
+                                <!-- Emplois -->
                                 <li
-                                    class="menu-item {{ request()->routeIs('admin.opportunites.*') ? 'active open' : '' }}">
+                                    class="menu-item {{ request()->routeIs('admin.emplois.*') ? 'active open' : '' }}">
                                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-computer-line"></i>
-                                        <div data-i18n="Opportunités">Opportunités</div>
+                                        <div data-i18n="Offres d'emploi">@lang('extracted.emplois')</div>
                                         <div class="badge badge-center rounded-pill bg-primary ms-auto"
                                             style="width:10px, height:10px">
-                                            {{-- Count active opportunities --}}
+                                            <!-- Count active emplois -->
                                             {{ App\Models\Emploi::where('statut', 'active')->count() }}
                                         </div>
                                     </a>
                                     <ul class="menu-sub">
                                         <li
-                                            class="menu-item {{ request()->routeIs('opportunites.index') ? 'active' : '' }}">
-                                            <a href="{{ route('opportunites.index') }}" class="menu-link">
+                                            class="menu-item {{ request()->routeIs('emplois.index') ? 'active' : '' }}">
+                                            <a href="{{ route('admin.emplois.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-list"></i>
-                                                <div data-i18n="Liste des opportunités">Liste des opportunités</div>
+                                                <div data-i18n="Liste des emplois">@lang('extracted.liste_des_emplois')
+                                                </div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
-                                                data-bs-target="#create_opportunites">
+                                                data-bs-target="#create_emplois">
                                                 <i class="menu-icon tf-icons fas fa-plus-circle"></i>
-                                                <div data-i18n="Nouvelle opportunité">Nouvelle opportunité</div>
+                                                <div data-i18n="Nouvelle emploi">@lang('extracted.nouvelle_emploi')
+                                                </div>
                                             </a>
                                         </li>
                                         <li
                                             class="menu-item {{ request()->routeIs('admin.candidatures.*') ? 'active' : '' }}">
-                                            <a href="{{ route('opportunites.candidatures.index') }}" class="menu-link">
+                                            <a href="{{ route('admin.emplois.candidatures.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-users"></i>
-                                                <div data-i18n="Candidatures">Candidatures</div>
+                                                <div data-i18n="Candidatures">@lang('extracted.candidatures')</div>
                                                 <div class="badge badge-center rounded-pill bg-warning ms-auto">
                                                     {{ App\Models\Candidature::where('statut', 'en_attente')->count() }}
                                                 </div>
@@ -822,40 +874,82 @@
                                         </li>
                                     </ul>
                                 </li>
-                                {{-- Divers --}}
-                                <li class="menu-item ">
-                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
-                                        <i class="menu-icon icon-base ri ri-price-tag-line"></i>
-                                        <div data-i18n="Divers">Divers</div>
+
+                                <!-- Opportunités d'affaire -->
+                                <li
+                                    class="menu-item {{ request()->routeIs('admin.opportunites.*') ? 'active open' : '' }}">
+                                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-bag me-2"></i>
+                                        <div data-i18n="Opportunités d'affaire">Opportunités d'affaire</div>
+                                        <div class="badge badge-center rounded-pill bg-primary ms-auto"
+                                            style="width:10px, height:10px">
+                                            <!-- Count active opportunities -->
+                                            {{ App\Models\Opportunite::where('statut', 'en_ligne')->count() }}
+                                        </div>
                                     </a>
                                     <ul class="menu-sub">
-
                                         <li class="menu-item">
-                                            <a href="{{ route('partenaires.index') }}" class="menu-link">
-                                                <i
-                                                    class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
-                                                <div>Partenaires</div>
+                                            <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
+                                                data-bs-target="#create_opportunite">
+                                                <i class="menu-icon tf-icons fas fa-plus-circle"></i>
+                                                <div data-i18n="Nouvelle opportunité">Nouvelle opportunité</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('temoignages.index') }}" class="menu-link ">
-                                                <i class="menu-icon icon-base ri ri-kakao-talk-line"></i>
-                                                <div>Temoignages</div>
+                                            <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
+                                                data-bs-target="#liste_opportunites">
+                                                <i class="menu-icon tf-icons fas fa-list"></i>
+                                                <div data-i18n="Liste des opportunités">Liste des opportunités</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('articles.index') }}" class="menu-link">
-                                                <i class="menu-icon icon-base ri ri-book-open-line"></i>
-                                                <div>Articles</div>
+                                            <a href="javascript:void(0);" class="menu-link" data-bs-toggle="modal"
+                                                data-bs-target="#candidats_opportunites">
+                                                <i class="menu-icon tf-icons fas fa-users"></i>
+                                                <div data-i18n="Candidats intéressés">Candidats intéressés</div>
+                                                <div class="badge badge-center rounded-pill bg-warning ms-auto">
+                                                    {{ App\Models\Postulation::where('statut', 'en_attente')->count() }}
+                                                </div>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
+
+                                <!-- Divers -->
+                                <li class="menu-item ">
+                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-price-tag-line"></i>
+                                        <div data-i18n="Divers">@lang('extracted.divers')</div>
+                                    </a>
+                                    <ul class="menu-sub">
+
+                                        <li class="menu-item">
+                                            <a href="{{ route('admin.partenaires.index') }}" class="menu-link">
+                                                <i
+                                                    class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
+                                                <div>@lang('extracted.partenaires')</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('admin.temoignages.index') }}" class="menu-link ">
+                                                <i class="menu-icon icon-base ri ri-kakao-talk-line"></i>
+                                                <div>@lang('extracted.temoignages')</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('admin.articles.index') }}" class="menu-link">
+                                                <i class="menu-icon icon-base ri ri-book-open-line"></i>
+                                                <div>@lang('extracted.articles')</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
                                 <!-- Categories -->
                                 <li class="menu-item ">
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-folder-5-line"></i>
-                                        <div data-i18n="Categories">Categories</div>
+                                        <div data-i18n="Categories">@lang('extracted.categories')</div>
                                     </a>
                                     <ul class="menu-sub">
 
@@ -868,33 +962,95 @@
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="#" class="menu-link"data-bs-target="#liste_categories"
+                                            <a href="#" class="menu-link" data-bs-target="#liste_categories"
+                                                data-bs-toggle="modal">
+                                                <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
+                                                <div>@lang('extracted.voir_la_liste')</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- Produits -->
+                                <li class="menu-item ">
+                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-folder-5-line"></i>
+                                        <div data-i18n="Produits">@lang('extracted.produits')</div>
+                                    </a>
+                                    <ul class="menu-sub">
+
+                                        <li class="menu-item">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_produits" data-bs-toggle="modal">
+                                                <i
+                                                    class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                                <div>AJOUTER </div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#" class="menu-link" data-bs-target="#liste_produits"
+                                                data-bs-toggle="modal">
+                                                <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
+                                                <div>@lang('extracted.voir_la_liste')</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- Services -->
+                                <li class="menu-item ">
+                                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                        <i class="menu-icon icon-base ri ri-customer-service-2-line"></i>
+                                        <div data-i18n="Services">Services</div>
+                                    </a>
+                                    <ul class="menu-sub">
+
+                                        <li class="menu-item">
+                                            <a href="javascript:;" class="menu-link"
+                                                data-bs-target="#create_services" data-bs-toggle="modal">
+                                                <i
+                                                    class="icon-base ri ri-edit-box-line text-primary icon-22px me-2"></i>
+                                                <div>AJOUTER </div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#" class="menu-link" data-bs-target="#liste_services"
                                                 data-bs-toggle="modal">
                                                 <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
                                                 <div>Voir la liste</div>
                                             </a>
-
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#" class="menu-link" data-bs-toggle="modal"
+                                                data-bs-target="#liste_user_services">
+                                                <i class="menu-icon icon-base ri ri-user-shared-line"></i>
+                                                <div>Abonnements Utilisateurs aux Services</div>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
-
-
 
                             </ul>
                         </div>
                     </aside>
+
+
                     <!-- / Menu -->
 
                     <!-- Content -->
                     @yield('dashboard')
+                    @yield('index_invitations')
                     @yield('show_users')
                     @yield('index_users')
                     @yield('calendrier_index')
                     @yield('index_email')
                     @yield('index_categorie')
+                    @yield('list_candidats')
+                    @yield('Detail_Candidature')
 
                     {{-- //Create// --}}
                     @yield('index_formations')
-                    @yield('index_opportunites')
+                    @yield('index_emplois')
                     @yield('candidatures_index')
                     @yield('index_partenaires')
                     @yield('index_articles')
@@ -912,17 +1068,17 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6">
-                                        <h4 class="mb-2">Ajouter une Formation</h4>
+                                        <h4 class="mb-2">@lang('extracted.ajouter_une_formation')</h4>
                                     </div>
                                     <!-- Formulaire de création de formation stylisé -->
-                                    <form id="formationForm" action="{{ route('formations.store') }}" method="POST"
+                                    <form id="formationForm" action="{{ route('admin.formations.store') }}" method="POST"
                                         class="row g-4" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="text" id="titre" name="titre"
                                                     class="form-control" placeholder="Titre" required>
-                                                <label for="titre">Titre</label>
+                                                <label for="titre">@lang('extracted.titre')</label>
                                             </div>
                                         </div>
 
@@ -933,60 +1089,62 @@
                                                     @if (isset($categories) && $categories->count() > 0)
                                                         @foreach ($categories as $categorie)
                                                             <option value="{{ $categorie->id }}">
-                                                                {{ $categorie->nom }}</option>
+                                                                {{ $categorie->nom }}
+                                                            </option>
                                                         @endforeach
                                                     @else
-                                                        <option value="">Aucune catégorie disponible</option>
+                                                        <option value="">@lang('extracted.aucune_categorie_disponible')
+                                                        </option>
                                                     @endif
                                                 </select>
-                                                <label for="categorie_id">Catégorie</label>
+                                                <label for="categorie_id">@lang('extracted.categorie')</label>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>
-                                                <label for="programme">Programme</label>
+                                                <label for="programme">@lang('extracted.programme')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="number" step="0.01" id="cout" name="cout"
                                                     class="form-control" placeholder="Coût">
-                                                <label for="cout">Coût</label>
+                                                <label for="cout">@lang('extracted.cout')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="text" id="lieu" name="lieu"
                                                     class="form-control" placeholder="Lieu">
-                                                <label for="lieu">Lieu</label>
+                                                <label for="lieu">@lang('extracted.lieu')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="date" id="date_debut" name="date_debut"
                                                     class="form-control" placeholder="Date de début">
-                                                <label for="date_debut">Date de début</label>
+                                                <label for="date_debut">@lang('extracted.date_de_debut')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="date" id="date_fin" name="date_fin"
                                                     class="form-control" placeholder="Date de fin">
-                                                <label for="date_fin">Date de fin</label>
+                                                <label for="date_fin">@lang('extracted.date_de_fin')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <textarea name="prerequis" id="prerequis" class="form-control" placeholder="Prérequis" style="height: 80px"></textarea>
-                                                <label for="prerequis">Prérequis</label>
+                                                <label for="prerequis">@lang('extracted.prerequis')</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <textarea name="bonus" id="bonus" class="form-control" placeholder="Bonus" style="height: 80px"></textarea>
-                                                <label for="bonus">Bonus</label>
+                                                <label for="bonus">@lang('extracted.bonus')</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -994,12 +1152,12 @@
                                                 <input type="file" id="file" name="file"
                                                     class="form-control" accept="image/*,video/*"
                                                     onchange="previewFile(this)">
-                                                <label for="file">Fichier (Image ou Vidéo) - Max 150 MB</label>
+                                                <label for="file">@lang('extracted.fichier_image_ou_video_max_150_mb')</label>
                                             </div>
                                             <div id="file-error" class="mt-2" style="display: none;">
                                                 <div class="alert alert-danger d-flex align-items-center">
                                                     <i class="ri-error-warning-line me-2"></i>
-                                                    <span>La taille du fichier ne doit pas dépasser 150 MB</span>
+                                                    <span>@lang('extracted.la_taille_du_fichier_ne_doit_pas_depasser_150_mb')</span>
                                                 </div>
                                             </div>
                                             <div id="file-preview" class="mt-3 d-flex justify-content-center"
@@ -1052,7 +1210,8 @@
                                             <i class="ri-graduation-cap-line me-2"></i>
                                             LISTE DES FORMATIONS
                                         </h4>
-                                        <p class="text-muted">Gérez toutes vos formations disponibles</p>
+                                        <p class="text-muted">@lang('extracted.gerez_toutes_vos_formations_disponibles')
+                                        </p>
                                     </div>
 
                                     <div class="card-datatable px-4 pb-4">
@@ -1061,12 +1220,12 @@
                                                 <thead class="table-primary">
                                                     <tr>
                                                         <th class="text-center">#</th>
-                                                        <th>Titre</th>
-                                                        <th>Catégorie</th>
-                                                        <th class="text-center">Coût</th>
-                                                        <th>Lieu</th>
-                                                        <th class="text-center">Dates</th>
-                                                        <th class="text-center">Actions</th>
+                                                        <th>@lang('extracted.titre')</th>
+                                                        <th>@lang('extracted.categorie')</th>
+                                                        <th class="text-center">@lang('extracted.cout')</th>
+                                                        <th>@lang('extracted.lieu')</th>
+                                                        <th class="text-center">@lang('extracted.dates')</th>
+                                                        <th class="text-center">@lang('extracted.actions')</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="table-border-bottom-0">
@@ -1171,7 +1330,7 @@
                                             </div>
                                         @else
                                             <div class="text-muted">
-                                                <small>Aucune formation disponible</small>
+                                                <small>@lang('extracted.aucune_formation_disponible')</small>
                                             </div>
                                         @endif
                                     </div>
@@ -1181,7 +1340,7 @@
                     </div>
 
                     <!-- Opportunités Class Modal -->
-                    <div class="modal fade" id="create_opportunites" tabindex="-1" aria-hidden="true">
+                    <div class="modal fade" id="create_emplois" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-xl modal-simple modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
@@ -1194,11 +1353,12 @@
                                                 <i class="fas fa-briefcase text-white" style="font-size: 2rem;"></i>
                                             </div>
                                         </div>
-                                        <h4 class="mb-2 text-primary fw-bold">✨ Ajouter une Opportunité</h4>
-                                        <p class="text-muted">Créez une nouvelle offre d'emploi attractive</p>
+                                        <h4 class="mb-2 text-primary fw-bold">@lang('extracted.ajouter_une_emploi')</h4>
+                                        <p class="text-muted">
+                                            @lang('extracted.creez_une_nouvelle_offre_demploi_attractive')</p>
                                     </div>
 
-                                    <form id="createOpportuniteForm" action="{{ route('admin.opportunites.store') }}"
+                                    <form id="createEmploiForm" action="{{ route('admin.emplois.store') }}"
                                         method="POST" class="row g-4">
                                         @csrf
 
@@ -1228,12 +1388,14 @@
                                             <div class="form-floating form-floating-outline">
                                                 <select id="type_contrat" name="type_contrat" class="form-select"
                                                     required>
-                                                    <option value="">Sélectionner...</option>
-                                                    <option value="CDI">CDI - Contrat à Durée Indéterminée</option>
-                                                    <option value="CDD">CDD - Contrat à Durée Déterminée</option>
-                                                    <option value="Stage">Stage</option>
-                                                    <option value="Freelance">Freelance</option>
-                                                    <option value="Alternance">Alternance</option>
+                                                    <option value="">@lang('extracted.selectionner')</option>
+                                                    <option value="CDI">
+                                                        @lang('extracted.cdi_contrat_a_duree_indeterminee')</option>
+                                                    <option value="CDD">
+                                                        @lang('extracted.cdd_contrat_a_duree_determinee')</option>
+                                                    <option value="Stage">@lang('extracted.stage')</option>
+                                                    <option value="Freelance">@lang('extracted.freelance')</option>
+                                                    <option value="Alternance">@lang('extracted.alternance')</option>
                                                 </select>
                                                 <label for="type_contrat">
                                                     <i class="fas fa-file-contract me-1"></i>Type de contrat *
@@ -1277,12 +1439,15 @@
                                             <div class="form-floating form-floating-outline">
                                                 <select id="experience_requise" name="experience_requise"
                                                     class="form-select">
-                                                    <option value="">Sélectionner...</option>
-                                                    <option value="Débutant">Débutant accepté</option>
-                                                    <option value="1-2 ans">1-2 ans d'expérience</option>
-                                                    <option value="3-5 ans">3-5 ans d'expérience</option>
-                                                    <option value="5+ ans">5+ ans d'expérience</option>
-                                                    <option value="Senior">Senior (10+ ans)</option>
+                                                    <option value="">@lang('extracted.selectionner')</option>
+                                                    <option value="Débutant">@lang('extracted.debutant_accepte')
+                                                    </option>
+                                                    <option value="1-2 ans">@lang('extracted.1_2_ans_dexperience')
+                                                    </option>
+                                                    <option value="3-5 ans">@lang('extracted.3_5_ans_dexperience')
+                                                    </option>
+                                                    <option value="5+ ans">@lang('extracted.5_ans_dexperience')</option>
+                                                    <option value="Senior">@lang('extracted.senior_10_ans')</option>
                                                 </select>
                                                 <label for="experience_requise">
                                                     <i class="fas fa-user-tie me-1"></i>Expérience requise
@@ -1292,12 +1457,12 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
                                                 <select id="niveau_etude" name="niveau_etude" class="form-select">
-                                                    <option value="">Sélectionner...</option>
-                                                    <option value="Bac">Baccalauréat</option>
-                                                    <option value="Bac+2">Bac+2 (BTS/DUT)</option>
-                                                    <option value="Bac+3">Bac+3 (Licence)</option>
-                                                    <option value="Bac+5">Bac+5 (Master)</option>
-                                                    <option value="Doctorat">Doctorat</option>
+                                                    <option value="">@lang('extracted.selectionner')</option>
+                                                    <option value="Bac">@lang('extracted.baccalaureat')</option>
+                                                    <option value="Bac+2">@lang('extracted.bac2_btsdut')</option>
+                                                    <option value="Bac+3">@lang('extracted.bac3_licence')</option>
+                                                    <option value="Bac+5">@lang('extracted.bac5_master')</option>
+                                                    <option value="Doctorat">@lang('extracted.doctorat')</option>
                                                 </select>
                                                 <label for="niveau_etude">
                                                     <i class="fas fa-graduation-cap me-1"></i>Niveau d'étude
@@ -1384,9 +1549,10 @@
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <select id="statut" name="statut" class="form-select">
-                                                    <option value="active" selected>✅ Active - Visible pour les
-                                                        candidats</option>
-                                                    <option value="fermee">🔒 Fermée - Plus de candidatures</option>
+                                                    <option value="active" selected>
+                                                        @lang('extracted.active_visible_pour_les_candidats')</option>
+                                                    <option value="fermee">
+                                                        @lang('extracted.fermee_plus_de_candidatures')</option>
                                                 </select>
                                                 <label for="statut">
                                                     <i class="fas fa-toggle-on me-1"></i>Statut de l'offre
@@ -1396,7 +1562,8 @@
 
                                         {{-- Boutons d'action --}}
                                         <div class="col-12 text-center pt-4">
-                                            <button type="submit" class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
                                                 <i class="fas fa-paper-plane me-2"></i>Publier l'opportunité
                                             </button>
                                             <button type="button" class="btn btn-outline-secondary btn-lg px-4"
@@ -1410,7 +1577,7 @@
                         </div>
                     </div>
 
-                    <!-- Categories User Modal -->
+                    <!-- Categories Modal -->
                     <div class="modal fade" id="create_categories" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                             <div class="modal-content">
@@ -1418,23 +1585,25 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6">
-                                        <h4 class="mb-2">NOUVELLE CATEGORIE</h4>
+                                        <h4 class="mb-2">@lang('extracted.nouvelle_categorie')</h4>
                                     </div>
                                     <form id="createCategorieForm" class="row g-5" method="POST"
-                                        action="{{ route('categories.store') }}">
+                                        action="{{ route('admin.categories.store') }}">
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
                                                 <input type="text" id="nomCategorie" name="nom"
                                                     class="form-control" placeholder="comptabilité" required />
-                                                <label for="nomCategorie">Nom Catégorie</label>
+                                                <label for="nomCategorie">@lang('extracted.nom_categorie')</label>
                                             </div>
                                         </div>
 
                                         <div class="col-12 text-center">
                                             <button type="reset" class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal" aria-label="Close">Fermer</button>
-                                            <button type="submit" class="btn btn-primary me-3">Valider</button>
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">@lang('extracted.fermer')</button>
+                                            <button type="submit"
+                                                class="btn btn-primary me-3">@lang('extracted.valider')</button>
 
                                         </div>
                                     </form>
@@ -1447,7 +1616,6 @@
                         <div class="content-backdrop fade"></div>
                     </div>
 
-
                     <!-- Categories Liste Modal -->
                     <div class="modal fade" id="liste_categories" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-simple modal-edit-user">
@@ -1456,15 +1624,15 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6">
-                                        <h4 class="mb-2">LISTE DES CATEGORIES</h4>
+                                        <h4 class="mb-2">@lang('extracted.liste_des_categories')</h4>
                                     </div>
                                     <div class="card-datatable text-nowrap">
                                         <table class="dt-scrollableTable table table-bordered table-responsive">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Nom Categorie</th>
-                                                    <th>Action</th>
+                                                    <th>@lang('extracted.id')</th>
+                                                    <th>@lang('extracted.nom_categorie')</th>
+                                                    <th>@lang('extracted.action')</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="categoriesTableBody">
@@ -1472,12 +1640,13 @@
                                             </tbody>
                                         </table>
                                         <center>
-                                            <li class="menu-item" >
+                                            <li class="menu-item">
 
                                                 <a href="javascript:;" data-bs-target="#create_categories"
-                                                    class="" data-bs-toggle="modal" >
+                                                    class="" data-bs-toggle="modal">
                                                     <i class="menu-icon tf-icons fas fa-plus-circle"></i>
-                                                    <div class="btn btn-primary me-3" >Ajouter une Categorie</div>
+                                                    <div class="btn btn-primary me-3">
+                                                        @lang('extracted.ajouter_une_categorie')</div>
                                                 </a>
                                             </li>
                                         </center>
@@ -1490,6 +1659,240 @@
                         <div class="content-backdrop fade"></div>
                     </div>
 
+                    <!-- Modal Création Produit -->
+                    <div class="modal fade" id="create_produits" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">@lang('extracted.nouveau_produit')</h4>
+                                    </div>
+                                    <form id="createProduitForm" class="row g-5" method="POST"
+                                        action="{{ route('admin.produits.store') }}">
+                                        @csrf
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="nomProduit" name="nom"
+                                                    class="form-control" placeholder="Nom du produit" required />
+                                                <label for="nomProduit">@lang('extracted.nom_produit')</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="slugProduit" name="slug"
+                                                    class="form-control" placeholder="Slug (ex: produit-1)"
+                                                    required />
+                                                <label for="slugProduit">@lang('extracted.slug')</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="categorieProduit" name="categorie_id"
+                                                    class="form-control" required>
+                                                    <option value="">@lang('extracted.selectionnez_une_categorie')
+                                                    </option>
+                                                    @foreach ($categories as $categorie)
+                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="categorieProduit">@lang('extracted.categorie')</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="statutProduit" name="statut" class="form-control"
+                                                    required>
+                                                    <option value="actif">@lang('extracted.actif')</option>
+                                                    <option value="inactif">@lang('extracted.inactif')</option>
+                                                </select>
+                                                <label for="statutProduit">@lang('extracted.statut')</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="reset" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">@lang('extracted.fermer')</button>
+                                            <button type="submit"
+                                                class="btn btn-primary me-3">@lang('extracted.valider')</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Liste Produits -->
+                    <div class="modal fade" id="liste_produits" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">@lang('extracted.liste_des_produits')</h4>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-datatable table-responsive pt-0">
+                                            <table id="tableProduits" class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>@lang('extracted.nom')</th>
+                                                        <th>@lang('extracted.categorie')</th>
+                                                        <th>@lang('extracted.statut')</th>
+                                                        <th>@lang('extracted.actions')</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">@lang('extracted.fermer')</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Création Service -->
+                    <div class="modal fade" id="create_services" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">NOUVEAU SERVICE</h4>
+                                    </div>
+                                    <form id="createServiceForm" class="row g-5" method="POST"
+                                        action="{{ route('admin.services.store') }}">
+                                        @csrf
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="nomService" name="nom"
+                                                    class="form-control" placeholder="Nom du service" required />
+                                                <label for="nomService">Nom Service</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <textarea id="descriptionService" name="description" class="form-control" placeholder="Description du service"
+                                                    rows="4"></textarea>
+                                                <label for="descriptionService">Description</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="slugService" name="slug"
+                                                    class="form-control" placeholder="Slug (ex: service-1)"
+                                                    required />
+                                                <label for="slugService">Slug</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="categorieService" name="categorie_id"
+                                                    class="form-control" required>
+                                                    <option value="">Sélectionnez une catégorie</option>
+                                                    @foreach ($categories as $categorie)
+                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="categorieService">Catégorie</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 text-center">
+                                            <button type="reset" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal" aria-label="Close">Fermer</button>
+                                            <button type="submit" class="btn btn-primary me-3">Valider</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Liste Services -->
+                    <!-- Modal Liste Services -->
+                    <div class="modal fade" id="liste_services" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close m-3" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-4 mt-2">
+                                        <h4 class="fw-bold text-primary">📋 LISTE DES SERVICES</h4>
+                                    </div>
+                                    <div class="is-scrollbar-hidden min-w-full overflow-x-auto p-3">
+                                        <table id="tableServices"
+                                            class="table table-striped table-hover align-middle">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Nom</th>
+                                                    <th>Description</th>
+                                                    <th>Catégorie</th>
+                                                    <th class="text-center">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal Liste Inscriptions Utilisateur-Service -->
+                    <div class="modal fade" id="liste_user_services" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">Abonnements Utilisateurs aux Services</h4>
+                                    </div>
+                                    <div class="is-scrollbar-hidden min-w-full overflow-x-auto px-3 pb-3">
+                                        <table id="tableUserServices" class="table table-hover table-bordered">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Utilisateur</th>
+                                                    <th>Email</th>
+                                                    <th>Service</th>
+                                                    <th>Statut</th>
+                                                    <th>Description</th>
+                                                    <th>Début</th>
+                                                    <th>Fin prévue</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!--/ Fin des Modales -->
                 </div>
@@ -1682,7 +2085,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="text" id="edit_titre" name="titre" class="form-control"
                                         placeholder="Titre de la formation" required>
-                                    <label for="edit_titre">Titre</label>
+                                    <label for="edit_titre">@lang('extracted.titre')</label>
                                 </div>
                             </div>
 
@@ -1691,17 +2094,17 @@
                                 <div class="form-floating form-floating-outline">
                                     <select id="edit_categorie_id" name="categorie_id" class="form-select"
                                         required>
-                                        <option value="">Choisir une catégorie</option>
+                                        <option value="">@lang('extracted.choisir_une_categorie')</option>
                                         @if (isset($categories) && $categories->count() > 0)
                                             @foreach ($categories as $categorie)
                                                 <option value="{{ $categorie->id }}">{{ $categorie->nom }}
                                                 </option>
                                             @endforeach
                                         @else
-                                            <option value="">Aucune catégorie disponible</option>
+                                            <option value="">@lang('extracted.aucune_categorie_disponible')</option>
                                         @endif
                                     </select>
-                                    <label for="edit_categorie_id">Catégorie</label>
+                                    <label for="edit_categorie_id">@lang('extracted.categorie')</label>
                                 </div>
                             </div>
 
@@ -1710,7 +2113,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <textarea id="edit_programme" name="programme" class="form-control" placeholder="Programme de la formation"
                                         rows="3"></textarea>
-                                    <label for="edit_programme">Programme</label>
+                                    <label for="edit_programme">@lang('extracted.programme')</label>
                                 </div>
                             </div>
 
@@ -1719,7 +2122,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="number" id="edit_cout" name="cout" class="form-control"
                                         placeholder="0" min="0" step="0.01">
-                                    <label for="edit_cout">Coût (FCFA)</label>
+                                    <label for="edit_cout">@lang('extracted.cout_fcfa')</label>
                                 </div>
                             </div>
 
@@ -1728,7 +2131,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="text" id="edit_lieu" name="lieu" class="form-control"
                                         placeholder="Lieu de la formation">
-                                    <label for="edit_lieu">Lieu</label>
+                                    <label for="edit_lieu">@lang('extracted.lieu')</label>
                                 </div>
                             </div>
 
@@ -1737,7 +2140,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="date" id="edit_date_debut" name="date_debut"
                                         class="form-control" min="" onchange="updateDateConstraints()">
-                                    <label for="edit_date_debut">Date de début</label>
+                                    <label for="edit_date_debut">@lang('extracted.date_de_debut')</label>
                                 </div>
                             </div>
 
@@ -1746,7 +2149,7 @@
                                 <div class="form-floating form-floating-outline">
                                     <input type="date" id="edit_date_fin" name="date_fin"
                                         class="form-control" min="" onchange="validateDateFin()">
-                                    <label for="edit_date_fin">Date de fin</label>
+                                    <label for="edit_date_fin">@lang('extracted.date_de_fin')</label>
                                 </div>
                             </div>
 
@@ -1754,7 +2157,7 @@
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
                                     <textarea id="edit_prerequis" name="prerequis" class="form-control" placeholder="Prérequis" rows="2"></textarea>
-                                    <label for="edit_prerequis">Prérequis</label>
+                                    <label for="edit_prerequis">@lang('extracted.prerequis')</label>
                                 </div>
                             </div>
 
@@ -1762,17 +2165,18 @@
                             <div class="col-md-6">
                                 <div class="form-floating form-floating-outline">
                                     <textarea id="edit_bonus" name="bonus" class="form-control" placeholder="Bonus" rows="2"></textarea>
-                                    <label for="edit_bonus">Bonus</label>
+                                    <label for="edit_bonus">@lang('extracted.bonus')</label>
                                 </div>
                             </div>
 
                             <!-- Fichier -->
                             <div class="col-12">
-                                <label class="form-label">Fichier (Image ou Vidéo) - Optionnel</label>
+                                <label class="form-label">@lang('extracted.fichier_image_ou_video_optionnel')</label>
                                 <input type="file" id="edit_file" name="file" class="form-control"
                                     accept="image/*,video/*" onchange="previewEditFile(this)">
-                                <div class="form-text">Formats acceptés: JPG, PNG, GIF, MP4, AVI, MOV, WMV. Taille
-                                    max: 150MB</div>
+                                <div class="form-text">
+                                    @lang('extracted.formats_acceptes_jpg_png_gif_mp4_avi_mov_wmv_taille_max_150mb')
+                                </div>
                             </div>
 
                             <!-- Prévisualisation -->
@@ -1819,10 +2223,13 @@
                             <div class="mb-4">
                                 <i class="ri-error-warning-line ri-96px text-danger"></i>
                             </div>
-                            <h4 class="mb-2">Confirmer la suppression</h4>
-                            <p class="text-muted mb-2">Êtes-vous sûr de vouloir supprimer cette formation ?</p>
+                            <h4 class="mb-2">@lang('extracted.confirmer_la_suppression')</h4>
+                            <p class="text-muted mb-2">
+                                @lang('extracted.etes_vous_sur_de_vouloir_supprimer_cette_formation')</p>
                             <p class="fw-bold text-dark mb-2" id="formation-to-delete"></p>
-                            <p class="text-danger mb-0"><strong>Cette action est irréversible.</strong></p>
+                            <p class="text-danger mb-0">
+                                <strong>@lang('extracted.cette_action_est_irreversible')</strong>
+                            </p>
                         </div>
                         <div class="text-center">
                             <button type="button" class="btn btn-outline-secondary me-3" data-bs-dismiss="modal">
@@ -1856,9 +2263,9 @@
                         {{-- Le contenu sera chargé dynamiquement --}}
                         <div class="text-center p-5">
                             <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Chargement...</span>
+                                <span class="visually-hidden">@lang('extracted.chargement')</span>
                             </div>
-                            <p class="mt-3">Chargement des détails...</p>
+                            <p class="mt-3">@lang('extracted.chargement_des_details')</p>
                         </div>
                     </div>
 
@@ -1874,6 +2281,371 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal Création Opportunité -->
+        <div class="modal fade" id="create_opportunite" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                        <div class="text-center mb-6">
+                            <h4 class="mb-2 text-primary">
+                                <i class="ri-handshake-line me-2"></i>
+                                NOUVELLE OPPORTUNITÉ D'AFFAIRE
+                            </h4>
+                        </div>
+                        <form id="createOpportuniteForm" class="row g-5" method="POST"
+                            action="{{ route('admin.opportunites.store') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="col-12">
+                                <label class="form-label" for="titre">Titre de l'opportunité</label>
+                                <input type="text" id="titre" name="titre" class="form-control"
+                                    required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="categorie_id">Catégorie</label>
+                                <select id="categorie_id" name="categorie_id" class="form-select">
+                                    <option value="">Sélectionner une catégorie</option>
+                                    @foreach (App\Models\Categorie::all() as $categorie)
+                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="statut">Statut</label>
+                                <select id="statut" name="statut" class="form-select" required>
+                                    <option value="brouillon">Brouillon</option>
+                                    <option value="en_ligne">En ligne</option>
+                                    <option value="ferme">Fermé</option>
+                                    <option value="archive">Archivé</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="date_debut">Date de début</label>
+                                <input type="datetime-local" id="date_debut" name="date_debut"
+                                    class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="date_fin">Date de fin</label>
+                                <input type="datetime-local" id="date_fin" name="date_fin"
+                                    class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="lieu">Lieu</label>
+                                <input type="text" id="lieu" name="lieu" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="contact_email">Email de contact</label>
+                                <input type="email" id="contact_email" name="contact_email"
+                                    class="form-control">
+                            </div>
+
+                            <!-- Critères -->
+                            <div class="col-12">
+                                <label class="form-label" for="criteres">Critères requis</label>
+                                <div id="criteres-container">
+                                    <div class="critere-item mb-2">
+                                        <div class="input-group">
+                                            <input type="text" name="criteres[]" class="form-control"
+                                                placeholder="Ex: Expérience minimum 3 ans">
+                                            <button type="button" class="btn btn-outline-danger remove-critere"
+                                                onclick="removeCritere(this)">
+                                                <i class="ri ri-delete-bin-line"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm"
+                                    onclick="addCritere()">
+                                    <i class="ri ri-add-bin-line"></i>Ajouter un critère
+                                </button>
+                            </div>
+
+                            <!-- Informations complémentaires -->
+                            <div class="col-12">
+                                <label class="form-label" for="informations">Informations complémentaires</label>
+                                <div id="informations-container">
+                                    <div class="information-item mb-2">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input type="text" name="info_keys[]" class="form-control"
+                                                    placeholder="Clé (ex: Budget, Durée)">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="info_values[]" class="form-control"
+                                                    placeholder="Valeur (ex: 50000€, 6 mois)">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-outline-danger w-100"
+                                                    onclick="removeInformation(this)">
+                                                    <i class="ri ri-delete-bin-line"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm"
+                                    onclick="addInformation()">
+                                    <i class="ri-add-line me-1"></i>Ajouter une information
+                                </button>
+                            </div>
+
+                            <!-- Fichier joint -->
+                            <div class="col-12">
+                                <label class="form-label" for="fichier_joint">Fichier joint (optionnel)</label>
+                                <input type="file" id="fichier_joint" name="fichier_joint"
+                                    class="form-control" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt">
+                                <small class="form-text text-muted">
+                                    Formats acceptés: PDF, DOC, DOCX, JPG, PNG, TXT (Max: 5MB)
+                                </small>
+                            </div>
+                            <style>
+                                .form-control {
+                                    padding: 6px 8px;
+                                }
+                            </style>
+
+                            <div class="col-12">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">
+                                        Annuler
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="ri-save-line me-1"></i>
+                                        Créer l'opportunité
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Liste des Opportunités -->
+        <div class="modal fade" id="liste_opportunites" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-simple">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                        <div class="text-center mb-6 p-4">
+                            <h4 class="mb-2 text-primary">
+                                <i class="ri-handshake-line me-2"></i>
+                                LISTE DES OPPORTUNITÉS D'AFFAIRE
+                            </h4>
+                            <p class="text-muted">Gérez toutes vos opportunités d'affaire disponibles</p>
+                        </div>
+
+                        <div class="card-datatable px-4 pb-4">
+                            <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
+                                <table id="tableOpportunites" class="table table-striped table-hover align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Titre</th>
+                                            <th>Catégorie</th>
+                                            <th>Statut</th>
+                                            <th>Date début</th>
+                                            <th>Date fin</th>
+                                            <th>Lieu</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (App\Models\Opportunite::with('categorie')->get() as $opportunite)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar avatar-sm me-3">
+                                                            <span class="avatar-initial rounded bg-primary">
+                                                                {{ substr($opportunite->titre, 0, 2) }}
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-0">{{ $opportunite->titre }}</h6>
+                                                            <small
+                                                                class="text-muted">{{ $opportunite->slug }}</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <span
+                                                        class="badge bg-label-info">{{ $opportunite->categorie->nom ?? 'N/A' }}</span>
+                                                </td>
+                                                <td>
+                                                    @php
+                                                        $badgeClass = match ($opportunite->statut) {
+                                                            'en_ligne' => 'bg-label-success',
+                                                            'brouillon' => 'bg-label-warning',
+                                                            'ferme' => 'bg-label-danger',
+                                                            'archive' => 'bg-label-secondary',
+                                                            default => 'bg-label-info',
+                                                        };
+                                                    @endphp
+                                                    <span
+                                                        class="badge {{ $badgeClass }}">{{ ucfirst($opportunite->statut) }}</span>
+                                                </td>
+                                                <td>{{ $opportunite->date_debut ? $opportunite->date_debut->format('d/m/Y H:i') : 'N/A' }}
+                                                </td>
+                                                <td>{{ $opportunite->date_fin ? $opportunite->date_fin->format('d/m/Y H:i') : 'N/A' }}
+                                                </td>
+                                                <td>{{ $opportunite->lieu ?? 'N/A' }}</td>
+                                                <td class="text-center">
+                                                    <div class="dropdown">
+                                                        <button type="button" style="width:20px;"
+                                                            class="badge bg-label-primary btn p-0 dropdown-toggle hide-arrow"
+                                                            data-bs-toggle="dropdown">
+                                                            <i class="ri ri-more-2-line"
+                                                                style="font-size: 2rem"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                onclick="voirDetailsOpportunite({{ $opportunite->id }})">
+                                                                <i class="ri ri-eye-line me-1"></i> Voir détails
+                                                            </a>
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                onclick="modifierOpportunite({{ $opportunite->id }})">
+                                                                <i class="ri ri-edit-line me-1"></i> Modifier
+                                                            </a>
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                onclick="supprimerOpportunite({{ $opportunite->id }})">
+                                                                <i class="ri ri-delete-bin-7-line me-1"></i> Supprimer
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Fermer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Candidats Intéressés -->
+        <div class="modal fade" id="candidats_opportunites" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-simple">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                        <div class="text-center mb-6 p-4">
+                            <h4 class="mb-2 text-primary">
+                                <i class="ri-user-line me-2"></i>
+                                CANDIDATS INTÉRESSÉS PAR LES OPPORTUNITÉS
+                            </h4>
+                            <p class="text-muted">Consultez les postulations pour chaque opportunité</p>
+                        </div>
+
+                        <div class="card-datatable px-4 pb-4">
+                            <div class="mb-4">
+                                <label class="form-label" for="selectOpportuniteCandidats">Sélectionner une
+                                    opportunité
+                                    :</label>
+                                <select id="selectOpportuniteCandidats" class="form-select"
+                                    onchange="chargerCandidatsOpportunite(this.value)">
+                                    <option value="">Choisir une opportunité...</option>
+                                    @foreach (App\Models\Opportunite::where('statut', 'en_ligne')->get() as $opportunite)
+                                        <option value="{{ $opportunite->id }}">
+                                            {{ $opportunite->titre }}
+                                            ({{ $opportunite->postulations()->count() }}
+                                            candidat{{ $opportunite->postulations()->count() > 1 ? 's' : '' }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
+                                <table id="tableCandidatsOpportunites"
+                                    class="table table-striped table-hover align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Candidat</th>
+                                            <th>Email</th>
+                                            <th>Téléphone</th>
+                                            <th>Date de postulation</th>
+                                            <th>Statut</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyCandidatsOpportunites">
+                                        <tr>
+                                            <td colspan="6" class="text-center text-muted">
+                                                Sélectionnez une opportunité pour voir les candidats
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Fermer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .critere-item,
+            .information-item {
+                transition: all 0.3s ease;
+            }
+
+            .critere-item:hover,
+            .information-item:hover {
+                background-color: rgba(0, 123, 255, 0.05);
+                border-radius: 5px;
+                padding: 5px;
+            }
+
+            .remove-critere,
+            .btn-outline-danger {
+                transition: all 0.3s ease;
+            }
+
+            .remove-critere:hover,
+            .btn-outline-danger:hover {
+                transform: scale(1.1);
+            }
+
+            .form-text {
+                font-size: 0.875rem;
+                color: #6c757d;
+                margin-top: 0.25rem;
+            }
+
+            .input-group .form-control {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            .input-group .btn {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        </style>
+
+        <!--////////////////////////////////////////////////////////////////////////////////////////////////-->
 
         <!-- Script pour la modale de Modification et de Suppression des formations -->
         <script>
@@ -2160,10 +2932,10 @@
                             <div class="d-flex align-items-center gap-3">
                                 <img src="${imagePath}" alt="Image actuelle" style="max-width: 150px; max-height: 150px; border-radius: 8px; object-fit: cover;">
                                 <div>
-                                    <h6 class="mb-1">Fichier actuel :</h6>
+                                    <h6 class="mb-1">@lang('extracted.fichier_actuel')</h6>
                                     <p class="text-muted mb-1"><strong>${fileName}</strong></p>
-                                    <p class="text-muted mb-0"><small>Type: Image</small></p>
-                                    <small class="text-info">Sélectionnez un nouveau fichier pour le remplacer</small>
+                                    <p class="text-muted mb-0"><small>@lang('extracted.type_image')</small></p>
+                                    <small class="text-info">@lang('extracted.selectionnez_un_nouveau_fichier_pour_le_remplacer')</small>
                                 </div>
                             </div>
                         `;
@@ -2175,10 +2947,10 @@
                                     Votre navigateur ne supporte pas la vidéo.
                                 </video>
                                 <div>
-                                    <h6 class="mb-1">Fichier actuel :</h6>
+                                    <h6 class="mb-1">@lang('extracted.fichier_actuel')</h6>
                                     <p class="text-muted mb-1"><strong>${fileName}</strong></p>
-                                    <p class="text-muted mb-0"><small>Type: Vidéo</small></p>
-                                    <small class="text-info">Sélectionnez un nouveau fichier pour le remplacer</small>
+                                    <p class="text-muted mb-0"><small>@lang('extracted.type_video')</small></p>
+                                    <small class="text-info">@lang('extracted.selectionnez_un_nouveau_fichier_pour_le_remplacer')</small>
                                 </div>
                             </div>
                         `;
@@ -2231,9 +3003,9 @@
                             html: `
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="spinner-border text-primary mb-3" role="status">
-                                        <span class="visually-hidden">Chargement...</span>
+                                        <span class="visually-hidden">@lang('extracted.chargement')</span>
                                     </div>
-                                    <p class="mb-0">Veuillez patienter pendant la modification</p>
+                                    <p class="mb-0">@lang('extracted.veuillez_patienter_pendant_la_modification')</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -2318,7 +3090,7 @@
                                     icon: 'error',
                                     title: 'Erreur de connexion',
                                     html: `
-                                    <p>Problème de connexion ou de format de réponse</p>
+                                    <p>@lang('extracted.probleme_de_connexion_ou_de_format_de_reponse')</p>
                                     <small class="text-muted">Détails: ${error.message}</small>
                                 `,
                                     confirmButtonText: 'OK'
@@ -2904,9 +3676,9 @@
                             html: `
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="spinner-border text-primary mb-3" role="status">
-                                        <span class="visually-hidden">Chargement...</span>
+                                        <span class="visually-hidden">@lang('extracted.chargement')</span>
                                     </div>
-                                    <p class="mb-0">Veuillez patienter pendant la création</p>
+                                    <p class="mb-0">@lang('extracted.veuillez_patienter_pendant_la_creation')</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -2985,7 +3757,7 @@
                                     icon: 'error',
                                     title: 'Erreur de connexion',
                                     html: `
-                                    <p>Problème de connexion ou de format de réponse</p>
+                                    <p>@lang('extracted.probleme_de_connexion_ou_de_format_de_reponse')</p>
                                     <small class="text-muted">Détails: ${error.message}</small>
                                 `,
                                     confirmButtonText: 'Réessayer'
@@ -3174,9 +3946,9 @@
                             html: `
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="spinner-border text-success mb-3" role="status">
-                                        <span class="visually-hidden">Création...</span>
+                                        <span class="visually-hidden">@lang('extracted.creation')</span>
                                     </div>
-                                    <p class="mb-0">Création de la nouvelle formation</p>
+                                    <p class="mb-0">@lang('extracted.creation_de_la_nouvelle_formation')</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -3251,7 +4023,7 @@
                                     icon: 'error',
                                     title: 'Erreur de connexion',
                                     html: `
-                                    <p>Impossible de créer la formation</p>
+                                    <p>@lang('extracted.impossible_de_creer_la_formation')</p>
                                     <small class="text-muted">Erreur: ${error.message}</small>
                                 `,
                                     confirmButtonText: 'Réessayer',
@@ -3296,15 +4068,17 @@
                         <div class="text-center">
                             <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
                             <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
-                            ${isConfirm ? '<p class="text-muted">Le candidat sera notifié de la confirmation.</p>' : '<p class="text-muted">Cette action peut être annulée plus tard.</p>'}
+                ${isConfirm ? `
+                                                                                                            <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
+                                                                                                            <p class="text-muted">Cette action peut être annulée plus tard.</p>
+                                                                                                        ` : ''}
                         </div>
                     `,
                     showCancelButton: true,
                     confirmButtonColor: isConfirm ? '#28a745' : '#dc3545',
                     cancelButtonColor: '#6c757d',
-                    confirmButtonText: isConfirm ? '<i class="fas fa-check me-1"></i>Oui, confirmer' :
-                        '<i class="fas fa-times me-1"></i>Oui, refuser',
-                    cancelButtonText: '<i class="fas fa-arrow-left me-1"></i>Annuler',
+                    confirmButtonText: isConfirm ? '✅ Oui, confirmer' : '❌ Oui, refuser',
+                    cancelButtonText: '🔙 Annuler',
                     reverseButtons: true,
                     focusConfirm: false,
                     background: '#ffffff',
@@ -3315,7 +4089,7 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Afficher une modale de chargement
+                        // Affiche une modale de chargement
                         Swal.fire({
                             title: 'Mise à jour en cours...',
                             html: `
@@ -3323,7 +4097,7 @@
                                     <div class="spinner-border ${isConfirm ? 'text-success' : 'text-danger'} mb-3" role="status">
                                         <span class="visually-hidden">Chargement...</span>
                                     </div>
-                                    <p class="mb-0">Mise à jour du statut...</p>
+                        <p class="mb-0">Mise à jour du statut</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -3347,11 +4121,9 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.success) {
-                                    // Recharger les détails de la formation
                                     const formationId = data.formation_id;
                                     voirDetailsFormation(formationId);
 
-                                    // Notification de succès
                                     Swal.fire({
                                         icon: 'success',
                                         title: isConfirm ? '🎉 Inscription confirmée !' :
@@ -3359,7 +4131,10 @@
                                         html: `
                                         <div class="text-center">
                                             <p>Le statut a été mis à jour avec succès.</p>
-                                            ${isConfirm ? '<p class="text-muted">Le candidat peut maintenant être contacté.</p>' : '<p class="text-muted">Vous pouvez changer d\'avis à tout moment.</p>'}
+                                ${isConfirm ? `
+                                                                                                                            <p class="text-muted">Le candidat peut maintenant être contacté.</p>
+                                                                                                                            <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
+                                                                                                                        ` : ''}
                                         </div>
                                     `,
                                         timer: 3000,
@@ -3397,6 +4172,7 @@
                     }
                 });
             }
+
 
             // ... existing code ...
         </script>
@@ -3446,9 +4222,9 @@
                             html: `
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="spinner-border text-primary mb-3" role="status">
-                                        <span class="visually-hidden">Chargement...</span>
+                                        <span class="visually-hidden">@lang('extracted.chargement')</span>
                                     </div>
-                                    <p class="mb-0">Veuillez patienter pendant la modification</p>
+                                    <p class="mb-0">@lang('extracted.veuillez_patienter_pendant_la_modification')</p>
                                 </div>
                             `,
                             allowOutsideClick: false,
@@ -3531,7 +4307,7 @@
                                     icon: 'error',
                                     title: 'Erreur de connexion',
                                     html: `
-                                    <p>Problème de connexion ou de format de réponse</p>
+                                    <p>@lang('extracted.probleme_de_connexion_ou_de_format_de_reponse')</p>
                                     <small class="text-muted">Détails: ${error.message}</small>
                                 `,
                                     confirmButtonText: 'OK'
@@ -3544,26 +4320,22 @@
 
         <!-- Script pour la modale des détails de formation -->
         <script>
-            // Fonction pour afficher les détails d'une formation
             function voirDetailsFormation(formationId) {
                 console.log('📋 Ouverture détails formation ID:', formationId);
 
-                // Ouvrir la modale
                 const modal = new bootstrap.Modal(document.getElementById('detailsFormationModal'));
                 modal.show();
 
-                // Réinitialiser le contenu
                 const contentDiv = document.getElementById('detailsFormationContent');
                 contentDiv.innerHTML = `
                     <div class="text-center p-5">
                         <div class="spinner-border text-primary" role="status">
                             <span class="visually-hidden">Chargement...</span>
                         </div>
-                        <p class="mt-3">Chargement des détails...</p>
+                        <p class="mt-3">Chargement des détails en cours...</p>
                     </div>
                 `;
 
-                // Requête AJAX pour récupérer les détails
                 fetch(`/admin/formations/${formationId}/details`, {
                         method: 'GET',
                         headers: {
@@ -3587,27 +4359,23 @@
                         contentDiv.innerHTML = `
                         <div class="alert alert-danger text-center">
                             <i class="fas fa-exclamation-triangle me-2"></i>
-                            Erreur lors du chargement des détails: ${error.message}
+                    Erreur lors du chargement des détails : ${error.message}
                         </div>
                     `;
                     });
             }
 
-            // Fonction pour afficher les détails dans la modale
             function afficherDetailsFormation(data) {
                 const formation = data.formation;
                 const inscriptions = data.inscriptions;
 
-                // Mettre à jour le titre de la modale
                 document.getElementById('detailsFormationModalLabel').innerHTML = `
                     <i class="fas fa-graduation-cap me-2"></i>${formation.titre}
                 `;
 
-                // Générer le contenu de la modale
                 const contentDiv = document.getElementById('detailsFormationContent');
                 contentDiv.innerHTML = `
                     <div class="row">
-                        {{-- Détails de la formation --}}
                         <div class="col-md-6">
                             <div class="card h-100">
                                 <div class="card-header bg-light">
@@ -3616,31 +4384,31 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12 mb-3">
-                                            <strong>📝 Description:</strong>
+                                        <strong>Description</strong>
                                             <p class="mt-1 text-muted">${formation.programme || 'Aucune description'}</p>
                                         </div>
                                         <div class="col-6 mb-2">
-                                            <strong>📂 Catégorie:</strong><br>
+                                        <strong>Catégorie</strong><br>
                                             <span class="badge bg-success">${formation.categorie?.nom || 'Non définie'}</span>
                                         </div>
                                         <div class="col-6 mb-2">
-                                            <strong>💰 Coût:</strong><br>
+                                        <strong>Coût</strong><br>
                                             <span class="text-primary fw-bold">${formation.cout ? new Intl.NumberFormat('fr-FR').format(formation.cout) + ' FCFA' : 'Gratuit'}</span>
                                         </div>
                                         <div class="col-6 mb-2">
-                                            <strong>📅 Date début:</strong><br>
+                                        <strong>Date de début</strong><br>
                                             <span class="text-info">${formation.date_debut ? new Date(formation.date_debut).toLocaleDateString('fr-FR') : 'À définir'}</span>
                                         </div>
                                         <div class="col-6 mb-2">
-                                            <strong>📅 Date fin:</strong><br>
+                                        <strong>Date de fin</strong><br>
                                             <span class="text-info">${formation.date_fin ? new Date(formation.date_fin).toLocaleDateString('fr-FR') : 'À définir'}</span>
                                         </div>
                                         <div class="col-12 mb-2">
-                                            <strong>📍 Lieu:</strong><br>
+                                        <strong>Lieu</strong><br>
                                             <span class="text-secondary">${formation.lieu || 'À définir'}</span>
                                         </div>
                                         <div class="col-12">
-                                            <strong>🎯 Prérequis:</strong><br>
+                                        <strong>Prérequis</strong><br>
                                             <span class="text-muted">${formation.prerequis || 'Aucun prérequis'}</span>
                                         </div>
                                     </div>
@@ -3648,7 +4416,6 @@
                             </div>
                         </div>
                         
-                        {{-- Statistiques --}}
                         <div class="col-md-6">
                             <div class="card h-100">
                                 <div class="card-header bg-light">
@@ -3661,7 +4428,7 @@
                                                 <div class="card-body p-3">
                                                     <i class="fas fa-users fa-2x mb-2"></i>
                                                     <h4 class="mb-0">${inscriptions.length}</h4>
-                                                    <small>Total inscriptions</small>
+                                                <small>Total des inscriptions</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -3679,169 +4446,116 @@
                                                 <div class="card-body p-3">
                                                     <i class="fas fa-check fa-2x mb-2"></i>
                                                     <h4 class="mb-0">${inscriptions.filter(i => i.statut === 'confirme').length}</h4>
-                                                    <small>Confirmés</small>
+                                                <small>Confirmées</small>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     ${formation.file_path ? `
-                                                            <div class="text-center mt-3">
-                                                                <strong>🎬 Média de présentation:</strong><br>
-                                                                ${formation.file_type === 'image' ? 
-                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
-                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                                                                                                                            <div class="text-center mt-3">
+                                                                                                                                <strong>Média de présentation</strong><br>
+                                                                                                                                                ${formation.file_type === 'image' ? 
+                                                                                                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
+                                                                                                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
-                                            </video>`
-                                                                }
-                                                            </div>` : ''}
+                                            </video>`}
+                                                                                                                                            </div>` : ''}
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <hr class="my-4">
-                    
-                    {{-- Liste des inscriptions --}}
                     <div class="card">
                         <div class="card-header bg-light d-flex justify-content-between align-items-center">
                             <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
                             ${inscriptions.length > 0 ? `
-                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
-                                                        <i class="fas fa-download me-1"></i>Exporter Excel
-                                                    </button>` : ''}
+                                                                                                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
+                                                                                                                                        <i class="fas fa-download me-1"></i>Exporter Excel
+                                                                                                                                    </button>` : ''}
                         </div>
                         <div class="card-body p-0">
                             ${inscriptions.length > 0 ? `
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover mb-0">
-                                                            <thead class="table-light">
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th><i class="fas fa-user me-1"></i>Nom complet</th>
-                                                                    <th><i class="fas fa-envelope me-1"></i>Email</th>
-                                                                    <th><i class="fas fa-phone me-1"></i>Téléphone</th>
-                                                                    <th><i class="fas fa-comment me-1"></i>Message</th>
-                                                                    <th><i class="fas fa-clock me-1"></i>Date inscription</th>
-                                                                    <th><i class="fas fa-flag me-1"></i>Statut</th>
-                                                                    <th>Actions</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                ${inscriptions.map((inscription, index) => `
-                                        <tr>
-                                            <td><strong>${index + 1}</strong></td>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar-circle bg-primary text-white me-2" style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                                                        ${inscription.nom.charAt(0).toUpperCase()}
-                                                    </div>
-                                                    <strong>${inscription.nom}</strong>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="mailto:${inscription.email}" class="text-decoration-none">
-                                                    ${inscription.email}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                ${inscription.telephone ? `<a href="tel:${inscription.telephone}" class="text-decoration-none">${inscription.telephone}</a>` : '<span class="text-muted">Non renseigné</span>'}
-                                            </td>
-                                            <td>
-                                                ${inscription.message ? 
-                                                    `<span class="text-truncate d-inline-block" style="max-width: 200px;" title="${inscription.message}">${inscription.message}</span>` : 
-                                                    '<span class="text-muted">Aucun message</span>'
-                                                }
-                                            </td>
-                                            <td>
-                                                <small class="text-muted">
-                                                    ${new Date(inscription.created_at).toLocaleDateString('fr-FR')} à 
-                                                    ${new Date(inscription.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}
-                                                </small>
-                                            </td>
-                                            <td>
-                                                <span class="badge ${inscription.statut === 'confirme' ? 'bg-success' : inscription.statut === 'refuse' ? 'bg-danger' : 'bg-warning'}">
-                                                    ${inscription.statut === 'confirme' ? '✅ Confirmé' : inscription.statut === 'refuse' ? '❌ Refusé' : '⏳ En attente'}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group btn-group-sm">
-                                                    ${inscription.statut === 'en_attente' ? `
-                                                                            <button class="btn btn-success btn-sm" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
-                                                                                <i class="fas fa-check"></i>
-                                                                            </button>
-                                                                            <button class="btn btn-danger btn-sm" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
-                                                                                <i class="fas fa-times"></i>
-                                                                            </button>` : ''}
-                                                    <button class="btn btn-outline-primary btn-sm" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
-                                                        <i class="fas fa-envelope"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>`).join('')}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>` : `
-                                                    <div class="text-center p-5">
-                                                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                                        <h5 class="text-muted">Aucune inscription pour le moment</h5>
-                                                        <p class="text-muted">Les candidatures apparaîtront ici dès qu'il y en aura.</p>
-                                                    </div>`}
-                        </div>
-                    </div>
-                `;
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-hover mb-0">
+                                                                                <thead class="table-light">
+                                                                                    <tr>
+                                                                                        <th>#</th>
+                                                                                        <th><i class="fas fa-user me-1"></i>Nom complet</th>
+                                                                                        <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                                                                        <th><i class="fas fa-phone me-1"></i>Téléphone</th>
+                                                                                        <th><i class="fas fa-comment me-1"></i>Message</th>
+                                                                                <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
+                                                                                        <th><i class="fas fa-flag me-1"></i>Statut</th>
+                                                                                        <th>Actions</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    ${inscriptions.map((inscription, index) => `
+<tr>
+<td><strong>${index + 1}</strong></td>
+<td>
+<div class="d-flex align-items-center">
+<div class="avatar-circle bg-primary text-white me-2" style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+${inscription.nom.charAt(0).toUpperCase()}
+</div>
+<strong>${inscription.nom}</strong>
+</div>
+</td>
+<td><a href="mailto:${inscription.email}">${inscription.email}</a></td>
+<td>${inscription.telephone ? `<a href="tel:${inscription.telephone}">${inscription.telephone}</a>` : '<span class="text-muted">Non renseigné</span>'}</td>
+<td>${inscription.message ? `<span title="${inscription.message}">${inscription.message}</span>` : '<span class="text-muted">Aucun message</span>'}</td>
+<td>
+<small class="text-muted">
+${new Date(inscription.created_at).toLocaleDateString('fr-FR')} à 
+${new Date(inscription.created_at).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
+</small>
+</td>
+<td>
+<span class="badge ${inscription.statut === 'confirme' ? 'bg-success' : inscription.statut === 'refuse' ? 'bg-danger' : 'bg-warning'}">
+${inscription.statut === 'confirme' ? '✅ Confirmé' : inscription.statut === 'refuse' ? '❌ Refusé' : '⏳ En attente'}
+</span>
+</td>
+<td>
+<div class="btn-group btn-group-sm">
+${inscription.statut === 'en_attente' ? `
+                                                                                                <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
+                                                                                                    <i class="fas fa-check"></i>
+                                                                                                </button>
+                                                                                                <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
+                                                                                                    <i class="fas fa-times"></i>
+                                                                                                </button>` : ''}
+    <button class="btn btn-outline-primary" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
+<i class="fas fa-envelope"></i>
+</button>
+</div>
+</td>
+</tr>`).join('')}
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>` : `
+                                                                        <div class="text-center p-5">
+                                                                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                                                            <h5 class="text-muted">Aucune inscription pour le moment</h5>
+                                                                    <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
+                                                                        </div>`}
+</div>
+</div>
+</div>
+</div>
+</div>
 
-                // Afficher le bouton d'export si il y a des inscriptions
-                const exportBtn = document.getElementById('exporterInscriptions');
-                if (inscriptions.length > 0) {
-                    exportBtn.style.display = 'inline-block';
-                    exportBtn.onclick = () => exporterInscriptions(formation.id);
-                } else {
-                    exportBtn.style.display = 'none';
-                }
-            }
-
-            // Fonction pour contacter un candidat
-            function contacterCandidat(email, nom) {
-                const subject = `Formation Excellium Conseil - Votre candidature`;
-                const body =
-                    `Bonjour ${nom},\n\nNous avons bien reçu votre demande d'inscription à notre formation.\n\nCordialement,\nL'équipe Excellium Conseil`;
-
-                window.location.href =
-                    `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            }
-
-            // Fonction pour exporter les inscriptions
-            function exporterInscriptions(formationId) {
-                const link = document.createElement('a');
-                link.href = `/admin/formations/${formationId}/export-inscriptions`;
-                link.download = `inscriptions_formation_${formationId}.xlsx`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-
-            // Fonction utilitaire pour afficher des notifications
-            function showNotification(message, type) {
-                // Tu peux utiliser ton système de notification existant
-                if (typeof Swal !== 'undefined') {
-                    Swal.fire({
-                        text: message,
-                        icon: type === 'success' ? 'success' : 'error',
-                        timer: 3000,
-                        showConfirmButton: false
-                    });
-                } else {
-                    alert(message);
-                }
+</div>    
+`;
             }
         </script>
 
-        <!-- Script pour la création d'opportunités -->
+        <!-- Script pour la création de nouvelles opportunités -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                const form = document.getElementById('createOpportuniteForm');
-                const modal = document.getElementById('create_opportunites');
+                const form = document.getElementById('createEmploiForm');
+                const modal = document.getElementById('create_emplois');
 
                 // Validation en temps réel
                 form.addEventListener('input', function(e) {
@@ -3859,9 +4573,9 @@
 
                         submitBtn.disabled = true;
                         submitBtn.innerHTML = `
-                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Publication en cours...
-                    `;
+<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+Publication en cours...
+`;
 
                         // Soumission réelle
                         setTimeout(() => {
@@ -3924,140 +4638,641 @@
                             icon: 'warning',
                             title: '⚠️ Formulaire incomplet',
                             html: `
-                            <div class="text-center">
-                                <p>Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*).</p>
-                                <div class="alert alert-light border mt-3">
-                                    <small class="text-muted">
-                                        <i class="fas fa-lightbulb me-1"></i>
-                                        Les champs en rouge nécessitent votre attention.
-                                    </small>
-                                </div>
-                            </div>
-                        `,
-                        confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
-                        confirmButtonColor: '#ffc107'
-                    });
-                }
-                
-                return isValid;
-            }
-            
-            // Réinitialiser le formulaire à la fermeture
-            modal.addEventListener('hidden.bs.modal', function() {
-                form.reset();
-                form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
-                    field.classList.remove('is-valid', 'is-invalid');
-                });
-                
-                // Réinitialiser le bouton de soumission
-                const submitBtn = form.querySelector('button[type="submit"]');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
-            });
-            
-            // Auto-complétion intelligente
-            document.getElementById('titre').addEventListener('input', function(e) {
-                const titre = e.target.value.toLowerCase();
-                const entrepriseField = document.getElementById('entreprise');
-                
-                // Si le titre contient certains mots-clés, suggérer Excellium
-                if (titre.includes('développeur') || titre.includes('web') || titre.includes('consultant')) {
-                    if (!entrepriseField.value) {
-                        entrepriseField.value = 'Excellium Conseils';
-                        entrepriseField.classList.add('is-valid');
+<div class="text-center">
+<p>@lang('extracted.veuillez_remplir_tous_les_champs_obligatoires_marques_dun_asterisque')</p>
+<div class="alert alert-light border mt-3">
+<small class="text-muted">
+<i class="fas fa-lightbulb me-1"></i>
+Les champs en rouge nécessitent votre attention.
+</small>
+</div>
+</div>
+`,
+                            confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
+                            confirmButtonColor: '#ffc107'
+                        });
                     }
-                }
-            });
-            
-            // Formatage automatique du téléphone
-            document.getElementById('contact_telephone').addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 0 && !value.startsWith('225')) {
-                    value = '225' + value;
-                }
-                if (value.length > 3) {
-                    value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
-                }
-                e.target.value = value;
-            });
-        });
-        </script>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('createCategorieForm');
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
+                    return isValid;
+                }
 
-                    // Animation de chargement
-                    Swal.fire({
-                        title: 'Création en cours...',
-                        allowOutsideClick: false,
-                        didOpen: () => {
-                            Swal.showLoading();
-                        },
-                        preConfirm: () => {
-                            const nom = Swal.getInputValue('nom');
-                            if (!nom) {
-                                Swal.showValidationMessage('Le nom est requis');
-                            }
-                            return nom;
-                        },
-                        didOpen: () => {
-                            setTimeout(() => {
-                                const input = Swal.getInput();
-                                if (input) input.focus();
-                            }, 100);
-                        }
+                // Réinitialiser le formulaire à la fermeture
+                modal.addEventListener('hidden.bs.modal', function() {
+                    form.reset();
+                    form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
+                        field.classList.remove('is-valid', 'is-invalid');
                     });
 
-                    const formData = new FormData(form);
+                    // Réinitialiser le bouton de soumission
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
+                });
 
-                    fetch(form.action, {
-                        method: 'POST',
+                // Auto-complétion intelligente
+                document.getElementById('titre').addEventListener('input', function(e) {
+                    const titre = e.target.value.toLowerCase();
+                    const entrepriseField = document.getElementById('entreprise');
+
+                    // Si le titre contient certains mots-clés, suggérer Excellium
+                    if (titre.includes('développeur') || titre.includes('web') || titre.includes(
+                            'consultant')) {
+                        if (!entrepriseField.value) {
+                            entrepriseField.value = 'Excellium Conseils';
+                            entrepriseField.classList.add('is-valid');
+                        }
+                    }
+                });
+
+                // Formatage automatique du téléphone
+                document.getElementById('contact_telephone').addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 0 && !value.startsWith('225')) {
+                        value = '225' + value;
+                    }
+                    if (value.length > 3) {
+                        value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
+                    }
+                    e.target.value = value;
+                });
+            });
+
+            // Scripts pour la gestion des opportunités
+
+            // Fonctions pour gérer les critères
+            window.addCritere = function() {
+                const container = document.getElementById('criteres-container');
+                const newCritere = document.createElement('div');
+                newCritere.className = 'critere-item mb-2';
+                newCritere.innerHTML = `
+                    <div class="input-group">
+                        <input type="text" name="criteres[]" class="form-control" placeholder="Ex: Expérience minimum 3 ans">
+                        <button type="button" class="btn btn-outline-danger remove-critere" onclick="removeCritere(this)">
+                            <i class="ri-delete-bin-line"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(newCritere);
+            };
+
+            window.removeCritere = function(button) {
+                const container = document.getElementById('criteres-container');
+                if (container.children.length > 1) {
+                    button.closest('.critere-item').remove();
+                } else {
+                    Swal.fire('Attention', 'Au moins un critère est requis', 'warning');
+                }
+            };
+
+            // Fonctions pour gérer les informations
+            window.addInformation = function() {
+                const container = document.getElementById('informations-container');
+                const newInfo = document.createElement('div');
+                newInfo.className = 'information-item mb-2';
+                newInfo.innerHTML = `
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" name="info_keys[]" class="form-control" placeholder="Clé (ex: Budget, Durée)">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="info_values[]" class="form-control" placeholder="Valeur (ex: 50000€, 6 mois)">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-outline-danger w-100" onclick="removeInformation(this)">
+                                <i class="ri-delete-bin-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(newInfo);
+            };
+
+            window.removeInformation = function(button) {
+                const container = document.getElementById('informations-container');
+                if (container.children.length > 1) {
+                    button.closest('.information-item').remove();
+                } else {
+                    Swal.fire('Attention', 'Au moins une information est requise', 'warning');
+                }
+            };
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // Gestion du formulaire de création d'opportunité
+                const createOpportuniteForm = document.getElementById('createOpportuniteForm');
+                if (createOpportuniteForm) {
+                    createOpportuniteForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        const formData = new FormData(this);
+
+                        // S'assurer que le token CSRF est inclus dans FormData
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            'content');
+                        formData.append('_token', csrfToken);
+
+                        // Afficher une animation de chargement
+                        const loading = Swal.fire({
+                            title: 'Création en cours...',
+                            html: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Création...</span></div>',
+                            allowOutsideClick: false,
+                            showConfirmButton: false
+                        });
+
+                        fetch('/admin/opportunites', {
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    createOpportuniteForm.reset();
+                                    $('#create_opportunite').modal('hide');
+                                    // Recharger la page ou mettre à jour la liste
+                                    location.reload();
+                                } else {
+                                    let errorMessage = data.message || 'Erreur lors de la création';
+                                    if (data.errors) {
+                                        errorMessage += '\n\nErreurs :\n';
+                                        Object.values(data.errors).forEach(error => {
+                                            errorMessage += '- ' + error[0] + '\n';
+                                        });
+                                    }
+                                    Swal.fire('Erreur', errorMessage, 'error');
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
+                                console.error('Erreur:', error);
+                                Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
+                            });
+                    });
+                }
+            });
+
+            // Fonction pour voir les détails d'une opportunité
+            function voirDetailsOpportunite(id) {
+                fetch(`/admin/opportunites/${id}`, {
+                        method: 'GET',
                         headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                        },
-                        body: formData
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
                     })
                     .then(response => response.json())
                     .then(data => {
-                        Swal.close();
                         if (data.success) {
+                            const opp = data.opportunite;
                             Swal.fire({
-                                icon: 'success',
-                                title: 'Succès',
-                                text: data.message,
-                                confirmButtonText: 'OK'
-                            }).then(() => {
-                                // Optionnel : reset le formulaire ou rafraîchir la liste
-                                form.reset();
-                                // Tu peux aussi recharger dynamiquement la liste ici si besoin
+                                title: opp.titre,
+                                html: `
+                    <div class="text-start">
+                        <p><strong>Description :</strong><br>${opp.description}</p>
+                        <p><strong>Catégorie :</strong> ${opp.categorie ? opp.categorie.nom : 'N/A'}</p>
+                        <p><strong>Statut :</strong> <span class="badge bg-primary">${opp.statut}</span></p>
+                        <p><strong>Date de début :</strong> ${opp.date_debut ? new Date(opp.date_debut).toLocaleDateString('fr-FR') : 'N/A'}</p>
+                        <p><strong>Date de fin :</strong> ${opp.date_fin ? new Date(opp.date_fin).toLocaleDateString('fr-FR') : 'N/A'}</p>
+                        <p><strong>Lieu :</strong> ${opp.lieu || 'N/A'}</p>
+                        <p><strong>Email de contact :</strong> ${opp.contact_email || 'N/A'}</p>
+                        <p><strong>Nombre de candidats :</strong> ${opp.postulations ? opp.postulations.length : 0}</p>
+                    </div>
+                `,
+                                width: '600px',
+                                confirmButtonText: 'Fermer'
                             });
                         } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur',
-                                text: data.message || 'Une erreur est survenue.'
-                            });
+                            Swal.fire('Erreur', 'Impossible de charger les détails', 'error');
                         }
                     })
                     .catch(error => {
-                        Swal.close();
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Erreur',
-                            text: 'Une erreur inattendue est survenue.'
-                        });
+                        console.error('Erreur:', error);
+                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
                     });
+            }
+
+            // Fonction pour modifier une opportunité
+            function modifierOpportunite(id) {
+                fetch(`/admin/opportunites/${id}/edit`, {
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const opp = data.opportunite;
+
+                            Swal.fire({
+                                    title: '<h4 class="fw-bold">Modifier l\'opportunité</h4>',
+                                    html: `
+                                    <form id="editOpportuniteForm" class="p-4 bg-white shadow-sm rounded">
+
+                                    <!-- Section Titre et Description -->
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold">Titre</label>
+                                        <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="ri-edit-box-line"></i></span>
+                                        <input type="text" id="edit_titre" class="form-control" value="${opp.titre}" required placeholder="Titre de l'opportunité">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold">Description</label>
+                                        <textarea id="edit_description" class="form-control" rows="4" required placeholder="Description détaillée de l'opportunité">${opp.description}</textarea>
+                                    </div>
+
+                                    <!-- Catégorie et Statut -->
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Catégorie</label>
+                                        <select id="edit_categorie_id" class="form-select">
+                                            <option value="">Sélectionner une catégorie</option>
+                                            ${data.categories.map(cat =>
+                                            `<option value="${cat.id}" ${cat.id == opp.categorie_id ? 'selected' : ''}>${cat.nom}</option>`
+                                            ).join('')}
+                                        </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Statut</label>
+                                        <select id="edit_statut" class="form-select" required>
+                                            <option value="brouillon" ${opp.statut === 'brouillon' ? 'selected' : ''}>Brouillon</option>
+                                            <option value="en_ligne" ${opp.statut === 'en_ligne' ? 'selected' : ''}>En ligne</option>
+                                            <option value="ferme" ${opp.statut === 'ferme' ? 'selected' : ''}>Fermé</option>
+                                            <option value="archive" ${opp.statut === 'archive' ? 'selected' : ''}>Archivé</option>
+                                        </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Dates -->
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Date de début</label>
+                                        <input type="datetime-local" id="edit_date_debut" class="form-control" 
+                                                value="${opp.date_debut ? new Date(opp.date_debut).toISOString().slice(0, 16) : ''}">
+                                        </div>
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Date de fin</label>
+                                        <input type="datetime-local" id="edit_date_fin" class="form-control" 
+                                                value="${opp.date_fin ? new Date(opp.date_fin).toISOString().slice(0, 16) : ''}">
+                                        </div>
+                                    </div>
+
+                                    <!-- Lieu et Email de contact -->
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Lieu</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="ri-map-pin-line"></i></span>
+                                            <input type="text" id="edit_lieu" class="form-control" value="${opp.lieu || ''}" placeholder="Ville, pays">
+                                        </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                        <label class="form-label fw-bold">Email de contact</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="ri-mail-line"></i></span>
+                                            <input type="email" id="edit_contact_email" class="form-control" value="${opp.contact_email || ''}" placeholder="email@exemple.com">
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                   
+                                    </form>
+
+                                `,
+                                    width: 'auto',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Modifier',
+                                    cancelButtonText: 'Annuler',
+                                    preConfirm: () => {
+                                        const formData = {
+                                            titre: document.getElementById('edit_titre').value,
+                                            description: document.getElementById('edit_description').value,
+                                            categorie_id: document.getElementById('edit_categorie_id').value,
+                                            statut: document.getElementById('edit_statut').value,
+                                            date_debut: document.getElementById('edit_date_debut').value,
+                                            date_fin: document.getElementById('edit_date_fin').value,
+                                            lieu: document.getElementById('edit_lieu').value,
+                                            contact_email: document.getElementById('edit_contact_email').value
+                                        };
+
+                                        return fetch(`/admin/opportunites/${id}`, {
+                                                method: 'PUT',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'X-CSRF-TOKEN': document.querySelector(
+                                                        'meta[name="csrf-token"]').getAttribute('content'),
+                                                    'X-Requested-With': 'XMLHttpRequest'
+                                                },
+                                                body: JSON.stringify(formData)
+                                            })
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                if (!data.success) {
+                                                    throw new Error(data.message ||
+                                                        'Erreur lors de la modification');
+                                                }
+                                                return data;
+                                            });
+                                    }
+                                })
+                                .then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire('Succès', 'Opportunité modifiée avec succès', 'success');
+                                        location.reload();
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Erreur:', error);
+                                    Swal.fire('Erreur', error.message, 'error');
+                                });
+                        } else {
+                            Swal.fire('Erreur', 'Impossible de charger les données', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                    });
+            }
+
+            // Fonction pour supprimer une opportunité
+            function supprimerOpportunite(id) {
+                Swal.fire({
+                    title: 'Supprimer cette opportunité ?',
+                    text: 'Cette action est irréversible !',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler',
+                    confirmButtonColor: '#dc3545'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const loading = Swal.fire({
+                            title: 'Suppression en cours...',
+                            html: '<div class="spinner-border text-danger" role="status"><span class="visually-hidden">Suppression...</span></div>',
+                            allowOutsideClick: false,
+                            showConfirmButton: false
+                        });
+
+                        fetch(`/admin/opportunites/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                        'content'),
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    location.reload();
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
+                                console.error('Erreur:', error);
+                                Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
+                            });
+                    }
                 });
             }
-        });
+
+            // Fonction pour charger les candidats d'une opportunité
+            function chargerCandidatsOpportunite(opportuniteId) {
+                if (!opportuniteId) {
+                    document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                        '<tr><td colspan="6" class="text-center text-muted">Sélectionnez une opportunité pour voir les candidats</td></tr>';
+                    return;
+                }
+
+                // Afficher un indicateur de chargement
+                document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                    '<tr><td colspan="6" class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Chargement...</span></div></td></tr>';
+
+                fetch(`/admin/opportunites/${opportuniteId}/candidats`, {
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const tbody = document.getElementById('tbodyCandidatsOpportunites');
+
+                            if (data.candidats.length === 0) {
+                                tbody.innerHTML =
+                                    '<tr><td colspan="6" class="text-center text-muted">Aucun candidat pour cette opportunité</td></tr>';
+                                return;
+                            }
+
+                            tbody.innerHTML = data.candidats.map(candidat => `
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-sm me-3">
+                                <span class="avatar-initial rounded bg-primary">
+                                    ${candidat.prenom.charAt(0)}${candidat.nom.charAt(0)}
+                                </span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">${candidat.prenom} ${candidat.nom}</h6>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${candidat.email}</td>
+                    <td>${candidat.telephone || 'N/A'}</td>
+                    <td>${candidat.date_postulation}</td>
+                    <td>
+                        <span class="badge ${getBadgeClassForStatut(candidat.statut)}">${getStatutLabel(candidat.statut)}</span>
+                    </td>
+                    <td class="text-center">
+                        <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <i class="ri-more-2-line"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'accepte')">
+                                    <i class="ri-check-line me-1 text-success"></i> Accepter
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'refuse')">
+                                    <i class="ri-close-line me-1 text-danger"></i> Refuser
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+                        } else {
+                            document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                                '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement des candidats</td></tr>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                            '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement</td></tr>';
+                    });
+            }
+
+            // Fonction pour changer le statut d'une postulation
+            function changerStatutPostulation(postulationId, nouveauStatut) {
+                const statutLabel = getStatutLabel(nouveauStatut);
+
+                Swal.fire({
+                    title: `Changer le statut à "${statutLabel}" ?`,
+                    text: 'Cette action modifiera le statut de la postulation',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirmer',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`/admin/postulations/${postulationId}/statut`, {
+                                method: 'PATCH',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                        'content'),
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                },
+                                body: JSON.stringify({
+                                    statut: nouveauStatut
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    // Recharger les candidats
+                                    const selectElement = document.getElementById('selectOpportuniteCandidats');
+                                    if (selectElement.value) {
+                                        chargerCandidatsOpportunite(selectElement.value);
+                                    }
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors du changement de statut',
+                                        'error');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erreur:', error);
+                                Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                            });
+                    }
+                });
+            }
+
+            // Fonctions utilitaires
+            function getBadgeClassForStatut(statut) {
+                switch (statut) {
+                    case 'accepte':
+                        return 'bg-label-success';
+                    case 'refuse':
+                        return 'bg-label-danger';
+                    case 'en_attente':
+                        return 'bg-label-warning';
+                    default:
+                        return 'bg-label-info';
+                }
+            }
+
+            function getStatutLabel(statut) {
+                switch (statut) {
+                    case 'accepte':
+                        return 'Accepté';
+                    case 'refuse':
+                        return 'Refusé';
+                    case 'en_attente':
+                        return 'En attente';
+                    default:
+                        return 'Inconnu';
+                }
+            }
         </script>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('createCategorieForm');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        // Animation de chargement
+                        Swal.fire({
+                            title: 'Création en cours...',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            },
+                            preConfirm: () => {
+                                const nom = Swal.getInputValue('nom');
+                                if (!nom) {
+                                    Swal.showValidationMessage('Le nom est requis');
+                                }
+                                return nom;
+                            },
+                            didOpen: () => {
+                                setTimeout(() => {
+                                    const input = Swal.getInput();
+                                    if (input) input.focus();
+                                }, 100);
+                            }
+                        });
+
+                        const formData = new FormData(form);
+
+                        fetch(form.action, {
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        text: data.message,
+                                        confirmButtonText: 'OK'
+                                    }).then(() => {
+                                        // Optionnel : reset le formulaire ou rafraîchir la liste
+                                        form.reset();
+                                        // Tu peux aussi recharger dynamiquement la liste ici si besoin
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        text: data.message || 'Une erreur est survenue.'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    text: 'Une erreur inattendue est survenue.'
+                                });
+                            });
+                    });
+                }
+            });
+        </script>
+
+        <!-- Scripts pour la gestion des catégories -->
         <script>
             function fetchCategories() {
                 fetch('/admin/categories/list')
@@ -4067,15 +5282,15 @@
                         tbody.innerHTML = '';
                         categories.forEach(cat => {
                             tbody.innerHTML += `
-                                <tr>
-                                    <td>${cat.id}</td>
-                                    <td>${cat.nom}</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary" onclick="showEditModal(${cat.id}, '${cat.nom.replace(/'/g, "\\'")}')">✏️</button>
-                                        <button class="btn btn-sm btn-danger" onclick="deleteCategorie(${cat.id})">🗑️</button>
-                                    </td>
-                                </tr>
-                            `;
+<tr>
+<td>${cat.id}</td>
+<td>${cat.nom}</td>
+<td>
+<button class="btn btn-sm btn-primary" onclick="showEditModal(${cat.id}, '${cat.nom.replace(/'/g, "\\'")}')">@lang('extracted.')</button>
+<button class="btn btn-sm btn-danger" onclick="deleteCategorie(${cat.id})">@lang('extracted.')</button>
+</td>
+</tr>
+`;
                         });
                     });
             }
@@ -4115,26 +5330,32 @@
 
             // Modifier une catégorie
             function updateCategorie(id, nom) {
-                Swal.fire({title: 'Mise à jour...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
-                fetch(`/admin/categories/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: JSON.stringify({nom})
-                })
-                .then(res => res.json())
-                .then(data => {
-                    Swal.close();
-                    if (data.success) {
-                        Swal.fire('Succès', data.message, 'success');
-                        fetchCategories();
-                    } else {
-                        Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
-                    }
+                Swal.fire({
+                    title: 'Mise à jour...',
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
                 });
+                fetch(`/admin/categories/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify({
+                            nom
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        Swal.close();
+                        if (data.success) {
+                            Swal.fire('Succès', data.message, 'success');
+                            fetchCategories();
+                        } else {
+                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                        }
+                    });
             }
 
             // Supprimer une catégorie
@@ -4148,34 +5369,762 @@
                     cancelButtonText: 'Annuler'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire({title: 'Suppression...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
-                        fetch(`/admin/categories/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            Swal.close();
-                            if (data.success) {
-                                Swal.fire('Succès', data.message, 'success');
-                                fetchCategories();
-                            } else {
-                                Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                            }
+                        Swal.fire({
+                            title: 'Suppression...',
+                            allowOutsideClick: false,
+                            didOpen: () => Swal.showLoading()
                         });
+                        fetch(`/admin/categories/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    fetchCategories();
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                }
+                            });
                     }
                 });
             }
 
             // Rafraîchir la liste à l'ouverture de la modale
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
                 fetchCategories();
             });
         </script>
+        <!-- ///////////////////////////////////// -->
+
+
+
+        <!-- Scripts pour la gestion des produits -->
+        <script>
+            // Scripts pour la gestion des produits
+            document.addEventListener('DOMContentLoaded', function() {
+                // Gestion de la création de produit
+                const createProduitForm = document.getElementById('createProduitForm');
+                if (createProduitForm) {
+                    createProduitForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        // Afficher une animation de chargement
+                        const loading = Swal.fire({
+                            title: 'Création en cours...',
+                            html: `
+<div class="text-center">
+<div class="spinner-border text-primary" role="status">
+<span class="visually-hidden">@lang('extracted.chargement')</span>
+</div>
+<p class="mt-2">@lang('extracted.creation_du_produit')</p>
+</div>
+`,
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        const loading = Swal.fire({
+                            ...
+                        });
+                        const formData = new FormData(createProduitForm);
+
+                        fetch(createProduitForm.action, {
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    const success = Swal.mixin({
+                                        customClass: {
+                                            confirmButton: 'btn btn-success',
+                                            cancelButton: 'btn btn-danger'
+                                        },
+                                        buttonsStyling: false
+                                    });
+
+                                    success.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        html: `
+<div class="text-center">
+<i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
+<h5 class="mt-3">@lang('extracted.produit_cree')</h5>
+<p class="mb-0">${data.message}</p>
+</div>
+`,
+                                        confirmButtonText: 'OK',
+                                        showCancelButton: false,
+                                        confirmButtonColor: '#2196f3'
+                                    }).then(() => {
+                                        createProduitForm.reset();
+                                        fetchProduits();
+                                    });
+                                } else {
+                                    const error = Swal.mixin({
+                                        customClass: {
+                                            confirmButton: 'btn btn-danger'
+                                        },
+                                        buttonsStyling: false
+                                    });
+
+                                    error.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        html: `
+<div class="text-center">
+<i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
+<h5 class="mt-3">@lang('extracted.erreur')</h5>
+<p class="mb-0">${data.message || 'Une erreur est survenue.'}</p>
+</div>
+`,
+                                        confirmButtonText: 'OK',
+                                        confirmButtonColor: '#dc3545'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                loading.close();
+                                const error = Swal.mixin({
+                                    customClass: {
+                                        confirmButton: 'btn btn-danger'
+                                    },
+                                    buttonsStyling: false
+                                });
+
+                                error.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    html: `
+<div class="text-center">
+<i class="icon-base ri ri-error-warning-line icon-48px text-danger"></i>
+<h5 class="mt-3">@lang('extracted.erreur_inattendue')</h5>
+<p class="mb-0">@lang('extracted.une_erreur_inattendue_est_survenue')</p>
+</div>
+`,
+                                    confirmButtonText: 'OK',
+                                    confirmButtonColor: '#dc3545'
+                                });
+                            });
+                    });
+                }
+            });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialisation de la DataTable pour la table des produits
+                // Assure-toi que ta table HTML a bien l'id "tableProduits"
+                var table = $('#tableProduits').DataTable({
+                    ajax: '/admin/produits/list',
+                    columns: [{
+                            data: 'nom',
+                            title: 'Nom'
+                        },
+                        {
+                            data: 'categorie',
+                            title: 'Catégorie'
+                        },
+                        {
+                            data: 'statut_label',
+                            title: 'Statut',
+                            render: function(data, type, row) {
+                                var couleur = row.statut_color === 'success' ? 'green' : 'red';
+                                return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
+                            }
+                        },
+                        {
+                            data: 'actions',
+                            title: 'Actions',
+                            orderable: false,
+                            searchable: false
+                        }
+                    ],
+                    // language: {
+                    //     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
+                    // }
+                });
+
+                // Gestion des clics sur les boutons d'action (modification/suppression)
+                // On utilise la délégation d'événement pour gérer les éléments générés dynamiquement
+                document.querySelector('#tableProduits').addEventListener('click', function(e) {
+                    // Bouton Modifier
+                    if (e.target.closest('.btn-edit-produit')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-edit-produit').dataset.id;
+                        // Appelle ta fonction d'ouverture de modale d'édition ici
+                        openEditProduitModal(id);
+                    }
+
+                    // Bouton Supprimer
+                    if (e.target.closest('.btn-delete-produit')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-delete-produit').dataset.id;
+
+                        // Confirmation avec SweetAlert2
+                        Swal.fire({
+                            title: 'Supprimer ce produit ?',
+                            text: 'Cette action est irréversible !',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, supprimer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch(`/admin/produits/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector(
+                                                'meta[name="csrf-token"]').getAttribute(
+                                                'content')
+                                        }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Supprimé !', data.message, 'success');
+                                            table.ajax.reload(); // Rafraîchit la DataTable
+                                        } else {
+                                            Swal.fire('Erreur', data.message ||
+                                                'Erreur lors de la suppression', 'error');
+                                        }
+                                    })
+                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                            }
+                        });
+                    }
+                });
+
+                // Exemple de fonction pour ouvrir la modale d'édition (à adapter selon ton projet)
+                window.openEditProduitModal = function(id) {
+                    // Récupère les infos du produit via AJAX
+                    fetch(`/admin/produits/${id}`)
+                        .then(res => res.json())
+                        .then(produit => {
+                            Swal.fire({
+
+                                html: `
+<div class="swal-custom-modal">
+<!-- Titre -->
+<div class="d-flex justify-content-around mb-4">
+<h3><i class="bi bi-pencil-square"></i> Modifier le produit</h3>
+</div>
+
+<!-- Formulaire -->
+<form id="editProduitForm" class="text-start">
+<div class="mb-3">
+<label for="swal-nom" class="form-label fw-semibold">
+<i class="bi bi-cube"></i> Nom du produit <span class="text-danger">*</span>
+</label>
+<input type="text" id="swal-nom" class="form-control"
+placeholder="Nom"
+value="${escapeHtml(produit.nom)}" required>
+</div>
+
+<div class="row">
+<div class="col-md-6 mb-3">
+<label for="swal-slug" class="form-label fw-semibold">
+<i class="bi bi-link"></i> Slug <span class="text-danger">*</span>
+</label>
+<input type="text" id="swal-slug" class="form-control"
+placeholder="Slug"
+value="${escapeHtml(produit.slug)}" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label for="swal-categorie" class="form-label fw-semibold">
+<i class="bi bi-collection"></i> Catégorie <span class="text-danger">*</span>
+</label>
+<select id="swal-categorie" class="form-select" required>
+<option value="">@lang('extracted.selectionnez_une_categorie')</option>
+</select>
+</div>
+</div>
+
+<div class="mb-3">
+<label for="swal-statut" class="form-label fw-semibold">
+<i class="bi bi-toggle2-on"></i> Statut
+</label>
+<select id="swal-statut" class="form-select w-50">
+<option value="actif" ${produit.statut === 'actif' ? 'selected' : ''}>
+@lang('extracted.actif')
+</option>
+<option value="inactif" ${produit.statut === 'inactif' ? 'selected' : ''}>
+@lang('extracted.inactif')
+</option>
+</select>
+</div>
+
+<div class="mt-2 text-muted small">
+<span class="text-danger">*</span> Champs obligatoires
+</div>
+</form>
+</div>
+`,
+
+                                focusConfirm: false,
+                                showCancelButton: true,
+                                confirmButtonText: '<i class="bi bi-check"></i> Enregistrer',
+                                cancelButtonText: '<i class="bi bi-x-circle"></i> Annuler',
+                                customClass: {
+                                    popup: 'swal2-card',
+                                    confirmButton: 'swal2-confirm--primary'
+                                },
+                                width: 600,
+                                background: "#f9fafe",
+                                scrollbarPadding: false,
+                                preConfirm: () => {
+                                    const nom = document.getElementById('swal-nom').value.trim();
+                                    const description = document.getElementById('swal-description')
+                                        .value.trim();
+                                    const slug = document.getElementById('swal-slug').value.trim();
+                                    const categorie_id = document.getElementById('swal-categorie')
+                                        .value;
+                                    const statut = document.getElementById('swal-statut').value;
+                                    if (!nom || !slug || !categorie_id) {
+                                        Swal.showValidationMessage(
+                                            'Tous les champs obligatoires doivent être remplis');
+                                        return false;
+                                    }
+                                    return {
+                                        nom,
+                                        description,
+                                        slug,
+                                        categorie_id,
+                                        statut
+                                    };
+                                },
+                                didOpen: () => {
+                                    // Charger dynamiquement les catégories
+                                    fetch('/admin/categories/list')
+                                        .then(res => res.json())
+                                        .then(categories => {
+                                            const select = document.getElementById(
+                                                'swal-categorie');
+                                            categories.forEach(cat => {
+                                                const opt = document.createElement(
+                                                    'option');
+                                                opt.value = cat.id;
+                                                opt.textContent = cat.nom;
+                                                if (cat.id == produit.categorie_id) opt
+                                                    .selected = true;
+                                                select.appendChild(opt);
+                                            });
+                                        });
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed && result.value) {
+                                    Swal.fire({
+                                        title: 'Mise à jour...',
+                                        allowOutsideClick: false,
+                                        didOpen: () => Swal.showLoading()
+                                    });
+                                    fetch(`/admin/produits/${id}`, {
+                                            method: 'PUT',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': document.querySelector(
+                                                    'meta[name="csrf-token"]').getAttribute(
+                                                    'content'),
+                                                'X-Requested-With': 'XMLHttpRequest'
+                                            },
+                                            body: JSON.stringify(result.value)
+                                        })
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            Swal.close();
+                                            if (data.success) {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'Succès',
+                                                    text: data.message,
+                                                    timer: 1800,
+                                                    showConfirmButton: false
+                                                });
+                                                $('#tableProduits').DataTable().ajax.reload();
+                                            } else {
+                                                Swal.fire('Erreur', data.message ||
+                                                    'Erreur lors de la modification', 'error');
+                                            }
+                                        })
+                                        .catch(() => {
+                                            Swal.close();
+                                            Swal.fire('Erreur', 'Erreur réseau', 'error');
+                                        });
+                                }
+                            });
+                        });
+                };
+            });
+        </script>
+
+        <script>
+            function escapeHtml(text) {
+                return text
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+        </script>
+        <!-- ///////////////////////////////////// -->
+
+        <!-- Scripts pour la gestion des services -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialisation de la DataTable pour les services
+                var tableServices = $('#tableServices').DataTable({
+                    ajax: {
+                        url: '/admin/services/list',
+                        type: 'GET'
+                    },
+                    columns: [{
+                            data: 'nom'
+                        },
+                        {
+                            data: 'description'
+                        },
+                        {
+                            data: 'categorie'
+                        },
+                        {
+                            data: 'actions',
+                            orderable: false,
+                            searchable: false
+                        }
+                    ],
+                    // language: {
+                    //     url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
+                    // }
+                });
+
+                // Gestion de la création de service
+                const createServiceForm = document.getElementById('createServiceForm');
+                if (createServiceForm) {
+                    createServiceForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        Swal.fire({
+                            title: 'Création en cours...',
+                            html: `
+<div class="text-center">
+<div class="spinner-border text-primary" role="status">
+<span class="visually-hidden">Chargement...</span>
+</div>
+<p class="mt-2">Création du service...</p>
+</div>
+`,
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        const formData = new FormData(createServiceForm);
+
+                        fetch(createServiceForm.action, {
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        html: `
+<div class="text-center">
+<i class="icon-base ri ri-check-double-line icon-48px text-success"></i>
+<h5 class="mt-3">Service créé !</h5>
+<p class="mb-0">${data.message}</p>
+</div>
+`,
+                                        confirmButtonText: 'OK',
+                                        showCancelButton: false,
+                                        confirmButtonColor: '#2196f3'
+                                    }).then(() => {
+                                        createServiceForm.reset();
+                                        tableServices.ajax.reload();
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        text: data.message || 'Erreur lors de la création'
+                                    });
+                                }
+                            })
+                            .catch(() => {
+                                Swal.close();
+                                Swal.fire('Erreur', 'Erreur réseau', 'error');
+                            });
+                    });
+                }
+
+                // Gestion des clics sur les boutons d'action des services
+                document.querySelector('#tableServices').addEventListener('click', function(e) {
+                    // Bouton Modifier
+                    if (e.target.closest('.btn-edit-service')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-edit-service').dataset.id;
+                        openEditServiceModal(id);
+                    }
+
+                    // Bouton Supprimer
+                    if (e.target.closest('.btn-delete-service')) {
+                        e.preventDefault();
+                        const id = e.target.closest('.btn-delete-service').dataset.id;
+
+                        Swal.fire({
+                            title: 'Supprimer ce service ?',
+                            text: 'Cette action est irréversible !',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, supprimer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch(`/admin/services/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector(
+                                                'meta[name="csrf-token"]').getAttribute(
+                                                'content')
+                                        }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Supprimé !', data.message, 'success');
+                                            tableServices.ajax.reload();
+                                        } else {
+                                            Swal.fire('Erreur', data.message ||
+                                                'Erreur lors de la suppression', 'error');
+                                        }
+                                    })
+                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                            }
+                        });
+                    }
+                });
+
+                // Fonction pour ouvrir la modale d'édition des services
+                // Fonction pour ouvrir la modale d'édition
+                window.openEditServiceModal = function(id) {
+                    fetch(`/admin/services/${id}`)
+                        .then(res => res.json())
+                        .then(service => {
+                            Swal.fire({
+                                html: `
+<div class="swal-custom-modal">
+<!-- Onglets -->
+<div class="d-flex justify-content-around mb-4">
+<h3> <i class="bi bi-pencil-square"></i> Modifier le service</h3>
+
+</div>
+
+<!-- Form -->
+<form id="editServiceForm" class="text-start">
+<div class="mb-3">
+<label class="form-label fw-semibold"><i class="bi bi-cube"></i> Nom du service <span class="text-danger">*</span></label>
+<input id="swal-nom" type="text" class="form-control" value="${escapeHtml(service.nom)}" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label fw-semibold"><i class="bi bi-text-left"></i> Description</label>
+<textarea id="swal-description" class="form-control" rows="2">${escapeHtml(service.description || '')}</textarea>
+</div>
+
+<div class="mb-3">
+<label class="form-label fw-semibold"><i class="bi bi-link"></i> Slug <span class="text-danger">*</span></label>
+<input id="swal-slug" type="text" class="form-control" value="${escapeHtml(service.slug)}" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label fw-semibold"><i class="bi bi-collection"></i> Catégorie <span class="text-danger">*</span></label>
+<select id="swal-categorie" class="form-select" required>
+<option value="">Sélectionnez une catégorie</option>
+</select>
+</div>
+</form>
+</div>
+`,
+                                showCancelButton: true,
+                                confirmButtonText: '<i class="bi bi-check2"></i> Modifier',
+                                cancelButtonText: '<i class="bi bi-x"></i> Annuler',
+                                confirmButtonColor: '#4e73df',
+                                cancelButtonColor: '#6c757d',
+                                width: '500px',
+                                focusConfirm: false,
+                                preConfirm: () => {
+                                    return {
+                                        nom: document.getElementById('swal-nom').value,
+                                        description: document.getElementById('swal-description')
+                                            .value,
+                                        slug: document.getElementById('swal-slug').value,
+                                        categorie_id: document.getElementById('swal-categorie')
+                                            .value
+                                    };
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    updateService(id, result.value);
+                                }
+                            });
+
+                            // Charger dynamiquement les catégories
+                            fetch('/admin/categories/list')
+                                .then(res => res.json())
+                                .then(categories => {
+                                    const select = document.getElementById('swal-categorie');
+                                    categories.forEach(cat => {
+                                        const opt = document.createElement('option');
+                                        opt.value = cat.id;
+                                        opt.textContent = cat.nom;
+                                        if (cat.id == service.categorie_id) opt.selected = true;
+                                        select.appendChild(opt);
+                                    });
+                                });
+                        });
+                };
+
+
+
+                // Fonction pour mettre à jour un service
+                function updateService(id, data) {
+                    fetch(`/admin/services/${id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Succès !',
+                                    text: data.message
+                                });
+                                tableServices.ajax.reload();
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur !',
+                                    text: data.message
+                                });
+                            }
+                        });
+                }
+            });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialisation DataTable des abonnements utilisateur-service
+                const tableEl = document.getElementById('tableUserServices');
+                if (tableEl) {
+                    $('#tableUserServices').DataTable({
+                        ajax: {
+                            url: '/admin/services/users-subscriptions',
+                            type: 'GET'
+                        },
+                        columns: [{
+                                data: 'id'
+                            },
+                            {
+                                data: 'utilisateur'
+                            },
+                            {
+                                data: 'email'
+                            },
+                            {
+                                data: 'service'
+                            },
+                            {
+                                data: 'statut'
+                            },
+                            {
+                                data: 'description'
+                            },
+                            {
+                                data: 'date_debut'
+                            },
+                            {
+                                data: 'date_fin_prevue'
+                            }
+                        ]
+                    });
+
+                    // Ouvrir la modale via un déclencheur si besoin
+                    document.querySelectorAll('[data-bs-target="#liste_user_services"]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            $('#tableUserServices').DataTable().ajax.reload();
+                        });
+                    });
+                }
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                if (session('success'))
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Succès',
+                        text: "{{ session('success') }}",
+                        confirmButtonColor: '#198754',
+                        timer: 2500,
+                        timerProgressBar: true
+                    });
+                endif
+
+                if (session('error'))
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: "{{ session('error') }}",
+                        confirmButtonColor: '#dc3545',
+                    });
+                endif
+
+                if ($errors - > any())
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreurs de validation',
+                        html: `{!! implode('<br>', $errors->all()) !!}`,
+                        confirmButtonColor: '#dc3545',
+                    });
+                endif
+            });
+        </script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </body>
 

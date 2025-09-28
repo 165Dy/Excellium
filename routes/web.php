@@ -1,12 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
 
+// Controllers
 use App\Http\Controllers\formationsController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\OpportuniteController;
+use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\ActualiteController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\InvitationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,133 +28,225 @@ use App\Http\Controllers\OpportuniteController;
 |
 */
 
+// ========================================
+// ROUTES GÉNÉRALES
+// ========================================
 
+// Localisation
+Route::get('/locale/{lang}', [LocaleController::class, 'setLocale'])->name('locale.switch');
 
-Route::get('/', function () {return view('welcome');})->name('welcome');
+// Page d'accueil
+Route::get('/', [ProduitController::class, 'index'])->name('welcome');
 
-
-
+// Inscriptions Ajax
 Route::post('/inscription', [InscriptionController::class, 'inscriptionAjax'])->name('inscription.ajax');
+Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax'])->name('inscription.services');
+Route::post('/choix-produit', [InscriptionController::class, 'saveProduits'])->name('choix-produit');
 
-Route::get('/choix-service', [InscriptionController::class, 'choixService'])->name('service.choix');
+// RSS Feed
+Route::get('/rss', function () {
+    $url = "https://news.google.com/rss/search?q=C%C3%B4te+d%27Ivoire&hl=fr&gl=CI&ceid=CI:fr";
 
-///////////////////////////////AUTHENTIFICATION////////////////////////////////////////////////////////////////////////////////////
+    try {
+        $response = Http::get($url);
 
-Route::get('/login', function () {return view('auth.login');})->name('login');
-
-Route::get('/register', function () {return view('auth.register');})->name('register');
-
-Route::get('/forgot-password', function () {return view('auth.forgot-password');})->name('forgot-password');
-
-Route::get('/reset-password', function () {return view('auth.reset-password');})->name('reset-password');
-
-Route::get('/confirm-password', function () {return view('auth.confirm-password');})->name('confirm-password');
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-Route::prefix('clients')->group(function () {
-
-    
-    // OPPORTUNITES
-    Route::get('opportunites', [OpportuniteController::class, 'index_public'])->name('opportunites.clients.index');
-    Route::get('/opportunites/clients/show/{opportnuite}', [OpportuniteController::class, 'show_public'])->name('opportunites.clients.show');
-    Route::post('/candidature/postuler', [OpportuniteController::class, 'postuler'])->name('candidature.postuler');
-    
-    // FORMATIONS
-    Route::get('/Formations',[formationsController::class, 'index_public'])->name('Formations.index');
-    Route::get('/Formations/show/{id}',[formationsController::class, 'show_public'] )->name('Formations.show_public');
-    Route::post('/Formations/participer', [formationsController::class, 'participer'])->name('formations.participer');
-
-    // NOS SERVICES
-    Route::get('/Nos_Services/audit&Conseil',function () { return view('clients.Nos_Services.Audit_Conseil'); } )->name('audit&Conseil');
-    Route::get('/Nos_Services/Compta_Fiscale',function () { return view('clients.Nos_Services.compta_Fiscale'); } )->name('Compta_Fiscale');
-    Route::get('/Nos_Services/Financement',function () { return view('clients.Nos_Services.Financement'); } )->name('Financement');
-    Route::get('/Nos_Services/Gestion_paie',function () { return view('clients.Nos_Services.Gestion_Paie'); } )->name('Gestion_Paie');
-    Route::get('/Nos_Services/Ressources_Humaines',function () { return view('clients.Nos_Services.Ressource_humaine'); } )->name('Ressources_humaines');
-
-     // NOS PARTENAIRES
-     Route::get('/Partenaires',function () { return view('clients.Partenaires.index'); } )->name('Partenaires.Collaborateurs');
-     Route::get('/Partenaires/show',function () { return view('clients.Partenaires.show'); } )->name('Partenaires.show');
-
-     // RESSOURCES
-     Route::get('/Ressources/Articles',function () { return view('clients.Ressources.Articles'); } )->name('Ressources.Articles');
-     Route::get('/Ressources/Conseils&Actualites',function () { return view('clients.Ressources.Conseils_Actualites'); } )->name('Ressources.conseils_actualites');
-     Route::get('/Ressources/Service_divers',function () { return view('clients.Ressources.service_divers'); } )->name('Ressources.service_divers');
-     Route::get('/Ressources/Commerce',function () { return view('clients.Ressources.commerce'); } )->name('Ressources.commerce');
-      Route::get('/Ressources/Achats&Location',function () { return view('clients.Ressources.Achat_location'); } )->name('Ressources.achat_location');
-     //CONTACTS
-     Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
-
-   
+        if ($response->successful()) {
+            return response($response->body(), 200)
+                ->header('Content-Type', 'application/xml')
+                ->header('Access-Control-Allow-Origin', '*');
+        } else {
+            return response("Erreur lors du chargement du flux.", 500);
+        }
+    } catch (\Exception $e) {
+        return response("Impossible de contacter la source.", 500);
+    }
 });
 
+// ========================================
+// ROUTES D'AUTHENTIFICATION
+// ========================================
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Route::prefix('admin')->group(function () {  
+Route::middleware('guest')->group(function () {
+    // Connexion
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
     
-    Route::get('/Dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
-
+    // Inscription (avec invitation uniquement)
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
     
-    Route::get('/users/index',[DashboardController::class, 'index_user'] )->name('users.index');
-    Route::get('/users/show',function () { return view('Admin.users.show'); } )->name('users.show');
-
-    // FORMATIONS
-    Route::get('/categories/index',function () { return view('Admin.categorie.index'); } )->name('categories.index');
-    Route::post('/categories', [CategorieController::class, 'store'])->name('categories.store');
-    Route::get('/categories/list', [CategorieController::class, 'list'])->name('categories.list');
-    Route::put('/categories/{id}', [CategorieController::class, 'update'])->name('categories.update');
-    Route::delete('/categories/{id}', [CategorieController::class, 'destroy'])->name('categories.destroy');
-    // Routes formations
-    Route::post('/formations/store', [formationsController::class, 'store'])->name('formations.store');
-    Route::get('/formations/{id}', [formationsController::class, 'show'])->name('formations.show');
-    Route::get('/formations/{id}/edit', [formationsController::class, 'edit'])->name('formations.edit');
-    Route::match(['PUT', 'POST'], '/formations/{id}', [formationsController::class, 'update'])->name('formations.update');
-    Route::delete('/formations/{id}', [formationsController::class, 'destroy'])->name('formations.destroy');
-    Route::get('formations/{formation}/details', [formationsController::class, 'getDetails'])->name('formations.details');
-    Route::get('formations/{formation}/export-inscriptions', [formationsController::class, 'exportInscriptions'])->name('formations.export-inscriptions');
-    Route::patch('inscriptions/{inscription}/statut', [formationsController::class, 'changerStatutInscription'])->name('inscriptions.statut');
-
-    // Routes Opportunités
-    Route::get('opportunites', [OpportuniteController::class, 'index'])->name('opportunites.index');
-    Route::get('opportunites/candidatures', [OpportuniteController::class, 'candidats'])->name('opportunites.candidatures.index');
-    Route::get('opportunites/create', [OpportuniteController::class, 'create'])->name('admin.opportunites.create');
-    Route::post('opportunites', [OpportuniteController::class, 'store'])->name('admin.opportunites.store');
-    Route::get('opportunites/{opportunite}', [OpportuniteController::class, 'show'])->name('admin.opportunites.show');
-    Route::get('opportunites/{opportunite}/edit', [OpportuniteController::class, 'edit'])->name('admin.opportunites.edit');
-    Route::put('opportunites/{opportunite}', [OpportuniteController::class, 'update'])->name('admin.opportunites.update');
-    Route::delete('opportunites/{opportunite}', [OpportuniteController::class, 'destroy'])->name('admin.opportunites.destroy');
+    // Mot de passe oublié
+    Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('forgot-password');
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLink']);
     
-
-    
-    Route::get('opportunites/{opportunite}/details', [OpportuniteController::class, 'getDetails'])->name('admin.opportunites.details');
-    Route::patch('candidatures/{candidature}/statut', [OpportuniteController::class, 'changerStatutCandidature'])->name('admin.candidatures.statut');
-    Route::get('opportunites/{opportunite}/export-candidatures', [OpportuniteController::class, 'exportCandidatures'])->name('opportunites.export-candidatures');
-    Route::get('candidatures/{candidature}', [OpportuniteController::class, 'showCandidature'])->name('candidatures.show');
-
-
-    Route::get('/articles',[DashboardController::class, 'index_articles'] )->name('articles.index');
-    Route::get('/partenaires',[DashboardController::class, 'index_partenaires']  )->name('partenaires.index');
-    Route::get('/temoignages', [DashboardController::class, 'index_temoignages']  )->name('temoignages.index');
-    ////////
-    //CONTACTS
-    Route::get('/Notre_Contacts',function () { return view('clients.Contact'); } )->name('contacts');
-
-    // CALENDRIER
-    Route::get('/calendrier/index',[DashboardController::class, 'index_calendrier']  )->name('calendrier.index');
-
-    // CALENDRIER
-    Route::get('/email/index',[DashboardController::class, 'index_email']  )->name('email.index');
-
-    // ENVOI SERVICES
-    Route::post('/envoi-services', [InscriptionController::class, 'envoiServices'])->name('envoi.services');
-
-   
+    // Réinitialisation de mot de passe
+    Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
+    Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 });
 
-Route::post('/inscription/services', [InscriptionController::class, 'saveServices'])->name('inscription.services');
+// Déconnexion
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-    
-    
+// ========================================
+// ROUTES PUBLIQUES CLIENTS
+// ========================================
 
+Route::prefix('clients')->name('clients.')->group(function () {
+    
+    // EMPLOIS & OPPORTUNITÉS D'EMPLOI
+    Route::prefix('emplois')->name('emplois.')->group(function () {
+        Route::get('/', [EmploiController::class, 'index_public'])->name('index');
+        Route::get('/show/{opportnuite}', [EmploiController::class, 'show_public'])->name('show');
+        Route::post('/candidature/postuler', [EmploiController::class, 'postuler'])->name('postuler');
+    });
+    
+    // FORMATIONS
+    Route::prefix('formations')->name('formations.')->group(function () {
+        Route::get('/index', [formationsController::class, 'index_public'])->name('index');
+        Route::get('/show/{id}', [formationsController::class, 'show_public'])->name('show');
+        Route::post('/participer', [formationsController::class, 'participer'])->name('participer');
+    });
+    
+    // SERVICES
+    Route::prefix('services')->name('services.')->group(function () {
+        Route::get('/{slug}', [ServiceController::class, 'showClient'])->name('show');
+    });
+    
+    // PARTENAIRES
+    Route::prefix('partenaires')->name('partenaires.')->group(function () {
+        Route::get('/', function () { return view('clients.Partenaires.index'); })->name('index');
+        Route::get('/show', function () { return view('clients.Partenaires.show'); })->name('show');
+    });
+    
+    // OPPORTUNITÉS D'AFFAIRES
+    Route::prefix('opportunites')->name('opportunites.')->group(function () {
+        // Pages statiques
+        Route::get('/articles', function () { return view('clients.Opportunites.Articles'); })->name('articles');
+        Route::get('/conseils-actualites', function () { return view('clients.Opportunites.Conseils_Actualites'); })->name('conseils_actualites');
+        Route::get('/services-divers', function () { return view('clients.Opportunites.service_divers'); })->name('service_divers');
+        Route::get('/commerce', function () { return view('clients.Opportunites.commerce'); })->name('commerce');
+        Route::get('/achats-location', function () { return view('clients.Opportunites.Achat_location'); })->name('achat_location');
+        
+        // Opportunités dynamiques
+        Route::get('/business', [OpportuniteController::class, 'index_public'])->name('business.index');
+        Route::get('/business/{slug}', [OpportuniteController::class, 'show_public'])->name('business.show');
+        Route::post('/business/candidature', [OpportuniteController::class, 'candidature'])->name('business.candidature');
+    });
+    
+    // CONTACT
+    Route::get('/contact', function () { return view('clients.Contact'); })->name('contact');
+});
+
+// ========================================
+// ROUTES D'ADMINISTRATION
+// ========================================
+
+Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function () {
+    
+    // DASHBOARD
+    Route::get('/dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
+    
+    // GESTION DES UTILISATEURS
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/', [DashboardController::class, 'index_user'])->name('index');
+        Route::get('/show', function () { return view('Admin.users.show'); })->name('show');
+    });
+    
+    // GESTION DES INVITATIONS
+    Route::prefix('invitations')->name('invitations.')->group(function () {
+        Route::get('/', [InvitationController::class, 'index'])->name('index');
+        Route::post('/', [InvitationController::class, 'sendInvitation'])->name('send');
+        Route::patch('/{id}/revoke', [InvitationController::class, 'revokeInvitation'])->name('revoke');
+        Route::patch('/{id}/resend', [InvitationController::class, 'resendInvitation'])->name('resend');
+    });
+    
+    // GESTION DES CATÉGORIES
+    Route::prefix('categories')->name('categories.')->group(function () {
+        Route::get('/', function () { return view('Admin.categorie.index'); })->name('index');
+        Route::post('/', [CategorieController::class, 'store'])->name('store');
+        Route::get('/list', [CategorieController::class, 'list'])->name('list');
+        Route::put('/{id}', [CategorieController::class, 'update'])->name('update');
+        Route::delete('/{id}', [CategorieController::class, 'destroy'])->name('destroy');
+    });
+    
+    // GESTION DES FORMATIONS
+    Route::prefix('formations')->name('formations.')->group(function () {
+        Route::post('/store', [formationsController::class, 'store'])->name('store');
+        Route::get('/{id}', [formationsController::class, 'show'])->name('show');
+        Route::get('/{id}/edit', [formationsController::class, 'edit'])->name('edit');
+        Route::match(['PUT', 'POST'], '/{id}', [formationsController::class, 'update'])->name('update');
+        Route::delete('/{id}', [formationsController::class, 'destroy'])->name('destroy');
+        Route::get('/{formation}/details', [formationsController::class, 'getDetails'])->name('details');
+        Route::get('/{formation}/export-inscriptions', [formationsController::class, 'exportInscriptions'])->name('export_inscriptions');
+    });
+    
+    // GESTION DES INSCRIPTIONS FORMATIONS
+    Route::prefix('inscriptions')->name('inscriptions.')->group(function () {
+        Route::patch('/{inscription}/statut', [formationsController::class, 'changerStatutInscription'])->name('statut');
+    });
+    
+    // GESTION DES EMPLOIS
+    Route::prefix('emplois')->name('emplois.')->group(function () {
+        Route::get('/', [EmploiController::class, 'index'])->name('index');
+        Route::get('/candidatures', [EmploiController::class, 'candidats'])->name('candidatures.index');
+        Route::get('/create', [EmploiController::class, 'create'])->name('create');
+        Route::post('/', [EmploiController::class, 'store'])->name('store');
+        Route::get('/{emploi}', [EmploiController::class, 'show'])->name('show');
+        Route::get('/{emploi}/edit', [EmploiController::class, 'edit'])->name('edit');
+        Route::put('/{emploi}', [EmploiController::class, 'update'])->name('update');
+        Route::delete('/{emploi}', [EmploiController::class, 'destroy'])->name('destroy');
+        Route::get('/{emploi}/details', [EmploiController::class, 'getDetails'])->name('details');
+        Route::get('/{emploi}/export-candidatures', [EmploiController::class, 'exportCandidatures'])->name('export_candidatures');
+    });
+    
+    // GESTION DES CANDIDATURES
+    Route::prefix('candidatures')->name('candidatures.')->group(function () {
+        Route::get('/{candidature}', [EmploiController::class, 'showCandidature'])->name('show');
+        Route::patch('/{candidature}/statut', [EmploiController::class, 'changerStatutCandidature'])->name('statut');
+    });
+    
+    // GESTION DES OPPORTUNITÉS D'AFFAIRES
+    Route::prefix('opportunites')->name('opportunites.')->group(function () {
+        Route::get('/', [OpportuniteController::class, 'index'])->name('index');
+        Route::post('/', [OpportuniteController::class, 'store'])->name('store');
+        Route::get('/{opportunite}', [OpportuniteController::class, 'show'])->name('show');
+        Route::get('/{opportunite}/edit', [OpportuniteController::class, 'edit'])->name('edit');
+        Route::put('/{opportunite}', [OpportuniteController::class, 'update'])->name('update');
+        Route::delete('/{opportunite}', [OpportuniteController::class, 'destroy'])->name('destroy');
+        Route::get('/{opportunite}/candidats', [OpportuniteController::class, 'getCandidats'])->name('candidats');
+    });
+    
+    // GESTION DES POSTULATIONS
+    Route::prefix('postulations')->name('postulations.')->group(function () {
+        Route::patch('/{postulation}/statut', [OpportuniteController::class, 'changerStatutPostulation'])->name('statut');
+    });
+    
+    // GESTION DES PRODUITS
+    Route::prefix('produits')->name('produits.')->group(function () {
+        Route::post('/', [ProduitController::class, 'store'])->name('store');
+        Route::get('/list', [ProduitController::class, 'list'])->name('list');
+        Route::get('/{id}', [ProduitController::class, 'show'])->name('show');
+        Route::put('/{id}', [ProduitController::class, 'update'])->name('update');
+        Route::delete('/{id}', [ProduitController::class, 'destroy'])->name('destroy');
+    });
+    
+    // GESTION DES SERVICES
+    Route::prefix('services')->name('services.')->group(function () {
+        Route::get('/', [ServiceController::class, 'index'])->name('index');
+        Route::post('/', [ServiceController::class, 'store'])->name('store');
+        Route::get('/list', [ServiceController::class, 'list'])->name('list');
+        Route::get('/users-subscriptions', [ServiceController::class, 'listUserServices'])->name('users_subscriptions');
+        Route::get('/{id}', [ServiceController::class, 'show'])->name('show');
+        Route::put('/{id}', [ServiceController::class, 'update'])->name('update');
+        Route::delete('/{id}', [ServiceController::class, 'destroy'])->name('destroy');
+    });
+    
+    // CONTENU ÉDITORIAL
+    Route::get('/articles', [DashboardController::class, 'index_articles'])->name('articles.index');
+    Route::get('/partenaires', [DashboardController::class, 'index_partenaires'])->name('partenaires.index');
+    Route::get('/temoignages', [DashboardController::class, 'index_temoignages'])->name('temoignages.index');
+    
+    // OUTILS
+    Route::get('/calendrier', [DashboardController::class, 'index_calendrier'])->name('calendrier.index');
+    Route::get('/email', [DashboardController::class, 'index_email'])->name('email.index');
+});

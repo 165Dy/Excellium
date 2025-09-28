@@ -24,7 +24,7 @@ class Candidature extends Model
     ];
 
     // Relations
-    public function opportunite()
+    public function emploi()
     {
         return $this->belongsTo(Emploi::class, 'emploi_id');
     }

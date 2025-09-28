@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <!--====== Required meta tags ======-->
@@ -8,9 +8,9 @@
     <meta name="description" content="Insurance, Health, Agency">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--====== Title ======-->
-    <title>Excellium Conseils - Agence</title>
+    <title>@lang('extracted.excellium_conseils_agence')</title>
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
     <!--====== Google Fonts ======-->
     <link
         href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Syne:wght@400;500;700&amp;display=swap"
@@ -81,16 +81,15 @@
                                             style="background-color: #FFAC1E;padding:3px 22px 0px 22px;">
                                             <div class="EmptyBox10"></div>
 
-                                           
+
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                 fill="#FFD22F" viewBox="0 0 24 24" class="d-none d-md-inline">
                                                 <!-- Affiché uniquement sur écran md et plus -->
                                                 <path
                                                     d="M4 20v-5h3v5H4zm5-8h3v8h-3v-8zm5-4h3v12h-3V8zm5-4h3v16h-3V4z" />
                                             </svg>
-                                            <i>FLASH INFO</i>
+                                            <i>@lang('extracted.flash_info')</i>
                                         </div>
-
                                         <div class="blocbourse2 Container80 TexAlCenter"
                                             style="height:30px;width:63%;border-bottom: 0.2px solid #918e8e;background-color: #FFAC1E;">
                                             <div class="White Container50 TexAlLeft">
@@ -98,107 +97,135 @@
                                                     <div class="EmptyBox10"></div>
                                                     <marquee scrolldelay="130" truespeed="true"
                                                         style="border-right: 3px solid #f0eded;border-left: 3px solid #f0eded; padding-right: 10px;">
-                                                        <span
-                                                            style="font-size: 12px; font-weight: normal; color: #f0eded;">
-                                                            FTSC 17000 FCFA 4,14% - SVOC 4000 FCFA 0% - NEIC 1200 FCFA
-                                                            0% - NTLC 49500 FCFA 0,01% -
-                                                            ONTBF 8200 FCFA 12,72% - PALC 11000 FCFA 0% - SAFC 17500
-                                                            FCFA 0%
+                                                        <span id="news"
+                                                            style="font-size: 15px; font-weight: normal; color: #f0eded;">
+                                                            chargement......
                                                         </span>
                                                     </marquee>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
+
+
+                            <script>
+                                async function loadRSS() {
+                                    try {
+                                        let response = await fetch("/rss"); // appelle ton proxy Laravel
+                                        if (!response.ok) throw new Error("Erreur lors du chargement du flux");
+
+                                        let text = await response.text();
+                                        let parser = new DOMParser();
+                                        let xml = parser.parseFromString(text, "application/xml");
+
+                                        let items = xml.querySelectorAll("item");
+                                        let html = "";
+                                        items.forEach((el, idx) => {
+                                            if (idx < 5) {
+                                                let title = el.querySelector("title").textContent;
+                                                let link = el.querySelector("link").textContent;
+                                                html += ` 🔹 <a href="${link}" target="_blank" style="color:#f0eded; text-decoration:none;">
+                                    ${title}
+                                     </a> &nbsp;&nbsp; | &nbsp;&nbsp; `;
+                                            }
+                                        });
+
+                                        document.getElementById("news").innerHTML = html;
+                                    } catch (e) {
+                                        document.getElementById("news").innerHTML = "Impossible de charger les actualités.";
+                                        console.error(e);
+                                    }
+                                }
+                                loadRSS();
+                            </script>
+
+
+
+
+                            {{-- <x-news-ticker/> --}}
+
                             <!--=== Main Menu ===-->
                             <nav class="main-menu">
                                 <ul>
-                                    <li class="menu-item has-children"><a href="{{ route('welcome') }}">
-                                            <h5>Excellium Conseil</h5>
+                                    <li class="menu-item has-children">
+                                        <a href="{{ route('welcome') }}">
+                                            <h5>@lang('extracted.excellium_conseil')</h5>
                                         </a>
-
                                     </li>
-                                    <li class="menu-item has-children"><a href="#">Nos Services</a>
+                                    <li class="menu-item has-children"><a href="#">@lang('extracted.nos_services')</a>
+                                        @php
+                                            use App\Models\Service;
+                                            $services = Service::with('categorie')->orderBy('id', 'desc')->get();
+                                        @endphp
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('audit&Conseil') }}">Audit & conseil</a></li>
-                                            <li><a href="{{ route('Compta_Fiscale') }}">Comptable & Fiscale</a></li>
-                                            <li><a href="{{ route('Financement') }}">Financement</a></li>
-                                            <li><a href="{{ route('Gestion_Paie') }}">Gestion de la Paie</a></li>
-                                            <li><a href="{{ route('Ressources_humaines') }}">R. Humaines</a></li>
+                                            @if ($services->count() > 0)
+                                                @foreach ($services as $service)
+                                                    <li>
+                                                        <a href="{{ route('clients.services.show', $service->slug) }}">
+                                                            {{ $service->nom }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            @else
+                                                <li><a href="{{ route('audit&Conseil') }}">@lang('extracted.audit_conseil')</a></li>
+                                                <li><a href="{{ route('Compta_Fiscale') }}">@lang('extracted.comptable_fiscale')</a></li>
+                                                <li><a href="{{ route('Financement') }}">@lang('extracted.financement')</a></li>
+                                                <li><a href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a></li>
+                                                <li><a
+                                                        href="{{ route('Opportunites_humaines') }}">@lang('extracted.r_humaines')</a>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </li>
-                                    <li class="menu-item has-children"><a href="#">Ressources</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ route('Ressources.achat_location') }}">Achats &
-                                                    Location</a></li>
-                                            <li><a href="{{ route('Ressources.Articles') }}">Articles</a></li>
-                                            <li><a href="{{ route('Ressources.conseils_actualites') }}">Conseils &
-                                                    Actualités</a></li>
-                                            <li><a href="{{ route('Ressources.commerce') }}">Commerce Generale</a>
+                                    <li class="menu-item has-children"><a
+                                            href="{{ route('clients.opportunites.business.index') }}">@lang('Opportunites')</a>
+                                        {{-- <ul class="sub-menu">
+                                            <li><a href="{{ route('Opportunites.achat_location') }}">@lang('extracted.achats_location')</a>
                                             </li>
-                                            <li><a href="{{ route('Ressources.service_divers') }}">Service Divers</a>
+                                            <li><a href="{{ route('Opportunites.Articles') }}">@lang('extracted.articles')</a>
                                             </li>
-
+                                            <li><a href="{{ route('Opportunites.conseils_actualites') }}">@lang('extracted.conseils_actualites')</a>
+                                            </li>
+                                            <li><a href="{{ route('Opportunites.commerce') }}">@lang('extracted.commerce_generale')</a>
+                                            </li>
+                                            <li><a
+                                                    href="{{ route('Opportunites.service_divers') }}">@lang('extracted.service_divers')</a>
+                                            </li>
                                         </ul>
-                                    </li>
-                                    <li class="menu-item has-children"><a
-                                            href="{{ route('Partenaires.Collaborateurs') }}">Partenaires</a>
+                                    </li> --}}
 
+                                    <li class="menu-item has-children">
+                                        <a href="{{ route('clients.partenaires.index') }}">@lang('extracted.partenaires')</a>
                                     </li>
-                                    <li class="menu-item has-children"><a
-                                            href="{{ route('opportunites.clients.index') }}">Opportunités</a>
+                                    <li class="menu-item has-children">
+                                        <a href="{{ route('clients.emplois.index') }}">@lang('extracted.emplois')</a>
                                     </li>
-                                    <li class="menu-item has-children"><a
-                                            href="{{ route('Formations.index') }}">Formations</a></li>
+                                    <li class="menu-item has-children">
+                                        <a href="{{ route('clients.formations.index') }}">@lang('extracted.formations')</a>
                                     </li>
-
-
                                 </ul>
                             </nav>
 
-                            {{-- <!-- Flash Bourse Banner -->
-                            <div class="flash-bourse-banner"
-                                style="position: absolute; top:100%; left:0px; width: 100%; z-index: 9999;">
-                                <div class="blocOrange orange PosRelative Container100 Responsive100">
-                                    <div class="PosAbsolute blocBourse1 afficher afficherAutre Container80 TexAlCenter Responsive100"
-                                        style="display: flex; justify-content: center; align-items: center;">
-                                        <div class="blocbourse noire Container10"
-                                            style="background-color:#0C2B30;padding:1px 22px 2px 22px;">
-                                            <div class="EmptyBox10"></div>
-                                            <i>FLASH INFO</i>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                fill="black" viewBox="0 0 24 24">
-                                                <path d="M3 10v4h3l5 5V5L6 10H3zm13.5 2a2.5 2.5 0 1 0 0-5h-1v5h1z" />
-                                            </svg>
-                                        </div>
-
-                                        <div class="blocbourse2 Container80 TexAlCenter"
-                                            style="height:30px;width:88%;border-bottom: 0.2px solid #918e8e; background-color:#0C2B30;">
-                                            <div class="White Container50 TexAlLeft">
-                                                <div class="Container100">
-                                                    <div class="EmptyBox10"></div>
-                                                    <marquee scrolldelay="130" truespeed="true"
-                                                        style="border-right: 3px solid #f0eded;border-left: 3px solid #f0eded; padding-right: 10px;">
-                                                        <span
-                                                            style="font-size: 12px; font-weight: normal; color: #f0eded;">
-                                                            FTSC 17000 FCFA 4,14% - SVOC 4000 FCFA 0% - NEIC 1200 FCFA
-                                                            0% - NTLC 49500 FCFA 0,01% -
-                                                            ONTBF 8200 FCFA 12,72% - PALC 11000 FCFA 0% - SAFC 17500
-                                                            FCFA 0%
-                                                        </span>
-                                                    </marquee>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
+                        @php
+                            $locale = app()->getLocale();
+                        @endphp
+                        {{-- Language Switcher --}}
+
+                        @if ($locale == 'fr')
+                            <a href="{{ route('locale.switch', 'en') }}">
+                                <i class="far fa-globe"></i> English
+                            </a>
+                        @elseif ($locale == 'en')
+                            <a href="{{ route('locale.switch', 'fr') }}">
+                                <i class="far fa-globe"></i> Français
+                            </a>
+                        @endif
                         <div class="nav-right-item">
+
+                            <a href="{{ route('clients.contact') }}"><i class="far fa-envelope"></i></a>
                             <div class="navbar-toggler">
                                 <span></span>
                                 <span></span>
@@ -219,36 +246,37 @@
         }
     </style>
 
-
-
+    {{-- /Welcome/ --}}
     @yield('welcome')
-    {{-- // --}}
+    
 
-    {{-- /RESSOURCES/ --}}
-    @yield('Achats')
+    {{-- /Opportunites/ --}}
+    @yield('Opportunites')
+    @yield('Opportunite_show')
+    {{-- @yield('Achats')
     @yield('Articles')
     @yield('Commerce')
     @yield('Conseils_actualites')
-    @yield('Divers')
+    @yield('Divers') --}}
+    
+
     {{-- /PARTENAIRES/ --}}
     @yield('indexPartenaire')
     @yield('showPartenaire')
 
-    {{-- /OPPORTUNITES/ --}}
-    @yield('showOpportunite')
-    @yield('indexOpportunite')
+    {{-- /Emploi/ --}}
+    @yield('showEmploi')
+    @yield('indexEmploi')
 
-    {{-- /////////// --}}
-    @yield('Audit_conseil')
-    @yield('compta_fiscale')
-    @yield('financement')
-    @yield('R_humaines')
-    {{-- /RESSOURCES HUMAINES/ --}}
-    @yield('Gestion_paie')
+    {{-- /////Services////// --}}
+    @yield('Services')
+
+
     {{-- /FORMATIONS/ --}}
-
     @yield('formations.index')
     @yield('formations.show')
+
+
     {{-- /NOS SERVICES/ --}}
     @yield('contact')
 
@@ -264,7 +292,8 @@
                         <div class="footer-widget about-company-widget mb-40 wow fadeInUp">
                             <div class="footer-logo mb-3">
                                 <a href="index.html"><img src="{{ asset('assets/images/logo_new.jpg') }}"
-                                        alt="Footer Logo" style="width:100px; max-width:100%; height:auto;"></a>
+                                    alt="Footer Logo" style="width:100px; max-width:100%; height:auto;">
+                                </a>
                             </div>
                             <p>
                                 Excellium Conseils, c’est bien plus qu’un cabinet de conseil :
@@ -285,18 +314,18 @@
                         <div class="footer-widget footer-nav-widget mb-25 wow fadeInDown">
                             <div class="row">
                                 <div class="col-md-6 col-12 mb-3">
-                                    <h4 class="footer-title">Explore</h4>
+                                    <h4 class="footer-title">@lang('extracted.explore')</h4>
                                     <ul class="footer-nav">
-                                        <li><a href="#">A propos de nous</a></li>
-                                        <li><a href="#">Notre Equipe</a></li>
+                                        <li><a href="#">@lang('extracted.a_propos_de_nous')</a></li>
+                                        <li><a href="#">@lang('extracted.notre_equipe')</a></li>
                                         <li><a href="#"></a></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-6 col-12 mb-3">
-                                    <h4 class="footer-title">Lien</h4>
+                                    <h4 class="footer-title">@lang('extracted.lien')</h4>
                                     <ul class="footer-nav">
-                                        <li><a href="#">Pricing Plan</a></li>
-                                        <li><a href="#">Notre Objectifs</a></li>
+                                        <li><a href="#">@lang('extracted.pricing_plan')</a></li>
+                                        <li><a href="#">@lang('extracted.notre_objectifs')</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -305,7 +334,7 @@
                     <div class="col-lg-3 col-md-12 col-12 mb-4">
                         <!--=== Footer Widget ===-->
                         <div class="footer-widget contact-info-widget mb-15 wow fadeInUp">
-                            <h4 class="footer-title">Contactez-nous</h4>
+                            <h4 class="footer-title">@lang('extracted.contactez_nous')</h4>
                             <ul>
                                 <li>
                                     <div class="iconic-box style-five mb-25">
@@ -313,7 +342,7 @@
                                             <i class="icon-map"></i>
                                         </div>
                                         <div class="content">
-                                            <p>Abidjan, Yopougon Palais</p>
+                                            <p>@lang('extracted.abidjan_yopougon_palais')</p>
                                         </div>
                                     </div>
                                 </li>
@@ -336,7 +365,7 @@
                                             <i class="icon-phone"></i>
                                         </div>
                                         <div class="content">
-                                            <p><a href="tel:(+225)0707672957">(+225) 0707672957</a></p>
+                                            <p><a href="tel:(+225)0707672957">@lang('extracted.225_0707672957')</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -350,7 +379,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright-text text-center">
-                            <p>Copyright &copy;2025, <span>Excellium Conseils</span> All Rights Reserved</p>
+                            <p>Copyright &copy;2025, <span>@lang('extracted.excellium_conseils')</span> All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
@@ -360,8 +389,6 @@
 
     <!--====== End Footer Section ======-->
     <!--====== Back To Top  ======-->
-    <a href="{{ route('contacts') }}" style="background-color: #FFAC1E" class="back-to-top-message"><i
-            class="far fa-envelope"></i></a>
     <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
     <!--====== Jquery js ======-->
     <script src="{{ asset('assets/vendor/jquery-3.6.0.min.js') }}"></script>

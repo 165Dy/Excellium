@@ -1266,6 +1266,17 @@ button{
     line-height: 28px;
 }
 
+ .case-img img {
+        width: 100%;
+        height: calc(100vh - 120px);
+        object-fit: cover;
+    }
+    @media (max-width: 767px) {
+        .case-img img {
+            height: 250px; /* Hauteur réduite sur mobile */
+        }
+    }
+
 .showcase-item{
     position: relative;
     display: flex;

@@ -56,30 +56,42 @@
                 </svg>
               </span>
             </span>
-            <span class="app-brand-text demo text-heading fw-semibold">Materialize</span>
+            <span class="app-brand-text demo text-heading fw-semibold">@lang('extracted.materialize')</span>
           </a>
         </div>
         <!-- /Logo -->
         <div class="card-body mt-1">
-          <h4 class="mb-1">Forgot Password? 🔒</h4>
-          <p class="mb-5">Enter your email and we'll send you instructions to reset your password</p>
-          <form id="formAuthentication" class="mb-5" action="auth-reset-password-basic.html" method="GET">
+          <h4 class="mb-1">@lang('extracted.forgot_password')</h4>
+          <p class="mb-5">@lang('extracted.enter_your_email_and_well_send_you_instructions_to_reset_your_password')</p>
+          <form id="formAuthentication" class="mb-5" action="{{ route('forgot-password') }}" method="POST">
+            @csrf
+            
+            @if(session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
+            @if(session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
             <div class="form-floating form-floating-outline mb-5 form-control-validation">
               <input
-                type="text"
-                class="form-control"
+                type="email"
+                class="form-control @error('email') is-invalid @enderror"
                 id="email"
                 name="email"
                 placeholder="Enter your email"
-                autofocus />
-              <label>Email</label>
+                value="{{ old('email') }}"
+                autofocus required />
+              <label>@lang('extracted.email')</label>
+              @error('email')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
             </div>
-            <button class="btn btn-primary d-grid w-100 mb-5">Envoyez le lien</button>
+            <button class="btn btn-primary d-grid w-100 mb-5">@lang('extracted.envoyez_le_lien')</button>
           </form>
           <div class="text-center">
-            <a href="{{ route('register') }}" class="d-flex align-items-center justify-content-center">
+            <a href="{{ route('login') }}" class="d-flex align-items-center justify-content-center">
               <i class="icon-base ri ri-arrow-left-s-line scaleX-n1-rtl icon-20px me-1_5"></i>
-              Back to login
+              Retour à la connexion
             </a>
           </div>
         </div>

@@ -13,14 +13,14 @@
                     <div class="row">
                         <!--=== Page Banner Content ===-->
                         <div class="page-banner-content text-center text-white">
-                            <h2 class="page-title">Nos Partenaires</h2>
+                            <h2 class="page-title">@lang('extracted.nos_partenaires')</h2>
                             <p>
                                 Nous collaborons avec un réseau d’entreprises, d’institutions financières
                                 et de cabinets spécialisés pour vous offrir les meilleures solutions adaptées à votre activité.
                             </p>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="index.html">Pages</a></li>
-                                <li class="active">Collaborateurs</li>
+                                <li><a href="index.html">@lang('extracted.pages')</a></li>
+                                <li class="active">@lang('extracted.collaborateurs')</li>
                             </ul>
                         </div>
                     </div>
@@ -45,8 +45,8 @@
                             </ul>
                         </div>
                         <div class="member-info">
-                            <h3><a href="{{ route('Partenaires.show') }}">Lora F. Searfina</a></h3>
-                            <p class="position">UI/UX Designer</p>
+                            <h3><a href="{{ route('Partenaires.show') }}">@lang('extracted.lora_f_searfina')</a></h3>
+                            <p class="position">@lang('extracted.uiux_designer')</p>
                         </div>
                     </div>
                 </div>
