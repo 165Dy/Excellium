@@ -45,6 +45,7 @@ class InvitationController extends Controller
             'email' => 'required|email|unique:users,email',
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
+            'type' => 'required|in:admin,super_admin',
         ]);
 
         // Vérifier s'il y a déjà une invitation en cours pour cet email
@@ -57,7 +58,10 @@ class InvitationController extends Controller
             return back()->with('error', 'Une invitation est déjà en cours pour cette adresse email.');
         }
 
-        $token = Str::random(64);
+        // Créer un token qui encode le type d'utilisateur
+        $baseToken = Str::random(60);
+        $typePrefix = $request->type === 'super_admin' ? 'SA' : 'AD';
+        $token = $typePrefix . $baseToken;
         $expiresAt = now()->addDays(7); // L'invitation expire dans 7 jours
 
         // Enregistrer l'invitation
@@ -135,8 +139,11 @@ class InvitationController extends Controller
             return back()->with('error', 'Invitation non trouvée ou déjà utilisée.');
         }
 
-        // Générer un nouveau token et prolonger l'expiration
-        $newToken = Str::random(64);
+        // Générer un nouveau token en conservant le type d'origine
+        $oldToken = $invitation->token;
+        $typePrefix = substr($oldToken, 0, 2); // Récupérer le préfixe (SA ou AD)
+        $baseToken = Str::random(60);
+        $newToken = $typePrefix . $baseToken;
         $newExpiresAt = now()->addDays(7);
 
         AdminInvitation::where('id', $id)

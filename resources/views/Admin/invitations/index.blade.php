@@ -54,6 +54,7 @@
                                     <tr>
                                         <th>Email</th>
                                         <th>Nom & Prénom</th>
+                                        <th>Type de compte</th>
                                         <th>Invité par</th>
                                         <th>Date d'envoi</th>
                                         <th>Expire le</th>
@@ -72,6 +73,17 @@
                                             </td>
                                             <td>
                                                 <strong>{{ $invitation->prenom }} {{ $invitation->nom }}</strong>
+                                            </td>
+                                            <td>
+                                                @php
+                                                    $tokenPrefix = substr($invitation->token, 0, 2);
+                                                    $accountType = $tokenPrefix === 'SA' ? 'Super Admin' : 'Admin';
+                                                    $badgeClass = $tokenPrefix === 'SA' ? 'bg-danger' : 'bg-primary';
+                                                @endphp
+                                                <span class="badge {{ $badgeClass }}">
+                                                    <i class="ri-shield-{{ $tokenPrefix === 'SA' ? 'star' : 'user' }}-line me-1"></i>
+                                                    {{ $accountType }}
+                                                </span>
                                             </td>
                                             <td>
                                                 @if($invitation->invitedBy)
@@ -216,6 +228,23 @@
                                 Un email d'invitation sera envoyé à cette adresse avec un lien pour créer le compte administrateur.
                             </div>
                         </div>
+                        
+                        <div class="col-12">
+                            <label for="type" class="form-label">Type de compte <span class="text-danger">*</span></label>
+                            <select class="form-select @error('type') is-invalid @enderror" id="type" name="type" required>
+                                <option value="">Sélectionnez le type de compte</option>
+                                <option value="admin" {{ old('type') == 'admin' ? 'selected' : '' }}>Administrateur</option>
+                                <option value="super_admin" {{ old('type') == 'super_admin' ? 'selected' : '' }}>Super Administrateur</option>
+                            </select>
+                            @error('type')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                            <div class="form-text">
+                                <i class="ri-information-line me-1"></i>
+                                <strong>Administrateur :</strong> Accès aux fonctionnalités de gestion<br>
+                                <strong>Super Administrateur :</strong> Accès complet + gestion des invitations
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="alert alert-info mt-4">
@@ -249,11 +278,11 @@ document.addEventListener('DOMContentLoaded', function() {
             language: {
                 url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
             },
-            order: [[3, 'desc']], // Trier par date d'envoi décroissante
+            order: [[4, 'desc']], // Trier par date d'envoi décroissante
             pageLength: 25,
             responsive: true,
             columnDefs: [
-                { orderable: false, targets: [6] } // Désactiver le tri sur la colonne Actions
+                { orderable: false, targets: [7] } // Désactiver le tri sur la colonne Actions
             ]
         });
     @endif

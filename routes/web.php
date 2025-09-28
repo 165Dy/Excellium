@@ -45,21 +45,21 @@ Route::post('/choix-produit', [InscriptionController::class, 'saveProduits'])->n
 
 // RSS Feed
 Route::get('/rss', function () {
-    $url = "https://news.google.com/rss/search?q=C%C3%B4te+d%27Ivoire&hl=fr&gl=CI&ceid=CI:fr";
+            $url = "https://news.google.com/rss/search?q=C%C3%B4te+d%27Ivoire&hl=fr&gl=CI&ceid=CI:fr";
 
-    try {
-        $response = Http::get($url);
+            try {
+                $response = Http::get($url);
 
-        if ($response->successful()) {
-            return response($response->body(), 200)
-                ->header('Content-Type', 'application/xml')
-                ->header('Access-Control-Allow-Origin', '*');
-        } else {
-            return response("Erreur lors du chargement du flux.", 500);
-        }
-    } catch (\Exception $e) {
-        return response("Impossible de contacter la source.", 500);
-    }
+                if ($response->successful()) {
+                    return response($response->body(), 200)
+                        ->header('Content-Type', 'application/xml')
+                        ->header('Access-Control-Allow-Origin', '*');
+                } else {
+                    return response("Erreur lors du chargement du flux.", 500);
+                }
+            } catch (\Exception $e) {
+                return response("Impossible de contacter la source.", 500);
+            }
 });
 
 // ========================================

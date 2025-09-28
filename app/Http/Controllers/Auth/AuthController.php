@@ -116,6 +116,10 @@ class AuthController extends Controller
             return back()->with('error', 'Token d\'invitation invalide ou expiré.');
         }
 
+        // Déterminer le type d'utilisateur à partir du token
+        $tokenPrefix = substr($invitation->token, 0, 2);
+        $userType = $tokenPrefix === 'SA' ? 'super_admin' : 'admin';
+        
         // Créer l'utilisateur
         $user = User::create([
             'nom' => $request->nom,
@@ -123,7 +127,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'telephone' => $request->telephone,
             'password' => Hash::make($request->password),
-            'type' => 'admin',
+            'type' => $userType,
             'email_verified_at' => now(),
         ]);
 
