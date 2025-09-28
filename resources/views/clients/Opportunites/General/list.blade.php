@@ -108,7 +108,7 @@
                                     @endif
                                 </div>
                                 <h4 class="title">
-                                    <a href="{{ route('opportunites.show_public', $opportunite->slug) }}">{{ $opportunite->titre }}</a>
+                                    <a href="{{ route('clients.opportunites.business.show', $opportunite->slug) }}">{{ $opportunite->titre }}</a>
                                 </h4>
                                 <p class="description">{{ \Illuminate\Support\Str::limit($opportunite->description, 120) }}
                                 </p>
@@ -128,7 +128,7 @@
                                         {{ $opportunite->postulations_count ?? 0 }}
                                         candidat{{ ($opportunite->postulations_count ?? 0) > 1 ? 's' : '' }}
                                     </div>
-                                    <a href="{{ route('opportunites.show_public', $opportunite->slug) }}"
+                                    <a href="{{ route('clients.opportunites.business.show', $opportunite->slug) }}"
                                         class="btn btn-primary btn-sm">
                                         Voir détails
                                     </a>
@@ -344,7 +344,7 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Envoi en cours...';
             submitBtn.disabled = true;
 
-            fetch('{{ route('opportunites.candidature') }}', {
+            fetch('{{ route('clients.opportunites.business.candidature') }}', {
                     method: 'POST',
                     body: formData,
                     headers: {
