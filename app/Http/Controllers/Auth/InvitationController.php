@@ -18,9 +18,14 @@ class InvitationController extends Controller
      */
     public function index()
     {
+        // Vérifier si l'utilisateur est connecté
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Vous devez être connecté.');
+        }
+
         // Seuls les super_admin peuvent voir les invitations
         if (Auth::user()->type !== 'super_admin') {
-            abort(403, 'Accès non autorisé.');
+            abort(403, 'Accès non autorisé. Seuls les super administrateurs peuvent gérer les invitations.');
         }
 
         $invitations = AdminInvitation::with('invitedBy')
