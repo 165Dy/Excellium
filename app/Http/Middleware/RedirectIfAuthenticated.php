@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
                 
                 // Rediriger selon le type d'utilisateur
                 if (in_array($user->type, ['admin', 'super_admin'])) {
-                    return redirect()->route('dashboard');
+                    return redirect()->route('admin.dashboard');
                 }
                 
                 return redirect('/');

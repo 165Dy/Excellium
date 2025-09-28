@@ -296,7 +296,7 @@
                         aria-label="Fermer"></button>
                 </div>
 
-                <form id="inscriptionForm" method="POST" action="{{ route('formations.participer') }}">
+                <form id="inscriptionForm" method="POST" action="{{ route('clients.formations.participer') }}">
                     @csrf
                     <input type="hidden" name="formation_id" value="{{ $formations->id }}">
 

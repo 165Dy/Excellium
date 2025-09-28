@@ -163,7 +163,7 @@
                                             @if ($services->count() > 0)
                                                 @foreach ($services as $service)
                                                     <li>
-                                                        <a href="{{ route('services_client.show', $service->slug) }}">
+                                                        <a href="{{ route('clients.services.show', $service->slug) }}">
                                                             {{ $service->nom }}
                                                         </a>
                                                     </li>
@@ -180,7 +180,7 @@
                                         </ul>
                                     </li>
                                     <li class="menu-item has-children"><a
-                                            href="{{ route('opportunites.index_public') }}">@lang('Opportunites')</a>
+                                            href="{{ route('clients.opportunites.business.index') }}">@lang('Opportunites')</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="{{ route('Opportunites.achat_location') }}">@lang('extracted.achats_location')</a>
                                             </li>
@@ -197,13 +197,13 @@
                                     </li> --}}
 
                                     <li class="menu-item has-children">
-                                        <a href="{{ route('Partenaires.Collaborateurs') }}">@lang('extracted.partenaires')</a>
+                                        <a href="{{ route('clients.partenaires.index') }}">@lang('extracted.partenaires')</a>
                                     </li>
                                     <li class="menu-item has-children">
-                                        <a href="{{ route('emplois.clients.index') }}">@lang('extracted.emplois')</a>
+                                        <a href="{{ route('clients.emplois.index') }}">@lang('extracted.emplois')</a>
                                     </li>
                                     <li class="menu-item has-children">
-                                        <a href="{{ route('Formations.index') }}">@lang('extracted.formations')</a>
+                                        <a href="{{ route('clients.formations.index') }}">@lang('extracted.formations')</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -225,7 +225,7 @@
                         @endif
                         <div class="nav-right-item">
 
-                            <a href="{{ route('contacts') }}"><i class="far fa-envelope"></i></a>
+                            <a href="{{ route('clients.contact') }}"><i class="far fa-envelope"></i></a>
                             <div class="navbar-toggler">
                                 <span></span>
                                 <span></span>

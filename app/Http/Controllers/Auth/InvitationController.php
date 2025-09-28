@@ -11,10 +11,7 @@ use Mailgun\Mailgun;
 
 class InvitationController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin.auth');
-    }
+    // Le middleware est appliqué dans les routes (routes/web.php)
 
     /**
      * Afficher la liste des invitations
@@ -26,7 +23,8 @@ class InvitationController extends Controller
             abort(403, 'Accès non autorisé.');
         }
 
-        $invitations = AdminInvitation::orderBy('created_at', 'desc')
+        $invitations = AdminInvitation::with('invitedBy')
+            ->orderBy('created_at', 'desc')
             ->orderBy('id', 'desc')
             ->get();
 

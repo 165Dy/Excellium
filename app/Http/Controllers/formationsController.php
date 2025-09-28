@@ -124,7 +124,7 @@ class formationsController extends Controller
             }
 
             // Fallback pour requête normale (au cas où)
-            return redirect()->route('dashboard')->with('success', 'Formation créée avec succès !');
+            return redirect()->route('admin.dashboard')->with('success', 'Formation créée avec succès !');
 
         } catch (\Illuminate\Validation\ValidationException $e) {
             Log::warning("Erreur de validation création:", $e->errors());

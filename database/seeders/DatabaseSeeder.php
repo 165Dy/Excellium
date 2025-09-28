@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'prenom' => 'Test',
             'email' => 'admin@excellium.com',
             'password' => bcrypt('Admin123!'),
-            'type' => 'admin',
+            'type' => 'super_admin',
             'email_verified_at' => now(),
         ]);
 

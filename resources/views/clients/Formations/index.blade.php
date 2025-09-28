@@ -116,7 +116,7 @@
                                     </div>
 
                                     <h4 class="title">
-                                        <a href="{{ route('Formations.show_public', $formation->id) }}">
+                                        <a href="{{ route('clients.formations.show', $formation->id) }}">
                                             {{ ucfirst(strtolower($formation->titre)) }}
                                         </a>
                                     </h4>

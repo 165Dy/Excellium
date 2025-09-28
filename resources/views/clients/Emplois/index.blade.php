@@ -78,14 +78,14 @@
                                 <div class="product-image">
                                     <img src="{{ asset('assets/images/emploi.jpeg') }}" alt="Product image">
                                     <div class="hover-content">
-                                        <a href="{{ route('emplois.clients.show', $emploi->id) }}" class="icon-btn">
+                                        <a href="{{ route('clients.emplois.show', $emploi->id) }}" class="icon-btn">
                                             <i class="icon-briefcase"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product-info">
                                     <h4>
-                                        <a href="{{ route('emplois.clients.show', $emploi->id) }}">
+                                        <a href="{{ route('clients.emplois.show', $emploi->id) }}">
                                             {{ $emploi->titre }} | {{ $emploi->type_contrat }}
                                         </a>
                                     </h4>

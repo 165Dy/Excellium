@@ -20,7 +20,7 @@
                             <p>{{ \Illuminate\Support\Str::limit($opportunite->description, 150) }}</p>
                             <ul class="breadcrumb-link text-white">
                                 <li><a href="{{ route('welcome') }}">Accueil</a></li>
-                                <li><a href="{{ route('opportunites.index_public') }}">Opportunités</a></li>
+                                <li><a href="{{ route('clients.opportunites.business.index') }}">Opportunités</a></li>
                                 <li class="active">{{ $opportunite->titre }}</li>
                             </ul>
                         </div>

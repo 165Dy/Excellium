@@ -7,11 +7,11 @@ use App\Models\AdminInvitation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Mail;
-use App\Models\PasswordResetToken;
+use Mailgun\Mailgun;
 
 class AuthController extends Controller
 {
@@ -44,7 +44,7 @@ class AuthController extends Controller
                 return back()->with('error', 'Accès non autorisé. Seuls les administrateurs peuvent se connecter.');
             }
             
-            return redirect()->intended(route('dashboard'));
+            return redirect()->intended(route('admin.dashboard'));
         }
 
         return back()->with('error', 'Email ou mot de passe incorrect.');
@@ -135,7 +135,7 @@ class AuthController extends Controller
         // Connecter l'utilisateur
         Auth::login($user);
 
-        return redirect()->route('dashboard')->with('success', 'Compte créé avec succès. Bienvenue !');
+        return redirect()->route('admin.dashboard')->with('success', 'Compte créé avec succès. Bienvenue !');
     }
 
     /**
@@ -154,8 +154,8 @@ class AuthController extends Controller
         $request->validate(['email' => 'required|email']);
 
         $user = User::where('email', $request->email)
-            ->whereIn('type', ['admin', 'super_admin'])
-            ->first();
+                    ->whereIn('type', ['admin', 'super_admin'])
+                    ->first();
 
         if (!$user) {
             return back()->with('error', 'Aucun administrateur trouvé avec cette adresse email.');
@@ -163,7 +163,7 @@ class AuthController extends Controller
 
         $token = Str::random(64);
 
-        \DB::table('password_reset_tokens')->updateOrInsert(
+        DB::table('password_reset_tokens')->updateOrInsert(
             ['email' => $request->email],
             [
                 'token' => Hash::make($token),
@@ -171,11 +171,21 @@ class AuthController extends Controller
             ]
         );
 
-        // Envoyer l'email (à implémenter)
-        // Mail::send('emails.password-reset', ['token' => $token], function($message) use($request){
-        //     $message->to($request->email);
-        //     $message->subject('Réinitialisation de mot de passe');
-        // });
+        // Envoi de l'email de réinitialisation via Mailgun
+        $resetUrl = route('password.reset', ['token' => $token]);
+        $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
+        $variables = [
+            'reset_link' => $resetUrl,
+            'token' => $token,
+        ];
+        
+        $mg->messages()->send(env('MAILGUN_DOMAIN'), [
+            'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
+            'to' => $request->email,
+            'subject' => 'Réinitialisation de votre mot de passe - Excellium Conseils',
+            'template' => 'Excellium_réinitialisation_mdp',
+            'h:X-Mailgun-Variables' => json_encode($variables),
+        ]);
 
         return back()->with('success', 'Lien de réinitialisation envoyé par email.');
     }
@@ -202,7 +212,7 @@ class AuthController extends Controller
             'password' => 'required|min:8|confirmed',
         ]);
 
-        $passwordReset = \DB::table('password_reset_tokens')
+        $passwordReset = DB::table('password_reset_tokens')
             ->where('email', $request->email)
             ->first();
 
@@ -220,7 +230,7 @@ class AuthController extends Controller
 
         $user->update(['password' => Hash::make($request->password)]);
 
-        \DB::table('password_reset_tokens')->where('email', $request->email)->delete();
+        DB::table('password_reset_tokens')->where('email', $request->email)->delete();
 
         return redirect()->route('login')->with('success', 'Mot de passe réinitialisé avec succès.');
     }

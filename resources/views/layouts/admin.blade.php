@@ -736,11 +736,13 @@
                                     </li>
                                     <li>
                                         <div class="d-grid px-4 pt-2 pb-1">
-                                            <a class="btn btn-sm btn-danger d-flex" href="auth-login-cover.html"
-                                                target="_blank">
-                                                <small class="align-middle">@lang('extracted.logout')</small>
-                                                <i class="icon-base ri ri-logout-box-r-line ms-2 icon-16px"></i>
-                                            </a>
+                                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger d-flex" style="width: 100%;">
+                                                    <small class="align-middle">@lang('extracted.logout')</small>
+                                                    <i class="icon-base ri ri-logout-box-r-line ms-2 icon-16px"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </li>
                                 </ul>
@@ -763,7 +765,7 @@
                             <ul class="menu-inner">
                                 <!-- Dashboards -->
                                 <li class="menu-item">
-                                    <a href="{{ route('dashboard') }}" class="menu-link ">
+                                    <a href="{{ route('admin.dashboard') }}" class="menu-link ">
                                         <i class="menu-icon icon-base ri ri-home-smile-line"></i>
                                         <div data-i18n="Dashboards">@lang('extracted.dashboards')</div>
                                     </a>
@@ -777,19 +779,27 @@
                                     </a>
                                     <ul class="menu-sub">
                                         <li class="menu-item">
-                                            <a href="{{ route('users.index') }}" class="menu-link ">
+                                            <a href="{{ route('admin.users.index') }}" class="menu-link ">
                                                 <i class="menu-icon icon-base ri ri-user-line"></i>
                                                 <div data-i18n="Users">@lang('extracted.users')</div>
                                             </a>
                                         </li>
+                                        @if(auth()->user()->type === 'super_admin')
                                         <li class="menu-item">
-                                            <a href="{{ route('email.index') }}" class="menu-link">
+                                            <a href="{{ route('admin.invitations.index') }}" class="menu-link">
+                                                <i class="menu-icon icon-base ri ri-mail-send-line"></i>
+                                                <div data-i18n="Invitations">Invitations Admin</div>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        <li class="menu-item">
+                                            <a href="{{ route('admin.email.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-mail-line"></i>
                                                 <div data-i18n="Email">@lang('extracted.email')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('calendrier.index') }}" class="menu-link">
+                                            <a href="{{ route('admin.calendrier.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-calendar-line"></i>
                                                 <div data-i18n="Calendrier">@lang('extracted.calendrier')</div>
                                             </a>
@@ -838,7 +848,7 @@
                                     <ul class="menu-sub">
                                         <li
                                             class="menu-item {{ request()->routeIs('emplois.index') ? 'active' : '' }}">
-                                            <a href="{{ route('emplois.index') }}" class="menu-link">
+                                            <a href="{{ route('admin.emplois.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-list"></i>
                                                 <div data-i18n="Liste des emplois">@lang('extracted.liste_des_emplois')
                                                 </div>
@@ -854,7 +864,7 @@
                                         </li>
                                         <li
                                             class="menu-item {{ request()->routeIs('admin.candidatures.*') ? 'active' : '' }}">
-                                            <a href="{{ route('emplois.candidatures.index') }}" class="menu-link">
+                                            <a href="{{ route('admin.emplois.candidatures.index') }}" class="menu-link">
                                                 <i class="menu-icon tf-icons fas fa-users"></i>
                                                 <div data-i18n="Candidatures">@lang('extracted.candidatures')</div>
                                                 <div class="badge badge-center rounded-pill bg-warning ms-auto">
@@ -914,20 +924,20 @@
                                     <ul class="menu-sub">
 
                                         <li class="menu-item">
-                                            <a href="{{ route('partenaires.index') }}" class="menu-link">
+                                            <a href="{{ route('admin.partenaires.index') }}" class="menu-link">
                                                 <i
                                                     class="icon-base ri ri-group-2-line text-primary icon-22px me-2"></i>
                                                 <div>@lang('extracted.partenaires')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('temoignages.index') }}" class="menu-link ">
+                                            <a href="{{ route('admin.temoignages.index') }}" class="menu-link ">
                                                 <i class="menu-icon icon-base ri ri-kakao-talk-line"></i>
                                                 <div>@lang('extracted.temoignages')</div>
                                             </a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('articles.index') }}" class="menu-link">
+                                            <a href="{{ route('admin.articles.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-book-open-line"></i>
                                                 <div>@lang('extracted.articles')</div>
                                             </a>
@@ -1029,6 +1039,7 @@
 
                     <!-- Content -->
                     @yield('dashboard')
+                    @yield('index_invitations')
                     @yield('show_users')
                     @yield('index_users')
                     @yield('calendrier_index')
@@ -1060,7 +1071,7 @@
                                         <h4 class="mb-2">@lang('extracted.ajouter_une_formation')</h4>
                                     </div>
                                     <!-- Formulaire de création de formation stylisé -->
-                                    <form id="formationForm" action="{{ route('formations.store') }}" method="POST"
+                                    <form id="formationForm" action="{{ route('admin.formations.store') }}" method="POST"
                                         class="row g-4" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-12 col-md-6">
@@ -1577,7 +1588,7 @@
                                         <h4 class="mb-2">@lang('extracted.nouvelle_categorie')</h4>
                                     </div>
                                     <form id="createCategorieForm" class="row g-5" method="POST"
-                                        action="{{ route('categories.store') }}">
+                                        action="{{ route('admin.categories.store') }}">
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
@@ -1659,7 +1670,7 @@
                                         <h4 class="mb-2">@lang('extracted.nouveau_produit')</h4>
                                     </div>
                                     <form id="createProduitForm" class="row g-5" method="POST"
-                                        action="{{ route('produits.store') }}">
+                                        action="{{ route('admin.produits.store') }}">
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
@@ -1763,7 +1774,7 @@
                                         <h4 class="mb-2">NOUVEAU SERVICE</h4>
                                     </div>
                                     <form id="createServiceForm" class="row g-5" method="POST"
-                                        action="{{ route('services.store') }}">
+                                        action="{{ route('admin.services.store') }}">
                                         @csrf
                                         <div class="col-12">
                                             <div class="form-floating form-floating-outline">
@@ -2285,7 +2296,7 @@
                             </h4>
                         </div>
                         <form id="createOpportuniteForm" class="row g-5" method="POST"
-                            action="{{ route('opportunites.store') }}" enctype="multipart/form-data">
+                            action="{{ route('admin.opportunites.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="col-12">
                                 <label class="form-label" for="titre">Titre de l'opportunité</label>

@@ -491,7 +491,7 @@
                 let form = this;
                 let formData = new FormData(form);
 
-                fetch('{{ route('candidature.postuler') }}', {
+                fetch('{{ route('clients.emplois.postuler') }}', {
                         method: 'POST',
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}',
