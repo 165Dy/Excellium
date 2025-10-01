@@ -16,6 +16,8 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ActualiteController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\InvitationController;
+use App\Http\Controllers\AssistanceComptableController;
+use App\Http\Controllers\EntrepriseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,21 +47,21 @@ Route::post('/choix-produit', [InscriptionController::class, 'saveProduits'])->n
 
 // RSS Feed
 Route::get('/rss', function () {
-    $url = "https://news.google.com/rss/search?q=C%C3%B4te+d%27Ivoire&hl=fr&gl=CI&ceid=CI:fr";
+            $url = "https://news.google.com/rss/search?q=C%C3%B4te+d%27Ivoire&hl=fr&gl=CI&ceid=CI:fr";
 
-    try {
-        $response = Http::get($url);
+            try {
+                $response = Http::get($url);
 
-        if ($response->successful()) {
-            return response($response->body(), 200)
-                ->header('Content-Type', 'application/xml')
-                ->header('Access-Control-Allow-Origin', '*');
-        } else {
-            return response("Erreur lors du chargement du flux.", 500);
-        }
-    } catch (\Exception $e) {
-        return response("Impossible de contacter la source.", 500);
-    }
+                if ($response->successful()) {
+                    return response($response->body(), 200)
+                        ->header('Content-Type', 'application/xml')
+                        ->header('Access-Control-Allow-Origin', '*');
+                } else {
+                    return response("Erreur lors du chargement du flux.", 500);
+                }
+            } catch (\Exception $e) {
+                return response("Impossible de contacter la source.", 500);
+            }
 });
 
 // ========================================
@@ -239,6 +241,34 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
         Route::get('/{id}', [ServiceController::class, 'show'])->name('show');
         Route::put('/{id}', [ServiceController::class, 'update'])->name('update');
         Route::delete('/{id}', [ServiceController::class, 'destroy'])->name('destroy');
+    });
+    
+    // GESTION DES ENTREPRISES
+    Route::prefix('entreprises')->name('entreprises.')->group(function () {
+        Route::get('/', [EntrepriseController::class, 'index'])->name('index');
+        Route::get('/create', [EntrepriseController::class, 'create'])->name('create');
+        Route::post('/', [EntrepriseController::class, 'store'])->name('store');
+        Route::get('/{entreprise}', [EntrepriseController::class, 'show'])->name('show');
+        Route::get('/{entreprise}/edit', [EntrepriseController::class, 'edit'])->name('edit');
+        Route::put('/{entreprise}', [EntrepriseController::class, 'update'])->name('update');
+        Route::delete('/{entreprise}', [EntrepriseController::class, 'destroy'])->name('destroy');
+        Route::post('/{entreprise}/assistance', [EntrepriseController::class, 'createAssistance'])->name('create_assistance');
+        Route::patch('/{entreprise}/toggle-assist', [EntrepriseController::class, 'toggleAssist'])->name('toggle_assist');
+        Route::get('/{entreprise}/stats', [EntrepriseController::class, 'getStats'])->name('stats');
+    });
+    
+    // GESTION DES ASSISTANCES COMPTABLES ENTREPRISES
+    Route::prefix('assistance-comptable')->name('assistance_comptable.')->group(function () {
+        Route::get('/', [AssistanceComptableController::class, 'index'])->name('index');
+        Route::get('/create', [AssistanceComptableController::class, 'create'])->name('create');
+        Route::post('/', [AssistanceComptableController::class, 'store'])->name('store');
+        Route::get('/{assistance}', [AssistanceComptableController::class, 'show'])->name('show');
+        Route::get('/{assistance}/edit', [AssistanceComptableController::class, 'edit'])->name('edit');
+        Route::put('/{assistance}', [AssistanceComptableController::class, 'update'])->name('update');
+        Route::delete('/{assistance}', [AssistanceComptableController::class, 'destroy'])->name('destroy');
+        Route::patch('/{assistance}/statut', [AssistanceComptableController::class, 'updateStatut'])->name('update_statut');
+        Route::get('/entreprise/{entreprise}', [AssistanceComptableController::class, 'getByEntreprise'])->name('by_entreprise');
+        Route::get('/admin/{user}', [AssistanceComptableController::class, 'getByAdmin'])->name('by_admin');
     });
     
     // CONTENU ÉDITORIAL

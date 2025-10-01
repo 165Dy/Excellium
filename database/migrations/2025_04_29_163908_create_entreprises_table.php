@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('ncc', 50)->nullable();
             $table->string('nom_dirigeant', 150)->nullable();
             $table->string('tdu', 50)->nullable();
+            $table->boolean('assist')->default(false);
+
             $table->timestamps();
         });
     }

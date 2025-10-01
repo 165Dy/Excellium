@@ -53,4 +53,28 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserService::class);
     }
+
+    /**
+     * Relation avec les assistances comptables
+     */
+    public function assistancesComptables()
+    {
+        return $this->hasMany(AssistanceComptableEntreprise::class);
+    }
+
+    /**
+     * Vérifier si l'utilisateur est un administrateur
+     */
+    public function isAdmin(): bool
+    {
+        return in_array($this->type, ['admin', 'super_admin']);
+    }
+
+    /**
+     * Vérifier si l'utilisateur est un super administrateur
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->type === 'super_admin';
+    }
 }

@@ -181,6 +181,9 @@
             display: block;
         }
     </style>
+
+    <!-- Styles from child views -->
+    @stack('styles')
 </head>
 
 <body>
@@ -717,8 +720,8 @@
                                             <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                                 @csrf
                                                 <button type="submit" class="btn btn-sm btn-danger d-flex" style="width: 100%;">
-                                                    <small class="align-middle">@lang('extracted.logout')</small>
-                                                    <i class="icon-base ri ri-logout-box-r-line ms-2 icon-16px"></i>
+                                                <small class="align-middle">@lang('extracted.logout')</small>
+                                                <i class="icon-base ri ri-logout-box-r-line ms-2 icon-16px"></i>
                                                 </button>
                                             </form>
                                         </div>
@@ -770,6 +773,12 @@
                                             </a>
                                         </li>
                                         @endif
+                                        <li class="menu-item">
+                                            <a href="{{ route('admin.entreprises.index') }}" class="menu-link">
+                                                <i class="menu-icon icon-base ri ri-building-line"></i>
+                                                <div data-i18n="Entreprises">Entreprises</div>
+                                            </a>
+                                        </li>
                                         {{-- <li class="menu-item">
                                             <a href="{{ route('admin.email.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-mail-line"></i>
@@ -1018,6 +1027,14 @@
                     <!-- Content -->
                     @yield('dashboard')
                     @yield('index_invitations')
+                    @yield('entreprises_index')
+                    @yield('entreprises_create')
+                    @yield('entreprises_show')
+                    @yield('entreprises_edit')
+                    @yield('assistance_comptable_index')
+                    @yield('assistance_comptable_show')
+                    @yield('assistance_comptable_create')
+                    @yield('assistance_comptable_edit')
                     @yield('show_users')
                     @yield('index_users')
                     @yield('calendrier_index')
@@ -6103,6 +6120,8 @@ value="${escapeHtml(produit.slug)}" required>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+        <!-- Scripts from child views -->
+        @stack('scripts')
 
 </body>
 
