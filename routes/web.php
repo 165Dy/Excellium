@@ -35,6 +35,7 @@ use App\Http\Controllers\EntrepriseController;
 // ========================================
 
 // Localisation
+
 Route::get('/locale/{lang}', [LocaleController::class, 'setLocale'])->name('locale.switch');
 
 // Page d'accueil

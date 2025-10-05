@@ -13,7 +13,7 @@
                         <div class="page-banner-content text-center text-white">
                             <h1 class="page-title">{{ $formations->titre }}</h1>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="{{ route('Formations.index') }}">@lang('extracted.formations')</a></li>
+                                <li><a href="{{ route('clients.formations.show',$formations->id) }}">@lang('extracted.formations')</a></li>
                                 <li class="active">{{ $formations->categorie->nom }}</li>
                             </ul>
                         </div>
@@ -148,7 +148,7 @@
                 <div class="col-lg-4">
                     <div class="sidebar-widget-area">
                         <div class="sidebar-widget sidebar-search-widget mb-35 wow fadeInDown">
-                            <form action="{{ route('Formations.index') }}" method="GET">
+                            <form action="{{ route('clients.formations.show',$formations->id) }}" method="GET">
                                 <div class="form-group">
                                     <input type="text" placeholder="Rechercher..." name="search"
                                         style="color:#fff">
@@ -211,7 +211,7 @@
                                         )->count();
                                     @endphp
                                     <li>
-                                        <a href="{{ route('Formations.index', ['categorie_id' => $categorie->id]) }}">
+                                        <a href="{{ route('clients.formations.show',$categorie->id )}}">
                                             <i class="far fa-angle-right"></i>
                                             {{ $categorie->nom }}
                                             <span>({{ $nombreFormations }})</span>

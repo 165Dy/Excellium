@@ -225,7 +225,7 @@
                             Revenez à la page des opportunités pour découvrir d'autres
                             offres similaires.
                         </p>
-                        <a href="{{ route('emplois.clients.index') }}" class="btn btn-danger px-4">
+                        <a href="{{ route('clients.emplois.show',$emploi->id) }}" class="btn btn-danger px-4">
                             OK
                         </a>
                     </div>

@@ -98,52 +98,70 @@
                                     @endif
 
                                     <ul class="post-categories">
-                                        <li><a
-                                <div class="post-content">
-                                    <div class="post-meta">
-                                        <a href="#" class="post-admin">
-                                            <i class="far fa-user-alt"></i>Par Excellium
-                                        </a>
-                                        <a href="#" class="post-date">
-                                            <i class="far fa-calendar-alt"></i>
-                                            {{ \Carbon\Carbon::parse($formation->date_debut)->format('d M Y') }}
-                                        </a>
-                                    </div>
-
-                                    <h4 class="title">
-                                        <a href="{{ route('clients.formations.show', $formation->id) }}">
-                                            {{ ucfirst(strtolower($formation->titre)) }}
-                                        </a>
-                                    </h4>
-                                    <hr>
-                                    <p
-                                        style="max-width: 100%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                        {{ str($formation->programme)->limit(100) ?? 'Programme de formation complet disponible.' }}
-                                    </p>
-                                    <div class="post-meta d-flex align-items-center gap-3" style="gap: 18px;">
-                                        @if ($formation->cout)
-                                            <div class="formation-price mt-2"
-                                                style="border-right: 1.5px solid #FFD22F; padding-right: 16px; margin-right: 8px;">
-                                                <span class="text-warning fw-bold">
-                                                    <i class="fas fa-tag"></i>
-                                                    {{ number_format($formation->cout, 0, ',', ' ') }} FCFA
-                                                </span>
+                                        <li>
+                                            <a href="#">
+                                                {{ $formation->categorie ? ucfirst($formation->categorie->nom) : 'Catégorie inconnue' }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="card shadow-lg mb-4 border-0"
+                                        style="border-radius: 18px; background: #23272b;">
+                                        <div class="card-body p-4">
+                                            <!-- Header Meta -->
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="text-warning small fw-semibold">
+                                                        <i class="far fa-user-alt me-1"></i> Excellium
+                                                    </span>
+                                                    <span class="text-muted small">
+                                                        <i class="far fa-calendar-alt me-1"></i>
+                                                        {{ \Carbon\Carbon::parse($formation->date_debut)->format('d M Y') }}
+                                                    </span>
+                                                </div>
+                                                @if ($formation->cout)
+                                                    <span class="badge bg-warning text-dark fw-bold px-3 py-2"
+                                                        style="font-size: 1rem; border-radius: 8px;">
+                                                        <i class="fas fa-tag me-1"></i>
+                                                        {{ number_format($formation->cout, 0, ',', ' ') }} FCFA
+                                                    </span>
+                                                @endif
                                             </div>
-                                        @endif
 
-                                        @if ($formation->lieu)
-                                            <div class="formation-lieu mt-1">
-                                                <span class="text-light">
-                                                    <i class="fas fa-map-marker-alt"></i> {{ $formation->lieu }}
-                                                </span>
+                                            <!-- Titre -->
+                                            <h5 class="card-title mb-3" style="font-weight: bold; font-size: 1.25rem;">
+                                                <a href="{{ route('clients.formations.show', $formation->id) }}"
+                                                    class="text-white text-decoration-none">
+                                                    {{ ucfirst(strtolower($formation->titre)) }}
+                                                </a>
+                                            </h5>
+
+                                            <!-- Description / Programme -->
+                                            <p class="card-text text-light mb-3"
+                                                style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; min-height: 70px;">
+                                                {{ \Illuminate\Support\Str::limit($formation->programme, 150, '...') ?? 'Programme de formation complet disponible.' }}
+                                            </p>
+
+                                            <!-- Lieu -->
+                                            @if ($formation->lieu)
+                                                <div class="d-flex align-items-center text-muted mb-3">
+                                                    <i class="fas fa-map-marker-alt me-2 text-warning"></i>
+                                                    <span class="fw-semibold">{{ $formation->lieu }}</span>
+                                                </div>
+                                            @endif
+
+                                            <!-- Bouton voir plus -->
+                                            <div class="mt-2 text-end">
+                                                <a href="{{ route('clients.formations.show', $formation->id) }}"
+                                                    class="btn btn-warning btn-sm fw-bold px-4 py-2"
+                                                    style="border-radius: 8px; color: #23272b;">
+                                                    Voir la formation <i class="fas fa-arrow-right ms-1"></i>
+                                                </a>
                                             </div>
-                                        @endif
+                                        </div>
                                     </div>
-
 
                                 </div>
                             </div>
-                        </div>
                     @endforeach
                 @endif
             </div>

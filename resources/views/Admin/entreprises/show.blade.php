@@ -7,34 +7,23 @@
         <div class="col-12 mb-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb breadcrumb-style1">
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('admin.dashboard') }}">Tableau de bord</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('admin.entreprises.index') }}">Entreprises</a>
-                            </li>
-                            <li class="breadcrumb-item active">{{ $entreprise->nom }}</li>
-                        </ol>
-                    </nav>
-                    <h4 class="mb-1">
-                        <i class="ri-building-line me-2"></i>
-                        {{ $entreprise->nom }}
+                  
+                    <h4 class="mb-1"> 
+                        <i class="ri ri-building-line me-2"></i>
+                        Entreprise : {{ $entreprise->nom }}
                     </h4>
-                    <p class="mb-0 text-muted">Détails de l'entreprise et gestion des assistances</p>
                 </div>
                 <div class="d-flex gap-2">
-                    <button type="button" class="btn btn-success" data-create-assistance data-entreprise-id="{{ $entreprise->id }}" data-entreprise-nom="{{ $entreprise->nom }}">
-                        <i class="ri-building-2-line me-1"></i>
-                        Créer assistance
-                    </button>
+                    
+                    <a href="{{ route('admin.entreprises.index') }}" class="btn btn-outline-secondary">
+                       <i class="ri ri-arrow-left-line me-1"></i> Retour
+                    </a>
                     <a href="{{ route('admin.entreprises.edit', $entreprise) }}" class="btn btn-primary">
-                        <i class="ri-edit-line me-1"></i>
+                        <i class="ri ri-edit-line me-1"></i>
                         Modifier
                     </a>
                     <button type="button" class="btn btn-outline-danger" onclick="deleteEntreprise({{ $entreprise->id }})">
-                        <i class="ri-delete-bin-line me-1"></i>
+                        <i class="ri ri-delete-bin-line me-1"></i>
                         Supprimer
                     </button>
                 </div>
@@ -46,7 +35,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <h5 class="card-title mb-0">
-                        <i class="ri-information-line me-2"></i>
+                        <i class="ri ri-information-line me-2"></i>
                         Informations de l'entreprise
                     </h5>
                 </div>
@@ -59,7 +48,7 @@
                             @else
                                 <div class="avatar avatar-xl mx-auto">
                                     <div class="avatar-initial rounded bg-label-primary">
-                                        <i class="ri-building-line ri-2x"></i>
+                                        <i class="ri ri-building-line ri ri-2x"></i>
                                     </div>
                                 </div>
                             @endif
@@ -94,7 +83,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label text-muted">Localisation</label>
                                     <div class="d-flex align-items-center">
-                                        <i class="ri-map-pin-line me-2 text-muted"></i>
+                                        <i class="ri ri-map-pin-line me-2 text-muted"></i>
                                         <span>{{ $entreprise->situation_geographique }}</span>
                                     </div>
                                 </div>
@@ -104,7 +93,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label text-muted">Dirigeant</label>
                                     <div class="d-flex align-items-center">
-                                        <i class="ri-user-line me-2 text-muted"></i>
+                                        <i class="ri ri-user-line me-2 text-muted"></i>
                                         <span>{{ $entreprise->nom_dirigeant }}</span>
                                     </div>
                                 </div>
@@ -120,7 +109,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <h5 class="card-title mb-0">
-                        <i class="ri-file-text-line me-2"></i>
+                        <i class="ri ri-file-text-line me-2"></i>
                         Informations légales
                     </h5>
                 </div>
@@ -155,11 +144,11 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">
-                        <i class="ri-building-2-line me-2"></i>
+                        <i class="ri ri-building-2-line me-2"></i>
                         Assistances comptables
                     </h5>
                     <button type="button" class="btn btn-sm btn-success" data-create-assistance data-entreprise-id="{{ $entreprise->id }}" data-entreprise-nom="{{ $entreprise->nom }}">
-                        <i class="ri-add-line me-1"></i>
+                        <i class="ri ri-add-line me-1"></i>
                         Nouvelle assistance
                     </button>
                 </div>
@@ -169,7 +158,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="avatar avatar-sm me-3">
                                     <div class="avatar-initial rounded-circle bg-label-info">
-                                        <i class="ri-user-line"></i>
+                                        <i class="ri ri-user-line"></i>
                                     </div>
                                 </div>
                                 <div>
@@ -182,17 +171,17 @@
                                 <span class="badge {{ $badge['class'] }} mb-1">{{ $badge['text'] }}</span>
                                 <div>
                                     <a href="{{ route('admin.assistance_comptable.show', $assistance) }}" class="btn btn-sm btn-outline-primary">
-                                        <i class="ri-eye-line"></i>
+                                        <i class="ri ri-eye-line"></i>
                                     </a>
                                     <a href="{{ route('admin.assistance_comptable.edit', $assistance) }}" class="btn btn-sm btn-outline-secondary">
-                                        <i class="ri-edit-line"></i>
+                                        <i class="ri ri-edit-line"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     @empty
                         <div class="text-center py-4">
-                            <i class="ri-building-2-line ri-2x text-muted mb-2"></i>
+                            <i class="ri ri-building-2-line ri ri-2x text-muted mb-2"></i>
                             <p class="text-muted">Aucune assistance comptable</p>
                             <button type="button" class="btn btn-sm btn-success" data-create-assistance data-entreprise-id="{{ $entreprise->id }}" data-entreprise-nom="{{ $entreprise->nom }}">
                                 Créer la première assistance
@@ -209,7 +198,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <h5 class="card-title mb-0">
-                        <i class="ri-bar-chart-line me-2"></i>
+                        <i class="ri ri-bar-chart-line me-2"></i>
                         Statistiques
                     </h5>
                 </div>
@@ -238,22 +227,22 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0">
-                        <i class="ri-settings-3-line me-2"></i>
+                        <i class="ri ri-settings-3-line me-2"></i>
                         Actions rapides
                     </h5>
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
                         <button type="button" class="btn btn-success btn-sm" data-create-assistance data-entreprise-id="{{ $entreprise->id }}" data-entreprise-nom="{{ $entreprise->nom }}">
-                            <i class="ri-building-2-line me-1"></i>
+                            <i class="ri ri-building-2-line me-1"></i>
                             Créer assistance
                         </button>
                         <button type="button" class="btn btn-outline-info btn-sm" onclick="toggleAssist({{ $entreprise->id }})">
-                            <i class="ri-refresh-line me-1"></i>
+                            <i class="ri ri-refresh-line me-1"></i>
                             Basculer statut assistance
                         </button>
                         <a href="{{ route('admin.entreprises.edit', $entreprise) }}" class="btn btn-outline-primary btn-sm">
-                            <i class="ri-edit-line me-1"></i>
+                            <i class="ri ri-edit-line me-1"></i>
                             Modifier informations
                         </a>
                     </div>
@@ -269,7 +258,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
-                    <i class="ri-building-2-line me-2"></i>
+                    <i class="ri ri-building-2-line me-2"></i>
                     Créer une assistance comptable
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -367,7 +356,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" class="btn btn-primary">
-                        <i class="ri-save-line me-1"></i>
+                        <i class="ri ri-save-line me-1"></i>
                         Créer l'assistance
                     </button>
                 </div>
@@ -511,7 +500,7 @@ window.showCreateAssistanceModal = function(entrepriseId, entrepriseName) {
     
     // Réactiver le bouton submit s'il était désactivé
     const submitBtn = $('#createAssistanceForm').find('button[type="submit"]');
-    submitBtn.prop('disabled', false).html('<i class="ri-save-line me-1"></i>Créer l\'assistance');
+    submitBtn.prop('disabled', false).html('<i class="ri ri-save-line me-1"></i>Créer l\'assistance');
     
     // Afficher la modale
     $('#createAssistanceModal').modal('show');
@@ -556,8 +545,8 @@ function deleteEntreprise(id) {
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
-        confirmButtonText: '<i class="ri-delete-bin-line me-1"></i>Oui, supprimer !',
-        cancelButtonText: '<i class="ri-close-line me-1"></i>Annuler',
+        confirmButtonText: '<i class="ri ri-delete-bin-line me-1"></i>Oui, supprimer !',
+        cancelButtonText: '<i class="ri ri-close-line me-1"></i>Annuler',
         reverseButtons: true,
         focusCancel: true
     }).then((result) => {
