@@ -114,9 +114,9 @@
                                 </p>
 
                                 @if ($opportunite->date_fin)
-                                    <div class="deadline-info">
+                                    <div class="deadline-info" >
                                         <i class="fas fa-clock"></i>
-                                        <span class="text-muted">
+                                        <span class="" style="color:white;" >
                                             Clôture : {{ \Carbon\Carbon::parse($opportunite->date_fin)->format('d/m/Y') }}
                                         </span>
                                     </div>

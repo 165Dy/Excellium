@@ -335,8 +335,8 @@
                 <input type="hidden" id="assistance_entreprise_id" name="entreprise_id">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label text-muted">Entreprise</label>
-                        <div id="assistance_entreprise_name" class="fw-bold"></div>
+                        <label class="form-label text-muted"><u>Entreprise</u></label>
+                        <div id="assistance_entreprise_name" class="fw-bold"><h4></h4></div>
                     </div>
 
                     <div class="row">

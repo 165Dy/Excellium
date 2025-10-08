@@ -7,27 +7,15 @@
             <!-- Header -->
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb breadcrumb-style1">
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('admin.dashboard') }}">Tableau de bord</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('admin.entreprises.index') }}">Entreprises</a>
-                            </li>
-                            <li class="breadcrumb-item active">Nouvelle entreprise</li>
-                        </ol>
-                    </nav>
                     <h4 class="mb-1">
                         <i class="ri ri-add-line me-2"></i>
                         Nouvelle Entreprise
                     </h4>
-                    <p class="mb-0 text-muted">Ajouter une nouvelle entreprise dans le système</p>
                 </div>
                 <div>
                     <a href="{{ route('admin.entreprises.index') }}" class="btn btn-outline-secondary">
                         <i class="ri ri-arrow-left-line me-1"></i>
-                        Retour à la liste
+                        Retour
                     </a>
                 </div>
             </div>

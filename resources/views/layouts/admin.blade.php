@@ -64,6 +64,7 @@
     <script src="{{ asset('assets_2/vendor/js/helpers.js') }}"></script>
     <script src="{{ asset('assets_2/js/config.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+     <script src="{{ asset('assets_2/js/modal.js') }}"></script>
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -284,7 +285,7 @@
                                                     data-icon="moon-clear-line"></i>dark</span>
                                         </button>
                                     </li>
-                                   
+
                                 </ul>
                             </li>
                             <!-- / Style Switcher-->
@@ -1031,6 +1032,7 @@
                     @yield('index_partenaires')
                     @yield('index_articles')
                     @yield('index_temoignages')
+                    @yield('user_profile')
 
 
 
@@ -1539,8 +1541,7 @@
 
                                         {{-- Boutons d'action --}}
                                         <div class="col-12 text-center pt-4">
-                                            <button type="submit"
-                                                class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
+                                            <button type="submit" class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
                                                 <i class="fas fa-paper-plane me-2"></i>Publier l'opportunité
                                             </button>
                                             <button type="button" class="btn btn-outline-secondary btn-lg px-4"
@@ -1733,6 +1734,8 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
+                         <div class="content-backdrop fade"></div>
                     </div>
 
                     <!-- Modal Création Service -->
@@ -1827,6 +1830,8 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
+                         <div class="content-backdrop fade"></div>
                     </div>
 
 
@@ -4042,9 +4047,9 @@
                             <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
                             <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
                 ${isConfirm ? `
-                                                                                                                                                                                    <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
-                                                                                                                                                                                    <p class="text-muted">Cette action peut être annulée plus tard.</p>
-                                                                                                                                                                                ` : ''}
+                                                                                                                                                                                            <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
+                                                                                                                                                                                            <p class="text-muted">Cette action peut être annulée plus tard.</p>
+                                                                                                                                                                                        ` : ''}
                         </div>
                     `,
                     showCancelButton: true,
@@ -4105,9 +4110,9 @@
                                         <div class="text-center">
                                             <p>Le statut a été mis à jour avec succès.</p>
                                 ${isConfirm ? `
-                                                                                                                                                                                                    <p class="text-muted">Le candidat peut maintenant être contacté.</p>
-                                                                                                                                                                                                    <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
-                                                                                                                                                                                                ` : ''}
+                                                                                                                                                                                                            <p class="text-muted">Le candidat peut maintenant être contacté.</p>
+                                                                                                                                                                                                            <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
+                                                                                                                                                                                                        ` : ''}
                                         </div>
                                     `,
                                         timer: 3000,
@@ -4426,14 +4431,14 @@
                                     </div>
                                     
                                     ${formation.file_path ? `
-                                                                                                                                                                                                                    <div class="text-center mt-3">
-                                                                                                                                                                                                        <strong>Média de présentation</strong><br>
-                                                                                                                                                                                                                        ${formation.file_type === 'image' ? 
-                                                                                                                                                                                                                            `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
-                                                                                                                                                                                                                            `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                                                                                                                                                                                                            <div class="text-center mt-3">
+                                                                                                                                                                                                                <strong>Média de présentation</strong><br>
+                                                                                                                                                                                                                                ${formation.file_type === 'image' ? 
+                                                                                                                                                                                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
+                                                                                                                                                                                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
                                             </video>`}
-                                                                                                                                                                                                                    </div>` : ''}
+                                                                                                                                                                                                                            </div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -4444,28 +4449,28 @@
                         <div class="card-header bg-light d-flex justify-content-between align-items-center">
                             <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
                             ${inscriptions.length > 0 ? `
-                                                                                                                                                                                                            <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
-                                                                                                                                                                                                                <i class="fas fa-download me-1"></i>Exporter Excel
-                                                                                                                                                                                                            </button>` : ''}
+                                                                                                                                                                                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
+                                                                                                                                                                                                                        <i class="fas fa-download me-1"></i>Exporter Excel
+                                                                                                                                                                                                                    </button>` : ''}
                         </div>
                         <div class="card-body p-0">
                             ${inscriptions.length > 0 ? `
-                                                                                    <div class="table-responsive">
-                                                                                        <table class="table table-hover mb-0">
-                                                                                            <thead class="table-light">
-                                                                                                <tr>
-                                                                                                    <th>#</th>
-                                                                                                    <th><i class="fas fa-user me-1"></i>Nom complet</th>
-                                                                                                    <th><i class="fas fa-envelope me-1"></i>Email</th>
-                                                                                                    <th><i class="fas fa-phone me-1"></i>Téléphone</th>
-                                                                                                    <th><i class="fas fa-comment me-1"></i>Message</th>
-                                                                                            <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
-                                                                                                    <th><i class="fas fa-flag me-1"></i>Statut</th>
-                                                                                                    <th>Actions</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                ${inscriptions.map((inscription, index) => `
+                                                                                            <div class="table-responsive">
+                                                                                                <table class="table table-hover mb-0">
+                                                                                                    <thead class="table-light">
+                                                                                                        <tr>
+                                                                                                            <th>#</th>
+                                                                                                            <th><i class="fas fa-user me-1"></i>Nom complet</th>
+                                                                                                            <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                                                                                            <th><i class="fas fa-phone me-1"></i>Téléphone</th>
+                                                                                                            <th><i class="fas fa-comment me-1"></i>Message</th>
+                                                                                                    <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
+                                                                                                            <th><i class="fas fa-flag me-1"></i>Statut</th>
+                                                                                                            <th>Actions</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        ${inscriptions.map((inscription, index) => `
                             <tr>
                             <td><strong>${index + 1}</strong></td>
                             <td>
@@ -4493,26 +4498,26 @@
                             <td>
                             <div class="btn-group btn-group-sm">
                             ${inscription.statut === 'en_attente' ? `
-                                                                                     <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
-                                                                                    <i class="fas fa-check"></i>
-                                                                                    </button>
-                                                                                    <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
-                                                                                    <i class="fas fa-times"></i>
-                                                                                    </button>` : ''}
+                                                                                             <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
+                                                                                            <i class="fas fa-check"></i>
+                                                                                            </button>
+                                                                                            <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
+                                                                                            <i class="fas fa-times"></i>
+                                                                                            </button>` : ''}
                             <button class="btn btn-outline-primary" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
                             <i class="fas fa-envelope"></i>
                             </button>
                             </div>
                             </td>
                             </tr>`).join('')}
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>` : `
-                                                                                    <div class="text-center p-5">
-                                                                                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                                                                        <h5 class="text-muted">Aucune inscription pour le moment</h5>
-                                                                                <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
-                                                                                    </div>`}
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>` : `
+                                                                                            <div class="text-center p-5">
+                                                                                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                                                                                <h5 class="text-muted">Aucune inscription pour le moment</h5>
+                                                                                        <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
+                                                                                            </div>`}
                             </div>
                             </div>
                             </div>
@@ -4546,716 +4551,350 @@
 
                         submitBtn.disabled = true;
                         submitBtn.innerHTML = `
-<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-Publication en cours...
-`;
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Publication en cours...
+        `;
 
-                        // Soumission réelle
-                        setTimeout(() => {
-                            form.submit();
-                        }, 500);
-                    }
-                });
+                                // Soumission réelle
+                                setTimeout(() => {
+                                    form.submit();
+                                }, 500);
+                            }
+                        });
 
-                // Validation des champs individuels
-                function validateField(field) {
-                    const value = field.value.trim();
-                    const isValid = field.checkValidity();
+                        // Validation des champs individuels
+                        function validateField(field) {
+                            const value = field.value.trim();
+                            const isValid = field.checkValidity();
 
-                    // Supprime les classes précédentes
-                    field.classList.remove('is-valid', 'is-invalid');
+                            // Supprime les classes précédentes
+                            field.classList.remove('is-valid', 'is-invalid');
 
-                    if (value !== '') {
-                        if (isValid) {
-                            field.classList.add('is-valid');
+                            if (value !== '') {
+                                if (isValid) {
+                                    field.classList.add('is-valid');
 
-                            // Validations spécifiques
-                            if (field.name === 'salaire_max' && field.value !== '') {
-                                const salaireMin = document.getElementById('salaire_min').value;
-                                if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
-                                    field.classList.remove('is-valid');
+                                    // Validations spécifiques
+                                    if (field.name === 'salaire_max' && field.value !== '') {
+                                        const salaireMin = document.getElementById('salaire_min').value;
+                                        if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
+                                            field.classList.remove('is-valid');
+                                            field.classList.add('is-invalid');
+                                            return;
+                                        }
+                                    }
+                                } else {
                                     field.classList.add('is-invalid');
-                                    return;
                                 }
                             }
-                        } else {
-                            field.classList.add('is-invalid');
                         }
-                    }
-                }
 
-                // Validation complète du formulaire
-                function validateForm() {
-                    const requiredFields = form.querySelectorAll('[required]');
-                    let isValid = true;
+                        // Validation complète du formulaire
+                        function validateForm() {
+                            const requiredFields = form.querySelectorAll('[required]');
+                            let isValid = true;
 
-                    requiredFields.forEach(field => {
-                        validateField(field);
-                        if (!field.checkValidity() || field.value.trim() === '') {
-                            isValid = false;
-                        }
-                    });
-
-                    // Validation personnalisée des salaires
-                    const salaireMin = document.getElementById('salaire_min');
-                    const salaireMax = document.getElementById('salaire_max');
-
-                    if (salaireMin.value && salaireMax.value &&
-                        parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
-                        salaireMax.classList.add('is-invalid');
-                        isValid = false;
-                    }
-
-                    if (!isValid) {
-                        Swal.fire({
-                            icon: 'warning',
-                            title: '⚠️ Formulaire incomplet',
-                            html: `
-                            <div class="text-center">
-                            <p>veuillez_remplir_tous_les_champs_obligatoires_marques_dun_asterisque</p>
-                            <div class="alert alert-light border mt-3">
-                            <small class="text-muted">
-                            <i class="fas fa-lightbulb me-1"></i>
-                            Les champs en rouge nécessitent votre attention.
-                            </small>
-                            </div>
-                            </div>
-                            `,
-                            confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
-                            confirmButtonColor: '#ffc107'
-                        });
-                    }
-
-                    return isValid;
-                }
-
-                // Réinitialiser le formulaire à la fermeture
-                modal.addEventListener('hidden.bs.modal', function() {
-                    form.reset();
-                    form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
-                        field.classList.remove('is-valid', 'is-invalid');
-                    });
-
-                    // Réinitialiser le bouton de soumission
-                    const submitBtn = form.querySelector('button[type="submit"]');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
-                });
-
-                // Auto-complétion intelligente
-                document.getElementById('titre').addEventListener('input', function(e) {
-                    const titre = e.target.value.toLowerCase();
-                    const entrepriseField = document.getElementById('entreprise');
-
-                    // Si le titre contient certains mots-clés, suggérer Excellium
-                    if (titre.includes('développeur') || titre.includes('web') || titre.includes(
-                            'consultant')) {
-                        if (!entrepriseField.value) {
-                            entrepriseField.value = 'Excellium Conseils';
-                            entrepriseField.classList.add('is-valid');
-                        }
-                    }
-                });
-
-                // Formatage automatique du téléphone
-                document.getElementById('contact_telephone').addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.length > 0 && !value.startsWith('225')) {
-                        value = '225' + value;
-                    }
-                    if (value.length > 3) {
-                        value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
-                    }
-                    e.target.value = value;
-                });
-            });
-
-            // Scripts pour la gestion des opportunités
-
-            // Fonctions pour gérer les critères
-            window.addCritere = function() {
-                const container = document.getElementById('criteres-container');
-                const newCritere = document.createElement('div');
-                newCritere.className = 'critere-item mb-2';
-                newCritere.innerHTML = `
-                    <div class="input-group">
-                        <input type="text" name="criteres[]" class="form-control" placeholder="Ex: Expérience minimum 3 ans">
-                        <button type="button" class="btn btn-outline-danger remove-critere" onclick="removeCritere(this)">
-                            <i class="ri-delete-bin-line"></i>
-                        </button>
-                    </div>
-                `;
-                container.appendChild(newCritere);
-            };
-
-            window.removeCritere = function(button) {
-                const container = document.getElementById('criteres-container');
-                if (container.children.length > 1) {
-                    button.closest('.critere-item').remove();
-                } else {
-                    Swal.fire('Attention', 'Au moins un critère est requis', 'warning');
-                }
-            };
-
-            // Fonctions pour gérer les informations
-            window.addInformation = function() {
-                const container = document.getElementById('informations-container');
-                const newInfo = document.createElement('div');
-                newInfo.className = 'information-item mb-2';
-                newInfo.innerHTML = `
-                    <div class="row">
-                        <div class="col-md-4">
-                            <input type="text" name="info_keys[]" class="form-control" placeholder="Clé (ex: Budget, Durée)">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" name="info_values[]" class="form-control" placeholder="Valeur (ex: 50000€, 6 mois)">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-outline-danger w-100" onclick="removeInformation(this)">
-                                <i class="ri-delete-bin-line"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(newInfo);
-            };
-
-            window.removeInformation = function(button) {
-                const container = document.getElementById('informations-container');
-                if (container.children.length > 1) {
-                    button.closest('.information-item').remove();
-                } else {
-                    Swal.fire('Attention', 'Au moins une information est requise', 'warning');
-                }
-            };
-            document.addEventListener('DOMContentLoaded', function() {
-
-                // Gestion du formulaire de création d'opportunité
-                const createOpportuniteForm = document.getElementById('createOpportuniteForm');
-                if (createOpportuniteForm) {
-                    createOpportuniteForm.addEventListener('submit', function(e) {
-                        e.preventDefault();
-
-                        const formData = new FormData(this);
-
-                        // S'assurer que le token CSRF est inclus dans FormData
-                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute(
-                            'content');
-                        formData.append('_token', csrfToken);
-
-                        // Afficher une animation de chargement
-                        const loading = Swal.fire({
-                            title: 'Création en cours...',
-                            html: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Création...</span></div>',
-                            allowOutsideClick: false,
-                            showConfirmButton: false
-                        });
-
-                        fetch('/admin/opportunites', {
-                                method: 'POST',
-                                body: formData,
-                                headers: {
-                                    'X-Requested-With': 'XMLHttpRequest'
+                            requiredFields.forEach(field => {
+                                validateField(field);
+                                if (!field.checkValidity() || field.value.trim() === '') {
+                                    isValid = false;
                                 }
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                Swal.close();
-                                if (data.success) {
-                                    Swal.fire('Succès', data.message, 'success');
-                                    createOpportuniteForm.reset();
-                                    $('#create_opportunite').modal('hide');
-                                    // Recharger la page ou mettre à jour la liste
-                                    location.reload();
-                                } else {
-                                    let errorMessage = data.message || 'Erreur lors de la création';
-                                    if (data.errors) {
-                                        errorMessage += '\n\nErreurs :\n';
-                                        Object.values(data.errors).forEach(error => {
-                                            errorMessage += '- ' + error[0] + '\n';
-                                        });
-                                    }
-                                    Swal.fire('Erreur', errorMessage, 'error');
-                                }
-                            })
-                            .catch(error => {
-                                Swal.close();
-                                console.error('Erreur:', error);
-                                Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
                             });
-                    });
-                }
-            });
 
-            // Fonction pour voir les détails d'une opportunité
-            function voirDetailsOpportunite(id) {
-                fetch(`/admin/opportunites/${id}`, {
-                        method: 'GET',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            const opp = data.opportunite;
-                            Swal.fire({
-                                title: opp.titre,
-                                html: `
-                                <form id="showOpportuniteForm">
+                            // Validation personnalisée des salaires
+                            const salaireMin = document.getElementById('salaire_min');
+                            const salaireMax = document.getElementById('salaire_max');
 
-                                    <!-- Description -->
-                                    <div class="mb-3">
-                                        <label class="form-label fw-bold">Description</label>
-                                        <textarea id="show_description" class="form-control" rows="3" readonly>${opp.description || ''}</textarea>
-                                    </div>
+                            if (salaireMin.value && salaireMax.value &&
+                                parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
+                                salaireMax.classList.add('is-invalid');
+                                isValid = false;
+                            }
 
-                                    <!-- Catégorie -->
-                                    <div class="mb-3">
-                                        <label class="form-label fw-bold">Catégorie</label>
-                                        <input type="text" class="form-control" value="${opp.categorie ? opp.categorie.nom : 'N/A'}" readonly>
-                                    </div>
-
-                                    <!-- Statut -->
-                                    <div class="mb-3">
-                                        <label class="form-label fw-bold">Statut</label>
-                                        <input type="text" class="form-control" value="${opp.statut}" readonly>
-                                    </div>
-
-                                    <!-- Dates -->
-                                    <div class="row g-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Date de début</label>
-                                            <input type="text" class="form-control" value="${opp.date_debut ? new Date(opp.date_debut).toLocaleDateString('fr-FR') : 'N/A'}" readonly>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Date de fin</label>
-                                            <input type="text" class="form-control" value="${opp.date_fin ? new Date(opp.date_fin).toLocaleDateString('fr-FR') : 'N/A'}" readonly>
-                                        </div>
-                                    </div>
-
-                                    <!-- Lieu et Email -->
-                                    <div class="row g-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Lieu</label>
-                                            <input type="text" class="form-control" value="${opp.lieu || 'N/A'}" readonly>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Email de contact</label>
-                                            <input type="email" class="form-control" value="${opp.contact_email || 'N/A'}" readonly>
-                                        </div>
-                                    </div>
-
-                                <div class="row g-3 mb-3">
-                                    <!-- Critères -->
-                                    <div class="col-md-6 9mb-3">
-                                        <label class="form-label fw-bold">Critères</label>
-                                        <ul class="list-group">
-                                            ${(opp.criteres || []).map(c => `<li class="list-group-item">${c}</li>`).join('') || '<li class="list-group-item">Aucun critère</li>'}
-                                        </ul>
-                                    </div>
-
-                                    <!-- Informations complémentaires -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label fw-bold">Informations complémentaires</label>
-                                        <ul class="list-group">
-                                            ${opp.informations ? Object.entries(opp.informations).map(([k,v]) => `
-                                                                                                        <li class="list-group-item"><strong>${k} :</strong> ${v}</li>
-                                                                                                    `).join('') : '<li class="list-group-item">Aucune information</li>'}
-                                        </ul>
-                                    </div>
-                                </div>
-                                    <div class="row g-3 mb-3">
-
-                                        <!-- Fichier joint -->
-                                    
-                                        <div class="col-md-6 mb-3">
-                                            <label class="form-label fw-bold">Fichier joint</label>
-                                            ${opp.fichier_joint ? `
-                                                                                                        <p><a href="/${opp.fichier_joint}" target="_blank" class="text-primary">
-                                                                                                        <i class="ri ri-file-line"></i> Voir le fichier</a></p>
-                                                                                                    ` : '<p>Aucun fichier joint</p>'}
-                                        </div>
-
-                                        <!-- Nombre de candidats -->
-                                        <div class="col-md-6 mb-3">
-                                            <label class="form-label fw-bold">Nombre de candidats</label>
-                                            <input type="text" class="form-control" value="${opp.postulations ? opp.postulations.length : 0}" readonly>
-                                        </div>
-                                    </div>
-
-                                </form>`,
-                                width: '80%',
-                                confirmButtonText: 'Fermer'
-                            });
-                        } else {
-                            Swal.fire('Erreur', 'Impossible de charger les détails', 'error');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erreur:', error);
-                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
-                    });
-            }
-
-            // Fonction pour modifier une opportunité
-            function modifierOpportunite(id) {
-                fetch(`/admin/opportunites/${id}/edit`, {
-                        method: 'GET',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        $('#liste_opportunites').modal('hide'); // ferme la modal liste
-                        if (data.success) {
-                            const opp = data.opportunite;
-                            Swal.fire({
-                                    title: '<h4 class="fw-bold">Modifier l\'opportunité</h4>',
+                            if (!isValid) {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: '⚠️ Formulaire incomplet',
                                     html: `
-
-                                    <form id="editOpportuniteForm" enctype="multipart/form-data">
-
-                                    <!-- Section Titre et Description -->
-                                    <div class="mb-4">
-                                        <label class="form-label fw-bold">Titre</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text bg-light"><i class="ri ri-edit-box-line"></i></span>
-                                            <input type="text" id="edit_titre" name="titre" class="form-control" 
-                                                value="${opp.titre}" required placeholder="Titre de l'opportunité">
-                                        </div>
+                                    <div class="text-center">
+                                    <p>veuillez_remplir_tous_les_champs_obligatoires_marques_dun_asterisque</p>
+                                    <div class="alert alert-light border mt-3">
+                                    <small class="text-muted">
+                                    <i class="fas fa-lightbulb me-1"></i>
+                                    Les champs en rouge nécessitent votre attention.
+                                    </small>
                                     </div>
-
-                                    <div class="mb-4">
-                                        <label class="form-label fw-bold">Description</label>
-                                        <textarea id="edit_description" name="description" class="form-control" rows="4" required 
-                                         placeholder="Description détaillée de l'opportunité">${opp.description}</textarea>
                                     </div>
-
-                                    <!-- Catégorie et Statut -->
-                                    <div class="row g-3 mb-4">
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Catégorie</label>
-                                            <select id="edit_categorie_id" name="categorie_id" class="form-select">
-                                                <option value="">Sélectionner une catégorie</option>
-                                                ${data.categories.map(cat =>
-                                                    `<option value="${cat.id}" ${cat.id == opp.categorie_id ? 'selected' : ''}>${cat.nom}</option>`
-                                                ).join('')}
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Statut</label>
-                                            <select id="edit_statut" name="statut" class="form-select" required>
-                                                <option value="brouillon" ${opp.statut === 'brouillon' ? 'selected' : ''}>Brouillon</option>
-                                                <option value="en_ligne" ${opp.statut === 'en_ligne' ? 'selected' : ''}>En ligne</option>
-                                                <option value="ferme" ${opp.statut === 'ferme' ? 'selected' : ''}>Fermé</option>
-                                                <option value="archive" ${opp.statut === 'archive' ? 'selected' : ''}>Archivé</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <!-- Dates -->
-                                    <div class="row g-3 mb-4">
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Date de début</label>
-                                            <input type="datetime-local" id="edit_date_debut" name="date_debut" class="form-control"
-                                                value="${opp.date_debut ? new Date(opp.date_debut).toISOString().slice(0, 16) : ''}">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Date de fin</label>
-                                            <input type="datetime-local" id="edit_date_fin" name="date_fin" class="form-control"
-                                                value="${opp.date_fin ? new Date(opp.date_fin).toISOString().slice(0, 16) : ''}">
-                                        </div>
-                                    </div>
-
-                                    <!-- Lieu et Email de contact -->
-                                    <div class="row g-3 mb-4">
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Lieu</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text bg-light"><i class="ri ri-map-pin-line"></i></span>
-                                                <input type="text" id="edit_lieu" name="lieu" class="form-control" 
-                                                    value="${opp.lieu || ''}" placeholder="Ville, pays">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bold">Email de contact</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text bg-light"><i class="ri ri-mail-line"></i></span>
-                                                <input type="email" id="edit_contact_email" name="contact_email" class="form-control" 
-                                                    value="${opp.contact_email || ''}" placeholder="email@exemple.com">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Critères dynamiques -->
-                                    <div class="mb-4">
-                                        <label class="form-label fw-bold">Critères</label>
-                                        <div id="criteres-container">
-                                            ${(opp.criteres || []).map((critere, index) => `
-                                                                            <div class="input-group mb-2">
-                                                                                <input type="text" name="criteres[]" class="form-control" value="${critere}" placeholder="Ajouter un critère">
-                                                                                <button type="button" class="btn btn-outline-danger remove-critere"><i class="ri ri-delete-bin-2-line"></i></button>
-                                                                            </div>
-                                                                        `).join('')}
-                                        </div>
-                                        <button type="button" class="btn btn-outline-primary btn-sm" id="add-critere">
-                                            <i class="ri ri-add-line"></i> Ajouter un critère
-                                        </button>
-                                    </div>
-
-                                    <!-- Informations complémentaires dynamiques -->
-                                    <div class="mb-4">
-                                        <label class="form-label fw-bold">Informations complémentaires</label>
-                                        <div id="infos-container">
-                                            ${opp.informations ? Object.entries(opp.informations).map(([key, value]) => `
-                                                                            <div class="row g-2 mb-2">
-                                                                                <div class="col-md-5">
-                                                                                    <input type="text" name="info_keys[]" class="form-control" value="${key}" placeholder="Clé">
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <input type="text" name="info_values[]" class="form-control" value="${value}" placeholder="Valeur">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <button type="button" class="btn btn-outline-danger remove-info w-100"><i class="ri ri-delete-bin-2-line"></i></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        `).join('') : ''}
-                                        </div>
-                                        <button type="button" class="btn btn-outline-primary btn-sm" id="add-info">
-                                            <i class="ri ri-add-line"></i> Ajouter une information
-                                        </button>
-                                    </div>
-
-                                    <!-- Fichier joint -->
-                                    <div class="mb-4">
-                                        <label class="form-label fw-bold">Fichier joint</label>
-                                        <input type="file" name="fichier_joint" id="edit_fichier_joint" class="form-control">
-                                        ${opp.fichier_joint ? `
-                                                                                                    <p class="mt-2">
-                                                                                                        <a href="/${opp.fichier_joint}" target="_blank" class="text-primary">
-                                                                                                            <i class="ri ri-file-line"></i> Voir le fichier actuel
-                                                                                                        </a>
-                                                                                                    </p>
-                                                                                                ` : ''}
-                                    </div>
-
-                                </form>
-
-
-                                `,
-                                    width: '80%',
-                                    showCancelButton: true,
-                                    confirmButtonText: 'Modifier',
-                                    cancelButtonText: 'Annuler',
-                                    preConfirm: () => {
-                                        const form = document.getElementById('editOpportuniteForm');
-                                        const formData = new FormData(form);
-
-                                        // Laravel ne reconnaît pas PUT via fetch directement, donc on ajoute :
-                                        formData.append('_method', 'PUT');
-
-                                        return fetch(`/admin/opportunites/${id}`, {
-                                                method: 'POST', // ⚠️ POST mais avec _method=PUT
-                                                headers: {
-                                                    'X-CSRF-TOKEN': document.querySelector(
-                                                        'meta[name="csrf-token"]').getAttribute('content'),
-                                                    'X-Requested-With': 'XMLHttpRequest'
-                                                },
-                                                body: formData
-                                            })
-                                            .then(response => response.json())
-                                            .then(data => {
-                                                if (!data.success) {
-                                                    throw new Error(data.message ||
-                                                        'Erreur lors de la modification');
-                                                }
-                                                return data;
-                                            });
-                                    }
-                                })
-                                .then((result) => {
-                                    if (result.isConfirmed) {
-                                        Swal.fire('Succès', 'Opportunité modifiée avec succès', 'success');
-                                        location.reload();
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Erreur:', error);
-                                    Swal.fire('Erreur', error.message, 'error');
+                                    `,
+                                    confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
+                                    confirmButtonColor: '#ffc107'
                                 });
-                        } else {
-                            Swal.fire('Erreur', 'Impossible de charger les données', 'error');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erreur:', error);
-                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
-                    });
-            }
-
-            // Fonction pour supprimer une opportunité
-            function supprimerOpportunite(id) {
-                Swal.fire({
-                    title: 'Supprimer cette opportunité ?',
-                    text: 'Cette action est irréversible !',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Oui, supprimer',
-                    cancelButtonText: 'Annuler',
-                    confirmButtonColor: '#dc3545'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        const loading = Swal.fire({
-                            title: 'Suppression en cours...',
-                            html: '<div class="spinner-border text-danger" role="status"><span class="visually-hidden">Suppression...</span></div>',
-                            allowOutsideClick: false,
-                            showConfirmButton: false
-                        });
-
-                        fetch(`/admin/opportunites/${id}`, {
-                                method: 'DELETE',
-                                headers: {
-                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-                                        'content'),
-                                    'X-Requested-With': 'XMLHttpRequest'
-                                }
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                Swal.close();
-                                if (data.success) {
-                                    Swal.fire('Succès', data.message, 'success');
-                                    location.reload();
-                                } else {
-                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                                }
-                            })
-                            .catch(error => {
-                                Swal.close();
-                                console.error('Erreur:', error);
-                                Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
-                            });
-                    }
-                });
-            }
-
-            // Fonction pour charger les candidats d'une opportunité
-            function chargerCandidatsOpportunite(opportuniteId) {
-                if (!opportuniteId) {
-                    document.getElementById('tbodyCandidatsOpportunites').innerHTML =
-                        '<tr><td colspan="6" class="text-center text-muted">Sélectionnez une opportunité pour voir les candidats</td></tr>';
-                    return;
-                }
-
-                // Afficher un indicateur de chargement
-                document.getElementById('tbodyCandidatsOpportunites').innerHTML =
-                    '<tr><td colspan="6" class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Chargement...</span></div></td></tr>';
-
-                fetch(`/admin/opportunites/${opportuniteId}/candidats`, {
-                        method: 'GET',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            const tbody = document.getElementById('tbodyCandidatsOpportunites');
-
-                            if (data.candidats.length === 0) {
-                                tbody.innerHTML =
-                                    '<tr><td colspan="6" class="text-center text-muted">Aucun candidat pour cette opportunité</td></tr>';
-                                return;
                             }
 
-                            tbody.innerHTML = data.candidats.map(candidat => `
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-sm me-3">
-                                <span class="avatar-initial rounded bg-primary">
-                                    ${candidat.prenom.charAt(0)}${candidat.nom.charAt(0)}
-                                </span>
-                            </div>
-                            <div>
-                                <h6 class="mb-0">${candidat.prenom} ${candidat.nom}</h6>
-                            </div>
-                        </div>
-                    </td>
-                    <td>${candidat.email}</td>
-                    <td>${candidat.telephone || 'N/A'}</td>
-                    <td>${candidat.date_postulation}</td>
-                    <td>
-                        <span class="badge ${getBadgeClassForStatut(candidat.statut)}">${getStatutLabel(candidat.statut)}</span>
-                    </td>
-                    <td class="text-center">
-                        <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="ri-more-2-line"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'accepte')">
-                                    <i class="ri-check-line me-1 text-success"></i> Accepter
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'refuse')">
-                                    <i class="ri-close-line me-1 text-danger"></i> Refuser
-                                </a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            `).join('');
-                        } else {
-                            document.getElementById('tbodyCandidatsOpportunites').innerHTML =
-                                '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement des candidats</td></tr>';
+                            return isValid;
                         }
-                    })
-                    .catch(error => {
-                        console.error('Erreur:', error);
-                        document.getElementById('tbodyCandidatsOpportunites').innerHTML =
-                            '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement</td></tr>';
+
+                        // Réinitialiser le formulaire à la fermeture
+                        modal.addEventListener('hidden.bs.modal', function() {
+                            form.reset();
+                            form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
+                                field.classList.remove('is-valid', 'is-invalid');
+                            });
+
+                            // Réinitialiser le bouton de soumission
+                            const submitBtn = form.querySelector('button[type="submit"]');
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
+                        });
+
+                        // Auto-complétion intelligente
+                        document.getElementById('titre').addEventListener('input', function(e) {
+                            const titre = e.target.value.toLowerCase();
+                            const entrepriseField = document.getElementById('entreprise');
+
+                            // Si le titre contient certains mots-clés, suggérer Excellium
+                            if (titre.includes('développeur') || titre.includes('web') || titre.includes(
+                                    'consultant')) {
+                                if (!entrepriseField.value) {
+                                    entrepriseField.value = 'Excellium Conseils';
+                                    entrepriseField.classList.add('is-valid');
+                                }
+                            }
+                        });
+
+                        // Formatage automatique du téléphone
+                        document.getElementById('contact_telephone').addEventListener('input', function(e) {
+                            let value = e.target.value.replace(/\D/g, '');
+                            if (value.length > 0 && !value.startsWith('225')) {
+                                value = '225' + value;
+                            }
+                            if (value.length > 3) {
+                                value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
+                            }
+                            e.target.value = value;
+                        });
                     });
-            }
 
-            // Fonction pour changer le statut d'une postulation
-            function changerStatutPostulation(postulationId, nouveauStatut) {
-                const statutLabel = getStatutLabel(nouveauStatut);
+                    // Scripts pour la gestion des opportunités
 
-                Swal.fire({
-                    title: `Changer le statut à "${statutLabel}" ?`,
-                    text: 'Cette action modifiera le statut de la postulation',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonText: 'Confirmer',
-                    cancelButtonText: 'Annuler'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        fetch(`/admin/postulations/${postulationId}/statut`, {
-                                method: 'PATCH',
+                    // Fonctions pour gérer les critères
+                    window.addCritere = function() {
+                        const container = document.getElementById('criteres-container');
+                        const newCritere = document.createElement('div');
+                        newCritere.className = 'critere-item mb-2';
+                        newCritere.innerHTML = `
+                            <div class="input-group">
+                                <input type="text" name="criteres[]" class="form-control" placeholder="Ex: Expérience minimum 3 ans">
+                                <button type="button" class="btn btn-outline-danger remove-critere" onclick="removeCritere(this)">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </div>
+                        `;
+                        container.appendChild(newCritere);
+                    };
+
+                    window.removeCritere = function(button) {
+                        const container = document.getElementById('criteres-container');
+                        if (container.children.length > 1) {
+                            button.closest('.critere-item').remove();
+                        } else {
+                            Swal.fire('Attention', 'Au moins un critère est requis', 'warning');
+                        }
+                    };
+
+                    // Fonctions pour gérer les informations
+                    window.addInformation = function() {
+                        const container = document.getElementById('informations-container');
+                        const newInfo = document.createElement('div');
+                        newInfo.className = 'information-item mb-2';
+                        newInfo.innerHTML = `
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="text" name="info_keys[]" class="form-control" placeholder="Clé (ex: Budget, Durée)">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="info_values[]" class="form-control" placeholder="Valeur (ex: 50000€, 6 mois)">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-outline-danger w-100" onclick="removeInformation(this)">
+                                        <i class="ri-delete-bin-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        container.appendChild(newInfo);
+                    };
+
+                    window.removeInformation = function(button) {
+                        const container = document.getElementById('informations-container');
+                        if (container.children.length > 1) {
+                            button.closest('.information-item').remove();
+                        } else {
+                            Swal.fire('Attention', 'Au moins une information est requise', 'warning');
+                        }
+                    };
+                    document.addEventListener('DOMContentLoaded', function() {
+
+                        // Gestion du formulaire de création d'opportunité
+                        const createOpportuniteForm = document.getElementById('createOpportuniteForm');
+                        if (createOpportuniteForm) {
+                            createOpportuniteForm.addEventListener('submit', function(e) {
+                                e.preventDefault();
+
+                                const formData = new FormData(this);
+
+                                // S'assurer que le token CSRF est inclus dans FormData
+                                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                    'content');
+                                formData.append('_token', csrfToken);
+
+                                // Afficher une animation de chargement
+                                const loading = Swal.fire({
+                                    title: 'Création en cours...',
+                                    html: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Création...</span></div>',
+                                    allowOutsideClick: false,
+                                    showConfirmButton: false
+                                });
+
+                                fetch('/admin/opportunites', {
+                                        method: 'POST',
+                                        body: formData,
+                                        headers: {
+                                            'X-Requested-With': 'XMLHttpRequest'
+                                        }
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        Swal.close();
+                                        if (data.success) {
+                                            Swal.fire('Succès', data.message, 'success');
+                                            createOpportuniteForm.reset();
+                                            $('#create_opportunite').modal('hide');
+                                            // Recharger la page ou mettre à jour la liste
+                                            location.reload();
+                                        } else {
+                                            let errorMessage = data.message || 'Erreur lors de la création';
+                                            if (data.errors) {
+                                                errorMessage += '\n\nErreurs :\n';
+                                                Object.values(data.errors).forEach(error => {
+                                                    errorMessage += '- ' + error[0] + '\n';
+                                                });
+                                            }
+                                            Swal.fire('Erreur', errorMessage, 'error');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        Swal.close();
+                                        console.error('Erreur:', error);
+                                        Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
+                                    });
+                            });
+                        }
+                    });
+
+                    // Fonction pour voir les détails d'une opportunité
+                    function voirDetailsOpportunite(id) {
+                        fetch(`/admin/opportunites/${id}`, {
+                                method: 'GET',
                                 headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-                                        'content'),
                                     'X-Requested-With': 'XMLHttpRequest'
-                                },
-                                body: JSON.stringify({
-                                    statut: nouveauStatut
-                                })
+                                }
                             })
                             .then(response => response.json())
                             .then(data => {
                                 if (data.success) {
-                                    Swal.fire('Succès', data.message, 'success');
-                                    // Recharger les candidats
-                                    const selectElement = document.getElementById('selectOpportuniteCandidats');
-                                    if (selectElement.value) {
-                                        chargerCandidatsOpportunite(selectElement.value);
-                                    }
+                                    const opp = data.opportunite;
+                                    Swal.fire({
+                                        title: opp.titre,
+                                        html: `
+                                        <form id="showOpportuniteForm">
+
+                                            <!-- Description -->
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">Description</label>
+                                                <textarea id="show_description" class="form-control" rows="3" readonly>${opp.description || ''}</textarea>
+                                            </div>
+
+                                            <!-- Catégorie -->
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">Catégorie</label>
+                                                <input type="text" class="form-control" value="${opp.categorie ? opp.categorie.nom : 'N/A'}" readonly>
+                                            </div>
+
+                                            <!-- Statut -->
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">Statut</label>
+                                                <input type="text" class="form-control" value="${opp.statut}" readonly>
+                                            </div>
+
+                                            <!-- Dates -->
+                                            <div class="row g-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Date de début</label>
+                                                    <input type="text" class="form-control" value="${opp.date_debut ? new Date(opp.date_debut).toLocaleDateString('fr-FR') : 'N/A'}" readonly>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Date de fin</label>
+                                                    <input type="text" class="form-control" value="${opp.date_fin ? new Date(opp.date_fin).toLocaleDateString('fr-FR') : 'N/A'}" readonly>
+                                                </div>
+                                            </div>
+
+                                            <!-- Lieu et Email -->
+                                            <div class="row g-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Lieu</label>
+                                                    <input type="text" class="form-control" value="${opp.lieu || 'N/A'}" readonly>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Email de contact</label>
+                                                    <input type="email" class="form-control" value="${opp.contact_email || 'N/A'}" readonly>
+                                                </div>
+                                            </div>
+
+                                        <div class="row g-3 mb-3">
+                                            <!-- Critères -->
+                                            <div class="col-md-6 9mb-3">
+                                                <label class="form-label fw-bold">Critères</label>
+                                                <ul class="list-group">
+                                                    ${(opp.criteres || []).map(c => `<li class="list-group-item">${c}</li>`).join('') || '<li class="list-group-item">Aucun critère</li>'}
+                                                </ul>
+                                            </div>
+
+                                            <!-- Informations complémentaires -->
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-bold">Informations complémentaires</label>
+                                                <ul class="list-group">
+                                                    ${opp.informations ? Object.entries(opp.informations).map(([k,v]) => `
+                                                                                                                        <li class="list-group-item"><strong>${k} :</strong> ${v}</li>
+                                                                                                                    `).join('') : '<li class="list-group-item">Aucune information</li>'}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                            <div class="row g-3 mb-3">
+
+                                                <!-- Fichier joint -->
+                                            
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="form-label fw-bold">Fichier joint</label>
+                                                    ${opp.fichier_joint ? `
+                                                                                                                        <p><a href="/${opp.fichier_joint}" target="_blank" class="text-primary">
+                                                                                                                        <i class="ri ri-file-line"></i> Voir le fichier</a></p>
+                                                                                                                    ` : '<p>Aucun fichier joint</p>'}
+                                                </div>
+
+                                                <!-- Nombre de candidats -->
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="form-label fw-bold">Nombre de candidats</label>
+                                                    <input type="text" class="form-control" value="${opp.postulations ? opp.postulations.length : 0}" readonly>
+                                                </div>
+                                            </div>
+
+                                        </form>`,
+                                        width: '80%',
+                                        confirmButtonText: 'Fermer'
+                                    });
                                 } else {
-                                    Swal.fire('Erreur', data.message || 'Erreur lors du changement de statut',
-                                        'error');
+                                    Swal.fire('Erreur', 'Impossible de charger les détails', 'error');
                                 }
                             })
                             .catch(error => {
@@ -5263,57 +4902,519 @@ Publication en cours...
                                 Swal.fire('Erreur', 'Une erreur est survenue', 'error');
                             });
                     }
-                });
-            }
 
-            // Fonctions utilitaires
-            function getBadgeClassForStatut(statut) {
-                switch (statut) {
-                    case 'accepte':
-                        return 'bg-label-success';
-                    case 'refuse':
-                        return 'bg-label-danger';
-                    case 'en_attente':
-                        return 'bg-label-warning';
-                    default:
-                        return 'bg-label-info';
-                }
-            }
+                    // Fonction pour modifier une opportunité
+                    function modifierOpportunite(id) {
+                        fetch(`/admin/opportunites/${id}/edit`, {
+                                method: 'GET',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                $('#liste_opportunites').modal('hide'); // ferme la modal liste
+                                if (data.success) {
+                                    const opp = data.opportunite;
+                                    Swal.fire({
+                                            title: '<h4 class="fw-bold">Modifier l\'opportunité</h4>',
+                                            html: `
 
-            function getStatutLabel(statut) {
-                switch (statut) {
-                    case 'accepte':
-                        return 'Accepté';
-                    case 'refuse':
-                        return 'Refusé';
-                    case 'en_attente':
-                        return 'En attente';
-                    default:
-                        return 'Inconnu';
-                }
-            }
-        </script>
+                                            <form id="editOpportuniteForm" enctype="multipart/form-data">
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const form = document.getElementById('createCategorieForm');
-                if (form) {
-                    form.addEventListener('submit', function(e) {
-                        e.preventDefault();
+                                            <!-- Section Titre et Description -->
+                                            <div class="mb-4">
+                                                <label class="form-label fw-bold">Titre</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text bg-light"><i class="ri ri-edit-box-line"></i></span>
+                                                    <input type="text" id="edit_titre" name="titre" class="form-control" 
+                                                        value="${opp.titre}" required placeholder="Titre de l'opportunité">
+                                                </div>
+                                            </div>
 
-                        // Animation de chargement
+                                            <div class="mb-4">
+                                                <label class="form-label fw-bold">Description</label>
+                                                <textarea id="edit_description" name="description" class="form-control" rows="4" required 
+                                                placeholder="Description détaillée de l'opportunité">${opp.description}</textarea>
+                                            </div>
+
+                                            <!-- Catégorie et Statut -->
+                                            <div class="row g-3 mb-4">
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Catégorie</label>
+                                                    <select id="edit_categorie_id" name="categorie_id" class="form-select">
+                                                        <option value="">Sélectionner une catégorie</option>
+                                                        ${data.categories.map(cat =>
+                                                            `<option value="${cat.id}" ${cat.id == opp.categorie_id ? 'selected' : ''}>${cat.nom}</option>`
+                                                        ).join('')}
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Statut</label>
+                                                    <select id="edit_statut" name="statut" class="form-select" required>
+                                                        <option value="brouillon" ${opp.statut === 'brouillon' ? 'selected' : ''}>Brouillon</option>
+                                                        <option value="en_ligne" ${opp.statut === 'en_ligne' ? 'selected' : ''}>En ligne</option>
+                                                        <option value="ferme" ${opp.statut === 'ferme' ? 'selected' : ''}>Fermé</option>
+                                                        <option value="archive" ${opp.statut === 'archive' ? 'selected' : ''}>Archivé</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Dates -->
+                                            <div class="row g-3 mb-4">
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Date de début</label>
+                                                    <input type="datetime-local" id="edit_date_debut" name="date_debut" class="form-control"
+                                                        value="${opp.date_debut ? new Date(opp.date_debut).toISOString().slice(0, 16) : ''}">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Date de fin</label>
+                                                    <input type="datetime-local" id="edit_date_fin" name="date_fin" class="form-control"
+                                                        value="${opp.date_fin ? new Date(opp.date_fin).toISOString().slice(0, 16) : ''}">
+                                                </div>
+                                            </div>
+
+                                            <!-- Lieu et Email de contact -->
+                                            <div class="row g-3 mb-4">
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Lieu</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text bg-light"><i class="ri ri-map-pin-line"></i></span>
+                                                        <input type="text" id="edit_lieu" name="lieu" class="form-control" 
+                                                            value="${opp.lieu || ''}" placeholder="Ville, pays">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Email de contact</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text bg-light"><i class="ri ri-mail-line"></i></span>
+                                                        <input type="email" id="edit_contact_email" name="contact_email" class="form-control" 
+                                                            value="${opp.contact_email || ''}" placeholder="email@exemple.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Critères dynamiques -->
+                                            <div class="mb-4">
+                                                <label class="form-label fw-bold">Critères</label>
+                                                <div id="criteres-container">
+                                                    ${(opp.criteres || []).map((critere, index) => `
+                                                                                            <div class="input-group mb-2">
+                                                                                                <input type="text" name="criteres[]" class="form-control" value="${critere}" placeholder="Ajouter un critère">
+                                                                                                <button type="button" class="btn btn-outline-danger remove-critere"><i class="ri ri-delete-bin-2-line"></i></button>
+                                                                                            </div>
+                                                                                        `).join('')}
+                                                </div>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" id="add-critere">
+                                                    <i class="ri ri-add-line"></i> Ajouter un critère
+                                                </button>
+                                            </div>
+
+                                            <!-- Informations complémentaires dynamiques -->
+                                            <div class="mb-4">
+                                                <label class="form-label fw-bold">Informations complémentaires</label>
+                                                <div id="infos-container">
+                                                    ${opp.informations ? Object.entries(opp.informations).map(([key, value]) => `
+                                                                                            <div class="row g-2 mb-2">
+                                                                                                <div class="col-md-5">
+                                                                                                    <input type="text" name="info_keys[]" class="form-control" value="${key}" placeholder="Clé">
+                                                                                                </div>
+                                                                                                <div class="col-md-5">
+                                                                                                    <input type="text" name="info_values[]" class="form-control" value="${value}" placeholder="Valeur">
+                                                                                                </div>
+                                                                                                <div class="col-md-2">
+                                                                                                    <button type="button" class="btn btn-outline-danger remove-info w-100"><i class="ri ri-delete-bin-2-line"></i></button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        `).join('') : ''}
+                                                </div>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" id="add-info">
+                                                    <i class="ri ri-add-line"></i> Ajouter une information
+                                                </button>
+                                            </div>
+
+                                            <!-- Fichier joint -->
+                                            <div class="mb-4">
+                                                <label class="form-label fw-bold">Fichier joint</label>
+                                                <input type="file" name="fichier_joint" id="edit_fichier_joint" class="form-control">
+                                                ${opp.fichier_joint ? `
+                                                                                                                    <p class="mt-2">
+                                                                                                                        <a href="/${opp.fichier_joint}" target="_blank" class="text-primary">
+                                                                                                                            <i class="ri ri-file-line"></i> Voir le fichier actuel
+                                                                                                                        </a>
+                                                                                                                    </p>
+                                                                                                                ` : ''}
+                                            </div>
+
+                                        </form>
+
+
+                                        `,
+                                            width: '80%',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Modifier',
+                                            cancelButtonText: 'Annuler',
+                                            preConfirm: () => {
+                                                const form = document.getElementById('editOpportuniteForm');
+                                                const formData = new FormData(form);
+
+                                                // Laravel ne reconnaît pas PUT via fetch directement, donc on ajoute :
+                                                formData.append('_method', 'PUT');
+
+                                                return fetch(`/admin/opportunites/${id}`, {
+                                                        method: 'POST', // ⚠️ POST mais avec _method=PUT
+                                                        headers: {
+                                                            'X-CSRF-TOKEN': document.querySelector(
+                                                                'meta[name="csrf-token"]').getAttribute('content'),
+                                                            'X-Requested-With': 'XMLHttpRequest'
+                                                        },
+                                                        body: formData
+                                                    })
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        if (!data.success) {
+                                                            throw new Error(data.message ||
+                                                                'Erreur lors de la modification');
+                                                        }
+                                                        return data;
+                                                    });
+                                            }
+                                        })
+                                        .then((result) => {
+                                            if (result.isConfirmed) {
+                                                Swal.fire('Succès', 'Opportunité modifiée avec succès', 'success');
+                                                location.reload();
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Erreur:', error);
+                                            Swal.fire('Erreur', error.message, 'error');
+                                        });
+                                } else {
+                                    Swal.fire('Erreur', 'Impossible de charger les données', 'error');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erreur:', error);
+                                Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                            });
+                    }
+
+                    // Fonction pour supprimer une opportunité
+                    function supprimerOpportunite(id) {
                         Swal.fire({
-                            title: 'Création en cours...',
-                            allowOutsideClick: false,
-                            didOpen: () => {
-                                Swal.showLoading();
-                            },
-                            preConfirm: () => {
-                                const nom = Swal.getInputValue('nom');
-                                if (!nom) {
+                            title: 'Supprimer cette opportunité ?',
+                            text: 'Cette action est irréversible !',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, supprimer',
+                            cancelButtonText: 'Annuler',
+                            confirmButtonColor: '#dc3545'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                const loading = Swal.fire({
+                                    title: 'Suppression en cours...',
+                                    html: '<div class="spinner-border text-danger" role="status"><span class="visually-hidden">Suppression...</span></div>',
+                                    allowOutsideClick: false,
+                                    showConfirmButton: false
+                                });
+
+                                fetch(`/admin/opportunites/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                                'content'),
+                                            'X-Requested-With': 'XMLHttpRequest'
+                                        }
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        Swal.close();
+                                        if (data.success) {
+                                            Swal.fire('Succès', data.message, 'success');
+                                            location.reload();
+                                        } else {
+                                            Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        Swal.close();
+                                        console.error('Erreur:', error);
+                                        Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
+                                    });
+                            }
+                        });
+                    }
+
+                    // Fonction pour charger les candidats d'une opportunité
+                    function chargerCandidatsOpportunite(opportuniteId) {
+                        if (!opportuniteId) {
+                            document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                                '<tr><td colspan="6" class="text-center text-muted">Sélectionnez une opportunité pour voir les candidats</td></tr>';
+                            return;
+                        }
+
+                        // Afficher un indicateur de chargement
+                        document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                            '<tr><td colspan="6" class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Chargement...</span></div></td></tr>';
+
+                        fetch(`/admin/opportunites/${opportuniteId}/candidats`, {
+                                method: 'GET',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    const tbody = document.getElementById('tbodyCandidatsOpportunites');
+
+                                    if (data.candidats.length === 0) {
+                                        tbody.innerHTML =
+                                            '<tr><td colspan="6" class="text-center text-muted">Aucun candidat pour cette opportunité</td></tr>';
+                                        return;
+                                    }
+
+                                    tbody.innerHTML = data.candidats.map(candidat => `
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar avatar-sm me-3">
+                                        <span class="avatar-initial rounded bg-primary">
+                                            ${candidat.prenom.charAt(0)}${candidat.nom.charAt(0)}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">${candidat.prenom} ${candidat.nom}</h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>${candidat.email}</td>
+                            <td>${candidat.telephone || 'N/A'}</td>
+                            <td>${candidat.date_postulation}</td>
+                            <td>
+                                <span class="badge ${getBadgeClassForStatut(candidat.statut)}">${getStatutLabel(candidat.statut)}</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="ri-more-2-line"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'accepte')">
+                                            <i class="ri-check-line me-1 text-success"></i> Accepter
+                                        </a>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'refuse')">
+                                            <i class="ri-close-line me-1 text-danger"></i> Refuser
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    `).join('');
+                                } else {
+                                    document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                                        '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement des candidats</td></tr>';
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erreur:', error);
+                                document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                                    '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement</td></tr>';
+                            });
+                    }
+
+                    // Fonction pour changer le statut d'une postulation
+                    function changerStatutPostulation(postulationId, nouveauStatut) {
+                        const statutLabel = getStatutLabel(nouveauStatut);
+
+                        Swal.fire({
+                            title: `Changer le statut à "${statutLabel}" ?`,
+                            text: 'Cette action modifiera le statut de la postulation',
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonText: 'Confirmer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch(`/admin/postulations/${postulationId}/statut`, {
+                                        method: 'PATCH',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                                'content'),
+                                            'X-Requested-With': 'XMLHttpRequest'
+                                        },
+                                        body: JSON.stringify({
+                                            statut: nouveauStatut
+                                        })
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Succès', data.message, 'success');
+                                            // Recharger les candidats
+                                            const selectElement = document.getElementById('selectOpportuniteCandidats');
+                                            if (selectElement.value) {
+                                                chargerCandidatsOpportunite(selectElement.value);
+                                            }
+                                        } else {
+                                            Swal.fire('Erreur', data.message || 'Erreur lors du changement de statut',
+                                                'error');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Erreur:', error);
+                                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                                    });
+                            }
+                        });
+                    }
+
+                    // Fonctions utilitaires
+                    function getBadgeClassForStatut(statut) {
+                        switch (statut) {
+                            case 'accepte':
+                                return 'bg-label-success';
+                            case 'refuse':
+                                return 'bg-label-danger';
+                            case 'en_attente':
+                                return 'bg-label-warning';
+                            default:
+                                return 'bg-label-info';
+                        }
+                    }
+
+                    function getStatutLabel(statut) {
+                        switch (statut) {
+                            case 'accepte':
+                                return 'Accepté';
+                            case 'refuse':
+                                return 'Refusé';
+                            case 'en_attente':
+                                return 'En attente';
+                            default:
+                                return 'Inconnu';
+                        }
+                    }
+                </script>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const form = document.getElementById('createCategorieForm');
+                        if (form) {
+                            form.addEventListener('submit', function(e) {
+                                e.preventDefault();
+
+                                // Animation de chargement
+                                Swal.fire({
+                                    title: 'Création en cours...',
+                                    allowOutsideClick: false,
+                                    didOpen: () => {
+                                        Swal.showLoading();
+                                    },
+                                    preConfirm: () => {
+                                        const nom = Swal.getInputValue('nom');
+                                        if (!nom) {
+                                            Swal.showValidationMessage('Le nom est requis');
+                                        }
+                                        return nom;
+                                    },
+                                    didOpen: () => {
+                                        setTimeout(() => {
+                                            const input = Swal.getInput();
+                                            if (input) input.focus();
+                                        }, 100);
+                                    }
+                                });
+
+                                const formData = new FormData(form);
+
+                                fetch(form.action, {
+                                        method: 'POST',
+                                        headers: {
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                        },
+                                        body: formData
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        Swal.close();
+                                        if (data.success) {
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Succès',
+                                                text: data.message,
+                                                confirmButtonText: 'OK'
+                                            }).then(() => {
+                                                // Optionnel : reset le formulaire ou rafraîchir la liste
+                                                form.reset();
+                                                // Tu peux aussi recharger dynamiquement la liste ici si besoin
+                                            });
+                                        } else {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Erreur',
+                                                text: data.message || 'Une erreur est survenue.'
+                                            });
+                                        }
+                                    })
+                                    .catch(error => {
+                                        Swal.close();
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Erreur',
+                                            text: 'Une erreur inattendue est survenue.'
+                                        });
+                                    });
+                            });
+                        }
+                    });
+                </script>
+
+                <!-- Scripts pour la gestion des catégories -->
+                <script>
+                    function fetchCategories() {
+                        fetch('/admin/categories/list')
+                            .then(res => res.json())
+                            .then(categories => {
+                                const tbody = document.getElementById('categoriesTableBody');
+                                tbody.innerHTML = '';
+                                categories.forEach(cat => {
+                                    tbody.innerHTML += `
+                            <tr>
+                            <td>${cat.id}</td>
+                            <td>${cat.nom}</td>
+                            <td>
+                            <button class="btn btn-sm btn-primary" onclick="showEditModal(${cat.id}, '${cat.nom.replace(/'/g, "\\'")}')"><i class="ri ri-edit-line"></i></button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteCategorie(${cat.id})"><i class="ri ri-delete-bin-line"></i></button>
+                            </td>
+                            </tr>
+                            `;
+                                });
+                            });
+                    }
+
+                    // Afficher la modale d'édition
+                    function showEditModal(id, nom) {
+                        // Fermer la modale Bootstrap si elle est ouverte
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('liste_categories'));
+                        if (modal) modal.hide();
+
+                        // Puis ouvrir SweetAlert2
+                        Swal.fire({
+                            title: 'Modifier la catégorie',
+                            input: 'text',
+                            inputValue: nom,
+                            showCancelButton: true,
+                            confirmButtonText: 'Enregistrer',
+                            cancelButtonText: 'Annuler',
+                            preConfirm: (newNom) => {
+                                if (!newNom) {
                                     Swal.showValidationMessage('Le nom est requis');
                                 }
-                                return nom;
+                                return newNom;
                             },
                             didOpen: () => {
                                 setTimeout(() => {
@@ -5321,161 +5422,30 @@ Publication en cours...
                                     if (input) input.focus();
                                 }, 100);
                             }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                updateCategorie(id, result.value);
+                            }
                         });
-
-                        const formData = new FormData(form);
-
-                        fetch(form.action, {
-                                method: 'POST',
-                                headers: {
-                                    'X-Requested-With': 'XMLHttpRequest',
-                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                                },
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                Swal.close();
-                                if (data.success) {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Succès',
-                                        text: data.message,
-                                        confirmButtonText: 'OK'
-                                    }).then(() => {
-                                        // Optionnel : reset le formulaire ou rafraîchir la liste
-                                        form.reset();
-                                        // Tu peux aussi recharger dynamiquement la liste ici si besoin
-                                    });
-                                } else {
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Erreur',
-                                        text: data.message || 'Une erreur est survenue.'
-                                    });
-                                }
-                            })
-                            .catch(error => {
-                                Swal.close();
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur',
-                                    text: 'Une erreur inattendue est survenue.'
-                                });
-                            });
-                    });
-                }
-            });
-        </script>
-
-        <!-- Scripts pour la gestion des catégories -->
-        <script>
-            function fetchCategories() {
-                fetch('/admin/categories/list')
-                    .then(res => res.json())
-                    .then(categories => {
-                        const tbody = document.getElementById('categoriesTableBody');
-                        tbody.innerHTML = '';
-                        categories.forEach(cat => {
-                            tbody.innerHTML += `
-                    <tr>
-                    <td>${cat.id}</td>
-                    <td>${cat.nom}</td>
-                    <td>
-                    <button class="btn btn-sm btn-primary" onclick="showEditModal(${cat.id}, '${cat.nom.replace(/'/g, "\\'")}')"><i class="ri ri-edit-line"></i></button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteCategorie(${cat.id})"><i class="ri ri-delete-bin-line"></i></button>
-                    </td>
-                    </tr>
-                    `;
-                        });
-                    });
-            }
-
-            // Afficher la modale d'édition
-            function showEditModal(id, nom) {
-                // Fermer la modale Bootstrap si elle est ouverte
-                const modal = bootstrap.Modal.getInstance(document.getElementById('liste_categories'));
-                if (modal) modal.hide();
-
-                // Puis ouvrir SweetAlert2
-                Swal.fire({
-                    title: 'Modifier la catégorie',
-                    input: 'text',
-                    inputValue: nom,
-                    showCancelButton: true,
-                    confirmButtonText: 'Enregistrer',
-                    cancelButtonText: 'Annuler',
-                    preConfirm: (newNom) => {
-                        if (!newNom) {
-                            Swal.showValidationMessage('Le nom est requis');
-                        }
-                        return newNom;
-                    },
-                    didOpen: () => {
-                        setTimeout(() => {
-                            const input = Swal.getInput();
-                            if (input) input.focus();
-                        }, 100);
                     }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        updateCategorie(id, result.value);
-                    }
-                });
-            }
 
-            // Modifier une catégorie
-            function updateCategorie(id, nom) {
-                Swal.fire({
-                    title: 'Mise à jour...',
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
-                fetch(`/admin/categories/${id}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                            'X-Requested-With': 'XMLHttpRequest'
-                        },
-                        body: JSON.stringify({
-                            nom
-                        })
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        Swal.close();
-                        if (data.success) {
-                            Swal.fire('Succès', data.message, 'success');
-                            fetchCategories();
-                        } else {
-                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
-                        }
-                    });
-            }
-
-            // Supprimer une catégorie
-            function deleteCategorie(id) {
-                Swal.fire({
-                    title: 'Supprimer cette catégorie ?',
-                    text: 'Cette action est irréversible !',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Oui, supprimer',
-                    cancelButtonText: 'Annuler'
-                }).then((result) => {
-                    if (result.isConfirmed) {
+                    // Modifier une catégorie
+                    function updateCategorie(id, nom) {
                         Swal.fire({
-                            title: 'Suppression...',
+                            title: 'Mise à jour...',
                             allowOutsideClick: false,
                             didOpen: () => Swal.showLoading()
                         });
                         fetch(`/admin/categories/${id}`, {
-                                method: 'DELETE',
+                                method: 'PUT',
                                 headers: {
+                                    'Content-Type': 'application/json',
                                     'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
                                     'X-Requested-With': 'XMLHttpRequest'
-                                }
+                                },
+                                body: JSON.stringify({
+                                    nom
+                                })
                             })
                             .then(res => res.json())
                             .then(data => {
@@ -5484,146 +5454,172 @@ Publication en cours...
                                     Swal.fire('Succès', data.message, 'success');
                                     fetchCategories();
                                 } else {
-                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
                                 }
                             });
                     }
-                });
-            }
 
-            // Rafraîchir la liste à l'ouverture de la modale
-            document.addEventListener('DOMContentLoaded', function() {
-                // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
-                fetchCategories();
-            });
-        </script>
-        <!-- ///////////////////////////////////// -->
-
-
-
-        <!-- Scripts pour la gestion des produits -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const createProduitForm = document.getElementById('createProduitForm');
-                if (!createProduitForm) return;
-
-                createProduitForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    // Afficher le chargement
-                    Swal.fire({
-                        title: 'Création en cours...',
-                        html: ``,
-                        allowOutsideClick: false,
-                        didOpen: () => {
-                            Swal.showLoading();
-                        }
-                    });
-
-                    const formData = new FormData(createProduitForm);
-
-                    fetch(createProduitForm.action, {
-                            method: 'POST',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                            },
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            Swal.close();
-
-                            if (data.success) {
+                    // Supprimer une catégorie
+                    function deleteCategorie(id) {
+                        Swal.fire({
+                            title: 'Supprimer cette catégorie ?',
+                            text: 'Cette action est irréversible !',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Oui, supprimer',
+                            cancelButtonText: 'Annuler'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
                                 Swal.fire({
-                                    icon: 'success',
-                                    title: 'Succès',
-                                    html: `
-                                        <div class="text-center">
-                                            <p class="mb-0">${data.message}</p>
-                                        </div>
-                                    `,
-                                    confirmButtonText: 'OK',
-                                    customClass: {
-                                        confirmButton: 'btn btn-success'
-                                    }
-                                }).then(() => {
-                                    createProduitForm.reset();
-                                    if (typeof fetchProduits === 'function') {
-                                        fetchProduits();
-                                    }
+                                    title: 'Suppression...',
+                                    allowOutsideClick: false,
+                                    didOpen: () => Swal.showLoading()
                                 });
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur',
-                                    html: ``,
-                                    confirmButtonText: 'OK',
-                                    customClass: {
-                                        confirmButton: 'btn btn-danger'
-                                    }
-                                });
+                                fetch(`/admin/categories/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                                            'X-Requested-With': 'XMLHttpRequest'
+                                        }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        Swal.close();
+                                        if (data.success) {
+                                            Swal.fire('Succès', data.message, 'success');
+                                            fetchCategories();
+                                        } else {
+                                            Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                        }
+                                    });
                             }
-                        })
-                        .catch(err => {
-                            Swal.close();
+                        });
+                    }
+
+                    // Rafraîchir la liste à l'ouverture de la modale
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
+                        fetchCategories();
+                    });
+                </script>
+                <!-- ///////////////////////////////////// -->
+
+
+
+                <!-- Scripts pour la gestion des produits -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const createProduitForm = document.getElementById('createProduitForm');
+                        if (!createProduitForm) return;
+
+                        createProduitForm.addEventListener('submit', function(e) {
+                            e.preventDefault();
+
+                            // Afficher le chargement
                             Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur inattendue',
-                                html: ` `,
-                                confirmButtonText: 'OK',
-                                customClass: {
-                                    confirmButton: 'btn btn-danger'
+                                title: 'Création en cours...',
+                                html: ``,
+                                allowOutsideClick: false,
+                                didOpen: () => {
+                                    Swal.showLoading();
                                 }
                             });
-                            console.error('Erreur lors de la requête:', err);
+
+                            const formData = new FormData(createProduitForm);
+
+                            fetch(createProduitForm.action, {
+                                    method: 'POST',
+                                    headers: {
+                                        'X-Requested-With': 'XMLHttpRequest',
+                                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                    },
+                                    body: formData
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    Swal.close();
+
+                                    if (data.success) {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Succès',
+                                            html: `
+                                                <div class="text-center">
+                                                    <p class="mb-0">${data.message}</p>
+                                                </div>
+                                            `,
+                                            confirmButtonText: 'OK',
+                                            customClass: {
+                                                confirmButton: 'btn btn-success'
+                                            }
+                                        }).then(() => {
+                                            createProduitForm.reset();
+                                            if (typeof fetchProduits === 'function') {
+                                                fetchProduits();
+                                            }
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Erreur',
+                                            html: ``,
+                                            confirmButtonText: 'OK',
+                                            customClass: {
+                                                confirmButton: 'btn btn-danger'
+                                            }
+                                        });
+                                    }
+                                })
+                                .catch(err => {
+                                    Swal.close();
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur inattendue',
+                                        html: ` `,
+                                        confirmButtonText: 'OK',
+                                        customClass: {
+                                            confirmButton: 'btn btn-danger'
+                                        }
+                                    });
+                                    console.error('Erreur lors de la requête:', err);
+                                });
                         });
-                });
-            });
-        </script>
+                    });
+                </script>
 
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var table = $('#tableProduits').DataTable({
+                    document.addEventListener('DOMContentLoaded', function() {
+                    const table = $('#tableProduits').DataTable({
                     ajax: '/admin/produits/list',
-                    columns: [{
-                            data: 'nom',
-                            title: 'Nom'
-                        },
-                        {
-                            data: 'categorie',
-                            title: 'Catégorie'
-                        },
+                    columns: [
+                        { data: 'nom', title: 'Nom' },
+                        { data: 'categorie', title: 'Catégorie' },
                         {
                             data: 'statut_label',
                             title: 'Statut',
                             render: function(data, type, row) {
-                                var couleur = row.statut_color === 'success' ? 'green' : 'red';
+                                const couleur = row.statut_color === 'success' ? 'green' : 'red';
                                 return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
                             }
                         },
-                        {
-                            data: 'actions',
-                            title: 'Actions',
-                            orderable: false,
-                            searchable: false
-                        }
+                        { data: 'actions', title: 'Actions', orderable: false, searchable: false }
                     ]
                 });
 
+                // 🟢 Gestion des clics dans le tableau
                 document.querySelector('#tableProduits').addEventListener('click', function(e) {
-                    // Bouton Modifier
-                    if (e.target.closest('.btn-edit-produit')) {
+                    const editBtn = e.target.closest('.btn-edit-produit');
+                    const deleteBtn = e.target.closest('.btn-delete-produit');
+
+                    if (editBtn) {
                         e.preventDefault();
-                        const id = e.target.closest('.btn-edit-produit').dataset.id;
-                        openEditProduitModal(id);
+                        openEditProduitModal(editBtn.dataset.id);
                     }
 
-                    // Bouton Supprimer
-                    if (e.target.closest('.btn-delete-produit')) {
+                    if (deleteBtn) {
                         e.preventDefault();
-                        const id = e.target.closest('.btn-delete-produit').dataset.id;
+                        const id = deleteBtn.dataset.id;
 
                         Swal.fire({
                             title: 'Supprimer ce produit ?',
@@ -5632,55 +5628,51 @@ Publication en cours...
                             showCancelButton: true,
                             confirmButtonText: 'Oui, supprimer',
                             cancelButtonText: 'Annuler'
-                        }).then((result) => {
+                        }).then(result => {
                             if (result.isConfirmed) {
                                 fetch(`/admin/produits/${id}`, {
-                                        method: 'DELETE',
-                                        headers: {
-                                            'X-CSRF-TOKEN': document.querySelector(
-                                                'meta[name="csrf-token"]').content
-                                        }
-                                    })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        if (data.success) {
-                                            Swal.fire('Supprimé !', data.message, 'success');
-                                            table.ajax.reload();
-                                        } else {
-                                            Swal.fire('Erreur', data.message ||
-                                                'Erreur lors de la suppression', 'error');
-                                        }
-                                    })
-                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                                    method: 'DELETE',
+                                    headers: {
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                    }
+                                })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        Swal.fire('Supprimé !', data.message, 'success');
+                                        table.ajax.reload();
+                                    } else {
+                                        Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                    }
+                                })
+                                .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
                             }
                         });
                     }
                 });
 
-                    window.openEditProduitModal = function(id) {
+                
+            // 🟡 Ouvrir la modale d'édition (fermeture propre avant Swal)
+                window.openEditProduitModal = function(id) {
                     console.log("🟡 Chargement du produit ID :", id);
-                
-                    fetch(`/admin/produits/${id}`)
-                        .then(res => res.json())
-                        .then(produit => {
-                            // Fermer la modale Bootstrap si elle est ouverte
-                            const $modal = $('#liste_produits');
-                            if ($modal.hasClass('show')) {
-                                $modal.modal('hide');
-                                $modal.one('hidden.bs.modal', function() {
-                                    showEditProduitSwal(produit, id);
-                                });
-                            } else {
+                    
+
+                        fetch(`/admin/produits/${id}`)
+                            .then(res => res.json())
+                            .then(produit => {
+                                const modal = bootstrap.Modal.getInstance(document.getElementById('liste_produits'));
+                        if (modal) modal.hide();    
+                                // 🟢 Ouvrir ensuite le SweetAlert d’éition
                                 showEditProduitSwal(produit, id);
-                            }
-                        })
-                        .catch(err => {
-                            console.error("❌ Erreur fetch :", err);
-                            Swal.fire('Erreur', 'Impossible de charger les données du produit.', 'error');
-                        });
-                };
-                
+                            })
+                            .catch(err => {
+                                console.error("❌ Erreur fetch :", err);
+                                Swal.fire('Erreur', 'Impossible de charger les données du produit.', 'error');
+                            });
+                    };
+                // 🔹 SweetAlert2 d'édition
                 function showEditProduitSwal(produit, id) {
+                    // Fermer la modale de liste_produits
                     Swal.fire({
                         title: `<i class="bi bi-pencil-square"></i> Modifier le produit`,
                         html: `
@@ -5689,20 +5681,22 @@ Publication en cours...
                                     <label for="swal-nom" class="form-label fw-semibold">
                                         <i class="bi bi-cube"></i> Nom du produit <span class="text-danger">*</span>
                                     </label>
-                                    <input type="text" id="swal-nom" class="form-control" placeholder="Nom" value="${escapeHtml(produit.nom)}" required>
+                                    <input type="text" id="swal-nom" class="form-control" 
+                                        value="${escapeHtml(produit.nom)}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="swal-slug" class="form-label fw-semibold">
                                         <i class="bi bi-link"></i> Slug <span class="text-danger">*</span>
                                     </label>
-                                    <input type="text" id="swal-slug" class="form-control" placeholder="Slug" value="${escapeHtml(produit.slug)}" required>
+                                    <input type="text" id="swal-slug" class="form-control" 
+                                        value="${escapeHtml(produit.slug)}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="swal-categorie" class="form-label fw-semibold">
                                         <i class="bi bi-collection"></i> Catégorie <span class="text-danger">*</span>
                                     </label>
                                     <select id="swal-categorie" class="form-select" required>
-                                        <option value=""></option>
+                                        <option value="">Chargement...</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -5719,43 +5713,61 @@ Publication en cours...
                                 </div>
                             </form>
                         `,
-                        confirmButtonText: 'Enregistrer',
                         showCancelButton: true,
-                        preConfirm: () => {
-                            return {
-                                nom: document.getElementById('swal-nom').value,
-                                slug: document.getElementById('swal-slug').value,
-                                categorie_id: document.getElementById('swal-categorie').value,
-                                statut: document.getElementById('swal-statut').value
-                            };
-                        }
+                        confirmButtonText: 'Enregistrer',
+                        width: '600px',
+                        didOpen: () => {
+                            // Charger les catégories
+                            fetch('/admin/categories/list')
+                                .then(res => res.json())
+                                .then(categories => {
+                                    const select = document.getElementById('swal-categorie');
+                                    select.innerHTML = `<option value="">-- Sélectionner --</option>`;
+                                    categories.forEach(cat => {
+                                        const option = document.createElement('option');
+                                        option.value = cat.id;
+                                        option.textContent = cat.nom;
+                                        if (cat.id === produit.categorie_id) option.selected = true;
+                                        select.appendChild(option);
+                                    });
+                                })
+                                .catch(() => {
+                                    document.getElementById('swal-categorie').innerHTML =
+                                        '<option value="">Erreur de chargement</option>';
+                                });
+                        },
+                        preConfirm: () => ({
+                            nom: document.getElementById('swal-nom').value.trim(),
+                            slug: document.getElementById('swal-slug').value.trim(),
+                            categorie_id: document.getElementById('swal-categorie').value,
+                            statut: document.getElementById('swal-statut').value
+                        })
                     }).then(result => {
                         if (result.isConfirmed) {
                             fetch(`/admin/produits/${id}`, {
-                                    method: 'PUT',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                                    },
-                                    body: JSON.stringify(result.value)
-                                })
-                                .then(res => res.json())
-                                .then(data => {
-                                    if (data.success) {
-                                        Swal.fire('Succès', data.message, 'success');
-                                        $('#tableProduits').DataTable().ajax.reload();
-                                    } else {
-                                        Swal.fire('Erreur', data.message, 'error');
-                                    }
-                                });
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                },
+                                body: JSON.stringify(result.value)
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    $('#tableProduits').DataTable().ajax.reload();
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la mise à jour', 'error');
+                                }
+                            })
+                            .catch(() => Swal.fire('Erreur', 'Erreur réseau lors de la mise à jour', 'error'));
                         }
                     });
                 }
-
             });
-        </script>
 
-        <script>
+            // Fonction d’échappement HTML
             function escapeHtml(text) {
                 return text
                     .replace(/&/g, "&amp;")
@@ -5765,112 +5777,96 @@ Publication en cours...
                     .replace(/'/g, "&#039;");
             }
         </script>
-        <!-- ///////////////////////////////////// -->
+
+
 
         <!-- Scripts pour la gestion des services -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Initialisation de la DataTable pour les services
-                var tableServices = $('#tableServices').DataTable({
-                    ajax: {
-                        url: '/admin/services/list',
-                        type: 'GET',
+       <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-                    },
-                    columns: [{
-                            data: 'nom'
-                        },
-                        {
-                            data: 'description'
-                        },
-                        {
-                            data: 'categorie'
-                        },
-                        {
-                            data: 'actions',
-                            orderable: false,
-                            searchable: false
-                        }
-                    ],
+        // ==============================
+        // INITIALISATION DATATABLE SERVICES
+        // ==============================
+        var tableServices = $('#tableServices').DataTable({
+            ajax: {
+                url: '/admin/services/list',
+                type: 'GET',
+            },
+            columns: [
+                { data: 'nom', title: 'Nom' },
+                { data: 'description', title: 'Description' },
+                { data: 'categorie', title: 'Catégorie' },
+                { 
+                    data: 'actions', 
+                    title: 'Actions',
+                    orderable: false,
+                    searchable: false
+                }
+            ]
+        });
 
-                });
 
-                // Gestion de la création de service
+                // ==============================
+                // CRÉATION D'UN SERVICE
+                // ==============================
                 const createServiceForm = document.getElementById('createServiceForm');
-                if (createServiceForm) {
-                    createServiceForm.addEventListener('submit', function(e) {
+                if(createServiceForm) {
+                    createServiceForm.addEventListener('submit', function(e){
                         e.preventDefault();
 
                         Swal.fire({
                             title: 'Création en cours...',
-                            html: `
-                                <div class="text-center">
+                            html: `<div class="text-center">
                                     <div class="spinner-border text-primary" role="status">
                                         <span class="visually-hidden">Chargement...</span>
                                     </div>
-                                 </div>    
-                                
-                                `,
+                                </div>`,
                             allowOutsideClick: false,
-
+                            didOpen: () => Swal.showLoading()
                         });
 
                         const formData = new FormData(createServiceForm);
 
                         fetch(createServiceForm.action, {
-                                method: 'POST',
-                                headers: {
-                                    'X-Requested-With': 'XMLHttpRequest',
-                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                                },
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                Swal.close();
-                                if (data.success) {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Succès',
-                                        html: `
-                                            <div class="text-center">
-
-                                            <p class="mb-0">${data.message}</p>
-                                            </div>
-                                            `,
-                                        confirmButtonText: 'OK',
-                                        showCancelButton: false,
-                                        confirmButtonColor: '#2196f3'
-                                    }).then(() => {
-                                        createServiceForm.reset();
-                                        tableServices.ajax.reload();
-                                    });
-                                } else {
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Erreur',
-                                        text: data.message || 'Erreur lors de la création'
-                                    });
-                                }
-                            })
-                            .catch(() => {
-                                Swal.close();
-                                Swal.fire('Erreur', 'Erreur réseau', 'error');
-                            });
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            Swal.close();
+                            if(data.success){
+                                Swal.fire('Succès', data.message, 'success');
+                                createServiceForm.reset();
+                                tableServices.ajax.reload();
+                            } else {
+                                Swal.fire('Erreur', data.message || 'Erreur lors de la création', 'error');
+                            }
+                        })
+                        .catch(() => {
+                            Swal.close();
+                            Swal.fire('Erreur', 'Erreur réseau', 'error');
+                        });
                     });
                 }
 
-                // Gestion des clics sur les boutons d'action des services
-                document.querySelector('#tableServices').addEventListener('click', function(e) {
-                    // Bouton Modifier
-                    if (e.target.closest('.btn-edit-service')) {
+                // ==============================
+                // ÉDITION ET SUPPRESSION DES SERVICES
+                // ==============================
+                document.querySelector('#tableServices').addEventListener('click', function(e){
+
+                    // ---- Modifier ----
+                    if(e.target.closest('.btn-edit-service')){
                         e.preventDefault();
                         const id = e.target.closest('.btn-edit-service').dataset.id;
                         openEditServiceModal(id);
                     }
 
-                    // Bouton Supprimer
-                    if (e.target.closest('.btn-delete-service')) {
+                    // ---- Supprimer ----
+                    if(e.target.closest('.btn-delete-service')){
                         e.preventDefault();
                         const id = e.target.closest('.btn-delete-service').dataset.id;
 
@@ -5882,89 +5878,71 @@ Publication en cours...
                             confirmButtonText: 'Oui, supprimer',
                             cancelButtonText: 'Annuler'
                         }).then((result) => {
-                            if (result.isConfirmed) {
+                            if(result.isConfirmed){
                                 fetch(`/admin/services/${id}`, {
-                                        method: 'DELETE',
-                                        headers: {
-                                            'X-CSRF-TOKEN': document.querySelector(
-                                                'meta[name="csrf-token"]').getAttribute(
-                                                'content')
-                                        }
-                                    })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        if (data.success) {
-                                            Swal.fire('Supprimé !', data.message, 'success');
-                                            tableServices.ajax.reload();
-                                        } else {
-                                            Swal.fire('Erreur', data.message ||
-                                                'Erreur lors de la suppression', 'error');
-                                        }
-                                    })
-                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                                    method: 'DELETE',
+                                    headers: {
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                    }
+                                })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if(data.success){
+                                        Swal.fire('Supprimé !', data.message, 'success');
+                                        tableServices.ajax.reload();
+                                    } else {
+                                        Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                    }
+                                })
+                                .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
                             }
                         });
                     }
                 });
 
 
-                // Fonction pour ouvrir la modale d'édition
-                // Fonction pour ouvrir la modale d'édition
-                window.openEditProduitModal = function(id) {
+                // ==============================
+                // MODALE ÉDITION SERVICE
+                // ==============================
+              function openEditServiceModal(id) {
 
-                    // Fermer la modale Bootstrap si elle est ouverte
-                    const bootstrapModal = document.getElementById('create_produits') || document.getElementById(
-                        'liste_produits');
-                    if (bootstrapModal) {
-                        const modal = bootstrap.Modal.getInstance(bootstrapModal);
-                        if (modal) modal.hide();
+                    // Fermer la modale liste_services si elle est ouverte
+                    const listeModalEl = document.getElementById('liste_services');
+                    if(listeModalEl){
+                        const modalInstance = bootstrap.Modal.getInstance(listeModalEl);
+                        if(modalInstance) modalInstance.hide();
                     }
 
-                    // Charger le produit via AJAX
-                    fetch(`/admin/produits/${id}`)
+                    // Récupérer le service via AJAX
+                    fetch(`/admin/services/${id}`)
                         .then(res => res.json())
-                        .then(produit => {
+                        .then(service => {
 
                             Swal.fire({
-                                title: `<i class="bi bi-pencil-square"></i> Modifier le produit`,
+                                title: `<i class="bi bi-pencil-square"></i> Modifier le service`,
                                 html: `
                                     <form id="swal-edit-form" class="text-start">
                                         <div class="mb-3">
-                                            <label for="swal-nom" class="form-label fw-semibold">
-                                                <i class="bi bi-cube"></i> Nom du produit <span class="text-danger">*</span>
-                                            </label>
-                                            <input type="text" id="swal-nom" class="form-control" placeholder="Nom" value="${escapeHtml(produit.nom)}" required>
+                                            <label for="swal-nom" class="form-label fw-semibold">Nom <span class="text-danger">*</span></label>
+                                            <input id="swal-nom" class="form-control" placeholder="Nom" value="${escapeHtml(service.nom)}">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="swal-slug" class="form-label fw-semibold">
-                                                <i class="bi bi-link"></i> Slug <span class="text-danger">*</span>
-                                            </label>
-                                            <input type="text" id="swal-slug" class="form-control" placeholder="Slug" value="${escapeHtml(produit.slug)}" required>
+                                            <label for="swal-slug" class="form-label fw-semibold">Slug <span class="text-danger">*</span></label>
+                                            <input id="swal-slug" class="form-control" placeholder="Slug" value="${escapeHtml(service.slug)}">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="swal-categorie" class="form-label fw-semibold">
-                                                <i class="bi bi-collection"></i> Catégorie <span class="text-danger">*</span>
-                                            </label>
-                                            <select id="swal-categorie" class="form-select" required>
-                                                <option value="">Chargement...</option>
-                                            </select>
+                                            <label for="swal-description" class="form-label fw-semibold">Description</label>
+                                            <textarea id="swal-description" class="form-control" placeholder="Description">${escapeHtml(service.description)}</textarea>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="swal-statut" class="form-label fw-semibold">
-                                                <i class="bi bi-toggle2-on"></i> Statut
-                                            </label>
-                                            <select id="swal-statut" class="form-select w-50">
-                                                <option value="actif" ${produit.statut === 'actif' ? 'selected' : ''}>Actif</option>
-                                                <option value="inactif" ${produit.statut === 'inactif' ? 'selected' : ''}>Inactif</option>
-                                            </select>
+                                            <label for="swal-categorie" class="form-label fw-semibold">Catégorie <span class="text-danger">*</span></label>
+                                            <select id="swal-categorie" class="form-select" required></select>
                                         </div>
 
-                                        <div class="mt-2 text-muted small">
-                                            <span class="text-danger">*</span> Champs obligatoires
-                                        </div>
+                                        <div class="mt-2 text-muted small"><span class="text-danger">*</span> Champs obligatoires</div>
                                     </form>
                                 `,
                                 showCancelButton: true,
@@ -5981,17 +5959,13 @@ Publication en cours...
                                     fetch('/admin/categories/list')
                                         .then(res => res.json())
                                         .then(categories => {
-                                            const select = document.getElementById(
-                                                'swal-categorie');
-                                            select.innerHTML =
-                                                '<option value="">Sélectionnez une catégorie</option>';
+                                            const select = document.getElementById('swal-categorie');
+                                            select.innerHTML = '<option value="">Sélectionnez une catégorie</option>';
                                             categories.forEach(cat => {
-                                                const opt = document.createElement(
-                                                    'option');
+                                                const opt = document.createElement('option');
                                                 opt.value = cat.id;
                                                 opt.textContent = cat.nom;
-                                                if (cat.id === produit.categorie_id) opt
-                                                    .selected = true;
+                                                if(cat.id === service.categorie_id) opt.selected = true;
                                                 select.appendChild(opt);
                                             });
                                         });
@@ -5999,153 +5973,73 @@ Publication en cours...
                                 preConfirm: () => {
                                     const nom = document.getElementById('swal-nom').value.trim();
                                     const slug = document.getElementById('swal-slug').value.trim();
-                                    const categorie_id = document.getElementById('swal-categorie')
-                                        .value;
-                                    const statut = document.getElementById('swal-statut').value;
+                                    const description = document.getElementById('swal-description').value.trim();
+                                    const categorie_id = document.getElementById('swal-categorie').value;
 
-                                    if (!nom || !slug || !categorie_id) {
-                                        Swal.showValidationMessage(
-                                            'Tous les champs obligatoires doivent être remplis');
+                                    if(!nom || !slug || !categorie_id){
+                                        Swal.showValidationMessage('Tous les champs obligatoires doivent être remplis');
                                         return false;
                                     }
 
-                                    return {
-                                        nom,
-                                        slug,
-                                        categorie_id,
-                                        statut
-                                    };
+                                    return { nom, slug, description, categorie_id };
                                 }
                             }).then(result => {
-                                if (result.isConfirmed && result.value) {
+                                if(result.isConfirmed && result.value){
                                     Swal.fire({
                                         title: 'Mise à jour...',
                                         allowOutsideClick: false,
                                         didOpen: () => Swal.showLoading()
                                     });
 
-                                    fetch(`/admin/produits/${id}`, {
-                                            method: 'PUT',
-                                            headers: {
-                                                'Content-Type': 'application/json',
-                                                'X-CSRF-TOKEN': document.querySelector(
-                                                    'meta[name="csrf-token"]').content
-                                            },
-                                            body: JSON.stringify(result.value)
-                                        })
-                                        .then(res => res.json())
-                                        .then(data => {
-                                            Swal.close();
-                                            if (data.success) {
-                                                Swal.fire({
-                                                    icon: 'success',
-                                                    title: 'Succès',
-                                                    text: data.message,
-                                                    timer: 1500,
-                                                    showConfirmButton: false
-                                                });
-                                                $('#tableProduits').DataTable().ajax.reload();
-                                            } else {
-                                                Swal.fire('Erreur', data.message ||
-                                                    'Erreur lors de la modification', 'error');
-                                            }
-                                        })
-                                        .catch(() => {
-                                            Swal.close();
-                                            Swal.fire('Erreur', 'Erreur réseau', 'error');
-                                        });
+                                    fetch(`/admin/services/${id}`, {
+                                        method: 'PUT',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                        },
+                                        body: JSON.stringify(result.value)
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        Swal.close();
+                                        if(data.success){
+                                            Swal.fire('Succès', data.message, 'success');
+                                            tableServices.ajax.reload();
+                                        } else {
+                                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                                        }
+                                    })
+                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
                                 }
                             });
 
                         })
-                        .catch(err => {
-                            console.error("Erreur fetch produit:", err);
-                            Swal.fire('Erreur', 'Impossible de charger le produit.', 'error');
-                        });
-
-                };
+                        .catch(() => Swal.fire('Erreur', 'Impossible de charger le service.', 'error'));
+                    }
 
 
+                // ==============================
+                // FONCTION D’ÉCHAPPEMENT HTML
+                // ==============================
+                function escapeHtml(text){
+                    if(!text) return '';
+                    return text
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#039;");
+                }
 
-
-            });
+                 });
         </script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Initialisation DataTable des abonnements utilisateur-service
-                const tableEl = document.getElementById('tableUserServices');
-                if (tableEl) {
-                    $('#tableUserServices').DataTable({
-                        ajax: {
-                            url: '/admin/services/users-subscriptions',
-                            type: 'GET'
-                        },
-                        columns: [{
-                                data: 'id'
-                            },
-                            {
-                                data: 'utilisateur'
-                            },
-                            {
-                                data: 'email'
-                            },
-                            {
-                                data: 'service'
-                            },
-                            {
-                                data: 'statut'
-                            },
-                            {
-                                data: 'description'
-                            },
-                            {
-                                data: 'date_debut'
-                            },
-                            {
-                                data: 'date_fin_prevue'
-                            }
-                        ]
-                    });
 
-                    // Ouvrir la modale via un déclencheur si besoin
-                    document.querySelectorAll('[data-bs-target="#liste_user_services"]').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            $('#tableUserServices').DataTable().ajax.reload();
-                        });
-                    });
-                }
-                // Fonction pour mettre à jour un service
-                function updateService(id, data) {
-                    fetch(`/admin/services/${id}`, {
-                            method: 'PUT',
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(data)
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Succès !',
-                                    text: data.message
-                                });
-                                tableServices.ajax.reload();
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur !',
-                                    text: data.message
-                                });
-                            }
-                        });
-                }
-            });
-        </script>
+
+
+
+
+
 
         <script>
             document.addEventListener("DOMContentLoaded", function() {

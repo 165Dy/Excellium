@@ -39,9 +39,14 @@
                         <div class="card-body">
                             <div class="row g-3 align-items-center">
                                 <div class="col-md-4 d-flex align-items-center">
+                                    <label for="searchInput" class="form-label text-white me-2 mb-0">Disponible</label>
+                                    <input type="text" id="searchInput" class="form-control"
+                                        value="{{ $formations->count() }}" readonly>
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center">
                                     <label for="searchInput" class="form-label text-white me-2 mb-0">Rechercher</label>
                                     <input type="text" id="searchInput" class="form-control"
-                                        placeholder="ð....{{ $formations->count() }} formations disponibles">
+                                        placeholder="Rechercher une formation...">
                                 </div>
                                 <div class="col-md-4 d-flex align-items-center">
                                     <label for="categoryFilter" class="form-label text-white me-2 mb-0">Catégorie</label>
@@ -52,14 +57,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-4 d-flex align-items-center">
-                                    <label for="statusFilter" class="form-label text-white me-2 mb-0">Statut</label>
-                                    <select id="statusFilter" class="form-select">
-                                        <option value="">Tous les statuts</option>
-                                        <option value="en_ligne">En ligne</option>
-                                        <option value="ferme">Fermé</option>
-                                    </select>
-                                </div>
+
                             </div>
 
                         </div>
@@ -104,68 +102,82 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <div class="card shadow-lg mb-4 border-0"
-                                        style="border-radius: 18px; background: #23272b;">
+                                    <div class="card border-0 shadow-sm mb-4"
+                                        style="border-radius: 14px; background-color: #fff; transition: all 0.3s ease;">
                                         <div class="card-body p-4">
-                                            <!-- Header Meta -->
+                                            <!-- Header -->
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <div class="d-flex align-items-center gap-3">
-                                                    <span class="text-warning small fw-semibold">
-                                                        <i class="far fa-user-alt me-1"></i> Excellium
-                                                    </span>
-                                                    <span class="text-muted small">
-                                                        <i class="far fa-calendar-alt me-1"></i>
+                                                <div class="d-flex align-items-center gap-3 text-muted small">
+                                                    <span><i class="far fa-user-alt me-1 text-warning"></i>Par
+                                                        Excellium</span>
+                                                    <span><i class="far fa-calendar-alt me-1 text-warning"></i>
                                                         {{ \Carbon\Carbon::parse($formation->date_debut)->format('d M Y') }}
                                                     </span>
                                                 </div>
-                                                @if ($formation->cout)
-                                                    <span class="badge bg-warning text-dark fw-bold px-3 py-2"
-                                                        style="font-size: 1rem; border-radius: 8px;">
-                                                        <i class="fas fa-tag me-1"></i>
-                                                        {{ number_format($formation->cout, 0, ',', ' ') }} FCFA
-                                                    </span>
-                                                @endif
+
                                             </div>
 
                                             <!-- Titre -->
-                                            <h5 class="card-title mb-3" style="font-weight: bold; font-size: 1.25rem;">
+                                            <h5 class="card-title fw-bold mb-2" style="color: #23272b;">
                                                 <a href="{{ route('clients.formations.show', $formation->id) }}"
-                                                    class="text-white text-decoration-none">
-                                                    {{ ucfirst(strtolower($formation->titre)) }}
+                                                    class="text-decoration-none text-dark">
+                                                    Titre: {{ ucfirst(strtolower($formation->titre)) }}
                                                 </a>
                                             </h5>
 
-                                            <!-- Description / Programme -->
-                                            <p class="card-text text-light mb-3"
-                                                style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; min-height: 70px;">
+                                            <!-- Description -->
+                                            <p class="card-text text-secondary mb-3"
+                                                style="font-size: 0.95rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
                                                 {{ \Illuminate\Support\Str::limit($formation->programme, 150, '...') ?? 'Programme de formation complet disponible.' }}
                                             </p>
 
                                             <!-- Lieu -->
                                             @if ($formation->lieu)
-                                                <div class="d-flex align-items-center text-muted mb-3">
+                                                <div class="d-flex align-items-center text-secondary mb-4">
                                                     <i class="fas fa-map-marker-alt me-2 text-warning"></i>
-                                                    <span class="fw-semibold">{{ $formation->lieu }}</span>
+                                                    Lieu: &nbsp;
+                                                    <span class="fw-semibold text-capitalize">{{ $formation->lieu }}</span>
                                                 </div>
                                             @endif
 
-                                            <!-- Bouton voir plus -->
-                                            <div class="mt-2 text-end">
+                                            <!-- Bouton -->
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                @if ($formation->cout)
+                                                    <span class="badge bg-warning text-dark fw-semibold px-3 py-2"
+                                                        style="font-size: 0.9rem; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                                        <i class="fas fa-tag me-1"></i>
+                                                        {{ number_format($formation->cout, 0, ',', ' ') }} FCFA
+                                                    </span>
+                                                @endif
+                                                &nbsp;
+
                                                 <a href="{{ route('clients.formations.show', $formation->id) }}"
-                                                    class="btn btn-warning btn-sm fw-bold px-4 py-2"
-                                                    style="border-radius: 8px; color: #23272b;">
-                                                    Voir la formation <i class="fas fa-arrow-right ms-1"></i>
+                                                    class="btn fw-semibold px-4 py-2"
+                                                    style="border-radius: 8px; border: 2px solid #f9c806; color: #f9c806; transition: 0.3s;">
+                                                    Details <i class="fas fa-arrow-right ms-1"></i>
                                                 </a>
                                             </div>
+
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
+                        </div>
                     @endforeach
                 @endif
             </div>
+            <style>
+                .card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+                }
 
+                .btn:hover {
+                    background-color: #f9c806;
+                    color: #23272b !important;
+                }
+            </style>
             {{-- Pagination dynamique --}}
             @if ($formations->hasPages())
                 <div class="row">
@@ -182,7 +194,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('ð¬ Initialisation autoplay vidéos formations');
+            console.log('🎯 Initialisation autoplay vidéos formations');
 
             // Intersection Observer pour détecter quand les vidéos sont visibles
             const videoObserver = new IntersectionObserver((entries) => {
@@ -257,5 +269,72 @@
             });
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("✅ Script filtrage formations chargé");
+
+            const searchInput = document.querySelector('#searchInput[placeholder]');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const formationItems = document.querySelectorAll('.blog-post-item');
+
+            // ✅ Message "Aucun résultat"
+            const noResultMessage = document.createElement('div');
+            noResultMessage.textContent = "Aucune formation trouvée 😕";
+            noResultMessage.style.display = "none";
+            noResultMessage.style.textAlign = "center";
+            noResultMessage.style.color = "#fff";
+            noResultMessage.style.fontSize = "1.1rem";
+            noResultMessage.style.padding = "14px";
+            noResultMessage.style.marginTop = "18px";
+
+            const filtersRow = document.querySelector('.row.g-3');
+            filtersRow.parentNode.insertBefore(noResultMessage, filtersRow.nextSibling);
+
+            function normalize(str) {
+                return (str || '').toString().toLowerCase().trim();
+            }
+
+            function filterFormations() {
+                const searchValue = normalize(searchInput.value);
+                const selectedCategory = categoryFilter.value.trim();
+                let visibleCount = 0;
+
+                formationItems.forEach(item => {
+                    // Récupération du texte utile pour la recherche
+                    const title = normalize(item.querySelector('.card-title')?.textContent);
+                    const description = normalize(item.querySelector('.card-text')?.textContent);
+                    const category = normalize(item.querySelector('.post-categories a')?.textContent);
+
+                    // Vérifie les correspondances
+                    const matchesSearch = !searchValue ||
+                        title.includes(searchValue) ||
+                        description.includes(searchValue) ||
+                        category.includes(searchValue);
+
+                    const matchesCategory = !selectedCategory ||
+                        item.querySelector('.post-categories a')?.textContent.trim().toLowerCase() ===
+                        categoryFilter.options[categoryFilter.selectedIndex].text.trim().toLowerCase();
+
+                    if (matchesSearch && matchesCategory) {
+                        item.style.display = "";
+                        visibleCount++;
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+
+                noResultMessage.style.display = visibleCount === 0 ? "block" : "none";
+            }
+
+            // 🔄 Événements de filtrage instantané
+            searchInput.addEventListener('input', filterFormations);
+            categoryFilter.addEventListener('change', filterFormations);
+
+            // ⚡ Appel initial
+            filterFormations();
+        });
+    </script>
+
 
 @endsection

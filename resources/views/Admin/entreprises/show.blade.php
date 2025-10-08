@@ -18,10 +18,10 @@
                     <a href="{{ route('admin.entreprises.index') }}" class="btn btn-outline-secondary">
                        <i class="ri ri-arrow-left-line me-1"></i> Retour
                     </a>
-                    <a href="{{ route('admin.entreprises.edit', $entreprise) }}" class="btn btn-primary">
+                    {{-- <a href="{{ route('admin.entreprises.edit', $entreprise) }}" class="btn btn-primary">
                         <i class="ri ri-edit-line me-1"></i>
                         Modifier
-                    </a>
+                    </a> --}}
                     <button type="button" class="btn btn-outline-danger" onclick="deleteEntreprise({{ $entreprise->id }})">
                         <i class="ri ri-delete-bin-line me-1"></i>
                         Supprimer
@@ -147,10 +147,10 @@
                         <i class="ri ri-building-2-line me-2"></i>
                         Assistances comptables
                     </h5>
-                    <button type="button" class="btn btn-sm btn-success" data-create-assistance data-entreprise-id="{{ $entreprise->id }}" data-entreprise-nom="{{ $entreprise->nom }}">
+                    {{-- <button type="button" class="btn btn-sm btn-success" data-create-assistance data-entreprise-id="{{ $entreprise->id }}" data-entreprise-nom="{{ $entreprise->nom }}">
                         <i class="ri ri-add-line me-1"></i>
                         Nouvelle assistance
-                    </button>
+                    </button> --}}
                 </div>
                 <div class="card-body">
                     @forelse($entreprise->assistancesComptables as $assistance)
