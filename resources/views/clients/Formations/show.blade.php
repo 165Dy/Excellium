@@ -13,7 +13,7 @@
                         <div class="page-banner-content text-center text-white">
                             <h1 class="page-title">{{ $formations->titre }}</h1>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="{{ route('Formations.index') }}">@lang('extracted.formations')</a></li>
+                                <li><a href="{{ route('formations.index') }}">@lang('extracted.formations')</a></li>
                                 <li class="active">{{ $formations->categorie->nom }}</li>
                             </ul>
                         </div>
