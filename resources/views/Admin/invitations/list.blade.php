@@ -268,31 +268,31 @@
             </div>
         </div>
 
-        @push('scripts')
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialiser DataTable si il y a des données
-            @if($invitations->count() > 0)
-                $('#invitationsTable').DataTable({
-                    language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
-                    },
-                    order: [[4, 'desc']], // Trier par date d'envoi décroissante
-                    pageLength: 25,
-                    responsive: true,
-                    columnDefs: [
-                        { orderable: false, targets: [7] } // Désactiver le tri sur la colonne Actions
-                    ]
-                });
-            @endif
-
-            // Rouvrir le modal en cas d'erreur de validation
-            @if($errors->any())
-                var modal = new bootstrap.Modal(document.getElementById('createInvitationModal'));
-                modal.show();
-            @endif
-        });
-        </script>
-        @endpush
-
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser DataTable si il y a des données
+    @if($invitations->count() > 0)
+        $('#invitationsTable').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
+            },
+            order: [[4, 'desc']], // Trier par date d'envoi décroissante
+            pageLength: 25,
+            responsive: true,
+            columnDefs: [
+                { orderable: false, targets: [7] } // Désactiver le tri sur la colonne Actions
+            ]
+        });
+    @endif
+
+    // Rouvrir le modal en cas d'erreur de validation
+    @if($errors->any())
+        var modal = new bootstrap.Modal(document.getElementById('createInvitationModal'));
+        modal.show();
+    @endif
+});
+</script>
+@endpush
