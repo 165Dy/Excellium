@@ -189,7 +189,7 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     
     // GESTION DES INVITATIONS
     Route::prefix('invitations')->name('invitations.')->group(function () {
-        Route::get('/', [InvitationController::class, 'index'])->name('admin.invitations.index');
+        Route::get('/', [InvitationController::class, 'index'])->name('index');
         Route::post('/send', [InvitationController::class, 'sendInvitation'])->name('send');
         Route::patch('/{id}/revoke', [InvitationController::class, 'revokeInvitation'])->name('revoke');
         Route::patch('/{id}/resend', [InvitationController::class, 'resendInvitation'])->name('resend');

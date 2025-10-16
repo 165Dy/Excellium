@@ -119,7 +119,7 @@
 
                                             <!-- Titre -->
                                             <h5 class="card-title fw-bold mb-2" style="color: #23272b;">
-                                                <a href="{{ route('clients.formations.show', $formation->id) }}"
+                                                <a href="{{ route('clients.formations.show_public', $formation->id) }}"
                                                     class="text-decoration-none text-dark">
                                                     Titre: {{ ucfirst(strtolower($formation->titre)) }}
                                                 </a>
