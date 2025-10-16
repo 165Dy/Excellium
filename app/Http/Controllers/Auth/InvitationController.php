@@ -33,7 +33,7 @@ class InvitationController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        return view('admin.invitations.index', compact('invitations'));
+        return view('admin.invitations.list', compact('invitations'));
     }
 
     /**

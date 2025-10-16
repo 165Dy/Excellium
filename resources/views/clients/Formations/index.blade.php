@@ -151,7 +151,7 @@
                                                 @endif
                                                 &nbsp;
 
-                                                <a href="{{ route('clients.formations.show', $formation->id) }}"
+                                                <a href="{{ route('clients.formations.show_public', $formation->id) }}"
                                                     class="btn fw-semibold px-4 py-2"
                                                     style="border-radius: 8px; border: 2px solid #f9c806; color: #f9c806; transition: 0.3s;">
                                                     Details <i class="fas fa-arrow-right ms-1"></i>

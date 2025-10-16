@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('index_invitations')
+
         <div class="container-xxl flex-grow-1 container-p-y">
             <!-- Header -->
             <div class="row">
@@ -293,4 +294,5 @@
         });
         </script>
         @endpush
+
 @endsection
