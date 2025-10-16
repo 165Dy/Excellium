@@ -19,6 +19,8 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\InvitationController;
 use App\Http\Controllers\AssistanceComptableController;
 use App\Http\Controllers\EntrepriseController;
+use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,8 +128,19 @@ Route::prefix('clients')->name('clients.')->group(function () {
     // FORMATIONS
     Route::prefix('formations')->name('formations.')->group(function () {
         Route::get('/index', [formationsController::class, 'index_public'])->name('index');
-        Route::get('/show/{id}', [formationsController::class, 'show_public'])->name('show');
+        Route::get('/show/{id}', [formationsController::class, 'show_public'])->name('show_public');
         Route::post('/participer', [formationsController::class, 'participer'])->name('participer');
+        
+        // Modules de formations (accès public en lecture)
+        Route::get('/{formationId}/modules', [ModuleController::class, 'index'])->name('modules.index');
+        Route::get('/modules/{id}', [ModuleController::class, 'show'])->name('modules.show');
+        
+        // Documents de formations (accès limité aux utilisateurs confirmés)
+        Route::middleware('auth')->group(function () {
+            Route::get('/{formationId}/documents', [DocumentController::class, 'index'])->name('documents.index');
+            Route::get('/documents/{id}', [DocumentController::class, 'show'])->name('documents.show');
+            Route::get('/documents/{id}/download', [DocumentController::class, 'download'])->name('documents.download');
+        });
     });
     
     // SERVICES
@@ -201,6 +214,35 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
         Route::delete('/{id}', [formationsController::class, 'destroy'])->name('destroy');
         Route::get('/{formation}/details', [formationsController::class, 'getDetails'])->name('details');
         Route::get('/{formation}/export-inscriptions', [formationsController::class, 'exportInscriptions'])->name('export_inscriptions');
+        
+        // Récupérer tous les modules et documents
+        Route::get('/all-modules', [formationsController::class, 'getAllModules'])->name('all_modules');
+        Route::get('/all-documents', [formationsController::class, 'getAllDocuments'])->name('all_documents');
+        
+        // Gestion des modules (Admin)
+        Route::prefix('modules')->name('modules.')->group(function () {
+            Route::put('/{id}', [ModuleController::class, 'update'])->name('update');
+            Route::delete('/{id}', [ModuleController::class, 'destroy'])->name('destroy');
+        });
+        
+        Route::prefix('{formationId}/modules')->name('modules.')->group(function () {
+            Route::get('/', [ModuleController::class, 'index'])->name('index');
+            Route::post('/', [ModuleController::class, 'store'])->name('store');
+            Route::get('/{id}', [ModuleController::class, 'show'])->name('show');
+        });
+        
+        // Gestion des documents (Admin)
+        Route::prefix('documents')->name('documents.')->group(function () {
+            Route::get('/{id}/download', [DocumentController::class, 'download'])->name('download');
+            Route::delete('/{id}', [DocumentController::class, 'destroy'])->name('destroy');
+        });
+        
+        Route::prefix('{formationId}/documents')->name('documents.')->group(function () {
+            Route::get('/', [DocumentController::class, 'adminIndex'])->name('index');
+            Route::post('/', [DocumentController::class, 'store'])->name('store');
+            Route::get('/{id}', [DocumentController::class, 'show'])->name('show');
+            Route::put('/{id}', [DocumentController::class, 'update'])->name('update');
+        });
     });
     
     // GESTION DES INSCRIPTIONS FORMATIONS

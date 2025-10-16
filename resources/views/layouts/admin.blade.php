@@ -798,6 +798,20 @@
                                                 <div>voir la liste</div>
                                             </a>
                                         </li>
+                                        <li class="menu-item">
+                                            <a href="#" class="menu-link" data-bs-target="#liste_modules"
+                                                data-bs-toggle="modal">
+                                                <i class="menu-icon icon-base ri ri-book-line text-info"></i>
+                                                <div>liste des modules</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#" class="menu-link" data-bs-target="#liste_documents"
+                                                data-bs-toggle="modal">
+                                                <i class="menu-icon icon-base ri ri-file-text-line text-success"></i>
+                                                <div>liste des documents</div>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -1155,6 +1169,55 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Section Modules -->
+                                        <div class="col-12">
+                                            <div class="card border border-primary">
+                                                <div class="card-header d-flex justify-content-between align-items-center bg-label-primary">
+                                                    <h5 class="mb-0">
+                                                        <i class="ri-book-line me-2"></i>Modules de formation
+                                                    </h5>
+                                                    <button type="button" class="btn btn-sm btn-primary" 
+                                                        onclick="openAddModuleModal()">
+                                                        <i class="ri-add-line me-1"></i>Ajouter un module
+                                                    </button>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div id="modules-list" class="mb-2">
+                                                        <p class="text-muted text-center" id="no-modules-msg">
+                                                            Aucun module ajouté. Cliquez sur "Ajouter un module" pour commencer.
+                                                        </p>
+                                                    </div>
+                                                    <!-- Champ caché pour stocker les modules en JSON -->
+                                                    <input type="hidden" name="modules" id="modules-data" value="[]">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Section Documents -->
+                                        <div class="col-12">
+                                            <div class="card border border-info">
+                                                <div class="card-header d-flex justify-content-between align-items-center bg-label-info">
+                                                    <h5 class="mb-0">
+                                                        <i class="ri-file-text-line me-2"></i>Documents de formation
+                                                    </h5>
+                                                    <button type="button" class="btn btn-sm btn-info" 
+                                                        onclick="openAddDocumentModal()">
+                                                        <i class="ri-add-line me-1"></i>Ajouter un document
+                                                    </button>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div id="documents-list" class="mb-2">
+                                                        <p class="text-muted text-center" id="no-documents-msg">
+                                                            Aucun document ajouté. Cliquez sur "Ajouter un document" pour commencer.
+                                                        </p>
+                                                    </div>
+                                                    <!-- Champ caché pour stocker les documents en JSON -->
+                                                    <input type="hidden" name="documents" id="documents-data" value="[]">
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="col-12 text-center">
                                             <button type="button" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
@@ -1174,6 +1237,76 @@
                             <!--/ Content -->
                         </div>
                         <div class="content-backdrop fade"></div>
+                    </div>
+
+                    <!-- Modal Ajout Module -->
+                    <div class="modal fade" id="add_module_modal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary">
+                                    <h5 class="modal-title text-white">
+                                        <i class="ri-book-line me-2"></i>Ajouter un module
+                                    </h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="moduleForm">
+                                        <div class="mb-3">
+                                            <label for="module_titre" class="form-label">Titre du module <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="module_titre" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="module_description" class="form-label">Description</label>
+                                            <textarea class="form-control" id="module_description" rows="3"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+                                    <button type="button" class="btn btn-primary" onclick="addModule()">
+                                        <i class="ri-add-line me-1"></i>Ajouter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Ajout Document -->
+                    <div class="modal fade" id="add_document_modal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-info">
+                                    <h5 class="modal-title text-white">
+                                        <i class="ri-file-text-line me-2"></i>Ajouter un document
+                                    </h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="documentForm">
+                                        <div class="mb-3">
+                                            <label for="document_titre" class="form-label">Titre du document</label>
+                                            <input type="text" class="form-control" id="document_titre">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="document_description" class="form-label">Description</label>
+                                            <textarea class="form-control" id="document_description" rows="2"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="document_fichier" class="form-label">Fichier <span class="text-danger">*</span></label>
+                                            <input type="file" class="form-control" id="document_fichier" 
+                                                accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar" required>
+                                            <small class="text-muted">Formats acceptés: PDF, DOC, XLS, PPT, ZIP, RAR (Max 50MB)</small>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+                                    <button type="button" class="btn btn-info" onclick="addDocument()">
+                                        <i class="ri-add-line me-1"></i>Ajouter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Liste Formations Modal -->
@@ -1311,6 +1444,123 @@
                                                 <small>aucune formation disponible</small>
                                             </div>
                                         @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Liste Modules Modal -->
+                    <div class="modal fade" id="liste_modules" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6 p-4">
+                                        <h4 class="mb-2 text-info">
+                                            <i class="ri-book-line me-2"></i>
+                                            LISTE DES MODULES
+                                        </h4>
+                                        <p class="text-muted">Gérez tous les modules de vos formations</p>
+                                    </div>
+
+                                    <div class="card-datatable px-4 pb-4">
+                                        <div class="mb-3">
+                                            <label for="filter_formation_modules" class="form-label">Filtrer par formation</label>
+                                            <select id="filter_formation_modules" class="form-select" onchange="filterModulesByFormation(this.value)">
+                                                <option value="">Toutes les formations</option>
+                                                @if (isset($formations) && $formations->count() > 0)
+                                                    @foreach ($formations as $formation)
+                                                        <option value="{{ $formation->id }}">{{ $formation->titre }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-bordered" id="modulesTable">
+                                                <thead class="table-info">
+                                                    <tr>
+                                                        <th class="text-center">#</th>
+                                                        <th>Formation</th>
+                                                        <th>Titre du module</th>
+                                                        <th>Description</th>
+                                                        <th class="text-center">Date création</th>
+                                                        <th class="text-center">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="modules-table-body">
+                                                    <tr>
+                                                        <td colspan="6" class="text-center text-muted py-4">
+                                                            <div class="spinner-border text-info" role="status">
+                                                                <span class="visually-hidden">Chargement...</span>
+                                                            </div>
+                                                            <p class="mt-2">Chargement des modules...</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Liste Documents Modal -->
+                    <div class="modal fade" id="liste_documents" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-simple">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="text-center mb-6 p-4">
+                                        <h4 class="mb-2 text-success">
+                                            <i class="ri-file-text-line me-2"></i>
+                                            LISTE DES DOCUMENTS
+                                        </h4>
+                                        <p class="text-muted">Gérez tous les documents de vos formations</p>
+                                    </div>
+
+                                    <div class="card-datatable px-4 pb-4">
+                                        <div class="mb-3">
+                                            <label for="filter_formation_documents" class="form-label">Filtrer par formation</label>
+                                            <select id="filter_formation_documents" class="form-select" onchange="filterDocumentsByFormation(this.value)">
+                                                <option value="">Toutes les formations</option>
+                                                @if (isset($formations) && $formations->count() > 0)
+                                                    @foreach ($formations as $formation)
+                                                        <option value="{{ $formation->id }}">{{ $formation->titre }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-bordered" id="documentsTable">
+                                                <thead class="table-success">
+                                                    <tr>
+                                                        <th class="text-center">#</th>
+                                                        <th>Formation</th>
+                                                        <th>Titre</th>
+                                                        <th>Description</th>
+                                                        <th>Fichier</th>
+                                                        <th class="text-center">Date création</th>
+                                                        <th class="text-center">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="documents-table-body">
+                                                    <tr>
+                                                        <td colspan="7" class="text-center text-muted py-4">
+                                                            <div class="spinner-border text-success" role="status">
+                                                                <span class="visually-hidden">Chargement...</span>
+                                                            </div>
+                                                            <p class="mt-2">Chargement des documents...</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -4526,6 +4776,566 @@
 
                             </div>    
                             `;
+            }
+
+            // ==============================
+            // GESTION DES MODULES
+            // ==============================
+            let modulesArray = [];
+            
+            function openAddModuleModal() {
+                // Réinitialiser le formulaire
+                document.getElementById('moduleForm').reset();
+                
+                // Ouvrir la modale
+                const modal = new bootstrap.Modal(document.getElementById('add_module_modal'));
+                modal.show();
+            }
+            
+            function addModule() {
+                const titre = document.getElementById('module_titre').value.trim();
+                const description = document.getElementById('module_description').value.trim();
+                
+                if (!titre) {
+                    Swal.fire('Erreur', 'Le titre du module est obligatoire', 'error');
+                    return;
+                }
+                
+                // Ajouter le module au tableau
+                const module = {
+                    id: Date.now(), // ID temporaire
+                    titre: titre,
+                    description: description
+                };
+                
+                modulesArray.push(module);
+                
+                // Mettre à jour l'affichage
+                updateModulesList();
+                
+                // Mettre à jour le champ caché
+                document.getElementById('modules-data').value = JSON.stringify(modulesArray);
+                
+                // Fermer la modale
+                const modal = bootstrap.Modal.getInstance(document.getElementById('add_module_modal'));
+                modal.hide();
+                
+                // Message de succès
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Module ajouté !',
+                    text: 'Le module a été ajouté à la formation',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            }
+            
+            function updateModulesList() {
+                const modulesList = document.getElementById('modules-list');
+                const noModulesMsg = document.getElementById('no-modules-msg');
+                
+                if (modulesArray.length === 0) {
+                    noModulesMsg.style.display = 'block';
+                    modulesList.querySelectorAll('.module-item').forEach(item => item.remove());
+                } else {
+                    noModulesMsg.style.display = 'none';
+                    
+                    // Supprimer les anciens éléments
+                    modulesList.querySelectorAll('.module-item').forEach(item => item.remove());
+                    
+                    // Ajouter les nouveaux
+                    modulesArray.forEach((module, index) => {
+                        const moduleDiv = document.createElement('div');
+                        moduleDiv.className = 'module-item card mb-2 border-primary';
+                        moduleDiv.innerHTML = `
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">
+                                            <i class="ri-book-mark-line me-1 text-primary"></i>
+                                            ${module.titre}
+                                        </h6>
+                                        ${module.description ? `<p class="text-muted small mb-0">${module.description}</p>` : ''}
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeModule(${index})">
+                                        <i class="ri-delete-bin-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        modulesList.appendChild(moduleDiv);
+                    });
+                }
+            }
+            
+            function removeModule(index) {
+                Swal.fire({
+                    title: 'Supprimer ce module ?',
+                    text: "Cette action ne peut pas être annulée",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        modulesArray.splice(index, 1);
+                        updateModulesList();
+                        document.getElementById('modules-data').value = JSON.stringify(modulesArray);
+                        
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Module supprimé',
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+                    }
+                });
+            }
+            
+            // ==============================
+            // GESTION DES DOCUMENTS
+            // ==============================
+            let documentsArray = [];
+            let documentFiles = []; // Stocker les fichiers séparément
+            
+            function openAddDocumentModal() {
+                // Réinitialiser le formulaire
+                document.getElementById('documentForm').reset();
+                
+                // Ouvrir la modale
+                const modal = new bootstrap.Modal(document.getElementById('add_document_modal'));
+                modal.show();
+            }
+            
+            function addDocument() {
+                const titre = document.getElementById('document_titre').value.trim();
+                const description = document.getElementById('document_description').value.trim();
+                const fichierInput = document.getElementById('document_fichier');
+                
+                if (!fichierInput.files || fichierInput.files.length === 0) {
+                    Swal.fire('Erreur', 'Veuillez sélectionner un fichier', 'error');
+                    return;
+                }
+                
+                const fichier = fichierInput.files[0];
+                
+                // Vérifier la taille (50MB max)
+                if (fichier.size > 50 * 1024 * 1024) {
+                    Swal.fire('Erreur', 'Le fichier ne doit pas dépasser 50MB', 'error');
+                    return;
+                }
+                
+                // Ajouter le document au tableau
+                const docData = {
+                    id: Date.now(), // ID temporaire
+                    titre: titre || fichier.name,
+                    description: description,
+                    fichier_nom: fichier.name,
+                    fichier_taille: (fichier.size / 1024 / 1024).toFixed(2) + ' MB'
+                };
+                
+                documentsArray.push(docData);
+                documentFiles.push(fichier);
+                
+                // Mettre à jour l'affichage
+                updateDocumentsList();
+                
+                // Mettre à jour le champ caché
+                document.getElementById('documents-data').value = JSON.stringify(documentsArray);
+                
+                // Fermer la modale
+                const modal = bootstrap.Modal.getInstance(document.getElementById('add_document_modal'));
+                modal.hide();
+                
+                // Message de succès
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Document ajouté !',
+                    text: 'Le document a été ajouté à la formation',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            }
+            
+            function updateDocumentsList() {
+                const documentsList = document.getElementById('documents-list');
+                const noDocumentsMsg = document.getElementById('no-documents-msg');
+                
+                if (documentsArray.length === 0) {
+                    noDocumentsMsg.style.display = 'block';
+                    documentsList.querySelectorAll('.document-item').forEach(item => item.remove());
+                } else {
+                    noDocumentsMsg.style.display = 'none';
+                    
+                    // Supprimer les anciens éléments
+                    documentsList.querySelectorAll('.document-item').forEach(item => item.remove());
+                    
+                    // Ajouter les nouveaux
+                    documentsArray.forEach((doc, index) => {
+                        const docDiv = document.createElement('div');
+                        docDiv.className = 'document-item card mb-2 border-info';
+                        docDiv.innerHTML = `
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">
+                                            <i class="ri-file-text-line me-1 text-info"></i>
+                                            ${doc.titre}
+                                        </h6>
+                                        ${doc.description ? `<p class="text-muted small mb-1">${doc.description}</p>` : ''}
+                                        <small class="text-muted">
+                                            <i class="ri-attachment-line"></i> ${doc.fichier_nom} (${doc.fichier_taille})
+                                        </small>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeDocument(${index})">
+                                        <i class="ri-delete-bin-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        documentsList.appendChild(docDiv);
+                    });
+                }
+            }
+            
+            function removeDocument(index) {
+                Swal.fire({
+                    title: 'Supprimer ce document ?',
+                    text: "Cette action ne peut pas être annulée",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        documentsArray.splice(index, 1);
+                        documentFiles.splice(index, 1);
+                        updateDocumentsList();
+                        document.getElementById('documents-data').value = JSON.stringify(documentsArray);
+                        
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Document supprimé',
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+                    }
+                });
+            }
+
+            // Réinitialiser les modules et documents lors de l'ouverture de la modale de création
+            document.getElementById('create_formations').addEventListener('show.bs.modal', function() {
+                modulesArray = [];
+                documentsArray = [];
+                documentFiles = [];
+                updateModulesList();
+                updateDocumentsList();
+                document.getElementById('modules-data').value = '[]';
+                document.getElementById('documents-data').value = '[]';
+            });
+
+            // ==============================
+            // GESTION DE LA LISTE DES MODULES
+            // ==============================
+            let allModules = [];
+            
+            // Charger les modules au chargement de la modale
+            document.getElementById('liste_modules').addEventListener('show.bs.modal', function() {
+                loadAllModules();
+            });
+
+            function loadAllModules() {
+                fetch('/admin/formations/all-modules')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            allModules = data.modules;
+                            displayModules(allModules);
+                        } else {
+                            displayNoModules();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur chargement modules:', error);
+                        displayNoModules('Erreur lors du chargement des modules');
+                    });
+            }
+
+            function displayModules(modules) {
+                const tbody = document.getElementById('modules-table-body');
+                
+                if (modules.length === 0) {
+                    displayNoModules();
+                    return;
+                }
+                
+                tbody.innerHTML = modules.map((module, index) => `
+                    <tr>
+                        <td class="text-center">
+                            <span class="badge bg-label-info rounded-pill">${index + 1}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-label-primary">${module.formation ? module.formation.titre : 'N/A'}</span>
+                        </td>
+                        <td>
+                            <strong>${module.titre}</strong>
+                        </td>
+                        <td>
+                            <small class="text-muted">${module.description || '<em>Pas de description</em>'}</small>
+                        </td>
+                        <td class="text-center">
+                            <small class="text-muted">${new Date(module.created_at).toLocaleDateString('fr-FR')}</small>
+                        </td>
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center gap-2">
+                                <button class="btn btn-sm btn-icon btn-outline-warning" title="Modifier" onclick="editModule(${module.id})">
+                                    <i class="ri-edit-line"></i>
+                                </button>
+                                <button class="btn btn-sm btn-icon btn-outline-danger" title="Supprimer" onclick="deleteModule(${module.id})">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            function displayNoModules(message = 'Aucun module disponible') {
+                const tbody = document.getElementById('modules-table-body');
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">
+                            <i class="ri-book-line fs-1 mb-2"></i>
+                            <p>${message}</p>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            function filterModulesByFormation(formationId) {
+                if (!formationId) {
+                    displayModules(allModules);
+                    return;
+                }
+                
+                const filtered = allModules.filter(m => m.formation_id == formationId);
+                displayModules(filtered);
+            }
+
+            function editModule(moduleId) {
+                const module = allModules.find(m => m.id === moduleId);
+                if (!module) return;
+                
+                Swal.fire({
+                    title: 'Modifier le module',
+                    html: `
+                        <div class="text-start">
+                            <div class="mb-3">
+                                <label class="form-label">Titre <span class="text-danger">*</span></label>
+                                <input id="edit-module-titre" class="form-control" value="${module.titre}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea id="edit-module-description" class="form-control" rows="3">${module.description || ''}</textarea>
+                            </div>
+                        </div>
+                    `,
+                    showCancelButton: true,
+                    confirmButtonText: 'Enregistrer',
+                    cancelButtonText: 'Annuler',
+                    preConfirm: () => {
+                        const titre = document.getElementById('edit-module-titre').value.trim();
+                        if (!titre) {
+                            Swal.showValidationMessage('Le titre est obligatoire');
+                            return false;
+                        }
+                        return {
+                            titre: titre,
+                            description: document.getElementById('edit-module-description').value.trim()
+                        };
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        updateModuleData(moduleId, result.value);
+                    }
+                });
+            }
+
+            function updateModuleData(moduleId, data) {
+                fetch(`/admin/formations/modules/${moduleId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(response => {
+                    if (response.success) {
+                        Swal.fire('Succès', 'Module modifié avec succès', 'success');
+                        loadAllModules();
+                    } else {
+                        Swal.fire('Erreur', response.message, 'error');
+                    }
+                });
+            }
+
+            function deleteModule(moduleId) {
+                Swal.fire({
+                    title: 'Supprimer ce module ?',
+                    text: 'Cette action est irréversible',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler',
+                    confirmButtonColor: '#d33'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`/admin/formations/modules/${moduleId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                            }
+                        })
+                        .then(res => res.json())
+                        .then(response => {
+                            if (response.success) {
+                                Swal.fire('Supprimé', 'Module supprimé avec succès', 'success');
+                                loadAllModules();
+                            } else {
+                                Swal.fire('Erreur', response.message, 'error');
+                            }
+                        });
+                    }
+                });
+            }
+
+            // ==============================
+            // GESTION DE LA LISTE DES DOCUMENTS
+            // ==============================
+            let allDocuments = [];
+            
+            // Charger les documents au chargement de la modale
+            document.getElementById('liste_documents').addEventListener('show.bs.modal', function() {
+                loadAllDocuments();
+            });
+
+            function loadAllDocuments() {
+                fetch('/admin/formations/all-documents')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            allDocuments = data.documents;
+                            displayDocuments(allDocuments);
+                        } else {
+                            displayNoDocuments();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur chargement documents:', error);
+                        displayNoDocuments('Erreur lors du chargement des documents');
+                    });
+            }
+
+            function displayDocuments(documents) {
+                const tbody = document.getElementById('documents-table-body');
+                
+                if (documents.length === 0) {
+                    displayNoDocuments();
+                    return;
+                }
+                
+                tbody.innerHTML = documents.map((doc, index) => `
+                    <tr>
+                        <td class="text-center">
+                            <span class="badge bg-label-success rounded-pill">${index + 1}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-label-primary">${doc.formation ? doc.formation.titre : 'N/A'}</span>
+                        </td>
+                        <td>
+                            <strong>${doc.titre || 'Sans titre'}</strong>
+                        </td>
+                        <td>
+                            <small class="text-muted">${doc.description || '<em>Pas de description</em>'}</small>
+                        </td>
+                        <td>
+                            <small class="text-muted">
+                                <i class="ri-attachment-line"></i> ${doc.fichier ? doc.fichier.split('/').pop() : 'N/A'}
+                            </small>
+                        </td>
+                        <td class="text-center">
+                            <small class="text-muted">${new Date(doc.created_at).toLocaleDateString('fr-FR')}</small>
+                        </td>
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center gap-2">
+                                <button class="btn btn-sm btn-icon btn-outline-info" title="Télécharger" onclick="downloadDocument(${doc.id})">
+                                    <i class="ri-download-line"></i>
+                                </button>
+                                <button class="btn btn-sm btn-icon btn-outline-danger" title="Supprimer" onclick="deleteDocument(${doc.id})">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            function displayNoDocuments(message = 'Aucun document disponible') {
+                const tbody = document.getElementById('documents-table-body');
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="text-center text-muted py-4">
+                            <i class="ri-file-text-line fs-1 mb-2"></i>
+                            <p>${message}</p>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            function filterDocumentsByFormation(formationId) {
+                if (!formationId) {
+                    displayDocuments(allDocuments);
+                    return;
+                }
+                
+                const filtered = allDocuments.filter(d => d.formation_id == formationId);
+                displayDocuments(filtered);
+            }
+
+            function downloadDocument(documentId) {
+                window.location.href = `/admin/formations/documents/${documentId}/download`;
+            }
+
+            function deleteDocument(documentId) {
+                Swal.fire({
+                    title: 'Supprimer ce document ?',
+                    text: 'Cette action est irréversible',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler',
+                    confirmButtonColor: '#d33'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`/admin/formations/documents/${documentId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                            }
+                        })
+                        .then(res => res.json())
+                        .then(response => {
+                            if (response.success) {
+                                Swal.fire('Supprimé', 'Document supprimé avec succès', 'success');
+                                loadAllDocuments();
+                            } else {
+                                Swal.fire('Erreur', response.message, 'error');
+                            }
+                        });
+                    }
+                });
             }
         </script>
 
