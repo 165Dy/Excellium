@@ -1022,6 +1022,7 @@
 
                     <!-- Content -->
                     @yield('dashboard')
+                    @yield('index_transfert')
                     @yield('index_invitations')
                     @yield('entreprises_index')
                     @yield('entreprises_create')
