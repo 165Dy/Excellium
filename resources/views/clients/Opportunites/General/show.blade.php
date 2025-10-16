@@ -144,7 +144,7 @@
                                         <h4 class="title mb-3">Informations complémentaires</h4>
                                         <div class="info-content">
                                             @foreach ($opportunite->informations as $key => $info)
-                                                <div class="info-item">
+                                                <div class="info-item" style="color: black">
                                                     <strong>{{ ucfirst($key) }} :</strong> {{ $info }}
                                                 </div>
                                             @endforeach
@@ -452,7 +452,7 @@
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Envoi en cours...';
                     submitBtn.disabled = true;
 
-                    fetch('{{ route('opportunites.candidature') }}', {
+                    fetch('{{ route('clients.opportunites.business.show',$opportunite->id) }}', {
                             method: 'POST',
                             body: formData,
                             headers: {

@@ -42,18 +42,19 @@
                                 <div class="col-md-4 d-flex align-items-center">
                                     <label for="searchInput" class="form-label text-white me-2 mb-0">Rechercher</label>
                                     <input type="text" id="searchInput" class="form-control"
-                                        placeholder="🔍........Recherche........🔍">
+                                        placeholder="Rechercher un emploi........🔍">
                                 </div>
 
                                 <div class="col-md-4 d-flex align-items-center">
                                     <label for="statusFilter" class="form-label text-white me-2 mb-0">Statut</label>
                                     <select id="statusFilter" class="form-select">
                                         <option value="">Tous les statuts</option>
-                                        <option value="CDI">CDI</option>
-                                        <option value="CDD">CDD</option>
-                                        <option value="STAGE">Stage</option>
-                                        <option value="FREELANCE">Freelance</option>
-                                        <option value="ALTERNANCE">Alternance</option>
+                                        <option value="cdi">CDI</option>
+                                        <option value="cdd">CDD</option>
+                                        <option value="stage">Stage</option>
+                                        <option value="freelance">Freelance</option>
+                                        <option value="alternance">Alternance</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -72,8 +73,8 @@
                     </div>
                 @else
                     @foreach ($emplois as $emploi)
-                        <div class="col-lg-4 col-md-6 col-sm-12 emploi-item"
-                            data-type-contrat="{{ strtoupper($emploi->type_contrat) }}">
+                        <div class="col-lg-4 col-md-6 col-sm-12 emploi-item" id="emploi-item"
+                            data-type-contrat="{{ strtolower($emploi->type_contrat) }}">
                             <div class="product-item mb-45 wow fadeInDown">
                                 <div class="product-image">
                                     <img src="{{ asset('assets/images/emploi.jpeg') }}" alt="Product image">
@@ -112,38 +113,71 @@
             </div>
         </div>
 
+        <!-- JS : comparaison normalisée (insensible à la casse / espaces) + prise en compte du type_contrat dans la recherche -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const searchInput = document.getElementById('searchInput');
                 const statusFilter = document.getElementById('statusFilter');
                 const emploiItems = document.querySelectorAll('.emploi-item');
 
+                // message "Aucun résultat"
+                const noResultMessage = document.createElement('div');
+                noResultMessage.textContent = "Aucun emploi trouvé 😕";
+                noResultMessage.style.display = "none";
+                noResultMessage.style.textAlign = "center";
+                noResultMessage.style.color = "#fff";
+                noResultMessage.style.fontSize = "1.1rem";
+                noResultMessage.style.padding = "14px";
+                noResultMessage.style.marginTop = "18px";
+                const filtersRow = document.querySelector('.row.g-3');
+                filtersRow.parentNode.insertBefore(noResultMessage, filtersRow.nextSibling);
+
+                function normalize(s) {
+                    return (s || '').toString().toLowerCase().trim();
+                }
+
                 function filterEmplois() {
-                    const searchValue = searchInput.value.toLowerCase().trim();
-                    const statusValue = statusFilter.value.trim().toUpperCase();
+                    const searchValue = normalize(searchInput.value);
+                    const statusValue = normalize(statusFilter.value);
+                    let visibleCount = 0;
 
                     emploiItems.forEach(item => {
-                        const title = item.querySelector('h4 a').textContent.toLowerCase();
-                        const description = item.querySelector('.price').textContent.toLowerCase();
-                        const typeContrat = item.getAttribute('data-type-contrat').toUpperCase();
+                        const title = normalize(item.querySelector('h4 a')?.textContent);
+                        const description = normalize(item.querySelector('.price')?.textContent);
+                        const typeContrat = normalize(item.dataset
+                            .typeContrat); // dataset.typeContrat lit data-type-contrat
 
-                        // Vérifie si le texte de recherche est présent et si le type de contrat correspond
-                        const matchesSearch = title.includes(searchValue) || description.includes(searchValue);
+                        // recherche : on permet aussi de matcher le type de contrat via la barre de recherche
+                        const matchesSearch = (
+                            !searchValue ||
+                            title.includes(searchValue) ||
+                            description.includes(searchValue) ||
+                            typeContrat.includes(searchValue)
+                        );
+
+                        // filtre statut : comparation exacte normalisée (ou tous si vide)
                         const matchesStatus = statusValue === "" || typeContrat === statusValue;
 
                         if (matchesSearch && matchesStatus) {
-                            item.style.display = "block";
+                            item.style.display = "";
+                            visibleCount++;
                         } else {
                             item.style.display = "none";
                         }
                     });
+
+                    noResultMessage.style.display = visibleCount === 0 ? "block" : "none";
                 }
 
-                // Événements pour filtrage instantané
                 searchInput.addEventListener('input', filterEmplois);
                 statusFilter.addEventListener('change', filterEmplois);
+
+                // déclenchement initial pour être sûr que tout est filtré correctement
+                filterEmplois();
             });
         </script>
+
+
 
     </section>
 

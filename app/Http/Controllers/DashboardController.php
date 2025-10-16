@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categorie;
 use App\Models\Formation;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -113,4 +114,8 @@ class DashboardController extends Controller
      
         return view('Admin.Email.index', compact('categories', 'formations'));
     }
+
+  
+
+
 }

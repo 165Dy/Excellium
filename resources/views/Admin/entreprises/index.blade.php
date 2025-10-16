@@ -8,19 +8,19 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title mb-0">
-                        <i class="ri-building-line me-2"></i>
+                        <i class="ri ri-building-line me-2"></i>
                         Gestion des Entreprises
                     </h4>
                     <div class="d-flex gap-2">
                         <button type="button" class="btn btn-outline-success" id="exportBtn">
-                            <i class="ri-download-line me-1"></i>
+                            <i class="ri ri-download-line me-1"></i>
                             Exporter CSV
                             @if($entreprises->total() > 0)
-                                <span class="badge bg-success ms-1">{{ $entreprises->total() }}</span>
+                                <span class="badge ms-1"><span style="color: white">{{ $entreprises->total() }}</span></span>
                             @endif
                         </button>
                         <a href="{{ route('admin.entreprises.create') }}" class="btn btn-primary">
-                            <i class="ri-add-line me-1"></i>
+                            <i class="ri ri-add-line me-1"></i>
                             Nouvelle Entreprise
                         </a>
                     </div>
@@ -126,7 +126,7 @@
                                     <input type="text" class="form-control" name="search" value="{{ request('search') }}" 
                                            placeholder="Rechercher..." id="globalSearch">
                                     <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="ri-search-line"></i>
+                                        <i class="ri ri-search-line"></i>
                                     </button>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <button type="button" class="btn btn-sm btn-outline-secondary mb-3" data-bs-toggle="collapse" data-bs-target="#advancedFilters">
-                                    <i class="ri-filter-line me-1"></i>
+                                    <i class="ri ri-filter-line me-1"></i>
                                     Filtres avancés
                                 </button>
                             </div>
@@ -161,11 +161,11 @@
                                 </div>
                                 <div class="col-md-4 d-flex align-items-end gap-2">
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="ri-filter-line me-1"></i>
+                                        <i class="ri ri-filter-line me-1"></i>
                                         Appliquer
                                     </button>
                                     <a href="{{ route('admin.entreprises.index') }}" class="btn btn-outline-secondary">
-                                        <i class="ri-refresh-line me-1"></i>
+                                        <i class="ri ri-refresh-line me-1"></i>
                                         Réinitialiser
                                     </a>
                                 </div>
@@ -197,7 +197,7 @@
                                                         <img src="{{ asset('storage/' . $entreprise->image) }}" alt="{{ $entreprise->nom }}" class="avatar-img rounded">
                                                     @else
                                                         <div class="avatar-initial rounded bg-label-primary">
-                                                            <i class="ri-building-line"></i>
+                                                            <i class="ri ri-building-line"></i>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -218,7 +218,7 @@
                                         </td>
                                         <td>
                                             @if($entreprise->situation_geographique)
-                                                <i class="ri-map-pin-line me-1 text-muted"></i>
+                                                <i class="ri ri-map-pin-line me-1 text-muted"></i>
                                                 {{ $entreprise->situation_geographique }}
                                             @else
                                                 <span class="text-muted">Non renseigné</span>
@@ -229,7 +229,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar avatar-xs me-2">
                                                         <div class="avatar-initial rounded-circle bg-label-info">
-                                                            <i class="ri-user-line"></i>
+                                                            <i class="ri ri-user-line"></i>
                                                         </div>
                                                     </div>
                                                     {{ $entreprise->nom_dirigeant }}
@@ -261,29 +261,29 @@
                                         <td>
                                             <div class="dropdown">
                                                 <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
-                                                    <i class="ri-more-line"></i>
+                                                    <i class="ri ri-more-line"></i>
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <a class="dropdown-item" href="{{ route('admin.entreprises.show', $entreprise) }}">
-                                                            <i class="ri-eye-line me-2"></i>Voir détails
+                                                            <i class="ri ri-eye-line me-2"></i>Voir détails
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a class="dropdown-item" href="{{ route('admin.entreprises.edit', $entreprise) }}">
-                                                            <i class="ri-edit-line me-2"></i>Modifier
+                                                            <i class="ri ri-edit-line me-2"></i>Modifier
                                                         </a>
                                                     </li>
                                                     <li><hr class="dropdown-divider"></li>
                                                     <li>
                                                         <a class="dropdown-item text-success" href="#" data-create-assistance data-entreprise-id="{{ $entreprise->id }}" data-entreprise-nom="{{ $entreprise->nom }}">
-                                                            <i class="ri-add-line me-2"></i>Créer assistance
+                                                            <i class="ri ri-add-line me-2"></i>Créer assistance
                                                         </a>
                                                     </li>
                                                     <li><hr class="dropdown-divider"></li>
                                                     <li>
                                                         <a class="dropdown-item text-danger" href="#" onclick="deleteEntreprise({{ $entreprise->id }})">
-                                                            <i class="ri-delete-bin-line me-2"></i>Supprimer
+                                                            <i class="ri ri-delete-bin-line me-2"></i>Supprimer
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -294,7 +294,7 @@
                                     <tr>
                                         <td colspan="7" class="text-center py-4">
                                             <div class="empty-state">
-                                                <i class="ri-building-line ri-2x text-muted mb-2"></i>
+                                                <i class="ri ri-building-line ri-2x text-muted mb-2"></i>
                                                 <p class="text-muted">Aucune entreprise trouvée</p>
                                                 <a href="{{ route('admin.entreprises.create') }}" class="btn btn-primary btn-sm">
                                                     Créer la première entreprise
@@ -325,7 +325,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
-                    <i class="ri-building-2-line me-2"></i>
+                    <i class="ri ri-building-2-line me-2"></i>
                     Créer une assistance comptable
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -335,8 +335,8 @@
                 <input type="hidden" id="assistance_entreprise_id" name="entreprise_id">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label text-muted">Entreprise</label>
-                        <div id="assistance_entreprise_name" class="fw-bold"></div>
+                        <label class="form-label text-muted"><u>Entreprise</u></label>
+                        <div id="assistance_entreprise_name" class="fw-bold"><h4></h4></div>
                     </div>
 
                     <div class="row">
@@ -423,7 +423,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" class="btn btn-primary">
-                        <i class="ri-save-line me-1"></i>
+                        <i class="ri ri-save-line me-1"></i>
                         Créer l'assistance
                     </button>
                 </div>
@@ -565,7 +565,7 @@
          
          // Réactiver le bouton submit s'il était désactivé
          const submitBtn = $('#createAssistanceForm').find('button[type="submit"]');
-         submitBtn.prop('disabled', false).html('<i class="ri-save-line me-1"></i>Créer l\'assistance');
+         submitBtn.prop('disabled', false).html('<i class="ri ri-save-line me-1"></i>Créer l\'assistance');
          
          // Afficher la modale
          $('#createAssistanceModal').modal('show');
@@ -610,8 +610,8 @@
              showCancelButton: true,
              confirmButtonColor: '#d33',
              cancelButtonColor: '#3085d6',
-             confirmButtonText: '<i class="ri-delete-bin-line me-1"></i>Oui, supprimer !',
-             cancelButtonText: '<i class="ri-close-line me-1"></i>Annuler',
+             confirmButtonText: '<i class="ri ri-delete-bin-line me-1"></i>Oui, supprimer !',
+             cancelButtonText: '<i class="ri ri-close-line me-1"></i>Annuler',
              reverseButtons: true,
              focusCancel: true
          }).then((result) => {

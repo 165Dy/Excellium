@@ -45,7 +45,7 @@
                             </ul>
                         </div>
                         <div class="member-info">
-                            <h3><a href="{{ route('Partenaires.show') }}">@lang('extracted.lora_f_searfina')</a></h3>
+                            <h3><a href="{{ route('clients.partenaires.show') }}">@lang('extracted.lora_f_searfina')</a></h3>
                             <p class="position">@lang('extracted.uiux_designer')</p>
                         </div>
                     </div>

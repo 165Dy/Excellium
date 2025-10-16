@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Carbon;
 
 // Controllers
 use App\Http\Controllers\formationsController;
@@ -35,6 +36,7 @@ use App\Http\Controllers\EntrepriseController;
 // ========================================
 
 // Localisation
+
 Route::get('/locale/{lang}', [LocaleController::class, 'setLocale'])->name('locale.switch');
 
 // Page d'accueil
@@ -46,23 +48,42 @@ Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax
 Route::post('/choix-produit', [InscriptionController::class, 'saveProduits'])->name('choix-produit');
 
 // RSS Feed
+
+
+
 Route::get('/rss', function () {
-            $url = "https://news.google.com/rss/search?q=C%C3%B4te+d%27Ivoire&hl=fr&gl=CI&ceid=CI:fr";
+    // 0 = dimanche, 1 = lundi, ..., 6 = samedi
+    $jour = Carbon::now()->dayOfWeek;
 
-            try {
-                $response = Http::get($url);
+    // Tableau des flux RSS par jour
+    $fluxParJour = [
+        1 => "https://news.google.com/rss/search?q=économie+Côte+d'Ivoire&hl=fr&gl=CI&ceid=CI:fr",        // Lundi
+        2 => "https://news.google.com/rss/search?q=finance+Côte+d'Ivoire&hl=fr&gl=CI&ceid=CI:fr",          // Mardi
+        3 => "https://news.google.com/rss/search?q=investissement+Côte+d'Ivoire&hl=fr&gl=CI&ceid=CI:fr",  // Mercredi
+        4 => "https://news.google.com/rss/search?q=bourse+Côte+d'Ivoire&hl=fr&gl=CI&ceid=CI:fr",           // Jeudi
+        5 => "https://news.google.com/rss/search?q=entreprises+Côte+d'Ivoire&hl=fr&gl=CI&ceid=CI:fr",     // Vendredi
+        6 => "https://news.google.com/rss/search?q=économie+valeurs+Côte+d'Ivoire&hl=fr&gl=CI&ceid=CI:fr", // Samedi
+        0 => "https://news.google.com/rss/search?q=emploi+Côte+d'Ivoire&hl=fr&gl=CI&ceid=CI:fr",         // Dimanche
+    ];
 
-                if ($response->successful()) {
-                    return response($response->body(), 200)
-                        ->header('Content-Type', 'application/xml')
-                        ->header('Access-Control-Allow-Origin', '*');
-                } else {
-                    return response("Erreur lors du chargement du flux.", 500);
-                }
-            } catch (\Exception $e) {
-                return response("Impossible de contacter la source.", 500);
-            }
+    // On récupère l'URL du jour
+    $url = array_key_exists($jour, $fluxParJour) ? $fluxParJour[$jour] : $fluxParJour[1]; // par défaut lundi si problème
+
+    try {
+        $response = Http::get($url);
+
+        if ($response->successful()) {
+            return response($response->body(), 200)
+                ->header('Content-Type', 'application/xml')
+                ->header('Access-Control-Allow-Origin', '*');
+        } else {
+            return response("Erreur lors du chargement du flux.", 500);
+        }
+    } catch (\Exception $e) {
+        return response("Impossible de contacter la source.", 500);
+    }
 });
+
 
 // ========================================
 // ROUTES D'AUTHENTIFICATION
@@ -147,7 +168,7 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     
     // DASHBOARD
     Route::get('/dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
-    
+
     // GESTION DES UTILISATEURS
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/', [DashboardController::class, 'index_user'])->name('index');

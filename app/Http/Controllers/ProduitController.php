@@ -13,6 +13,7 @@ class ProduitController extends Controller
     public function store(Request $request)
     {
         try {
+            // Validation
             $validated = $request->validate([
                 'nom' => 'required|string|max:255',
                 'slug' => 'required|string|max:255|unique:produits,slug',
@@ -20,17 +21,30 @@ class ProduitController extends Controller
                 'statut' => 'required|in:actif,inactif',
             ]);
 
-            Produit::create($validated);
+            // Création du produit
+            $produit = Produit::create($validated);
 
-            return redirect()->back()->with('success', 'Produit créé avec succès !');
+            // ✅ Retourner une réponse JSON compatible avec ton JS
+            return response()->json([
+                'success' => true,
+                'message' => 'Produit créé avec succès !',
+                'produit' => $produit,
+            ], 201);
 
         } catch (\Illuminate\Validation\ValidationException $e) {
-            return redirect()->back()
-                ->withErrors($e->errors())
-                ->withInput();
+            // ✅ Retourner les erreurs de validation au format JSON
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur de validation',
+                'errors' => $e->errors(),
+            ], 422);
 
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Une erreur est survenue : '.$e->getMessage());
+            // ✅ Retourner une erreur générique JSON
+            return response()->json([
+                'success' => false,
+                'message' => 'Une erreur est survenue : ' . $e->getMessage(),
+            ], 500);
         }
     }
 
