@@ -300,7 +300,7 @@
                                 c’est un partenaire de confiance pour votre réussite financière 💼📊
                             </p>
                             <ul class="social-link style-one">
-                                <li><a href="https://www.facebook.com/share/199uiSgsQ7/"><i
+                                <li><a href="https://www.facebook.com/share/19Jwx48HiX/"><i
                                             class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="https://ci.linkedin.com/company/excelliumconseils-ci"><i
                                             class="fab fa-linkedin-in"></i></a></li>
@@ -324,7 +324,7 @@
                                 <div class="col-md-6 col-12 mb-3">
                                     <h4 class="footer-title">@lang('extracted.lien')</h4>
                                     <ul class="footer-nav">
-                                        <li><a href="#">@lang('extracted.pricing_plan')</a></li>
+                                        {{-- <li><a href="#">@lang('extracted.pricing_plan')</a></li> --}}
                                         <li><a href="#">@lang('extracted.notre_objectifs')</a></li>
                                     </ul>
                                 </div>

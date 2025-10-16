@@ -13,7 +13,7 @@
                         <div class="page-banner-content text-center text-white">
                             <h1 class="page-title">{{ $formations->titre }}</h1>
                             <ul class="breadcrumb-link text-white">
-                                <li><a href="{{ route('clients.formations.show',$formations->id) }}">@lang('extracted.formations')</a></li>
+                                <li><a href="{{ route('clients.formations.show_public',$formations->id) }}">@lang('extracted.formations')</a></li>
                                 <li class="active">{{ $formations->categorie->nom }}</li>
                             </ul>
                         </div>
@@ -130,6 +130,7 @@
                                         </button>
                                     </div>
                                 </div>
+                                
                             </div>
                             <br>
                             <div class="entry-footer wow fadeInUp">
@@ -148,7 +149,7 @@
                 <div class="col-lg-4">
                     <div class="sidebar-widget-area">
                         <div class="sidebar-widget sidebar-search-widget mb-35 wow fadeInDown">
-                            <form action="{{ route('clients.formations.show',$formations->id) }}" method="GET">
+                            <form action="{{ route('clients.formations.show_public',$formations->id) }}" method="GET">
                                 <div class="form-group">
                                     <input type="text" placeholder="Rechercher..." name="search"
                                         style="color:#fff">
@@ -186,7 +187,7 @@
                                         @endif
 
                                         <div class="post-title-date">
-                                            <h6><a href="{{ route('Formations.show_public', $autre->id) }}">
+                                            <h6><a href="{{ route('clients.formations.show_public', $autre->id) }}">
                                                     {{ str($autre->titre)->limit(40) }}
                                                 </a></h6>
                                             <span class="posted-on">
@@ -211,7 +212,7 @@
                                         )->count();
                                     @endphp
                                     <li>
-                                        <a href="{{ route('clients.formations.show',$categorie->id )}}">
+                                        <a href="{{ route('clients.formations.show_public',$categorie->id )}}">
                                             <i class="far fa-angle-right"></i>
                                             {{ $categorie->nom }}
                                             <span>({{ $nombreFormations }})</span>
@@ -260,7 +261,7 @@
                                             @endif
 
                                             <div class="post-title-date">
-                                                <h6><a href="{{ route('Formations.show_public', $autrecategorie->id) }}">
+                                                <h6><a href="{{ route('clients.formations.show_public', $autrecategorie->id) }}">
                                                         {{ str($autrecategorie->titre)->limit(40) }}
                                                     </a></h6>
                                                 <span class="posted-on">

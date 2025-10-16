@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Formation;
 use App\Models\Categorie;
+use App\Models\Module;
+use App\Models\Document;
 use Illuminate\Support\Facades\Storage;  
 use Illuminate\Support\Facades\Log;    
 use Illuminate\Support\Facades\DB;
@@ -112,6 +114,31 @@ class formationsController extends Controller
             $formation->load('categorie');
 
             Log::info("Formation créée avec succès - ID: " . $formation->id);
+
+            // Gérer les modules si présents
+            if ($request->has('modules') && $request->modules) {
+                $modules = json_decode($request->modules, true);
+                if (is_array($modules) && count($modules) > 0) {
+                    foreach ($modules as $moduleData) {
+                        $formation->modules()->create([
+                            'titre' => $moduleData['titre'],
+                            'description' => $moduleData['description'] ?? null,
+                        ]);
+                    }
+                    Log::info("Modules créés: " . count($modules));
+                }
+            }
+
+            // Gérer les documents si présents
+            if ($request->has('documents') && $request->documents) {
+                $documents = json_decode($request->documents, true);
+                if (is_array($documents) && count($documents) > 0) {
+                    // Note: Les fichiers seront uploadés séparément après la création de la formation
+                    // car JavaScript ne peut pas envoyer les fichiers avec FormData directement en JSON
+                    Log::info("Documents à traiter: " . count($documents));
+                }
+            }
+
             Log::info("=== FIN CRÉATION FORMATION ===");
 
             // Retourner du JSON pour AJAX
@@ -552,6 +579,59 @@ class formationsController extends Controller
             ]);
             
             return back()->with('error', 'Erreur lors de l\'export');
+        }
+    }
+
+    /**
+     * Récupérer tous les modules de toutes les formations
+     */
+    public function getAllModules()
+    {
+        try {
+            $modules = Module::with('formation')->orderBy('created_at', 'desc')->get();
+            
+            return response()->json([
+                'success' => true,
+                'modules' => $modules
+            ]);
+            
+        } catch (\Exception $e) {
+            Log::error('Erreur récupération tous les modules:', [
+                'error' => $e->getMessage()
+            ]);
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors du chargement des modules'
+            ], 500);
+        }
+    }
+
+    /**
+     * Récupérer tous les documents de toutes les formations
+     */
+    public function getAllDocuments()
+    {
+        try {
+            $documents = Document::with('formation')
+                ->where('type', 'formation')
+                ->orderBy('created_at', 'desc')
+                ->get();
+            
+            return response()->json([
+                'success' => true,
+                'documents' => $documents
+            ]);
+            
+        } catch (\Exception $e) {
+            Log::error('Erreur récupération tous les documents:', [
+                'error' => $e->getMessage()
+            ]);
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors du chargement des documents'
+            ], 500);
         }
     }
 }
