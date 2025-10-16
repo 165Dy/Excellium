@@ -38,7 +38,6 @@ use App\Http\Controllers\EntrepriseController;
 // Localisation
 
 Route::get('/locale/{lang}', [LocaleController::class, 'setLocale'])->name('locale.switch');
-
 // Page d'accueil
 Route::get('/', [ProduitController::class, 'index'])->name('welcome');
 
@@ -177,8 +176,8 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     
     // GESTION DES INVITATIONS
     Route::prefix('invitations')->name('invitations.')->group(function () {
-        Route::get('/', [InvitationController::class, 'index'])->name('index');
-        Route::post('/', [InvitationController::class, 'sendInvitation'])->name('send');
+        Route::get('/', [InvitationController::class, 'index'])->name('admin.invitations.index');
+        Route::post('/send', [InvitationController::class, 'sendInvitation'])->name('send');
         Route::patch('/{id}/revoke', [InvitationController::class, 'revokeInvitation'])->name('revoke');
         Route::patch('/{id}/resend', [InvitationController::class, 'resendInvitation'])->name('resend');
     });
@@ -186,7 +185,7 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     // GESTION DES CATÉGORIES
     Route::prefix('categories')->name('categories.')->group(function () {
         Route::get('/', function () { return view('Admin.categorie.index'); })->name('index');
-        Route::post('/', [CategorieController::class, 'store'])->name('store');
+        Route::post('/store', [CategorieController::class, 'store'])->name('store');
         Route::get('/list', [CategorieController::class, 'list'])->name('list');
         Route::put('/{id}', [CategorieController::class, 'update'])->name('update');
         Route::delete('/{id}', [CategorieController::class, 'destroy'])->name('destroy');
@@ -300,4 +299,5 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     // OUTILS
     Route::get('/calendrier', [DashboardController::class, 'index_calendrier'])->name('calendrier.index');
     Route::get('/email', [DashboardController::class, 'index_email'])->name('email.index');
+
 });
