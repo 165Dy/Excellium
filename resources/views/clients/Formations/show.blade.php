@@ -604,12 +604,12 @@
                                 icon: 'error',
                                 title: '🚫 Erreur de connexion',
                                 html: `
-                            <div class="text-center">
-                                <p><strong>@lang('extracted.impossible_denvoyer_votre_demande_actuellement')</strong></p>
-                                <p class="text-muted">Détails de l'erreur : ${error.message}</p>
-                                <p class="text-muted">@lang('extracted.veuillez_verifier_votre_connexion_internet_et_reessayer')</p>
-                            </div>
-                        `,
+                                <div class="text-center">
+                                    <p><strong>@lang('extracted.impossible_denvoyer_votre_demande_actuellement')</strong></p>
+                                    <p class="text-muted">Détails de l'erreur : ${error.message}</p>
+                                    <p class="text-muted">@lang('extracted.veuillez_verifier_votre_connexion_internet_et_reessayer')</p>
+                                </div>
+                            `,
                                 confirmButtonText: '🔄 Réessayer',
                                 confirmButtonColor: '#dc3545',
                                 background: '#ffffff',
@@ -622,4 +622,5 @@
             }
         });
     </script>
+    
 @endsection
