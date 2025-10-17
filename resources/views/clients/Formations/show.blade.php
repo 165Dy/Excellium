@@ -461,7 +461,15 @@
                     }
 
                     const formData = new FormData(this);
-                    console.log('📋 Données du formulaire:', Object.fromEntries(formData));
+                    // Afficher uniquement des données statiques pour la sécurité (pas d'exposition du token CSRF)
+                    console.log('📋 Données du formulaire:', {
+                        _token: '[TOKEN_CSRF_MASQUE]',
+                        formation_id: '[ID_FORMATION]',
+                        nom: '[NOM_UTILISATEUR]',
+                        email: '[EMAIL_UTILISATEUR]',
+                        telephone: '[TELEPHONE_UTILISATEUR]',
+                        message: '[MESSAGE_UTILISATEUR]'
+                    });
 
                     // Modal de chargement
                     Swal.fire({
