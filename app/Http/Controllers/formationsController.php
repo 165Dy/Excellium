@@ -14,6 +14,7 @@ use App\Models\InscriptionFormation;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 use \Mailgun\Mailgun;
+use App\Models\User;
 
 class formationsController extends Controller
 {
@@ -347,7 +348,7 @@ class formationsController extends Controller
                 'email.email' => 'L\'email doit être valide',
             ]);
 
-            // Vérifier si l'utilisateur ne s'est pas déjà inscrit (avec le modèle)
+            // Vérifier si l'utilisateur ne s'est pas déjà inscrit
             $existingInscription = InscriptionFormation::where('formation_id', $validated['formation_id'])
                 ->where('email', $validated['email'])
                 ->first();
@@ -511,14 +512,20 @@ class formationsController extends Controller
             ]);
             
             $inscription = InscriptionFormation::findOrFail($inscriptionId);
+            $ancienStatut = $inscription->statut;
             $inscription->update(['statut' => $validated['statut']]);
             
             Log::info('Statut inscription modifié:', [
                 'inscription_id' => $inscriptionId,
-                'ancien_statut' => $inscription->getOriginal('statut'),
+                'ancien_statut' => $ancienStatut,
                 'nouveau_statut' => $validated['statut'],
                 'formation_id' => $inscription->formation_id
             ]);
+            
+            // Si le statut passe à "confirme", créer un compte utilisateur
+            if ($validated['statut'] === 'confirme' && $ancienStatut !== 'confirme') {
+                $this->creerCompteParticipant($inscription);
+            }
             
             return response()->json([
                 'success' => true,
@@ -538,6 +545,89 @@ class formationsController extends Controller
             ], 500);
         }
     }
+
+    /**
+     * Créer un compte utilisateur pour un participant à une formation
+     * Note: L'utilisateur est enregistré dans le système mais n'a pas d'accès de connexion
+     */
+    private function creerCompteParticipant(InscriptionFormation $inscription)
+    {
+        try {
+            // Vérifier si l'utilisateur existe déjà
+            $existingUser = User::where('email', $inscription->email)->first();
+            
+            if ($existingUser) {
+                Log::info("L'utilisateur existe déjà, liaison à la formation", [
+                    'user_id' => $existingUser->id,
+                    'email' => $inscription->email,
+                    'formation_id' => $inscription->formation_id
+                ]);
+                
+                // Lier l'utilisateur existant à la formation s'il ne l'est pas déjà
+                $formation = Formation::findOrFail($inscription->formation_id);
+                if (!$formation->users()->where('user_id', $existingUser->id)->exists()) {
+                    $formation->users()->attach($existingUser->id, [
+                        'message' => $inscription->message,
+                        'statut' => 'confirme'
+                    ]);
+                }
+                
+                // Mettre à jour l'inscription avec le user_id
+                $inscription->update(['user_id' => $existingUser->id]);
+                
+                return $existingUser;
+            }
+            
+            // Séparer le nom complet en nom et prénom
+            $nomComplet = trim($inscription->nom);
+            $partiesNom = explode(' ', $nomComplet, 2);
+            
+            $prenom = $partiesNom[0] ?? '';
+            $nom = $partiesNom[1] ?? $partiesNom[0]; // Si pas de prénom, tout est considéré comme nom
+            
+            // Créer l'utilisateur SANS mot de passe (pas d'accès de connexion)
+            $user = User::create([
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'email' => $inscription->email,
+                'telephone' => $inscription->telephone,
+                'password' => null, // Pas de mot de passe = pas d'accès
+                'type' => 'participant_formation',
+                'email_verified_at' => null, // Pas vérifié car pas d'accès
+            ]);
+            
+            Log::info("Participant enregistré dans le système (sans accès de connexion)", [
+                'user_id' => $user->id,
+                'email' => $user->email,
+                'type' => $user->type,
+                'formation_id' => $inscription->formation_id
+            ]);
+            
+            // Lier l'utilisateur à la formation via la table pivot
+            $formation = Formation::findOrFail($inscription->formation_id);
+            $formation->users()->attach($user->id, [
+                'message' => $inscription->message,
+                'statut' => 'confirme'
+            ]);
+            
+            // Mettre à jour l'inscription avec le user_id
+            $inscription->update(['user_id' => $user->id]);
+            
+            return $user;
+            
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la création du compte participant:', [
+                'inscription_id' => $inscription->id,
+                'email' => $inscription->email,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            
+            // Ne pas bloquer le changement de statut si la création du compte échoue
+            return null;
+        }
+    }
+
 
     /**
      * Exporter les inscriptions d'une formation en Excel

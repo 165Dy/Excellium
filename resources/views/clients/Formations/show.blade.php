@@ -510,27 +510,27 @@
                                     icon: 'success',
                                     title: '<span class="text-success">@lang('extracted.demande_envoyee_avec_succes')</span>',
                                     html: `
-                                <div class="text-center">
-                                    <div class="mb-3">
-                                        <i class="fas fa-check-circle text-success" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                                    </div>
-                                    <h5 class="text-dark mb-3">Merci ${data.inscription ? data.inscription.nom : formData.get('nom')} !</h5>
-                                    <p class="text-dark mb-2">
-                                        <strong>Votre demande d'inscription à la formation "${data.inscription ? data.inscription.formation_titre : '{{ $formations->titre }}'}" a été reçue.</strong>
-                                    </p>
-                                    <div class="alert alert-info mt-3">
-                                        <p class="mb-2"><strong>@lang('extracted.prochaines_etapes')</strong></p>
-                                        <ul class="text-start mb-0">
-                                            <li>@lang('extracted.notre_equipe_va_examiner_votre_demande')</li>
-                                            <li>Nous vous recontacterons dans les <strong>@lang('extracted.24_48h')</strong></li>
-                                            <li>@lang('extracted.vous_recevrez_les_details_de_confirmation_par_email')</li>
-                                        </ul>
-                                    </div>
-                                    <p class="text-muted mt-3">
-                                        <small>💌 Un email de confirmation va être envoyé à <strong>${formData.get('email')}</strong></small>
-                                    </p>
-                                </div>
-                            `,
+                                        <div class="text-center">
+                                            <div class="mb-3">
+                                                <i class="fas fa-check-circle text-success" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                                            </div>
+                                            <h5 class="text-dark mb-3">Merci ${data.inscription ? data.inscription.nom : formData.get('nom')} !</h5>
+                                            <p class="text-dark mb-2">
+                                                <strong>Votre demande d'inscription à la formation "${data.inscription ? data.inscription.formation_titre : '{{ $formations->titre }}'}" a été reçue.</strong>
+                                            </p>
+                                            <div class="alert alert-info mt-3">
+                                                <p class="mb-2"><strong>@lang('extracted.prochaines_etapes')</strong></p>
+                                                <ul class="text-start mb-0">
+                                                    <li>@lang('extracted.notre_equipe_va_examiner_votre_demande')</li>
+                                                    <li>Nous vous recontacterons dans les <strong>@lang('extracted.24_48h')</strong></li>
+                                                    <li>@lang('extracted.vous_recevrez_les_details_de_confirmation_par_email')</li>
+                                                </ul>
+                                            </div>
+                                            <p class="text-muted mt-3">
+                                                <small>💌 Un email de confirmation va être envoyé à <strong>${formData.get('email')}</strong></small>
+                                            </p>
+                                        </div>
+                                    `,
                                     confirmButtonText: '🎯 Parfait, merci !',
                                     confirmButtonColor: '#28a745',
                                     background: '#ffffff',
@@ -604,12 +604,12 @@
                                 icon: 'error',
                                 title: '🚫 Erreur de connexion',
                                 html: `
-                            <div class="text-center">
-                                <p><strong>@lang('extracted.impossible_denvoyer_votre_demande_actuellement')</strong></p>
-                                <p class="text-muted">Détails de l'erreur : ${error.message}</p>
-                                <p class="text-muted">@lang('extracted.veuillez_verifier_votre_connexion_internet_et_reessayer')</p>
-                            </div>
-                        `,
+                                    <div class="text-center">
+                                        <p><strong>@lang('extracted.impossible_denvoyer_votre_demande_actuellement')</strong></p>
+                                        <p class="text-muted">Détails de l'erreur : ${error.message}</p>
+                                        <p class="text-muted">@lang('extracted.veuillez_verifier_votre_connexion_internet_et_reessayer')</p>
+                                    </div>
+                                `,
                                 confirmButtonText: '🔄 Réessayer',
                                 confirmButtonColor: '#dc3545',
                                 background: '#ffffff',
