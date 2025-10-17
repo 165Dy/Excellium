@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\User;
 
 class InscriptionFormation extends Model
 {
@@ -11,6 +12,7 @@ class InscriptionFormation extends Model
     
     protected $fillable = [
         'formation_id',
+        'user_id',
         'nom',
         'email',
         'telephone',
@@ -27,6 +29,11 @@ class InscriptionFormation extends Model
     public function formation(): BelongsTo
     {
         return $this->belongsTo(Formation::class);
+    }
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
     
     // Scopes pour faciliter les requêtes
