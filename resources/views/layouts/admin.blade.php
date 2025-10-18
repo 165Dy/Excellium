@@ -13,7 +13,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets_2/img/favicon/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -199,7 +199,7 @@
                         <a href="index.html" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
                                 <span class="text-primary">
-                                    <svg width="32" height="18" viewBox="0 0 38 20" fill="none"
+                                    {{-- <svg width="32" height="18" viewBox="0 0 38 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M30.0944 2.22569C29.0511 0.444187 26.7508 -0.172113 24.9566 0.849138C23.1623 1.87039 22.5536 4.14247 23.5969 5.92397L30.5368 17.7743C31.5801 19.5558 33.8804 20.1721 35.6746 19.1509C37.4689 18.1296 38.0776 15.8575 37.0343 14.076L30.0944 2.22569Z"
@@ -233,10 +233,11 @@
                                                 <stop offset="1" stop-opacity="0" />
                                             </linearGradient>
                                         </defs>
-                                    </svg>
+                                    </svg> --}}
+                                    <img src="{{ asset('assets/images/logo_new.jpg') }}" alt="" style="width: 100px; height:50px">
                                 </span>
                             </span>
-                            <span class="app-brand-text demo menu-text fw-semibold ms-1">materialize</span>
+                            {{-- <span class="app-brand-text demo menu-text fw-semibold ms-1">materialize</span> --}}
                         </a>
 
                         <a href="javascript:void(0);"
@@ -899,7 +900,7 @@
                                 </li>
 
                                 <!-- Divers -->
-                                <li class="menu-item ">
+                                {{-- <li class="menu-item " >
                                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                                         <i class="menu-icon icon-base ri ri-price-tag-line"></i>
                                         <div data-i18n="Divers">divers</div>
@@ -926,7 +927,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
 
                                 <!-- Categories -->
                                 <li class="menu-item ">
@@ -1175,11 +1176,11 @@
                                             <div class="card border border-primary">
                                                 <div class="card-header d-flex justify-content-between align-items-center bg-label-primary">
                                                     <h5 class="mb-0">
-                                                        <i class="ri-book-line me-2"></i>Modules de formation
+                                                        <i class="ri ri-book-line me-2"></i>Modules de formation
                                                     </h5>
                                                     <button type="button" class="btn btn-sm btn-primary" 
                                                         onclick="openAddModuleModal()">
-                                                        <i class="ri-add-line me-1"></i>Ajouter un module
+                                                        <i class="ri ri-add-line me-1"></i>Ajouter un module
                                                     </button>
                                                 </div>
                                                 <div class="card-body">
@@ -1199,11 +1200,11 @@
                                             <div class="card border border-info">
                                                 <div class="card-header d-flex justify-content-between align-items-center bg-label-info">
                                                     <h5 class="mb-0">
-                                                        <i class="ri-file-text-line me-2"></i>Documents de formation
+                                                        <i class="ri ri-file-text-line me-2"></i>Documents de formation
                                                     </h5>
                                                     <button type="button" class="btn btn-sm btn-info" 
                                                         onclick="openAddDocumentModal()">
-                                                        <i class="ri-add-line me-1"></i>Ajouter un document
+                                                        <i class="ri ri-add-line me-1"></i>Ajouter un document
                                                     </button>
                                                 </div>
                                                 <div class="card-body">
@@ -1245,7 +1246,7 @@
                             <div class="modal-content">
                                 <div class="modal-header bg-primary">
                                     <h5 class="modal-title text-white">
-                                        <i class="ri-book-line me-2"></i>Ajouter un module
+                                        <i class="ri ri-book-line me-2"></i>Ajouter un module
                                     </h5>
                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                                 </div>
@@ -1264,7 +1265,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
                                     <button type="button" class="btn btn-primary" onclick="addModule()">
-                                        <i class="ri-add-line me-1"></i>Ajouter
+                                        <i class="ri ri-add-line me-1"></i>Ajouter
                                     </button>
                                 </div>
                             </div>
@@ -1277,7 +1278,7 @@
                             <div class="modal-content">
                                 <div class="modal-header bg-info">
                                     <h5 class="modal-title text-white">
-                                        <i class="ri-file-text-line me-2"></i>Ajouter un document
+                                        <i class="ri ri-file-text-line me-2"></i>Ajouter un document
                                     </h5>
                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                                 </div>
@@ -1302,7 +1303,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
                                     <button type="button" class="btn btn-info" onclick="addDocument()">
-                                        <i class="ri-add-line me-1"></i>Ajouter
+                                        <i class="ri ri-add-line me-1"></i>Ajouter
                                     </button>
                                 </div>
                             </div>
@@ -1318,7 +1319,7 @@
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6 p-4">
                                         <h4 class="mb-2 text-primary">
-                                            <i class="ri-graduation-cap-line me-2"></i>
+                                            <i class="ri ri-graduation-cap-line me-2"></i>
                                             LISTE DES FORMATIONS
                                         </h4>
                                         <p class="text-muted">gerez toutes vos formations disponibles
@@ -1352,7 +1353,7 @@
                                                                         <div class="avatar avatar-sm me-3">
                                                                             <div
                                                                                 class="avatar-initial rounded bg-label-secondary">
-                                                                                <i class="ri-file-line"></i>
+                                                                                <i class="ri ri-file-line"></i>
                                                                             </div>
                                                                         </div>
                                                                         <div>
@@ -1434,7 +1435,7 @@
                                                     <button class="btn btn-primary"
                                                         data-bs-target="#create_formations" data-bs-toggle="modal"
                                                         data-bs-dismiss="modal">
-                                                        <i class="ri-add-line me-1"></i>
+                                                        <i class="ri ri-add-line me-1"></i>
                                                         Nouvelle formation
                                                     </button>
                                                 </div>
@@ -1459,7 +1460,7 @@
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6 p-4">
                                         <h4 class="mb-2 text-info">
-                                            <i class="ri-book-line me-2"></i>
+                                            <i class="ri ri-book-line me-2"></i>
                                             LISTE DES MODULES
                                         </h4>
                                         <p class="text-muted">Gérez tous les modules de vos formations</p>
@@ -1517,7 +1518,7 @@
                                         aria-label="Close"></button>
                                     <div class="text-center mb-6 p-4">
                                         <h4 class="mb-2 text-success">
-                                            <i class="ri-file-text-line me-2"></i>
+                                            <i class="ri ri-file-text-line me-2"></i>
                                             LISTE DES DOCUMENTS
                                         </h4>
                                         <p class="text-muted">Gérez tous les documents de vos formations</p>
@@ -2296,7 +2297,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">
-                            <i class="ri-edit-line me-2 text-warning"></i>
+                            <i class="ri ri-edit-line me-2 text-warning"></i>
                             Modifier la Formation
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -2430,7 +2431,7 @@
                                     Annuler
                                 </button>
                                 <button type="submit" class="btn btn-warning">
-                                    <i class="ri-save-line me-1"></i>
+                                    <i class="ri ri-save-line me-1"></i>
                                     Modifier
                                 </button>
                             </div>
@@ -2449,7 +2450,7 @@
                             aria-label="Close"></button>
                         <div class="text-center mb-6">
                             <div class="mb-4">
-                                <i class="ri-error-warning-line ri-96px text-danger"></i>
+                                <i class="ri ri-error-warning-line ri-96px text-danger"></i>
                             </div>
                             <h4 class="mb-2">confirmer_la_suppression</h4>
                             <p class="text-muted mb-2">
@@ -2519,7 +2520,7 @@
                             aria-label="Close"></button>
                         <div class="text-center mb-6">
                             <h4 class="mb-2 text-primary">
-                                <i class="ri-handshake-line me-2"></i>
+                                <i class="ri ri-handshake-line me-2"></i>
                                 NOUVELLE OPPORTUNITÉ D'AFFAIRE
                             </h4>
                         </div>
@@ -2619,7 +2620,7 @@
                                 </div>
                                 <button type="button" class="btn btn-outline-primary btn-sm"
                                     onclick="addInformation()">
-                                    <i class="ri-add-line me-1"></i>Ajouter une information
+                                    <i class="ri ri-add-line me-1"></i>Ajouter une information
                                 </button>
                             </div>
 
@@ -2645,7 +2646,7 @@
                                         Annuler
                                     </button>
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="ri-save-line me-1"></i>
+                                        <i class="ri ri-save-line me-1"></i>
                                         Créer l'opportunité
                                     </button>
                                 </div>
@@ -2775,7 +2776,7 @@
                             aria-label="Close"></button>
                         <div class="text-center mb-6 p-4">
                             <h4 class="mb-2 text-primary">
-                                <i class="ri-user-line me-2"></i>
+                                <i class="ri ri-user-line me-2"></i>
                                 CANDIDATS INTÉRESSÉS PAR LES OPPORTUNITÉS
                             </h4>
                             <p class="text-muted">Consultez les postulations pour chaque opportunité</p>
@@ -3452,7 +3453,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="avatar avatar-sm me-3">
                                     <div class="avatar-initial rounded bg-label-secondary">
-                                        <i class="ri-file-line"></i>
+                                        <i class="ri ri-file-line"></i>
                                     </div>
                                 </div>
                                 <div>
@@ -3484,14 +3485,14 @@
                                         title="Modifier" 
                                         data-bs-toggle="tooltip"
                                         onclick="editFormation(${formation.id})">
-                                    <i class="ri-edit-line"></i>
+                                    <i class="ri ri-edit-line"></i>
                                 </button>
                                 <button class="btn btn-sm btn-icon btn-outline-danger" 
                                         title="Supprimer" 
                                         data-bs-toggle="tooltip"
                                         data-formation-title="${formation.titre}"
                                         onclick="confirmDelete(${formation.id}, '${formation.titre.replace(/'/g, "\\'")}')">
-                                    <i class="ri-delete-bin-line"></i>
+                                    <i class="ri ri-delete-bin-line"></i>
                                 </button>
                             </div>
                         </td>
@@ -3551,10 +3552,10 @@
                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">
                             <button class="btn btn-sm btn-icon btn-outline-warning" title="Modifier" onclick="editFormation(${formation.id})">
-                                <i class="ri-edit-line"></i>
+                                <i class="ri ri-edit-line"></i>
                             </button>
                             <button class="btn btn-sm btn-icon btn-outline-danger" title="Supprimer" onclick="confirmDelete(${formation.id}, '${formation.titre}')">
-                                <i class="ri-delete-bin-line"></i>
+                                <i class="ri ri-delete-bin-line"></i>
                             </button>
                         </div>
                     </td>
@@ -3611,7 +3612,7 @@
             function getFilePreview(formation, large = false) {
                 if (!formation.file_path) {
                     return `<div class="avatar-initial ${large ? 'w-100 h-auto' : 'rounded bg-label-secondary'}">
-                                <i class="ri-file-line"></i>
+                                <i class="ri ri-file-line"></i>
                             </div>`;
                 }
 
@@ -3627,7 +3628,7 @@
                                 <source src="${imagePath}" type="video/mp4">
                             </video>
                             <div class="play-overlay position-absolute top-50 start-50 translate-middle">
-                                <i class="ri-play-fill text-white"></i>
+                                <i class="ri ri-play-fill text-white"></i>
                             </div>
                         </div>
                     `;
@@ -3664,7 +3665,7 @@
 
                 alertDiv.innerHTML = `
                     <div class="d-flex align-items-center">
-                        <i class="ri-${type === 'success' ? 'check-circle' : 'error-warning'}-line me-2 fs-5"></i>
+                        <i class="ri ri-${type === 'success' ? 'check-circle' : 'error-warning'}-line me-2 fs-5"></i>
                         <div>${message}</div>
                         <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
                     </div>
@@ -4852,13 +4853,13 @@
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="flex-grow-1">
                                         <h6 class="mb-1">
-                                            <i class="ri-book-mark-line me-1 text-primary"></i>
+                                            <i class="ri ri-book-mark-line me-1 text-primary"></i>
                                             ${module.titre}
                                         </h6>
                                         ${module.description ? `<p class="text-muted small mb-0">${module.description}</p>` : ''}
                                     </div>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeModule(${index})">
-                                        <i class="ri-delete-bin-line"></i>
+                                        <i class="ri ri-delete-bin-line"></i>
                                     </button>
                                 </div>
                             </div>
@@ -4979,16 +4980,16 @@
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="flex-grow-1">
                                         <h6 class="mb-1">
-                                            <i class="ri-file-text-line me-1 text-info"></i>
+                                            <i class="ri ri-file-text-line me-1 text-info"></i>
                                             ${doc.titre}
                                         </h6>
                                         ${doc.description ? `<p class="text-muted small mb-1">${doc.description}</p>` : ''}
                                         <small class="text-muted">
-                                            <i class="ri-attachment-line"></i> ${doc.fichier_nom} (${doc.fichier_taille})
+                                            <i class="ri ri-attachment-line"></i> ${doc.fichier_nom} (${doc.fichier_taille})
                                         </small>
                                     </div>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeDocument(${index})">
-                                        <i class="ri-delete-bin-line"></i>
+                                        <i class="ri ri-delete-bin-line"></i>
                                     </button>
                                 </div>
                             </div>
@@ -5089,10 +5090,10 @@
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-2">
                                 <button class="btn btn-sm btn-icon btn-outline-warning" title="Modifier" onclick="editModule(${module.id})">
-                                    <i class="ri-edit-line"></i>
+                                    <i class="ri ri-edit-line"></i>
                                 </button>
                                 <button class="btn btn-sm btn-icon btn-outline-danger" title="Supprimer" onclick="deleteModule(${module.id})">
-                                    <i class="ri-delete-bin-line"></i>
+                                    <i class="ri ri-delete-bin-line"></i>
                                 </button>
                             </div>
                         </td>
@@ -5105,7 +5106,7 @@
                 tbody.innerHTML = `
                     <tr>
                         <td colspan="6" class="text-center text-muted py-4">
-                            <i class="ri-book-line fs-1 mb-2"></i>
+                            <i class="ri ri-book-line fs-1 mb-2"></i>
                             <p>${message}</p>
                         </td>
                     </tr>
@@ -5262,7 +5263,7 @@
                         </td>
                         <td>
                             <small class="text-muted">
-                                <i class="ri-attachment-line"></i> ${doc.fichier ? doc.fichier.split('/').pop() : 'N/A'}
+                                <i class="ri ri-attachment-line"></i> ${doc.fichier ? doc.fichier.split('/').pop() : 'N/A'}
                             </small>
                         </td>
                         <td class="text-center">
@@ -5271,10 +5272,10 @@
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-2">
                                 <button class="btn btn-sm btn-icon btn-outline-info" title="Télécharger" onclick="downloadDocument(${doc.id})">
-                                    <i class="ri-download-line"></i>
+                                    <i class="ri ri-download-line"></i>
                                 </button>
                                 <button class="btn btn-sm btn-icon btn-outline-danger" title="Supprimer" onclick="deleteDocument(${doc.id})">
-                                    <i class="ri-delete-bin-line"></i>
+                                    <i class="ri ri-delete-bin-line"></i>
                                 </button>
                             </div>
                         </td>
@@ -5287,7 +5288,7 @@
                 tbody.innerHTML = `
                     <tr>
                         <td colspan="7" class="text-center text-muted py-4">
-                            <i class="ri-file-text-line fs-1 mb-2"></i>
+                            <i class="ri ri-file-text-line fs-1 mb-2"></i>
                             <p>${message}</p>
                         </td>
                     </tr>
@@ -5496,7 +5497,7 @@
                             <div class="input-group">
                                 <input type="text" name="criteres[]" class="form-control" placeholder="Ex: Expérience minimum 3 ans">
                                 <button type="button" class="btn btn-outline-danger remove-critere" onclick="removeCritere(this)">
-                                    <i class="ri-delete-bin-line"></i>
+                                    <i class="ri ri-delete-bin-line"></i>
                                 </button>
                             </div>
                         `;
@@ -5527,7 +5528,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <button type="button" class="btn btn-outline-danger w-100" onclick="removeInformation(this)">
-                                        <i class="ri-delete-bin-line"></i>
+                                        <i class="ri ri-delete-bin-line"></i>
                                     </button>
                                 </div>
                             </div>
@@ -6008,14 +6009,14 @@
                             <td class="text-center">
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                        <i class="ri-more-2-line"></i>
+                                        <i class="ri ri-more-2-line"></i>
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'accepte')">
-                                            <i class="ri-check-line me-1 text-success"></i> Accepter
+                                            <i class="ri ri-check-line me-1 text-success"></i> Accepter
                                         </a>
                                         <a class="dropdown-item" href="javascript:void(0);" onclick="changerStatutPostulation(${candidat.id}, 'refuse')">
-                                            <i class="ri-close-line me-1 text-danger"></i> Refuser
+                                            <i class="ri ri-close-line me-1 text-danger"></i> Refuser
                                         </a>
                                     </div>
                                 </div>

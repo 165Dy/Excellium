@@ -131,11 +131,11 @@
         }
     </style>
     <!--====== Start Header Section ======-->
-    <section class="hero-section">
+    <section class="hero-section" id="aboutTab">
 
         <div class="hero-wrapper-two bg_cover" style="background-image: url(assets/images/hero/hero-bg-1.png);">
             <div class="container">
-                <div class="row align-items-center">
+                <div class="row align-items-center" >
                     <div class="col-xl-6">
                         <div class="hero-content mb-50 wow fadeInLeft">
                             <h1>@lang('extracted.excellium_conseils')</h1>
@@ -172,14 +172,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center">
+            <div class="row align-items-center" id="objectifsTab">
                 <div class="col-xl-5">
                     <div class="section-content-box mb-50 wow fadeInLeft">
                         <p class="mb-30">
                             Chez Excellium Conseils, nous mettons tout en œuvre pour vous offrir un accompagnement de
                             qualité, adapté à vos besoins spécifiques. Voici 4 raisons de nous faire confiance :
                         </p>
-                        <div class="section-nav-tab mb-30">
+                        <div class="section-nav-tab mb-30" >
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#mission">

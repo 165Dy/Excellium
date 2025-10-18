@@ -49,7 +49,7 @@
 
 
                                     <small class="text-muted">
-                                        <strong class="badge bg-info">Temps: {{ $joursRestants }}jr(s)  
+                                        <strong class="badge bg-info">Temps: {{ $joursRestants }}jr(s)
                                             {{ $heuresRestantes }}H
                                         </strong>
                                     </small>
@@ -58,8 +58,8 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center badge bg-primary">
-                                <a href="{{ route('emplois.candidatures.index') }}" class="btn-outline-secondary">
-                                    <i class="ri ri-arrow-left-line" style="color: rgb(255, 254, 254);font-size: 20px;"></i> 
+                                <a href="{{ route('admin.emplois.candidatures.index') }}" class="btn-outline-secondary">
+                                    <i class="ri ri-arrow-left-line" style="color: rgb(255, 254, 254);font-size: 20px;"></i>
                                 </a>
                             </div>
 
@@ -76,7 +76,8 @@
                                                 <li class="list-group-item"><strong>Téléphone :</strong>
                                                     {{ $candidature->telephone ?? 'Non fourni' }}</li>
                                                 <li class="list-group-item"><strong>Date de candidature :</strong>
-                                                    {{ $candidature->created_at->format('d/m/Y H:i') }}</li>
+                                                    {{ $candidature->emploi && $candidature->emploi->date_expiration ? \Carbon\Carbon::parse($candidature->emploi->date_expiration)->format('d/m/Y H:i') : 'N/A' }}
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -176,8 +177,8 @@
 
                                                 <div class="col-md-6">
                                                     <strong>Date d'expiration :</strong>
-                                                    <p class=" badge bg-danger">
-                                                        {{ $candidature->emploi->date_expiration ? \Carbon\Carbon::parse($candidature->emploi->date_expiration)->format('d/m/Y') : 'N/A' }}
+                                                    <p class="badge bg-danger">
+                                                        {{$candidature->emploi && $candidature->emploi->date_expiration ? \Carbon\Carbon::parse($candidature->emploi->date_expiration)->format('d/m/Y') : 'N/A' }}
                                                     </p>
                                                 </div>
 

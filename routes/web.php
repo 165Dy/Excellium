@@ -124,6 +124,7 @@ Route::prefix('clients')->name('clients.')->group(function () {
         Route::post('/candidature/postuler', [EmploiController::class, 'postuler'])->name('postuler');
     });
     
+
     // FORMATIONS
     Route::prefix('formations')->name('formations.')->group(function () {
         Route::get('/index', [formationsController::class, 'index_public'])->name('index');
@@ -151,6 +152,7 @@ Route::prefix('clients')->name('clients.')->group(function () {
     Route::prefix('partenaires')->name('partenaires.')->group(function () {
         Route::get('/', function () { return view('clients.Partenaires.index'); })->name('index');
         Route::get('/show', function () { return view('clients.Partenaires.show'); })->name('show');
+        Route::get('/Notre_Equipe', function () { return view('clients.Partenaires.equipe'); })->name('equipe');
     });
     
     // OPPORTUNITÉS D'AFFAIRES

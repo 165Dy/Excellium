@@ -42,8 +42,8 @@
                                         </linearGradient>
                                     </defs>
                                 </svg> --}}
-                                <img src="assets_2/img/favicon/favicon_excellium.ico" alt=""
-                                    style="width:50px;height:50px ;">
+                                <img src="{{ asset('assets/images/logo_new.jpg') }}" alt=""
+                                    style="width:100px;height:50px ;">
                             </span>
                         </span>
                         {{-- <span class="app-brand-text demo text-heading fw-semibold  ">Excellium</span> --}}

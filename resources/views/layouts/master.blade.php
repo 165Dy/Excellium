@@ -169,13 +169,7 @@
                                                     </li>
                                                 @endforeach
                                             @else
-                                                <li><a href="{{ route('audit&Conseil') }}">@lang('extracted.audit_conseil')</a></li>
-                                                <li><a href="{{ route('Compta_Fiscale') }}">@lang('extracted.comptable_fiscale')</a></li>
-                                                <li><a href="{{ route('Financement') }}">@lang('extracted.financement')</a></li>
-                                                <li><a href="{{ route('Gestion_Paie') }}">@lang('extracted.gestion_de_la_paie')</a></li>
-                                                <li><a
-                                                        href="{{ route('Opportunites_humaines') }}">@lang('extracted.r_humaines')</a>
-                                                </li>
+                                                <p> creation des services en cours ......</p>
                                             @endif
                                         </ul>
                                     </li>
@@ -263,6 +257,7 @@
     {{-- /PARTENAIRES/ --}}
     @yield('indexPartenaire')
     @yield('showPartenaire')
+    @yield('indexEquipe')
 
     {{-- /Emploi/ --}}
     @yield('showEmploi')
@@ -316,8 +311,8 @@
                                 <div class="col-md-6 col-12 mb-3">
                                     <h4 class="footer-title">@lang('extracted.explore')</h4>
                                     <ul class="footer-nav">
-                                        <li><a href="#">@lang('extracted.a_propos_de_nous')</a></li>
-                                        <li><a href="#">@lang('extracted.notre_equipe')</a></li>
+                                        <li><a href="{{ route('welcome') }}#aboutTab">@lang('extracted.a_propos_de_nous')</a></li>
+                                        <li><a href="{{ route('clients.partenaires.equipe') }}">@lang('extracted.notre_equipe')</a></li>
                                         <li><a href="#"></a></li>
                                     </ul>
                                 </div>
@@ -325,7 +320,7 @@
                                     <h4 class="footer-title">@lang('extracted.lien')</h4>
                                     <ul class="footer-nav">
                                         {{-- <li><a href="#">@lang('extracted.pricing_plan')</a></li> --}}
-                                        <li><a href="#">@lang('extracted.notre_objectifs')</a></li>
+                                        <li><a href="{{ route('welcome') }}#objectifsTab">@lang('extracted.notre_objectifs')</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -342,7 +337,7 @@
                                             <i class="icon-map"></i>
                                         </div>
                                         <div class="content">
-                                            <p>@lang('extracted.abidjan_yopougon_palais')</p>
+                                            <p>Abidjan | Yopougon palais de justice</p>
                                         </div>
                                     </div>
                                 </li>
