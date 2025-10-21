@@ -8,17 +8,18 @@
                     <a href="#" class="app-brand-link gap-2">
                         <span class="app-brand-logo demo">
                             <span class="text-primary">
+                                <img src="{{ asset('assets/images/logo_new.jpg') }}" alt=""
+                                    style="width:100px;height:50px ;">
                                 <!-- Votre logo SVG ici -->
                             </span>
                         </span>
-                        <span class="app-brand-text demo text-heading fw-semibold">@lang('extracted.materialize')</span>
                     </a>
                 </div>
                 <!-- /Logo -->
 
                 <div class="card-body mt-1">
-                    <h4 class="mb-1">@lang('extracted.bienvenue')</h4>
-                    <p class="mb-5">@lang('extracted.reinitialiser_votre_mot_de_passe')</p>
+                    <h4 class="mb-1">Bienvenue</h4>
+                    <p class="mb-5">reinitialiser votre mot de passe</p>
 
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
@@ -35,7 +36,7 @@
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                 name="email" value="{{ old('email', $email) }}" required autofocus
                                 autocomplete="username" />
-                            <label for="email">@lang('extracted.adresse_email')</label>
+                            <label for="email">adresse email</label>
                             @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -47,8 +48,8 @@
                                     <input type="password" id="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password"
-                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-                                    <label for="password">@lang('extracted.mot_de_passe')</label>
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                    <label for="password">mot de passe</label>
                                     @error('password')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -64,7 +65,7 @@
                                     <input type="password" id="password_confirmation"
                                         class="form-control @error('password_confirmation') is-invalid @enderror"
                                         name="password_confirmation" required autocomplete="new-password"
-                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
                                     <label for="password_confirmation">Confirmer le mot de passe</label>
                                     @error('password_confirmation')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -77,7 +78,7 @@
 
                         <div class="mb-5">
                             <button class="btn btn-primary d-grid w-100" type="submit">
-                                @lang('extracted.reinitialiser')
+                                reinitialiser
                             </button>
                         </div>
                     </form>

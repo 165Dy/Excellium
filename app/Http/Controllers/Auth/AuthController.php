@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\AdminInvitation;
 use App\Models\User;
+use App\Models\Candidature;
+use App\Models\Postulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -238,4 +240,102 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('success', 'Mot de passe réinitialisé avec succès.');
     }
+
+
+    /**
+     * Afficher la liste des utilisateurs
+     */
+    public function listUsers()
+    {
+        // Seuls les super_admins peuvent voir la liste complète
+        $currentUser = Auth::user();
+
+        if ($currentUser->type !== 'super_admin') {
+            return redirect()->route('admin.dashboard')->with('error', 'Accès non autorisé.');
+        }
+
+        $users = User::orderBy('created_at', 'desc')->get();
+
+        return view('admin.Users.index', compact('users'));
+    }
+
+    /**
+ * Afficher les détails d'un utilisateur
+ */
+    public function showUser($id)
+    {
+     $currentUser = Auth::user();
+
+    if ($currentUser->type !== 'super_admin') {
+        return redirect()->route('admin.users.index')->with('error', 'Accès non autorisé.');
+    }
+
+    $user = User::findOrFail($id);
+
+    // Si le user est un participant
+    if ($user->type !== 'super_admin' || $user->type !== 'admin') {
+       $formations = $user->formations()->with('categorie')->get()->map(function($f) {
+            $f->type = 'formation';
+            return $f;
+        });
+
+        $emplois = Candidature::with('emploi')->where('email', $user->email)->get()->map(function($c) {
+            $c->type = 'emploi';
+            return $c;
+        });
+
+        $opportunites = Postulation::with(['opportunite.categorie'])->where('user_id', $user->id)->get()->map(function($p) {
+            $p->type = 'opportunite';
+            return $p;
+        });
+        $participations = collect()
+            ->merge($formations)
+            ->merge($emplois)
+            ->merge($opportunites);
+
+       $invitations = collect(); // vide pour un participant
+    }
+    // Si c’est un admin, on récupère ses invitations envoyées
+    elseif ($user->type === 'admin' || $user->type === 'super_admin') {
+        $invitations = $user->invitations()->latest()->get();
+        $participations = collect(); // vide
+    } 
+    else {
+        $participations = collect();
+        $invitations = collect();
+    }
+
+    return view('admin.users.show', compact('user', 'participations', 'invitations'));
+    }
+
+
+
+/**
+ * Supprimer un utilisateur
+ */
+    public function deleteUser(Request $request, $id)
+    {
+        $request->validate([
+            'security_code' => 'required|digits:5'
+        ]);
+
+        // 🔒 Code secret défini côté serveur (même que celui du JS)
+        $SECURITY_CODE = '85246';
+
+        if ($request->security_code !== $SECURITY_CODE) {
+            return back()->with('error', 'Code de sécurité invalide.');
+        }
+
+        $user = User::findOrFail($id);
+
+        if ($user->type === 'super_admin') {
+            return back()->with('error', 'Impossible de supprimer un super administrateur.');
+        }
+
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->with('success', 'Utilisateur supprimé avec succès.');
+    }
+
+
 }

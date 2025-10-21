@@ -77,4 +77,29 @@ class User extends Authenticatable
     {
         return $this->type === 'super_admin';
     }
+
+    public function formations()
+    {
+        return $this->belongsToMany(Formation::class, 'formation_user')
+                    ->withPivot('message', 'statut')
+                    ->withTimestamps();
+    }
+
+
+    // Si un admin envoie des invitations
+    public function invitations()
+    {
+        return $this->hasMany(AdminInvitation::class, 'invited_by');
+    }
+
+    public function candidatures()
+    {
+        return $this->hasMany(Candidature::class);
+    }
+     // Postulations aux opportunités
+    public function postulations()
+    {
+        return $this->hasMany(Postulation::class);
+    }
+
 }

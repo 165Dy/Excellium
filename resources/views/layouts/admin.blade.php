@@ -64,7 +64,7 @@
     <script src="{{ asset('assets_2/vendor/js/helpers.js') }}"></script>
     <script src="{{ asset('assets_2/js/config.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-     <script src="{{ asset('assets_2/js/modal.js') }}"></script>
+    <script src="{{ asset('assets_2/js/modal.js') }}"></script>
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -196,52 +196,18 @@
             <nav class="layout-navbar navbar navbar-expand-xl align-items-center" id="layout-navbar">
                 <div class="container-xxl">
                     <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-6">
-                        <a href="index.html" class="app-brand-link gap-2">
+                        <a href="#" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
                                 <span class="text-primary">
-                                    {{-- <svg width="32" height="18" viewBox="0 0 38 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M30.0944 2.22569C29.0511 0.444187 26.7508 -0.172113 24.9566 0.849138C23.1623 1.87039 22.5536 4.14247 23.5969 5.92397L30.5368 17.7743C31.5801 19.5558 33.8804 20.1721 35.6746 19.1509C37.4689 18.1296 38.0776 15.8575 37.0343 14.076L30.0944 2.22569Z"
-                                            fill="currentColor" />
-                                        <path
-                                            d="M30.171 2.22569C29.1277 0.444187 26.8274 -0.172113 25.0332 0.849138C23.2389 1.87039 22.6302 4.14247 23.6735 5.92397L30.6134 17.7743C31.6567 19.5558 33.957 20.1721 35.7512 19.1509C37.5455 18.1296 38.1542 15.8575 37.1109 14.076L30.171 2.22569Z"
-                                            fill="url(#paint0_linear_2989_100980)" fill-opacity="0.4" />
-                                        <path
-                                            d="M22.9676 2.22569C24.0109 0.444187 26.3112 -0.172113 28.1054 0.849138C29.8996 1.87039 30.5084 4.14247 29.4651 5.92397L22.5251 17.7743C21.4818 19.5558 19.1816 20.1721 17.3873 19.1509C15.5931 18.1296 14.9843 15.8575 16.0276 14.076L22.9676 2.22569Z"
-                                            fill="currentColor" />
-                                        <path
-                                            d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
-                                            fill="currentColor" />
-                                        <path
-                                            d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
-                                            fill="url(#paint1_linear_2989_100980)" fill-opacity="0.4" />
-                                        <path
-                                            d="M7.82901 2.22569C8.87231 0.444187 11.1726 -0.172113 12.9668 0.849138C14.7611 1.87039 15.3698 4.14247 14.3265 5.92397L7.38656 17.7743C6.34325 19.5558 4.04298 20.1721 2.24875 19.1509C0.454514 18.1296 -0.154233 15.8575 0.88907 14.076L7.82901 2.22569Z"
-                                            fill="currentColor" />
-                                        <defs>
-                                            <linearGradient id="paint0_linear_2989_100980" x1="5.36642"
-                                                y1="0.849138" x2="10.532" y2="24.104"
-                                                gradientUnits="userSpaceOnUse">
-                                                <stop offset="0" stop-opacity="1" />
-                                                <stop offset="1" stop-opacity="0" />
-                                            </linearGradient>
-                                            <linearGradient id="paint1_linear_2989_100980" x1="5.19475"
-                                                y1="0.849139" x2="10.3357" y2="24.1155"
-                                                gradientUnits="userSpaceOnUse">
-                                                <stop offset="0" stop-opacity="1" />
-                                                <stop offset="1" stop-opacity="0" />
-                                            </linearGradient>
-                                        </defs>
-                                    </svg> --}}
-                                    <img src="{{ asset('assets/images/logo_new.jpg') }}" alt="" style="width: 100px; height:50px">
+                                    
+                                    <img src="{{ asset('assets/images/logo_new.jpg') }}" alt=""
+                                        style="width: 100px; height:50px">
                                 </span>
                             </span>
                             {{-- <span class="app-brand-text demo menu-text fw-semibold ms-1">materialize</span> --}}
                         </a>
 
-                        <a href="javascript:void(0);"
-                            class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
+                        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
                             <i class="icon-base ri ri-close-line icon-sm"></i>
                         </a>
                     </div>
@@ -1174,11 +1140,12 @@
                                         <!-- Section Modules -->
                                         <div class="col-12">
                                             <div class="card border border-primary">
-                                                <div class="card-header d-flex justify-content-between align-items-center bg-label-primary">
+                                                <div
+                                                    class="card-header d-flex justify-content-between align-items-center bg-label-primary">
                                                     <h5 class="mb-0">
                                                         <i class="ri ri-book-line me-2"></i>Modules de formation
                                                     </h5>
-                                                    <button type="button" class="btn btn-sm btn-primary" 
+                                                    <button type="button" class="btn btn-sm btn-primary"
                                                         onclick="openAddModuleModal()">
                                                         <i class="ri ri-add-line me-1"></i>Ajouter un module
                                                     </button>
@@ -1186,11 +1153,13 @@
                                                 <div class="card-body">
                                                     <div id="modules-list" class="mb-2">
                                                         <p class="text-muted text-center" id="no-modules-msg">
-                                                            Aucun module ajouté. Cliquez sur "Ajouter un module" pour commencer.
+                                                            Aucun module ajouté. Cliquez sur "Ajouter un module" pour
+                                                            commencer.
                                                         </p>
                                                     </div>
                                                     <!-- Champ caché pour stocker les modules en JSON -->
-                                                    <input type="hidden" name="modules" id="modules-data" value="[]">
+                                                    <input type="hidden" name="modules" id="modules-data"
+                                                        value="[]">
                                                 </div>
                                             </div>
                                         </div>
@@ -1198,11 +1167,12 @@
                                         <!-- Section Documents -->
                                         <div class="col-12">
                                             <div class="card border border-info">
-                                                <div class="card-header d-flex justify-content-between align-items-center bg-label-info">
+                                                <div
+                                                    class="card-header d-flex justify-content-between align-items-center bg-label-info">
                                                     <h5 class="mb-0">
                                                         <i class="ri ri-file-text-line me-2"></i>Documents de formation
                                                     </h5>
-                                                    <button type="button" class="btn btn-sm btn-info" 
+                                                    <button type="button" class="btn btn-sm btn-info"
                                                         onclick="openAddDocumentModal()">
                                                         <i class="ri ri-add-line me-1"></i>Ajouter un document
                                                     </button>
@@ -1210,11 +1180,13 @@
                                                 <div class="card-body">
                                                     <div id="documents-list" class="mb-2">
                                                         <p class="text-muted text-center" id="no-documents-msg">
-                                                            Aucun document ajouté. Cliquez sur "Ajouter un document" pour commencer.
+                                                            Aucun document ajouté. Cliquez sur "Ajouter un document"
+                                                            pour commencer.
                                                         </p>
                                                     </div>
                                                     <!-- Champ caché pour stocker les documents en JSON -->
-                                                    <input type="hidden" name="documents" id="documents-data" value="[]">
+                                                    <input type="hidden" name="documents" id="documents-data"
+                                                        value="[]">
                                                 </div>
                                             </div>
                                         </div>
@@ -1248,12 +1220,14 @@
                                     <h5 class="modal-title text-white">
                                         <i class="ri ri-book-line me-2"></i>Ajouter un module
                                     </h5>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                                    <button type="button" class="btn-close btn-close-white"
+                                        data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form id="moduleForm">
                                         <div class="mb-3">
-                                            <label for="module_titre" class="form-label">Titre du module <span class="text-danger">*</span></label>
+                                            <label for="module_titre" class="form-label">Titre du module <span
+                                                    class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="module_titre" required>
                                         </div>
                                         <div class="mb-3">
@@ -1263,7 +1237,8 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">Annuler</button>
                                     <button type="button" class="btn btn-primary" onclick="addModule()">
                                         <i class="ri ri-add-line me-1"></i>Ajouter
                                     </button>
@@ -1280,7 +1255,8 @@
                                     <h5 class="modal-title text-white">
                                         <i class="ri ri-file-text-line me-2"></i>Ajouter un document
                                     </h5>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                                    <button type="button" class="btn-close btn-close-white"
+                                        data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form id="documentForm">
@@ -1293,15 +1269,18 @@
                                             <textarea class="form-control" id="document_description" rows="2"></textarea>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="document_fichier" class="form-label">Fichier <span class="text-danger">*</span></label>
-                                            <input type="file" class="form-control" id="document_fichier" 
+                                            <label for="document_fichier" class="form-label">Fichier <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="file" class="form-control" id="document_fichier"
                                                 accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar" required>
-                                            <small class="text-muted">Formats acceptés: PDF, DOC, XLS, PPT, ZIP, RAR (Max 50MB)</small>
+                                            <small class="text-muted">Formats acceptés: PDF, DOC, XLS, PPT, ZIP, RAR
+                                                (Max 50MB)</small>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">Annuler</button>
                                     <button type="button" class="btn btn-info" onclick="addDocument()">
                                         <i class="ri ri-add-line me-1"></i>Ajouter
                                     </button>
@@ -1468,12 +1447,15 @@
 
                                     <div class="card-datatable px-4 pb-4">
                                         <div class="mb-3">
-                                            <label for="filter_formation_modules" class="form-label">Filtrer par formation</label>
-                                            <select id="filter_formation_modules" class="form-select" onchange="filterModulesByFormation(this.value)">
+                                            <label for="filter_formation_modules" class="form-label">Filtrer par
+                                                formation</label>
+                                            <select id="filter_formation_modules" class="form-select"
+                                                onchange="filterModulesByFormation(this.value)">
                                                 <option value="">Toutes les formations</option>
                                                 @if (isset($formations) && $formations->count() > 0)
                                                     @foreach ($formations as $formation)
-                                                        <option value="{{ $formation->id }}">{{ $formation->titre }}</option>
+                                                        <option value="{{ $formation->id }}">{{ $formation->titre }}
+                                                        </option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -1526,12 +1508,15 @@
 
                                     <div class="card-datatable px-4 pb-4">
                                         <div class="mb-3">
-                                            <label for="filter_formation_documents" class="form-label">Filtrer par formation</label>
-                                            <select id="filter_formation_documents" class="form-select" onchange="filterDocumentsByFormation(this.value)">
+                                            <label for="filter_formation_documents" class="form-label">Filtrer par
+                                                formation</label>
+                                            <select id="filter_formation_documents" class="form-select"
+                                                onchange="filterDocumentsByFormation(this.value)">
                                                 <option value="">Toutes les formations</option>
                                                 @if (isset($formations) && $formations->count() > 0)
                                                     @foreach ($formations as $formation)
-                                                        <option value="{{ $formation->id }}">{{ $formation->titre }}</option>
+                                                        <option value="{{ $formation->id }}">{{ $formation->titre }}
+                                                        </option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -1734,8 +1719,9 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-floating form-floating-outline">
-                                                <input type="tel" id="contact_telephone" name="contact_telephone"
-                                                    class="form-control" placeholder="+225 XX XX XX XX" />
+                                                <input type="tel" id="contact_telephone"
+                                                    name="contact_telephone" class="form-control"
+                                                    placeholder="+225 XX XX XX XX" />
                                                 <label for="contact_telephone">
                                                     <i class="fas fa-phone me-1"></i>Téléphone de contact
                                                 </label>
@@ -1792,7 +1778,8 @@
 
                                         {{-- Boutons d'action --}}
                                         <div class="col-12 text-center pt-4">
-                                            <button type="submit" class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
                                                 <i class="fas fa-paper-plane me-2"></i>Publier l'opportunité
                                             </button>
                                             <button type="button" class="btn btn-outline-secondary btn-lg px-4"
@@ -1986,7 +1973,7 @@
                             </div>
                         </div>
                         <br>
-                         <div class="content-backdrop fade"></div>
+                        <div class="content-backdrop fade"></div>
                     </div>
 
                     <!-- Modal Création Service -->
@@ -2082,7 +2069,7 @@
                             </div>
                         </div>
                         <br>
-                         <div class="content-backdrop fade"></div>
+                        <div class="content-backdrop fade"></div>
                     </div>
 
 
@@ -2450,14 +2437,14 @@
                             aria-label="Close"></button>
                         <div class="text-center mb-6">
                             <div class="mb-4">
-                                <i class="ri ri-error-warning-line ri-96px text-danger"></i>
+                               <h3> <i class="ri ri-error-warning-line text-danger"></i></h3>
                             </div>
-                            <h4 class="mb-2">confirmer_la_suppression</h4>
+                            <h4 class="mb-2">confirmer la suppression</h4>
                             <p class="text-muted mb-2">
-                                etes_vous_sur_de_vouloir_supprimer_cette_formation</p>
+                                etes vous sur de vouloir supprimer cette formation</p>
                             <p class="fw-bold text-dark mb-2" id="formation-to-delete"></p>
                             <p class="text-danger mb-0">
-                                <strong>cette_action_est_irreversible</strong>
+                                <strong>cette action est irreversible</strong>
                             </p>
                         </div>
                         <div class="text-center">
@@ -2494,7 +2481,7 @@
                             <div class="spinner-border text-primary" role="status">
                                 <span class="visually-hidden">chargement</span>
                             </div>
-                            <p class="mt-3">chargement_des_details</p>
+                            <p class="mt-3">chargement des details</p>
                         </div>
                     </div>
 
@@ -4292,15 +4279,15 @@
                 const isConfirm = nouveauStatut === 'confirme';
 
                 Swal.fire({
-                    title: isConfirm ? '✅ Confirmer l\'inscription ?' : '❌ Refuser l\'inscription ?',
+                    title: isConfirm ? '✅ Confirmer ?' : '❌ Refuser  ?',
                     html: `
                         <div class="text-center">
                             <i class="fas ${isConfirm ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'} fa-3x mb-3"></i>
-                            <p>Êtes-vous sûr de vouloir <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
+                            <p>Voulez vous <strong>${isConfirm ? 'confirmer' : 'refuser'}</strong> cette inscription ?</p>
                 ${isConfirm ? `
-                                                                                                                                                                                            <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
-                                                                                                                                                                                            <p class="text-muted">Cette action peut être annulée plus tard.</p>
-                                                                                                                                                                                        ` : ''}
+                            <p class="text-muted">Le candidat sera notifié de la confirmation.</p>
+                            <p class="text-muted">Cette action peut être annulée plus tard.</p>
+                        ` : ''}
                         </div>
                     `,
                     showCancelButton: true,
@@ -4361,9 +4348,9 @@
                                         <div class="text-center">
                                             <p>Le statut a été mis à jour avec succès.</p>
                                 ${isConfirm ? `
-                                                                                                                                                                                                            <p class="text-muted">Le candidat peut maintenant être contacté.</p>
-                                                                                                                                                                                                            <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
-                                                                                                                                                                                                        ` : ''}
+                                                                                                                                                                                                                    <p class="text-muted">Le candidat peut maintenant être contacté.</p>
+                                                                                                                                                                                                                    <p class="text-muted">Vous pouvez changer d'avis à tout moment.</p>
+                                                                                                                                                                                                                ` : ''}
                                         </div>
                                     `,
                                         timer: 3000,
@@ -4588,10 +4575,11 @@
                         contentDiv.innerHTML = `
                         <div class="alert alert-danger text-center">
                             <i class="fas fa-exclamation-triangle me-2"></i>
-                    Erreur lors du chargement des détails : ${error.message}
+                              Erreur lors du chargement des détails : ${error.message}
                         </div>
                     `;
                     });
+                 
             }
 
             function afficherDetailsFormation(data) {
@@ -4682,14 +4670,14 @@
                                     </div>
                                     
                                     ${formation.file_path ? `
-                                                                                                                                                                                                                            <div class="text-center mt-3">
-                                                                                                                                                                                                                <strong>Média de présentation</strong><br>
-                                                                                                                                                                                                                                ${formation.file_type === 'image' ? 
-                                                                                                                                                                                                                                    `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
-                                                                                                                                                                                                                                    `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
+                                <div class="text-center mt-3">
+                                <strong>Média de présentation</strong><br>
+                                    ${formation.file_type === 'image' ? 
+                                        `<img src="/storage/${formation.file_path}" alt="Formation" class="img-thumbnail mt-2" style="max-height: 150px;">` :
+                                        `<video controls class="mt-2" style="max-height: 150px; max-width: 100%;">
                                                 <source src="/storage/${formation.file_path}" type="video/mp4">
                                             </video>`}
-                                                                                                                                                                                                                            </div>` : ''}
+                                    </div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -4700,38 +4688,40 @@
                         <div class="card-header bg-light d-flex justify-content-between align-items-center">
                             <h6 class="mb-0"><i class="fas fa-list me-2"></i>Liste des candidats inscrits (${inscriptions.length})</h6>
                             ${inscriptions.length > 0 ? `
-                                                                                                                                                                                                                    <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
-                                                                                                                                                                                                                        <i class="fas fa-download me-1"></i>Exporter Excel
-                                                                                                                                                                                                                    </button>` : ''}
+                                <button class="btn btn-sm btn-outline-primary" onclick="exporterInscriptions(${formation.id})">
+                                    <i class="fas fa-download me-1"></i>Exporter Excel
+                                </button>` : ''}
                         </div>
                         <div class="card-body p-0">
                             ${inscriptions.length > 0 ? `
-                                                                                            <div class="table-responsive">
-                                                                                                <table class="table table-hover mb-0">
-                                                                                                    <thead class="table-light">
-                                                                                                        <tr>
-                                                                                                            <th>#</th>
-                                                                                                            <th><i class="fas fa-user me-1"></i>Nom complet</th>
-                                                                                                            <th><i class="fas fa-envelope me-1"></i>Email</th>
-                                                                                                            <th><i class="fas fa-phone me-1"></i>Téléphone</th>
-                                                                                                            <th><i class="fas fa-comment me-1"></i>Message</th>
-                                                                                                    <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
-                                                                                                            <th><i class="fas fa-flag me-1"></i>Statut</th>
-                                                                                                            <th>Actions</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-                                                                                                        ${inscriptions.map((inscription, index) => `
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th><i class="fas fa-user me-1"></i>Nom complet</th>
+                                        <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                        <th><i class="fas fa-phone me-1"></i>Téléphone</th>
+                                        <th><i class="fas fa-comment me-1"></i>Message</th>
+                                <th><i class="fas fa-clock me-1"></i>Date d'inscription</th>
+                                        <th><i class="fas fa-flag me-1"></i>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${inscriptions.map((inscription, index) => `
                             <tr>
                             <td><strong>${index + 1}</strong></td>
                             <td>
-                            <div class="d-flex align-items-center">
-                            <div class="avatar-circle bg-primary text-white me-2" style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                            ${inscription.nom.charAt(0).toUpperCase()}
-                            </div>
-                            <strong>${inscription.nom}</strong>
-                            </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-circle bg-primary text-white me-2"
+                                        style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                        ${inscription.nom ? inscription.nom.charAt(0).toUpperCase() : '?'}
+                                    </div>
+                                    <strong>${inscription.nom || 'Nom inconnu'}</strong>
+                                </div>
                             </td>
+
                             <td><a href="mailto:${inscription.email}">${inscription.email}</a></td>
                             <td>${inscription.telephone ? `<a href="tel:${inscription.telephone}">${inscription.telephone}</a>` : '<span class="text-muted">Non renseigné</span>'}</td>
                             <td>${inscription.message ? `<span title="${inscription.message}">${inscription.message}</span>` : '<span class="text-muted">Aucun message</span>'}</td>
@@ -4749,26 +4739,26 @@
                             <td>
                             <div class="btn-group btn-group-sm">
                             ${inscription.statut === 'en_attente' ? `
-                                                                                             <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
-                                                                                            <i class="fas fa-check"></i>
-                                                                                            </button>
-                                                                                            <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
-                                                                                            <i class="fas fa-times"></i>
-                                                                                            </button>` : ''}
+                            <button class="btn btn-success" onclick="changerStatutInscription(${inscription.id}, 'confirme')" title="Confirmer">
+                            <i class="ri ri-check-line "></i>
+                            </button>
+                            <button class="btn btn-danger" onclick="changerStatutInscription(${inscription.id}, 'refuse')" title="Refuser">
+                            <i class="ri ri-close-line"></i>
+                            </button>` : ''}
                             <button class="btn btn-outline-primary" onclick="contacterCandidat('${inscription.email}', '${inscription.nom}')" title="Contacter">
-                            <i class="fas fa-envelope"></i>
+                            <i class="ri ri-mail-line"></i>
                             </button>
                             </div>
                             </td>
                             </tr>`).join('')}
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>` : `
-                                                                                            <div class="text-center p-5">
-                                                                                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
-                                                                                                <h5 class="text-muted">Aucune inscription pour le moment</h5>
-                                                                                        <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
-                                                                                            </div>`}
+                                </tbody>
+                                    </table>
+                                </div>` : `
+                                <div class="text-center p-5">
+                                    <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">Aucune inscription pour le moment</h5>
+                                    <p class="text-muted">Les candidatures apparaîtront ici dès qu’il y en aura</p>
+                                </div>`}
                             </div>
                             </div>
                             </div>
@@ -4783,44 +4773,44 @@
             // GESTION DES MODULES
             // ==============================
             let modulesArray = [];
-            
+
             function openAddModuleModal() {
                 // Réinitialiser le formulaire
                 document.getElementById('moduleForm').reset();
-                
+
                 // Ouvrir la modale
                 const modal = new bootstrap.Modal(document.getElementById('add_module_modal'));
                 modal.show();
             }
-            
+
             function addModule() {
                 const titre = document.getElementById('module_titre').value.trim();
                 const description = document.getElementById('module_description').value.trim();
-                
+
                 if (!titre) {
                     Swal.fire('Erreur', 'Le titre du module est obligatoire', 'error');
                     return;
                 }
-                
+
                 // Ajouter le module au tableau
                 const module = {
                     id: Date.now(), // ID temporaire
                     titre: titre,
                     description: description
                 };
-                
+
                 modulesArray.push(module);
-                
+
                 // Mettre à jour l'affichage
                 updateModulesList();
-                
+
                 // Mettre à jour le champ caché
                 document.getElementById('modules-data').value = JSON.stringify(modulesArray);
-                
+
                 // Fermer la modale
                 const modal = bootstrap.Modal.getInstance(document.getElementById('add_module_modal'));
                 modal.hide();
-                
+
                 // Message de succès
                 Swal.fire({
                     icon: 'success',
@@ -4830,20 +4820,20 @@
                     showConfirmButton: false
                 });
             }
-            
+
             function updateModulesList() {
                 const modulesList = document.getElementById('modules-list');
                 const noModulesMsg = document.getElementById('no-modules-msg');
-                
+
                 if (modulesArray.length === 0) {
                     noModulesMsg.style.display = 'block';
                     modulesList.querySelectorAll('.module-item').forEach(item => item.remove());
                 } else {
                     noModulesMsg.style.display = 'none';
-                    
+
                     // Supprimer les anciens éléments
                     modulesList.querySelectorAll('.module-item').forEach(item => item.remove());
-                    
+
                     // Ajouter les nouveaux
                     modulesArray.forEach((module, index) => {
                         const moduleDiv = document.createElement('div');
@@ -4868,7 +4858,7 @@
                     });
                 }
             }
-            
+
             function removeModule(index) {
                 Swal.fire({
                     title: 'Supprimer ce module ?',
@@ -4882,7 +4872,7 @@
                         modulesArray.splice(index, 1);
                         updateModulesList();
                         document.getElementById('modules-data').value = JSON.stringify(modulesArray);
-                        
+
                         Swal.fire({
                             icon: 'success',
                             title: 'Module supprimé',
@@ -4892,40 +4882,40 @@
                     }
                 });
             }
-            
+
             // ==============================
             // GESTION DES DOCUMENTS
             // ==============================
             let documentsArray = [];
             let documentFiles = []; // Stocker les fichiers séparément
-            
+
             function openAddDocumentModal() {
                 // Réinitialiser le formulaire
                 document.getElementById('documentForm').reset();
-                
+
                 // Ouvrir la modale
                 const modal = new bootstrap.Modal(document.getElementById('add_document_modal'));
                 modal.show();
             }
-            
+
             function addDocument() {
                 const titre = document.getElementById('document_titre').value.trim();
                 const description = document.getElementById('document_description').value.trim();
                 const fichierInput = document.getElementById('document_fichier');
-                
+
                 if (!fichierInput.files || fichierInput.files.length === 0) {
                     Swal.fire('Erreur', 'Veuillez sélectionner un fichier', 'error');
                     return;
                 }
-                
+
                 const fichier = fichierInput.files[0];
-                
+
                 // Vérifier la taille (50MB max)
                 if (fichier.size > 50 * 1024 * 1024) {
                     Swal.fire('Erreur', 'Le fichier ne doit pas dépasser 50MB', 'error');
                     return;
                 }
-                
+
                 // Ajouter le document au tableau
                 const docData = {
                     id: Date.now(), // ID temporaire
@@ -4934,20 +4924,20 @@
                     fichier_nom: fichier.name,
                     fichier_taille: (fichier.size / 1024 / 1024).toFixed(2) + ' MB'
                 };
-                
+
                 documentsArray.push(docData);
                 documentFiles.push(fichier);
-                
+
                 // Mettre à jour l'affichage
                 updateDocumentsList();
-                
+
                 // Mettre à jour le champ caché
                 document.getElementById('documents-data').value = JSON.stringify(documentsArray);
-                
+
                 // Fermer la modale
                 const modal = bootstrap.Modal.getInstance(document.getElementById('add_document_modal'));
                 modal.hide();
-                
+
                 // Message de succès
                 Swal.fire({
                     icon: 'success',
@@ -4957,20 +4947,20 @@
                     showConfirmButton: false
                 });
             }
-            
+
             function updateDocumentsList() {
                 const documentsList = document.getElementById('documents-list');
                 const noDocumentsMsg = document.getElementById('no-documents-msg');
-                
+
                 if (documentsArray.length === 0) {
                     noDocumentsMsg.style.display = 'block';
                     documentsList.querySelectorAll('.document-item').forEach(item => item.remove());
                 } else {
                     noDocumentsMsg.style.display = 'none';
-                    
+
                     // Supprimer les anciens éléments
                     documentsList.querySelectorAll('.document-item').forEach(item => item.remove());
-                    
+
                     // Ajouter les nouveaux
                     documentsArray.forEach((doc, index) => {
                         const docDiv = document.createElement('div');
@@ -4998,7 +4988,7 @@
                     });
                 }
             }
-            
+
             function removeDocument(index) {
                 Swal.fire({
                     title: 'Supprimer ce document ?',
@@ -5013,7 +5003,7 @@
                         documentFiles.splice(index, 1);
                         updateDocumentsList();
                         document.getElementById('documents-data').value = JSON.stringify(documentsArray);
-                        
+
                         Swal.fire({
                             icon: 'success',
                             title: 'Document supprimé',
@@ -5039,7 +5029,7 @@
             // GESTION DE LA LISTE DES MODULES
             // ==============================
             let allModules = [];
-            
+
             // Charger les modules au chargement de la modale
             document.getElementById('liste_modules').addEventListener('show.bs.modal', function() {
                 loadAllModules();
@@ -5064,12 +5054,12 @@
 
             function displayModules(modules) {
                 const tbody = document.getElementById('modules-table-body');
-                
+
                 if (modules.length === 0) {
                     displayNoModules();
                     return;
                 }
-                
+
                 tbody.innerHTML = modules.map((module, index) => `
                     <tr>
                         <td class="text-center">
@@ -5118,7 +5108,7 @@
                     displayModules(allModules);
                     return;
                 }
-                
+
                 const filtered = allModules.filter(m => m.formation_id == formationId);
                 displayModules(filtered);
             }
@@ -5126,7 +5116,7 @@
             function editModule(moduleId) {
                 const module = allModules.find(m => m.id === moduleId);
                 if (!module) return;
-                
+
                 Swal.fire({
                     title: 'Modifier le module',
                     html: `
@@ -5164,22 +5154,22 @@
 
             function updateModuleData(moduleId, data) {
                 fetch(`/admin/formations/modules/${moduleId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(res => res.json())
-                .then(response => {
-                    if (response.success) {
-                        Swal.fire('Succès', 'Module modifié avec succès', 'success');
-                        loadAllModules();
-                    } else {
-                        Swal.fire('Erreur', response.message, 'error');
-                    }
-                });
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(res => res.json())
+                    .then(response => {
+                        if (response.success) {
+                            Swal.fire('Succès', 'Module modifié avec succès', 'success');
+                            loadAllModules();
+                        } else {
+                            Swal.fire('Erreur', response.message, 'error');
+                        }
+                    });
             }
 
             function deleteModule(moduleId) {
@@ -5194,20 +5184,20 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         fetch(`/admin/formations/modules/${moduleId}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                            }
-                        })
-                        .then(res => res.json())
-                        .then(response => {
-                            if (response.success) {
-                                Swal.fire('Supprimé', 'Module supprimé avec succès', 'success');
-                                loadAllModules();
-                            } else {
-                                Swal.fire('Erreur', response.message, 'error');
-                            }
-                        });
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(response => {
+                                if (response.success) {
+                                    Swal.fire('Supprimé', 'Module supprimé avec succès', 'success');
+                                    loadAllModules();
+                                } else {
+                                    Swal.fire('Erreur', response.message, 'error');
+                                }
+                            });
                     }
                 });
             }
@@ -5216,7 +5206,7 @@
             // GESTION DE LA LISTE DES DOCUMENTS
             // ==============================
             let allDocuments = [];
-            
+
             // Charger les documents au chargement de la modale
             document.getElementById('liste_documents').addEventListener('show.bs.modal', function() {
                 loadAllDocuments();
@@ -5241,12 +5231,12 @@
 
             function displayDocuments(documents) {
                 const tbody = document.getElementById('documents-table-body');
-                
+
                 if (documents.length === 0) {
                     displayNoDocuments();
                     return;
                 }
-                
+
                 tbody.innerHTML = documents.map((doc, index) => `
                     <tr>
                         <td class="text-center">
@@ -5300,7 +5290,7 @@
                     displayDocuments(allDocuments);
                     return;
                 }
-                
+
                 const filtered = allDocuments.filter(d => d.formation_id == formationId);
                 displayDocuments(filtered);
             }
@@ -5321,20 +5311,20 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         fetch(`/admin/formations/documents/${documentId}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                            }
-                        })
-                        .then(res => res.json())
-                        .then(response => {
-                            if (response.success) {
-                                Swal.fire('Supprimé', 'Document supprimé avec succès', 'success');
-                                loadAllDocuments();
-                            } else {
-                                Swal.fire('Erreur', response.message, 'error');
-                            }
-                        });
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(response => {
+                                if (response.success) {
+                                    Swal.fire('Supprimé', 'Document supprimé avec succès', 'success');
+                                    loadAllDocuments();
+                                } else {
+                                    Swal.fire('Erreur', response.message, 'error');
+                                }
+                            });
                     }
                 });
             }
@@ -5366,67 +5356,67 @@
             Publication en cours...
         `;
 
-                                // Soumission réelle
-                                setTimeout(() => {
-                                    form.submit();
-                                }, 500);
-                            }
-                        });
+                        // Soumission réelle
+                        setTimeout(() => {
+                            form.submit();
+                        }, 500);
+                    }
+                });
 
-                        // Validation des champs individuels
-                        function validateField(field) {
-                            const value = field.value.trim();
-                            const isValid = field.checkValidity();
+                // Validation des champs individuels
+                function validateField(field) {
+                    const value = field.value.trim();
+                    const isValid = field.checkValidity();
 
-                            // Supprime les classes précédentes
-                            field.classList.remove('is-valid', 'is-invalid');
+                    // Supprime les classes précédentes
+                    field.classList.remove('is-valid', 'is-invalid');
 
-                            if (value !== '') {
-                                if (isValid) {
-                                    field.classList.add('is-valid');
+                    if (value !== '') {
+                        if (isValid) {
+                            field.classList.add('is-valid');
 
-                                    // Validations spécifiques
-                                    if (field.name === 'salaire_max' && field.value !== '') {
-                                        const salaireMin = document.getElementById('salaire_min').value;
-                                        if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
-                                            field.classList.remove('is-valid');
-                                            field.classList.add('is-invalid');
-                                            return;
-                                        }
-                                    }
-                                } else {
+                            // Validations spécifiques
+                            if (field.name === 'salaire_max' && field.value !== '') {
+                                const salaireMin = document.getElementById('salaire_min').value;
+                                if (salaireMin && parseFloat(field.value) < parseFloat(salaireMin)) {
+                                    field.classList.remove('is-valid');
                                     field.classList.add('is-invalid');
+                                    return;
                                 }
                             }
+                        } else {
+                            field.classList.add('is-invalid');
                         }
+                    }
+                }
 
-                        // Validation complète du formulaire
-                        function validateForm() {
-                            const requiredFields = form.querySelectorAll('[required]');
-                            let isValid = true;
+                // Validation complète du formulaire
+                function validateForm() {
+                    const requiredFields = form.querySelectorAll('[required]');
+                    let isValid = true;
 
-                            requiredFields.forEach(field => {
-                                validateField(field);
-                                if (!field.checkValidity() || field.value.trim() === '') {
-                                    isValid = false;
-                                }
-                            });
+                    requiredFields.forEach(field => {
+                        validateField(field);
+                        if (!field.checkValidity() || field.value.trim() === '') {
+                            isValid = false;
+                        }
+                    });
 
-                            // Validation personnalisée des salaires
-                            const salaireMin = document.getElementById('salaire_min');
-                            const salaireMax = document.getElementById('salaire_max');
+                    // Validation personnalisée des salaires
+                    const salaireMin = document.getElementById('salaire_min');
+                    const salaireMax = document.getElementById('salaire_max');
 
-                            if (salaireMin.value && salaireMax.value &&
-                                parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
-                                salaireMax.classList.add('is-invalid');
-                                isValid = false;
-                            }
+                    if (salaireMin.value && salaireMax.value &&
+                        parseFloat(salaireMax.value) < parseFloat(salaireMin.value)) {
+                        salaireMax.classList.add('is-invalid');
+                        isValid = false;
+                    }
 
-                            if (!isValid) {
-                                Swal.fire({
-                                    icon: 'warning',
-                                    title: '⚠️ Formulaire incomplet',
-                                    html: `
+                    if (!isValid) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: '⚠️ Formulaire incomplet',
+                            html: `
                                     <div class="text-center">
                                     <p>veuillez_remplir_tous_les_champs_obligatoires_marques_dun_asterisque</p>
                                     <div class="alert alert-light border mt-3">
@@ -5437,63 +5427,63 @@
                                     </div>
                                     </div>
                                     `,
-                                    confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
-                                    confirmButtonColor: '#ffc107'
-                                });
-                            }
-
-                            return isValid;
-                        }
-
-                        // Réinitialiser le formulaire à la fermeture
-                        modal.addEventListener('hidden.bs.modal', function() {
-                            form.reset();
-                            form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
-                                field.classList.remove('is-valid', 'is-invalid');
-                            });
-
-                            // Réinitialiser le bouton de soumission
-                            const submitBtn = form.querySelector('button[type="submit"]');
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
+                            confirmButtonText: '<i class="fas fa-edit me-1"></i>Corriger',
+                            confirmButtonColor: '#ffc107'
                         });
+                    }
 
-                        // Auto-complétion intelligente
-                        document.getElementById('titre').addEventListener('input', function(e) {
-                            const titre = e.target.value.toLowerCase();
-                            const entrepriseField = document.getElementById('entreprise');
+                    return isValid;
+                }
 
-                            // Si le titre contient certains mots-clés, suggérer Excellium
-                            if (titre.includes('développeur') || titre.includes('web') || titre.includes(
-                                    'consultant')) {
-                                if (!entrepriseField.value) {
-                                    entrepriseField.value = 'Excellium Conseils';
-                                    entrepriseField.classList.add('is-valid');
-                                }
-                            }
-                        });
-
-                        // Formatage automatique du téléphone
-                        document.getElementById('contact_telephone').addEventListener('input', function(e) {
-                            let value = e.target.value.replace(/\D/g, '');
-                            if (value.length > 0 && !value.startsWith('225')) {
-                                value = '225' + value;
-                            }
-                            if (value.length > 3) {
-                                value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
-                            }
-                            e.target.value = value;
-                        });
+                // Réinitialiser le formulaire à la fermeture
+                modal.addEventListener('hidden.bs.modal', function() {
+                    form.reset();
+                    form.querySelectorAll('.is-valid, .is-invalid').forEach(field => {
+                        field.classList.remove('is-valid', 'is-invalid');
                     });
 
-                    // Scripts pour la gestion des opportunités
+                    // Réinitialiser le bouton de soumission
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Publier l\'opportunité';
+                });
 
-                    // Fonctions pour gérer les critères
-                    window.addCritere = function() {
-                        const container = document.getElementById('criteres-container');
-                        const newCritere = document.createElement('div');
-                        newCritere.className = 'critere-item mb-2';
-                        newCritere.innerHTML = `
+                // Auto-complétion intelligente
+                document.getElementById('titre').addEventListener('input', function(e) {
+                    const titre = e.target.value.toLowerCase();
+                    const entrepriseField = document.getElementById('entreprise');
+
+                    // Si le titre contient certains mots-clés, suggérer Excellium
+                    if (titre.includes('développeur') || titre.includes('web') || titre.includes(
+                            'consultant')) {
+                        if (!entrepriseField.value) {
+                            entrepriseField.value = 'Excellium Conseils';
+                            entrepriseField.classList.add('is-valid');
+                        }
+                    }
+                });
+
+                // Formatage automatique du téléphone
+                document.getElementById('contact_telephone').addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 0 && !value.startsWith('225')) {
+                        value = '225' + value;
+                    }
+                    if (value.length > 3) {
+                        value = '+' + value.substring(0, 3) + ' ' + value.substring(3);
+                    }
+                    e.target.value = value;
+                });
+            });
+
+            // Scripts pour la gestion des opportunités
+
+            // Fonctions pour gérer les critères
+            window.addCritere = function() {
+                const container = document.getElementById('criteres-container');
+                const newCritere = document.createElement('div');
+                newCritere.className = 'critere-item mb-2';
+                newCritere.innerHTML = `
                             <div class="input-group">
                                 <input type="text" name="criteres[]" class="form-control" placeholder="Ex: Expérience minimum 3 ans">
                                 <button type="button" class="btn btn-outline-danger remove-critere" onclick="removeCritere(this)">
@@ -5501,24 +5491,24 @@
                                 </button>
                             </div>
                         `;
-                        container.appendChild(newCritere);
-                    };
+                container.appendChild(newCritere);
+            };
 
-                    window.removeCritere = function(button) {
-                        const container = document.getElementById('criteres-container');
-                        if (container.children.length > 1) {
-                            button.closest('.critere-item').remove();
-                        } else {
-                            Swal.fire('Attention', 'Au moins un critère est requis', 'warning');
-                        }
-                    };
+            window.removeCritere = function(button) {
+                const container = document.getElementById('criteres-container');
+                if (container.children.length > 1) {
+                    button.closest('.critere-item').remove();
+                } else {
+                    Swal.fire('Attention', 'Au moins un critère est requis', 'warning');
+                }
+            };
 
-                    // Fonctions pour gérer les informations
-                    window.addInformation = function() {
-                        const container = document.getElementById('informations-container');
-                        const newInfo = document.createElement('div');
-                        newInfo.className = 'information-item mb-2';
-                        newInfo.innerHTML = `
+            // Fonctions pour gérer les informations
+            window.addInformation = function() {
+                const container = document.getElementById('informations-container');
+                const newInfo = document.createElement('div');
+                newInfo.className = 'information-item mb-2';
+                newInfo.innerHTML = `
                             <div class="row">
                                 <div class="col-md-4">
                                     <input type="text" name="info_keys[]" class="form-control" placeholder="Clé (ex: Budget, Durée)">
@@ -5533,91 +5523,91 @@
                                 </div>
                             </div>
                         `;
-                        container.appendChild(newInfo);
-                    };
+                container.appendChild(newInfo);
+            };
 
-                    window.removeInformation = function(button) {
-                        const container = document.getElementById('informations-container');
-                        if (container.children.length > 1) {
-                            button.closest('.information-item').remove();
-                        } else {
-                            Swal.fire('Attention', 'Au moins une information est requise', 'warning');
-                        }
-                    };
-                    document.addEventListener('DOMContentLoaded', function() {
+            window.removeInformation = function(button) {
+                const container = document.getElementById('informations-container');
+                if (container.children.length > 1) {
+                    button.closest('.information-item').remove();
+                } else {
+                    Swal.fire('Attention', 'Au moins une information est requise', 'warning');
+                }
+            };
+            document.addEventListener('DOMContentLoaded', function() {
 
-                        // Gestion du formulaire de création d'opportunité
-                        const createOpportuniteForm = document.getElementById('createOpportuniteForm');
-                        if (createOpportuniteForm) {
-                            createOpportuniteForm.addEventListener('submit', function(e) {
-                                e.preventDefault();
+                // Gestion du formulaire de création d'opportunité
+                const createOpportuniteForm = document.getElementById('createOpportuniteForm');
+                if (createOpportuniteForm) {
+                    createOpportuniteForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
 
-                                const formData = new FormData(this);
+                        const formData = new FormData(this);
 
-                                // S'assurer que le token CSRF est inclus dans FormData
-                                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute(
-                                    'content');
-                                formData.append('_token', csrfToken);
+                        // S'assurer que le token CSRF est inclus dans FormData
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            'content');
+                        formData.append('_token', csrfToken);
 
-                                // Afficher une animation de chargement
-                                const loading = Swal.fire({
-                                    title: 'Création en cours...',
-                                    html: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Création...</span></div>',
-                                    allowOutsideClick: false,
-                                    showConfirmButton: false
-                                });
+                        // Afficher une animation de chargement
+                        const loading = Swal.fire({
+                            title: 'Création en cours...',
+                            html: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Création...</span></div>',
+                            allowOutsideClick: false,
+                            showConfirmButton: false
+                        });
 
-                                fetch('/admin/opportunites', {
-                                        method: 'POST',
-                                        body: formData,
-                                        headers: {
-                                            'X-Requested-With': 'XMLHttpRequest'
-                                        }
-                                    })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        Swal.close();
-                                        if (data.success) {
-                                            Swal.fire('Succès', data.message, 'success');
-                                            createOpportuniteForm.reset();
-                                            $('#create_opportunite').modal('hide');
-                                            // Recharger la page ou mettre à jour la liste
-                                            location.reload();
-                                        } else {
-                                            let errorMessage = data.message || 'Erreur lors de la création';
-                                            if (data.errors) {
-                                                errorMessage += '\n\nErreurs :\n';
-                                                Object.values(data.errors).forEach(error => {
-                                                    errorMessage += '- ' + error[0] + '\n';
-                                                });
-                                            }
-                                            Swal.fire('Erreur', errorMessage, 'error');
-                                        }
-                                    })
-                                    .catch(error => {
-                                        Swal.close();
-                                        console.error('Erreur:', error);
-                                        Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
-                                    });
-                            });
-                        }
-                    });
-
-                    // Fonction pour voir les détails d'une opportunité
-                    function voirDetailsOpportunite(id) {
-                        fetch(`/admin/opportunites/${id}`, {
-                                method: 'GET',
+                        fetch('/admin/opportunites', {
+                                method: 'POST',
+                                body: formData,
                                 headers: {
                                     'X-Requested-With': 'XMLHttpRequest'
                                 }
                             })
                             .then(response => response.json())
                             .then(data => {
+                                Swal.close();
                                 if (data.success) {
-                                    const opp = data.opportunite;
-                                    Swal.fire({
-                                        title: opp.titre,
-                                        html: `
+                                    Swal.fire('Succès', data.message, 'success');
+                                    createOpportuniteForm.reset();
+                                    $('#create_opportunite').modal('hide');
+                                    // Recharger la page ou mettre à jour la liste
+                                    location.reload();
+                                } else {
+                                    let errorMessage = data.message || 'Erreur lors de la création';
+                                    if (data.errors) {
+                                        errorMessage += '\n\nErreurs :\n';
+                                        Object.values(data.errors).forEach(error => {
+                                            errorMessage += '- ' + error[0] + '\n';
+                                        });
+                                    }
+                                    Swal.fire('Erreur', errorMessage, 'error');
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
+                                console.error('Erreur:', error);
+                                Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
+                            });
+                    });
+                }
+            });
+
+            // Fonction pour voir les détails d'une opportunité
+            function voirDetailsOpportunite(id) {
+                fetch(`/admin/opportunites/${id}`, {
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const opp = data.opportunite;
+                            Swal.fire({
+                                title: opp.titre,
+                                html: `
                                         <form id="showOpportuniteForm">
 
                                             <!-- Description -->
@@ -5676,8 +5666,8 @@
                                                 <label class="form-label fw-bold">Informations complémentaires</label>
                                                 <ul class="list-group">
                                                     ${opp.informations ? Object.entries(opp.informations).map(([k,v]) => `
-                                                                                                                        <li class="list-group-item"><strong>${k} :</strong> ${v}</li>
-                                                                                                                    `).join('') : '<li class="list-group-item">Aucune information</li>'}
+                                                                                                                                <li class="list-group-item"><strong>${k} :</strong> ${v}</li>
+                                                                                                                            `).join('') : '<li class="list-group-item">Aucune information</li>'}
                                                 </ul>
                                             </div>
                                         </div>
@@ -5688,9 +5678,9 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label class="form-label fw-bold">Fichier joint</label>
                                                     ${opp.fichier_joint ? `
-                                                                                                                        <p><a href="/${opp.fichier_joint}" target="_blank" class="text-primary">
-                                                                                                                        <i class="ri ri-file-line"></i> Voir le fichier</a></p>
-                                                                                                                    ` : '<p>Aucun fichier joint</p>'}
+                                                                                                                                <p><a href="/${opp.fichier_joint}" target="_blank" class="text-primary">
+                                                                                                                                <i class="ri ri-file-line"></i> Voir le fichier</a></p>
+                                                                                                                            ` : '<p>Aucun fichier joint</p>'}
                                                 </div>
 
                                                 <!-- Nombre de candidats -->
@@ -5701,35 +5691,35 @@
                                             </div>
 
                                         </form>`,
-                                        width: '80%',
-                                        confirmButtonText: 'Fermer'
-                                    });
-                                } else {
-                                    Swal.fire('Erreur', 'Impossible de charger les détails', 'error');
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Erreur:', error);
-                                Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                                width: '80%',
+                                confirmButtonText: 'Fermer'
                             });
-                    }
+                        } else {
+                            Swal.fire('Erreur', 'Impossible de charger les détails', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                    });
+            }
 
-                    // Fonction pour modifier une opportunité
-                    function modifierOpportunite(id) {
-                        fetch(`/admin/opportunites/${id}/edit`, {
-                                method: 'GET',
-                                headers: {
-                                    'X-Requested-With': 'XMLHttpRequest'
-                                }
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                $('#liste_opportunites').modal('hide'); // ferme la modal liste
-                                if (data.success) {
-                                    const opp = data.opportunite;
-                                    Swal.fire({
-                                            title: '<h4 class="fw-bold">Modifier l\'opportunité</h4>',
-                                            html: `
+            // Fonction pour modifier une opportunité
+            function modifierOpportunite(id) {
+                fetch(`/admin/opportunites/${id}/edit`, {
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        $('#liste_opportunites').modal('hide'); // ferme la modal liste
+                        if (data.success) {
+                            const opp = data.opportunite;
+                            Swal.fire({
+                                    title: '<h4 class="fw-bold">Modifier l\'opportunité</h4>',
+                                    html: `
 
                                             <form id="editOpportuniteForm" enctype="multipart/form-data">
 
@@ -5810,11 +5800,11 @@
                                                 <label class="form-label fw-bold">Critères</label>
                                                 <div id="criteres-container">
                                                     ${(opp.criteres || []).map((critere, index) => `
-                                                                                            <div class="input-group mb-2">
-                                                                                                <input type="text" name="criteres[]" class="form-control" value="${critere}" placeholder="Ajouter un critère">
-                                                                                                <button type="button" class="btn btn-outline-danger remove-critere"><i class="ri ri-delete-bin-2-line"></i></button>
-                                                                                            </div>
-                                                                                        `).join('')}
+                                                                                                    <div class="input-group mb-2">
+                                                                                                        <input type="text" name="criteres[]" class="form-control" value="${critere}" placeholder="Ajouter un critère">
+                                                                                                        <button type="button" class="btn btn-outline-danger remove-critere"><i class="ri ri-delete-bin-2-line"></i></button>
+                                                                                                    </div>
+                                                                                                `).join('')}
                                                 </div>
                                                 <button type="button" class="btn btn-outline-primary btn-sm" id="add-critere">
                                                     <i class="ri ri-add-line"></i> Ajouter un critère
@@ -5826,18 +5816,18 @@
                                                 <label class="form-label fw-bold">Informations complémentaires</label>
                                                 <div id="infos-container">
                                                     ${opp.informations ? Object.entries(opp.informations).map(([key, value]) => `
-                                                                                            <div class="row g-2 mb-2">
-                                                                                                <div class="col-md-5">
-                                                                                                    <input type="text" name="info_keys[]" class="form-control" value="${key}" placeholder="Clé">
-                                                                                                </div>
-                                                                                                <div class="col-md-5">
-                                                                                                    <input type="text" name="info_values[]" class="form-control" value="${value}" placeholder="Valeur">
-                                                                                                </div>
-                                                                                                <div class="col-md-2">
-                                                                                                    <button type="button" class="btn btn-outline-danger remove-info w-100"><i class="ri ri-delete-bin-2-line"></i></button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        `).join('') : ''}
+                                                                                                    <div class="row g-2 mb-2">
+                                                                                                        <div class="col-md-5">
+                                                                                                            <input type="text" name="info_keys[]" class="form-control" value="${key}" placeholder="Clé">
+                                                                                                        </div>
+                                                                                                        <div class="col-md-5">
+                                                                                                            <input type="text" name="info_values[]" class="form-control" value="${value}" placeholder="Valeur">
+                                                                                                        </div>
+                                                                                                        <div class="col-md-2">
+                                                                                                            <button type="button" class="btn btn-outline-danger remove-info w-100"><i class="ri ri-delete-bin-2-line"></i></button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                `).join('') : ''}
                                                 </div>
                                                 <button type="button" class="btn btn-outline-primary btn-sm" id="add-info">
                                                     <i class="ri ri-add-line"></i> Ajouter une information
@@ -5849,144 +5839,144 @@
                                                 <label class="form-label fw-bold">Fichier joint</label>
                                                 <input type="file" name="fichier_joint" id="edit_fichier_joint" class="form-control">
                                                 ${opp.fichier_joint ? `
-                                                                                                                    <p class="mt-2">
-                                                                                                                        <a href="/${opp.fichier_joint}" target="_blank" class="text-primary">
-                                                                                                                            <i class="ri ri-file-line"></i> Voir le fichier actuel
-                                                                                                                        </a>
-                                                                                                                    </p>
-                                                                                                                ` : ''}
+                                                                                                                            <p class="mt-2">
+                                                                                                                                <a href="/${opp.fichier_joint}" target="_blank" class="text-primary">
+                                                                                                                                    <i class="ri ri-file-line"></i> Voir le fichier actuel
+                                                                                                                                </a>
+                                                                                                                            </p>
+                                                                                                                        ` : ''}
                                             </div>
 
                                         </form>
 
 
                                         `,
-                                            width: '80%',
-                                            showCancelButton: true,
-                                            confirmButtonText: 'Modifier',
-                                            cancelButtonText: 'Annuler',
-                                            preConfirm: () => {
-                                                const form = document.getElementById('editOpportuniteForm');
-                                                const formData = new FormData(form);
+                                    width: '80%',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Modifier',
+                                    cancelButtonText: 'Annuler',
+                                    preConfirm: () => {
+                                        const form = document.getElementById('editOpportuniteForm');
+                                        const formData = new FormData(form);
 
-                                                // Laravel ne reconnaît pas PUT via fetch directement, donc on ajoute :
-                                                formData.append('_method', 'PUT');
+                                        // Laravel ne reconnaît pas PUT via fetch directement, donc on ajoute :
+                                        formData.append('_method', 'PUT');
 
-                                                return fetch(`/admin/opportunites/${id}`, {
-                                                        method: 'POST', // ⚠️ POST mais avec _method=PUT
-                                                        headers: {
-                                                            'X-CSRF-TOKEN': document.querySelector(
-                                                                'meta[name="csrf-token"]').getAttribute('content'),
-                                                            'X-Requested-With': 'XMLHttpRequest'
-                                                        },
-                                                        body: formData
-                                                    })
-                                                    .then(response => response.json())
-                                                    .then(data => {
-                                                        if (!data.success) {
-                                                            throw new Error(data.message ||
-                                                                'Erreur lors de la modification');
-                                                        }
-                                                        return data;
-                                                    });
-                                            }
-                                        })
-                                        .then((result) => {
-                                            if (result.isConfirmed) {
-                                                Swal.fire('Succès', 'Opportunité modifiée avec succès', 'success');
-                                                location.reload();
-                                            }
-                                        })
-                                        .catch(error => {
-                                            console.error('Erreur:', error);
-                                            Swal.fire('Erreur', error.message, 'error');
-                                        });
-                                } else {
-                                    Swal.fire('Erreur', 'Impossible de charger les données', 'error');
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Erreur:', error);
-                                Swal.fire('Erreur', 'Une erreur est survenue', 'error');
-                            });
-                    }
-
-                    // Fonction pour supprimer une opportunité
-                    function supprimerOpportunite(id) {
-                        Swal.fire({
-                            title: 'Supprimer cette opportunité ?',
-                            text: 'Cette action est irréversible !',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonText: 'Oui, supprimer',
-                            cancelButtonText: 'Annuler',
-                            confirmButtonColor: '#dc3545'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                const loading = Swal.fire({
-                                    title: 'Suppression en cours...',
-                                    html: '<div class="spinner-border text-danger" role="status"><span class="visually-hidden">Suppression...</span></div>',
-                                    allowOutsideClick: false,
-                                    showConfirmButton: false
+                                        return fetch(`/admin/opportunites/${id}`, {
+                                                method: 'POST', // ⚠️ POST mais avec _method=PUT
+                                                headers: {
+                                                    'X-CSRF-TOKEN': document.querySelector(
+                                                        'meta[name="csrf-token"]').getAttribute('content'),
+                                                    'X-Requested-With': 'XMLHttpRequest'
+                                                },
+                                                body: formData
+                                            })
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                if (!data.success) {
+                                                    throw new Error(data.message ||
+                                                        'Erreur lors de la modification');
+                                                }
+                                                return data;
+                                            });
+                                    }
+                                })
+                                .then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire('Succès', 'Opportunité modifiée avec succès', 'success');
+                                        location.reload();
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Erreur:', error);
+                                    Swal.fire('Erreur', error.message, 'error');
                                 });
-
-                                fetch(`/admin/opportunites/${id}`, {
-                                        method: 'DELETE',
-                                        headers: {
-                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-                                                'content'),
-                                            'X-Requested-With': 'XMLHttpRequest'
-                                        }
-                                    })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        Swal.close();
-                                        if (data.success) {
-                                            Swal.fire('Succès', data.message, 'success');
-                                            location.reload();
-                                        } else {
-                                            Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                                        }
-                                    })
-                                    .catch(error => {
-                                        Swal.close();
-                                        console.error('Erreur:', error);
-                                        Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
-                                    });
-                            }
-                        });
-                    }
-
-                    // Fonction pour charger les candidats d'une opportunité
-                    function chargerCandidatsOpportunite(opportuniteId) {
-                        if (!opportuniteId) {
-                            document.getElementById('tbodyCandidatsOpportunites').innerHTML =
-                                '<tr><td colspan="6" class="text-center text-muted">Sélectionnez une opportunité pour voir les candidats</td></tr>';
-                            return;
+                        } else {
+                            Swal.fire('Erreur', 'Impossible de charger les données', 'error');
                         }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                    });
+            }
 
-                        // Afficher un indicateur de chargement
-                        document.getElementById('tbodyCandidatsOpportunites').innerHTML =
-                            '<tr><td colspan="6" class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Chargement...</span></div></td></tr>';
+            // Fonction pour supprimer une opportunité
+            function supprimerOpportunite(id) {
+                Swal.fire({
+                    title: 'Supprimer cette opportunité ?',
+                    text: 'Cette action est irréversible !',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler',
+                    confirmButtonColor: '#dc3545'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const loading = Swal.fire({
+                            title: 'Suppression en cours...',
+                            html: '<div class="spinner-border text-danger" role="status"><span class="visually-hidden">Suppression...</span></div>',
+                            allowOutsideClick: false,
+                            showConfirmButton: false
+                        });
 
-                        fetch(`/admin/opportunites/${opportuniteId}/candidats`, {
-                                method: 'GET',
+                        fetch(`/admin/opportunites/${id}`, {
+                                method: 'DELETE',
                                 headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                        'content'),
                                     'X-Requested-With': 'XMLHttpRequest'
                                 }
                             })
                             .then(response => response.json())
                             .then(data => {
+                                Swal.close();
                                 if (data.success) {
-                                    const tbody = document.getElementById('tbodyCandidatsOpportunites');
+                                    Swal.fire('Succès', data.message, 'success');
+                                    location.reload();
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
+                                console.error('Erreur:', error);
+                                Swal.fire('Erreur', 'Une erreur inattendue est survenue', 'error');
+                            });
+                    }
+                });
+            }
 
-                                    if (data.candidats.length === 0) {
-                                        tbody.innerHTML =
-                                            '<tr><td colspan="6" class="text-center text-muted">Aucun candidat pour cette opportunité</td></tr>';
-                                        return;
-                                    }
+            // Fonction pour charger les candidats d'une opportunité
+            function chargerCandidatsOpportunite(opportuniteId) {
+                if (!opportuniteId) {
+                    document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                        '<tr><td colspan="6" class="text-center text-muted">Sélectionnez une opportunité pour voir les candidats</td></tr>';
+                    return;
+                }
 
-                                    tbody.innerHTML = data.candidats.map(candidat => `
+                // Afficher un indicateur de chargement
+                document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                    '<tr><td colspan="6" class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Chargement...</span></div></td></tr>';
+
+                fetch(`/admin/opportunites/${opportuniteId}/candidats`, {
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const tbody = document.getElementById('tbodyCandidatsOpportunites');
+
+                            if (data.candidats.length === 0) {
+                                tbody.innerHTML =
+                                    '<tr><td colspan="6" class="text-center text-muted">Aucun candidat pour cette opportunité</td></tr>';
+                                return;
+                            }
+
+                            tbody.innerHTML = data.candidats.map(candidat => `
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
@@ -6023,177 +6013,177 @@
                             </td>
                         </tr>
                     `).join('');
+                        } else {
+                            document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                                '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement des candidats</td></tr>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        document.getElementById('tbodyCandidatsOpportunites').innerHTML =
+                            '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement</td></tr>';
+                    });
+            }
+
+            // Fonction pour changer le statut d'une postulation
+            function changerStatutPostulation(postulationId, nouveauStatut) {
+                const statutLabel = getStatutLabel(nouveauStatut);
+
+                Swal.fire({
+                    title: `Changer le statut à "${statutLabel}" ?`,
+                    text: 'Cette action modifiera le statut de la postulation',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirmer',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`/admin/postulations/${postulationId}/statut`, {
+                                method: 'PATCH',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                        'content'),
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                },
+                                body: JSON.stringify({
+                                    statut: nouveauStatut
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    // Recharger les candidats
+                                    const selectElement = document.getElementById('selectOpportuniteCandidats');
+                                    if (selectElement.value) {
+                                        chargerCandidatsOpportunite(selectElement.value);
+                                    }
                                 } else {
-                                    document.getElementById('tbodyCandidatsOpportunites').innerHTML =
-                                        '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement des candidats</td></tr>';
+                                    Swal.fire('Erreur', data.message || 'Erreur lors du changement de statut',
+                                        'error');
                                 }
                             })
                             .catch(error => {
                                 console.error('Erreur:', error);
-                                document.getElementById('tbodyCandidatsOpportunites').innerHTML =
-                                    '<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement</td></tr>';
+                                Swal.fire('Erreur', 'Une erreur est survenue', 'error');
                             });
                     }
+                });
+            }
 
-                    // Fonction pour changer le statut d'une postulation
-                    function changerStatutPostulation(postulationId, nouveauStatut) {
-                        const statutLabel = getStatutLabel(nouveauStatut);
+            // Fonctions utilitaires
+            function getBadgeClassForStatut(statut) {
+                switch (statut) {
+                    case 'accepte':
+                        return 'bg-label-success';
+                    case 'refuse':
+                        return 'bg-label-danger';
+                    case 'en_attente':
+                        return 'bg-label-warning';
+                    default:
+                        return 'bg-label-info';
+                }
+            }
 
+            function getStatutLabel(statut) {
+                switch (statut) {
+                    case 'accepte':
+                        return 'Accepté';
+                    case 'refuse':
+                        return 'Refusé';
+                    case 'en_attente':
+                        return 'En attente';
+                    default:
+                        return 'Inconnu';
+                }
+            }
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('createCategorieForm');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        // Animation de chargement
                         Swal.fire({
-                            title: `Changer le statut à "${statutLabel}" ?`,
-                            text: 'Cette action modifiera le statut de la postulation',
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonText: 'Confirmer',
-                            cancelButtonText: 'Annuler'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                fetch(`/admin/postulations/${postulationId}/statut`, {
-                                        method: 'PATCH',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-                                                'content'),
-                                            'X-Requested-With': 'XMLHttpRequest'
-                                        },
-                                        body: JSON.stringify({
-                                            statut: nouveauStatut
-                                        })
-                                    })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.success) {
-                                            Swal.fire('Succès', data.message, 'success');
-                                            // Recharger les candidats
-                                            const selectElement = document.getElementById('selectOpportuniteCandidats');
-                                            if (selectElement.value) {
-                                                chargerCandidatsOpportunite(selectElement.value);
-                                            }
-                                        } else {
-                                            Swal.fire('Erreur', data.message || 'Erreur lors du changement de statut',
-                                                'error');
-                                        }
-                                    })
-                                    .catch(error => {
-                                        console.error('Erreur:', error);
-                                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
-                                    });
+                            title: 'Création en cours...',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            },
+                            preConfirm: () => {
+                                const nom = Swal.getInputValue('nom');
+                                if (!nom) {
+                                    Swal.showValidationMessage('Le nom est requis');
+                                }
+                                return nom;
+                            },
+                            didOpen: () => {
+                                setTimeout(() => {
+                                    const input = Swal.getInput();
+                                    if (input) input.focus();
+                                }, 100);
                             }
                         });
-                    }
 
-                    // Fonctions utilitaires
-                    function getBadgeClassForStatut(statut) {
-                        switch (statut) {
-                            case 'accepte':
-                                return 'bg-label-success';
-                            case 'refuse':
-                                return 'bg-label-danger';
-                            case 'en_attente':
-                                return 'bg-label-warning';
-                            default:
-                                return 'bg-label-info';
-                        }
-                    }
+                        const formData = new FormData(form);
 
-                    function getStatutLabel(statut) {
-                        switch (statut) {
-                            case 'accepte':
-                                return 'Accepté';
-                            case 'refuse':
-                                return 'Refusé';
-                            case 'en_attente':
-                                return 'En attente';
-                            default:
-                                return 'Inconnu';
-                        }
-                    }
-                </script>
-
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const form = document.getElementById('createCategorieForm');
-                        if (form) {
-                            form.addEventListener('submit', function(e) {
-                                e.preventDefault();
-
-                                // Animation de chargement
-                                Swal.fire({
-                                    title: 'Création en cours...',
-                                    allowOutsideClick: false,
-                                    didOpen: () => {
-                                        Swal.showLoading();
-                                    },
-                                    preConfirm: () => {
-                                        const nom = Swal.getInputValue('nom');
-                                        if (!nom) {
-                                            Swal.showValidationMessage('Le nom est requis');
-                                        }
-                                        return nom;
-                                    },
-                                    didOpen: () => {
-                                        setTimeout(() => {
-                                            const input = Swal.getInput();
-                                            if (input) input.focus();
-                                        }, 100);
-                                    }
-                                });
-
-                                const formData = new FormData(form);
-
-                                fetch(form.action, {
-                                        method: 'POST',
-                                        headers: {
-                                            'X-Requested-With': 'XMLHttpRequest',
-                                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                                        },
-                                        body: formData
-                                    })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        Swal.close();
-                                        if (data.success) {
-                                            Swal.fire({
-                                                icon: 'success',
-                                                title: 'Succès',
-                                                text: data.message,
-                                                confirmButtonText: 'OK'
-                                            }).then(() => {
-                                                // Optionnel : reset le formulaire ou rafraîchir la liste
-                                                form.reset();
-                                                // Tu peux aussi recharger dynamiquement la liste ici si besoin
-                                            });
-                                        } else {
-                                            Swal.fire({
-                                                icon: 'error',
-                                                title: 'Erreur',
-                                                text: data.message || 'Une erreur est survenue.'
-                                            });
-                                        }
-                                    })
-                                    .catch(error => {
-                                        Swal.close();
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Erreur',
-                                            text: 'Une erreur inattendue est survenue.'
-                                        });
+                        fetch(form.action, {
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Succès',
+                                        text: data.message,
+                                        confirmButtonText: 'OK'
+                                    }).then(() => {
+                                        // Optionnel : reset le formulaire ou rafraîchir la liste
+                                        form.reset();
+                                        // Tu peux aussi recharger dynamiquement la liste ici si besoin
                                     });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        text: data.message || 'Une erreur est survenue.'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                Swal.close();
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    text: 'Une erreur inattendue est survenue.'
+                                });
                             });
-                        }
                     });
-                </script>
+                }
+            });
+        </script>
 
-                <!-- Scripts pour la gestion des catégories -->
-                <script>
-                    function fetchCategories() {
-                        fetch('/admin/categories/list')
-                            .then(res => res.json())
-                            .then(categories => {
-                                const tbody = document.getElementById('categoriesTableBody');
-                                tbody.innerHTML = '';
-                                categories.forEach(cat => {
-                                    tbody.innerHTML += `
+        <!-- Scripts pour la gestion des catégories -->
+        <script>
+            function fetchCategories() {
+                fetch('/admin/categories/list')
+                    .then(res => res.json())
+                    .then(categories => {
+                        const tbody = document.getElementById('categoriesTableBody');
+                        tbody.innerHTML = '';
+                        categories.forEach(cat => {
+                            tbody.innerHTML += `
                             <tr>
                             <td>${cat.id}</td>
                             <td>${cat.nom}</td>
@@ -6203,60 +6193,95 @@
                             </td>
                             </tr>
                             `;
-                                });
-                            });
-                    }
-
-                    // Afficher la modale d'édition
-                    function showEditModal(id, nom) {
-                        // Fermer la modale Bootstrap si elle est ouverte
-                        const modal = bootstrap.Modal.getInstance(document.getElementById('liste_categories'));
-                        if (modal) modal.hide();
-
-                        // Puis ouvrir SweetAlert2
-                        Swal.fire({
-                            title: 'Modifier la catégorie',
-                            input: 'text',
-                            inputValue: nom,
-                            showCancelButton: true,
-                            confirmButtonText: 'Enregistrer',
-                            cancelButtonText: 'Annuler',
-                            preConfirm: (newNom) => {
-                                if (!newNom) {
-                                    Swal.showValidationMessage('Le nom est requis');
-                                }
-                                return newNom;
-                            },
-                            didOpen: () => {
-                                setTimeout(() => {
-                                    const input = Swal.getInput();
-                                    if (input) input.focus();
-                                }, 100);
-                            }
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                updateCategorie(id, result.value);
-                            }
                         });
-                    }
+                    });
+            }
 
-                    // Modifier une catégorie
-                    function updateCategorie(id, nom) {
+            // Afficher la modale d'édition
+            function showEditModal(id, nom) {
+                // Fermer la modale Bootstrap si elle est ouverte
+                const modal = bootstrap.Modal.getInstance(document.getElementById('liste_categories'));
+                if (modal) modal.hide();
+
+                // Puis ouvrir SweetAlert2
+                Swal.fire({
+                    title: 'Modifier la catégorie',
+                    input: 'text',
+                    inputValue: nom,
+                    showCancelButton: true,
+                    confirmButtonText: 'Enregistrer',
+                    cancelButtonText: 'Annuler',
+                    preConfirm: (newNom) => {
+                        if (!newNom) {
+                            Swal.showValidationMessage('Le nom est requis');
+                        }
+                        return newNom;
+                    },
+                    didOpen: () => {
+                        setTimeout(() => {
+                            const input = Swal.getInput();
+                            if (input) input.focus();
+                        }, 100);
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        updateCategorie(id, result.value);
+                    }
+                });
+            }
+
+            // Modifier une catégorie
+            function updateCategorie(id, nom) {
+                Swal.fire({
+                    title: 'Mise à jour...',
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
+                fetch(`/admin/categories/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify({
+                            nom
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        Swal.close();
+                        if (data.success) {
+                            Swal.fire('Succès', data.message, 'success');
+                            fetchCategories();
+                        } else {
+                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                        }
+                    });
+            }
+
+            // Supprimer une catégorie
+            function deleteCategorie(id) {
+                Swal.fire({
+                    title: 'Supprimer cette catégorie ?',
+                    text: 'Cette action est irréversible !',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oui, supprimer',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
                         Swal.fire({
-                            title: 'Mise à jour...',
+                            title: 'Suppression...',
                             allowOutsideClick: false,
                             didOpen: () => Swal.showLoading()
                         });
                         fetch(`/admin/categories/${id}`, {
-                                method: 'PUT',
+                                method: 'DELETE',
                                 headers: {
-                                    'Content-Type': 'application/json',
                                     'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
                                     'X-Requested-With': 'XMLHttpRequest'
-                                },
-                                body: JSON.stringify({
-                                    nom
-                                })
+                                }
                             })
                             .then(res => res.json())
                             .then(data => {
@@ -6265,147 +6290,117 @@
                                     Swal.fire('Succès', data.message, 'success');
                                     fetchCategories();
                                 } else {
-                                    Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
                                 }
                             });
                     }
+                });
+            }
 
-                    // Supprimer une catégorie
-                    function deleteCategorie(id) {
-                        Swal.fire({
-                            title: 'Supprimer cette catégorie ?',
-                            text: 'Cette action est irréversible !',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonText: 'Oui, supprimer',
-                            cancelButtonText: 'Annuler'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                Swal.fire({
-                                    title: 'Suppression...',
-                                    allowOutsideClick: false,
-                                    didOpen: () => Swal.showLoading()
-                                });
-                                fetch(`/admin/categories/${id}`, {
-                                        method: 'DELETE',
-                                        headers: {
-                                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                                            'X-Requested-With': 'XMLHttpRequest'
-                                        }
-                                    })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        Swal.close();
-                                        if (data.success) {
-                                            Swal.fire('Succès', data.message, 'success');
-                                            fetchCategories();
-                                        } else {
-                                            Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                                        }
-                                    });
-                            }
-                        });
-                    }
+            // Rafraîchir la liste à l'ouverture de la modale
+            document.addEventListener('DOMContentLoaded', function() {
+                // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
+                fetchCategories();
+            });
+        </script>
+        <!-- ///////////////////////////////////// -->
 
-                    // Rafraîchir la liste à l'ouverture de la modale
-                    document.addEventListener('DOMContentLoaded', function() {
-                        // Si tu ouvres la modale dynamiquement, appelle fetchCategories() à ce moment-là aussi
-                        fetchCategories();
+
+
+        <!-- Scripts pour la gestion des produits -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const createProduitForm = document.getElementById('createProduitForm');
+                if (!createProduitForm) return;
+
+                createProduitForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Afficher le chargement
+                    Swal.fire({
+                        title: 'Création en cours...',
+                        html: ``,
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
                     });
-                </script>
-                <!-- ///////////////////////////////////// -->
 
+                    const formData = new FormData(createProduitForm);
 
+                    fetch(createProduitForm.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
 
-                <!-- Scripts pour la gestion des produits -->
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const createProduitForm = document.getElementById('createProduitForm');
-                        if (!createProduitForm) return;
-
-                        createProduitForm.addEventListener('submit', function(e) {
-                            e.preventDefault();
-
-                            // Afficher le chargement
-                            Swal.fire({
-                                title: 'Création en cours...',
-                                html: ``,
-                                allowOutsideClick: false,
-                                didOpen: () => {
-                                    Swal.showLoading();
-                                }
-                            });
-
-                            const formData = new FormData(createProduitForm);
-
-                            fetch(createProduitForm.action, {
-                                    method: 'POST',
-                                    headers: {
-                                        'X-Requested-With': 'XMLHttpRequest',
-                                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                                    },
-                                    body: formData
-                                })
-                                .then(response => response.json())
-                                .then(data => {
-                                    Swal.close();
-
-                                    if (data.success) {
-                                        Swal.fire({
-                                            icon: 'success',
-                                            title: 'Succès',
-                                            html: `
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Succès',
+                                    html: `
                                                 <div class="text-center">
                                                     <p class="mb-0">${data.message}</p>
                                                 </div>
                                             `,
-                                            confirmButtonText: 'OK',
-                                            customClass: {
-                                                confirmButton: 'btn btn-success'
-                                            }
-                                        }).then(() => {
-                                            createProduitForm.reset();
-                                            if (typeof fetchProduits === 'function') {
-                                                fetchProduits();
-                                            }
-                                        });
-                                    } else {
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Erreur',
-                                            html: ``,
-                                            confirmButtonText: 'OK',
-                                            customClass: {
-                                                confirmButton: 'btn btn-danger'
-                                            }
-                                        });
+                                    confirmButtonText: 'OK',
+                                    customClass: {
+                                        confirmButton: 'btn btn-success'
                                     }
-                                })
-                                .catch(err => {
-                                    Swal.close();
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Erreur inattendue',
-                                        html: ` `,
-                                        confirmButtonText: 'OK',
-                                        customClass: {
-                                            confirmButton: 'btn btn-danger'
-                                        }
-                                    });
-                                    console.error('Erreur lors de la requête:', err);
+                                }).then(() => {
+                                    createProduitForm.reset();
+                                    if (typeof fetchProduits === 'function') {
+                                        fetchProduits();
+                                    }
                                 });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    html: ``,
+                                    confirmButtonText: 'OK',
+                                    customClass: {
+                                        confirmButton: 'btn btn-danger'
+                                    }
+                                });
+                            }
+                        })
+                        .catch(err => {
+                            Swal.close();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur inattendue',
+                                html: ` `,
+                                confirmButtonText: 'OK',
+                                customClass: {
+                                    confirmButton: 'btn btn-danger'
+                                }
+                            });
+                            console.error('Erreur lors de la requête:', err);
                         });
-                    });
-                </script>
+                });
+            });
+        </script>
 
 
         <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                    const table = $('#tableProduits').DataTable({
+            document.addEventListener('DOMContentLoaded', function() {
+                const table = $('#tableProduits').DataTable({
                     ajax: '/admin/produits/list',
-                    columns: [
-                        { data: 'nom', title: 'Nom' },
-                        { data: 'categorie', title: 'Catégorie' },
+                    columns: [{
+                            data: 'nom',
+                            title: 'Nom'
+                        },
+                        {
+                            data: 'categorie',
+                            title: 'Catégorie'
+                        },
                         {
                             data: 'statut_label',
                             title: 'Statut',
@@ -6414,7 +6409,12 @@
                                 return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
                             }
                         },
-                        { data: 'actions', title: 'Actions', orderable: false, searchable: false }
+                        {
+                            data: 'actions',
+                            title: 'Actions',
+                            orderable: false,
+                            searchable: false
+                        }
                     ]
                 });
 
@@ -6442,45 +6442,48 @@
                         }).then(result => {
                             if (result.isConfirmed) {
                                 fetch(`/admin/produits/${id}`, {
-                                    method: 'DELETE',
-                                    headers: {
-                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                                    }
-                                })
-                                .then(res => res.json())
-                                .then(data => {
-                                    if (data.success) {
-                                        Swal.fire('Supprimé !', data.message, 'success');
-                                        table.ajax.reload();
-                                    } else {
-                                        Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                                    }
-                                })
-                                .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector(
+                                                'meta[name="csrf-token"]').content
+                                        }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Supprimé !', data.message, 'success');
+                                            table.ajax.reload();
+                                        } else {
+                                            Swal.fire('Erreur', data.message ||
+                                                'Erreur lors de la suppression', 'error');
+                                        }
+                                    })
+                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
                             }
                         });
                     }
                 });
 
-                
-            // 🟡 Ouvrir la modale d'édition (fermeture propre avant Swal)
+
+                // 🟡 Ouvrir la modale d'édition (fermeture propre avant Swal)
                 window.openEditProduitModal = function(id) {
                     console.log("🟡 Chargement du produit ID :", id);
-                    
 
-                        fetch(`/admin/produits/${id}`)
-                            .then(res => res.json())
-                            .then(produit => {
-                                const modal = bootstrap.Modal.getInstance(document.getElementById('liste_produits'));
-                        if (modal) modal.hide();    
-                                // 🟢 Ouvrir ensuite le SweetAlert d’éition
-                                showEditProduitSwal(produit, id);
-                            })
-                            .catch(err => {
-                                console.error("❌ Erreur fetch :", err);
-                                Swal.fire('Erreur', 'Impossible de charger les données du produit.', 'error');
-                            });
-                    };
+
+                    fetch(`/admin/produits/${id}`)
+                        .then(res => res.json())
+                        .then(produit => {
+                            const modal = bootstrap.Modal.getInstance(document.getElementById(
+                            'liste_produits'));
+                            if (modal) modal.hide();
+                            // 🟢 Ouvrir ensuite le SweetAlert d’éition
+                            showEditProduitSwal(produit, id);
+                        })
+                        .catch(err => {
+                            console.error("❌ Erreur fetch :", err);
+                            Swal.fire('Erreur', 'Impossible de charger les données du produit.', 'error');
+                        });
+                };
                 // 🔹 SweetAlert2 d'édition
                 function showEditProduitSwal(produit, id) {
                     // Fermer la modale de liste_produits
@@ -6538,7 +6541,8 @@
                                         const option = document.createElement('option');
                                         option.value = cat.id;
                                         option.textContent = cat.nom;
-                                        if (cat.id === produit.categorie_id) option.selected = true;
+                                        if (cat.id === produit.categorie_id) option.selected =
+                                            true;
                                         select.appendChild(option);
                                     });
                                 })
@@ -6556,23 +6560,26 @@
                     }).then(result => {
                         if (result.isConfirmed) {
                             fetch(`/admin/produits/${id}`, {
-                                method: 'PUT',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                                },
-                                body: JSON.stringify(result.value)
-                            })
-                            .then(res => res.json())
-                            .then(data => {
-                                if (data.success) {
-                                    Swal.fire('Succès', data.message, 'success');
-                                    $('#tableProduits').DataTable().ajax.reload();
-                                } else {
-                                    Swal.fire('Erreur', data.message || 'Erreur lors de la mise à jour', 'error');
-                                }
-                            })
-                            .catch(() => Swal.fire('Erreur', 'Erreur réseau lors de la mise à jour', 'error'));
+                                    method: 'PUT',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                            .content
+                                    },
+                                    body: JSON.stringify(result.value)
+                                })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        Swal.fire('Succès', data.message, 'success');
+                                        $('#tableProduits').DataTable().ajax.reload();
+                                    } else {
+                                        Swal.fire('Erreur', data.message || 'Erreur lors de la mise à jour',
+                                            'error');
+                                    }
+                                })
+                                .catch(() => Swal.fire('Erreur', 'Erreur réseau lors de la mise à jour',
+                                    'error'));
                         }
                     });
                 }
@@ -6592,37 +6599,45 @@
 
 
         <!-- Scripts pour la gestion des services -->
-       <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
 
-        // ==============================
-        // INITIALISATION DATATABLE SERVICES
-        // ==============================
-        var tableServices = $('#tableServices').DataTable({
-            ajax: {
-                url: '/admin/services/list',
-                type: 'GET',
-            },
-            columns: [
-                { data: 'nom', title: 'Nom' },
-                { data: 'description', title: 'Description' },
-                { data: 'categorie', title: 'Catégorie' },
-                { 
-                    data: 'actions', 
-                    title: 'Actions',
-                    orderable: false,
-                    searchable: false
-                }
-            ]
-        });
+                // ==============================
+                // INITIALISATION DATATABLE SERVICES
+                // ==============================
+                var tableServices = $('#tableServices').DataTable({
+                    ajax: {
+                        url: '/admin/services/list',
+                        type: 'GET',
+                    },
+                    columns: [{
+                            data: 'nom',
+                            title: 'Nom'
+                        },
+                        {
+                            data: 'description',
+                            title: 'Description'
+                        },
+                        {
+                            data: 'categorie',
+                            title: 'Catégorie'
+                        },
+                        {
+                            data: 'actions',
+                            title: 'Actions',
+                            orderable: false,
+                            searchable: false
+                        }
+                    ]
+                });
 
 
                 // ==============================
                 // CRÉATION D'UN SERVICE
                 // ==============================
                 const createServiceForm = document.getElementById('createServiceForm');
-                if(createServiceForm) {
-                    createServiceForm.addEventListener('submit', function(e){
+                if (createServiceForm) {
+                    createServiceForm.addEventListener('submit', function(e) {
                         e.preventDefault();
 
                         Swal.fire({
@@ -6639,45 +6654,46 @@
                         const formData = new FormData(createServiceForm);
 
                         fetch(createServiceForm.action, {
-                            method: 'POST',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                            },
-                            body: formData
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            Swal.close();
-                            if(data.success){
-                                Swal.fire('Succès', data.message, 'success');
-                                createServiceForm.reset();
-                                tableServices.ajax.reload();
-                            } else {
-                                Swal.fire('Erreur', data.message || 'Erreur lors de la création', 'error');
-                            }
-                        })
-                        .catch(() => {
-                            Swal.close();
-                            Swal.fire('Erreur', 'Erreur réseau', 'error');
-                        });
+                                method: 'POST',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                },
+                                body: formData
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                Swal.close();
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    createServiceForm.reset();
+                                    tableServices.ajax.reload();
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Erreur lors de la création',
+                                        'error');
+                                }
+                            })
+                            .catch(() => {
+                                Swal.close();
+                                Swal.fire('Erreur', 'Erreur réseau', 'error');
+                            });
                     });
                 }
 
                 // ==============================
                 // ÉDITION ET SUPPRESSION DES SERVICES
                 // ==============================
-                document.querySelector('#tableServices').addEventListener('click', function(e){
+                document.querySelector('#tableServices').addEventListener('click', function(e) {
 
                     // ---- Modifier ----
-                    if(e.target.closest('.btn-edit-service')){
+                    if (e.target.closest('.btn-edit-service')) {
                         e.preventDefault();
                         const id = e.target.closest('.btn-edit-service').dataset.id;
                         openEditServiceModal(id);
                     }
 
                     // ---- Supprimer ----
-                    if(e.target.closest('.btn-delete-service')){
+                    if (e.target.closest('.btn-delete-service')) {
                         e.preventDefault();
                         const id = e.target.closest('.btn-delete-service').dataset.id;
 
@@ -6689,23 +6705,26 @@
                             confirmButtonText: 'Oui, supprimer',
                             cancelButtonText: 'Annuler'
                         }).then((result) => {
-                            if(result.isConfirmed){
+                            if (result.isConfirmed) {
                                 fetch(`/admin/services/${id}`, {
-                                    method: 'DELETE',
-                                    headers: {
-                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                                    }
-                                })
-                                .then(res => res.json())
-                                .then(data => {
-                                    if(data.success){
-                                        Swal.fire('Supprimé !', data.message, 'success');
-                                        tableServices.ajax.reload();
-                                    } else {
-                                        Swal.fire('Erreur', data.message || 'Erreur lors de la suppression', 'error');
-                                    }
-                                })
-                                .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector(
+                                                'meta[name="csrf-token"]').getAttribute(
+                                                'content')
+                                        }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Supprimé !', data.message, 'success');
+                                            tableServices.ajax.reload();
+                                        } else {
+                                            Swal.fire('Erreur', data.message ||
+                                                'Erreur lors de la suppression', 'error');
+                                        }
+                                    })
+                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
                             }
                         });
                     }
@@ -6715,13 +6734,13 @@
                 // ==============================
                 // MODALE ÉDITION SERVICE
                 // ==============================
-              function openEditServiceModal(id) {
+                function openEditServiceModal(id) {
 
                     // Fermer la modale liste_services si elle est ouverte
                     const listeModalEl = document.getElementById('liste_services');
-                    if(listeModalEl){
+                    if (listeModalEl) {
                         const modalInstance = bootstrap.Modal.getInstance(listeModalEl);
-                        if(modalInstance) modalInstance.hide();
+                        if (modalInstance) modalInstance.hide();
                     }
 
                     // Récupérer le service via AJAX
@@ -6770,13 +6789,17 @@
                                     fetch('/admin/categories/list')
                                         .then(res => res.json())
                                         .then(categories => {
-                                            const select = document.getElementById('swal-categorie');
-                                            select.innerHTML = '<option value="">Sélectionnez une catégorie</option>';
+                                            const select = document.getElementById(
+                                            'swal-categorie');
+                                            select.innerHTML =
+                                                '<option value="">Sélectionnez une catégorie</option>';
                                             categories.forEach(cat => {
-                                                const opt = document.createElement('option');
+                                                const opt = document.createElement(
+                                                'option');
                                                 opt.value = cat.id;
                                                 opt.textContent = cat.nom;
-                                                if(cat.id === service.categorie_id) opt.selected = true;
+                                                if (cat.id === service.categorie_id) opt
+                                                    .selected = true;
                                                 select.appendChild(opt);
                                             });
                                         });
@@ -6784,18 +6807,26 @@
                                 preConfirm: () => {
                                     const nom = document.getElementById('swal-nom').value.trim();
                                     const slug = document.getElementById('swal-slug').value.trim();
-                                    const description = document.getElementById('swal-description').value.trim();
-                                    const categorie_id = document.getElementById('swal-categorie').value;
+                                    const description = document.getElementById('swal-description')
+                                        .value.trim();
+                                    const categorie_id = document.getElementById('swal-categorie')
+                                    .value;
 
-                                    if(!nom || !slug || !categorie_id){
-                                        Swal.showValidationMessage('Tous les champs obligatoires doivent être remplis');
+                                    if (!nom || !slug || !categorie_id) {
+                                        Swal.showValidationMessage(
+                                            'Tous les champs obligatoires doivent être remplis');
                                         return false;
                                     }
 
-                                    return { nom, slug, description, categorie_id };
+                                    return {
+                                        nom,
+                                        slug,
+                                        description,
+                                        categorie_id
+                                    };
                                 }
                             }).then(result => {
-                                if(result.isConfirmed && result.value){
+                                if (result.isConfirmed && result.value) {
                                     Swal.fire({
                                         title: 'Mise à jour...',
                                         allowOutsideClick: false,
@@ -6803,37 +6834,39 @@
                                     });
 
                                     fetch(`/admin/services/${id}`, {
-                                        method: 'PUT',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                                        },
-                                        body: JSON.stringify(result.value)
-                                    })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        Swal.close();
-                                        if(data.success){
-                                            Swal.fire('Succès', data.message, 'success');
-                                            tableServices.ajax.reload();
-                                        } else {
-                                            Swal.fire('Erreur', data.message || 'Erreur lors de la modification', 'error');
-                                        }
-                                    })
-                                    .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
+                                            method: 'PUT',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': document.querySelector(
+                                                    'meta[name="csrf-token"]').content
+                                            },
+                                            body: JSON.stringify(result.value)
+                                        })
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            Swal.close();
+                                            if (data.success) {
+                                                Swal.fire('Succès', data.message, 'success');
+                                                tableServices.ajax.reload();
+                                            } else {
+                                                Swal.fire('Erreur', data.message ||
+                                                    'Erreur lors de la modification', 'error');
+                                            }
+                                        })
+                                        .catch(() => Swal.fire('Erreur', 'Erreur réseau', 'error'));
                                 }
                             });
 
                         })
                         .catch(() => Swal.fire('Erreur', 'Impossible de charger le service.', 'error'));
-                    }
+                }
 
 
                 // ==============================
                 // FONCTION D’ÉCHAPPEMENT HTML
                 // ==============================
-                function escapeHtml(text){
-                    if(!text) return '';
+                function escapeHtml(text) {
+                    if (!text) return '';
                     return text
                         .replace(/&/g, "&amp;")
                         .replace(/</g, "&lt;")
@@ -6842,7 +6875,7 @@
                         .replace(/'/g, "&#039;");
                 }
 
-                 });
+            });
         </script>
 
 

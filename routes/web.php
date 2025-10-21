@@ -182,12 +182,18 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     
     // DASHBOARD
     Route::get('/dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
+    
 
     // GESTION DES UTILISATEURS
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/', [DashboardController::class, 'index_user'])->name('index');
         Route::get('/show', function () { return view('Admin.users.show'); })->name('show');
     });
+
+     Route::get('/users', [AuthController::class, 'listUsers'])->name('users.index');
+      Route::get('/users/{id}', [AuthController::class, 'showUser'])->name('users.show');
+    Route::delete('/users/{id}', [AuthController::class, 'deleteUser'])->name('users.delete');
+
     
     // GESTION DES INVITATIONS
     Route::prefix('invitations')->name('invitations.')->group(function () {
