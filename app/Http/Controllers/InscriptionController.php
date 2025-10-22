@@ -46,7 +46,7 @@ class InscriptionController extends Controller
             'nom'       => $request->nom,
             'prenom'    => $request->prenom,
             'telephone' => $request->telephone,
-            'type'      => 'participant', // par défaut
+            'type'      => 'participant_autre', // par défaut
             'password'  => null
         ]);
     
