@@ -3858,7 +3858,7 @@
                 // ... existing code pour edit ...
 
                 // NOUVEAU : Gestionnaire pour la création
-                const createForm = document.getElementById('createFormationForm');
+                const createForm = document.getElementById('formationForm') || document.getElementById('createFormationForm');
                 if (createForm) {
                     createForm.addEventListener('submit', function(e) {
                         e.preventDefault();
@@ -3871,6 +3871,10 @@
                         }
 
                         const formData = new FormData(this);
+                        
+                        // Ajouter le token CSRF explicitement dans FormData
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                        formData.append('_token', csrfToken);
 
                         console.log('Envoi requête POST pour création vers: /admin/formations/store');
 
@@ -4131,8 +4135,9 @@
                 // ... existing code pour editFormationForm reste intact ...
 
                 // NOUVEAU : Identifier et gérer le formulaire de création
-                const createForm = document.querySelector('form[action*="/store"]') ||
+                const createForm = document.getElementById('formationForm') ||
                     document.getElementById('createFormationForm') ||
+                    document.querySelector('form[action*="/store"]') ||
                     document.querySelector('form[method="POST"]:not(#editFormationForm)');
 
                 console.log('Formulaire de création trouvé:', createForm ? '✅' : '❌');
@@ -4146,6 +4151,10 @@
                         console.log('🆕 Formulaire de CRÉATION soumis');
 
                         const formData = new FormData(this);
+                        
+                        // Ajouter le token CSRF explicitement dans FormData
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                        formData.append('_token', csrfToken);
 
                         console.log('📤 Envoi vers:', this.action || '/admin/formations/store');
 
@@ -4583,11 +4592,23 @@
             }
 
             function afficherDetailsFormation(data) {
+                // Vérifier si les données sont valides
+                if (!data || !data.formation) {
+                    console.error('❌ Données de formation invalides:', data);
+                    document.getElementById('detailsFormationContent').innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Erreur: Données de formation non disponibles.
+                        </div>
+                    `;
+                    return;
+                }
+
                 const formation = data.formation;
-                const inscriptions = data.inscriptions;
+                const inscriptions = data.inscriptions || [];
 
                 document.getElementById('detailsFormationModalLabel').innerHTML = `
-                    <i class="fas fa-graduation-cap me-2"></i>${formation.titre}
+                    <i class="fas fa-graduation-cap me-2"></i>${formation.titre || 'Formation sans titre'}
                 `;
 
                 const contentDiv = document.getElementById('detailsFormationContent');
@@ -4716,7 +4737,7 @@
                                 <div class="d-flex align-items-center">
                                     <div class="avatar-circle bg-primary text-white me-2"
                                         style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                                        ${inscription.nom ? inscription.nom.charAt(0).toUpperCase() : '?'}
+                                        ${inscription.nom && typeof inscription.nom === 'string' && inscription.nom.length > 0 ? inscription.nom.charAt(0).toUpperCase() : '?'}
                                     </div>
                                     <strong>${inscription.nom || 'Nom inconnu'}</strong>
                                 </div>
