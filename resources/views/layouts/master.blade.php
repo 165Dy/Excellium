@@ -208,7 +208,7 @@
                         @endphp
                         {{-- Language Switcher --}}
 
-                        @if ($locale == 'fr')
+                        {{-- @if ($locale == 'fr')
                             <a href="{{ route('locale.switch', 'en') }}">
                                 <i class="far fa-globe"></i> English
                             </a>
@@ -216,7 +216,8 @@
                             <a href="{{ route('locale.switch', 'fr') }}">
                                 <i class="far fa-globe"></i> Français
                             </a>
-                        @endif
+                        @endif --}}
+
                         <div class="nav-right-item">
 
                             <a href="{{ route('clients.contact') }}"><i class="far fa-envelope"></i></a>
