@@ -1005,6 +1005,7 @@
                     @yield('index_categorie')
                     @yield('list_candidats')
                     @yield('Detail_Candidature')
+                    @yield('content')
 
                     {{-- //Create// --}}
                     @yield('index_formations')
@@ -1017,1100 +1018,1108 @@
 
 
 
-                    <!-- Modal -->
+                    <!-- Modales -->
+                        <!-- Modal Formations -->
+                            <!-- Create Formation Modal -->
+                            <div class="modal fade" id="create_formations" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6">
+                                                <h4 class="mb-2">ajouter une formation </h4>
+                                            </div>
+                                            <!-- Formulaire de création de formation stylisé -->
+                                            <form id="formationForm" action="{{ route('admin.formations.store') }}"
+                                                method="POST" class="row g-4" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="titre" name="titre"
+                                                            class="form-control" placeholder="Titre" required>
+                                                        <label for="titre">titre</label>
+                                                    </div>
+                                                </div>
 
-                    <!-- Create Formation Modal -->
-                    <div class="modal fade" id="create_formations" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6">
-                                        <h4 class="mb-2">ajouter une formation </h4>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <select name="categorie_id" id="categorie_id" class="form-select"
+                                                            required>
+                                                            @if (isset($categories) && $categories->count() > 0)
+                                                                @foreach ($categories as $categorie)
+                                                                    <option value="{{ $categorie->id }}">
+                                                                        {{ $categorie->nom }}
+                                                                    </option>
+                                                                @endforeach
+                                                            @else
+                                                                <option value="">aucune categorie disponible')
+                                                                </option>
+                                                            @endif
+                                                        </select>
+                                                        <label for="categorie_id">categorie </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>
+                                                        <label for="programme">programme</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="number" step="0.01" id="cout" name="cout"
+                                                            class="form-control" placeholder="Coût">
+                                                        <label for="cout">cout</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="lieu" name="lieu"
+                                                            class="form-control" placeholder="Lieu">
+                                                        <label for="lieu">lieu</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="date" id="date_debut" name="date_debut"
+                                                            class="form-control" placeholder="Date de début">
+                                                        <label for="date_debut">date de debut</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="date" id="date_fin" name="date_fin"
+                                                            class="form-control" placeholder="Date de fin">
+                                                        <label for="date_fin">date de fin</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <textarea name="prerequis" id="prerequis" class="form-control" placeholder="Prérequis" style="height: 80px"></textarea>
+                                                        <label for="prerequis">prerequis</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <textarea name="bonus" id="bonus" class="form-control" placeholder="Bonus" style="height: 80px"></textarea>
+                                                        <label for="bonus">bonus</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="file" id="file" name="file"
+                                                            class="form-control" accept="image/*,video/*"
+                                                            onchange="previewFile(this)">
+                                                        <label for="file">fichier_image ou video max 150 mb</label>
+                                                    </div>
+                                                    <div id="file-error" class="mt-2" style="display: none;">
+                                                        <div class="alert alert-danger d-flex align-items-center">
+                                                            <i class="ri ri-error-warning-line me-2"></i>
+                                                            <span>la taille du fichier ne doit pas depasser 150 mb</span>
+                                                        </div>
+                                                    </div>
+                                                    <div id="file-preview" class="mt-3 d-flex justify-content-center"
+                                                        style="display: none;">
+                                                        <div class="preview-container">
+                                                            <img id="image-preview" class="preview-media"
+                                                                style="display: none; max-width: 200px; border-radius: 8px;">
+                                                            <video id="video-preview" class="preview-media"
+                                                                style="display: none; max-width: 200px; border-radius: 8px;"
+                                                                controls>
+                                                                <source id="video-source" src="" type="">
+                                                            </video>
+                                                            <button type="button" class="btn btn-sm btn-danger ms-2"
+                                                                onclick="removeFile()">
+                                                                <i class="ri ri-close-line"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Section Modules -->
+                                                <div class="col-12">
+                                                    <div class="card border border-primary">
+                                                        <div
+                                                            class="card-header d-flex justify-content-between align-items-center bg-label-primary">
+                                                            <h5 class="mb-0">
+                                                                <i class="ri ri-book-line me-2"></i>Modules de formation
+                                                            </h5>
+                                                            <button type="button" class="btn btn-sm btn-primary"
+                                                                onclick="openAddModuleModal()">
+                                                                <i class="ri ri-add-line me-1"></i>Ajouter un module
+                                                            </button>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div id="modules-list" class="mb-2">
+                                                                <p class="text-muted text-center" id="no-modules-msg">
+                                                                    Aucun module ajouté. Cliquez sur "Ajouter un module" pour
+                                                                    commencer.
+                                                                </p>
+                                                            </div>
+                                                            <!-- Champ caché pour stocker les modules en JSON -->
+                                                            <input type="hidden" name="modules" id="modules-data"
+                                                                value="[]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Section Documents -->
+                                                <div class="col-12">
+                                                    <div class="card border border-info">
+                                                        <div
+                                                            class="card-header d-flex justify-content-between align-items-center bg-label-info">
+                                                            <h5 class="mb-0">
+                                                                <i class="ri ri-file-text-line me-2"></i>Documents de formation
+                                                            </h5>
+                                                            <button type="button" class="btn btn-sm btn-info"
+                                                                onclick="openAddDocumentModal()">
+                                                                <i class="ri ri-add-line me-1"></i>Ajouter un document
+                                                            </button>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div id="documents-list" class="mb-2">
+                                                                <p class="text-muted text-center" id="no-documents-msg">
+                                                                    Aucun document ajouté. Cliquez sur "Ajouter un document"
+                                                                    pour commencer.
+                                                                </p>
+                                                            </div>
+                                                            <!-- Champ caché pour stocker les documents en JSON -->
+                                                            <input type="hidden" name="documents" id="documents-data"
+                                                                value="[]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 text-center">
+                                                    <button type="button" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal" aria-label="Close">
+                                                        Annuler
+                                                    </button>
+                                                    <button type="submit" class="btn btn-primary me-3" id="submitBtn">
+                                                        <span class="spinner-border spinner-border-sm me-2"
+                                                            style="display: none;" id="spinner"></span>
+                                                        Créer
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+
                                     </div>
-                                    <!-- Formulaire de création de formation stylisé -->
-                                    <form id="formationForm" action="{{ route('admin.formations.store') }}"
-                                        method="POST" class="row g-4" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="titre" name="titre"
-                                                    class="form-control" placeholder="Titre" required>
-                                                <label for="titre">titre</label>
-                                            </div>
-                                        </div>
+                                    <!--/ Content -->
+                                </div>
+                                <div class="content-backdrop fade"></div>
+                            </div>
 
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <select name="categorie_id" id="categorie_id" class="form-select"
-                                                    required>
-                                                    @if (isset($categories) && $categories->count() > 0)
-                                                        @foreach ($categories as $categorie)
-                                                            <option value="{{ $categorie->id }}">
-                                                                {{ $categorie->nom }}
-                                                            </option>
-                                                        @endforeach
-                                                    @else
-                                                        <option value="">aucune categorie disponible')
-                                                        </option>
-                                                    @endif
-                                                </select>
-                                                <label for="categorie_id">categorie </label>
-                                            </div>
+                            <!-- Modal Ajout Module -->
+                            <div class="modal fade" id="add_module_modal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary">
+                                            <h5 class="modal-title text-white">
+                                                <i class="ri ri-book-line me-2"></i>Ajouter un module
+                                            </h5>
+                                            <button type="button" class="btn-close btn-close-white"
+                                                data-bs-dismiss="modal"></button>
                                         </div>
-
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <textarea name="programme" id="programme" class="form-control" placeholder="Programme" style="height: 100px"></textarea>
-                                                <label for="programme">programme</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="number" step="0.01" id="cout" name="cout"
-                                                    class="form-control" placeholder="Coût">
-                                                <label for="cout">cout</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="lieu" name="lieu"
-                                                    class="form-control" placeholder="Lieu">
-                                                <label for="lieu">lieu</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="date" id="date_debut" name="date_debut"
-                                                    class="form-control" placeholder="Date de début">
-                                                <label for="date_debut">date de debut</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="date" id="date_fin" name="date_fin"
-                                                    class="form-control" placeholder="Date de fin">
-                                                <label for="date_fin">date de fin</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <textarea name="prerequis" id="prerequis" class="form-control" placeholder="Prérequis" style="height: 80px"></textarea>
-                                                <label for="prerequis">prerequis</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <textarea name="bonus" id="bonus" class="form-control" placeholder="Bonus" style="height: 80px"></textarea>
-                                                <label for="bonus">bonus</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="file" id="file" name="file"
-                                                    class="form-control" accept="image/*,video/*"
-                                                    onchange="previewFile(this)">
-                                                <label for="file">fichier_image ou video max 150 mb</label>
-                                            </div>
-                                            <div id="file-error" class="mt-2" style="display: none;">
-                                                <div class="alert alert-danger d-flex align-items-center">
-                                                    <i class="ri ri-error-warning-line me-2"></i>
-                                                    <span>la taille du fichier ne doit pas depasser 150 mb</span>
+                                        <div class="modal-body">
+                                            <form id="moduleForm">
+                                                <div class="mb-3">
+                                                    <label for="module_titre" class="form-label">Titre du module <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="module_titre" required>
                                                 </div>
-                                            </div>
-                                            <div id="file-preview" class="mt-3 d-flex justify-content-center"
-                                                style="display: none;">
-                                                <div class="preview-container">
-                                                    <img id="image-preview" class="preview-media"
-                                                        style="display: none; max-width: 200px; border-radius: 8px;">
-                                                    <video id="video-preview" class="preview-media"
-                                                        style="display: none; max-width: 200px; border-radius: 8px;"
-                                                        controls>
-                                                        <source id="video-source" src="" type="">
-                                                    </video>
-                                                    <button type="button" class="btn btn-sm btn-danger ms-2"
-                                                        onclick="removeFile()">
-                                                        <i class="ri ri-close-line"></i>
-                                                    </button>
+                                                <div class="mb-3">
+                                                    <label for="module_description" class="form-label">Description</label>
+                                                    <textarea class="form-control" id="module_description" rows="3"></textarea>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
-
-                                        <!-- Section Modules -->
-                                        <div class="col-12">
-                                            <div class="card border border-primary">
-                                                <div
-                                                    class="card-header d-flex justify-content-between align-items-center bg-label-primary">
-                                                    <h5 class="mb-0">
-                                                        <i class="ri ri-book-line me-2"></i>Modules de formation
-                                                    </h5>
-                                                    <button type="button" class="btn btn-sm btn-primary"
-                                                        onclick="openAddModuleModal()">
-                                                        <i class="ri ri-add-line me-1"></i>Ajouter un module
-                                                    </button>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div id="modules-list" class="mb-2">
-                                                        <p class="text-muted text-center" id="no-modules-msg">
-                                                            Aucun module ajouté. Cliquez sur "Ajouter un module" pour
-                                                            commencer.
-                                                        </p>
-                                                    </div>
-                                                    <!-- Champ caché pour stocker les modules en JSON -->
-                                                    <input type="hidden" name="modules" id="modules-data"
-                                                        value="[]">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Section Documents -->
-                                        <div class="col-12">
-                                            <div class="card border border-info">
-                                                <div
-                                                    class="card-header d-flex justify-content-between align-items-center bg-label-info">
-                                                    <h5 class="mb-0">
-                                                        <i class="ri ri-file-text-line me-2"></i>Documents de formation
-                                                    </h5>
-                                                    <button type="button" class="btn btn-sm btn-info"
-                                                        onclick="openAddDocumentModal()">
-                                                        <i class="ri ri-add-line me-1"></i>Ajouter un document
-                                                    </button>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div id="documents-list" class="mb-2">
-                                                        <p class="text-muted text-center" id="no-documents-msg">
-                                                            Aucun document ajouté. Cliquez sur "Ajouter un document"
-                                                            pour commencer.
-                                                        </p>
-                                                    </div>
-                                                    <!-- Champ caché pour stocker les documents en JSON -->
-                                                    <input type="hidden" name="documents" id="documents-data"
-                                                        value="[]">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 text-center">
+                                        <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal" aria-label="Close">
-                                                Annuler
-                                            </button>
-                                            <button type="submit" class="btn btn-primary me-3" id="submitBtn">
-                                                <span class="spinner-border spinner-border-sm me-2"
-                                                    style="display: none;" id="spinner"></span>
-                                                Créer
+                                                data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-primary" onclick="addModule()">
+                                                <i class="ri ri-add-line me-1"></i>Ajouter
                                             </button>
                                         </div>
-                                    </form>
-                                </div>
-
-
-                            </div>
-                            <!--/ Content -->
-                        </div>
-                        <div class="content-backdrop fade"></div>
-                    </div>
-
-                    <!-- Modal Ajout Module -->
-                    <div class="modal fade" id="add_module_modal" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header bg-primary">
-                                    <h5 class="modal-title text-white">
-                                        <i class="ri ri-book-line me-2"></i>Ajouter un module
-                                    </h5>
-                                    <button type="button" class="btn-close btn-close-white"
-                                        data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form id="moduleForm">
-                                        <div class="mb-3">
-                                            <label for="module_titre" class="form-label">Titre du module <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="module_titre" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="module_description" class="form-label">Description</label>
-                                            <textarea class="form-control" id="module_description" rows="3"></textarea>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary"
-                                        data-bs-dismiss="modal">Annuler</button>
-                                    <button type="button" class="btn btn-primary" onclick="addModule()">
-                                        <i class="ri ri-add-line me-1"></i>Ajouter
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal Ajout Document -->
-                    <div class="modal fade" id="add_document_modal" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header bg-info">
-                                    <h5 class="modal-title text-white">
-                                        <i class="ri ri-file-text-line me-2"></i>Ajouter un document
-                                    </h5>
-                                    <button type="button" class="btn-close btn-close-white"
-                                        data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form id="documentForm">
-                                        <div class="mb-3">
-                                            <label for="document_titre" class="form-label">Titre du document</label>
-                                            <input type="text" class="form-control" id="document_titre">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="document_description" class="form-label">Description</label>
-                                            <textarea class="form-control" id="document_description" rows="2"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="document_fichier" class="form-label">Fichier <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="file" class="form-control" id="document_fichier"
-                                                accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar" required>
-                                            <small class="text-muted">Formats acceptés: PDF, DOC, XLS, PPT, ZIP, RAR
-                                                (Max 50MB)</small>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary"
-                                        data-bs-dismiss="modal">Annuler</button>
-                                    <button type="button" class="btn btn-info" onclick="addDocument()">
-                                        <i class="ri ri-add-line me-1"></i>Ajouter
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Liste Formations Modal -->
-                    <div class="modal fade" id="liste_formations" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-simple">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6 p-4">
-                                        <h4 class="mb-2 text-primary">
-                                            <i class="ri ri-graduation-cap-line me-2"></i>
-                                            LISTE DES FORMATIONS
-                                        </h4>
-                                        <p class="text-muted">gerez toutes vos formations disponibles
-                                        </p>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <div class="card-datatable px-4 pb-4">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-bordered">
-                                                <thead class="table-primary">
-                                                    <tr>
-                                                        <th class="text-center">#</th>
-                                                        <th>titre</th>
-                                                        <th>categorie</th>
-                                                        <th class="text-center">cout</th>
-                                                        <th>lieu</th>
-                                                        <th class="text-center">dates</th>
-                                                        <th class="text-center">actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="table-border-bottom-0">
-                                                    @if (isset($formations) && $formations->count() > 0)
-                                                        @foreach ($formations as $formation)
-                                                            <tr data-formation-id="{{ $formation->id }}">
-                                                                <td class="text-center">
-                                                                    <span
-                                                                        class="badge bg-label-primary rounded-pill fs-6">{{ $loop->iteration }}</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="avatar avatar-sm me-3">
-                                                                            <div
-                                                                                class="avatar-initial rounded bg-label-secondary">
-                                                                                <i class="ri ri-file-line"></i>
+                            <!-- Modal Ajout Document -->
+                            <div class="modal fade" id="add_document_modal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-info">
+                                            <h5 class="modal-title text-white">
+                                                <i class="ri ri-file-text-line me-2"></i>Ajouter un document
+                                            </h5>
+                                            <button type="button" class="btn-close btn-close-white"
+                                                data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="documentForm">
+                                                <div class="mb-3">
+                                                    <label for="document_titre" class="form-label">Titre du document</label>
+                                                    <input type="text" class="form-control" id="document_titre">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="document_description" class="form-label">Description</label>
+                                                    <textarea class="form-control" id="document_description" rows="2"></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="document_fichier" class="form-label">Fichier <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="file" class="form-control" id="document_fichier"
+                                                        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar" required>
+                                                    <small class="text-muted">Formats acceptés: PDF, DOC, XLS, PPT, ZIP, RAR
+                                                        (Max 50MB)</small>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-info" onclick="addDocument()">
+                                                <i class="ri ri-add-line me-1"></i>Ajouter
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Liste Formations Modal -->
+                            <div class="modal fade" id="liste_formations" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-simple">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6 p-4">
+                                                <h4 class="mb-2 text-primary">
+                                                    <i class="ri ri-graduation-cap-line me-2"></i>
+                                                    LISTE DES FORMATIONS
+                                                </h4>
+                                                <p class="text-muted">gerez toutes vos formations disponibles
+                                                </p>
+                                            </div>
+
+                                            <div class="card-datatable px-4 pb-4">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-bordered">
+                                                        <thead class="table-primary">
+                                                            <tr>
+                                                                <th class="text-center">#</th>
+                                                                <th>Titre</th>
+                                                                <th>Catégorie</th>
+                                                                <th class="text-center">Coût</th>
+                                                                <th>Lieu</th>
+                                                                <th class="text-center">Dates</th>
+                                                                <th class="text-center">Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="table-border-bottom-0">
+                                                            @if (isset($formations) && $formations->count() > 0)
+                                                                @foreach ($formations as $formation)
+                                                                    <tr data-formation-id="{{ $formation->id }}">
+                                                                        <td class="text-center">
+                                                                            <span
+                                                                                class="badge bg-label-primary rounded-pill fs-6">{{ $loop->iteration }}</span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="avatar avatar-sm me-3">
+                                                                                    <div
+                                                                                        class="avatar-initial rounded bg-label-secondary">
+                                                                                        <i class="ri ri-file-line"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h6 class="mb-0">{{ $formation->titre }}
+                                                                                    </h6>
+                                                                                    <small
+                                                                                        class="text-muted">{{ $formation->programme ? str($formation->programme)->limit(50) : '' }}</small>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div>
-                                                                            <h6 class="mb-0">{{ $formation->titre }}
-                                                                            </h6>
-                                                                            <small
-                                                                                class="text-muted">{{ $formation->programme ? str($formation->programme)->limit(50) : '' }}</small>
-                                                                        </div>
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            <span
+                                                                                class="badge bg-label-success">{{ $formation->categorie ? $formation->categorie->nom : 'N/A' }}</span>
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            <span
+                                                                                class="fw-medium text-primary">{{ $formation->cout ? number_format($formation->cout, 0, ',', ' ') . ' FCFA' : 'Gratuit' }}</span>
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            <span
+                                                                                class="text-muted">{{ $formation->lieu ?? 'Non spécifié' }}</span>
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            <div class="text-success">
+                                                                                <small>{{ $formation->date_debut ? $formation->date_debut->format('d/m/Y') : 'N/A' }}</small>
+                                                                            </div>
+                                                                            <div class="text-danger">
+                                                                                <small>{{ $formation->date_fin ? $formation->date_fin->format('d/m/Y') : 'N/A' }}</small>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            <div class="d-flex justify-content-center gap-2">
+                                                                                <a href="{{ route('admin.formations.details_page', $formation->id) }}"
+                                                                                    class="btn btn-sm btn-icon btn-outline-primary btn-view-details"
+                                                                                    title="Voir les détails">
+                                                                                    <i class="ri ri-eye-line"></i>
+                                                                                </a>
+                                                                                <button
+                                                                                    class="btn btn-sm btn-icon btn-outline-warning"
+                                                                                    title="Modifier"
+                                                                                    data-formation-id="{{ $formation->id }}"
+                                                                                    onclick="editFormation({{ $formation->id }})">
+                                                                                    <i class="ri ri-edit-line"></i>
+                                                                                </button>
+                                                                                <button
+                                                                                    class="btn btn-sm btn-icon btn-outline-danger"
+                                                                                    title="Supprimer"
+                                                                                    data-formation-id="{{ $formation->id }}"
+                                                                                    data-formation-title="{{ $formation->titre }}"
+                                                                                    onclick="confirmDelete({{ $formation->id }}, '{{ addslashes($formation->titre) }}')">
+                                                                                    <i class="ri ri-delete-bin-line"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @else
+                                                                <tr>
+                                                                    <td colspan="100%" class="text-center text-muted py-4">
+                                                                        <i class="fas fa-graduation-cap me-2"></i>Aucune
+                                                                        formation disponible
+                                                                    </td>
+                                                                </tr>
+                                                            @endif
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                @if (isset($formations) && $formations->isNotEmpty())
+                                                    <div class="d-flex justify-content-between align-items-center mt-4 px-3">
+                                                        <div class="text-muted">
+                                                            <small>{{ $formations->count() }} formation(s)
+                                                                disponible(s)</small>
+                                                        </div>
+                                                        <div>
+                                                            <button class="btn btn-primary"
+                                                                data-bs-target="#create_formations" data-bs-toggle="modal"
+                                                                data-bs-dismiss="modal">
+                                                                <i class="ri ri-add-line me-1"></i>
+                                                                Nouvelle formation
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="text-muted">
+                                                        <small>aucune formation disponible</small>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Liste Modules Modal -->
+                            <div class="modal fade" id="liste_modules" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-simple">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6 p-4">
+                                                <h4 class="mb-2 text-info">
+                                                    <i class="ri ri-book-line me-2"></i>
+                                                    LISTE DES MODULES
+                                                </h4>
+                                                <p class="text-muted">Gérez tous les modules de vos formations</p>
+                                            </div>
+
+                                            <div class="card-datatable px-4 pb-4">
+                                                <div class="mb-3">
+                                                    <label for="filter_formation_modules" class="form-label">Filtrer par
+                                                        formation</label>
+                                                    <select id="filter_formation_modules" class="form-select"
+                                                        onchange="filterModulesByFormation(this.value)">
+                                                        <option value="">Toutes les formations</option>
+                                                        @if (isset($formations) && $formations->count() > 0)
+                                                            @foreach ($formations as $formation)
+                                                                <option value="{{ $formation->id }}">{{ $formation->titre }}
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-bordered" id="modulesTable">
+                                                        <thead class="table-info">
+                                                            <tr>
+                                                                <th class="text-center">#</th>
+                                                                <th>Formation</th>
+                                                                <th>Titre du module</th>
+                                                                <th>Description</th>
+                                                                <th class="text-center">Date création</th>
+                                                                <th class="text-center">Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="modules-table-body">
+                                                            <tr>
+                                                                <td colspan="6" class="text-center text-muted py-4">
+                                                                    <div class="spinner-border text-info" role="status">
+                                                                        <span class="visually-hidden">Chargement...</span>
                                                                     </div>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <span
-                                                                        class="badge bg-label-success">{{ $formation->categorie ? $formation->categorie->nom : 'N/A' }}</span>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <span
-                                                                        class="fw-medium text-primary">{{ $formation->cout ? number_format($formation->cout, 0, ',', ' ') . ' FCFA' : 'Gratuit' }}</span>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <span
-                                                                        class="text-muted">{{ $formation->lieu ?? 'Non spécifié' }}</span>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <div class="text-success">
-                                                                        <small>{{ $formation->date_debut ? $formation->date_debut->format('d/m/Y') : 'N/A' }}</small>
-                                                                    </div>
-                                                                    <div class="text-danger">
-                                                                        <small>{{ $formation->date_fin ? $formation->date_fin->format('d/m/Y') : 'N/A' }}</small>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <div class="d-flex justify-content-center gap-2">
-                                                                        <button
-                                                                            class="btn btn-sm btn-icon btn-outline-primary"
-                                                                            title="Voir les détails"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-formation-id="{{ $formation->id }}"
-                                                                            onclick="voirDetailsFormation({{ $formation->id }})">
-                                                                            <i class="ri ri-eye-line"></i>
-                                                                        </button>
-                                                                        <button
-                                                                            class="btn btn-sm btn-icon btn-outline-warning"
-                                                                            title="Modifier" data-bs-toggle="tooltip"
-                                                                            data-formation-id="{{ $formation->id }}"
-                                                                            onclick="editFormation({{ $formation->id }})">
-                                                                            <i class="ri ri-edit-line"></i>
-                                                                        </button>
-                                                                        <button
-                                                                            class="btn btn-sm btn-icon btn-outline-danger"
-                                                                            title="Supprimer" data-bs-toggle="tooltip"
-                                                                            data-formation-id="{{ $formation->id }}"
-                                                                            data-formation-title="{{ $formation->titre }}"
-                                                                            onclick="confirmDelete({{ $formation->id }}, '{{ addslashes($formation->titre) }}')">
-                                                                            <i class="ri ri-delete-bin-line"></i>
-                                                                        </button>
-                                                                    </div>
+                                                                    <p class="mt-2">Chargement des modules...</p>
                                                                 </td>
                                                             </tr>
-                                                        @endforeach
-                                                    @else
-                                                        <tr>
-                                                            <td colspan="100%" class="text-center text-muted py-4">
-                                                                <i class="fas fa-graduation-cap me-2"></i>Aucune
-                                                                formation disponible
-                                                            </td>
-                                                        </tr>
-                                                    @endif
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                        @if (isset($formations) && $formations->isNotEmpty())
-                                            <div class="d-flex justify-content-between align-items-center mt-4 px-3">
-                                                <div class="text-muted">
-                                                    <small>{{ $formations->count() }} formation(s)
-                                                        disponible(s)</small>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                                <div>
-                                                    <button class="btn btn-primary"
-                                                        data-bs-target="#create_formations" data-bs-toggle="modal"
-                                                        data-bs-dismiss="modal">
-                                                        <i class="ri ri-add-line me-1"></i>
-                                                        Nouvelle formation
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Liste Documents Modal -->
+                            <div class="modal fade" id="liste_documents" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-simple">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6 p-4">
+                                                <h4 class="mb-2 text-success">
+                                                    <i class="ri ri-file-text-line me-2"></i>
+                                                    LISTE DES DOCUMENTS
+                                                </h4>
+                                                <p class="text-muted">Gérez tous les documents de vos formations</p>
+                                            </div>
+
+                                            <div class="card-datatable px-4 pb-4">
+                                                <div class="mb-3">
+                                                    <label for="filter_formation_documents" class="form-label">Filtrer par
+                                                        formation</label>
+                                                    <select id="filter_formation_documents" class="form-select"
+                                                        onchange="filterDocumentsByFormation(this.value)">
+                                                        <option value="">Toutes les formations</option>
+                                                        @if (isset($formations) && $formations->count() > 0)
+                                                            @foreach ($formations as $formation)
+                                                                <option value="{{ $formation->id }}">{{ $formation->titre }}
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-bordered" id="documentsTable">
+                                                        <thead class="table-success">
+                                                            <tr>
+                                                                <th class="text-center">#</th>
+                                                                <th>Formation</th>
+                                                                <th>Titre</th>
+                                                                <th>Description</th>
+                                                                <th>Fichier</th>
+                                                                <th class="text-center">Date création</th>
+                                                                <th class="text-center">Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="documents-table-body">
+                                                            <tr>
+                                                                <td colspan="7" class="text-center text-muted py-4">
+                                                                    <div class="spinner-border text-success" role="status">
+                                                                        <span class="visually-hidden">Chargement...</span>
+                                                                    </div>
+                                                                    <p class="mt-2">Chargement des documents...</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- Fin Modal Formations -->
+
+
+
+                        <!-- Emplois Class Modal -->
+                            <div class="modal fade" id="create_emplois" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6">
+                                                <div class="mb-4">
+                                                    <div class="rounded-circle d-inline-flex align-items-center justify-content-center bg-primary bg-gradient"
+                                                        style="width: 80px; height: 80px;">
+                                                        <i class="ri ri-graduation-cap-line text-white"
+                                                            style="font-size: 2rem;"></i>
+                                                    </div>
+                                                </div>
+                                                <h4 class="mb-2 text-primary fw-bold">ajouter un emploi</h4>
+                                                <p class="text-muted">
+                                                    creez une nouvelle offre d'emploi</p>
+                                            </div>
+
+                                            <form id="createEmploiForm" action="{{ route('admin.emplois.store') }}"
+                                                method="POST" class="row g-4">
+                                                @csrf
+
+                                                {{-- Titre et Entreprise --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="titre" name="titre"
+                                                            class="form-control" placeholder="Développeur Web Full Stack"
+                                                            required />
+                                                        <label for="titre">
+                                                            <i class="fas fa-briefcase me-1"></i>Titre du poste *
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="entreprise" name="entreprise"
+                                                            class="form-control" placeholder="Excellium Conseils" required />
+                                                        <label for="entreprise">
+                                                            <i class="fas fa-building me-1"></i>Entreprise *
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Type de contrat et Localisation --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <select id="type_contrat" name="type_contrat" class="form-select"
+                                                            required>
+                                                            <option value="">selectionner</option>
+                                                            <option value="CDI">
+                                                                cdi_contrat_a_duree_indeterminee</option>
+                                                            <option value="CDD">
+                                                                cdd_contrat_a_duree_determinee</option>
+                                                            <option value="Stage">stage</option>
+                                                            <option value="Freelance">freelance</option>
+                                                            <option value="Alternance">alternance</option>
+                                                        </select>
+                                                        <label for="type_contrat">
+                                                            <i class="fas fa-file-contract me-1"></i>Type de contrat *
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="localisation" name="localisation"
+                                                            class="form-control" placeholder="Paris, France" required />
+                                                        <label for="localisation">
+                                                            <i class="fas fa-map-marker-alt me-1"></i>Localisation *
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Salaires --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="number" id="salaire_min" name="salaire_min"
+                                                            class="form-control" placeholder="500000" min="0"
+                                                            step="1000" />
+                                                        <label for="salaire_min">
+                                                            <i class="fas fa-money-bill-wave me-1"></i>Salaire minimum (FCFA)
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="number" id="salaire_max" name="salaire_max"
+                                                            class="form-control" placeholder="800000" min="0"
+                                                            step="1000" />
+                                                        <label for="salaire_max">
+                                                            <i class="fas fa-money-bill-wave me-1"></i>Salaire maximum (FCFA)
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Expérience et Niveau d'étude --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <select id="experience_requise" name="experience_requise"
+                                                            class="form-select">
+                                                            <option value="">selectionner</option>
+                                                            <option value="Débutant">debutant accepte
+                                                            </option>
+                                                            <option value="1-2 ans">1-2 ans d'experience
+                                                            </option>
+                                                            <option value="3-5 ans">3-5 ans d'experience
+                                                            </option>
+                                                            <option value="5+ ans">5_ans_d'experience</option>
+                                                            <option value="Senior">senior 10 ans</option>
+                                                        </select>
+                                                        <label for="experience_requise">
+                                                            <i class="fas fa-user-tie me-1"></i>Expérience requise
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <select id="niveau_etude" name="niveau_etude" class="form-select">
+                                                            <option value="">selectionner</option>
+                                                            <option value="Bac">baccalaureat</option>
+                                                            <option value="Bac+2">bac2_btsdut</option>
+                                                            <option value="Bac+3">bac3_licence</option>
+                                                            <option value="Bac+5">bac5_master</option>
+                                                            <option value="Doctorat">doctorat</option>
+                                                        </select>
+                                                        <label for="niveau_etude">
+                                                            <i class="fas fa-graduation-cap me-1"></i>Niveau d'étude
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Nombre de postes et Date d'expiration --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="number" id="nombre_postes" name="nombre_postes"
+                                                            class="form-control" value="1" min="1"
+                                                            max="50" required />
+                                                        <label for="nombre_postes">
+                                                            <i class="fas fa-users me-1"></i>Nombre de postes *
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="date" id="date_expiration" name="date_expiration"
+                                                            class="form-control"
+                                                            min="{{ date('Y-m-d', strtotime('+1 day')) }}" required />
+                                                        <label for="date_expiration">
+                                                            <i class="fas fa-calendar-alt me-1"></i>Date limite candidature *
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Contacts --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="email" id="contact_email" name="contact_email"
+                                                            class="form-control" placeholder="recrutement@excellium.com" />
+                                                        <label for="contact_email">
+                                                            <i class="fas fa-envelope me-1"></i>Email de contact
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="tel" id="contact_telephone"
+                                                            name="contact_telephone" class="form-control"
+                                                            placeholder="+225 XX XX XX XX" />
+                                                        <label for="contact_telephone">
+                                                            <i class="fas fa-phone me-1"></i>Téléphone de contact
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Description --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <textarea id="description" name="description" class="form-control" style="height: 120px;"
+                                                            placeholder="Décrivez le poste, les missions, l'environnement de travail..." required></textarea>
+                                                        <label for="description">
+                                                            <i class="fas fa-file-alt me-1"></i>Description du poste *
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Compétences requises --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <textarea id="competences_requises" name="competences_requises" class="form-control" style="height: 100px;"
+                                                            placeholder="PHP, Laravel, JavaScript, Vue.js, MySQL..."></textarea>
+                                                        <label for="competences_requises">
+                                                            <i class="fas fa-cogs me-1"></i>Compétences requises
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Avantages --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <textarea id="avantages" name="avantages" class="form-control" style="height: 80px;"
+                                                            placeholder="Télétravail, mutuelle, tickets restaurant, formation..."></textarea>
+                                                        <label for="avantages">
+                                                            <i class="fas fa-gift me-1"></i>Avantages
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Statut --}}
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <select id="statut" name="statut" class="form-select">
+                                                            <option value="active" selected>
+                                                                active_visible_pour_les_candidats</option>
+                                                            <option value="fermee">
+                                                                fermee_plus_de_candidatures</option>
+                                                        </select>
+                                                        <label for="statut">
+                                                            <i class="fas fa-toggle-on me-1"></i>Statut de l'offre
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Boutons d'action --}}
+                                                <div class="col-12 text-center pt-4">
+                                                    <button type="submit"
+                                                        class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
+                                                        <i class="fas fa-paper-plane me-2"></i>Publier l'opportunité
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-lg px-4"
+                                                        data-bs-dismiss="modal" aria-label="Close">
+                                                        <i class="fas fa-times me-2"></i>Annuler
                                                     </button>
                                                 </div>
-                                            </div>
-                                        @else
-                                            <div class="text-muted">
-                                                <small>aucune formation disponible</small>
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Liste Modules Modal -->
-                    <div class="modal fade" id="liste_modules" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-simple">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6 p-4">
-                                        <h4 class="mb-2 text-info">
-                                            <i class="ri ri-book-line me-2"></i>
-                                            LISTE DES MODULES
-                                        </h4>
-                                        <p class="text-muted">Gérez tous les modules de vos formations</p>
-                                    </div>
-
-                                    <div class="card-datatable px-4 pb-4">
-                                        <div class="mb-3">
-                                            <label for="filter_formation_modules" class="form-label">Filtrer par
-                                                formation</label>
-                                            <select id="filter_formation_modules" class="form-select"
-                                                onchange="filterModulesByFormation(this.value)">
-                                                <option value="">Toutes les formations</option>
-                                                @if (isset($formations) && $formations->count() > 0)
-                                                    @foreach ($formations as $formation)
-                                                        <option value="{{ $formation->id }}">{{ $formation->titre }}
-                                                        </option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                        </div>
-
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-bordered" id="modulesTable">
-                                                <thead class="table-info">
-                                                    <tr>
-                                                        <th class="text-center">#</th>
-                                                        <th>Formation</th>
-                                                        <th>Titre du module</th>
-                                                        <th>Description</th>
-                                                        <th class="text-center">Date création</th>
-                                                        <th class="text-center">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="modules-table-body">
-                                                    <tr>
-                                                        <td colspan="6" class="text-center text-muted py-4">
-                                                            <div class="spinner-border text-info" role="status">
-                                                                <span class="visually-hidden">Chargement...</span>
-                                                            </div>
-                                                            <p class="mt-2">Chargement des modules...</p>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        <!-- Fin Modal Emplois -->
 
-                    <!-- Liste Documents Modal -->
-                    <div class="modal fade" id="liste_documents" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-simple">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6 p-4">
-                                        <h4 class="mb-2 text-success">
-                                            <i class="ri ri-file-text-line me-2"></i>
-                                            LISTE DES DOCUMENTS
-                                        </h4>
-                                        <p class="text-muted">Gérez tous les documents de vos formations</p>
-                                    </div>
 
-                                    <div class="card-datatable px-4 pb-4">
-                                        <div class="mb-3">
-                                            <label for="filter_formation_documents" class="form-label">Filtrer par
-                                                formation</label>
-                                            <select id="filter_formation_documents" class="form-select"
-                                                onchange="filterDocumentsByFormation(this.value)">
-                                                <option value="">Toutes les formations</option>
-                                                @if (isset($formations) && $formations->count() > 0)
-                                                    @foreach ($formations as $formation)
-                                                        <option value="{{ $formation->id }}">{{ $formation->titre }}
-                                                        </option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                        </div>
-
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-bordered" id="documentsTable">
-                                                <thead class="table-success">
-                                                    <tr>
-                                                        <th class="text-center">#</th>
-                                                        <th>Formation</th>
-                                                        <th>Titre</th>
-                                                        <th>Description</th>
-                                                        <th>Fichier</th>
-                                                        <th class="text-center">Date création</th>
-                                                        <th class="text-center">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="documents-table-body">
-                                                    <tr>
-                                                        <td colspan="7" class="text-center text-muted py-4">
-                                                            <div class="spinner-border text-success" role="status">
-                                                                <span class="visually-hidden">Chargement...</span>
-                                                            </div>
-                                                            <p class="mt-2">Chargement des documents...</p>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Opportunités Class Modal -->
-                    <div class="modal fade" id="create_emplois" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6">
-                                        <div class="mb-4">
-                                            <div class="rounded-circle d-inline-flex align-items-center justify-content-center bg-primary bg-gradient"
-                                                style="width: 80px; height: 80px;">
-                                                <i class="ri ri-graduation-cap-line text-white"
-                                                    style="font-size: 2rem;"></i>
+                        <!-- Modal Categories -->
+                            <!-- Modal Création Categories -->
+                            <div class="modal fade" id="create_categories" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6">
+                                                <h4 class="mb-2">nouvelle_categorie</h4>
                                             </div>
-                                        </div>
-                                        <h4 class="mb-2 text-primary fw-bold">ajouter un emploi</h4>
-                                        <p class="text-muted">
-                                            creez une nouvelle offre d'emploi</p>
-                                    </div>
-
-                                    <form id="createEmploiForm" action="{{ route('admin.emplois.store') }}"
-                                        method="POST" class="row g-4">
-                                        @csrf
-
-                                        {{-- Titre et Entreprise --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="titre" name="titre"
-                                                    class="form-control" placeholder="Développeur Web Full Stack"
-                                                    required />
-                                                <label for="titre">
-                                                    <i class="fas fa-briefcase me-1"></i>Titre du poste *
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="entreprise" name="entreprise"
-                                                    class="form-control" placeholder="Excellium Conseils" required />
-                                                <label for="entreprise">
-                                                    <i class="fas fa-building me-1"></i>Entreprise *
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Type de contrat et Localisation --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <select id="type_contrat" name="type_contrat" class="form-select"
-                                                    required>
-                                                    <option value="">selectionner</option>
-                                                    <option value="CDI">
-                                                        cdi_contrat_a_duree_indeterminee</option>
-                                                    <option value="CDD">
-                                                        cdd_contrat_a_duree_determinee</option>
-                                                    <option value="Stage">stage</option>
-                                                    <option value="Freelance">freelance</option>
-                                                    <option value="Alternance">alternance</option>
-                                                </select>
-                                                <label for="type_contrat">
-                                                    <i class="fas fa-file-contract me-1"></i>Type de contrat *
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="localisation" name="localisation"
-                                                    class="form-control" placeholder="Paris, France" required />
-                                                <label for="localisation">
-                                                    <i class="fas fa-map-marker-alt me-1"></i>Localisation *
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Salaires --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="number" id="salaire_min" name="salaire_min"
-                                                    class="form-control" placeholder="500000" min="0"
-                                                    step="1000" />
-                                                <label for="salaire_min">
-                                                    <i class="fas fa-money-bill-wave me-1"></i>Salaire minimum (FCFA)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="number" id="salaire_max" name="salaire_max"
-                                                    class="form-control" placeholder="800000" min="0"
-                                                    step="1000" />
-                                                <label for="salaire_max">
-                                                    <i class="fas fa-money-bill-wave me-1"></i>Salaire maximum (FCFA)
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Expérience et Niveau d'étude --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <select id="experience_requise" name="experience_requise"
-                                                    class="form-select">
-                                                    <option value="">selectionner</option>
-                                                    <option value="Débutant">debutant accepte
-                                                    </option>
-                                                    <option value="1-2 ans">1-2 ans d'experience
-                                                    </option>
-                                                    <option value="3-5 ans">3-5 ans d'experience
-                                                    </option>
-                                                    <option value="5+ ans">5_ans_d'experience</option>
-                                                    <option value="Senior">senior 10 ans</option>
-                                                </select>
-                                                <label for="experience_requise">
-                                                    <i class="fas fa-user-tie me-1"></i>Expérience requise
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <select id="niveau_etude" name="niveau_etude" class="form-select">
-                                                    <option value="">selectionner</option>
-                                                    <option value="Bac">baccalaureat</option>
-                                                    <option value="Bac+2">bac2_btsdut</option>
-                                                    <option value="Bac+3">bac3_licence</option>
-                                                    <option value="Bac+5">bac5_master</option>
-                                                    <option value="Doctorat">doctorat</option>
-                                                </select>
-                                                <label for="niveau_etude">
-                                                    <i class="fas fa-graduation-cap me-1"></i>Niveau d'étude
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Nombre de postes et Date d'expiration --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="number" id="nombre_postes" name="nombre_postes"
-                                                    class="form-control" value="1" min="1"
-                                                    max="50" required />
-                                                <label for="nombre_postes">
-                                                    <i class="fas fa-users me-1"></i>Nombre de postes *
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="date" id="date_expiration" name="date_expiration"
-                                                    class="form-control"
-                                                    min="{{ date('Y-m-d', strtotime('+1 day')) }}" required />
-                                                <label for="date_expiration">
-                                                    <i class="fas fa-calendar-alt me-1"></i>Date limite candidature *
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Contacts --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="email" id="contact_email" name="contact_email"
-                                                    class="form-control" placeholder="recrutement@excellium.com" />
-                                                <label for="contact_email">
-                                                    <i class="fas fa-envelope me-1"></i>Email de contact
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="tel" id="contact_telephone"
-                                                    name="contact_telephone" class="form-control"
-                                                    placeholder="+225 XX XX XX XX" />
-                                                <label for="contact_telephone">
-                                                    <i class="fas fa-phone me-1"></i>Téléphone de contact
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Description --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <textarea id="description" name="description" class="form-control" style="height: 120px;"
-                                                    placeholder="Décrivez le poste, les missions, l'environnement de travail..." required></textarea>
-                                                <label for="description">
-                                                    <i class="fas fa-file-alt me-1"></i>Description du poste *
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Compétences requises --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <textarea id="competences_requises" name="competences_requises" class="form-control" style="height: 100px;"
-                                                    placeholder="PHP, Laravel, JavaScript, Vue.js, MySQL..."></textarea>
-                                                <label for="competences_requises">
-                                                    <i class="fas fa-cogs me-1"></i>Compétences requises
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Avantages --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <textarea id="avantages" name="avantages" class="form-control" style="height: 80px;"
-                                                    placeholder="Télétravail, mutuelle, tickets restaurant, formation..."></textarea>
-                                                <label for="avantages">
-                                                    <i class="fas fa-gift me-1"></i>Avantages
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Statut --}}
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-floating form-floating-outline">
-                                                <select id="statut" name="statut" class="form-select">
-                                                    <option value="active" selected>
-                                                        active_visible_pour_les_candidats</option>
-                                                    <option value="fermee">
-                                                        fermee_plus_de_candidatures</option>
-                                                </select>
-                                                <label for="statut">
-                                                    <i class="fas fa-toggle-on me-1"></i>Statut de l'offre
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        {{-- Boutons d'action --}}
-                                        <div class="col-12 text-center pt-4">
-                                            <button type="submit"
-                                                class="btn btn-primary btn-lg me-3 px-5 shadow-sm">
-                                                <i class="fas fa-paper-plane me-2"></i>Publier l'opportunité
-                                            </button>
-                                            <button type="button" class="btn btn-outline-secondary btn-lg px-4"
-                                                data-bs-dismiss="modal" aria-label="Close">
-                                                <i class="fas fa-times me-2"></i>Annuler
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Categories Modal -->
-                    <div class="modal fade" id="create_categories" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6">
-                                        <h4 class="mb-2">nouvelle_categorie</h4>
-                                    </div>
-                                    <form id="createCategorieForm" class="row g-5" method="POST"
-                                        action="{{ route('admin.categories.store') }}">
-                                        @csrf
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomCategorie" name="nom"
-                                                    class="form-control" placeholder="comptabilité" required />
-                                                <label for="nomCategorie">nom_categorie</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 text-center">
-                                            <button type="reset" class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal" aria-label="Close">fermer</button>
-                                            <button type="submit" class="btn btn-primary me-3">valider</button>
-
-                                        </div>
-                                    </form>
-                                </div>
-
-
-                            </div>
-                            <!--/ Content -->
-                        </div>
-                        <div class="content-backdrop fade"></div>
-                    </div>
-
-                    <!-- Categories Liste Modal -->
-                    <div class="modal fade" id="liste_categories" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6">
-                                        <h4 class="mb-2">liste des categories</h4>
-                                    </div>
-                                    <div class="card-datatable text-nowrap">
-                                        <table class="dt-scrollableTable table table-bordered table-responsive">
-                                            <thead>
-                                                <tr>
-                                                    <th>id</th>
-                                                    <th>nom categorie</th>
-                                                    <th>action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="categoriesTableBody">
-                                                <!-- Les catégories seront injectées ici par JS -->
-                                            </tbody>
-                                        </table>
-                                        <center>
-                                            <li class="menu-item">
-
-                                                <a href="javascript:;" data-bs-target="#create_categories"
-                                                    class="" data-bs-toggle="modal">
-
-                                                    <div class="btn btn-primary me-3">
-                                                        <i class="ri ri-add-large-fill"></i>
-                                                        ajouter une categorie
+                                            <form id="createCategorieForm" class="row g-5" method="POST"
+                                                action="{{ route('admin.categories.store') }}">
+                                                @csrf
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="nomCategorie" name="nom"
+                                                            class="form-control" placeholder="comptabilité" required />
+                                                        <label for="nomCategorie">nom_categorie</label>
                                                     </div>
-                                                </a>
-                                            </li>
-                                        </center>
+                                                </div>
 
+                                                <div class="col-12 text-center">
+                                                    <button type="reset" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal" aria-label="Close">fermer</button>
+                                                    <button type="submit" class="btn btn-primary me-3">valider</button>
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+
+                                    </div>
+                                    <!--/ Content -->
+                                </div>
+                                <div class="content-backdrop fade"></div>
+                            </div>
+
+                            <!-- Modal Liste Categories -->
+                            <div class="modal fade" id="liste_categories" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6">
+                                                <h4 class="mb-2">liste des categories</h4>
+                                            </div>
+                                            <div class="card-datatable text-nowrap">
+                                                <table class="dt-scrollableTable table table-bordered table-responsive">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>id</th>
+                                                            <th>nom categorie</th>
+                                                            <th>action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="categoriesTableBody">
+                                                        <!-- Les catégories seront injectées ici par JS -->
+                                                    </tbody>
+                                                </table>
+                                                <center>
+                                                    <li class="menu-item">
+
+                                                        <a href="javascript:;" data-bs-target="#create_categories"
+                                                            class="" data-bs-toggle="modal">
+
+                                                            <div class="btn btn-primary me-3">
+                                                                <i class="ri ri-add-large-fill"></i>
+                                                                ajouter une categorie
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </center>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ Content -->
+                                </div>
+                                <div class="content-backdrop fade"></div>
+                            </div>
+                        <!-- Fin Modal Création Categories -->
+
+
+                        <!-- Modal  Produit -->
+                            <!-- Modal Création Produit -->
+                            <div class="modal fade" id="create_produits" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6">
+                                                <h4 class="mb-2">nouveau_produit</h4>
+                                            </div>
+                                            <form id="createProduitForm" class="row g-5" method="POST"
+                                                action="{{ route('admin.produits.store') }}">
+                                                @csrf
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="nomProduit" name="nom"
+                                                            class="form-control" placeholder="Nom du produit" required />
+                                                        <label for="nomProduit">nom_produit</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="slugProduit" name="slug"
+                                                            class="form-control" placeholder="Slug (ex: produit-1)"
+                                                            required />
+                                                        <label for="slugProduit">slug</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <select id="categorieProduit" name="categorie_id"
+                                                            class="form-control" required>
+                                                            <option value="">selectionnez une categorie
+                                                            </option>
+                                                            @foreach ($categories as $categorie)
+                                                                <option value="{{ $categorie->id }}">{{ $categorie->nom }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        <label for="categorieProduit">categorie</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <select id="statutProduit" name="statut" class="form-control"
+                                                            required>
+                                                            <option value="actif">actif</option>
+                                                            <option value="inactif">inactif</option>
+                                                        </select>
+                                                        <label for="statutProduit">statut</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-center">
+                                                    <button type="reset" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal" aria-label="Close">fermer</button>
+                                                    <button type="submit" class="btn btn-primary me-3">valider</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!--/ Content -->
-                        </div>
-                        <div class="content-backdrop fade"></div>
-                    </div>
 
-                    <!-- Modal Création Produit -->
-                    <div class="modal fade" id="create_produits" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6">
-                                        <h4 class="mb-2">nouveau_produit</h4>
-                                    </div>
-                                    <form id="createProduitForm" class="row g-5" method="POST"
-                                        action="{{ route('admin.produits.store') }}">
-                                        @csrf
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomProduit" name="nom"
-                                                    class="form-control" placeholder="Nom du produit" required />
-                                                <label for="nomProduit">nom_produit</label>
+                            <!-- Modal Liste Produit -->
+                            <div class="modal fade" id="liste_produits" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6">
+                                                <h4 class="mb-2">liste des produits</h4>
+                                            </div>
+
+                                            <table id="tableProduits" class="table  table-responsive pt-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>nom</th>
+                                                        <th>categorie</th>
+                                                        <th>statut</th>
+                                                        <th>actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    data-bs-dismiss="modal">fermer</button>
                                             </div>
                                         </div>
-
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="slugProduit" name="slug"
-                                                    class="form-control" placeholder="Slug (ex: produit-1)"
-                                                    required />
-                                                <label for="slugProduit">slug</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <select id="categorieProduit" name="categorie_id"
-                                                    class="form-control" required>
-                                                    <option value="">selectionnez une categorie
-                                                    </option>
-                                                    @foreach ($categories as $categorie)
-                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                <label for="categorieProduit">categorie</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <select id="statutProduit" name="statut" class="form-control"
-                                                    required>
-                                                    <option value="actif">actif</option>
-                                                    <option value="inactif">inactif</option>
-                                                </select>
-                                                <label for="statutProduit">statut</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <button type="reset" class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal" aria-label="Close">fermer</button>
-                                            <button type="submit" class="btn btn-primary me-3">valider</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal Liste Produits -->
-                    <div class="modal fade" id="liste_produits" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6">
-                                        <h4 class="mb-2">liste des produits</h4>
-                                    </div>
-
-                                    <table id="tableProduits" class="table  table-responsive pt-0">
-                                        <thead>
-                                            <tr>
-                                                <th>nom</th>
-                                                <th>categorie</th>
-                                                <th>statut</th>
-                                                <th>actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        </tbody>
-                                    </table>
-
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary"
-                                            data-bs-dismiss="modal">fermer</button>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="content-backdrop fade"></div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="content-backdrop fade"></div>
-                    </div>
-
-                    <!-- Modal Création Service -->
-                    <div class="modal fade" id="create_services" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6">
-                                        <h4 class="mb-2">NOUVEAU SERVICE</h4>
-                                    </div>
-                                    <form id="createServiceForm" class="row g-5" method="POST"
-                                        action="{{ route('admin.services.store') }}">
-                                        @csrf
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="nomService" name="nom"
-                                                    class="form-control" placeholder="Nom du service" required />
-                                                <label for="nomService">Nom Service</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <textarea id="descriptionService" name="description" class="form-control" placeholder="Description du service"
-                                                    rows="4"></textarea>
-                                                <label for="descriptionService">Description</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="slugService" name="slug"
-                                                    class="form-control" placeholder="Slug (ex: service-1)"
-                                                    required />
-                                                <label for="slugService">Slug</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating form-floating-outline">
-                                                <select id="categorieService" name="categorie_id"
-                                                    class="form-control" required>
-                                                    <option value="">Sélectionnez une catégorie</option>
-                                                    @foreach ($categories as $categorie)
-                                                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                <label for="categorieService">Catégorie</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 text-center">
-                                            <button type="reset" class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal" aria-label="Close">Fermer</button>
-                                            <button type="submit" class="btn btn-primary me-3">Valider</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <!-- Fin Modal Création Produit -->
 
 
-                    <!-- Modal Liste Services -->
-                    <div class="modal fade" id="liste_services" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close m-3" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-4 mt-2">
-                                        <h4 class="fw-bold text-primary">📋 LISTE DES SERVICES</h4>
-                                    </div>
-                                    <div class="is-scrollbar-hidden min-w-full overflow-x-auto p-3">
-                                        <table id="tableServices"
-                                            class="table table-striped table-hover align-middle">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th>Nom</th>
-                                                    <th>Description</th>
-                                                    <th>Catégorie</th>
-                                                    <th class="text-center">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary"
-                                            data-bs-dismiss="modal">Fermer</button>
+
+                        <!-- Modal Service -->
+                            <!-- Modal Création Service -->
+                            <div class="modal fade" id="create_services" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6">
+                                                <h4 class="mb-2">NOUVEAU SERVICE</h4>
+                                            </div>
+                                            <form id="createServiceForm" class="row g-5" method="POST"
+                                                action="{{ route('admin.services.store') }}">
+                                                @csrf
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="nomService" name="nom"
+                                                            class="form-control" placeholder="Nom du service" required />
+                                                        <label for="nomService">Nom Service</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <textarea id="descriptionService" name="description" class="form-control" placeholder="Description du service"
+                                                            rows="4"></textarea>
+                                                        <label for="descriptionService">Description</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <input type="text" id="slugService" name="slug"
+                                                            class="form-control" placeholder="Slug (ex: service-1)"
+                                                            required />
+                                                        <label for="slugService">Slug</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline">
+                                                        <select id="categorieService" name="categorie_id"
+                                                            class="form-control" required>
+                                                            <option value="">Sélectionnez une catégorie</option>
+                                                            @foreach ($categories as $categorie)
+                                                                <option value="{{ $categorie->id }}">{{ $categorie->nom }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        <label for="categorieService">Catégorie</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 text-center">
+                                                    <button type="reset" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal" aria-label="Close">Fermer</button>
+                                                    <button type="submit" class="btn btn-primary me-3">Valider</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="content-backdrop fade"></div>
-                    </div>
 
-
-
-                    <!-- Modal Liste Inscriptions Utilisateur-Service -->
-                    <div class="modal fade" id="liste_user_services" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-simple modal-edit-user">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    <div class="text-center mb-6">
-                                        <h4 class="mb-2">Abonnements Utilisateurs aux Services</h4>
+                            <!-- Modal Liste Services -->
+                            <div class="modal fade" id="liste_services" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close m-3" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-4 mt-2">
+                                                <h4 class="fw-bold text-primary">📋 LISTE DES SERVICES</h4>
+                                            </div>
+                                            <div class="is-scrollbar-hidden min-w-full overflow-x-auto p-3">
+                                                <table id="tableServices"
+                                                    class="table table-striped table-hover align-middle">
+                                                    <thead class="table-light">
+                                                        <tr>
+                                                            <th>Nom</th>
+                                                            <th>Description</th>
+                                                            <th>Catégorie</th>
+                                                            <th class="text-center">Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    data-bs-dismiss="modal">Fermer</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="is-scrollbar-hidden min-w-full overflow-x-auto px-3 pb-3">
-                                        <table id="tableUserServices" class="table table-hover table-bordered">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Utilisateur</th>
-                                                    <th>Email</th>
-                                                    <th>Service</th>
-                                                    <th>Statut</th>
-                                                    <th>Description</th>
-                                                    <th>Début</th>
-                                                    <th>Fin prévue</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary"
-                                            data-bs-dismiss="modal">Fermer</button>
+                                </div>
+                                <br>
+                                <div class="content-backdrop fade"></div>
+                            </div>
+
+                            <!-- Modal Liste Inscription Utilisateur-Service -->
+                            <div class="modal fade" id="liste_user_services" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6">
+                                                <h4 class="mb-2">Abonnements Utilisateurs aux Services</h4>
+                                            </div>
+                                            <div class="is-scrollbar-hidden min-w-full overflow-x-auto px-3 pb-3">
+                                                <table id="tableUserServices" class="table table-hover table-bordered">
+                                                    <thead class="table-light">
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Utilisateur</th>
+                                                            <th>Email</th>
+                                                            <th>Service</th>
+                                                            <th>Statut</th>
+                                                            <th>Description</th>
+                                                            <th>Début</th>
+                                                            <th>Fin prévue</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    data-bs-dismiss="modal">Fermer</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        <!-- Fin Modal Service -->
 
-                    <!--/ Fin des Modales -->
+                    <!-- Fin des Modales -->
                 </div>
             </div>
         </div>
@@ -3853,139 +3862,8 @@
             }
 
             // Gestionnaire pour le formulaire de CRÉATION
-            document.addEventListener('DOMContentLoaded', function() {
-
-                // ... existing code pour edit ...
-
-                // NOUVEAU : Gestionnaire pour la création
-                const createForm = document.getElementById('formationForm') || document.getElementById('createFormationForm');
-                if (createForm) {
-                    createForm.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        console.log('Formulaire de création soumis');
-
-                        // Valider les dates avant de continuer (pour création aussi)
-                        if (!validateCreateDatesBeforeSubmit()) {
-                            console.log('Validation des dates de création échouée');
-                            return;
-                        }
-
-                        const formData = new FormData(this);
-                        
-                        // Ajouter le token CSRF explicitement dans FormData
-                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                        formData.append('_token', csrfToken);
-
-                        console.log('Envoi requête POST pour création vers: /admin/formations/store');
-
-                        // Debug : Afficher toutes les données envoyées
-                        console.log('Données FormData pour création:');
-                        for (let [key, value] of formData.entries()) {
-                            console.log(`${key}:`, value);
-                        }
-
-                        // Vérifier si SweetAlert fonctionne
-                        if (typeof Swal === 'undefined') {
-                            alert('SweetAlert non disponible');
-                            return;
-                        }
-
-                        // Afficher le loader SweetAlert
-                        Swal.fire({
-                            title: 'Création en cours...',
-                            html: `
-                                <div class="d-flex flex-column align-items-center">
-                                    <div class="spinner-border text-primary mb-3" role="status">
-                                        <span class="visually-hidden">chargement</span>
-                                    </div>
-                                    <p class="mb-0">veuillez patienter pendant la creation</p>
-                                </div>
-                            `,
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            showConfirmButton: false
-                        });
-
-                        // Envoyer la requête
-                        fetch('/admin/formations/store', {
-                                method: 'POST',
-                                headers: {
-                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                                        .getAttribute('content'),
-                                    'Accept': 'application/json'
-                                },
-                                body: formData
-                            })
-                            .then(response => {
-                                console.log('Response status création:', response.status);
-                                console.log('Response headers création:', response.headers.get(
-                                    'content-type'));
-
-                                if (!response.ok) {
-                                    throw new Error(`HTTP error! status: ${response.status}`);
-                                }
-
-                                const contentType = response.headers.get('content-type');
-                                if (!contentType || !contentType.includes('application/json')) {
-                                    throw new Error('La réponse n\'est pas du JSON');
-                                }
-
-                                return response.json();
-                            })
-                            .then(data => {
-                                console.log('Response data création:', data);
-
-                                if (data.success) {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Formation crée !',
-                                        text: data.message ||
-                                            'La formation a été créée avec succès',
-                                        confirmButtonText: 'Fermer',
-                                        confirmButtonColor: '#28a745'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            // Recharger la page actuelle au lieu de rediriger
-                                            window.location.reload();
-                                        }
-                                    });
-                                } else {
-                                    let errorMessage = data.message || 'Erreur lors de la création';
-
-                                    if (data.errors) {
-                                        errorMessage = 'Erreur de validation:\n\n';
-                                        for (const field in data.errors) {
-                                            const fieldName = getFieldDisplayName(field);
-                                            errorMessage +=
-                                                `• ${fieldName}: ${data.errors[field].join(', ')}\n`;
-                                        }
-                                    }
-
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Échec de la création',
-                                        text: errorMessage,
-                                        confirmButtonText: 'Corriger',
-                                        width: '500px'
-                                    });
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Erreur complète création:', error);
-
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur de connexion',
-                                    html: `
-                                    <p>probleme_de_connexion_ou_de_format_de_reponse</p>
-                                    <small class="text-muted">Détails: ${error.message}</small>
-                                `,
-                                    confirmButtonText: 'Réessayer'
-                                });
-                            });
-                    });
-                }
-            });
+            // GESTIONNAIRE DE CRÉATION SUPPRIMÉ - Il était en doublon avec celui de la ligne 4132
+            // Cela causait la création de formations en double
 
             // Initialiser les contraintes de dates pour la création
             function initializeCreateDateConstraints() {
@@ -4146,8 +4024,19 @@
                     console.log('ID du formulaire de création:', createForm.id);
                     console.log('Action du formulaire:', createForm.action);
 
+                    // Variable pour éviter les doubles soumissions
+                    let isSubmitting = false;
+
                     createForm.addEventListener('submit', function(e) {
                         e.preventDefault();
+                        
+                        // ⛔ Protection contre les doubles soumissions
+                        if (isSubmitting) {
+                            console.warn('⚠️ Soumission déjà en cours, ignorée');
+                            return;
+                        }
+                        
+                        isSubmitting = true;
                         console.log('🆕 Formulaire de CRÉATION soumis');
 
                         const formData = new FormData(this);
@@ -4162,6 +4051,7 @@
                         if (typeof Swal === 'undefined') {
                             console.error('❌ SweetAlert non disponible');
                             alert('Erreur: SweetAlert non disponible');
+                            isSubmitting = false;
                             return;
                         }
 
@@ -4220,6 +4110,8 @@
                                     });
                                 } else {
                                     // ❌ Erreur de validation
+                                    isSubmitting = false; // Réinitialiser pour permettre une nouvelle tentative
+                                    
                                     let errorMessage = data.message || 'Erreur lors de la création';
 
                                     if (data.errors) {
@@ -4242,6 +4134,7 @@
                                 }
                             })
                             .catch(error => {
+                                isSubmitting = false; // Réinitialiser pour permettre une nouvelle tentative
                                 console.error('💥 Erreur création:', error);
 
                                 Swal.fire({
@@ -4796,19 +4689,24 @@
             let modulesArray = [];
 
             function openAddModuleModal() {
+                console.log('🔵 [ADMIN] Ouverture modal ajout module');
                 // Réinitialiser le formulaire
                 document.getElementById('moduleForm').reset();
 
                 // Ouvrir la modale
                 const modal = new bootstrap.Modal(document.getElementById('add_module_modal'));
                 modal.show();
+                console.log('✅ [ADMIN] Modal ajout module ouverte');
             }
 
             function addModule() {
+                console.log('🚀 [ADMIN] Début ajout module');
                 const titre = document.getElementById('module_titre').value.trim();
                 const description = document.getElementById('module_description').value.trim();
+                console.log('📝 [ADMIN] Données module:', {titre, description});
 
                 if (!titre) {
+                    console.warn('⚠️ [ADMIN] Titre du module manquant');
                     Swal.fire('Erreur', 'Le titre du module est obligatoire', 'error');
                     return;
                 }
@@ -4821,12 +4719,15 @@
                 };
 
                 modulesArray.push(module);
+                console.log('✅ [ADMIN] Module ajouté au tableau:', module);
+                console.log('📊 [ADMIN] Modules totaux:', modulesArray.length);
 
                 // Mettre à jour l'affichage
                 updateModulesList();
 
                 // Mettre à jour le champ caché
                 document.getElementById('modules-data').value = JSON.stringify(modulesArray);
+                console.log('💾 [ADMIN] Champ caché mis à jour');
 
                 // Fermer la modale
                 const modal = bootstrap.Modal.getInstance(document.getElementById('add_module_modal'));
@@ -4911,28 +4812,39 @@
             let documentFiles = []; // Stocker les fichiers séparément
 
             function openAddDocumentModal() {
+                console.log('🔵 [ADMIN] Ouverture modal ajout document');
                 // Réinitialiser le formulaire
                 document.getElementById('documentForm').reset();
 
                 // Ouvrir la modale
                 const modal = new bootstrap.Modal(document.getElementById('add_document_modal'));
                 modal.show();
+                console.log('✅ [ADMIN] Modal ajout document ouverte');
             }
 
             function addDocument() {
+                console.log('🚀 [ADMIN] Début ajout document');
                 const titre = document.getElementById('document_titre').value.trim();
                 const description = document.getElementById('document_description').value.trim();
                 const fichierInput = document.getElementById('document_fichier');
+                console.log('📝 [ADMIN] Données document:', {titre, description});
 
                 if (!fichierInput.files || fichierInput.files.length === 0) {
+                    console.warn('⚠️ [ADMIN] Aucun fichier sélectionné');
                     Swal.fire('Erreur', 'Veuillez sélectionner un fichier', 'error');
                     return;
                 }
 
                 const fichier = fichierInput.files[0];
+                console.log('📁 [ADMIN] Fichier détecté:', {
+                    nom: fichier.name,
+                    taille: fichier.size,
+                    type: fichier.type
+                });
 
                 // Vérifier la taille (50MB max)
                 if (fichier.size > 50 * 1024 * 1024) {
+                    console.warn('⚠️ [ADMIN] Fichier trop volumineux:', fichier.size);
                     Swal.fire('Erreur', 'Le fichier ne doit pas dépasser 50MB', 'error');
                     return;
                 }
@@ -4948,12 +4860,15 @@
 
                 documentsArray.push(docData);
                 documentFiles.push(fichier);
+                console.log('✅ [ADMIN] Document ajouté au tableau:', docData);
+                console.log('📊 [ADMIN] Documents totaux:', documentsArray.length);
 
                 // Mettre à jour l'affichage
                 updateDocumentsList();
 
                 // Mettre à jour le champ caché
                 document.getElementById('documents-data').value = JSON.stringify(documentsArray);
+                console.log('💾 [ADMIN] Champ caché mis à jour');
 
                 // Fermer la modale
                 const modal = bootstrap.Modal.getInstance(document.getElementById('add_document_modal'));
@@ -5057,18 +4972,25 @@
             });
 
             function loadAllModules() {
+                console.log('🔵 [ADMIN] Chargement de tous les modules...');
                 fetch('/admin/formations/all-modules')
-                    .then(res => res.json())
+                    .then(res => {
+                        console.log('📥 [ADMIN] Réponse reçue, status:', res.status);
+                        return res.json();
+                    })
                     .then(data => {
+                        console.log('📊 [ADMIN] Données modules reçues:', data);
                         if (data.success) {
                             allModules = data.modules;
+                            console.log('✅ [ADMIN] Modules chargés:', allModules.length);
                             displayModules(allModules);
                         } else {
+                            console.warn('⚠️ [ADMIN] Échec du chargement des modules');
                             displayNoModules();
                         }
                     })
                     .catch(error => {
-                        console.error('Erreur chargement modules:', error);
+                        console.error('❌ [ADMIN] Erreur chargement modules:', error);
                         displayNoModules('Erreur lors du chargement des modules');
                     });
             }
@@ -5135,8 +5057,13 @@
             }
 
             function editModule(moduleId) {
+                console.log('🔧 [ADMIN] Édition module ID:', moduleId);
                 const module = allModules.find(m => m.id === moduleId);
-                if (!module) return;
+                if (!module) {
+                    console.error('❌ [ADMIN] Module non trouvé:', moduleId);
+                    return;
+                }
+                console.log('📝 [ADMIN] Module trouvé:', module);
 
                 Swal.fire({
                     title: 'Modifier le module',
@@ -5168,12 +5095,15 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        console.log('💾 [ADMIN] Modification confirmée, envoi des données...');
                         updateModuleData(moduleId, result.value);
                     }
                 });
             }
 
             function updateModuleData(moduleId, data) {
+                console.log('🚀 [ADMIN] Envoi mise à jour module ID:', moduleId);
+                console.log('📦 [ADMIN] Données à envoyer:', data);
                 fetch(`/admin/formations/modules/${moduleId}`, {
                         method: 'PUT',
                         headers: {
@@ -5182,18 +5112,29 @@
                         },
                         body: JSON.stringify(data)
                     })
-                    .then(res => res.json())
+                    .then(res => {
+                        console.log('📥 [ADMIN] Réponse reçue, status:', res.status);
+                        return res.json();
+                    })
                     .then(response => {
+                        console.log('📊 [ADMIN] Données reçues:', response);
                         if (response.success) {
+                            console.log('✅ [ADMIN] Module modifié avec succès');
                             Swal.fire('Succès', 'Module modifié avec succès', 'success');
                             loadAllModules();
                         } else {
+                            console.error('❌ [ADMIN] Erreur:', response.message);
                             Swal.fire('Erreur', response.message, 'error');
                         }
+                    })
+                    .catch(error => {
+                        console.error('❌ [ADMIN] Erreur mise à jour module:', error);
+                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
                     });
             }
 
             function deleteModule(moduleId) {
+                console.log('🗑️ [ADMIN] Demande suppression module ID:', moduleId);
                 Swal.fire({
                     title: 'Supprimer ce module ?',
                     text: 'Cette action est irréversible',
@@ -5204,21 +5145,34 @@
                     confirmButtonColor: '#d33'
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        console.log('🚀 [ADMIN] Suppression confirmée, envoi requête...');
                         fetch(`/admin/formations/modules/${moduleId}`, {
                                 method: 'DELETE',
                                 headers: {
                                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
                                 }
                             })
-                            .then(res => res.json())
+                            .then(res => {
+                                console.log('📥 [ADMIN] Réponse reçue, status:', res.status);
+                                return res.json();
+                            })
                             .then(response => {
+                                console.log('📊 [ADMIN] Données reçues:', response);
                                 if (response.success) {
+                                    console.log('✅ [ADMIN] Module supprimé avec succès');
                                     Swal.fire('Supprimé', 'Module supprimé avec succès', 'success');
                                     loadAllModules();
                                 } else {
+                                    console.error('❌ [ADMIN] Erreur:', response.message);
                                     Swal.fire('Erreur', response.message, 'error');
                                 }
+                            })
+                            .catch(error => {
+                                console.error('❌ [ADMIN] Erreur suppression module:', error);
+                                Swal.fire('Erreur', 'Une erreur est survenue', 'error');
                             });
+                    } else {
+                        console.log('ℹ️ [ADMIN] Suppression annulée');
                     }
                 });
             }
@@ -5234,18 +5188,25 @@
             });
 
             function loadAllDocuments() {
+                console.log('🔵 [ADMIN] Chargement de tous les documents...');
                 fetch('/admin/formations/all-documents')
-                    .then(res => res.json())
+                    .then(res => {
+                        console.log('📥 [ADMIN] Réponse reçue, status:', res.status);
+                        return res.json();
+                    })
                     .then(data => {
+                        console.log('📊 [ADMIN] Données documents reçues:', data);
                         if (data.success) {
                             allDocuments = data.documents;
+                            console.log('✅ [ADMIN] Documents chargés:', allDocuments.length);
                             displayDocuments(allDocuments);
                         } else {
+                            console.warn('⚠️ [ADMIN] Échec du chargement des documents');
                             displayNoDocuments();
                         }
                     })
                     .catch(error => {
-                        console.error('Erreur chargement documents:', error);
+                        console.error('❌ [ADMIN] Erreur chargement documents:', error);
                         displayNoDocuments('Erreur lors du chargement des documents');
                     });
             }
@@ -5321,6 +5282,7 @@
             }
 
             function deleteDocument(documentId) {
+                console.log('🗑️ [ADMIN] Demande suppression document ID:', documentId);
                 Swal.fire({
                     title: 'Supprimer ce document ?',
                     text: 'Cette action est irréversible',
@@ -5331,21 +5293,34 @@
                     confirmButtonColor: '#d33'
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        console.log('🚀 [ADMIN] Suppression confirmée, envoi requête...');
                         fetch(`/admin/formations/documents/${documentId}`, {
                                 method: 'DELETE',
                                 headers: {
                                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
                                 }
                             })
-                            .then(res => res.json())
+                            .then(res => {
+                                console.log('📥 [ADMIN] Réponse reçue, status:', res.status);
+                                return res.json();
+                            })
                             .then(response => {
+                                console.log('📊 [ADMIN] Données reçues:', response);
                                 if (response.success) {
+                                    console.log('✅ [ADMIN] Document supprimé avec succès');
                                     Swal.fire('Supprimé', 'Document supprimé avec succès', 'success');
                                     loadAllDocuments();
                                 } else {
+                                    console.error('❌ [ADMIN] Erreur:', response.message);
                                     Swal.fire('Erreur', response.message, 'error');
                                 }
+                            })
+                            .catch(error => {
+                                console.error('❌ [ADMIN] Erreur suppression document:', error);
+                                Swal.fire('Erreur', 'Une erreur est survenue', 'error');
                             });
+                    } else {
+                        console.log('ℹ️ [ADMIN] Suppression annulée');
                     }
                 });
             }
@@ -6884,7 +6859,7 @@
 
 
                 // ==============================
-                // FONCTION D’ÉCHAPPEMENT HTML
+                // FONCTION D'ÉCHAPPEMENT HTML
                 // ==============================
                 function escapeHtml(text) {
                     if (!text) return '';
@@ -6895,6 +6870,41 @@
                         .replace(/"/g, "&quot;")
                         .replace(/'/g, "&#039;");
                 }
+
+                // ==============================
+                // GESTION BOUTON "VOIR LES DÉTAILS" FORMATION
+                // ==============================
+                // Gérer les clics sur les boutons "Voir les détails" dans la modal liste_formations
+                document.addEventListener('click', function(e) {
+                    // Vérifier si le clic est sur le bouton ou son icône
+                    const viewButton = e.target.closest('.btn-view-details');
+                    
+                    if (viewButton) {
+                        console.log('🔍 Clic sur "Voir les détails" détecté');
+                        e.preventDefault(); // Empêcher la navigation par défaut
+                        e.stopPropagation(); // Empêcher la propagation
+                        
+                        const url = viewButton.getAttribute('href');
+                        console.log('🔗 URL de navigation:', url);
+                        
+                        // Fermer la modal d'abord
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('liste_formations'));
+                        if (modal) {
+                            console.log('🚪 Fermeture de la modal...');
+                            modal.hide();
+                            
+                            // Attendre que la modal soit fermée avant de naviguer
+                            document.getElementById('liste_formations').addEventListener('hidden.bs.modal', function() {
+                                console.log('✅ Modal fermée, navigation vers:', url);
+                                window.location.href = url;
+                            }, { once: true });
+                        } else {
+                            // Si pas de modal, naviguer directement
+                            console.log('✅ Pas de modal, navigation directe vers:', url);
+                            window.location.href = url;
+                        }
+                    }
+                });
 
             });
         </script>

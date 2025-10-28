@@ -22,6 +22,8 @@ return new class extends Migration
 
             $table->foreignId('opportunite_id')->constrained('opportunites')->onDelete('cascade');
 
+            $table->text('message')->nullable();
+
             $table->timestamps();
 
             $table->index(['user_id', 'created_at']);

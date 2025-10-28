@@ -59,38 +59,59 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         try {
-            Log::info("=== CRÉATION DOCUMENT ===");
-            Log::info("Données reçues:", $request->all());
+            Log::info("=== DÉBUT CRÉATION DOCUMENT ===");
+            Log::info("📦 Toutes les données reçues:", $request->all());
+            Log::info("📁 Fichiers reçus:", $request->allFiles());
+            Log::info("🔑 Formation ID:", $request->formation_id);
+            Log::info("📄 Titre:", $request->titre);
             
+            // Validation
+            Log::info("🔍 Début validation...");
             $validated = $request->validate([
                 'formation_id' => 'nullable|exists:formations,id',
                 'article_id' => 'nullable|exists:articles,id',
                 'titre' => 'nullable|string|max:255',
                 'description' => 'nullable|string',
-                'type' => 'required|in:formation,article,autre',
                 'fichier' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar|max:51200', // 50MB max
             ], [
                 'formation_id.exists' => 'Cette formation n\'existe pas',
                 'article_id.exists' => 'Cet article n\'existe pas',
-                'type.required' => 'Le type de document est obligatoire',
                 'fichier.required' => 'Le fichier est obligatoire',
                 'fichier.mimes' => 'Format de fichier non supporté',
                 'fichier.max' => 'Le fichier ne doit pas dépasser 50MB',
             ]);
+            
+            Log::info("✅ Validation réussie!");
+            Log::info("📋 Données validées:", $validated);
 
             // Gérer l'upload du fichier
             if ($request->hasFile('fichier')) {
+                Log::info("📤 Fichier détecté pour upload");
+                
                 $file = $request->file('fichier');
+                Log::info("📝 Nom du fichier:", ['nom' => $file->getClientOriginalName(), 'taille' => $file->getSize(), 'mime' => $file->getMimeType()]);
+                
                 $fileName = time() . '_' . $file->getClientOriginalName();
+                Log::info("💾 Nom du fichier généré: " . $fileName);
+                
                 $filePath = $file->storeAs('documents', $fileName, 'public');
+                Log::info("✅ Fichier sauvegardé: " . $filePath);
                 
                 $validated['fichier'] = $filePath;
+            } else {
+                Log::error("❌ Aucun fichier détecté !");
             }
 
+            Log::info("💽 Création du document en base de données...");
+            Log::info("📊 Données à insérer:", $validated);
+            
             $document = Document::create($validated);
+            Log::info("✅ Document créé en base - ID: " . $document->id);
+            
             $document->load('formation', 'article');
+            Log::info("✅ Relations chargées");
 
-            Log::info("Document créé avec succès - ID: " . $document->id);
+            Log::info("=== FIN CRÉATION DOCUMENT (SUCCESS) ===");
 
             return response()->json([
                 'success' => true,
@@ -99,7 +120,8 @@ class DocumentController extends Controller
             ], 201);
 
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::warning("Erreur de validation document:", $e->errors());
+            Log::warning("⚠️ Erreur de validation document:");
+            Log::warning("Erreurs:", $e->errors());
             
             return response()->json([
                 'success' => false,
@@ -108,7 +130,10 @@ class DocumentController extends Controller
             ], 422);
             
         } catch (\Exception $e) {
-            Log::error('Erreur création document: ' . $e->getMessage());
+            Log::error('❌ ERREUR CRÉATION DOCUMENT');
+            Log::error('Message: ' . $e->getMessage());
+            Log::error('Fichier: ' . $e->getFile() . ' (ligne ' . $e->getLine() . ')');
+            Log::error('Stack trace: ' . $e->getTraceAsString());
             
             return response()->json([
                 'success' => false,
@@ -127,7 +152,7 @@ class DocumentController extends Controller
             $document = Document::findOrFail($id);
             
             // Si c'est un document de formation, vérifier les permissions
-            if ($document->type === 'formation' && $document->formation_id) {
+            if ($document->formation_id) {
                 $isAuthorized = $this->checkUserAccess($document->formation_id);
                 
                 if (!$isAuthorized) {
@@ -165,13 +190,18 @@ class DocumentController extends Controller
     public function show($id)
     {
         try {
+            Log::info("=== RÉCUPÉRATION DOCUMENT ===");
+            Log::info("Document ID: $id");
+            
             $document = Document::with('formation', 'article')->findOrFail($id);
+            Log::info("✅ Document trouvé:", $document->toArray());
             
             // Si c'est un document de formation, vérifier les permissions
-            if ($document->type === 'formation' && $document->formation_id) {
+            if ($document->formation_id) {
                 $isAuthorized = $this->checkUserAccess($document->formation_id);
                 
                 if (!$isAuthorized) {
+                    Log::warning("⚠️ Accès refusé au document pour l'utilisateur");
                     return response()->json([
                         'success' => false,
                         'message' => 'Vous devez être inscrit et confirmé pour voir ce document.'
@@ -185,7 +215,11 @@ class DocumentController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            Log::error('Erreur lors du chargement du document: ' . $e->getMessage());
+            Log::error('❌ Erreur lors du chargement du document:', [
+                'id' => $id,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
             
             return response()->json([
                 'success' => false,
@@ -200,37 +234,55 @@ class DocumentController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            Log::info("=== MODIFICATION DOCUMENT ===");
+            Log::info("=== DÉBUT MODIFICATION DOCUMENT ===");
             Log::info("Document ID: $id");
-            Log::info("Données reçues:", $request->all());
+            Log::info("📦 Toutes les données reçues:", $request->all());
+            Log::info("📁 Fichiers reçus:", $request->allFiles());
             
+            Log::info("🔍 Recherche du document...");
             $document = Document::findOrFail($id);
+            Log::info("✅ Document trouvé:", $document->toArray());
             
+            Log::info("🔍 Début validation...");
             $validated = $request->validate([
                 'titre' => 'nullable|string|max:255',
                 'description' => 'nullable|string',
-                'type' => 'required|in:formation,article,autre',
                 'fichier' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar|max:51200',
             ]);
+            
+            Log::info("✅ Validation réussie!");
+            Log::info("📋 Données validées:", $validated);
 
             // Gérer l'upload du nouveau fichier
             if ($request->hasFile('fichier')) {
+                Log::info("📤 Nouveau fichier détecté");
+                
                 // Supprimer l'ancien fichier
                 if ($document->fichier) {
                     Storage::disk('public')->delete($document->fichier);
+                    Log::info("🗑️ Ancien fichier supprimé");
                 }
                 
                 $file = $request->file('fichier');
+                Log::info("📝 Nom du fichier:", ['nom' => $file->getClientOriginalName(), 'taille' => $file->getSize()]);
+                
                 $fileName = time() . '_' . $file->getClientOriginalName();
                 $filePath = $file->storeAs('documents', $fileName, 'public');
+                Log::info("✅ Nouveau fichier sauvegardé: " . $filePath);
                 
                 $validated['fichier'] = $filePath;
+            } else {
+                Log::info("ℹ️ Aucun nouveau fichier fourni");
             }
 
+            Log::info("💽 Mise à jour du document...");
             $document->update($validated);
+            Log::info("✅ Document mis à jour en base");
+            
             $document->load('formation', 'article');
+            Log::info("✅ Relations chargées");
 
-            Log::info("Document mis à jour avec succès");
+            Log::info("=== FIN MODIFICATION DOCUMENT (SUCCESS) ===");
 
             return response()->json([
                 'success' => true,
@@ -239,7 +291,8 @@ class DocumentController extends Controller
             ], 200);
 
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::warning("Erreur de validation:", $e->errors());
+            Log::warning("⚠️ Erreur de validation:");
+            Log::warning("Erreurs:", $e->errors());
             
             return response()->json([
                 'success' => false,
@@ -248,7 +301,10 @@ class DocumentController extends Controller
             ], 422);
             
         } catch (\Exception $e) {
-            Log::error('Erreur modification document: ' . $e->getMessage());
+            Log::error('❌ ERREUR MODIFICATION DOCUMENT');
+            Log::error('Message: ' . $e->getMessage());
+            Log::error('Fichier: ' . $e->getFile() . ' (ligne ' . $e->getLine() . ')');
+            Log::error('Stack trace: ' . $e->getTraceAsString());
             
             return response()->json([
                 'success' => false,
@@ -263,14 +319,22 @@ class DocumentController extends Controller
     public function destroy($id)
     {
         try {
+            Log::info("=== DÉBUT SUPPRESSION DOCUMENT ===");
+            Log::info("Document ID: $id");
+            
             $document = Document::findOrFail($id);
+            Log::info("✅ Document trouvé:", $document->toArray());
             
             // Supprimer le fichier
             if ($document->fichier) {
                 Storage::disk('public')->delete($document->fichier);
+                Log::info("🗑️ Fichier supprimé: " . $document->fichier);
             }
             
             $document->delete();
+            Log::info("✅ Document supprimé avec succès de la base de données");
+            
+            Log::info("=== FIN SUPPRESSION DOCUMENT (SUCCESS) ===");
 
             return response()->json([
                 'success' => true,
@@ -278,7 +342,10 @@ class DocumentController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            Log::error('Erreur suppression document: ' . $e->getMessage());
+            Log::error('❌ ERREUR SUPPRESSION DOCUMENT');
+            Log::error('Message: ' . $e->getMessage());
+            Log::error('Fichier: ' . $e->getFile() . ' (ligne ' . $e->getLine() . ')');
+            Log::error('Stack trace: ' . $e->getTraceAsString());
             
             return response()->json([
                 'success' => false,

@@ -10,7 +10,7 @@ class Postulation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'statut', 'user_id', 'opportunite_id'
+        'uuid', 'statut', 'user_id', 'opportunite_id', 'message'
     ];
 
     protected $casts = [

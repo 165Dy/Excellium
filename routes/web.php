@@ -214,17 +214,19 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     
     // GESTION DES FORMATIONS
     Route::prefix('formations')->name('formations.')->group(function () {
+        // IMPORTANT : Les routes spécifiques AVANT les routes avec paramètres dynamiques
+        // Récupérer tous les modules et documents
+        Route::get('/all-modules', [formationsController::class, 'getAllModules'])->name('all_modules');
+        Route::get('/all-documents', [formationsController::class, 'getAllDocuments'])->name('all_documents');
+        
         Route::post('/store', [formationsController::class, 'store'])->name('store');
         Route::get('/{id}', [formationsController::class, 'show'])->name('show');
         Route::get('/{id}/edit', [formationsController::class, 'edit'])->name('edit');
         Route::match(['PUT', 'POST'], '/{id}', [formationsController::class, 'update'])->name('update');
         Route::delete('/{id}', [formationsController::class, 'destroy'])->name('destroy');
-        Route::get('/{formation}/details', [formationsController::class, 'getDetails'])->name('details');
+        Route::get('/{id}/details-page', [formationsController::class, 'details'])->name('details_page'); // Nouvelle page complète
+        Route::get('/{formation}/details', [formationsController::class, 'getDetails'])->name('details'); // JSON pour modale
         Route::get('/{formation}/export-inscriptions', [formationsController::class, 'exportInscriptions'])->name('export_inscriptions');
-        
-        // Récupérer tous les modules et documents
-        Route::get('/all-modules', [formationsController::class, 'getAllModules'])->name('all_modules');
-        Route::get('/all-documents', [formationsController::class, 'getAllDocuments'])->name('all_documents');
         
         // Gestion des modules (Admin)
         Route::prefix('modules')->name('modules.')->group(function () {
@@ -240,6 +242,8 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
         
         // Gestion des documents (Admin)
         Route::prefix('documents')->name('documents.')->group(function () {
+            Route::get('/{id}', [DocumentController::class, 'show'])->name('show');
+            Route::put('/{id}', [DocumentController::class, 'update'])->name('update');
             Route::get('/{id}/download', [DocumentController::class, 'download'])->name('download');
             Route::delete('/{id}', [DocumentController::class, 'destroy'])->name('destroy');
         });

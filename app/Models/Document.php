@@ -16,7 +16,6 @@ class Document extends Model
         'titre',
         'fichier',
         'description',
-        'type',
         'formation_id',
         'article_id',
     ];

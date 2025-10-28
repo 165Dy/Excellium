@@ -43,9 +43,12 @@ class ModuleController extends Controller
     public function store(Request $request)
     {
         try {
-            Log::info("=== CRÉATION MODULE ===");
-            Log::info("Données reçues:", $request->all());
+            Log::info("=== DÉBUT CRÉATION MODULE ===");
+            Log::info("📦 Toutes les données reçues:", $request->all());
+            Log::info("🔑 Formation ID:", $request->formation_id);
+            Log::info("📝 Titre:", $request->titre);
             
+            Log::info("🔍 Début validation...");
             $validated = $request->validate([
                 'formation_id' => 'required|exists:formations,id',
                 'titre' => 'required|string|max:255',
@@ -55,11 +58,18 @@ class ModuleController extends Controller
                 'formation_id.exists' => 'Cette formation n\'existe pas',
                 'titre.required' => 'Le titre du module est obligatoire',
             ]);
+            
+            Log::info("✅ Validation réussie!");
+            Log::info("📋 Données validées:", $validated);
 
+            Log::info("💽 Création du module en base de données...");
             $module = Module::create($validated);
+            Log::info("✅ Module créé en base - ID: " . $module->id);
+            
             $module->load('formation');
+            Log::info("✅ Relations chargées");
 
-            Log::info("Module créé avec succès - ID: " . $module->id);
+            Log::info("=== FIN CRÉATION MODULE (SUCCESS) ===");
 
             return response()->json([
                 'success' => true,
@@ -68,7 +78,8 @@ class ModuleController extends Controller
             ], 201);
 
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::warning("Erreur de validation module:", $e->errors());
+            Log::warning("⚠️ Erreur de validation module:");
+            Log::warning("Erreurs:", $e->errors());
             
             return response()->json([
                 'success' => false,
@@ -77,7 +88,10 @@ class ModuleController extends Controller
             ], 422);
             
         } catch (\Exception $e) {
-            Log::error('Erreur création module: ' . $e->getMessage());
+            Log::error('❌ ERREUR CRÉATION MODULE');
+            Log::error('Message: ' . $e->getMessage());
+            Log::error('Fichier: ' . $e->getFile() . ' (ligne ' . $e->getLine() . ')');
+            Log::error('Stack trace: ' . $e->getTraceAsString());
             
             return response()->json([
                 'success' => false,
@@ -92,7 +106,12 @@ class ModuleController extends Controller
     public function show($id)
     {
         try {
+            Log::info("=== RÉCUPÉRATION MODULE ===");
+            Log::info("Module ID: $id");
+            
             $module = Module::with('formation')->findOrFail($id);
+            
+            Log::info("✅ Module trouvé:", $module->toArray());
             
             return response()->json([
                 'success' => true,
@@ -100,7 +119,11 @@ class ModuleController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            Log::error('Erreur lors du chargement du module: ' . $e->getMessage());
+            Log::error('❌ Erreur lors du chargement du module:', [
+                'id' => $id,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
             
             return response()->json([
                 'success' => false,
@@ -115,23 +138,33 @@ class ModuleController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            Log::info("=== MODIFICATION MODULE ===");
+            Log::info("=== DÉBUT MODIFICATION MODULE ===");
             Log::info("Module ID: $id");
-            Log::info("Données reçues:", $request->all());
+            Log::info("📦 Toutes les données reçues:", $request->all());
             
+            Log::info("🔍 Recherche du module...");
             $module = Module::findOrFail($id);
+            Log::info("✅ Module trouvé:", $module->toArray());
             
+            Log::info("🔍 Début validation...");
             $validated = $request->validate([
                 'titre' => 'required|string|max:255',
                 'description' => 'nullable|string',
             ], [
                 'titre.required' => 'Le titre du module est obligatoire',
             ]);
+            
+            Log::info("✅ Validation réussie!");
+            Log::info("📋 Données validées:", $validated);
 
+            Log::info("💽 Mise à jour du module...");
             $module->update($validated);
+            Log::info("✅ Module mis à jour en base");
+            
             $module->load('formation');
+            Log::info("✅ Relations chargées");
 
-            Log::info("Module mis à jour avec succès");
+            Log::info("=== FIN MODIFICATION MODULE (SUCCESS) ===");
 
             return response()->json([
                 'success' => true,
@@ -140,7 +173,8 @@ class ModuleController extends Controller
             ], 200);
 
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::warning("Erreur de validation:", $e->errors());
+            Log::warning("⚠️ Erreur de validation:");
+            Log::warning("Erreurs:", $e->errors());
             
             return response()->json([
                 'success' => false,
@@ -149,7 +183,10 @@ class ModuleController extends Controller
             ], 422);
             
         } catch (\Exception $e) {
-            Log::error('Erreur modification module: ' . $e->getMessage());
+            Log::error('❌ ERREUR MODIFICATION MODULE');
+            Log::error('Message: ' . $e->getMessage());
+            Log::error('Fichier: ' . $e->getFile() . ' (ligne ' . $e->getLine() . ')');
+            Log::error('Stack trace: ' . $e->getTraceAsString());
             
             return response()->json([
                 'success' => false,
@@ -164,8 +201,16 @@ class ModuleController extends Controller
     public function destroy($id)
     {
         try {
+            Log::info("=== DÉBUT SUPPRESSION MODULE ===");
+            Log::info("Module ID: $id");
+            
             $module = Module::findOrFail($id);
+            Log::info("✅ Module trouvé:", $module->toArray());
+            
             $module->delete();
+            Log::info("✅ Module supprimé avec succès");
+            
+            Log::info("=== FIN SUPPRESSION MODULE (SUCCESS) ===");
 
             return response()->json([
                 'success' => true,
@@ -173,7 +218,10 @@ class ModuleController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            Log::error('Erreur suppression module: ' . $e->getMessage());
+            Log::error('❌ ERREUR SUPPRESSION MODULE');
+            Log::error('Message: ' . $e->getMessage());
+            Log::error('Fichier: ' . $e->getFile() . ' (ligne ' . $e->getLine() . ')');
+            Log::error('Stack trace: ' . $e->getTraceAsString());
             
             return response()->json([
                 'success' => false,

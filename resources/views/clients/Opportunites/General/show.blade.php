@@ -452,7 +452,7 @@
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Envoi en cours...';
                     submitBtn.disabled = true;
 
-                    fetch('{{ route('clients.opportunites.business.show',$opportunite->id) }}', {
+                    fetch('{{ route('clients.opportunites.business.candidature') }}', {
                             method: 'POST',
                             body: formData,
                             headers: {

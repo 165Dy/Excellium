@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('titre')->nullable();
             $table->string('fichier');
             $table->text('description')->nullable();
-            $table->enum('type', ['formation','article','autre'])->default('autre');
             $table->foreignId('formation_id')->nullable()->constrained('formations');
             $table->foreignId('article_id')->nullable()->constrained('articles');
             $table->timestamps();

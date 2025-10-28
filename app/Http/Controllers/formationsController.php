@@ -132,12 +132,43 @@ class formationsController extends Controller
 
             // Gérer les documents si présents
             if ($request->has('documents') && $request->documents) {
+                Log::info("🔍 DEBUG DOCUMENTS - Début du traitement");
                 $documents = json_decode($request->documents, true);
+                Log::info("🔍 DEBUG DOCUMENTS - Données JSON décodées:", ['documents' => $documents]);
+                
                 if (is_array($documents) && count($documents) > 0) {
-                    // Note: Les fichiers seront uploadés séparément après la création de la formation
-                    // car JavaScript ne peut pas envoyer les fichiers avec FormData directement en JSON
-                    Log::info("Documents à traiter: " . count($documents));
+                    Log::info("🔍 DEBUG DOCUMENTS - Nombre de documents à traiter: " . count($documents));
+                    
+                    foreach ($documents as $index => $documentData) {
+                        Log::info("🔍 DEBUG DOCUMENT #$index - Données complètes:", $documentData);
+                        Log::info("🔍 DEBUG DOCUMENT #$index - Vérification 'fichier':", [
+                            'isset_fichier' => isset($documentData['fichier']),
+                            'isset_fichier_nom' => isset($documentData['fichier_nom']),
+                            'valeur_fichier' => $documentData['fichier'] ?? 'non défini',
+                            'valeur_fichier_nom' => $documentData['fichier_nom'] ?? 'non défini'
+                        ]);
+                        
+                        // Vérifier si fichier_nom est présent (c'est le champ envoyé par le front)
+                        if (isset($documentData['fichier_nom']) && !empty($documentData['fichier_nom'])) {
+                            Log::info("✅ DEBUG DOCUMENT #$index - Création du document avec fichier_nom");
+                            
+                            $document = $formation->documents()->create([
+                                'titre' => $documentData['titre'] ?? 'Document de formation',
+                                'description' => $documentData['description'] ?? null,
+                                'fichier' => $documentData['fichier_nom'], // Utiliser fichier_nom
+                            ]);
+                            
+                            Log::info("✅ DEBUG DOCUMENT #$index - Document créé avec succès, ID: " . $document->id);
+                        } else {
+                            Log::warning("⚠️ DEBUG DOCUMENT #$index - Aucun fichier_nom fourni, document non créé");
+                        }
+                    }
+                    Log::info("🔍 DEBUG DOCUMENTS - Traitement terminé");
+                } else {
+                    Log::warning("⚠️ DEBUG DOCUMENTS - Le tableau documents est vide ou invalide");
                 }
+            } else {
+                Log::info("ℹ️ DEBUG DOCUMENTS - Aucun document fourni dans la requête");
             }
 
             Log::info("=== FIN CRÉATION FORMATION ===");
@@ -179,6 +210,50 @@ class formationsController extends Controller
             }
 
             return back()->with('error', 'Erreur lors de la création')->withInput();
+        }
+    }
+
+    /**
+     * Afficher la page de détails complète d'une formation (pour l'admin)
+     */
+    public function details($id)
+    {
+        try {
+            Log::info("=== CHARGEMENT PAGE DÉTAILS FORMATION ===");
+            Log::info("Formation ID: $id");
+            
+            $formation = Formation::with([
+                'categorie',
+                'modules' => function($query) {
+                    $query->orderBy('created_at', 'desc');
+                },
+                'documents' => function($query) {
+                    $query->orderBy('created_at', 'desc');
+                },
+                'inscriptions' => function($query) {
+                    $query->orderBy('created_at', 'desc');
+                },
+                'users' => function($query) {
+                    $query->orderBy('formation_user.created_at', 'desc');
+                }
+            ])->findOrFail($id);
+            
+            $categories = Categorie::all();
+            
+            Log::info("Formation trouvée avec succès");
+            Log::info("Modules: " . $formation->modules->count());
+            Log::info("Documents: " . $formation->documents->count());
+            Log::info("Inscriptions: " . $formation->inscriptions->count());
+            Log::info("Utilisateurs liés: " . $formation->users->count());
+
+            return view('Admin.formations.details', compact('formation', 'categories'));
+
+        } catch (\Exception $e) {
+            Log::error('Erreur chargement détails formation: ' . $e->getMessage());
+            Log::error('Stack trace: ' . $e->getTraceAsString());
+            
+            return redirect()->route('admin.dashboard')
+                ->with('error', 'Formation non trouvée.');
         }
     }
 
@@ -691,7 +766,11 @@ class formationsController extends Controller
     public function getAllModules()
     {
         try {
+            Log::info("=== CHARGEMENT TOUS LES MODULES ===");
+            
             $modules = Module::with('formation')->orderBy('created_at', 'desc')->get();
+            
+            Log::info("Modules trouvés: " . $modules->count());
             
             return response()->json([
                 'success' => true,
@@ -700,7 +779,8 @@ class formationsController extends Controller
             
         } catch (\Exception $e) {
             Log::error('Erreur récupération tous les modules:', [
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
             ]);
             
             return response()->json([
@@ -716,10 +796,14 @@ class formationsController extends Controller
     public function getAllDocuments()
     {
         try {
+            Log::info("=== CHARGEMENT TOUS LES DOCUMENTS ===");
+            
             $documents = Document::with('formation')
-                ->where('type', 'formation')
+                ->whereNotNull('formation_id') // Uniquement les documents liés à des formations
                 ->orderBy('created_at', 'desc')
                 ->get();
+            
+            Log::info("Documents trouvés: " . $documents->count());
             
             return response()->json([
                 'success' => true,
@@ -728,7 +812,8 @@ class formationsController extends Controller
             
         } catch (\Exception $e) {
             Log::error('Erreur récupération tous les documents:', [
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
             ]);
             
             return response()->json([

@@ -447,15 +447,19 @@ class OpportuniteController extends Controller
             }
 
             // Vérifier si l'utilisateur a déjà postulé
-            $existingPostulation = Postulation::where('opportunite_id', $opportunite->id)
-                ->where('email', $request->email)
-                ->first();
+            $existingUser = \App\Models\User::where('email', $request->email)->first();
+            
+            if ($existingUser) {
+                $existingPostulation = Postulation::where('opportunite_id', $opportunite->id)
+                    ->where('user_id', $existingUser->id)
+                    ->first();
 
-            if ($existingPostulation) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Vous avez déjà postulé à cette opportunité'
-                ], 400);
+                if ($existingPostulation) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Vous avez déjà postulé à cette opportunité'
+                    ], 400);
+                }
             }
 
             // Créer ou récupérer l'utilisateur
@@ -476,11 +480,11 @@ class OpportuniteController extends Controller
 
             // Créer la postulation
             $postulation = Postulation::create([
-                'uuid' => \Illuminate\Support\Str::uuid(),
+                'uuid' => Str::uuid(),
                 'statut' => 'en_attente',
                 'user_id' => $user->id,
                 'opportunite_id' => $opportunite->id,
-                'message' => $request->message, // Si tu ajoutes ce champ à la table
+                'message' => $request->message,
             ]);
 
             return response()->json([
