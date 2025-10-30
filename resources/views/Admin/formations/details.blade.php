@@ -93,7 +93,7 @@
                 <i class="ri-book-2-line me-2"></i>
                 Modules ({{ $formation->modules->count() }})
             </h5>
-            <button type="button" class="btn btn-sm btn-success" onclick="openAddModuleModal({{ $formation->id }})">
+            <button type="button" class="btn btn-sm btn-success" onclick="detailOpenAddModuleModal({{ $formation->id }})">
                 <i class="ri-add-line me-1"></i>
                 Ajouter un module
             </button>
@@ -118,10 +118,10 @@
                             <td>{{ \Illuminate\Support\Str::limit($module->description, 50) }}</td>
                             <td>{{ $module->created_at->format('d/m/Y H:i') }}</td>
                             <td>
-                                <button class="btn btn-sm btn-primary" onclick="editModule({{ $module->id }})">
+                                <button class="btn btn-sm btn-primary" onclick="detailEditModule({{ $module->id }})">
                                     <i class="ri-edit-line"></i>
                                 </button>
-                                <button class="btn btn-sm btn-danger" onclick="deleteModule({{ $module->id }})">
+                                <button class="btn btn-sm btn-danger" onclick="detailDeleteModule({{ $module->id }})">
                                     <i class="ri-delete-bin-line"></i>
                                 </button>
                             </td>
@@ -146,7 +146,7 @@
                 <i class="ri-file-text-line me-2"></i>
                 Documents ({{ $formation->documents->count() }})
             </h5>
-            <button type="button" class="btn btn-sm btn-success" onclick="openAddDocumentModal({{ $formation->id }})">
+            <button type="button" class="btn btn-sm btn-success" onclick="detailOpenAddDocumentModal({{ $formation->id }})">
                 <i class="ri-add-line me-1"></i>
                 Ajouter un document
             </button>
@@ -177,10 +177,10 @@
                             </td>
                             <td>{{ $document->created_at->format('d/m/Y H:i') }}</td>
                             <td>
-                                <button class="btn btn-sm btn-primary" onclick="editDocument({{ $document->id }})">
+                                <button class="btn btn-sm btn-primary" onclick="detailEditDocument({{ $document->id }})">
                                     <i class="ri-edit-line"></i>
                                 </button>
-                                <button class="btn btn-sm btn-danger" onclick="deleteDocument({{ $document->id }})">
+                                <button class="btn btn-sm btn-danger" onclick="detailDeleteDocument({{ $document->id }})">
                                     <i class="ri-delete-bin-line"></i>
                                 </button>
                             </td>
@@ -319,9 +319,9 @@
 <script>
     const formationId = {{ $formation->id }};
 
-    // ===== GESTION DES MODULES =====
-    function openAddModuleModal(formationId) {
-        console.log('🔵 Ouverture modal DÉTAILS MODULE pour formation:', formationId);
+    // ===== GESTION DES MODULES (PAGE DÉTAILS) =====
+    function detailOpenAddModuleModal(formationId) {
+        console.log('🔵 [DÉTAILS] Ouverture modal MODULE pour formation:', formationId);
         document.getElementById('detailModuleForm').reset();
         document.getElementById('detail_module_id').value = '';
         document.getElementById('detail_module_formation_id').value = formationId;
@@ -331,8 +331,8 @@
         modal.show();
     }
 
-    function editModule(moduleId) {
-        console.log('🔧 Édition module:', moduleId);
+    function detailEditModule(moduleId) {
+        console.log('🔧 [DÉTAILS] Édition module:', moduleId);
         
         fetch(`/admin/formations/modules/${moduleId}`)
             .then(res => res.json())
@@ -353,7 +353,8 @@
             });
     }
 
-    function deleteModule(moduleId) {
+    function detailDeleteModule(moduleId) {
+        console.log('🗑️ [DÉTAILS] Suppression module:', moduleId);
         Swal.fire({
             title: 'Supprimer ce module ?',
             text: "Cette action est irréversible",
@@ -435,9 +436,9 @@
         });
     });
 
-    // ===== GESTION DES DOCUMENTS =====
-    function openAddDocumentModal(formationId) {
-        console.log('🔵 Ouverture modal DÉTAILS pour formation:', formationId);
+    // ===== GESTION DES DOCUMENTS (PAGE DÉTAILS) =====
+    function detailOpenAddDocumentModal(formationId) {
+        console.log('🔵 [DÉTAILS] Ouverture modal DOCUMENT pour formation:', formationId);
         document.getElementById('detailDocumentForm').reset();
         document.getElementById('detail_document_id').value = '';
         document.getElementById('detail_document_formation_id').value = formationId;
@@ -447,8 +448,8 @@
         modal.show();
     }
 
-    function editDocument(documentId) {
-        console.log('🔧 Édition document:', documentId);
+    function detailEditDocument(documentId) {
+        console.log('🔧 [DÉTAILS] Édition document:', documentId);
         
         fetch(`/admin/formations/documents/${documentId}`)
             .then(res => res.json())
@@ -469,7 +470,8 @@
             });
     }
 
-    function deleteDocument(documentId) {
+    function detailDeleteDocument(documentId) {
+        console.log('🗑️ [DÉTAILS] Suppression document:', documentId);
         Swal.fire({
             title: 'Supprimer ce document ?',
             text: "Cette action est irréversible",

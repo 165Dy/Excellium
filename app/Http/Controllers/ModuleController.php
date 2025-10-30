@@ -44,9 +44,9 @@ class ModuleController extends Controller
     {
         try {
             Log::info("=== DÉBUT CRÉATION MODULE ===");
-            Log::info("📦 Toutes les données reçues:", $request->all());
-            Log::info("🔑 Formation ID:", $request->formation_id);
-            Log::info("📝 Titre:", $request->titre);
+            Log::info("📦 Toutes les données reçues:", ['data' => $request->all()]);
+            Log::info("🔑 Formation ID: " . $request->formation_id);
+            Log::info("📝 Titre: " . $request->titre);
             
             Log::info("🔍 Début validation...");
             $validated = $request->validate([
@@ -60,7 +60,7 @@ class ModuleController extends Controller
             ]);
             
             Log::info("✅ Validation réussie!");
-            Log::info("📋 Données validées:", $validated);
+            Log::info("📋 Données validées:", ['validated' => $validated]);
 
             Log::info("💽 Création du module en base de données...");
             $module = Module::create($validated);
@@ -78,8 +78,8 @@ class ModuleController extends Controller
             ], 201);
 
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::warning("⚠️ Erreur de validation module:");
-            Log::warning("Erreurs:", $e->errors());
+            Log::warning("⚠️ Erreur de validation module");
+            Log::warning("Erreurs:", ['errors' => $e->errors()]);
             
             return response()->json([
                 'success' => false,
@@ -107,11 +107,11 @@ class ModuleController extends Controller
     {
         try {
             Log::info("=== RÉCUPÉRATION MODULE ===");
-            Log::info("Module ID: $id");
+            Log::info("Module ID: " . $id);
             
             $module = Module::with('formation')->findOrFail($id);
             
-            Log::info("✅ Module trouvé:", $module->toArray());
+            Log::info("✅ Module trouvé:", ['module' => $module->toArray()]);
             
             return response()->json([
                 'success' => true,
@@ -139,12 +139,12 @@ class ModuleController extends Controller
     {
         try {
             Log::info("=== DÉBUT MODIFICATION MODULE ===");
-            Log::info("Module ID: $id");
-            Log::info("📦 Toutes les données reçues:", $request->all());
+            Log::info("Module ID: " . $id);
+            Log::info("📦 Toutes les données reçues:", ['data' => $request->all()]);
             
             Log::info("🔍 Recherche du module...");
             $module = Module::findOrFail($id);
-            Log::info("✅ Module trouvé:", $module->toArray());
+            Log::info("✅ Module trouvé:", ['module' => $module->toArray()]);
             
             Log::info("🔍 Début validation...");
             $validated = $request->validate([
@@ -155,7 +155,7 @@ class ModuleController extends Controller
             ]);
             
             Log::info("✅ Validation réussie!");
-            Log::info("📋 Données validées:", $validated);
+            Log::info("📋 Données validées:", ['validated' => $validated]);
 
             Log::info("💽 Mise à jour du module...");
             $module->update($validated);
@@ -173,8 +173,8 @@ class ModuleController extends Controller
             ], 200);
 
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::warning("⚠️ Erreur de validation:");
-            Log::warning("Erreurs:", $e->errors());
+            Log::warning("⚠️ Erreur de validation");
+            Log::warning("Erreurs:", ['errors' => $e->errors()]);
             
             return response()->json([
                 'success' => false,
@@ -202,10 +202,10 @@ class ModuleController extends Controller
     {
         try {
             Log::info("=== DÉBUT SUPPRESSION MODULE ===");
-            Log::info("Module ID: $id");
+            Log::info("Module ID: " . $id);
             
             $module = Module::findOrFail($id);
-            Log::info("✅ Module trouvé:", $module->toArray());
+            Log::info("✅ Module trouvé:", ['module' => $module->toArray()]);
             
             $module->delete();
             Log::info("✅ Module supprimé avec succès");

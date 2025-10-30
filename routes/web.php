@@ -230,6 +230,7 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
         
         // Gestion des modules (Admin)
         Route::prefix('modules')->name('modules.')->group(function () {
+            Route::get('/{id}', [ModuleController::class, 'show'])->name('show');
             Route::put('/{id}', [ModuleController::class, 'update'])->name('update');
             Route::delete('/{id}', [ModuleController::class, 'destroy'])->name('destroy');
         });

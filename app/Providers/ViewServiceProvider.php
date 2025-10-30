@@ -21,10 +21,15 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Partager les catégories avec toutes les vues admin
+        // Partager les catégories et formations avec toutes les vues admin
         View::composer('layouts.admin', function ($view) {
             $categories = Categorie::orderBy('nom')->get();
-            $view->with('categories', $categories);
+            $formations = \App\Models\Formation::with('categorie')->orderBy('created_at', 'desc')->get();
+            
+            $view->with([
+                'categories' => $categories,
+                'formations' => $formations
+            ]);
         });
     }
 }

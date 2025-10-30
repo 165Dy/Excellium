@@ -181,6 +181,23 @@
             margin-bottom: 0.2em;
             display: block;
         }
+        
+        /* S'assurer que tous les inputs/textarea dans SweetAlert2 sont éditables */
+        .swal2-popup input.form-control,
+        .swal2-popup textarea.form-control {
+            pointer-events: auto !important;
+            cursor: text !important;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+        }
+        
+        .swal2-html-container input,
+        .swal2-html-container textarea {
+            pointer-events: auto !important;
+            cursor: text !important;
+        }
     </style>
 
     <!-- Styles from child views -->
@@ -5071,17 +5088,56 @@
                         <div class="text-start">
                             <div class="mb-3">
                                 <label class="form-label">Titre <span class="text-danger">*</span></label>
-                                <input id="edit-module-titre" class="form-control" value="${module.titre}">
+                                <input type="text" id="edit-module-titre" class="form-control swal2-input" value="${module.titre}" style="display:block; width:100%;">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Description</label>
-                                <textarea id="edit-module-description" class="form-control" rows="3">${module.description || ''}</textarea>
+                                <textarea id="edit-module-description" class="form-control swal2-input" rows="3" style="display:block; width:100%;">${module.description || ''}</textarea>
                             </div>
                         </div>
                     `,
                     showCancelButton: true,
                     confirmButtonText: 'Enregistrer',
                     cancelButtonText: 'Annuler',
+                    focusConfirm: false,
+                    allowEnterKey: false,
+                    allowOutsideClick: true,
+                    customClass: {
+                        container: 'swal2-container',
+                        popup: 'swal2-popup',
+                        htmlContainer: 'swal2-html-container'
+                    },
+                    didOpen: () => {
+                        console.log('🔓 [ADMIN] Activation des champs de saisie...');
+                        // S'assurer que les champs sont éditables
+                        const titreInput = document.getElementById('edit-module-titre');
+                        const descInput = document.getElementById('edit-module-description');
+                        
+                        if (titreInput) {
+                            titreInput.disabled = false;
+                            titreInput.readOnly = false;
+                            titreInput.removeAttribute('disabled');
+                            titreInput.removeAttribute('readonly');
+                            titreInput.style.pointerEvents = 'auto';
+                            titreInput.style.cursor = 'text';
+                            // Focus avec un léger délai pour s'assurer que SweetAlert2 a fini son initialisation
+                            setTimeout(() => {
+                                titreInput.focus();
+                                titreInput.select();
+                            }, 100);
+                            console.log('✅ [ADMIN] Champ titre activé');
+                        }
+                        
+                        if (descInput) {
+                            descInput.disabled = false;
+                            descInput.readOnly = false;
+                            descInput.removeAttribute('disabled');
+                            descInput.removeAttribute('readonly');
+                            descInput.style.pointerEvents = 'auto';
+                            descInput.style.cursor = 'text';
+                            console.log('✅ [ADMIN] Champ description activé');
+                        }
+                    },
                     preConfirm: () => {
                         const titre = document.getElementById('edit-module-titre').value.trim();
                         if (!titre) {
