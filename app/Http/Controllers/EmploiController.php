@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Mailgun\Mailgun;
+use App\Services\SuperAdminNotificationService;
 
 class EmploiController extends Controller
 {
@@ -416,8 +417,19 @@ class EmploiController extends Controller
                 'statut' => 'en_attente',
             ]);
 
-            // Préparation des variables pour l'email
+            // Charger la relation emploi
             $emploi = Emploi::find($request->emploi_id);
+            
+            // ✅ ENVOYER EMAIL AUX SUPER_ADMIN
+            try {
+                $emailData = SuperAdminNotificationService::prepareEmploiCandidatureData($candidature, $emploi);
+                SuperAdminNotificationService::sendNotification($emailData);
+                Log::info("Email envoyé aux super_admin pour nouvelle candidature");
+            } catch (\Exception $e) {
+                Log::error("Erreur envoi email super_admin (candidature): " . $e->getMessage());
+            }
+
+            // Préparation des variables pour l'email
             $variables = [
                 'nom' => $candidature->nom,
                 'poste' => $emploi->titre,

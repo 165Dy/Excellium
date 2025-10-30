@@ -141,13 +141,13 @@
                 $yesterday_count = \App\Models\User::whereDate('created_at', Carbon::yesterday())->count();
 
                 // Déterminer l'icône et la couleur
-if ($today_count > $yesterday_count) {
-    $evolution_icon = 'ri ri-arrow-up-s-line text-success';
-} elseif ($today_count < $yesterday_count) {
-    $evolution_icon = 'ri ri-arrow-down-s-line text-danger ';
-} else {
-    $evolution_icon = ''; // aucune flèche si stable
-                }
+                if ($today_count > $yesterday_count) {
+                    $evolution_icon = 'ri ri-arrow-up-s-line text-success';
+                } elseif ($today_count < $yesterday_count) {
+                    $evolution_icon = 'ri ri-arrow-down-s-line text-danger ';
+                } else {
+                    $evolution_icon = ''; // aucune flèche si stable
+                                }
             @endphp
 
             <!-- Ratings -->
@@ -215,7 +215,7 @@ if ($today_count > $yesterday_count) {
                 <div class="card h-100">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <h5 class="mb-1">visits_by_day</h5>
+                            <h5 class="mb-1">Visites par jour</h5>
                             <div class="dropdown">
                                 <button class="btn btn-text-secondary rounded-pill text-body-secondary border-0 p-1"
                                     type="button" id="visitsByDayDropdown" data-bs-toggle="dropdown"
@@ -223,26 +223,32 @@ if ($today_count > $yesterday_count) {
                                     <i class="icon-base ri ri-more-2-line"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="visitsByDayDropdown">
-                                    <a class="dropdown-item" href="javascript:void(0);">refresh</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">update</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">share</a>
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="refreshVisitsChart()">
+                                        <i class="ri ri-refresh-line me-2"></i>Actualiser
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="exportVisitsData()">
+                                        <i class="ri ri-download-line me-2"></i>Exporter (CSV)
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="shareVisitsChart()">
+                                        <i class="ri ri-share-line me-2"></i>Partager
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <p class="mb-0 card-subtitle">total_2485k_visits</p>
+                        <p class="mb-0 card-subtitle" id="visitsSubtitle">Chargement...</p>
                     </div>
                     <div class="card-body">
                         <div id="visitsByDayChart"></div>
                         <div class="d-flex justify-content-between mt-4">
                             <div>
-                                <h6 class="mb-0">most_visited_day</h6>
-                                <p class="mb-0 small">total_624k_visits_on_thursday</p>
+                                <h6 class="mb-0">Jour le plus visité</h6>
+                                <p class="mb-0 small" id="mostVisitedDayText">Chargement...</p>
                             </div>
-                            <div class="avatar">
+                            <a href="{{ route('admin.visits.index') }}" class="avatar" title="Voir tous les détails">
                                 <div class="avatar-initial bg-label-primary rounded">
                                     <i class="icon-base ri ri-arrow-right-s-line icon-24px scaleX-n1-rtl"></i>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -366,7 +372,9 @@ if ($today_count > $yesterday_count) {
 
         </div>
     </div>
+@endsection
 
+@push('scripts')
     <script>
         function exportStats() {
             // Simple exemple: on peut exporter en CSV ou JSON
@@ -376,10 +384,10 @@ if ($today_count > $yesterday_count) {
                 Opportunites: {{ $opportunites_count ?? 0 }},
                 Services: {{ $services_count ?? 0 }},
                 Categories: {{ $categories_count ?? 0 }},
-                Produits: {{ $produits_count ?? 0 }}
+                Produits: {{ $produits_count ?? 0 }},
                 Entreprises: {{ $entreprises_count ?? 0 }},
-                invitations: {{ $invitations_count ?? 0 }},
-                Utilisateurs: {{ $users_count ?? 0 }},
+                Invitations: {{ $invitations_count ?? 0 }},
+                Utilisateurs: {{ $users_count ?? 0 }}
             };
             let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(stats));
             let dlAnchorElem = document.createElement('a');
@@ -387,5 +395,244 @@ if ($today_count > $yesterday_count) {
             dlAnchorElem.setAttribute("download", "stats.json");
             dlAnchorElem.click();
         }
+
+        // ===== GRAPHIQUE DES VISITES PAR JOUR =====
+        let visitsChart = null;
+        let visitsData = null;
+        
+        async function loadVisitsChart() {
+            try {
+                console.log('📊 Chargement des statistiques de visites...');
+                const response = await fetch('/admin/visits/stats');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                visitsData = data; // Stocker les données globalement
+                
+                console.log('✅ Données reçues:', data);
+                
+                // Mettre à jour le total des visites avec ID spécifique
+                const subtitleElement = document.getElementById('visitsSubtitle');
+                if (subtitleElement) {
+                    subtitleElement.textContent = `Total ${data.total_visits_week.toLocaleString('fr-FR')} visites (7 jours)`;
+                }
+                
+                // Mettre à jour le jour le plus visité avec ID spécifique
+                const mostVisitedElement = document.getElementById('mostVisitedDayText');
+                if (mostVisitedElement && data.most_visited_day) {
+                    const mostVisitedText = `${data.most_visited_day.visits.toLocaleString('fr-FR')} visites le ${data.most_visited_day.day}`;
+                    mostVisitedElement.textContent = mostVisitedText;
+                }
+                
+                // Préparer les données pour le graphique
+                const categories = data.visits_by_day.map(item => item.day);
+                const series = data.visits_by_day.map(item => item.count);
+                
+                // Options du graphique
+                const chartOptions = {
+                    series: [{
+                        name: 'Visites',
+                        data: series
+                    }],
+                    chart: {
+                        type: 'bar',
+                        height: 280,
+                        toolbar: {
+                            show: false
+                        },
+                        animations: {
+                            enabled: true,
+                            easing: 'easeinout',
+                            speed: 800
+                        }
+                    },
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 8,
+                            distributed: true,
+                            columnWidth: '55%'
+                        }
+                    },
+                    colors: ['#7367F0', '#28C76F', '#FF9F43', '#EA5455', '#00CFE8', '#7367F0', '#FF9F43'],
+                    dataLabels: {
+                        enabled: false
+                    },
+                    xaxis: {
+                        categories: categories,
+                        labels: {
+                            style: {
+                                fontSize: '13px',
+                                colors: ['#6c757d']
+                            }
+                        }
+                    },
+                    yaxis: {
+                        labels: {
+                            formatter: function(val) {
+                                return Math.floor(val);
+                            },
+                            style: {
+                                colors: ['#6c757d']
+                            }
+                        }
+                    },
+                    legend: {
+                        show: false
+                    },
+                    tooltip: {
+                        y: {
+                            formatter: function(val) {
+                                return val + ' visites';
+                            }
+                        },
+                        theme: 'light'
+                    },
+                    grid: {
+                        borderColor: '#f1f1f1',
+                        strokeDashArray: 4
+                    }
+                };
+                
+                // Détruire l'ancien graphique s'il existe
+                if (visitsChart) {
+                    visitsChart.destroy();
+                }
+                
+                // Créer et afficher le nouveau graphique
+                visitsChart = new ApexCharts(document.querySelector("#visitsByDayChart"), chartOptions);
+                await visitsChart.render();
+                
+                console.log('✅ Graphique affiché avec succès');
+                
+            } catch (error) {
+                console.error('❌ Erreur lors du chargement des statistiques:', error);
+                
+                const subtitleElement = document.getElementById('visitsSubtitle');
+                if (subtitleElement) {
+                    subtitleElement.textContent = 'Erreur de chargement des données';
+                    subtitleElement.classList.add('text-danger');
+                }
+                
+                const mostVisitedElement = document.getElementById('mostVisitedDayText');
+                if (mostVisitedElement) {
+                    mostVisitedElement.textContent = 'Erreur de chargement';
+                }
+            }
+        }
+        
+        // Fonction pour actualiser le graphique
+        function refreshVisitsChart() {
+            console.log('🔄 Actualisation du graphique...');
+            
+            // Animation de chargement
+            const subtitleElement = document.getElementById('visitsSubtitle');
+            if (subtitleElement) {
+                subtitleElement.textContent = 'Actualisation...';
+            }
+            
+            loadVisitsChart().then(() => {
+                // Toast de confirmation
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Graphique actualisé',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            });
+        }
+        
+        // Fonction pour exporter les données en CSV
+        function exportVisitsData() {
+            if (!visitsData) {
+                Swal.fire('Erreur', 'Aucune donnée à exporter', 'error');
+                return;
+            }
+            
+            console.log('📥 Export des données en CSV...');
+            
+            // Créer le contenu CSV
+            let csvContent = "Date,Jour,Visites\n";
+            visitsData.visits_by_day.forEach(item => {
+                csvContent += `${item.date},${item.day},${item.count}\n`;
+            });
+            
+            // Créer un blob et télécharger
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute("href", url);
+            link.setAttribute("download", `visites_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Toast de confirmation
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Fichier CSV téléchargé',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+        
+        // Fonction pour partager le graphique
+        function shareVisitsChart() {
+            if (!visitsData) {
+                Swal.fire('Erreur', 'Aucune donnée à partager', 'error');
+                return;
+            }
+            
+            const shareText = `📊 Statistiques Excellium\n\n` +
+                `Total des visites (7 jours) : ${visitsData.total_visits_week}\n` +
+                `Jour le plus visité : ${visitsData.most_visited_day.day} (${visitsData.most_visited_day.visits} visites)\n\n` +
+                `Visiteurs uniques aujourd'hui : ${visitsData.today.unique_visitors}\n` +
+                `Utilisateurs authentifiés : ${visitsData.today.authenticated_users}`;
+            
+            // Vérifier si l'API Web Share est disponible
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Statistiques Excellium',
+                    text: shareText
+                }).then(() => {
+                    console.log('✅ Partagé avec succès');
+                }).catch((error) => {
+                    console.log('❌ Erreur de partage:', error);
+                });
+            } else {
+                // Fallback : copier dans le presse-papiers
+                navigator.clipboard.writeText(shareText).then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Copié !',
+                        text: 'Les statistiques ont été copiées dans le presse-papiers',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                }).catch(() => {
+                    // Si clipboard ne fonctionne pas, afficher les données dans une modale
+                    Swal.fire({
+                        title: 'Statistiques',
+                        html: `<pre style="text-align: left; font-size: 12px;">${shareText}</pre>`,
+                        confirmButtonText: 'Fermer'
+                    });
+                });
+            }
+        }
+        
+        // Charger le graphique au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Initialisation du dashboard...');
+            loadVisitsChart();
+        });
     </script>
-@endsection
+@endpush

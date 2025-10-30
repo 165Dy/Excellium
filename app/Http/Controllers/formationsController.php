@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 use \Mailgun\Mailgun;
 use App\Models\User;
+use App\Services\SuperAdminNotificationService;
 
 class formationsController extends Controller
 {
@@ -462,6 +463,18 @@ class formationsController extends Controller
             // Charger les relations pour avoir plus d'infos
             $inscription->load('formation');
             
+            // ✅ CRÉER LA NOTIFICATION
+            \App\Models\Notification::createFormationInscription($inscription, $inscription->formation);
+            
+            // ✅ ENVOYER EMAIL AUX SUPER_ADMIN
+            try {
+                $emailData = SuperAdminNotificationService::prepareFormationInscriptionData($inscription, $inscription->formation);
+                SuperAdminNotificationService::sendNotification($emailData);
+                Log::info("Email envoyé aux super_admin pour inscription formation");
+            } catch (\Exception $e) {
+                Log::error("Erreur envoi email super_admin (inscription formation): " . $e->getMessage());
+            }
+            
             Log::info("=== FIN INSCRIPTION FORMATION ===", [
                 'inscription' => $inscription->toArray()
             ]);
@@ -589,6 +602,24 @@ class formationsController extends Controller
             $inscription = InscriptionFormation::findOrFail($inscriptionId);
             $ancienStatut = $inscription->statut;
             $inscription->update(['statut' => $validated['statut']]);
+            
+            // ✅ CRÉER LA NOTIFICATION DE CHANGEMENT DE STATUT
+            \App\Models\Notification::createStatutChange('formation', $inscription, $ancienStatut, $validated['statut']);
+            
+            // ✅ ENVOYER EMAIL AUX SUPER_ADMIN (si accepté ou refusé)
+            if (in_array($validated['statut'], ['accepte', 'refuse'])) {
+                try {
+                    $inscription->load('formation');
+                    $emailData = SuperAdminNotificationService::prepareFormationInscriptionData($inscription, $inscription->formation);
+                    $emailData['action_type'] = 'Changement de statut inscription formation';
+                    $emailData['action_description'] = "Le statut d'une inscription est passé de '{$ancienStatut}' à '{$validated['statut']}'";
+                    $emailData['alert_type'] = $validated['statut'] === 'accepte' ? 'success' : 'danger';
+                    SuperAdminNotificationService::sendNotification($emailData);
+                    Log::info("Email envoyé aux super_admin pour changement statut");
+                } catch (\Exception $e) {
+                    Log::error("Erreur envoi email super_admin (changement statut): " . $e->getMessage());
+                }
+            }
             
             Log::info('Statut inscription modifié:', [
                 'inscription_id' => $inscriptionId,

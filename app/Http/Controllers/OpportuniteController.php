@@ -8,6 +8,7 @@ use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
+use App\Services\SuperAdminNotificationService;
 
 class OpportuniteController extends Controller
 {
@@ -486,6 +487,18 @@ class OpportuniteController extends Controller
                 'opportunite_id' => $opportunite->id,
                 'message' => $request->message,
             ]);
+            
+            // ✅ ENVOYER EMAIL AUX SUPER_ADMIN
+            try {
+                $postulation->nom_entreprise = $request->nom_complet;
+                $postulation->email = $user->email;
+                $postulation->telephone = $user->telephone;
+                $emailData = SuperAdminNotificationService::prepareOpportunitePostulationData($postulation, $opportunite);
+                SuperAdminNotificationService::sendNotification($emailData);
+                \Illuminate\Support\Facades\Log::info("Email envoyé aux super_admin pour nouvelle postulation opportunité");
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error("Erreur envoi email super_admin (postulation): " . $e->getMessage());
+            }
 
             return response()->json([
                 'success' => true,

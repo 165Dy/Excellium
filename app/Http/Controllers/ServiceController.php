@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Mailgun\Mailgun;
 use Exception;
 use Illuminate\Support\Str;
+use App\Services\SuperAdminNotificationService;
 
 class ServiceController extends Controller
 {
@@ -176,6 +177,23 @@ class ServiceController extends Controller
                 'description' => $request->description,
                 'statut' => 'brouillon',
             ]);
+            
+            // ✅ ENVOYER EMAIL AUX SUPER_ADMIN
+            try {
+                $inscription = (object) [
+                    'nom' => $user->nom,
+                    'prenom' => $user->prenom,
+                    'email' => $user->email,
+                    'telephone' => $user->telephone,
+                    'statut' => $userService->statut,
+                    'formule' => $request->description,
+                ];
+                $emailData = SuperAdminNotificationService::prepareServiceInscriptionData($inscription, $service);
+                SuperAdminNotificationService::sendNotification($emailData);
+                Log::info("Email envoyé aux super_admin pour nouvelle inscription service");
+            } catch (\Exception $e) {
+                Log::error("Erreur envoi email super_admin (inscription service): " . $e->getMessage());
+            }
 
             // Envoi de l'email de confirmation
             $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');

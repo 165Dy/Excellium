@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web([
             \App\Http\Middleware\SetLocale::class, // Ajout du middleware pour gérer la locale
+            \App\Http\Middleware\TrackVisit::class, // Tracking des visites
         ]);
         
         // Déclaration des alias de middlewares

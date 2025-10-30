@@ -200,6 +200,84 @@
         }
     </style>
 
+    <!-- CSS pour les notifications -->
+    <style>
+        .badge-notifications {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            font-size: 10px;
+            min-width: 18px;
+            height: 18px;
+            padding: 2px 5px;
+        }
+
+        .notification-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+
+        .notification-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .notification-item.unread {
+            background-color: #f0f7ff;
+        }
+
+        .notification-item .notification-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+
+        .notification-item .notification-content {
+            flex: 1;
+            margin-left: 12px;
+        }
+
+        .notification-item .notification-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .notification-item .notification-message {
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 4px;
+        }
+
+        .notification-item .notification-time {
+            font-size: 11px;
+            color: #adb5bd;
+        }
+
+        .notification-item .notification-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #007bff;
+            border-radius: 50%;
+        }
+
+        .notification-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #adb5bd;
+        }
+
+        .notification-empty i {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+    </style>
+
     <!-- Styles from child views -->
     @stack('styles')
 </head>
@@ -273,6 +351,51 @@
                                 </ul>
                             </li>
                             <!-- / Style Switcher-->
+
+                            <!-- Notifications -->
+                            <li class="nav-item dropdown me-sm-2 me-xl-0">
+                                <a class="nav-link dropdown-toggle hide-arrow btn btn-icon btn-text-secondary rounded-pill"
+                                    id="notificationDropdown" href="javascript:void(0);" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false">
+                                    <i class="icon-base ri ri-notification-3-line icon-22px"></i>
+                                    <span class="badge bg-danger rounded-pill badge-notifications d-none"
+                                        id="notificationBadge">0</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end p-0" style="width: 420px; max-height: 600px;"
+                                    aria-labelledby="notificationDropdown">
+                                    <!-- Header -->
+                                    <div class="dropdown-menu-header border-bottom py-3 px-4">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <h6 class="mb-0 me-auto">
+                                                <i class="ri ri-notification-3-line me-2"></i>Notifications
+                                            </h6>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="badge bg-label-primary rounded-pill" id="notificationCount">0 nouvelle</span>
+                                                <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-text-secondary rounded-pill"
+                                                    onclick="markAllNotificationsAsRead()" title="Tout marquer comme lu">
+                                                    <i class="ri ri-check-double-line"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Body -->
+                                    <div class="dropdown-menu-body" style="max-height: 400px; overflow-y: auto;" id="notificationsList">
+                                        <div class="text-center py-5">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="visually-hidden">Chargement...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Footer -->
+                                    <div class="dropdown-menu-footer border-top py-3 px-4">
+                                        <a href="{{ route('admin.notifications.manage') }}"
+                                            class="btn btn-primary btn-sm w-100">
+                                            <i class="ri ri-list-check me-1"></i>Voir toutes les notifications
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- / Notifications -->
 
                             <!-- Quick links -->
                             <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-sm-2 me-xl-0">
@@ -370,279 +493,6 @@
                                 </div> --}}
                             </li>
                             <!-- Quick links -->
-
-                            <!-- Notification -->
-                            <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-4 me-xl-1">
-                                <a class="nav-link dropdown-toggle hide-arrow btn btn-icon btn-text-secondary rounded-pill"
-                                    href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                                    aria-expanded="false">
-                                    <i class="icon-base ri ri-notification-2-line icon-22px"></i>
-                                    <span
-                                        class="position-absolute top-0 start-50 translate-middle-y badge badge-dot bg-danger mt-2 border"></span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end py-0">
-                                    <li class="dropdown-menu-header border-bottom py-50">
-                                        <div class="dropdown-header d-flex align-items-center py-2">
-                                            <h6 class="mb-0 me-auto">notification</h6>
-                                            <div class="d-flex align-items-center h6 mb-0">
-                                                <span
-                                                    class="badge rounded-pill bg-label-primary fs-xsmall me-2">8_new</span>
-                                                <a href="javascript:void(0)" class="dropdown-notifications-all p-2"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Mark all as read"><i
-                                                        class="icon-base ri ri-mail-open-line text-heading"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dropdown-notifications-list scrollable-container">
-                                        <ul class="list-group list-group-flush">
-                                            <li
-                                                class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar">
-                                                            <img src="{{ asset('assets_2/img/avatars/1.png') }}"
-                                                                alt="avatar" class="rounded-circle" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">congratulation lettie
-                                                        </h6>
-                                                        <small class="mb-1 d-block text-body">won the monthly best
-                                                            seller gold badge</small>
-                                                        <small class="text-body-secondary">1h ago</small>
-                                                    </div>
-                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-read"><span
-                                                                class="badge badge-dot"></span></a>
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-archive"><span
-                                                                class="icon-base ri ri-close-line"></span></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li
-                                                class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar">
-                                                            <span
-                                                                class="avatar-initial rounded-circle bg-label-danger">cf</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">charles_franklin</h6>
-                                                        <small
-                                                            class="mb-1 d-block text-body">accepted_your_connection</small>
-                                                        <small class="text-body-secondary">12h ago</small>
-                                                    </div>
-                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-read"><span
-                                                                class="badge badge-dot"></span></a>
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-archive"><span
-                                                                class="icon-base ri ri-close-line"></span></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li
-                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar">
-                                                            <img src="{{ asset('assets_2/img/avatars/2.png') }}"
-                                                                alt="avatar" class="rounded-circle" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">nouveau message</h6>
-                                                        <small class="mb-1 d-block text-body">you have new_message from
-                                                            natalie</small>
-                                                        <small class="text-body-secondary">1h ago</small>
-                                                    </div>
-                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-read"><span
-                                                                class="badge badge-dot"></span></a>
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-archive"><span
-                                                                class="icon-base ri ri-close-line"></span></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li
-                                                class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar">
-                                                            <span
-                                                                class="avatar-initial rounded-circle bg-label-success"><i
-                                                                    class="icon-base ri ri-shopping-cart-2-line icon-18px"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">
-                                                            whoo you have new order</h6>
-                                                        <small class="mb-1 d-block text-body">acme inc made new
-                                                            order</small>
-                                                        <small class="text-body-secondary">1 day ago</small>
-                                                    </div>
-                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-read"><span
-                                                                class="badge badge-dot"></span></a>
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-archive"><span
-                                                                class="icon-base ri ri-close-line"></span></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li
-                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar">
-                                                            <img src="{{ asset('assets_2/img/avatars/9.png') }}"
-                                                                alt="avatar" class="rounded-circle" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">
-                                                            application_has_been_approved</h6>
-                                                        <small
-                                                            class="mb-1 d-block text-body">your_abc_project_application_has_been_approved</small>
-                                                        <small class="text-body-secondary">2_days_ago</small>
-                                                    </div>
-                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-read"><span
-                                                                class="badge badge-dot"></span></a>
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-archive"><span
-                                                                class="icon-base ri ri-close-line"></span></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li
-                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar">
-                                                            <span
-                                                                class="avatar-initial rounded-circle bg-label-success"><i
-                                                                    class="icon-base ri ri-pie-chart-2-line icon-18px"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">
-                                                            monthly_report_is_generated</h6>
-                                                        <small class="mb-1 d-block text-body">July monthly financial
-                                                            report is generated </small>
-                                                        <small class="text-body-secondary">3_days_ago</small>
-                                                    </div>
-                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-read"><span
-                                                                class="badge badge-dot"></span></a>
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-archive"><span
-                                                                class="icon-base ri ri-close-line"></span></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li
-                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar">
-                                                            <img src="{{ asset('assets_2/img/avatars/5.png') }}"
-                                                                alt="avatar" class="rounded-circle" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">
-                                                            send_connection_request</h6>
-                                                        <small
-                                                            class="mb-1 d-block text-body">peter_sent_you_connection_request</small>
-                                                        <small class="text-body-secondary">4_days_ago</small>
-                                                    </div>
-                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-read"><span
-                                                                class="badge badge-dot"></span></a>
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-archive"><span
-                                                                class="icon-base ri ri-close-line"></span></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li
-                                                class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar">
-                                                            <img src="{{ asset('assets_2/img/avatars/6.png') }}"
-                                                                alt="avatar" class="rounded-circle" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">new_message_from_jane')
-                                                        </h6>
-                                                        <small
-                                                            class="mb-1 d-block text-body">your_have_new_message_from_jane</small>
-                                                        <small class="text-body-secondary">5_days_ago</small>
-                                                    </div>
-                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-read"><span
-                                                                class="badge badge-dot"></span></a>
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-archive"><span
-                                                                class="icon-base ri ri-close-line"></span></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li
-                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar">
-                                                            <span
-                                                                class="avatar-initial rounded-circle bg-label-warning"><i
-                                                                    class="icon-base ri ri-error-warning-line icon-18px"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="small mb-1">cpu is running high
-                                                        </h6>
-                                                        <small class="mb-1 d-block text-body">cpu
-                                                            utilization_percent_is_currently_at_8863</small>
-                                                        <small class="text-body-secondary">5_days_ago</small>
-                                                    </div>
-                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-read"><span
-                                                                class="badge badge-dot"></span></a>
-                                                        <a href="javascript:void(0)"
-                                                            class="dropdown-notifications-archive"><span
-                                                                class="icon-base ri ri-close-line"></span></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="border-top">
-                                        <div class="d-grid p-4">
-                                            <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
-                                                <small class="align-middle">view_all_notifications</small>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--/ Notification -->
 
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -753,6 +603,12 @@
                                             <a href="{{ route('admin.entreprises.index') }}" class="menu-link">
                                                 <i class="menu-icon icon-base ri ri-building-line"></i>
                                                 <div data-i18n="Entreprises">Entreprises</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item {{ request()->routeIs('admin.visits.*') ? 'active' : '' }}">
+                                            <a href="{{ route('admin.visits.index') }}" class="menu-link">
+                                                    <i class="menu-icon icon-base ri ri-bar-chart-line"></i>
+                                                    <div data-i18n="Gestion des visites">Gestion des visites</div>
                                             </a>
                                         </li>
 
@@ -5580,9 +5436,9 @@
 
                         submitBtn.disabled = true;
                         submitBtn.innerHTML = `
-            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-            Publication en cours...
-        `;
+                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            Publication en cours...
+                        `;
 
                         // Soumission réelle
                         setTimeout(() => {
@@ -6825,7 +6681,6 @@
         </script>
 
 
-
         <!-- Scripts pour la gestion des services -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -7142,12 +6997,6 @@
         </script>
 
 
-
-
-
-
-
-
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 if (session('success'))
@@ -7183,6 +7032,212 @@
 
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- JavaScript pour les notifications -->
+        <script>
+            let notificationPollingInterval;
+
+            // Charger les notifications au démarrage
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('🔔 Initialisation du système de notifications...');
+                loadNotifications();
+                startNotificationPolling();
+            });
+
+            // Charger les notifications
+            async function loadNotifications() {
+                try {
+                    const response = await fetch('/admin/notifications?limit=20');
+                    const data = await response.json();
+
+                    if (data.success) {
+                        displayNotifications(data.notifications);
+                        updateNotificationBadge(data.unread_count);
+                    }
+                } catch (error) {
+                    console.error('❌ Erreur chargement notifications:', error);
+                    displayNotificationsError();
+                }
+            }
+
+            // Afficher les notifications
+            function displayNotifications(notifications) {
+                const container = document.getElementById('notificationsList');
+
+                if (notifications.length === 0) {
+                    container.innerHTML = `
+                        <div class="notification-empty">
+                            <i class="ri ri-notification-off-line"></i>
+                            <p class="mb-0">Aucune notification</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const html = notifications.map(notif => {
+                    const timeAgo = getTimeAgo(notif.created_at);
+                    const unreadClass = !notif.is_read ? 'unread' : '';
+                    const iconBgClass = `bg-label-${notif.badge_color || 'primary'}`;
+
+                    return `
+                        <div class="notification-item ${unreadClass}" onclick="handleNotificationClick(${notif.id}, '${notif.action_url || ''}')">
+                            <div class="d-flex align-items-start">
+                                <div class="notification-icon ${iconBgClass}">
+                                    <i class="${notif.icon || 'ri-notification-line'}"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">${notif.title}</div>
+                                    <div class="notification-message">${notif.message}</div>
+                                    <div class="notification-time">${timeAgo}</div>
+                                </div>
+                                ${!notif.is_read ? '<div class="notification-dot"></div>' : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                container.innerHTML = html;
+            }
+
+            // Afficher une erreur
+            function displayNotificationsError() {
+                const container = document.getElementById('notificationsList');
+                container.innerHTML = `
+                    <div class="notification-empty">
+                        <i class="ri ri-error-warning-line text-danger"></i>
+                        <p class="mb-0">Erreur de chargement</p>
+                        <button class="btn btn-sm btn-outline-primary mt-2" onclick="loadNotifications()">
+                            Réessayer
+                        </button>
+                    </div>
+                `;
+            }
+
+            // Mettre à jour le badge
+            function updateNotificationBadge(count) {
+                const badge = document.getElementById('notificationBadge');
+                const countText = document.getElementById('notificationCount');
+
+                if (count > 0) {
+                    badge.textContent = count > 99 ? '99+' : count;
+                    badge.classList.remove('d-none');
+                    countText.textContent = count + (count > 1 ? ' nouvelles' : ' nouvelle');
+                } else {
+                    badge.classList.add('d-none');
+                    countText.textContent = '0 nouvelle';
+                }
+            }
+
+            // Gérer le clic sur une notification
+            async function handleNotificationClick(notificationId, actionUrl) {
+                // Marquer comme lue
+                try {
+                    await fetch(`/admin/notifications/${notificationId}/read`, {
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    // Recharger les notifications
+                    loadNotifications();
+
+                    // Rediriger si URL fournie
+                    if (actionUrl && actionUrl !== 'null' && actionUrl !== '') {
+                        window.location.href = actionUrl;
+                    }
+                } catch (error) {
+                    console.error('❌ Erreur marquage lecture:', error);
+                }
+            }
+
+            // Marquer toutes comme lues
+            async function markAllNotificationsAsRead() {
+                try {
+                    const response = await fetch('/admin/notifications/mark-all-read', {
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        loadNotifications();
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Toutes les notifications ont été marquées comme lues',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    }
+                } catch (error) {
+                    console.error('❌ Erreur marquage toutes lues:', error);
+                }
+            }
+
+            // Démarrer le polling (vérification périodique)
+            function startNotificationPolling() {
+                // Vérifier toutes les 30 secondes
+                notificationPollingInterval = setInterval(() => {
+                    loadNotifications();
+                }, 30000);
+            }
+
+            // Arrêter le polling
+            function stopNotificationPolling() {
+                if (notificationPollingInterval) {
+                    clearInterval(notificationPollingInterval);
+                }
+            }
+
+            // Formater le temps écoulé
+            function getTimeAgo(dateString) {
+                const date = new Date(dateString);
+                const now = new Date();
+                const seconds = Math.floor((now - date) / 1000);
+
+                if (seconds < 60) return 'À l\'instant';
+                if (seconds < 3600) return Math.floor(seconds / 60) + ' min';
+                if (seconds < 86400) return Math.floor(seconds / 3600) + 'h';
+                if (seconds < 604800) return Math.floor(seconds / 86400) + 'j';
+                return date.toLocaleDateString('fr-FR');
+            }
+
+            // Créer une notification de test (pour développement)
+            async function createTestNotification() {
+                try {
+                    const response = await fetch('/admin/notifications/test', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        loadNotifications();
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Notification de test créée',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    }
+                } catch (error) {
+                    console.error('❌ Erreur création test:', error);
+                }
+            }
+        </script>
 
         <!-- Scripts from child views -->
         @stack('scripts')

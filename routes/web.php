@@ -47,6 +47,7 @@ Route::get('/', [ProduitController::class, 'index'])->name('welcome');
 Route::post('/inscription', [InscriptionController::class, 'inscriptionAjax'])->name('inscription.ajax');
 Route::post('/inscription/services', [ServiceController::class, 'inscriptionAjax'])->name('inscription.services');
 Route::post('/choix-produit', [InscriptionController::class, 'saveProduits'])->name('choix-produit');
+Route::post('/produit/selectionner', [ProduitController::class, 'selectionner'])->name('produit.selectionner');
 
 // RSS Feed
 
@@ -183,6 +184,32 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     // DASHBOARD
     Route::get('/dashboard', [DashboardController::class, 'index_admin'])->name('dashboard');
     
+    // STATISTIQUES DES VISITES
+    Route::prefix('visits')->name('visits.')->group(function () {
+        Route::get('/', [App\Http\Controllers\VisitController::class, 'index'])->name('index');
+        Route::get('/stats', [App\Http\Controllers\VisitController::class, 'dashboardStats'])->name('stats');
+        Route::get('/by-day', [App\Http\Controllers\VisitController::class, 'visitsByDay'])->name('by_day');
+        Route::get('/by-hour', [App\Http\Controllers\VisitController::class, 'visitsByHour'])->name('by_hour');
+        Route::get('/top-pages', [App\Http\Controllers\VisitController::class, 'topPages'])->name('top_pages');
+        Route::get('/device-stats', [App\Http\Controllers\VisitController::class, 'deviceStats'])->name('device_stats');
+        Route::get('/recent', [App\Http\Controllers\VisitController::class, 'recent'])->name('recent');
+        Route::get('/export', [App\Http\Controllers\VisitController::class, 'export'])->name('export');
+    });
+
+    // GESTION DES NOTIFICATIONS
+    Route::prefix('notifications')->name('notifications.')->group(function () {
+        Route::get('/', [App\Http\Controllers\NotificationController::class, 'index'])->name('index');
+        Route::get('/manage', [App\Http\Controllers\NotificationController::class, 'manage'])->name('manage');
+        Route::get('/unread', [App\Http\Controllers\NotificationController::class, 'unread'])->name('unread');
+        Route::get('/unread-count', [App\Http\Controllers\NotificationController::class, 'unreadCount'])->name('unread_count');
+        Route::get('/stats', [App\Http\Controllers\NotificationController::class, 'stats'])->name('stats');
+        Route::post('/test', [App\Http\Controllers\NotificationController::class, 'createTest'])->name('test');
+        Route::get('/{id}', [App\Http\Controllers\NotificationController::class, 'show'])->name('show');
+        Route::patch('/{id}/read', [App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('mark_read');
+        Route::patch('/mark-all-read', [App\Http\Controllers\NotificationController::class, 'markAllAsRead'])->name('mark_all_read');
+        Route::delete('/{id}', [App\Http\Controllers\NotificationController::class, 'destroy'])->name('destroy');
+        Route::delete('/read/all', [App\Http\Controllers\NotificationController::class, 'deleteAllRead'])->name('delete_all_read');
+    });
 
     // GESTION DES UTILISATEURS
     Route::prefix('users')->name('users.')->group(function () {
@@ -302,6 +329,7 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     Route::prefix('produits')->name('produits.')->group(function () {
         Route::post('/', [ProduitController::class, 'store'])->name('store');
         Route::get('/list', [ProduitController::class, 'list'])->name('list');
+        Route::get('/selections', [ProduitController::class, 'listUserProduits'])->name('selections.list');
         Route::get('/{id}', [ProduitController::class, 'show'])->name('show');
         Route::put('/{id}', [ProduitController::class, 'update'])->name('update');
         Route::delete('/{id}', [ProduitController::class, 'destroy'])->name('destroy');
