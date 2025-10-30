@@ -326,7 +326,7 @@
                                     <label for="file" class="form-label text-warning fw-bold">
                                         <i class="fas fa-file me-1"></i>Curriculum Vitae (CV) au Format PDF*
                                     </label>
-                                    <input type="file" class="form-control" id="file" name="file"
+                                    <input type="file" class="form-control" id="file" name="file" accept="application/pdf"
                                         style="background-color: #34495e; border: 1px solid #ffc107; color: white;">
                                     <div id="cvError" class="text-danger mt-1" style="font-size: 0.95em;"></div>
                                 </div>
@@ -338,7 +338,7 @@
                                         <i class="fas fa-file me-1"></i>Lettre de motivation au Format PDF*
                                     </label>
                                     <input type="file" class="form-control" id="lettre_motivation"
-                                        name="lettre_motivation"
+                                        name="lettre_motivation" accept="application/pdf"
                                         style="background-color: #34495e; border: 1px solid #ffc107; color: white;">
                                     <div id="lettreError" class="text-danger mt-1" style="font-size: 0.95em;"></div>
                                 </div>

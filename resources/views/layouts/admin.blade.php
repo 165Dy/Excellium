@@ -1265,6 +1265,42 @@
                                 </div>
                             </div>
 
+                            <!-- Modal Édition Module -->
+                            <div class="modal fade" id="edit_module_modal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-warning">
+                                            <h5 class="modal-title text-white">
+                                                <i class="ri ri-edit-line me-2"></i>Modifier le module
+                                            </h5>
+                                            <button type="button" class="btn-close btn-close-white"
+                                                data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="editModuleForm">
+                                                <input type="hidden" id="edit_module_id">
+                                                <div class="mb-3">
+                                                    <label for="edit_module_titre" class="form-label">Titre du module <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="edit_module_titre" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="edit_module_description" class="form-label">Description</label>
+                                                    <textarea class="form-control" id="edit_module_description" rows="3"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-warning" onclick="saveEditedModule()">
+                                                <i class="ri ri-save-line me-1"></i>Enregistrer
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Modal Ajout Document -->
                             <div class="modal fade" id="add_document_modal" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -1301,6 +1337,50 @@
                                                 data-bs-dismiss="modal">Annuler</button>
                                             <button type="button" class="btn btn-info" onclick="addDocument()">
                                                 <i class="ri ri-add-line me-1"></i>Ajouter
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal Édition Document -->
+                            <div class="modal fade" id="edit_document_modal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-info">
+                                            <h5 class="modal-title text-white">
+                                                <i class="ri ri-edit-line me-2"></i>Modifier le document
+                                            </h5>
+                                            <button type="button" class="btn-close btn-close-white"
+                                                data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="editDocumentForm">
+                                                <input type="hidden" id="edit_document_id">
+                                                <div class="mb-3">
+                                                    <label for="edit_document_titre" class="form-label">Titre du document</label>
+                                                    <input type="text" class="form-control" id="edit_document_titre">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="edit_document_description" class="form-label">Description</label>
+                                                    <textarea class="form-control" id="edit_document_description" rows="2"></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="edit_document_fichier" class="form-label">Nouveau fichier <span class="text-muted">(optionnel)</span></label>
+                                                    <input type="file" class="form-control" id="edit_document_fichier"
+                                                        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar">
+                                                    <small class="text-muted">Laissez vide pour conserver le fichier actuel</small>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <small class="text-muted">Fichier actuel : <span id="current_document_name" class="fw-bold"></span></small>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-info" onclick="saveEditedDocument()">
+                                                <i class="ri ri-save-line me-1"></i>Enregistrer
                                             </button>
                                         </div>
                                     </div>
@@ -4990,7 +5070,7 @@
 
             function loadAllModules() {
                 console.log('🔵 [ADMIN] Chargement de tous les modules...');
-                fetch('/admin/formations/all-modules')
+                return fetch('/admin/formations/all-modules')
                     .then(res => {
                         console.log('📥 [ADMIN] Réponse reçue, status:', res.status);
                         return res.json();
@@ -5005,10 +5085,12 @@
                             console.warn('⚠️ [ADMIN] Échec du chargement des modules');
                             displayNoModules();
                         }
+                        return data;
                     })
                     .catch(error => {
                         console.error('❌ [ADMIN] Erreur chargement modules:', error);
                         displayNoModules('Erreur lors du chargement des modules');
+                        throw error;
                     });
             }
 
@@ -5078,83 +5160,48 @@
                 const module = allModules.find(m => m.id === moduleId);
                 if (!module) {
                     console.error('❌ [ADMIN] Module non trouvé:', moduleId);
+                    Swal.fire('Erreur', 'Module introuvable', 'error');
                     return;
                 }
                 console.log('📝 [ADMIN] Module trouvé:', module);
 
-                Swal.fire({
-                    title: 'Modifier le module',
-                    html: `
-                        <div class="text-start">
-                            <div class="mb-3">
-                                <label class="form-label">Titre <span class="text-danger">*</span></label>
-                                <input type="text" id="edit-module-titre" class="form-control swal2-input" value="${module.titre}" style="display:block; width:100%;">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Description</label>
-                                <textarea id="edit-module-description" class="form-control swal2-input" rows="3" style="display:block; width:100%;">${module.description || ''}</textarea>
-                            </div>
-                        </div>
-                    `,
-                    showCancelButton: true,
-                    confirmButtonText: 'Enregistrer',
-                    cancelButtonText: 'Annuler',
-                    focusConfirm: false,
-                    allowEnterKey: false,
-                    allowOutsideClick: true,
-                    customClass: {
-                        container: 'swal2-container',
-                        popup: 'swal2-popup',
-                        htmlContainer: 'swal2-html-container'
-                    },
-                    didOpen: () => {
-                        console.log('🔓 [ADMIN] Activation des champs de saisie...');
-                        // S'assurer que les champs sont éditables
-                        const titreInput = document.getElementById('edit-module-titre');
-                        const descInput = document.getElementById('edit-module-description');
-                        
-                        if (titreInput) {
-                            titreInput.disabled = false;
-                            titreInput.readOnly = false;
-                            titreInput.removeAttribute('disabled');
-                            titreInput.removeAttribute('readonly');
-                            titreInput.style.pointerEvents = 'auto';
-                            titreInput.style.cursor = 'text';
-                            // Focus avec un léger délai pour s'assurer que SweetAlert2 a fini son initialisation
-                            setTimeout(() => {
-                                titreInput.focus();
-                                titreInput.select();
-                            }, 100);
-                            console.log('✅ [ADMIN] Champ titre activé');
-                        }
-                        
-                        if (descInput) {
-                            descInput.disabled = false;
-                            descInput.readOnly = false;
-                            descInput.removeAttribute('disabled');
-                            descInput.removeAttribute('readonly');
-                            descInput.style.pointerEvents = 'auto';
-                            descInput.style.cursor = 'text';
-                            console.log('✅ [ADMIN] Champ description activé');
-                        }
-                    },
-                    preConfirm: () => {
-                        const titre = document.getElementById('edit-module-titre').value.trim();
-                        if (!titre) {
-                            Swal.showValidationMessage('Le titre est obligatoire');
-                            return false;
-                        }
-                        return {
-                            titre: titre,
-                            description: document.getElementById('edit-module-description').value.trim()
-                        };
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        console.log('💾 [ADMIN] Modification confirmée, envoi des données...');
-                        updateModuleData(moduleId, result.value);
-                    }
-                });
+                // Fermer d'abord la modale de liste
+                const listeModal = bootstrap.Modal.getInstance(document.getElementById('liste_modules'));
+                if (listeModal) {
+                    listeModal.hide();
+                }
+
+                // Attendre que la modale de liste soit complètement fermée avant d'ouvrir la modale d'édition
+                const listeModuleElement = document.getElementById('liste_modules');
+                listeModuleElement.addEventListener('hidden.bs.modal', function openEditModal() {
+                    // Remplir la modale d'édition avec les données
+                    document.getElementById('edit_module_id').value = module.id;
+                    document.getElementById('edit_module_titre').value = module.titre;
+                    document.getElementById('edit_module_description').value = module.description || '';
+
+                    // Ouvrir la modale d'édition
+                    const editModal = new bootstrap.Modal(document.getElementById('edit_module_modal'));
+                    editModal.show();
+                    console.log('✅ [ADMIN] Modale d\'édition ouverte');
+
+                    // Supprimer l'écouteur pour éviter les doublons
+                    listeModuleElement.removeEventListener('hidden.bs.modal', openEditModal);
+                }, { once: true });
+            }
+
+            // Fonction pour sauvegarder les modifications du module
+            function saveEditedModule() {
+                const moduleId = document.getElementById('edit_module_id').value;
+                const titre = document.getElementById('edit_module_titre').value.trim();
+                const description = document.getElementById('edit_module_description').value.trim();
+
+                if (!titre) {
+                    Swal.fire('Attention', 'Le titre est obligatoire', 'warning');
+                    return;
+                }
+
+                console.log('💾 [ADMIN] Sauvegarde du module:', moduleId);
+                updateModuleData(moduleId, { titre, description });
             }
 
             function updateModuleData(moduleId, data) {
@@ -5176,8 +5223,30 @@
                         console.log('📊 [ADMIN] Données reçues:', response);
                         if (response.success) {
                             console.log('✅ [ADMIN] Module modifié avec succès');
-                            Swal.fire('Succès', 'Module modifié avec succès', 'success');
-                            loadAllModules();
+                            // Fermer la modale d'édition
+                            const editModal = bootstrap.Modal.getInstance(document.getElementById('edit_module_modal'));
+                            if (editModal) {
+                                editModal.hide();
+                            }
+                            
+                            // Attendre la fermeture de la modale d'édition avant de réouvrir la liste
+                            document.getElementById('edit_module_modal').addEventListener('hidden.bs.modal', function reopenList() {
+                                Swal.fire({
+                                    title: 'Succès',
+                                    text: 'Module modifié avec succès',
+                                    icon: 'success',
+                                    timer: 1500,
+                                    showConfirmButton: false
+                                });
+                                
+                                // Recharger les modules et réouvrir la liste
+                                loadAllModules().then(() => {
+                                    const listeModal = new bootstrap.Modal(document.getElementById('liste_modules'));
+                                    listeModal.show();
+                                });
+                                
+                                document.getElementById('edit_module_modal').removeEventListener('hidden.bs.modal', reopenList);
+                            }, { once: true });
                         } else {
                             console.error('❌ [ADMIN] Erreur:', response.message);
                             Swal.fire('Erreur', response.message, 'error');
@@ -5245,7 +5314,7 @@
 
             function loadAllDocuments() {
                 console.log('🔵 [ADMIN] Chargement de tous les documents...');
-                fetch('/admin/formations/all-documents')
+                return fetch('/admin/formations/all-documents')
                     .then(res => {
                         console.log('📥 [ADMIN] Réponse reçue, status:', res.status);
                         return res.json();
@@ -5260,10 +5329,12 @@
                             console.warn('⚠️ [ADMIN] Échec du chargement des documents');
                             displayNoDocuments();
                         }
+                        return data;
                     })
                     .catch(error => {
                         console.error('❌ [ADMIN] Erreur chargement documents:', error);
                         displayNoDocuments('Erreur lors du chargement des documents');
+                        throw error;
                     });
             }
 
@@ -5299,6 +5370,9 @@
                         </td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-2">
+                                <button class="btn btn-sm btn-icon btn-outline-warning" title="Modifier" onclick="editDocument(${doc.id})">
+                                    <i class="ri ri-edit-line"></i>
+                                </button>
                                 <button class="btn btn-sm btn-icon btn-outline-info" title="Télécharger" onclick="downloadDocument(${doc.id})">
                                     <i class="ri ri-download-line"></i>
                                 </button>
@@ -5331,6 +5405,108 @@
 
                 const filtered = allDocuments.filter(d => d.formation_id == formationId);
                 displayDocuments(filtered);
+            }
+
+            function editDocument(documentId) {
+                console.log('🔧 [ADMIN] Édition document ID:', documentId);
+                const doc = allDocuments.find(d => d.id === documentId);
+                if (!doc) {
+                    console.error('❌ [ADMIN] Document non trouvé:', documentId);
+                    Swal.fire('Erreur', 'Document introuvable', 'error');
+                    return;
+                }
+                console.log('📝 [ADMIN] Document trouvé:', doc);
+
+                // Fermer d'abord la modale de liste
+                const listeModal = bootstrap.Modal.getInstance(document.getElementById('liste_documents'));
+                if (listeModal) {
+                    listeModal.hide();
+                }
+
+                // Attendre que la modale de liste soit complètement fermée avant d'ouvrir la modale d'édition
+                const listeDocumentElement = document.getElementById('liste_documents');
+                listeDocumentElement.addEventListener('hidden.bs.modal', function openEditModal() {
+                    // Remplir la modale d'édition avec les données
+                    document.getElementById('edit_document_id').value = doc.id;
+                    document.getElementById('edit_document_titre').value = doc.titre || '';
+                    document.getElementById('edit_document_description').value = doc.description || '';
+                    document.getElementById('current_document_name').textContent = doc.fichier ? doc.fichier.split('/').pop() : 'N/A';
+
+                    // Ouvrir la modale d'édition
+                    const editModal = new bootstrap.Modal(document.getElementById('edit_document_modal'));
+                    editModal.show();
+                    console.log('✅ [ADMIN] Modale d\'édition de document ouverte');
+
+                    // Supprimer l'écouteur pour éviter les doublons
+                    listeDocumentElement.removeEventListener('hidden.bs.modal', openEditModal);
+                }, { once: true });
+            }
+
+            // Fonction pour sauvegarder les modifications du document
+            function saveEditedDocument() {
+                const documentId = document.getElementById('edit_document_id').value;
+                const titre = document.getElementById('edit_document_titre').value.trim();
+                const description = document.getElementById('edit_document_description').value.trim();
+                const fichier = document.getElementById('edit_document_fichier').files[0];
+
+                console.log('💾 [ADMIN] Sauvegarde du document:', documentId);
+                
+                const formData = new FormData();
+                formData.append('titre', titre);
+                formData.append('description', description);
+                formData.append('_method', 'PUT'); // Method spoofing pour Laravel
+                if (fichier) {
+                    formData.append('fichier', fichier);
+                }
+
+                fetch(`/admin/formations/documents/${documentId}`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                        },
+                        body: formData
+                    })
+                    .then(res => {
+                        console.log('📥 [ADMIN] Réponse reçue, status:', res.status);
+                        return res.json();
+                    })
+                    .then(response => {
+                        console.log('📊 [ADMIN] Données reçues:', response);
+                        if (response.success) {
+                            console.log('✅ [ADMIN] Document modifié avec succès');
+                            // Fermer la modale d'édition
+                            const editModal = bootstrap.Modal.getInstance(document.getElementById('edit_document_modal'));
+                            if (editModal) {
+                                editModal.hide();
+                            }
+                            
+                            // Attendre la fermeture de la modale d'édition avant de réouvrir la liste
+                            document.getElementById('edit_document_modal').addEventListener('hidden.bs.modal', function reopenList() {
+                                Swal.fire({
+                                    title: 'Succès',
+                                    text: 'Document modifié avec succès',
+                                    icon: 'success',
+                                    timer: 1500,
+                                    showConfirmButton: false
+                                });
+                                
+                                // Recharger les documents et réouvrir la liste
+                                loadAllDocuments().then(() => {
+                                    const listeModal = new bootstrap.Modal(document.getElementById('liste_documents'));
+                                    listeModal.show();
+                                });
+                                
+                                document.getElementById('edit_document_modal').removeEventListener('hidden.bs.modal', reopenList);
+                            }, { once: true });
+                        } else {
+                            console.error('❌ [ADMIN] Erreur:', response.message);
+                            Swal.fire('Erreur', response.message, 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ [ADMIN] Erreur mise à jour document:', error);
+                        Swal.fire('Erreur', 'Une erreur est survenue', 'error');
+                    });
             }
 
             function downloadDocument(documentId) {

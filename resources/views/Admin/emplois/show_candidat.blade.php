@@ -200,7 +200,7 @@
                                     <h5 class="card-title mb-3">Documents</h5>
                                     <div class="d-flex flex-wrap gap-2">
                                         @if ($candidature->cv_path)
-                                            <a href="{{ $candidature->cv_path }}" target="_blank" class="btn btn-danger">
+                                            <a href="{{ asset('storage/' . $candidature->cv_path) }}" target="_blank" class="btn btn-danger">
                                                 <i class="ri ri-file-paper-line"></i> CV
                                             </a>
                                         @else
@@ -208,7 +208,7 @@
                                         @endif
 
                                         @if ($candidature->lettre_motivation)
-                                            <a href="{{ $candidature->lettre_motivation }}" target="_blank"
+                                            <a href="{{ asset('storage/' . $candidature->lettre_motivation) }}" target="_blank"
                                                 class="btn btn-info">
                                                 <i class="ri ri-file-text-line me-1"></i> Lettre de Motivation
                                             </a>
