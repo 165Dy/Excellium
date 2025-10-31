@@ -659,8 +659,10 @@ class formationsController extends Controller
     private function creerCompteParticipant(InscriptionFormation $inscription)
     {
         try {
-            // Vérifier si l'utilisateur existe déjà
-            $existingUser = User::where('email', $inscription->email)->first();
+            // Vérifier si l'utilisateur existe déjà par email OU téléphone
+            $existingUser = User::where('email', $inscription->email)
+                ->orWhere('telephone', $inscription->telephone)
+                ->first();
             
             if ($existingUser) {
                 Log::info("L'utilisateur existe déjà, liaison à la formation", [
@@ -691,15 +693,15 @@ class formationsController extends Controller
             $prenom = $partiesNom[0] ?? '';
             $nom = $partiesNom[1] ?? $partiesNom[0]; // Si pas de prénom, tout est considéré comme nom
             
-            // Créer l'utilisateur SANS mot de passe (pas d'accès de connexion)
+            // Créer l'utilisateur SANS mot de passe (réservé aux admins uniquement)
             $user = User::create([
                 'nom' => $nom,
                 'prenom' => $prenom,
                 'email' => $inscription->email,
                 'telephone' => $inscription->telephone,
-                'password' => null, // Pas de mot de passe = pas d'accès
+                'password' => null,
                 'type' => 'participant_formation',
-                'email_verified_at' => null, // Pas vérifié car pas d'accès
+                'email_verified_at' => null,
             ]);
             
             Log::info("Participant enregistré dans le système (sans accès de connexion)", [

@@ -447,10 +447,13 @@ class OpportuniteController extends Controller
                 ], 400);
             }
 
-            // Vérifier si l'utilisateur a déjà postulé
-            $existingUser = \App\Models\User::where('email', $request->email)->first();
+            // Vérifier si l'utilisateur existe déjà par email OU téléphone
+            $existingUser = \App\Models\User::where('email', $request->email)
+                ->orWhere('telephone', $request->telephone)
+                ->first();
             
             if ($existingUser) {
+                // Vérifier si l'utilisateur a déjà postulé
                 $existingPostulation = Postulation::where('opportunite_id', $opportunite->id)
                     ->where('user_id', $existingUser->id)
                     ->first();
@@ -461,13 +464,11 @@ class OpportuniteController extends Controller
                         'message' => 'Vous avez déjà postulé à cette opportunité'
                     ], 400);
                 }
-            }
-
-            // Créer ou récupérer l'utilisateur
-            $user = \App\Models\User::where('email', $request->email)->first();
-            
-            if (!$user) {
-                // Créer un nouvel utilisateur
+                
+                // Utiliser l'utilisateur existant
+                $user = $existingUser;
+            } else {
+                // Créer un nouvel utilisateur (sans mot de passe - réservé aux admins)
                 $nomPrenom = explode(' ', $request->nom_complet, 2);
                 $user = \App\Models\User::create([
                     'nom' => $nomPrenom[1] ?? '',
@@ -475,7 +476,7 @@ class OpportuniteController extends Controller
                     'email' => $request->email,
                     'telephone' => $request->telephone,
                     'type' => 'participant_autre',
-                    'password' => null, // Pas de mot de passe pour les candidatures externes
+                    'password' => null,
                 ]);
             }
 

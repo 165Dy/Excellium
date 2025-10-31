@@ -139,7 +139,7 @@ class ServiceController extends Controller
     public function inscriptionAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => ['required', 'email', 'unique:users,email'],
+            'email' => ['required', 'email'],
             'nom' => 'required|string|max:50',
             'prenom' => 'required|string|max:50',
             'telephone' => 'nullable|string|max:20',
@@ -157,15 +157,22 @@ class ServiceController extends Controller
         try {
             DB::beginTransaction();
 
-            // Créer l'utilisateur
-            $user = User::create([
-                'email' => $request->email,
-                'nom' => $request->nom,
-                'prenom' => $request->prenom,
-                'telephone' => $request->telephone,
-                'type' => 'autre',
-                'password' => null
-            ]);
+            // Vérifier si l'utilisateur existe déjà par email OU téléphone
+            $user = User::where('email', $request->email)
+                        ->orWhere('telephone', $request->telephone)
+                        ->first();
+
+            if (!$user) {
+                // Créer un nouvel utilisateur (sans mot de passe - réservé aux admins)
+                $user = User::create([
+                    'email' => $request->email,
+                    'nom' => $request->nom,
+                    'prenom' => $request->prenom,
+                    'telephone' => $request->telephone,
+                    'type' => 'participant_service',
+                    'password' => null
+                ]);
+            }
 
             // Récupérer le service
             $service = Service::findOrFail($request->service_id);
