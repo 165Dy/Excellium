@@ -50,7 +50,7 @@
                         </div>
                         <div class="member-info">
                             <h3><a href="{{ route('clients.partenaires.show') }}">Crepin Guy</a></h3>
-                            <p class="position">PDG Excellium conseils</p>
+                            <p class="position">PDG Excellium </p>
                             
                         </div>
                     </div>
