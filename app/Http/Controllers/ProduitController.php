@@ -165,16 +165,19 @@ class ProduitController extends Controller
         try {
             DB::beginTransaction();
 
-            // Créer ou récupérer l'utilisateur
-            $user = User::where('email', $request->email)->first();
+            // Vérifier si l'utilisateur existe déjà par email OU téléphone
+            $user = User::where('email', $request->email)
+                        ->orWhere('telephone', $request->telephone)
+                        ->first();
             
             if (!$user) {
+                // Créer un nouvel utilisateur (sans mot de passe - réservé aux admins)
                 $user = User::create([
                     'email' => $request->email,
                     'nom' => $request->nom,
                     'prenom' => $request->prenom,
                     'telephone' => $request->telephone,
-                    'type' => 'autre',
+                    'type' => 'participant_produit',
                     'password' => null
                 ]);
             }
