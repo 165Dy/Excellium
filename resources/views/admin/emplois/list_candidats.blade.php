@@ -111,7 +111,7 @@
                                         {{ \Carbon\Carbon::parse($candidat->created_at)->format('h:i') }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('candidatures.show', $candidat->id) }}"
+                                        <a href="{{ route('admin.candidatures.show', $candidat->id) }}"
                                             class="btn btn-sm btn-outline-primary">
                                             Voir le détail <i class="fas fa-arrow-right ms-1"></i>
                                         </a>
