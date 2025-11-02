@@ -73,11 +73,11 @@
                         @endforelse
                     </tbody>
 
-            </table>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-    
+
     @include('admin.users.delete_modal')
 
 @endsection
