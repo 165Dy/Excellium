@@ -49,7 +49,7 @@
 
 
                                     <small class="text-muted">
-                                        <strong class="badge bg-info">Temps: {{ $joursRestants }}jr(s)  
+                                        <strong class="badge bg-info">Temps: {{ $joursRestants }}jr(s)
                                             {{ $heuresRestantes }}H
                                         </strong>
                                     </small>
@@ -76,7 +76,8 @@
                                                 <li class="list-group-item"><strong>Téléphone :</strong>
                                                     {{ $candidature->telephone ?? 'Non fourni' }}</li>
                                                 <li class="list-group-item"><strong>Date de candidature :</strong>
-                                                    {{ $candidature->created_at->format('d/m/Y H:i') }}</li>
+                                                    {{ $candidature->emploi && $candidature->emploi->date_expiration ? \Carbon\Carbon::parse($candidature->emploi->date_expiration)->format('d/m/Y H:i') : 'N/A' }}
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -176,8 +177,8 @@
 
                                                 <div class="col-md-6">
                                                     <strong>Date d'expiration :</strong>
-                                                    <p class=" badge bg-danger">
-                                                        {{ $candidature->emploi->date_expiration ? \Carbon\Carbon::parse($candidature->emploi->date_expiration)->format('d/m/Y') : 'N/A' }}
+                                                    <p class="badge bg-danger">
+                                                        {{$candidature->emploi && $candidature->emploi->date_expiration ? \Carbon\Carbon::parse($candidature->emploi->date_expiration)->format('d/m/Y') : 'N/A' }}
                                                     </p>
                                                 </div>
 
@@ -199,7 +200,7 @@
                                     <h5 class="card-title mb-3">Documents</h5>
                                     <div class="d-flex flex-wrap gap-2">
                                         @if ($candidature->cv_path)
-                                            <a href="{{ $candidature->cv_path }}" target="_blank" class="btn btn-danger">
+                                            <a href="{{ asset('storage/' . $candidature->cv_path) }}" target="_blank" class="btn btn-danger">
                                                 <i class="ri ri-file-paper-line"></i> CV
                                             </a>
                                         @else
@@ -207,7 +208,7 @@
                                         @endif
 
                                         @if ($candidature->lettre_motivation)
-                                            <a href="{{ $candidature->lettre_motivation }}" target="_blank"
+                                            <a href="{{ asset('storage/' . $candidature->lettre_motivation) }}" target="_blank"
                                                 class="btn btn-info">
                                                 <i class="ri ri-file-text-line me-1"></i> Lettre de Motivation
                                             </a>
