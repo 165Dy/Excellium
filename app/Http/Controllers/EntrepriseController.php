@@ -40,7 +40,7 @@ class EntrepriseController extends Controller
             return $this->exportToCsv($query);
         }
 
-        return view('admin.entreprises.index', compact('entreprises', 'filterData'));
+        return view('Admin.entreprises.index', compact('entreprises', 'filterData'));
     }
 
     /**
@@ -162,7 +162,7 @@ class EntrepriseController extends Controller
     {
         $this->checkAdminPermissions();
 
-        return view('admin.entreprises.create');
+        return view('Admin.entreprises.create');
     }
 
     /**
@@ -206,7 +206,7 @@ class EntrepriseController extends Controller
         $entreprise->load(['assistancesComptables.user']);
         $admins = User::whereIn('type', ['admin', 'super_admin'])->orderBy('nom')->get();
 
-        return view('admin.entreprises.show', compact('entreprise', 'admins'));
+        return view('Admin.entreprises.show', compact('entreprise', 'admins'));
     }
 
     /**
@@ -216,7 +216,7 @@ class EntrepriseController extends Controller
     {
         $this->checkAdminPermissions();
 
-        return view('admin.entreprises.edit', compact('entreprise'));
+        return view('Admin.entreprises.edit', compact('entreprise'));
     }
 
     /**

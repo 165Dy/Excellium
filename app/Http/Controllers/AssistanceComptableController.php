@@ -25,7 +25,7 @@ class AssistanceComptableController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(15);
 
-        return view('admin.assistance_comptable.index', compact('assistances'));
+        return view('Admin.assistance_comptable.index', compact('assistances'));
     }
 
     /**
@@ -38,7 +38,7 @@ class AssistanceComptableController extends Controller
         $entreprises = Entreprise::orderBy('nom')->get();
         $admins = User::whereIn('type', ['admin', 'super_admin'])->orderBy('nom')->get();
 
-        return view('admin.assistance_comptable.create', compact('entreprises', 'admins'));
+        return view('Admin.assistance_comptable.create', compact('entreprises', 'admins'));
     }
 
     /**
@@ -100,7 +100,7 @@ class AssistanceComptableController extends Controller
 
         $assistance->load(['user', 'entreprise']);
 
-        return view('admin.assistance_comptable.show', compact('assistance'));
+        return view('Admin.assistance_comptable.show', compact('assistance'));
     }
 
     /**
@@ -113,7 +113,7 @@ class AssistanceComptableController extends Controller
         $entreprises = Entreprise::orderBy('nom')->get();
         $admins = User::whereIn('type', ['admin', 'super_admin'])->orderBy('nom')->get();
 
-        return view('admin.assistance_comptable.edit', compact('assistance', 'entreprises', 'admins'));
+        return view('Admin.assistance_comptable.edit', compact('assistance', 'entreprises', 'admins'));
     }
 
     /**

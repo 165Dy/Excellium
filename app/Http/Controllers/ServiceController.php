@@ -20,7 +20,7 @@ class ServiceController extends Controller
     // Page d'accueil des services (admin)
     public function index()
     {
-        return view('admin.services.index');
+        return view('Admin.services.index');
     }
 
     // Liste des services pour DataTable

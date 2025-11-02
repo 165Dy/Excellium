@@ -36,13 +36,13 @@ class EmploiController extends Controller
             $categories = \App\Models\Categorie::all() ?? collect();
             $formations = \App\Models\Formation::all() ?? collect();
             
-            return view('admin.emplois.index', compact('emplois', 'categories', 'formations'));
+            return view('Admin.emplois.index', compact('emplois', 'categories', 'formations'));
             
         } catch (\Exception $e) {
             Log::error('Erreur dans EmploiController@index: ' . $e->getMessage());
             
             // Retourner une vue d'erreur ou rediriger
-            return view('admin.emplois.index', [
+            return view('Admin.emplois.index', [
                 'emplois' => collect(),
                 'categories' => collect(),
                 'formations' => collect(),
@@ -94,7 +94,7 @@ class EmploiController extends Controller
         $categories = \App\Models\Categorie::all() ?? collect();
         $formations = \App\Models\Formation::all() ?? collect();
         
-        return view('admin.emplois.create', compact('categories', 'formations'));
+        return view('Admin.emplois.create', compact('categories', 'formations'));
     }
 
     /**
@@ -152,7 +152,7 @@ class EmploiController extends Controller
         $categories = \App\Models\Categorie::all() ?? collect();
         $formations = \App\Models\Formation::all() ?? collect();
 
-        return view('admin.emplois.show', compact('emploi', 'categories', 'formations'));
+        return view('Admin.emplois.show', compact('emploi', 'categories', 'formations'));
     }
 
     public function show_public($id)
@@ -174,7 +174,7 @@ class EmploiController extends Controller
         $categories = \App\Models\Categorie::all() ?? collect();
         $formations = \App\Models\Formation::all() ?? collect();
         
-        return view('admin.emplois.edit', compact('emploi', 'categories', 'formations'));
+        return view('Admin.emplois.edit', compact('emploi', 'categories', 'formations'));
     }
 
     /**
@@ -481,7 +481,7 @@ class EmploiController extends Controller
         $categories = \App\Models\Categorie::all() ?? collect();
         $formations = \App\Models\Formation::all() ?? collect();
     
-        return view('admin.emplois.list_candidats', compact('candidats', 'categories', 'formations'));
+        return view('Admin.emplois.list_candidats', compact('candidats', 'categories', 'formations'));
     }
 
     /**
@@ -496,7 +496,7 @@ class EmploiController extends Controller
         $formations = \App\Models\Formation::all() ?? collect();
         
         // La vue 'show_candidat' devra être créée
-        return view('admin.emplois.show_candidat', compact('candidature', 'categories', 'formations'));
+        return view('Admin.emplois.show_candidat', compact('candidature', 'categories', 'formations'));
     }
 
 } 

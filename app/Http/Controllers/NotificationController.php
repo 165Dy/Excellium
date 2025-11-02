@@ -198,7 +198,7 @@ class NotificationController extends Controller
         // Statistiques globales par type (non filtrées)
         $stats = Notification::statsByType();
         
-        return view('admin.notifications.index', compact('notifications', 'stats', 'filteredStats'));
+        return view('Admin.notifications.index', compact('notifications', 'stats', 'filteredStats'));
     }
 
     /**

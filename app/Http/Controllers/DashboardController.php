@@ -111,13 +111,13 @@ class DashboardController extends Controller
 
 
 
-    public function index_user()
+    /* public function index_user()
     {
         $formations = Formation::with('categorie')->get();
         $categories = Categorie::all();
      
         return view('Admin.Divers.Articles_index', compact('categories', 'formations'));
-    }
+    } */
 
     public function index_articles()
     {

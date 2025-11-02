@@ -256,56 +256,56 @@ class AuthController extends Controller
 
         $users = User::orderBy('created_at', 'desc')->get();
 
-        return view('admin.Users.index', compact('users'));
+        return view('Admin.Users.index', compact('users'));
     }
 
     /**
- * Afficher les détails d'un utilisateur
- */
+     * Afficher les détails d'un utilisateur
+    */
     public function showUser($id)
     {
-     $currentUser = Auth::user();
+        $currentUser = Auth::user();
 
-    if ($currentUser->type !== 'super_admin') {
-        return redirect()->route('admin.users.index')->with('error', 'Accès non autorisé.');
-    }
+        if ($currentUser->type !== 'super_admin') {
+            return redirect()->route('admin.users.index')->with('error', 'Accès non autorisé.');
+        }
 
-    $user = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
-    // Si le user est un participant
-    if ($user->type !== 'super_admin' || $user->type !== 'admin') {
-       $formations = $user->formations()->with('categorie')->get()->map(function($f) {
-            $f->type = 'formation';
-            return $f;
-        });
+        // Si le user est un participant
+        if ($user->type !== 'super_admin' || $user->type !== 'admin') {
+        $formations = $user->formations()->with('categorie')->get()->map(function($f) {
+                $f->type = 'formation';
+                return $f;
+            });
 
-        $emplois = Candidature::with('emploi')->where('email', $user->email)->get()->map(function($c) {
-            $c->type = 'emploi';
-            return $c;
-        });
+            $emplois = Candidature::with('emploi')->where('email', $user->email)->get()->map(function($c) {
+                $c->type = 'emploi';
+                return $c;
+            });
 
-        $opportunites = Postulation::with(['opportunite.categorie'])->where('user_id', $user->id)->get()->map(function($p) {
-            $p->type = 'opportunite';
-            return $p;
-        });
-        $participations = collect()
-            ->merge($formations)
-            ->merge($emplois)
-            ->merge($opportunites);
+            $opportunites = Postulation::with(['opportunite.categorie'])->where('user_id', $user->id)->get()->map(function($p) {
+                $p->type = 'opportunite';
+                return $p;
+            });
+            $participations = collect()
+                ->merge($formations)
+                ->merge($emplois)
+                ->merge($opportunites);
 
-       $invitations = collect(); // vide pour un participant
-    }
-    // Si c’est un admin, on récupère ses invitations envoyées
-    elseif ($user->type === 'admin' || $user->type === 'super_admin') {
-        $invitations = $user->invitations()->latest()->get();
-        $participations = collect(); // vide
-    } 
-    else {
-        $participations = collect();
-        $invitations = collect();
-    }
+        $invitations = collect(); // vide pour un participant
+        }
+        // Si c’est un admin, on récupère ses invitations envoyées
+        elseif ($user->type === 'admin' || $user->type === 'super_admin') {
+            $invitations = $user->invitations()->latest()->get();
+            $participations = collect(); // vide
+        } 
+        else {
+            $participations = collect();
+            $invitations = collect();
+        }
 
-    return view('admin.users.show', compact('user', 'participations', 'invitations'));
+        return view('Admin.users.show', compact('user', 'participations', 'invitations'));
     }
 
 

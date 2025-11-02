@@ -18,7 +18,7 @@ class OpportuniteController extends Controller
     public function index()
     {
         $opportunites = Opportunite::with('categorie', 'postulations')->get();
-        return view('admin.opportunites.index', compact('opportunites'));
+        return view('Admin.opportunites.index', compact('opportunites'));
     }
 
     /**

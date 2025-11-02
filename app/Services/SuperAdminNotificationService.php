@@ -158,12 +158,18 @@ class SuperAdminNotificationService
      */
     public static function prepareProduitSelectionData($selection, $produit, $user)
     {
+        // Support pour les utilisateurs avec prenom/nom ou name
+        $userName = isset($user->prenom) && isset($user->nom) 
+            ? $user->prenom . ' ' . $user->nom 
+            : ($user->name ?? 'Utilisateur');
+            
         return [
             'action_type' => 'Nouvelle sélection de produit',
             'action_description' => 'Un utilisateur a sélectionné un produit',
             'alert_type' => 'info',
-            'user_name' => $user->name,
+            'user_name' => $userName,
             'user_email' => $user->email,
+            'user_phone' => $user->telephone ?? '',
             'action_date' => now()->format('d/m/Y à H:i'),
             'entity_type' => 'Produit',
             'entity_name' => $produit->nom,
