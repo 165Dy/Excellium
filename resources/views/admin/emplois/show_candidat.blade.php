@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center badge bg-primary">
-                                <a href="{{ route('emplois.candidatures.index') }}" class="btn-outline-secondary">
+                                <a href="{{ route('admin.emplois.candidatures.index') }}" class="btn-outline-secondary">
                                     <i class="ri ri-arrow-left-line" style="color: rgb(255, 254, 254);font-size: 20px;"></i> 
                                 </a>
                             </div>

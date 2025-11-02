@@ -35,7 +35,7 @@
                         <td>
                             <div class="action" style="justify-content: space-between">
                                 
-                                <a href="{{ route('users.show') }}">
+                                <a href="{{ route('admin.users.show', $user->id) }}">
                                     <svg style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#d7d041" d="M1.182 12C2.122 6.88 6.608 3 12 3s9.878 3.88 10.819 9c-.94 5.12-5.427 9-10.819 9s-9.878-3.88-10.818-9M12 17a5 5 0 1 0 0-10a5 5 0 0 0 0 10m0-2a3 3 0 1 1 0-6a3 3 0 0 1 0 6"/></svg>
                                 </a>&nbsp;&nbsp;&nbsp;&nbsp;
                                 {{-- <div class="col-md-6 col-sm-12">
