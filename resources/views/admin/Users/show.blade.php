@@ -8,7 +8,7 @@
                     <a href="{{ route('admin.users.index') }}" class="btn btn-light btn-sm">← Retour</a>
                 </div>
 
-                <div class="card-body">
+                    <div class="card-body">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <h6 class="text-muted">Nom</h6>

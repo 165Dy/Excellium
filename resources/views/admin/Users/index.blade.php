@@ -21,11 +21,10 @@
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Email</th>
-                        <th>City</th>
-                        <th>Date</th>
-                        <th>Documents</th>
-                        <th>Telechargements</th>
-                        <th>Action</th>
+                            <th>Téléphone</th>
+                            <th>Type</th>
+                            <th>Date de création</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
 
@@ -74,11 +73,11 @@
                         @endforelse
                     </tbody>
 
-                </table>
-            </div>
+            </table>
         </div>
     </div>
-
+</div>
+    
     @include('admin.users.delete_modal')
 
 @endsection
