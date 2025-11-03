@@ -197,9 +197,10 @@ class DocumentController extends Controller
             Log::info("✅ Document trouvé:", ['document' => $document->toArray()]);
             
             // Si c'est un document de formation, vérifier les permissions (sauf pour les admins)
-            if ($document->formation_id && !auth()->user()->isAdmin()) {
+            $user = Auth::user();
+            if ($document->formation_id && !method_exists($user, 'isAdmin') ? true : !$user->isAdmin()) {
                 $isAuthorized = $this->checkUserAccess($document->formation_id);
-                
+
                 if (!$isAuthorized) {
                     Log::warning("⚠️ Accès refusé au document pour l'utilisateur");
                     return response()->json([
@@ -367,8 +368,8 @@ class DocumentController extends Controller
 
         $user = Auth::user();
         
-        // Vérifier si l'utilisateur est admin (peut tout voir)
-        if (isset($user->role) && $user->role === 'admin') {
+        // Vérifier si l'utilisateur est admin ou super_admin (peut tout voir)
+        if (isset($user->type) && in_array($user->type, ['super_admin', 'admin'])) {
             return true;
         }
 
