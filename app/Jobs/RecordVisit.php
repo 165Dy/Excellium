@@ -4,14 +4,13 @@ namespace App\Jobs;
 
 use App\Models\Visit;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Agent;
 
-class RecordVisit implements ShouldQueue
+class RecordVisit
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 

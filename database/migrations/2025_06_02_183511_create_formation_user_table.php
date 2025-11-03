@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('statut', ['en_attente', 'confirme', 'refuse'])->default('en_attente');
             $table->timestamps();
             
-            // Pas de contrainte unique car on veut permettre les inscriptions publiques par email
+            $table->unique(['formation_id', 'email'], 'unique_formation_user');
             // La vérification des doublons se fera au niveau applicatif (formation_id + email)
         });
     }

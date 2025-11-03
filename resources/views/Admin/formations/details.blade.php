@@ -229,11 +229,11 @@
                             <td>{{ $inscription->email }}</td>
                             <td>{{ $inscription->telephone ?? 'N/A' }}</td>
                             <td>
-                                <span class="badge bg-{{ $inscription->pivot->statut === 'confirme' ? 'success' : ($inscription->pivot->statut === 'refuse' ? 'danger' : 'warning') }}">
-                                    {{ ucfirst($inscription->pivot->statut) }}
+                                <span class="badge bg-{{ optional($inscription)->statut === 'confirme' ? 'success' : (optional($inscription)->statut === 'refuse' ? 'danger' : 'warning') }}">
+                                    {{ ucfirst(optional($inscription)->statut ?? 'en_attente') }}
                                 </span>
                             </td>
-                            <td>{{ \Carbon\Carbon::parse($inscription->pivot->created_at)->format('d/m/Y H:i') }}</td>
+                            <td>{{ $inscription->created_at ? \Carbon\Carbon::parse($inscription->created_at)->format('d/m/Y H:i') : 'N/A' }}</td>
                         </tr>
                         @empty
                         <tr>

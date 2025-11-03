@@ -77,7 +77,7 @@ class SuperAdminNotificationService
             'badge_type' => 'info',
             'entity_status' => ucfirst($inscription->statut ?? 'En attente'),
             'status_badge' => self::getStatusBadge($inscription->statut ?? 'en_attente'),
-            'dashboard_link' => route('admin.formations.details', $formation->id),
+            'dashboard_link' => route('admin.formations.details_page', $formation->id),
         ];
     }
 

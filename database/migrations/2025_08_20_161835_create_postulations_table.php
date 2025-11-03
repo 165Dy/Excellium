@@ -24,6 +24,8 @@ return new class extends Migration
 
             $table->text('message')->nullable();
 
+            $table->unique(['user_id', 'opportunite_id'], 'unique_user_opportunite');
+
             $table->timestamps();
 
             $table->index(['user_id', 'created_at']);
