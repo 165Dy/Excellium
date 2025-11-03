@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 use Mailgun\Mailgun;
 
 class AuthController extends Controller
@@ -178,20 +179,34 @@ class AuthController extends Controller
         );
 
         // Envoi de l'email de réinitialisation via Mailgun
-        $resetUrl = route('password.reset', ['token' => $token]);
-        $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
-        $variables = [
-            'reset_link' => $resetUrl,
-            'token' => $token,
-        ];
-        
-        $mg->messages()->send(env('MAILGUN_DOMAIN'), [
-            'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
-            'to' => $request->email,
-            'subject' => 'Réinitialisation de votre mot de passe - Excellium Conseils',
-            'template' => 'Excellium_réinitialisation_mdp',
-            'h:X-Mailgun-Variables' => json_encode($variables),
-        ]);
+        try {
+            $mailgunSecret = config('services.mailgun.secret');
+            $mailgunDomain = config('services.mailgun.domain');
+            $mailgunEndpoint = config('services.mailgun.endpoint', 'api.eu.mailgun.net');
+            
+            if (!empty($mailgunSecret) && !empty($mailgunDomain)) {
+                $resetUrl = route('password.reset', ['token' => $token]);
+                $variables = [
+                    'reset_link' => $resetUrl,
+                    'token' => $token,
+                ];
+                
+                $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
+                $mg->messages()->send($mailgunDomain, [
+                    'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
+                    'to' => $request->email,
+                    'subject' => 'Réinitialisation de votre mot de passe - Excellium Conseils',
+                    'template' => 'Excellium_réinitialisation_mdp',
+                    'h:X-Mailgun-Variables' => json_encode($variables),
+                ]);
+
+                Log::info("Email de réinitialisation envoyé à: {$request->email}");
+            } else {
+                Log::warning("Configuration Mailgun manquante - Email de réinitialisation non envoyé");
+            }
+        } catch (\Exception $e) {
+            Log::error("Erreur envoi email réinitialisation: " . $e->getMessage());
+        }
 
         return back()->with('success', 'Lien de réinitialisation envoyé par email.');
     }

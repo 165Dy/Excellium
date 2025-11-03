@@ -491,14 +491,22 @@ class formationsController extends Controller
                 ];
 
                 // Envoi du mail via Mailgun
-                $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
-                $mg->messages()->send(env('MAILGUN_DOMAIN'), [
-                    'from' => 'contact@excelliumconseils.com',
-                    'to' => $inscription->email,
-                    'subject' => 'Confirmation de votre inscription à la formation',
-                    'template' => 'excellium_formation_welcome',
-                    'h:X-Mailgun-Variables' => json_encode($variables),
-                ]);
+                $mailgunSecret = config('services.mailgun.secret');
+                $mailgunDomain = config('services.mailgun.domain');
+                $mailgunEndpoint = config('services.mailgun.endpoint', 'api.eu.mailgun.net');
+                
+                if (!empty($mailgunSecret) && !empty($mailgunDomain)) {
+                    $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
+                    $mg->messages()->send($mailgunDomain, [
+                        'from' => 'contact@excelliumconseils.com',
+                        'to' => $inscription->email,
+                        'subject' => 'Confirmation de votre inscription à la formation',
+                        'template' => 'excellium_formation_welcome',
+                        'h:X-Mailgun-Variables' => json_encode($variables),
+                    ]);
+                } else {
+                    Log::warning("Configuration Mailgun manquante - Email de confirmation formation non envoyé");
+                }
                 
                 Log::info("Email de confirmation envoyé avec succès à: " . $inscription->email);
             } catch (\Exception $e) {

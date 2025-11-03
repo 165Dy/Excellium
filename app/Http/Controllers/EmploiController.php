@@ -429,26 +429,46 @@ class EmploiController extends Controller
                 Log::error("Erreur envoi email super_admin (candidature): " . $e->getMessage());
             }
 
-            // Préparation des variables pour l'email
-            $variables = [
-                'nom' => $candidature->nom,
-                'poste' => $emploi->titre,
-                'type_contrat' => $emploi->type_contrat,
-                'localisation' => $emploi->localisation,
-                'entreprise' => $emploi->entreprise,
-                'cv_joint' => $cvPath ? 'Oui' : 'Non',
-                'lettre_jointe' => $lettrePath ? 'Oui' : 'Non',
-            ];
+            // ✅ Envoi de l'email au candidat (isolé dans un try/catch pour ne pas bloquer la sauvegarde)
+            try {
+                $mailgunSecret = config('services.mailgun.secret');
+                $mailgunDomain = config('services.mailgun.domain');
+                $mailgunEndpoint = config('services.mailgun.endpoint', 'api.eu.mailgun.net');
+                
+                // Vérifier que la configuration Mailgun est présente
+                if (!empty($mailgunSecret) && !empty($mailgunDomain)) {
+                    // Préparation des variables pour l'email
+                    $variables = [
+                        'nom' => $candidature->nom,
+                        'poste' => $emploi->titre,
+                        'type_contrat' => $emploi->type_contrat,
+                        'localisation' => $emploi->localisation,
+                        'entreprise' => $emploi->entreprise,
+                        'cv_joint' => $cvPath ? 'Oui' : 'Non',
+                        'lettre_jointe' => $lettrePath ? 'Oui' : 'Non',
+                    ];
 
-            // Envoi de l'email via Mailgun
-            $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
-            $mg->messages()->send(env('MAILGUN_DOMAIN'), [
-                'from' => 'contact@excelliumconseils.com',
-                'to' => $candidature->email,
-                'subject' => 'Confirmation de réception de votre candidature',
-                'template' => 'excellium_candidature_confirmation',
-                'h:X-Mailgun-Variables' => json_encode($variables),
-            ]);
+                    // Envoi de l'email via Mailgun
+                    $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
+                    $mg->messages()->send($mailgunDomain, [
+                        'from' => 'contact@excelliumconseils.com',
+                        'to' => $candidature->email,
+                        'subject' => 'Confirmation de réception de votre candidature',
+                        'template' => 'excellium_candidature_confirmation',
+                        'h:X-Mailgun-Variables' => json_encode($variables),
+                    ]);
+                    
+                    Log::info("Email de confirmation envoyé au candidat: {$candidature->email}");
+                } else {
+                    Log::warning("Configuration Mailgun manquante - Email de confirmation candidature non envoyé");
+                }
+            } catch (\Exception $e) {
+                // L'erreur d'email ne doit pas empêcher la candidature d'être enregistrée
+                Log::error("Erreur lors de l'envoi de l'email de confirmation au candidat: " . $e->getMessage(), [
+                    'candidature_id' => $candidature->id,
+                    'error' => $e->getTraceAsString()
+                ]);
+            }
 
             return response()->json([
                 'success' => true,

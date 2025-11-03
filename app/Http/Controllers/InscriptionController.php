@@ -105,19 +105,27 @@ class InscriptionController extends Controller
         ];
 
         try {
-            $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
-            $mg->messages()->send(env('MAILGUN_DOMAIN'), [
-                'from'    => 'Excellium Conseils <contact@excelliumconseils.com>',
-                'to'      => $user->email,
-                'subject' => 'Confirmation de votre sélection de produits',
-                'template' => 'excellium_emailwelcome', // nom du template dans Mailgun
-                'h:X-Mailgun-Variables' => json_encode($variables),
-            ]);
+            $mailgunSecret = config('services.mailgun.secret');
+            $mailgunDomain = config('services.mailgun.domain');
+            $mailgunEndpoint = config('services.mailgun.endpoint', 'api.eu.mailgun.net');
             
-            Log::info("Email de confirmation envoyé au client", [
-                'user_email' => $user->email,
-                'produits_count' => count($request->produits)
-            ]);
+            if (!empty($mailgunSecret) && !empty($mailgunDomain)) {
+                $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
+                $mg->messages()->send($mailgunDomain, [
+                    'from'    => 'Excellium Conseils <contact@excelliumconseils.com>',
+                    'to'      => $user->email,
+                    'subject' => 'Confirmation de votre sélection de produits',
+                    'template' => 'excellium_emailwelcome', // nom du template dans Mailgun
+                    'h:X-Mailgun-Variables' => json_encode($variables),
+                ]);
+                
+                Log::info("Email de confirmation envoyé au client", [
+                    'user_email' => $user->email,
+                    'produits_count' => count($request->produits)
+                ]);
+            } else {
+                Log::warning("Configuration Mailgun manquante - Email de confirmation produits non envoyé");
+            }
         } catch (\Exception $e) {
             Log::error("Erreur envoi email client (sélection produits): " . $e->getMessage());
             // On continue, l'inscription est quand même enregistrée

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use App\Models\AdminInvitation;
 use Mailgun\Mailgun;
@@ -85,19 +86,34 @@ class InvitationController extends Controller
         $invitationUrl = route('register', ['token' => $token]);
         
         // Envoi de l'email d'invitation via Mailgun
-        $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
-        $variables = [
-            'admin_name' => $request->prenom . ' ' . $request->nom,
-            'invitation_link' => $invitationUrl,
-        ];
-        
-        $mg->messages()->send(env('MAILGUN_DOMAIN'), [
-            'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
-            'to' => $request->email,
-            'subject' => 'Invitation à rejoindre l\'administration - Excellium Conseils',
-            'template' => 'excellium_invitation_admin',
-            'h:X-Mailgun-Variables' => json_encode($variables),
-        ]);
+        try {
+            $mailgunSecret = config('services.mailgun.secret');
+            $mailgunDomain = config('services.mailgun.domain');
+            $mailgunEndpoint = config('services.mailgun.endpoint', 'api.eu.mailgun.net');
+            
+            if (!empty($mailgunSecret) && !empty($mailgunDomain)) {
+                $variables = [
+                    'admin_name' => $request->prenom . ' ' . $request->nom,
+                    'invitation_link' => $invitationUrl,
+                ];
+                
+                $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
+                $mg->messages()->send($mailgunDomain, [
+                    'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
+                    'to' => $request->email,
+                    'subject' => 'Invitation à rejoindre l\'administration - Excellium Conseils',
+                    'template' => 'excellium_invitation_admin',
+                    'h:X-Mailgun-Variables' => json_encode($variables),
+                ]);
+                
+                Log::info("Email d'invitation envoyé à: {$request->email}");
+            } else {
+                Log::warning("Configuration Mailgun manquante - Email d'invitation non envoyé");
+            }
+        } catch (\Exception $e) {
+            Log::error("Erreur envoi email invitation: " . $e->getMessage());
+            // L'invitation reste enregistrée même si l'email échoue
+        }
 
         return back()->with('success', 'Invitation envoyée avec succès à ' . $request->email);
     }
@@ -162,19 +178,34 @@ class InvitationController extends Controller
         $invitationUrl = route('register', ['token' => $newToken]);
         
         // Envoi de l'email d'invitation via Mailgun
-        $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
-        $variables = [
-            'admin_name' => $invitation->prenom . ' ' . $invitation->nom,
-            'invitation_link' => $invitationUrl,
-        ];
-        
-        $mg->messages()->send(env('MAILGUN_DOMAIN'), [
-            'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
-            'to' => $invitation->email,
-            'subject' => 'Nouvelle invitation à rejoindre l\'administration - Excellium Conseils',
-            'template' => 'excellium_invitation_admin',
-            'h:X-Mailgun-Variables' => json_encode($variables),
-        ]);
+        try {
+            $mailgunSecret = config('services.mailgun.secret');
+            $mailgunDomain = config('services.mailgun.domain');
+            $mailgunEndpoint = config('services.mailgun.endpoint', 'api.eu.mailgun.net');
+            
+            if (!empty($mailgunSecret) && !empty($mailgunDomain)) {
+                $variables = [
+                    'admin_name' => $invitation->prenom . ' ' . $invitation->nom,
+                    'invitation_link' => $invitationUrl,
+                ];
+                
+                $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
+                $mg->messages()->send($mailgunDomain, [
+                    'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
+                    'to' => $invitation->email,
+                    'subject' => 'Nouvelle invitation à rejoindre l\'administration - Excellium Conseils',
+                    'template' => 'excellium_invitation_admin',
+                    'h:X-Mailgun-Variables' => json_encode($variables),
+                ]);
+                
+                Log::info("Email d'invitation (renvoi) envoyé à: {$invitation->email}");
+            } else {
+                Log::warning("Configuration Mailgun manquante - Email d'invitation (renvoi) non envoyé");
+            }
+        } catch (\Exception $e) {
+            Log::error("Erreur envoi email invitation (renvoi): " . $e->getMessage());
+            // L'invitation reste mise à jour même si l'email échoue
+        }
 
         return back()->with('success', 'Invitation renvoyée avec succès.');
     }

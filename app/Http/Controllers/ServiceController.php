@@ -203,21 +203,36 @@ class ServiceController extends Controller
             }
 
             // Envoi de l'email de confirmation
-            $mg = Mailgun::create(env('MAILGUN_SECRET'), 'https://api.eu.mailgun.net');
-            $variables = [
-                'title' => 'Confirmation de votre inscription - ' . $service->nom,
-                'name' => $user->prenom . ' ' . $user->nom,
-                'service' => $service->nom,
-                'message' => "Merci pour votre inscription à nos services. Notre équipe vous contactera dans les plus brefs délais pour discuter de vos besoins spécifiques."
-            ];
-            
-            $mg->messages()->send(env('MAILGUN_DOMAIN'), [
-                'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
-                'to' => $user->email,
-                'subject' => 'Confirmation de votre inscription - ' . $service->nom,
-                'template' => 'Excellium_inscription_service',
-                'h:X-Mailgun-Variables' => json_encode($variables),
-            ]);
+            try {
+                $mailgunSecret = config('services.mailgun.secret');
+                $mailgunDomain = config('services.mailgun.domain');
+                $mailgunEndpoint = config('services.mailgun.endpoint', 'api.eu.mailgun.net');
+                
+                if (!empty($mailgunSecret) && !empty($mailgunDomain)) {
+                    $variables = [
+                        'title' => 'Confirmation de votre inscription - ' . $service->nom,
+                        'name' => $user->prenom . ' ' . $user->nom,
+                        'service' => $service->nom,
+                        'message' => "Merci pour votre inscription à nos services. Notre équipe vous contactera dans les plus brefs délais pour discuter de vos besoins spécifiques."
+                    ];
+                    
+                    $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
+                    $mg->messages()->send($mailgunDomain, [
+                        'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
+                        'to' => $user->email,
+                        'subject' => 'Confirmation de votre inscription - ' . $service->nom,
+                        'template' => 'Excellium_inscription_service',
+                        'h:X-Mailgun-Variables' => json_encode($variables),
+                    ]);
+                    
+                    Log::info("Email de confirmation service envoyé à: {$user->email}");
+                } else {
+                    Log::warning("Configuration Mailgun manquante - Email de confirmation service non envoyé");
+                }
+            } catch (\Exception $e) {
+                Log::error("Erreur envoi email confirmation service: " . $e->getMessage());
+                // L'inscription reste enregistrée même si l'email échoue
+            }
 
             DB::commit();
 
