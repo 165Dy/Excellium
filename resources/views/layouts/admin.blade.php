@@ -6475,47 +6475,54 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                const table = $('#tableProduits').DataTable({
-                    ajax: '/admin/produits/list',
-                    columns: [{
-                            data: 'nom',
-                            title: 'Nom'
-                        },
-                        {
-                            data: 'categorie',
-                            title: 'Catégorie'
-                        },
-                        {
-                            data: 'statut_label',
-                            title: 'Statut',
-                            render: function(data, type, row) {
-                                const couleur = row.statut_color === 'success' ? 'green' : 'red';
-                                return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
-                            }
-                        },
-                        {
-                            data: 'actions',
-                            title: 'Actions',
-                            orderable: false,
-                            searchable: false
-                        }
-                    ]
+                var table = null;
+                var tableProduitsInitialized = false;
+
+                // Initialiser le DataTable seulement à l'ouverture de la modale
+                $('#liste_produits').on('shown.bs.modal', function() {
+                    if (!tableProduitsInitialized) {
+                        table = $('#tableProduits').DataTable({
+                            ajax: '/admin/produits/list',
+                            columns: [{
+                                    data: 'nom',
+                                    title: 'Nom'
+                                },
+                                {
+                                    data: 'categorie',
+                                    title: 'Catégorie'
+                                },
+                                {
+                                    data: 'statut_label',
+                                    title: 'Statut',
+                                    render: function(data, type, row) {
+                                        const couleur = row.statut_color === 'success' ? 'green' : 'red';
+                                        return `<span style="color:${couleur}; font-weight:bold;">${data}</span>`;
+                                    }
+                                },
+                                {
+                                    data: 'actions',
+                                    title: 'Actions',
+                                    orderable: false,
+                                    searchable: false
+                                }
+                            ]
+                        });
+                        tableProduitsInitialized = true;
+                    } else if (table) {
+                        table.ajax.reload();
+                    }
                 });
 
                 // 🟢 Gestion des clics dans le tableau
-                document.querySelector('#tableProduits').addEventListener('click', function(e) {
-                    const editBtn = e.target.closest('.btn-edit-produit');
-                    const deleteBtn = e.target.closest('.btn-delete-produit');
+                $(document).on('click', '#tableProduits .btn-edit-produit, #tableProduits .btn-delete-produit', function(e) {
+                    e.preventDefault();
+                    const isEditBtn = $(this).hasClass('btn-edit-produit');
+                    const id = $(this).data('id');
 
-                    if (editBtn) {
-                        e.preventDefault();
-                        openEditProduitModal(editBtn.dataset.id);
-                    }
-
-                    if (deleteBtn) {
-                        e.preventDefault();
-                        const id = deleteBtn.dataset.id;
-
+                    if (isEditBtn) {
+                        openEditProduitModal(id);
+                    } else {
+                        // C'est le bouton supprimer
                         Swal.fire({
                             title: 'Supprimer ce produit ?',
                             text: 'Cette action est irréversible !',
@@ -6536,7 +6543,9 @@
                                     .then(data => {
                                         if (data.success) {
                                             Swal.fire('Supprimé !', data.message, 'success');
-                                            table.ajax.reload();
+                                            if (table) {
+                                                table.ajax.reload();
+                                            }
                                         } else {
                                             Swal.fire('Erreur', data.message ||
                                                 'Erreur lors de la suppression', 'error');
@@ -6656,7 +6665,9 @@
                                 .then(data => {
                                     if (data.success) {
                                         Swal.fire('Succès', data.message, 'success');
-                                        $('#tableProduits').DataTable().ajax.reload();
+                                        if (table) {
+                                            table.ajax.reload();
+                                        }
                                     } else {
                                         Swal.fire('Erreur', data.message || 'Erreur lors de la mise à jour',
                                             'error');
@@ -6688,30 +6699,41 @@
                 // ==============================
                 // INITIALISATION DATATABLE SERVICES
                 // ==============================
-                var tableServices = $('#tableServices').DataTable({
-                    ajax: {
-                        url: '/admin/services/list',
-                        type: 'GET',
-                    },
-                    columns: [{
-                            data: 'nom',
-                            title: 'Nom'
-                        },
-                        {
-                            data: 'description',
-                            title: 'Description'
-                        },
-                        {
-                            data: 'categorie',
-                            title: 'Catégorie'
-                        },
-                        {
-                            data: 'actions',
-                            title: 'Actions',
-                            orderable: false,
-                            searchable: false
-                        }
-                    ]
+                var tableServices = null;
+                var tableServicesInitialized = false;
+
+                // Initialiser le DataTable seulement à l'ouverture de la modale
+                $('#liste_services').on('shown.bs.modal', function() {
+                    if (!tableServicesInitialized) {
+                        tableServices = $('#tableServices').DataTable({
+                            ajax: {
+                                url: '/admin/services/list',
+                                type: 'GET',
+                            },
+                            columns: [{
+                                    data: 'nom',
+                                    title: 'Nom'
+                                },
+                                {
+                                    data: 'description',
+                                    title: 'Description'
+                                },
+                                {
+                                    data: 'categorie',
+                                    title: 'Catégorie'
+                                },
+                                {
+                                    data: 'actions',
+                                    title: 'Actions',
+                                    orderable: false,
+                                    searchable: false
+                                }
+                            ]
+                        });
+                        tableServicesInitialized = true;
+                    } else if (tableServices) {
+                        tableServices.ajax.reload();
+                    }
                 });
 
 
@@ -6750,7 +6772,9 @@
                                 if (data.success) {
                                     Swal.fire('Succès', data.message, 'success');
                                     createServiceForm.reset();
-                                    tableServices.ajax.reload();
+                                    if (tableServices) {
+                                        tableServices.ajax.reload();
+                                    }
                                 } else {
                                     Swal.fire('Erreur', data.message || 'Erreur lors de la création',
                                         'error');
@@ -6801,7 +6825,9 @@
                                     .then(data => {
                                         if (data.success) {
                                             Swal.fire('Supprimé !', data.message, 'success');
-                                            tableServices.ajax.reload();
+                                            if (tableServices) {
+                                                tableServices.ajax.reload();
+                                            }
                                         } else {
                                             Swal.fire('Erreur', data.message ||
                                                 'Erreur lors de la suppression', 'error');
@@ -6930,7 +6956,9 @@
                                             Swal.close();
                                             if (data.success) {
                                                 Swal.fire('Succès', data.message, 'success');
-                                                tableServices.ajax.reload();
+                                                if (tableServices) {
+                                                    tableServices.ajax.reload();
+                                                }
                                             } else {
                                                 Swal.fire('Erreur', data.message ||
                                                     'Erreur lors de la modification', 'error');
