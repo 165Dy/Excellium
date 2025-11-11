@@ -27,21 +27,6 @@ return new class extends Migration
             $table->index('url');
             $table->index(['visited_at', 'url']);
         });
-
-        // Table d'agrégation pour performances
-        Schema::create('visit_summaries', function (Blueprint $table) {
-            $table->id();
-            $table->date('date')->unique();
-            $table->integer('total_visits')->default(0);
-            $table->integer('unique_visitors')->default(0);
-            $table->integer('authenticated_users')->default(0);
-            $table->json('top_pages')->nullable(); // Top 10 pages visitées
-            $table->json('visits_by_hour')->nullable(); // Visites par heure [0-23]
-            $table->string('most_visited_day')->nullable();
-            $table->integer('peak_hour')->nullable();
-            $table->timestamps();
-            $table->index('date');
-        });
     }
 
     /**
@@ -49,7 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('visit_summaries');
         Schema::dropIfExists('visits');
     }
 };

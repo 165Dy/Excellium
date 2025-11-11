@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class TrackVisit
 {
     /**
-     * Chemins à exclure du tracking
+     * Chemins à exclure du tracking (requêtes API internes)
      */
     protected $excludedPaths = [
         'admin/api/*',
@@ -20,6 +20,16 @@ class TrackVisit
         '_debugbar/*',
         'telescope/*',
         'horizon/*',
+        // Routes API internes (stats, listes, etc.)
+        'admin/*/stats',
+        'admin/*/by-day',
+        'admin/*/by-hour',
+        'admin/*/top-pages',
+        'admin/*/device-stats',
+        'admin/*/recent',
+        'admin/notifications/mark-all-read',
+        'admin/categories/list',
+        'rss', // RSS feed
     ];
 
     /**
@@ -38,17 +48,24 @@ class TrackVisit
     {
         $response = $next($request);
 
-        // Ne tracker que les requêtes GET réussies
-        if ($request->isMethod('GET') && $response->isSuccessful()) {
+        // Ne tracker que les requêtes GET réussies ET non-AJAX
+        if ($request->isMethod('GET') && 
+            $response->isSuccessful() && 
+            !$request->ajax() && 
+            !$request->wantsJson()) {
+            
             // Vérifier si le chemin doit être exclu
             if (!$this->shouldTrack($request)) {
                 return $response;
             }
 
-            // Dispatcher le job en queue pour ne pas ralentir la requête
-            RecordVisit::dispatch([
+            // Normaliser l'URL pour ne garder que la page principale
+            $normalizedUrl = $this->normalizeUrl($request->path());
+
+            // Exécuter le job de manière synchrone (pas de queue worker nécessaire en prod)
+            RecordVisit::dispatchSync([
                 'user_id' => Auth::id(),
-                'url' => $request->path(),
+                'url' => $normalizedUrl,
                 'ip' => $request->ip(),
                 'user_agent' => $request->userAgent(),
                 'referrer' => $request->header('referer'),
@@ -80,5 +97,23 @@ class TrackVisit
         }
 
         return true;
+    }
+
+    /**
+     * Normaliser l'URL pour ne garder que la page principale
+     * Exemple: admin/formations/1/edit -> admin/formations/{id}/edit
+     *          admin/visits/stats -> admin/visits
+     */
+    protected function normalizeUrl(string $url): string
+    {
+        // Remplacer les IDs numériques par {id}
+        $url = preg_replace('/\/\d+/', '/{id}', $url);
+
+        // Pour les URLs avec des sous-routes API, garder seulement la base
+        // Exemples:
+        // - admin/visits/stats -> admin/visits
+        // - admin/formations/1/details-page -> admin/formations/{id}/details-page
+        
+        return $url;
     }
 }
