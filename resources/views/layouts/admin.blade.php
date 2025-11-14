@@ -66,9 +66,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('assets_2/js/modal.js') }}"></script>
     <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    {{-- SweetAlert2 et Bootstrap Icons chargés localement pour sécurité --}}
+    <link rel="stylesheet" href="{{ asset('assets_2/vendor/libs/sweetalert2/sweetalert2.css') }}">
 
     <style>
         /* Animations pour SweetAlert */
@@ -662,7 +661,7 @@
                                         <i class="menu-icon icon-base ri ri-computer-line"></i>
                                         <div data-i18n="Offres d'emploi">emplois</div>
                                         <div class="badge badge-center rounded-pill bg-primary ms-auto"
-                                            style="width:10px, height:10px">
+                                            style="width:10px; height:10px">
                                             <!-- Count active emplois -->
                                             {{ App\Models\Emploi::where('statut', 'active')->count() }}
                                         </div>
@@ -705,7 +704,7 @@
                                         <i class="menu-icon icon-base ri ri-briefcase-line me-2"></i>
                                         <div data-i18n="Opportunités d'affaire">Opportunités d'affaire</div>
                                         <div class="badge badge-center rounded-pill bg-primary ms-auto"
-                                            style="width:10px, height:10px">
+                                            style="width:10px; height:10px">
                                             <!-- Count active opportunities -->
                                             {{ App\Models\Opportunite::where('statut', 'en_ligne')->count() }}
                                         </div>
@@ -7027,7 +7026,7 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-                if (session('success'))
+                @if(session('success'))
                     Swal.fire({
                         icon: 'success',
                         title: 'Succès',
@@ -7036,30 +7035,31 @@
                         timer: 2500,
                         timerProgressBar: true
                     });
-                endif
+                @endif
 
-                if (session('error'))
+                @if(session('error'))
                     Swal.fire({
                         icon: 'error',
                         title: 'Erreur',
                         text: "{{ session('error') }}",
                         confirmButtonColor: '#dc3545',
                     });
-                endif
+                @endif
 
-                if ($errors - > any())
+                @if($errors->any())
                     Swal.fire({
                         icon: 'error',
                         title: 'Erreurs de validation',
-                        html: `{!! implode('<br>', $errors->all()) !!}`,
+                        html: `{!! implode('<br>', array_map('e', $errors->all())) !!}`,
                         confirmButtonColor: '#dc3545',
                     });
-                endif
+                @endif
             });
         </script>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        {{-- Chargement local de SweetAlert2 pour sécurité --}}
+        <script src="{{ asset('assets_2/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
 
         <!-- JavaScript pour les notifications -->
         <script>
@@ -7088,9 +7088,31 @@
                 }
             }
 
+            // Fonction d'échappement HTML pour prévenir XSS
+            function escapeHtml(text) {
+                if (!text) return '';
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // Fonction d'échappement d'URL pour prévenir XSS dans les attributs
+            function escapeUrl(url) {
+                if (!url) return '';
+                // Validation basique de l'URL
+                try {
+                    const urlObj = new URL(url, window.location.origin);
+                    return urlObj.href;
+                } catch (e) {
+                    return '';
+                }
+            }
+
             // Afficher les notifications
             function displayNotifications(notifications) {
                 const container = document.getElementById('notificationsList');
+
+                if (!container) return;
 
                 if (notifications.length === 0) {
                     container.innerHTML = `
@@ -7102,43 +7124,105 @@
                     return;
                 }
 
-                const html = notifications.map(notif => {
+                // Utiliser textContent et créer les éléments de manière sécurisée
+                container.textContent = ''; // Vider le conteneur
+                
+                notifications.forEach(notif => {
                     const timeAgo = getTimeAgo(notif.created_at);
                     const unreadClass = !notif.is_read ? 'unread' : '';
-                    const iconBgClass = `bg-label-${notif.badge_color || 'primary'}`;
+                    const iconBgClass = `bg-label-${escapeHtml(notif.badge_color || 'primary')}`;
+                    
+                    // Créer les éléments DOM de manière sécurisée
+                    const item = document.createElement('div');
+                    item.className = `notification-item ${unreadClass}`;
+                    
+                    // Utiliser addEventListener au lieu d'onclick inline
+                    item.addEventListener('click', function() {
+                        handleNotificationClick(notif.id, notif.action_url || '');
+                    });
+                    item.setAttribute('role', 'button');
+                    item.setAttribute('tabindex', '0');
+                    item.setAttribute('aria-label', `Notification: ${escapeHtml(notif.title)}`);
+                    
+                    // Gérer la navigation au clavier
+                    item.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleNotificationClick(notif.id, notif.action_url || '');
+                        }
+                    });
 
-                    return `
-                        <div class="notification-item ${unreadClass}" onclick="handleNotificationClick(${notif.id}, '${notif.action_url || ''}')">
-                            <div class="d-flex align-items-start">
-                                <div class="notification-icon ${iconBgClass}">
-                                    <i class="${notif.icon || 'ri-notification-line'}"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <div class="notification-title">${notif.title}</div>
-                                    <div class="notification-message">${notif.message}</div>
-                                    <div class="notification-time">${timeAgo}</div>
-                                </div>
-                                ${!notif.is_read ? '<div class="notification-dot"></div>' : ''}
-                            </div>
-                        </div>
-                    `;
-                }).join('');
+                    const innerDiv = document.createElement('div');
+                    innerDiv.className = 'd-flex align-items-start';
 
-                container.innerHTML = html;
+                    const iconDiv = document.createElement('div');
+                    iconDiv.className = `notification-icon ${iconBgClass}`;
+                    const icon = document.createElement('i');
+                    icon.className = escapeHtml(notif.icon || 'ri-notification-line');
+                    iconDiv.appendChild(icon);
+
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'notification-content';
+
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'notification-title';
+                    titleDiv.textContent = notif.title || '';
+
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'notification-message';
+                    messageDiv.textContent = notif.message || '';
+
+                    const timeDiv = document.createElement('div');
+                    timeDiv.className = 'notification-time';
+                    timeDiv.textContent = timeAgo;
+
+                    contentDiv.appendChild(titleDiv);
+                    contentDiv.appendChild(messageDiv);
+                    contentDiv.appendChild(timeDiv);
+
+                    innerDiv.appendChild(iconDiv);
+                    innerDiv.appendChild(contentDiv);
+
+                    if (!notif.is_read) {
+                        const dot = document.createElement('div');
+                        dot.className = 'notification-dot';
+                        innerDiv.appendChild(dot);
+                    }
+
+                    item.appendChild(innerDiv);
+                    container.appendChild(item);
+                });
             }
 
             // Afficher une erreur
             function displayNotificationsError() {
                 const container = document.getElementById('notificationsList');
-                container.innerHTML = `
-                    <div class="notification-empty">
-                        <i class="ri ri-error-warning-line text-danger"></i>
-                        <p class="mb-0">Erreur de chargement</p>
-                        <button class="btn btn-sm btn-outline-primary mt-2" onclick="loadNotifications()">
-                            Réessayer
-                        </button>
-                    </div>
-                `;
+                if (!container) return;
+                
+                // Créer les éléments de manière sécurisée
+                container.textContent = '';
+                
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'notification-empty';
+                
+                const icon = document.createElement('i');
+                icon.className = 'ri ri-error-warning-line text-danger';
+                
+                const message = document.createElement('p');
+                message.className = 'mb-0';
+                message.textContent = 'Erreur de chargement';
+                
+                const retryBtn = document.createElement('button');
+                retryBtn.className = 'btn btn-sm btn-outline-primary mt-2';
+                retryBtn.textContent = 'Réessayer';
+                retryBtn.setAttribute('type', 'button');
+                retryBtn.setAttribute('aria-label', 'Réessayer le chargement des notifications');
+                retryBtn.addEventListener('click', loadNotifications);
+                
+                errorDiv.appendChild(icon);
+                errorDiv.appendChild(message);
+                errorDiv.appendChild(retryBtn);
+                container.appendChild(errorDiv);
             }
 
             // Mettre à jour le badge
@@ -7211,11 +7295,27 @@
 
             // Démarrer le polling (vérification périodique)
             function startNotificationPolling() {
-                // Vérifier toutes les 30 secondes
+                // Ne pas poller si la page n'est pas visible
+                if (document.visibilityState === 'hidden') {
+                    return;
+                }
+                
+                // Vérifier toutes les 30 secondes uniquement si la page est visible
                 notificationPollingInterval = setInterval(() => {
+                    if (document.visibilityState === 'visible') {
                     loadNotifications();
+                    }
                 }, 30000);
             }
+
+            // Arrêter le polling quand la page n'est plus visible
+            document.addEventListener('visibilitychange', function() {
+                if (document.visibilityState === 'hidden') {
+                    stopNotificationPolling();
+                } else if (document.visibilityState === 'visible') {
+                    startNotificationPolling();
+                }
+            });
 
             // Arrêter le polling
             function stopNotificationPolling() {

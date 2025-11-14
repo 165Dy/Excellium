@@ -78,6 +78,6 @@
         </div>
     </div>
 
-    @include('admin.users.delete_modal')
+    @include('Admin.Users.delete_modal')
 
 @endsection

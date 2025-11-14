@@ -314,8 +314,7 @@
                                     <label for="telephone" class="form-label text-warning fw-bold">
                                         <i class="fas fa-phone me-1"></i>Numéro de téléphone
                                     </label>
-                                    <input type="tel" class="form-control" id="telephone" name="telephone"
-                                        placeholder="Ex: 0700000000"
+                                    <input type="tel" class="form-control" id="telephone" name="telephone" maxlength="10" pattern="[0-9]{10}" placeholder="Ex: 0749095585"
                                         style="background-color: #34495e; border: 1px solid #ffc107; color: white;">
                                     <div id="telError" class="text-danger mt-1" style="font-size: 0.95em;"></div>
                                 </div>
@@ -441,19 +440,28 @@
 
                 let hasError = false;
 
-                // Email
-                const email = document.getElementById('email').value;
-                if (!email.endsWith('@gmail.com')) {
+                // Email - Validation d'email valide
+                const email = document.getElementById('email').value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email || !emailRegex.test(email)) {
                     document.getElementById('emailError').textContent =
-                        "L'email doit se terminer par @gmail.com";
+                        "Veuillez entrer une adresse email valide.";
                     hasError = true;
                 } else {
                     document.getElementById('emailError').textContent = "";
                 }
 
-                // Téléphone
-                const tel = document.getElementById('telephone').value.replace(/\D/g, '');
-                if (tel.length !== 10) {
+                // Téléphone - Validation et formatage
+                let telInput = document.getElementById('telephone');
+                let tel = telInput.value.replace(/\D/g, '');
+                
+                // Limiter à 10 chiffres et mettre à jour
+                if (tel.length > 10) {
+                    tel = tel.substring(0, 10);
+                    telInput.value = tel;
+                }
+                
+                if (tel && tel.length !== 10) {
                     document.getElementById('telError').textContent =
                         "Le numéro de téléphone doit contenir exactement 10 chiffres.";
                     hasError = true;
@@ -533,22 +541,37 @@
                     });
             });
 
-            // Validation en temps réel (inchangée)
+            // Validation en temps réel - Email valide
             document.getElementById('email').addEventListener('input', function() {
-                const email = this.value;
+                const email = this.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 const errorDiv = document.getElementById('emailError');
-                if (!email.endsWith('@gmail.com')) {
-                    errorDiv.textContent = "L'email doit se terminer par @gmail.com";
+                if (email && !emailRegex.test(email)) {
+                    errorDiv.textContent = "Veuillez entrer une adresse email valide.";
                 } else {
                     errorDiv.textContent = "";
                 }
             });
 
+            // Formatage automatique du téléphone - Limite à 10 chiffres
             document.getElementById('telephone').addEventListener('input', function() {
-                const tel = this.value.replace(/\D/g, '');
+                // Garder uniquement les chiffres
+                let tel = this.value.replace(/\D/g, '');
+                
+                // Limiter à 10 chiffres maximum
+                if (tel.length > 10) {
+                    tel = tel.substring(0, 10);
+                }
+                
+                // Mettre à jour la valeur avec uniquement les chiffres (formaté)
+                this.value = tel;
+                
+                // Validation
                 const errorDiv = document.getElementById('telError');
-                if (tel.length !== 10) {
+                if (tel.length > 0 && tel.length !== 10) {
                     errorDiv.textContent = "Le numéro de téléphone doit contenir exactement 10 chiffres.";
+                } else if (tel.length === 10) {
+                    errorDiv.textContent = "";
                 } else {
                     errorDiv.textContent = "";
                 }

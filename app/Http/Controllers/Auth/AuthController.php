@@ -320,7 +320,7 @@ class AuthController extends Controller
             $invitations = collect();
         }
 
-        return view('Admin.users.show', compact('user', 'participations', 'invitations'));
+        return view('Admin.Users.show', compact('user', 'participations', 'invitations'));
     }
 
 

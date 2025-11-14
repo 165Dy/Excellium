@@ -76,7 +76,7 @@
                                                 <li class="list-group-item"><strong>Téléphone :</strong>
                                                     {{ $candidature->telephone ?? 'Non fourni' }}</li>
                                                 <li class="list-group-item"><strong>Date de candidature :</strong>
-                                                    {{ $candidature->emploi && $candidature->emploi->date_expiration ? \Carbon\Carbon::parse($candidature->emploi->date_expiration)->format('d/m/Y H:i') : 'N/A' }}
+                                                    {{ $candidature->created_at ? \Carbon\Carbon::parse($candidature->created_at)->format('d/m/Y H:i') : 'N/A' }}
                                                 </li>
                                             </ul>
                                         </div>
