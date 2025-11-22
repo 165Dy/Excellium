@@ -420,6 +420,17 @@ class EmploiController extends Controller
             // Charger la relation emploi
             $emploi = Emploi::find($request->emploi_id);
             
+            // ✅ CRÉER LA NOTIFICATION EN BD
+            try {
+                \App\Models\Notification::createCandidature($candidature, $emploi);
+                Log::info("Notification BD créée pour candidature emploi", [
+                    'candidature_id' => $candidature->id,
+                    'emploi_id' => $emploi->id
+                ]);
+            } catch (\Exception $e) {
+                Log::error("Erreur création notification BD (candidature): " . $e->getMessage());
+            }
+
             // ✅ ENVOYER EMAIL AUX SUPER_ADMIN
             try {
                 $emailData = SuperAdminNotificationService::prepareEmploiCandidatureData($candidature, $emploi);
@@ -451,7 +462,7 @@ class EmploiController extends Controller
                     // Envoi de l'email via Mailgun
                     $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
                     $mg->messages()->send($mailgunDomain, [
-                        'from' => 'contact@excelliumconseils.com',
+                        'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
                         'to' => $candidature->email,
                         'subject' => 'Confirmation de réception de votre candidature',
                         'template' => 'excellium_candidature_confirmation',

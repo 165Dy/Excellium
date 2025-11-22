@@ -12,6 +12,7 @@ class UserProduit extends Model
         'user_id',
         'produit_id',
         'description',
+        'statut',
     ];
 
     // Relation avec l'utilisateur

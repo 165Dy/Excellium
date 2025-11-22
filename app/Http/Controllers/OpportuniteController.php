@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use App\Services\SuperAdminNotificationService;
+use Mailgun\Mailgun;
 
 class OpportuniteController extends Controller
 {
@@ -489,6 +490,17 @@ class OpportuniteController extends Controller
                 'message' => $request->message,
             ]);
             
+            // ✅ CRÉER LA NOTIFICATION EN BD
+            try {
+                \App\Models\Notification::createPostulation($postulation, $opportunite);
+                \Illuminate\Support\Facades\Log::info("Notification BD créée pour postulation opportunité", [
+                    'postulation_id' => $postulation->id,
+                    'opportunite_id' => $opportunite->id
+                ]);
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error("Erreur création notification BD (postulation): " . $e->getMessage());
+            }
+
             // ✅ ENVOYER EMAIL AUX SUPER_ADMIN
             try {
                 $postulation->nom_entreprise = $request->nom_complet;
@@ -499,6 +511,36 @@ class OpportuniteController extends Controller
                 \Illuminate\Support\Facades\Log::info("Email envoyé aux super_admin pour nouvelle postulation opportunité");
             } catch (\Exception $e) {
                 \Illuminate\Support\Facades\Log::error("Erreur envoi email super_admin (postulation): " . $e->getMessage());
+            }
+
+            // ✅ ENVOYER EMAIL AU CLIENT (manquant)
+            try {
+                $mailgunSecret = config('services.mailgun.secret');
+                $mailgunDomain = config('services.mailgun.domain');
+                $mailgunEndpoint = config('services.mailgun.endpoint', 'api.mailgun.net');
+                
+                if (!empty($mailgunSecret) && !empty($mailgunDomain)) {
+                    $variables = [
+                        'nom' => $user->prenom . ' ' . $user->nom,
+                        'opportunite' => $opportunite->titre,
+                        'message' => 'Merci pour votre intérêt. Notre équipe vous contactera dans les plus brefs délais.',
+                    ];
+
+                    $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
+                    $mg->messages()->send($mailgunDomain, [
+                        'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
+                        'to' => $user->email,
+                        'subject' => 'Confirmation de votre postulation - ' . $opportunite->titre,
+                        'template' => 'excellium_opportunite_confirmation', // À créer dans Mailgun
+                        'h:X-Mailgun-Variables' => json_encode($variables),
+                    ]);
+                    
+                    \Illuminate\Support\Facades\Log::info("Email de confirmation envoyé au client pour postulation: {$user->email}");
+                } else {
+                    \Illuminate\Support\Facades\Log::warning("Configuration Mailgun manquante - Email de confirmation opportunité non envoyé");
+                }
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error("Erreur envoi email client (postulation opportunité): " . $e->getMessage());
             }
 
             return response()->json([

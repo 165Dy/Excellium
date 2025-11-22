@@ -338,16 +338,37 @@ class AuthController extends Controller
         $SECURITY_CODE = '85246';
 
         if ($request->security_code !== $SECURITY_CODE) {
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Code de sécurité invalide.'
+                ], 422);
+            }
             return back()->with('error', 'Code de sécurité invalide.');
         }
 
         $user = User::findOrFail($id);
 
         if ($user->type === 'super_admin') {
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Impossible de supprimer un super administrateur.'
+                ], 403);
+            }
             return back()->with('error', 'Impossible de supprimer un super administrateur.');
         }
 
+        $userName = $user->nom . ' ' . $user->prenom;
         $user->delete();
+
+        if ($request->expectsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Utilisateur supprimé avec succès.',
+                'user_name' => $userName
+            ]);
+        }
 
         return redirect()->route('admin.users.index')->with('success', 'Utilisateur supprimé avec succès.');
     }

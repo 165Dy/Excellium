@@ -606,6 +606,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="border-radius: 18px;">
                 <form id="inscriptionForm">
+                    @csrf
                     <div class="modal-header border-0" style="background: #FFD22F; border-radius: 18px 18px 0 0;">
                         <h5 class="modal-title" id="inscriptionModalLabel" style="color: #222; font-weight: bold;">
                             Bienvenue !</h5>
@@ -839,20 +840,39 @@
                 modal.show();
             });
 
+            // Fonction pour récupérer le token CSRF depuis le meta tag
+            function getCsrfToken() {
+                return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            }
+
             // Soumission du formulaire de la modale d'inscription
             document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const formData = new FormData(this);
+                // Ajouter le token CSRF dans le FormData également
+                formData.append('_token', getCsrfToken());
+                
                 fetch('{{ route('inscription.ajax') }}', {
                         method: 'POST',
                         headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'X-CSRF-TOKEN': getCsrfToken(),
                             'Accept': 'application/json'
                         },
                         body: formData
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        // Vérifier si c'est une erreur 419 (token CSRF expiré)
+                        if (response.status === 419) {
+                            // Recharger la page pour obtenir un nouveau token
+                            alert('Votre session a expiré. La page va être rechargée.');
+                            window.location.reload();
+                            return;
+                        }
+                        return response.json();
+                    })
                     .then(data => {
+                        if (!data) return; // Si on a rechargé la page, on sort
+                        
                         if (data.success) {
                             // Ferme modale inscription, ouvre succès
                             bootstrap.Modal.getInstance(document.getElementById('inscriptionModal'))
@@ -861,13 +881,31 @@
                                 'successModal'));
                             modalSuccess.show();
 
-                            // Ouvre la modal choix service après clic sur "Choisir un service"
+                            // Le choix de produit est maintenant optionnel
+                            // L'utilisateur peut fermer la modale ou choisir des produits plus tard
                             document.getElementById('successRedirect').onclick = function() {
                                 bootstrap.Modal.getInstance(document.getElementById('successModal'))
                                     .hide();
-                                var choixModal = new bootstrap.Modal(document.getElementById(
-                                    'choixProduitModal'));
-                                choixModal.show();
+                                // Proposer le choix de produits (optionnel)
+                                Swal.fire({
+                                    title: 'Souhaitez-vous sélectionner des produits ?',
+                                    text: 'Vous pouvez choisir des produits maintenant ou plus tard.',
+                                    icon: 'question',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Oui, choisir des produits',
+                                    cancelButtonText: 'Non, plus tard',
+                                    customClass: {
+                                        confirmButton: 'btn btn-primary me-2',
+                                        cancelButton: 'btn btn-secondary'
+                                    },
+                                    buttonsStyling: false
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        var choixModal = new bootstrap.Modal(document.getElementById(
+                                            'choixProduitModal'));
+                                        choixModal.show();
+                                    }
+                                });
                             };
                         } else if (data.email_exists) {
                             // Ferme la modale inscription et affiche la modale email déjà existant
@@ -928,17 +966,29 @@
                 fetch('/choix-produit', {
                         method: 'POST',
                         headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'X-CSRF-TOKEN': getCsrfToken(),
                             'Accept': 'application/json',
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
+                            _token: getCsrfToken(),
                             email,
                             produits: checkedProduits
                         })
                     })
-                    .then(res => res.json())
+                    .then(res => {
+                        // Vérifier si c'est une erreur 419 (token CSRF expiré)
+                        if (res.status === 419) {
+                            // Recharger la page pour obtenir un nouveau token
+                            alert('Votre session a expiré. La page va être rechargée.');
+                            window.location.reload();
+                            return;
+                        }
+                        return res.json();
+                    })
                     .then(data => {
+                        if (!data) return; // Si on a rechargé la page, on sort
+                        
                         if (data.success) {
                             // Ferme la modale de choix de produit
                             bootstrap.Modal.getInstance(document.getElementById('choixProduitModal'))

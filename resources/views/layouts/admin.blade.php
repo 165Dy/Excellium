@@ -816,6 +816,13 @@
                                                 <div>voir la liste </div>
                                             </a>
                                         </li>
+                                        <li class="menu-item">
+                                            <a href="#" class="menu-link" data-bs-target="#liste_selections_produits"
+                                                data-bs-toggle="modal">
+                                                <i class="menu-icon icon-base ri ri-user-star-line"></i>
+                                                <div>Sélections clients</div>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -1934,6 +1941,48 @@
                                 <br>
                                 <div class="content-backdrop fade"></div>
                             </div>
+                        <!-- Fin Modal Liste Produit -->
+
+                        <!-- Modal Liste Sélections Produits -->
+                            <div class="modal fade" id="liste_selections_produits" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-simple modal-edit-user">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            <div class="text-center mb-6">
+                                                <h4 class="mb-2">Sélections de produits par les clients</h4>
+                                                <p class="text-muted">Gérez les sélections de produits effectuées par les utilisateurs</p>
+                                            </div>
+
+                                            <table id="tableSelectionsProduits" class="table table-responsive pt-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Utilisateur</th>
+                                                        <th>Email</th>
+                                                        <th>Téléphone</th>
+                                                        <th>Produit</th>
+                                                        <th>Description</th>
+                                                        <th>Statut</th>
+                                                        <th>Date</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    data-bs-dismiss="modal">Fermer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="content-backdrop fade"></div>
+                            </div>
+                        <!-- Fin Modal Liste Sélections Produits -->
                         <!-- Fin Modal Création Produit -->
 
 
@@ -6690,6 +6739,180 @@
             }
         </script>
 
+        <!-- Scripts pour la gestion des sélections de produits -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var tableSelections = null;
+                var tableSelectionsInitialized = false;
+
+                // Initialiser le DataTable seulement à l'ouverture de la modale
+                $('#liste_selections_produits').on('shown.bs.modal', function() {
+                    if (!tableSelectionsInitialized) {
+                        tableSelections = $('#tableSelectionsProduits').DataTable({
+                            ajax: '/admin/produits/selections',
+                            columns: [{
+                                    data: 'utilisateur',
+                                    title: 'Utilisateur'
+                                },
+                                {
+                                    data: 'email',
+                                    title: 'Email'
+                                },
+                                {
+                                    data: 'telephone',
+                                    title: 'Téléphone'
+                                },
+                                {
+                                    data: 'produit',
+                                    title: 'Produit'
+                                },
+                                {
+                                    data: 'description',
+                                    title: 'Description',
+                                    render: function(data) {
+                                        return data && data.length > 50 ? data.substring(0, 50) + '...' : (data || '—');
+                                    }
+                                },
+                                {
+                                    data: 'statut_label',
+                                    title: 'Statut',
+                                    render: function(data, type, row) {
+                                        const colors = {
+                                            'warning': '#ffc107',
+                                            'success': '#28a745',
+                                            'danger': '#dc3545',
+                                            'info': '#17a2b8',
+                                            'primary': '#007bff'
+                                        };
+                                        const color = colors[row.statut_color] || '#6c757d';
+                                        return `<span class="badge" style="background-color:${color}; color:white; padding:5px 10px; border-radius:4px;">${data}</span>`;
+                                    }
+                                },
+                                {
+                                    data: 'date_selection',
+                                    title: 'Date'
+                                },
+                                {
+                                    data: 'actions',
+                                    title: 'Actions',
+                                    orderable: false,
+                                    searchable: false
+                                }
+                            ],
+                            language: {
+                                url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/fr-FR.json'
+                            }
+                        });
+                        tableSelectionsInitialized = true;
+                    } else if (tableSelections) {
+                        tableSelections.ajax.reload();
+                    }
+                });
+
+                // Gestion des clics dans le tableau des sélections
+                $(document).on('click', '#tableSelectionsProduits .btn-change-statut-selection', function(e) {
+                    e.preventDefault();
+                    const id = $(this).data('id');
+                    const currentStatut = $(this).data('current-statut');
+                    
+                    const statuts = [
+                        { value: 'en_attente', label: 'En attente' },
+                        { value: 'accepte', label: 'Accepté' },
+                        { value: 'refuse', label: 'Refusé' },
+                        { value: 'en_cours', label: 'En cours' },
+                        { value: 'termine', label: 'Terminé' }
+                    ];
+
+                    Swal.fire({
+                        title: 'Changer le statut',
+                        html: `
+                            <select id="swal-statut-select" class="form-select">
+                                ${statuts.map(s => 
+                                    `<option value="${s.value}" ${s.value === currentStatut ? 'selected' : ''}>${s.label}</option>`
+                                ).join('')}
+                            </select>
+                        `,
+                        showCancelButton: true,
+                        confirmButtonText: 'Enregistrer',
+                        cancelButtonText: 'Annuler',
+                        didOpen: () => {
+                            document.getElementById('swal-statut-select').focus();
+                        },
+                        preConfirm: () => {
+                            return document.getElementById('swal-statut-select').value;
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const nouveauStatut = result.value;
+                            
+                            fetch(`/admin/produits/selections/${id}/statut`, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                },
+                                body: JSON.stringify({ statut: nouveauStatut })
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    if (tableSelections) {
+                                        tableSelections.ajax.reload();
+                                    }
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Une erreur est survenue', 'error');
+                                }
+                            })
+                            .catch(err => {
+                                console.error('Erreur:', err);
+                                Swal.fire('Erreur', 'Impossible de mettre à jour le statut', 'error');
+                            });
+                        }
+                    });
+                });
+
+                // Supprimer une sélection
+                $(document).on('click', '#tableSelectionsProduits .btn-delete-selection', function(e) {
+                    e.preventDefault();
+                    const id = $(this).data('id');
+                    
+                    Swal.fire({
+                        title: 'Supprimer cette sélection ?',
+                        text: 'Cette action est irréversible !',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Oui, supprimer',
+                        cancelButtonText: 'Annuler',
+                        confirmButtonColor: '#dc3545'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            fetch(`/admin/produits/selections/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire('Succès', data.message, 'success');
+                                    if (tableSelections) {
+                                        tableSelections.ajax.reload();
+                                    }
+                                } else {
+                                    Swal.fire('Erreur', data.message || 'Une erreur est survenue', 'error');
+                                }
+                            })
+                            .catch(err => {
+                                console.error('Erreur:', err);
+                                Swal.fire('Erreur', 'Impossible de supprimer la sélection', 'error');
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
 
         <!-- Scripts pour la gestion des services -->
         <script>

@@ -77,7 +77,7 @@ class SuperAdminNotificationService
             'badge_type' => 'info',
             'entity_status' => ucfirst($inscription->statut ?? 'En attente'),
             'status_badge' => self::getStatusBadge($inscription->statut ?? 'en_attente'),
-            'dashboard_link' => route('admin.formations.details_page', $formation->id),
+            'dashboard_link' => route('admin.dashboard'),
         ];
     }
 
@@ -101,7 +101,7 @@ class SuperAdminNotificationService
             'badge_type' => 'success',
             'entity_status' => 'Nouveau',
             'status_badge' => 'success',
-            'dashboard_link' => route('admin.emplois.show_candidat', $candidature->id),
+            'dashboard_link' => route('admin.dashboard'),
         ];
     }
 
@@ -125,7 +125,7 @@ class SuperAdminNotificationService
             'badge_type' => 'warning',
             'entity_status' => 'À évaluer',
             'status_badge' => 'warning',
-            'dashboard_link' => route('admin.opportunites.show', $opportunite->id),
+            'dashboard_link' => route('admin.dashboard'),
         ];
     }
 
@@ -149,7 +149,7 @@ class SuperAdminNotificationService
             'badge_type' => 'info',
             'entity_status' => ucfirst($inscription->statut ?? 'En attente'),
             'status_badge' => self::getStatusBadge($inscription->statut ?? 'en_attente'),
-            'dashboard_link' => route('admin.services.index'),
+            'dashboard_link' => route('admin.dashboard'),
         ];
     }
 
@@ -175,7 +175,7 @@ class SuperAdminNotificationService
             'entity_name' => $produit->nom,
             'entity_description' => $produit->description ?? '',
             'badge_type' => 'info',
-            'dashboard_link' => route('admin.produits.index'),
+            'dashboard_link' => route('admin.dashboard'),
         ];
     }
 

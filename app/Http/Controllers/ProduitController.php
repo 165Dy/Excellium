@@ -203,6 +203,7 @@ class ProduitController extends Controller
                 'user_id' => $user->id,
                 'produit_id' => $produit->id,
                 'description' => $request->description,
+                'statut' => 'en_attente',
             ]);
             
             // ✅ ENVOYER EMAIL AUX SUPER_ADMIN
@@ -248,16 +249,90 @@ class ProduitController extends Controller
             ->get()
             ->map(function (UserProduit $up) {
                 $userFullName = trim(($up->user->prenom ?? '') . ' ' . ($up->user->nom ?? ($up->user->name ?? '')));
+                
+                // Badge de statut
+                $statutBadges = [
+                    'en_attente' => ['label' => 'En attente', 'color' => 'warning'],
+                    'accepte' => ['label' => 'Accepté', 'color' => 'success'],
+                    'refuse' => ['label' => 'Refusé', 'color' => 'danger'],
+                    'en_cours' => ['label' => 'En cours', 'color' => 'info'],
+                    'termine' => ['label' => 'Terminé', 'color' => 'primary'],
+                ];
+                $statutInfo = $statutBadges[$up->statut ?? 'en_attente'] ?? $statutBadges['en_attente'];
+                
                 return [
                     'id' => $up->id,
                     'utilisateur' => $userFullName !== '' ? $userFullName : 'Utilisateur',
                     'email' => $up->user->email ?? '',
+                    'telephone' => $up->user->telephone ?? '—',
                     'produit' => $up->produit->nom ?? '—',
+                    'produit_id' => $up->produit_id,
                     'description' => $up->description ?? '',
+                    'statut' => $up->statut ?? 'en_attente',
+                    'statut_label' => $statutInfo['label'],
+                    'statut_color' => $statutInfo['color'],
                     'date_selection' => $up->created_at ? $up->created_at->format('d/m/Y H:i') : '—',
+                    'actions' => view('admin.produits.partials.selection_actions', compact('up'))->render()
                 ];
             });
 
         return response()->json(['data' => $items]);
+    }
+
+    /**
+     * Mettre à jour le statut d'une sélection
+     */
+    public function updateSelectionStatut(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'statut' => 'required|in:en_attente,accepte,refuse,en_cours,termine'
+            ]);
+
+            $userProduit = UserProduit::findOrFail($id);
+            $ancienStatut = $userProduit->statut;
+            $userProduit->update(['statut' => $request->statut]);
+
+            Log::info("Statut de sélection produit mis à jour", [
+                'user_produit_id' => $id,
+                'ancien_statut' => $ancienStatut,
+                'nouveau_statut' => $request->statut
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Statut mis à jour avec succès !'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * Supprimer une sélection
+     */
+    public function destroySelection($id)
+    {
+        try {
+            $userProduit = UserProduit::findOrFail($id);
+            $userProduit->delete();
+
+            Log::info("Sélection produit supprimée", [
+                'user_produit_id' => $id
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Sélection supprimée avec succès !'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 }

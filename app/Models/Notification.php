@@ -158,7 +158,7 @@ class Notification extends Model
             'user_email' => $candidature->email,
             'related_type' => 'Emploi',
             'related_id' => $emploi->id,
-            'action_url' => route('admin.emplois.show_candidat', $candidature->id),
+            'action_url' => route('admin.candidatures.show', $candidature->id),
             'action_text' => 'Voir la candidature',
             'priority' => 'high',
             'icon' => 'ri-briefcase-line',

@@ -11,6 +11,7 @@ use Mailgun\Mailgun;
 use App\Models\Produit;
 use App\Models\UserProduit;
 use App\Services\SuperAdminNotificationService;
+use App\Models\Notification;
 
 class InscriptionController extends Controller
 {
@@ -66,17 +67,34 @@ class InscriptionController extends Controller
         // Enregistre les produits sélectionnés
         $produitsSelectionnes = [];
         foreach ($request->produits as $produitId) {
-            $userProduit = UserProduit::firstOrCreate([
-                'user_id' => $user->id,
-                'produit_id' => $produitId
-            ]);
+            $userProduit = UserProduit::firstOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'produit_id' => $produitId
+                ],
+                [
+                    'statut' => 'en_attente'
+                ]
+            );
             $produitsSelectionnes[] = $userProduit;
+        }
+
+        // Récupérer les produits sélectionnés
+        $produits = Produit::whereIn('id', $request->produits)->get();
+
+        // ✅ CRÉER LA NOTIFICATION EN BD
+        try {
+            Notification::createProduitSelection($user, $produits);
+            Log::info("Notification BD créée pour sélection de produit(s)", [
+                'user_id' => $user->id,
+                'produits_count' => count($request->produits)
+            ]);
+        } catch (\Exception $e) {
+            Log::error("Erreur création notification BD (sélection produits): " . $e->getMessage());
         }
 
         // ✅ ENVOYER EMAIL AUX SUPER_ADMIN pour chaque produit sélectionné
         try {
-            $produits = Produit::whereIn('id', $request->produits)->get();
-            
             foreach ($produits as $produit) {
                 $userProduit = $produitsSelectionnes[0] ?? null; // On peut prendre le premier comme exemple
                 $emailData = SuperAdminNotificationService::prepareProduitSelectionData(

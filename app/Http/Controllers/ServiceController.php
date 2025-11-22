@@ -185,6 +185,17 @@ class ServiceController extends Controller
                 'statut' => 'brouillon',
             ]);
             
+            // ✅ CRÉER LA NOTIFICATION EN BD
+            try {
+                \App\Models\Notification::createServiceInscription($userService, $service);
+                Log::info("Notification BD créée pour inscription service", [
+                    'user_id' => $user->id,
+                    'service_id' => $service->id
+                ]);
+            } catch (\Exception $e) {
+                Log::error("Erreur création notification BD (inscription service): " . $e->getMessage());
+            }
+
             // ✅ ENVOYER EMAIL AUX SUPER_ADMIN
             try {
                 $inscription = (object) [

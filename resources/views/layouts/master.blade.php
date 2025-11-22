@@ -191,9 +191,9 @@
                                         </ul>
                                     </li> --}}
 
-                                    <li class="menu-item has-children">
+                                    {{-- <li class="menu-item has-children">
                                         <a href="{{ route('clients.partenaires.index') }}">@lang('extracted.partenaires')</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="menu-item has-children">
                                         <a href="{{ route('clients.emplois.index') }}">@lang('extracted.emplois')</a>
                                     </li>

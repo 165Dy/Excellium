@@ -215,8 +215,8 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     Route::prefix('users')->name('users.')->group(function () {
         //Route::get('/', [DashboardController::class, 'index_user'])->name('index');
         Route::get('/users', [AuthController::class, 'listUsers'])->name('index');
-        Route::get('/users/{id}', [AuthController::class, 'showUser'])->name('show');
-        Route::delete('/users/{id}', [AuthController::class, 'deleteUser'])->name('delete');
+        Route::get('/{id}', [AuthController::class, 'showUser'])->name('show');
+        Route::delete('/{id}', [AuthController::class, 'deleteUser'])->name('delete');
     });
 
     
@@ -302,7 +302,6 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
         Route::get('/{emploi}/details', [EmploiController::class, 'getDetails'])->name('details');
         Route::get('/{emploi}/export-candidatures', [EmploiController::class, 'exportCandidatures'])->name('export_candidatures');
     });
-    
     // GESTION DES CANDIDATURES
     Route::prefix('candidatures')->name('candidatures.')->group(function () {
         Route::get('/{candidature}', [EmploiController::class, 'showCandidature'])->name('show');
@@ -330,6 +329,8 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
         Route::post('/', [ProduitController::class, 'store'])->name('store');
         Route::get('/list', [ProduitController::class, 'list'])->name('list');
         Route::get('/selections', [ProduitController::class, 'listUserProduits'])->name('selections.list');
+        Route::put('/selections/{id}/statut', [ProduitController::class, 'updateSelectionStatut'])->name('selections.update-statut');
+        Route::delete('/selections/{id}', [ProduitController::class, 'destroySelection'])->name('selections.destroy');
         Route::get('/{id}', [ProduitController::class, 'show'])->name('show');
         Route::put('/{id}', [ProduitController::class, 'update'])->name('update');
         Route::delete('/{id}', [ProduitController::class, 'destroy'])->name('destroy');

@@ -498,7 +498,7 @@ class formationsController extends Controller
                 if (!empty($mailgunSecret) && !empty($mailgunDomain)) {
                     $mg = Mailgun::create($mailgunSecret, 'https://' . $mailgunEndpoint);
                     $mg->messages()->send($mailgunDomain, [
-                        'from' => 'contact@excelliumconseils.com',
+                        'from' => 'Excellium Conseils <contact@excelliumconseils.com>',
                         'to' => $inscription->email,
                         'subject' => 'Confirmation de votre inscription à la formation',
                         'template' => 'excellium_formation_welcome',

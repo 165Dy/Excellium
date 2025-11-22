@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_produits', function (Blueprint $table) {
+        Schema::create('demande_collaborations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('produit_id')->constrained('produits');
-            $table->text('description')->nullable();
-            $table->enum('statut', ['en_attente', 'accepte', 'refuse', 'en_cours', 'termine'])->default('en_attente');
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users_produits');
+        Schema::dropIfExists('demande_collaborations');
     }
 };
