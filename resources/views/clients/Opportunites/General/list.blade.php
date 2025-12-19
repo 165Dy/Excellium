@@ -78,7 +78,7 @@
                         data-description="{{ strtolower($opportunite->description) }}">
                         <div class="blog-post-item style-two mb-30 wow fadeInDown">
                             <div class="post-thumbnail">
-                                <img src="{{ asset('assets/images/opportunities/opportunity-' . (($loop->iteration % 6) + 1) . '.jpg') }}"
+                                <img src="{{ $opportunite->image ? asset($opportunite->image) : asset('assets/images/opportunities/opportunity-' . (($loop->iteration % 6) + 1) . '.jpg') }}"
                                     alt="{{ $opportunite->titre }}"
                                     onerror="this.src='{{ asset('assets/images/blog/blog-6.jpg') }}'">
                                 <ul class="post-categories">

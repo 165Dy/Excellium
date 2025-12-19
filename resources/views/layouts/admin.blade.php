@@ -2630,6 +2630,17 @@
                                     Formats acceptés: PDF, DOC, DOCX, JPG, PNG, TXT (Max: 5MB)
                                 </small>
                             </div>
+
+                            <!-- Image de l'opportunité -->
+                            <div class="col-12">
+                                <label class="form-label" for="image">Image de l'opportunité (optionnel)</label>
+                                <input type="file" id="image" name="image"
+                                    class="form-control" accept=".jpg,.jpeg,.png,.gif,.webp">
+                                <small class="form-text text-muted">
+                                    Formats acceptés: JPG, JPEG, PNG, GIF, WEBP (Max: 2MB). Cette image sera affichée sur la page d'accueil et les vues publiques.
+                                </small>
+                            </div>
+
                             <style>
                                 .form-control {
                                     padding: 6px 8px;

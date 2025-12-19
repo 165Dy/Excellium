@@ -12,7 +12,7 @@ class Opportunite extends Model
     protected $fillable = [
         'titre', 'description', 'slug', 'categorie_id', 'statut',
         'date_debut', 'date_fin', 'lieu', 'contact_email',
-        'criteres', 'informations', 'fichier_joint',
+        'criteres', 'informations', 'fichier_joint', 'image',
         ];
 
     protected $casts = [

@@ -43,6 +43,7 @@ class OpportuniteController extends Controller
             'info_keys.*' => 'nullable|string|max:255',
             'info_values.*' => 'nullable|string|max:255',
             'fichier_joint' => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png,txt|max:5120', // 5MB max
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048', // 2MB max pour les images
         ]);
 
         if ($validator->fails()) {
@@ -94,6 +95,15 @@ class OpportuniteController extends Controller
                 $fichierPath = 'uploads/opportunites/' . $filename;
             }
 
+            // Gérer l'upload de l'image
+            $imagePath = null;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = time() . '_image_' . $image->getClientOriginalName();
+                $image->move(public_path('uploads/opportunites/images'), $imageName);
+                $imagePath = 'uploads/opportunites/images/' . $imageName;
+            }
+
             $opportunite = Opportunite::create([
                 'titre' => $request->titre,
                 'description' => $request->description,
@@ -107,6 +117,7 @@ class OpportuniteController extends Controller
                 'criteres' => $criteres,
                 'informations' => $informations,
                 'fichier_joint' => $fichierPath,
+                'image' => $imagePath,
             ]);
 
             return response()->json([

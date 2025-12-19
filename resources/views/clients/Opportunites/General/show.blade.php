@@ -38,7 +38,7 @@
                     <div class="blog-details-wrapper">
                         <div class="main-post">
                             <div class="block-image mb-4">
-                                <img src="{{ asset('assets/images/opportunities/opportunity-detail.jpg') }}"
+                                <img src="{{ $opportunite->image ? asset($opportunite->image) : asset('assets/images/opportunities/opportunity-detail.jpg') }}"
                                     alt="{{ $opportunite->titre }}"
                                     onerror="this.src='{{ asset('assets/images/blog/blog-6.jpg') }}'"
                                     style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px;">
